@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: zenith-gateway
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DB:0}
+      timeout: 2s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+zenith:
+  rate-limit:
+    enabled: true
+    requests-per-window: 20
+    window-seconds: 1
+  audit:
+    buffer-size: 20000
+    redis-key: zg:audit:events
+    redis-max-entries: 5000
+  monitor:
+    window-seconds: 10
+    emit-interval-seconds: 1
+

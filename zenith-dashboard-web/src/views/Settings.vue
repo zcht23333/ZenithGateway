@@ -1,0 +1,61 @@
+<template>
+  <section class="max-w-xl rounded-xl border border-slate-800 bg-slate-900 p-6">
+    <h2 class="mb-4 text-lg font-semibold">Gateway Runtime Settings</h2>
+
+    <form class="space-y-4" @submit.prevent="save">
+      <label class="flex items-center gap-2 text-sm">
+        <input v-model="form.rateLimitEnabled" type="checkbox" />
+        Enable Rate Limit
+      </label>
+
+      <label class="block text-sm">
+        <span class="mb-1 block text-slate-300">Requests Per Window</span>
+        <input v-model.number="form.requestsPerWindow" class="w-full rounded border border-slate-700 bg-slate-950 px-3 py-2" type="number" min="1" />
+      </label>
+
+      <label class="block text-sm">
+        <span class="mb-1 block text-slate-300">Rate Limit Window Seconds</span>
+        <input v-model.number="form.rateLimitWindowSeconds" class="w-full rounded border border-slate-700 bg-slate-950 px-3 py-2" type="number" min="1" />
+      </label>
+
+      <label class="block text-sm">
+        <span class="mb-1 block text-slate-300">Monitor Window Seconds</span>
+        <input v-model.number="form.monitorWindowSeconds" class="w-full rounded border border-slate-700 bg-slate-950 px-3 py-2" type="number" min="1" />
+      </label>
+
+      <label class="block text-sm">
+        <span class="mb-1 block text-slate-300">SSE Emit Interval Seconds</span>
+        <input v-model.number="form.emitIntervalSeconds" class="w-full rounded border border-slate-700 bg-slate-950 px-3 py-2" type="number" min="1" />
+      </label>
+
+      <button class="rounded bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400" type="submit">Save</button>
+    </form>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { reactive, onMounted } from 'vue'
+import { useTrafficStore, type RuntimeConfig } from '../stores/traffic'
+
+const store = useTrafficStore()
+
+const form = reactive<RuntimeConfig>({
+  rateLimitEnabled: true,
+  requestsPerWindow: 20,
+  rateLimitWindowSeconds: 1,
+  monitorWindowSeconds: 10,
+  emitIntervalSeconds: 1
+})
+
+onMounted(async () => {
+  await store.fetchConfig()
+  if (store.config) {
+    Object.assign(form, store.config)
+  }
+})
+
+async function save() {
+  await store.saveConfig({ ...form })
+}
+</script>
+
