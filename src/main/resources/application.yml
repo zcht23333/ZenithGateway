@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: zenith-gateway
+  threads:
+    virtual:
+      enabled: true
   data:
     redis:
       host: ${REDIS_HOST:127.0.0.1}
@@ -21,8 +24,9 @@ management:
 zenith:
   rate-limit:
     enabled: true
-    requests-per-window: 20
-    window-seconds: 1
+    replenish-rate: 20
+    burst-capacity: 20
+    requested-tokens: 1
   audit:
     buffer-size: 20000
     redis-key: zg:audit:events
@@ -30,4 +34,20 @@ zenith:
   monitor:
     window-seconds: 10
     emit-interval-seconds: 1
+  route:
+    redis-key: zg:routes
+
+resilience4j:
+  timelimiter:
+    instances:
+      default:
+        timeout-duration: 2s
+  circuitbreaker:
+    instances:
+      default:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 20
+        minimum-number-of-calls: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
 

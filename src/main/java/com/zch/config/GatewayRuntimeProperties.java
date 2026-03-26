@@ -8,6 +8,7 @@ public class GatewayRuntimeProperties {
     private final RateLimit rateLimit = new RateLimit();
     private final Audit audit = new Audit();
     private final Monitor monitor = new Monitor();
+    private final Route route = new Route();
 
     public RateLimit getRateLimit() {
         return rateLimit;
@@ -21,10 +22,15 @@ public class GatewayRuntimeProperties {
         return monitor;
     }
 
+    public Route getRoute() {
+        return route;
+    }
+
     public static class RateLimit {
         private boolean enabled = true;
-        private int requestsPerWindow = 20;
-        private int windowSeconds = 1;
+        private int replenishRate = 20;
+        private int burstCapacity = 20;
+        private int requestedTokens = 1;
 
         public boolean isEnabled() {
             return enabled;
@@ -34,20 +40,28 @@ public class GatewayRuntimeProperties {
             this.enabled = enabled;
         }
 
-        public int getRequestsPerWindow() {
-            return requestsPerWindow;
+        public int getReplenishRate() {
+            return replenishRate;
         }
 
-        public void setRequestsPerWindow(int requestsPerWindow) {
-            this.requestsPerWindow = requestsPerWindow;
+        public void setReplenishRate(int replenishRate) {
+            this.replenishRate = replenishRate;
         }
 
-        public int getWindowSeconds() {
-            return windowSeconds;
+        public int getBurstCapacity() {
+            return burstCapacity;
         }
 
-        public void setWindowSeconds(int windowSeconds) {
-            this.windowSeconds = windowSeconds;
+        public void setBurstCapacity(int burstCapacity) {
+            this.burstCapacity = burstCapacity;
+        }
+
+        public int getRequestedTokens() {
+            return requestedTokens;
+        }
+
+        public void setRequestedTokens(int requestedTokens) {
+            this.requestedTokens = requestedTokens;
         }
     }
 
@@ -99,6 +113,18 @@ public class GatewayRuntimeProperties {
 
         public void setEmitIntervalSeconds(int emitIntervalSeconds) {
             this.emitIntervalSeconds = emitIntervalSeconds;
+        }
+    }
+
+    public static class Route {
+        private String redisKey = "zg:routes";
+
+        public String getRedisKey() {
+            return redisKey;
+        }
+
+        public void setRedisKey(String redisKey) {
+            this.redisKey = redisKey;
         }
     }
 }

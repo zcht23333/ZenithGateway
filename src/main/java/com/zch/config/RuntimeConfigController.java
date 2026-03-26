@@ -30,8 +30,9 @@ public class RuntimeConfigController {
 
         synchronized (runtimeProperties) {
             rateLimit.setEnabled(readBoolean(request, "rateLimitEnabled", rateLimit.isEnabled()));
-            rateLimit.setRequestsPerWindow(clamp(readInt(request, "requestsPerWindow", rateLimit.getRequestsPerWindow()), 1, 10000));
-            rateLimit.setWindowSeconds(clamp(readInt(request, "rateLimitWindowSeconds", rateLimit.getWindowSeconds()), 1, 60));
+            rateLimit.setReplenishRate(clamp(readInt(request, "replenishRate", rateLimit.getReplenishRate()), 1, 10000));
+            rateLimit.setBurstCapacity(clamp(readInt(request, "burstCapacity", rateLimit.getBurstCapacity()), 1, 10000));
+            rateLimit.setRequestedTokens(clamp(readInt(request, "requestedTokens", rateLimit.getRequestedTokens()), 1, 100));
 
             monitor.setWindowSeconds(clamp(readInt(request, "monitorWindowSeconds", monitor.getWindowSeconds()), 1, 120));
             monitor.setEmitIntervalSeconds(clamp(readInt(request, "emitIntervalSeconds", monitor.getEmitIntervalSeconds()), 1, 5));
@@ -76,8 +77,9 @@ public class RuntimeConfigController {
 
         Map<String, Object> payload = new LinkedHashMap<>();
         payload.put("rateLimitEnabled", rateLimit.isEnabled());
-        payload.put("requestsPerWindow", rateLimit.getRequestsPerWindow());
-        payload.put("rateLimitWindowSeconds", rateLimit.getWindowSeconds());
+        payload.put("replenishRate", rateLimit.getReplenishRate());
+        payload.put("burstCapacity", rateLimit.getBurstCapacity());
+        payload.put("requestedTokens", rateLimit.getRequestedTokens());
         payload.put("monitorWindowSeconds", monitor.getWindowSeconds());
         payload.put("emitIntervalSeconds", monitor.getEmitIntervalSeconds());
         return payload;

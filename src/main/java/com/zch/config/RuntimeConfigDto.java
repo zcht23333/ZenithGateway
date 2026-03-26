@@ -3,16 +3,18 @@ package com.zch.config;
 public class RuntimeConfigDto {
 
     private boolean rateLimitEnabled;
-    private int requestsPerWindow;
-    private int rateLimitWindowSeconds;
+    private int replenishRate;
+    private int burstCapacity;
+    private int requestedTokens;
     private int monitorWindowSeconds;
     private int emitIntervalSeconds;
 
     public static RuntimeConfigDto from(GatewayRuntimeProperties properties) {
         RuntimeConfigDto dto = new RuntimeConfigDto();
         dto.setRateLimitEnabled(properties.getRateLimit().isEnabled());
-        dto.setRequestsPerWindow(properties.getRateLimit().getRequestsPerWindow());
-        dto.setRateLimitWindowSeconds(properties.getRateLimit().getWindowSeconds());
+        dto.setReplenishRate(properties.getRateLimit().getReplenishRate());
+        dto.setBurstCapacity(properties.getRateLimit().getBurstCapacity());
+        dto.setRequestedTokens(properties.getRateLimit().getRequestedTokens());
         dto.setMonitorWindowSeconds(properties.getMonitor().getWindowSeconds());
         dto.setEmitIntervalSeconds(properties.getMonitor().getEmitIntervalSeconds());
         return dto;
@@ -26,20 +28,28 @@ public class RuntimeConfigDto {
         this.rateLimitEnabled = rateLimitEnabled;
     }
 
-    public int getRequestsPerWindow() {
-        return requestsPerWindow;
+    public int getReplenishRate() {
+        return replenishRate;
     }
 
-    public void setRequestsPerWindow(int requestsPerWindow) {
-        this.requestsPerWindow = requestsPerWindow;
+    public void setReplenishRate(int replenishRate) {
+        this.replenishRate = replenishRate;
     }
 
-    public int getRateLimitWindowSeconds() {
-        return rateLimitWindowSeconds;
+    public int getBurstCapacity() {
+        return burstCapacity;
     }
 
-    public void setRateLimitWindowSeconds(int rateLimitWindowSeconds) {
-        this.rateLimitWindowSeconds = rateLimitWindowSeconds;
+    public void setBurstCapacity(int burstCapacity) {
+        this.burstCapacity = burstCapacity;
+    }
+
+    public int getRequestedTokens() {
+        return requestedTokens;
+    }
+
+    public void setRequestedTokens(int requestedTokens) {
+        this.requestedTokens = requestedTokens;
     }
 
     public int getMonitorWindowSeconds() {

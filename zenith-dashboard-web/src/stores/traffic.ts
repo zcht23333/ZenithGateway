@@ -23,10 +23,23 @@ export interface TrafficData {
 
 export interface RuntimeConfig {
   rateLimitEnabled: boolean
-  requestsPerWindow: number
-  rateLimitWindowSeconds: number
+  replenishRate: number
+  burstCapacity: number
+  requestedTokens: number
   monitorWindowSeconds: number
   emitIntervalSeconds: number
+}
+
+export interface RouteRule {
+  id: string
+  path: string
+  uri: string
+  rewriteEnabled: boolean
+  rewriteRegex: string
+  rewriteReplacement: string
+  circuitBreakerEnabled: boolean
+  circuitBreakerName: string
+  fallbackPath: string
 }
 
 const API_BASE = 'http://localhost:8080'
@@ -37,12 +50,13 @@ export const useTrafficStore = defineStore('traffic', {
     series: [] as TrafficMetricsSnapshot[],
     logs: [] as TrafficData[],
     config: null as RuntimeConfig | null,
+    routes: [] as RouteRule[],
     connected: false,
     source: null as EventSource | null
   }),
   actions: {
     async bootstrap() {
-      await Promise.all([this.fetchSnapshot(), this.fetchSeries(), this.fetchLogs(), this.fetchConfig()])
+      await Promise.all([this.fetchSnapshot(), this.fetchSeries(), this.fetchLogs(), this.fetchConfig(), this.fetchRoutes()])
       this.connectSse()
     },
 
@@ -106,6 +120,29 @@ export const useTrafficStore = defineStore('traffic', {
         body: JSON.stringify(nextConfig)
       })
       this.config = await response.json()
+    },
+
+    async fetchRoutes() {
+      const response = await fetch(`${API_BASE}/settings/routes`)
+      this.routes = await response.json()
+    },
+
+    async saveRoute(route: RouteRule) {
+      await fetch(`${API_BASE}/settings/routes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(route)
+      })
+      await this.fetchRoutes()
+    },
+
+    async deleteRoute(id: string) {
+      await fetch(`${API_BASE}/settings/routes/${encodeURIComponent(id)}`, {
+        method: 'DELETE'
+      })
+      await this.fetchRoutes()
     }
   }
 })

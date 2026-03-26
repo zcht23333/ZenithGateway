@@ -1,7 +1,6 @@
 package com.zch.route;
 
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,13 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class GatewayRouteConfig {
 
     @Bean
-    public RouteLocator routeLocator(RouteLocatorBuilder builder) {
-        return builder.routes()
-                .route("httpbin-anything", r -> r
-                        .path("/proxy/**")
-                        .filters(f -> f.rewritePath("/proxy/(?<segment>.*)", "/anything/${segment}"))
-                        .uri("https://httpbin.org"))
-                .build();
+    public RouteDefinitionLocator routeDefinitionLocator(DynamicRouteService dynamicRouteService) {
+        return dynamicRouteService::routeDefinitions;
     }
 }
 

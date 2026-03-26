@@ -1,10 +1,10 @@
-# Zenith-Gateway P2
+# Zenith-Gateway P2+
 
 P2 includes a runnable backend (Gateway + Monitor + Runtime Settings API) and a Vue3 dashboard.
 
 ## Included modules
 
-- `filter/RateLimitFilter`: per-IP fixed-window limiter based on Redis `INCR`
+- `filter/RateLimitFilter`: per-IP token-bucket limiter (Redis Lua, atomic)
 - `filter/AuditLogFilter`: captures request timing/status and publishes asynchronously
 - `monitor/AuditEventPublisher`: in-memory sink + async Redis list persistence
 - `monitor/AuditQueryController`: query recent audit events from Redis
@@ -12,7 +12,9 @@ P2 includes a runnable backend (Gateway + Monitor + Runtime Settings API) and a 
 - `monitor/SseController`: SSE stream endpoint and latest metrics endpoint
 - `monitor/DashboardController`: chart-friendly snapshot/series API
 - `config/RuntimeConfigController`: runtime settings query/update API
-- `route/GatewayRouteConfig`: sample route `/proxy/** -> https://httpbin.org/anything/**`
+- `route/DynamicRouteService`: dynamic route registry persisted to Redis
+- `route/DynamicRouteController`: route CRUD API (`/settings/routes`)
+- `route/GatewayFallbackController`: circuit breaker fallback JSON endpoint
 - `config/GatewayRuntimeProperties`: runtime config for rate-limit/audit/monitor behavior
 
 ## Frontend app
@@ -75,10 +77,24 @@ curl "http://localhost:8080/settings/runtime"
 ```
 
 ```powershell
-curl -X PUT "http://localhost:8080/settings/runtime" -H "Content-Type: application/json" -d '{"rateLimitEnabled":true,"requestsPerWindow":30,"rateLimitWindowSeconds":1,"monitorWindowSeconds":10,"emitIntervalSeconds":1}'
+curl -X PUT "http://localhost:8080/settings/runtime" -H "Content-Type: application/json" -d '{"rateLimitEnabled":true,"replenishRate":30,"burstCapacity":60,"requestedTokens":1,"monitorWindowSeconds":10,"emitIntervalSeconds":1}'
 ```
 
-10. Start frontend dashboard:
+10. Manage dynamic routes without restart:
+
+```powershell
+curl "http://localhost:8080/settings/routes"
+```
+
+```powershell
+curl -X POST "http://localhost:8080/settings/routes" -H "Content-Type: application/json" -d '{"id":"demo","path":"/demo/**","uri":"https://httpbin.org","rewriteEnabled":true,"rewriteRegex":"/demo/(?<segment>.*)","rewriteReplacement":"/anything/${segment}","circuitBreakerEnabled":true,"circuitBreakerName":"cb-demo","fallbackPath":"/fallback/default"}'
+```
+
+```powershell
+curl -X DELETE "http://localhost:8080/settings/routes/demo"
+```
+
+11. Start frontend dashboard:
 
 ```powershell
 Set-Location "D:\Java\zg\zenith-dashboard-web"
@@ -89,5 +105,6 @@ npm run dev
 ## Notes
 
 - CORS allows `http://localhost:5173` for local dashboard development.
-- Dynamic route hot-reload and circuit breaker remain as next milestones.
+- Virtual threads are enabled via `spring.threads.virtual.enabled=true`.
+- Circuit breaker fallback endpoint: `GET /fallback/default`.
 

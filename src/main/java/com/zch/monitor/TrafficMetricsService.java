@@ -6,12 +6,14 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.LongAdder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Sinks;
@@ -19,11 +21,13 @@ import reactor.core.publisher.Sinks;
 @Service
 public class TrafficMetricsService {
 
+    private static final int MAX_HISTORY_SIZE = 600;
+    private static final int MAX_P95_SAMPLES_PER_SECOND = 256;
+
     private final AuditEventPublisher auditEventPublisher;
     private final GatewayRuntimeProperties runtimeProperties;
-    private final TreeMap<Long, SecondMetrics> perSecondMetrics = new TreeMap<>();
-    private final LinkedList<TrafficMetricsSnapshot> snapshotHistory = new LinkedList<>();
-    private static final int MAX_HISTORY_SIZE = 600;
+    private final ConcurrentSkipListMap<Long, SecondMetrics> perSecondMetrics = new ConcurrentSkipListMap<>();
+    private final ConcurrentLinkedDeque<TrafficMetricsSnapshot> snapshotHistory = new ConcurrentLinkedDeque<>();
     private final AtomicLong tickCounter = new AtomicLong(0);
     private final Sinks.Many<TrafficMetricsSnapshot> snapshotSink = Sinks.many().replay().latest();
 
@@ -38,16 +42,12 @@ public class TrafficMetricsService {
         auditEventPublisher.stream().subscribe(this::accept);
 
         Flux.interval(Duration.ZERO, Duration.ofSeconds(1))
-                .map(ignore -> {
+                .filter(ignore -> {
                     long tick = tickCounter.incrementAndGet();
                     int emitInterval = Math.max(1, runtimeProperties.getMonitor().getEmitIntervalSeconds());
-                    if (tick % emitInterval != 0) {
-                        return null;
-                    }
-                    return buildSnapshot();
+                    return tick % emitInterval == 0;
                 })
-                .filter(snapshot -> snapshot != null)
-                .cast(TrafficMetricsSnapshot.class)
+                .map(ignore -> buildSnapshot())
                 .subscribe(snapshot -> {
                     appendHistory(snapshot);
                     snapshotSink.emitNext(snapshot, Sinks.EmitFailureHandler.FAIL_FAST);
@@ -56,20 +56,18 @@ public class TrafficMetricsService {
 
     public void accept(TrafficData trafficData) {
         long second = trafficData.getTimestamp() / 1000;
-        synchronized (this) {
-            SecondMetrics metrics = perSecondMetrics.computeIfAbsent(second, unused -> new SecondMetrics());
-            metrics.totalCount++;
-            metrics.latencySum += trafficData.getDurationMs();
-            metrics.latencies.add(trafficData.getDurationMs());
+        SecondMetrics metrics = perSecondMetrics.computeIfAbsent(second, unused -> new SecondMetrics());
+        metrics.totalCount.increment();
+        metrics.latencySum.add(trafficData.getDurationMs());
+        metrics.tryAddLatencySample(trafficData.getDurationMs());
 
-            int status = trafficData.getStatusCode();
-            if (status >= 200 && status < 300) {
-                metrics.status2xx++;
-            } else if (status >= 400 && status < 500) {
-                metrics.status4xx++;
-            } else if (status >= 500 && status < 600) {
-                metrics.status5xx++;
-            }
+        int status = trafficData.getStatusCode();
+        if (status >= 200 && status < 300) {
+            metrics.status2xx.increment();
+        } else if (status >= 400 && status < 500) {
+            metrics.status4xx.increment();
+        } else if (status >= 500 && status < 600) {
+            metrics.status5xx.increment();
         }
     }
 
@@ -83,14 +81,13 @@ public class TrafficMetricsService {
 
     public List<TrafficMetricsSnapshot> recentSnapshots(int size) {
         int safeSize = Math.max(1, Math.min(size, MAX_HISTORY_SIZE));
-        synchronized (this) {
-            if (snapshotHistory.isEmpty()) {
-                return Collections.emptyList();
-            }
-
-            int fromIndex = Math.max(0, snapshotHistory.size() - safeSize);
-            return new ArrayList<>(snapshotHistory.subList(fromIndex, snapshotHistory.size()));
+        if (snapshotHistory.isEmpty()) {
+            return Collections.emptyList();
         }
+
+        List<TrafficMetricsSnapshot> all = new ArrayList<>(snapshotHistory);
+        int fromIndex = Math.max(0, all.size() - safeSize);
+        return all.subList(fromIndex, all.size());
     }
 
     private TrafficMetricsSnapshot buildSnapshot() {
@@ -105,18 +102,16 @@ public class TrafficMetricsService {
         long status4xx = 0;
         long status5xx = 0;
 
-        synchronized (this) {
-            pruneExpired(nowSecond - windowSeconds * 2L);
+        pruneExpired(nowSecond - windowSeconds * 2L);
 
-            for (Map.Entry<Long, SecondMetrics> entry : perSecondMetrics.tailMap(startSecond, true).entrySet()) {
-                SecondMetrics metrics = entry.getValue();
-                requestCount += metrics.totalCount;
-                latencySum += metrics.latencySum;
-                status2xx += metrics.status2xx;
-                status4xx += metrics.status4xx;
-                status5xx += metrics.status5xx;
-                allLatencies.addAll(metrics.latencies);
-            }
+        for (Map.Entry<Long, SecondMetrics> entry : perSecondMetrics.tailMap(startSecond, true).entrySet()) {
+            SecondMetrics metrics = entry.getValue();
+            requestCount += metrics.totalCount.sum();
+            latencySum += metrics.latencySum.sum();
+            status2xx += metrics.status2xx.sum();
+            status4xx += metrics.status4xx.sum();
+            status5xx += metrics.status5xx.sum();
+            allLatencies.addAll(metrics.latencySamples());
         }
 
         TrafficMetricsSnapshot snapshot = new TrafficMetricsSnapshot();
@@ -133,14 +128,8 @@ public class TrafficMetricsService {
     }
 
     private void pruneExpired(long minSecond) {
-        Iterator<Long> iterator = perSecondMetrics.keySet().iterator();
-        while (iterator.hasNext()) {
-            long second = iterator.next();
-            if (second < minSecond) {
-                iterator.remove();
-            } else {
-                break;
-            }
+        if (!perSecondMetrics.isEmpty()) {
+            perSecondMetrics.headMap(minSecond, false).clear();
         }
     }
 
@@ -154,21 +143,31 @@ public class TrafficMetricsService {
     }
 
     private void appendHistory(TrafficMetricsSnapshot snapshot) {
-        synchronized (this) {
-            snapshotHistory.add(snapshot);
-            if (snapshotHistory.size() > MAX_HISTORY_SIZE) {
-                snapshotHistory.removeFirst();
-            }
+        snapshotHistory.addLast(snapshot);
+        while (snapshotHistory.size() > MAX_HISTORY_SIZE) {
+            snapshotHistory.pollFirst();
         }
     }
 
     private static class SecondMetrics {
-        private long totalCount;
-        private long latencySum;
-        private long status2xx;
-        private long status4xx;
-        private long status5xx;
-        private final List<Long> latencies = new ArrayList<>();
+        private final LongAdder totalCount = new LongAdder();
+        private final LongAdder latencySum = new LongAdder();
+        private final LongAdder status2xx = new LongAdder();
+        private final LongAdder status4xx = new LongAdder();
+        private final LongAdder status5xx = new LongAdder();
+        private final ConcurrentLinkedQueue<Long> latencySamples = new ConcurrentLinkedQueue<>();
+        private final AtomicInteger sampleCount = new AtomicInteger(0);
+
+        private void tryAddLatencySample(long latencyMs) {
+            int current = sampleCount.getAndIncrement();
+            if (current < MAX_P95_SAMPLES_PER_SECOND) {
+                latencySamples.add(latencyMs);
+            }
+        }
+
+        private List<Long> latencySamples() {
+            return new ArrayList<>(latencySamples);
+        }
     }
 }
 
