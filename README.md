@@ -21,6 +21,7 @@ P2 includes a runnable backend (Gateway + Monitor + Runtime Settings API) and a 
 
 - `zenith-dashboard-web/src/views/Dashboard.vue`: real-time dashboard page
 - `zenith-dashboard-web/src/views/Settings.vue`: runtime config page
+- `zenith-dashboard-web/src/views/Routes.vue`: dynamic route management page
 - `zenith-dashboard-web/src/stores/traffic.ts`: SSE + REST data store (Pinia)
 - `zenith-dashboard-web/src/components/TrafficChart.vue`: ECharts line chart
 - `zenith-dashboard-web/src/components/LogStream.vue`: recent audit logs panel
@@ -40,37 +41,43 @@ mvn -q test
 mvn spring-boot:run
 ```
 
-4. Trigger traffic through gateway:
+4. Create a route (no hardcoded startup route):
 
 ```powershell
-curl "http://localhost:8080/proxy/hello"
+curl -X POST "http://localhost:8080/settings/routes" -H "Content-Type: application/json" -d '{"id":"demo","path":"/demo/**","uri":"https://httpbin.org","rewriteEnabled":true,"rewriteRegex":"/demo/(?<segment>.*)","rewriteReplacement":"/anything/${segment}","circuitBreakerEnabled":true,"circuitBreakerName":"cb-demo","fallbackPath":"/fallback/default"}'
 ```
 
-5. Query recent audit records:
+5. Trigger traffic through gateway:
+
+```powershell
+curl "http://localhost:8080/demo/hello"
+```
+
+6. Query recent audit records:
 
 ```powershell
 curl "http://localhost:8080/monitor/audit/recent?size=10"
 ```
 
-6. Subscribe to real-time metrics via SSE:
+7. Subscribe to real-time metrics via SSE:
 
 ```powershell
 curl -N "http://localhost:8080/monitor/stream"
 ```
 
-7. Query latest aggregated snapshot:
+8. Query latest aggregated snapshot:
 
 ```powershell
 curl "http://localhost:8080/monitor/metrics/latest"
 ```
 
-8. Query dashboard series endpoint:
+9. Query dashboard series endpoint:
 
 ```powershell
 curl "http://localhost:8080/dashboard/series?size=30"
 ```
 
-9. Query/update runtime settings:
+10. Query/update runtime settings:
 
 ```powershell
 curl "http://localhost:8080/settings/runtime"
@@ -80,7 +87,7 @@ curl "http://localhost:8080/settings/runtime"
 curl -X PUT "http://localhost:8080/settings/runtime" -H "Content-Type: application/json" -d '{"rateLimitEnabled":true,"replenishRate":30,"burstCapacity":60,"requestedTokens":1,"monitorWindowSeconds":10,"emitIntervalSeconds":1}'
 ```
 
-10. Manage dynamic routes without restart:
+11. Manage dynamic routes without restart:
 
 ```powershell
 curl "http://localhost:8080/settings/routes"

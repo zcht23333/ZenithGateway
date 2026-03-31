@@ -3,7 +3,6 @@ package com.zch.route;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zch.config.GatewayRuntimeProperties;
-import jakarta.annotation.PostConstruct;
 import java.net.URI;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -12,6 +11,7 @@ import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinition;
+import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-public class DynamicRouteService {
+public class DynamicRouteService implements RouteDefinitionLocator {
 
     private final ReactiveStringRedisTemplate redisTemplate;
     private final ObjectMapper objectMapper;
@@ -36,12 +36,9 @@ public class DynamicRouteService {
         this.runtimeProperties = runtimeProperties;
     }
 
-    @PostConstruct
-    public void initDefaultRoute() {
-        String key = routeRedisKey();
-        redisTemplate.opsForHash().size(key)
-                .flatMap(size -> size > 0 ? Mono.empty() : save(defaultRoute()).then())
-                .subscribe();
+    @Override
+    public Flux<RouteDefinition> getRouteDefinitions() {
+        return routeDefinitions();
     }
 
     public Flux<RouteDefinition> routeDefinitions() {
@@ -175,18 +172,5 @@ public class DynamicRouteService {
         return prefix + "/(?<segment>.*)";
     }
 
-    private RouteRuleDto defaultRoute() {
-        RouteRuleDto route = new RouteRuleDto();
-        route.setId("httpbin-anything");
-        route.setPath("/proxy/**");
-        route.setUri("https://httpbin.org");
-        route.setRewriteEnabled(true);
-        route.setRewriteRegex("/proxy/(?<segment>.*)");
-        route.setRewriteReplacement("/anything/${segment}");
-        route.setCircuitBreakerEnabled(true);
-        route.setCircuitBreakerName("cb-httpbin");
-        route.setFallbackPath("/fallback/default");
-        return route;
-    }
 }
 
