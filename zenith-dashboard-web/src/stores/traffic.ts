@@ -83,6 +83,14 @@ export const useTrafficStore = defineStore('traffic', {
       this.source = source
     },
 
+    disconnectSse() {
+      if (this.source) {
+        this.source.close()
+        this.source = null
+      }
+      this.connected = false
+    },
+
     pushSnapshot(payload: TrafficMetricsSnapshot) {
       this.latest = payload
       this.series.push(payload)

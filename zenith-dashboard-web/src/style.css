@@ -2,7 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+@layer base {
+  body {
+    /* 使用微弱的网格或无缝暗色，这里用纯正的 OpenRouter 暗色 */
+    background-color: #0b0f19;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
+/* 顺滑平缓的滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
