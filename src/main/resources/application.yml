@@ -22,6 +22,12 @@ management:
         include: health,info,metrics
 
 zenith:
+  admin:
+    token: ${ZENITH_ADMIN_TOKEN:}
+    token-header: Authorization
+  cors:
+    allowed-origins:
+      - http://localhost:5173
   rate-limit:
     enabled: true
     replenish-rate: 20

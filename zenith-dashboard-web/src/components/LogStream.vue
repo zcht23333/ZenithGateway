@@ -2,8 +2,8 @@
   <div class="rounded-xl border border-slate-900 bg-[#0b0f19]/30 p-4 font-mono text-[11px] h-[320px] flex flex-col">
     <div class="flex-1 overflow-y-auto space-y-2.5 pr-1">
       <div 
-        v-for="item in logs" 
-        :key="`${item.timestamp}-${item.path}`" 
+        v-for="(item, idx) in logs"
+        :key="`${item.timestamp}-${item.path}-${idx}`"
         class="group flex flex-col gap-1 border-b border-slate-900/40 pb-2 last:border-none"
       >
         <div class="flex items-center justify-between">

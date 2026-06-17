@@ -1,5 +1,7 @@
 package com.zch;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -14,9 +16,11 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @ConfigurationPropertiesScan
 public class GatewayApplication {
 
+    private static final Logger log = LoggerFactory.getLogger(GatewayApplication.class);
+
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
-        System.out.println("🚀 Zenith-Gateway 启动成功！");
-        System.out.println("📡 监控面板地址: http://localhost:8080");
+        log.info("🚀 Zenith-Gateway 启动成功！");
+        log.info("📡 监控面板地址: http://localhost:8080");
     }
 }

@@ -7,6 +7,10 @@ import java.net.URI;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
@@ -20,6 +24,8 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class DynamicRouteService implements RouteDefinitionLocator {
+
+    private static final Logger log = LoggerFactory.getLogger(DynamicRouteService.class);
 
     private final ReactiveStringRedisTemplate redisTemplate;
     private final ObjectMapper objectMapper;
@@ -42,12 +48,26 @@ public class DynamicRouteService implements RouteDefinitionLocator {
     }
 
     public Flux<RouteDefinition> routeDefinitions() {
-        return list().map(this::toRouteDefinition);
+        return list().flatMap(route -> {
+            try {
+                return Mono.just(toRouteDefinition(route));
+            } catch (Exception e) {
+                log.warn("Skipping route '{}' — failed to convert to RouteDefinition: {}", route.getId(), e.getMessage());
+                return Mono.empty();
+            }
+        });
     }
 
     public Flux<RouteRuleDto> list() {
         return redisTemplate.opsForHash().entries(routeRedisKey())
-                .map(entry -> parse(String.valueOf(entry.getValue())))
+                .flatMap(entry -> {
+                    try {
+                        return Mono.just(parse(String.valueOf(entry.getValue())));
+                    } catch (Exception e) {
+                        log.warn("Skipping corrupted route entry '{}': {}", entry.getKey(), e.getMessage());
+                        return Mono.empty();
+                    }
+                })
                 .sort(Comparator.comparing(RouteRuleDto::getId));
     }
 
@@ -78,12 +98,32 @@ public class DynamicRouteService implements RouteDefinitionLocator {
         route.setPath(path == null ? "/proxy/**" : path);
 
         String uri = trimToNull(input.getUri());
-        route.setUri(uri == null ? "https://httpbin.org" : uri);
+        if (uri != null) {
+            // 校验 URI 合法性 —— 必须有 scheme，避免 Redis 脏数据导致启动崩溃
+            if (isValidUri(uri)) {
+                route.setUri(uri);
+            } else {
+                log.warn("Invalid URI '{}' for route '{}' (missing scheme), falling back to default", uri, route.getId());
+                route.setUri("https://httpbin.org");
+            }
+        } else {
+            route.setUri("https://httpbin.org");
+        }
 
         route.setRewriteEnabled(input.isRewriteEnabled());
 
         String rewriteRegex = trimToNull(input.getRewriteRegex());
-        route.setRewriteRegex(rewriteRegex == null ? defaultRewriteRegex(route.getPath()) : rewriteRegex);
+        if (rewriteRegex != null) {
+            // 校验正则合法性 —— 避免 Redis 中脏数据导致 Pattern.compile 崩溃
+            if (isValidRegex(rewriteRegex)) {
+                route.setRewriteRegex(rewriteRegex);
+            } else {
+                log.warn("Invalid rewriteRegex '{}' for route '{}', falling back to default", rewriteRegex, route.getId());
+                route.setRewriteRegex(defaultRewriteRegex(route.getPath()));
+            }
+        } else {
+            route.setRewriteRegex(defaultRewriteRegex(route.getPath()));
+        }
 
         String rewriteReplacement = trimToNull(input.getRewriteReplacement());
         route.setRewriteReplacement(rewriteReplacement == null ? "/${segment}" : rewriteReplacement);
@@ -156,6 +196,28 @@ public class DynamicRouteService implements RouteDefinitionLocator {
         }
         String trimmed = value.trim();
         return trimmed.isEmpty() ? null : trimmed;
+    }
+
+    /**
+     * 合法 URI 必须包含 scheme（如 http://, https://, lb://）。
+     * 像 /api/user/1 这样的路径不是合法 URI。
+     */
+    private boolean isValidUri(String candidate) {
+        try {
+            URI uri = URI.create(candidate);
+            return uri.getScheme() != null && !uri.getScheme().isBlank();
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    private boolean isValidRegex(String candidate) {
+        try {
+            Pattern.compile(candidate);
+            return true;
+        } catch (PatternSyntaxException e) {
+            return false;
+        }
     }
 
     private String defaultRewriteRegex(String pathPattern) {

@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
@@ -44,7 +44,7 @@ public class TrafficMetricsService {
         Flux.interval(Duration.ZERO, Duration.ofSeconds(1))
                 .filter(ignore -> {
                     long tick = tickCounter.incrementAndGet();
-                    int emitInterval = Math.max(1, runtimeProperties.getMonitor().getEmitIntervalSeconds());
+                    int emitInterval = Math.max(1, runtimeProperties.getMonitor().emitIntervalSeconds());
                     return tick % emitInterval == 0;
                 })
                 .map(ignore -> buildSnapshot())
@@ -64,6 +64,8 @@ public class TrafficMetricsService {
         int status = trafficData.getStatusCode();
         if (status >= 200 && status < 300) {
             metrics.status2xx.increment();
+        } else if (status >= 300 && status < 400) {
+            metrics.status3xx.increment();
         } else if (status >= 400 && status < 500) {
             metrics.status4xx.increment();
         } else if (status >= 500 && status < 600) {
@@ -91,7 +93,7 @@ public class TrafficMetricsService {
     }
 
     private TrafficMetricsSnapshot buildSnapshot() {
-        int windowSeconds = Math.max(1, runtimeProperties.getMonitor().getWindowSeconds());
+        int windowSeconds = Math.max(1, runtimeProperties.getMonitor().windowSeconds());
         long nowSecond = Instant.now().getEpochSecond();
         long startSecond = nowSecond - windowSeconds + 1;
 
@@ -99,6 +101,7 @@ public class TrafficMetricsService {
         long requestCount = 0;
         long latencySum = 0;
         long status2xx = 0;
+        long status3xx = 0;
         long status4xx = 0;
         long status5xx = 0;
 
@@ -109,6 +112,7 @@ public class TrafficMetricsService {
             requestCount += metrics.totalCount.sum();
             latencySum += metrics.latencySum.sum();
             status2xx += metrics.status2xx.sum();
+            status3xx += metrics.status3xx.sum();
             status4xx += metrics.status4xx.sum();
             status5xx += metrics.status5xx.sum();
             allLatencies.addAll(metrics.latencySamples());
@@ -122,6 +126,7 @@ public class TrafficMetricsService {
         snapshot.setAvgLatencyMs(requestCount == 0 ? 0 : latencySum / (double) requestCount);
         snapshot.setP95LatencyMs(calculateP95(allLatencies));
         snapshot.setStatus2xx(status2xx);
+        snapshot.setStatus3xx(status3xx);
         snapshot.setStatus4xx(status4xx);
         snapshot.setStatus5xx(status5xx);
         return snapshot;
@@ -153,20 +158,36 @@ public class TrafficMetricsService {
         private final LongAdder totalCount = new LongAdder();
         private final LongAdder latencySum = new LongAdder();
         private final LongAdder status2xx = new LongAdder();
+        private final LongAdder status3xx = new LongAdder();
         private final LongAdder status4xx = new LongAdder();
         private final LongAdder status5xx = new LongAdder();
-        private final ConcurrentLinkedQueue<Long> latencySamples = new ConcurrentLinkedQueue<>();
-        private final AtomicInteger sampleCount = new AtomicInteger(0);
+
+        /**
+         * 蓄水池采样（Reservoir Sampling R 算法）。
+         * 保证所有请求被选入 P95 样本的概率相等，消除"只采前 256 个"的结构性偏差。
+         */
+        private final List<Long> reservoir = new ArrayList<>(MAX_P95_SAMPLES_PER_SECOND);
+        private final AtomicInteger seenCount = new AtomicInteger(0);
 
         private void tryAddLatencySample(long latencyMs) {
-            int current = sampleCount.getAndIncrement();
-            if (current < MAX_P95_SAMPLES_PER_SECOND) {
-                latencySamples.add(latencyMs);
+            int n = seenCount.incrementAndGet();
+            synchronized (reservoir) {
+                if (n <= MAX_P95_SAMPLES_PER_SECOND) {
+                    reservoir.add(latencyMs);
+                } else {
+                    // 以 MAX_SAMPLES/n 的概率替换蓄水池中的随机位置
+                    int r = ThreadLocalRandom.current().nextInt(n);
+                    if (r < MAX_P95_SAMPLES_PER_SECOND) {
+                        reservoir.set(r, latencyMs);
+                    }
+                }
             }
         }
 
         private List<Long> latencySamples() {
-            return new ArrayList<>(latencySamples);
+            synchronized (reservoir) {
+                return new ArrayList<>(reservoir);
+            }
         }
     }
 }

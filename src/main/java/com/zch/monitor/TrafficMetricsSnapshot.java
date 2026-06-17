@@ -9,6 +9,7 @@ public class TrafficMetricsSnapshot {
     private double avgLatencyMs;
     private long p95LatencyMs;
     private long status2xx;
+    private long status3xx;
     private long status4xx;
     private long status5xx;
 
@@ -66,6 +67,14 @@ public class TrafficMetricsSnapshot {
 
     public void setStatus2xx(long status2xx) {
         this.status2xx = status2xx;
+    }
+
+    public long getStatus3xx() {
+        return status3xx;
+    }
+
+    public void setStatus3xx(long status3xx) {
+        this.status3xx = status3xx;
     }
 
     public long getStatus4xx() {

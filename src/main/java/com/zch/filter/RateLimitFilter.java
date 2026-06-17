@@ -1,14 +1,18 @@
 package com.zch.filter;
 
 import com.zch.config.GatewayRuntimeProperties;
+import com.zch.config.RateLimitConfig;
 import com.zch.util.ClientIpResolver;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.http.HttpStatus;
@@ -19,6 +23,11 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class RateLimitFilter implements GlobalFilter, Ordered {
+
+    private static final Logger log = LoggerFactory.getLogger(RateLimitFilter.class);
+
+    /** Redis Lua 脚本执行超时。超过此时长则 fail-open 放行请求。 */
+    private static final Duration REDIS_TIMEOUT = Duration.ofMillis(500);
 
     private static final String TOKEN_BUCKET_SCRIPT = """
             local key = KEYS[1]
@@ -69,16 +78,17 @@ public class RateLimitFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        GatewayRuntimeProperties.RateLimit rateLimit = runtimeProperties.getRateLimit();
-        if (!rateLimit.isEnabled()) {
+        // AtomicReference.get() = volatile read，保证看到 Controller 写入的最新配置
+        RateLimitConfig rateLimit = runtimeProperties.getRateLimit();
+        if (!rateLimit.enabled()) {
             return chain.filter(exchange);
         }
 
         String clientIp = ClientIpResolver.resolve(exchange.getRequest());
         String key = "zg:rl:tb:" + clientIp;
-        int burstCapacity = Math.max(1, rateLimit.getBurstCapacity());
-        int replenishRate = Math.max(1, rateLimit.getReplenishRate());
-        int requestedTokens = Math.max(1, rateLimit.getRequestedTokens());
+        int burstCapacity = Math.max(1, rateLimit.burstCapacity());
+        int replenishRate = Math.max(1, rateLimit.replenishRate());
+        int requestedTokens = Math.max(1, rateLimit.requestedTokens());
         long nowMs = Instant.now().toEpochMilli();
         int ttlSeconds = Math.max(2, (burstCapacity / replenishRate) + 2);
         List<String> keys = Collections.singletonList(key);
@@ -93,6 +103,13 @@ public class RateLimitFilter implements GlobalFilter, Ordered {
         return redisTemplate.execute(tokenBucketScript, keys, args)
                 .next()
                 .defaultIfEmpty(0L)
+                .timeout(REDIS_TIMEOUT)
+                .onErrorResume(error -> {
+                    // Redis 不可用时 fail-open：放行请求并记录警告，避免网关全线阻塞
+                    log.warn("Rate-limit Redis unavailable ({}), failing open for {} {}",
+                            error.getMessage(), exchange.getRequest().getMethod(), exchange.getRequest().getURI().getPath());
+                    return Mono.just(1L); // 1 = 放行
+                })
                 .flatMap(allowed -> {
                     if (allowed == 1L) {
                         return chain.filter(exchange);
@@ -116,4 +133,3 @@ public class RateLimitFilter implements GlobalFilter, Ordered {
         return exchange.getResponse().writeWith(Mono.just(exchange.getResponse().bufferFactory().wrap(bytes)));
     }
 }
-

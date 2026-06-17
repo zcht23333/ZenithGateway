@@ -1,69 +1,68 @@
 package com.zch.config;
 
+import java.util.concurrent.atomic.AtomicReference;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "zenith")
 public class GatewayRuntimeProperties {
 
-    private final RateLimit rateLimit = new RateLimit();
+    /**
+     * 限流配置 —— 运行时可通过 API 修改，使用 AtomicReference 保证跨线程可见性。
+     */
+    private final AtomicReference<RateLimitConfig> rateLimitRef =
+            new AtomicReference<>(RateLimitConfig.defaults());
+
+    /**
+     * 监控配置 —— 运行时可通过 API 修改。
+     */
+    private final AtomicReference<MonitorConfig> monitorRef =
+            new AtomicReference<>(MonitorConfig.defaults());
+
+    /** 只读配置：审计日志（启动后不变） */
     private final Audit audit = new Audit();
-    private final Monitor monitor = new Monitor();
+
+    /** 只读配置：路由存储（启动后不变） */
     private final Route route = new Route();
 
-    public RateLimit getRateLimit() {
-        return rateLimit;
+    // ─── Spring Boot 配置绑定入口 ───
+
+    public RateLimitConfig getRateLimit() {
+        return rateLimitRef.get();
     }
+
+    public void setRateLimit(RateLimitConfig rateLimit) {
+        this.rateLimitRef.set(rateLimit);
+    }
+
+    public MonitorConfig getMonitor() {
+        return monitorRef.get();
+    }
+
+    public void setMonitor(MonitorConfig monitor) {
+        this.monitorRef.set(monitor);
+    }
+
+    // ─── 运行时安全更新 API ───
+
+    public RateLimitConfig updateRateLimit(RateLimitConfig next) {
+        return rateLimitRef.updateAndGet(current -> next);
+    }
+
+    public MonitorConfig updateMonitor(MonitorConfig next) {
+        return monitorRef.updateAndGet(current -> next);
+    }
+
+    // ─── 只读配置（不变） ───
 
     public Audit getAudit() {
         return audit;
-    }
-
-    public Monitor getMonitor() {
-        return monitor;
     }
 
     public Route getRoute() {
         return route;
     }
 
-    public static class RateLimit {
-        private boolean enabled = true;
-        private int replenishRate = 20;
-        private int burstCapacity = 20;
-        private int requestedTokens = 1;
-
-        public boolean isEnabled() {
-            return enabled;
-        }
-
-        public void setEnabled(boolean enabled) {
-            this.enabled = enabled;
-        }
-
-        public int getReplenishRate() {
-            return replenishRate;
-        }
-
-        public void setReplenishRate(int replenishRate) {
-            this.replenishRate = replenishRate;
-        }
-
-        public int getBurstCapacity() {
-            return burstCapacity;
-        }
-
-        public void setBurstCapacity(int burstCapacity) {
-            this.burstCapacity = burstCapacity;
-        }
-
-        public int getRequestedTokens() {
-            return requestedTokens;
-        }
-
-        public void setRequestedTokens(int requestedTokens) {
-            this.requestedTokens = requestedTokens;
-        }
-    }
+    // ─── 内部配置类 ───
 
     public static class Audit {
         private int bufferSize = 20000;
@@ -95,27 +94,6 @@ public class GatewayRuntimeProperties {
         }
     }
 
-    public static class Monitor {
-        private int windowSeconds = 10;
-        private int emitIntervalSeconds = 1;
-
-        public int getWindowSeconds() {
-            return windowSeconds;
-        }
-
-        public void setWindowSeconds(int windowSeconds) {
-            this.windowSeconds = windowSeconds;
-        }
-
-        public int getEmitIntervalSeconds() {
-            return emitIntervalSeconds;
-        }
-
-        public void setEmitIntervalSeconds(int emitIntervalSeconds) {
-            this.emitIntervalSeconds = emitIntervalSeconds;
-        }
-    }
-
     public static class Route {
         private String redisKey = "zg:routes";
 
@@ -128,4 +106,3 @@ public class GatewayRuntimeProperties {
         }
     }
 }
-
