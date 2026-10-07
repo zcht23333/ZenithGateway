@@ -11,7 +11,7 @@ const upstream=http.createServer((req,res)=>{
  const path=new URL(req.url,'http://upstream').pathname,[,kind,id]=path.split('/'),instance=req.headers['x-verification-instance']
  const row={at:new Date().toISOString(),path,id,kind,instance,method:req.method,remotePort:req.socket.remotePort}
  record(row)
- res.once('close',()=>holds.delete(id))
+ res.once('close',()=>{row.closedAt=new Date().toISOString();row.writableEnded=res.writableEnded;holds.delete(id)})
  if(kind==='hold'||kind==='stream'){
   if(holds.size>=64){res.destroy();return}holds.set(id,res)
   if(kind==='stream'){res.writeHead(200,{'Content-Type':'text/plain'});res.write('part-0\n')}
@@ -39,6 +39,7 @@ http.createServer(async(req,res)=>{
    const v=text?JSON.parse(text):{}
    if(url.pathname==='/redis'){partitionB=!!v.partitionB;auditMode=v.auditMode||'normal';if(!['normal','drop-reply'].includes(auditMode))throw new Error('Bad mode');if(partitionB)for(const p of bPairs){p.client.destroy();p.remote.destroy()}}
    else if(url.pathname==='/release'){const r=holds.get(v.id);if(r&&!r.destroyed)r.end('DONE')}
+   else if(url.pathname==='/pulse'){const r=holds.get(v.id);if(r&&!r.destroyed)r.write('part-1\n')}
    else throw new Error('Unknown control')
   }
   const phase=url.searchParams.get('phase'),rows=phase?events.filter(e=>e.id.startsWith(phase+'-')):events
