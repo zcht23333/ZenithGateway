@@ -39,6 +39,9 @@ jobs:
         run: node verification/rolling-replacement-live.mjs --prepare --record --jar "$RUNNER_TEMP/rolling-build/artifacts/gateway.jar" --out "$RUNNER_TEMP/rolling-live"
       - name: Preserve every success or failure
         if: always()
+        run: node verification/rolling-replacement-summary.mjs "$RUNNER_TEMP/rolling-build/report.json" "$RUNNER_TEMP/rolling-live/report.json"
+      - name: Archive every success or failure
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: zenith-rolling-${{ github.run_id }}-${{ github.run_attempt }}

@@ -49,6 +49,8 @@ Open the repository root in IntelliJ IDEA and import `backend/pom.xml` as the Ma
 
 [Product showcase and 80-second browser demo](docs/product-showcase.md) · [Final design, loading comparison and verification](docs/stage-c-final.md)
 
+[Real HAProxy rolling replacement, failure evidence and reproduction](docs/backend-rolling-replacement.md) · [Recorded replacement](docs/backend-rolling-replacement-demo.webm)
+
 - [frontend/src/views/Dashboard.vue](frontend/src/views/Dashboard.vue): real-time dashboard page
 - [frontend/src/views/Settings.vue](frontend/src/views/Settings.vue): runtime config page
 - [frontend/src/views/RouteDispatch.vue](frontend/src/views/RouteDispatch.vue): route dispatch canvas and searchable directory

@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Functional rolling replacement through one real HAProxy entry; no capacity certification.",
+  "status": "submitted_for_acceptance_with_final_files_preserved_uncommitted",
+  "baseline": {
+    "commit": "b000a354ae8cad25682c1ce503f5336d91bf8d57",
+    "tree": "dba4e44d07b0e18135c19282163c9001524d55d1",
+    "branch": "zch/release-baseline-20261007",
+    "ci": "https://github.com/zcht23333/ZenithGateway/actions/runs/37583672526",
+    "conclusion": "success",
+    "dirty": false,
+    "tests": {
+      "backend": 252,
+      "frontend": 107,
+      "tools": 42,
+      "monitoringAssertions": 183
+    },
+    "inputSha256": "d0252d3add2e97777fcb8ad7ecb66e2221f33e57c01a5863187dd88d69271e70",
+    "jarSha256": "9f0e9f2278dba98ef013b4b67902b9411c41cd9d731b1d3a15c6a4136a8cb314"
+  },
+  "local": {
+    "toolCommit": "4d57be740a9776a3e5967a60dfcaccde6dd42bc1",
+    "jarBuiltFromCommit": "4e346e674566a6f6d291f83087a0d9d286557ae4",
+    "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+    "entrySha256": "6c2fb4fa656e75bd808cc20d8af935b02a7ac97a3358305c037a5831647bb8d4",
+    "startedAt": "2026-10-07T08:15:59.972Z",
+    "completedAt": "2026-10-07T08:18:25.954Z",
+    "host": {
+      "platform": "win32",
+      "release": "10.0.26200",
+      "arch": "x64",
+      "cpus": 16,
+      "cpuModel": "13th Gen Intel(R) Core(TM) i5-13500H",
+      "memoryBytes": 34082521088,
+      "docker": {
+        "cpus": 16,
+        "memoryBytes": 16630603776,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "version": "29.8.0"
+      }
+    },
+    "containers": [
+      {
+        "name": "zg-roll-01aca99a-redis",
+        "id": "e775261bf76e0684ca065d274910ef30cb27ec73693798dbed69a07a411ed336",
+        "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "requestedImage": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "nanoCpus": 1000000000,
+        "memoryBytes": 536870912,
+        "pidsLimit": 128,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "6379/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "53068"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-upstream",
+        "id": "89ef55ca4f527c2964b4e8f7a7e4c1b4015797a755646e93f9f9721d49705f03",
+        "image": "sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "requestedImage": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "nanoCpus": 1000000000,
+        "memoryBytes": 268435456,
+        "pidsLimit": 128,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8090/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "53069"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-a",
+        "id": "46050569eb0d910ae4f15553490104854e7fdcf4fb6a89124c31d5c87c72db11",
+        "image": "sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "requestedImage": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "nanoCpus": 2000000000,
+        "memoryBytes": 1073741824,
+        "pidsLimit": 512,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "53071"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-lb",
+        "id": "d0fcbe3be68567d8ee4dcc7ca62aec6e46f3f90dbbc7416d4001e2aa64bbd66b",
+        "image": "sha256:56b887da77428b7a6621e59e480cdbd330cc805c22d3cedb66ceea76ffdea2c6",
+        "requestedImage": "haproxy@sha256:56b887da77428b7a6621e59e480cdbd330cc805c22d3cedb66ceea76ffdea2c6",
+        "nanoCpus": 1000000000,
+        "memoryBytes": 268435456,
+        "pidsLimit": 128,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "54112"
+            }
+          ],
+          "9999/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "54113"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-load",
+        "id": "66c5e1ff86c21d2b08d76a482c3177e8c982d6da847ad04c53146f45e4161ac4",
+        "image": "sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "requestedImage": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "nanoCpus": 1000000000,
+        "memoryBytes": 268435456,
+        "pidsLimit": 128,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8091/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "54118"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-binvalid",
+        "id": "34c2e2606002e982549626761db8aa7ef1badc559e85feaf4e63543b16f92257",
+        "image": "sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "requestedImage": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "nanoCpus": 2000000000,
+        "memoryBytes": 1073741824,
+        "pidsLimit": 512,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "54128"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-b",
+        "id": "fb7eff65a66565d1d8293e0a96daab181a7eeed2f6dd2d77c6a32ed9f1002674",
+        "image": "sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "requestedImage": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "nanoCpus": 2000000000,
+        "memoryBytes": 1073741824,
+        "pidsLimit": 512,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "54138"
+            }
+          ]
+        }
+      },
+      {
+        "name": "zg-roll-01aca99a-aexit",
+        "id": "e4291247382f41bc680e2ec9b9ce9e469415537567c0a0817b8072c9a45d80cc",
+        "image": "sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "requestedImage": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "nanoCpus": 2000000000,
+        "memoryBytes": 1073741824,
+        "pidsLimit": 512,
+        "network": "zg-roll-01aca99a",
+        "ports": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "60208"
+            }
+          ]
+        }
+      }
+    ],
+    "plan": {
+      "rate": 50,
+      "windowSeconds": 5,
+      "warmRate": 10,
+      "warmSeconds": 5,
+      "rampWeights": [
+        5,
+        20,
+        50
+      ],
+      "maxWindows": 3,
+      "maxArrivalGapRatio": 0.02,
+      "p95LimitMs": 250,
+      "p99LimitMs": 750,
+      "sampleEveryMs": 500,
+      "readinessMs": 60000,
+      "recoveryMs": 20000,
+      "auditSettleMs": 15000,
+      "requestMs": 8000,
+      "requestDrainMs": 2000,
+      "cancellationSettleMs": 1000,
+      "auditDrainMs": 1000,
+      "drainObserveMs": 12000,
+      "exitMs": 45000,
+      "generatorConnections": 64,
+      "gatewayCpus": 2,
+      "gatewayMemory": "1g",
+      "handoff": false,
+      "scope": "Short functional rolling-replacement windows; not a capacity certification"
+    },
+    "checks": [
+      {
+        "name": "new JVM invalid startup is rejected; A keeps serving"
+      },
+      {
+        "name": "stale local versions prevent B promotion without foreground adoption reads"
+      },
+      {
+        "name": "B Redis fault stops promotion despite fail-open HTTP 200; A remains available"
+      },
+      {
+        "name": "healthy rolling replacement and same client keep-alive connection reselects B",
+        "drainMs": 130.63279999999213
+      },
+      {
+        "name": "bounded old-instance exit with write in-flight, partial response, active-stream cancellation, pre-header FIN and audit reply loss",
+        "drainMs": 3116.997900000002,
+        "cancelObserved": {
+          "at": "2026-10-07T08:18:09.484Z",
+          "drainElapsedMs": 85,
+          "clientCancelled": 1,
+          "deadlineTerminated": 0,
+          "upstreamClosedAt": "2026-10-07T08:18:09.451Z"
+        }
+      },
+      {
+        "name": "single-entry request IDs reconcile across instance, upstream and audit; no duplicate upstream execution"
+      }
+    ],
+    "windows": [
+      {
+        "name": "a-preparation-1",
+        "rate": 10,
+        "seconds": 5,
+        "weights": {
+          "a": 100,
+          "b": 0
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 50,
+        "offered": 50,
+        "statuses": {
+          "200": 50
+        },
+        "p95Ms": 104.383,
+        "p99Ms": 286.719,
+        "details": {
+          "A": {
+            "admitted": 50,
+            "completed": 50,
+            "auditReceived": 50,
+            "auditConfirmed": 50,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "a-during-b-start-failure",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 100,
+          "b": 0
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 10.999,
+        "p99Ms": 13.711,
+        "details": {
+          "A": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "a-during-b-lag",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 100,
+          "b": 0
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 7.271,
+        "p99Ms": 8.959,
+        "details": {
+          "A": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-small-warm-1",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 90,
+          "b": 10
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 9.711,
+        "p99Ms": 21.167,
+        "details": {
+          "A": {
+            "admitted": 225,
+            "completed": 225,
+            "auditReceived": 225,
+            "auditConfirmed": 225,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          },
+          "B": {
+            "admitted": 25,
+            "completed": 25,
+            "auditReceived": 25,
+            "auditConfirmed": 25,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-entry-fault",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 90,
+          "b": 10
+        },
+        "healthy": false,
+        "reasons": [
+          "sync_not_confirmed",
+          "limiter_not_healthy",
+          "audit_not_fully_confirmed",
+          "terminal_or_audit_accounting",
+          "fault_forward"
+        ],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 6.419,
+        "p99Ms": 8.231,
+        "details": {
+          "A": {
+            "admitted": 225,
+            "completed": 225,
+            "auditReceived": 225,
+            "auditConfirmed": 225,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          },
+          "B": {
+            "admitted": 25,
+            "completed": 25,
+            "auditReceived": 25,
+            "auditConfirmed": 0,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 25,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "a-after-b-withdrawn",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 100,
+          "b": 0
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 5.999,
+        "p99Ms": 7.587,
+        "details": {
+          "A": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-weight-5-1",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 95,
+          "b": 5
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 7.647,
+        "p99Ms": 16.319,
+        "details": {
+          "A": {
+            "admitted": 237,
+            "completed": 237,
+            "auditReceived": 237,
+            "auditConfirmed": 237,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          },
+          "B": {
+            "admitted": 13,
+            "completed": 13,
+            "auditReceived": 13,
+            "auditConfirmed": 13,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-weight-20-1",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 80,
+          "b": 20
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 7.051,
+        "p99Ms": 10.599,
+        "details": {
+          "A": {
+            "admitted": 193,
+            "completed": 193,
+            "auditReceived": 193,
+            "auditConfirmed": 193,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          },
+          "B": {
+            "admitted": 57,
+            "completed": 57,
+            "auditReceived": 57,
+            "auditConfirmed": 57,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-weight-50-1",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 50,
+          "b": 50
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 6.875,
+        "p99Ms": 8.407,
+        "details": {
+          "A": {
+            "admitted": 125,
+            "completed": 125,
+            "auditReceived": 125,
+            "auditConfirmed": 125,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          },
+          "B": {
+            "admitted": 125,
+            "completed": 125,
+            "auditReceived": 125,
+            "auditConfirmed": 125,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-during-a-exit",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 0,
+          "b": 100
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 7.111,
+        "p99Ms": 8.751,
+        "details": {
+          "B": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "aexit-preparation-1",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 100,
+          "b": 0
+        },
+        "healthy": false,
+        "reasons": [
+          "latency"
+        ],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 366.847,
+        "p99Ms": 585.215,
+        "details": {
+          "AEXIT": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "aexit-preparation-2",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 100,
+          "b": 0
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 7.159,
+        "p99Ms": 9.199,
+        "details": {
+          "AEXIT": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      },
+      {
+        "name": "b-during-a-fault-exit",
+        "rate": 50,
+        "seconds": 5,
+        "weights": {
+          "a": 0,
+          "b": 100
+        },
+        "healthy": true,
+        "reasons": [],
+        "finished": 250,
+        "offered": 250,
+        "statuses": {
+          "200": 250
+        },
+        "p95Ms": 7.319,
+        "p99Ms": 10.143,
+        "details": {
+          "B": {
+            "admitted": 250,
+            "completed": 250,
+            "auditReceived": 250,
+            "auditConfirmed": 250,
+            "auditUnknown": 0,
+            "auditDropped": 0,
+            "cancelled": 0,
+            "debitUnknown": 0,
+            "faultForward": 0,
+            "protective": 0,
+            "quota": 0,
+            "poolFull": 0
+          }
+        }
+      }
+    ],
+    "counts": {
+      "ingress": 3069,
+      "upstream": 3069,
+      "haproxy": {
+        "requests": 3069,
+        "retries": 0,
+        "redispatches": 0
+      },
+      "normal": {
+        "passed": true,
+        "counts": {
+          "ingress": 2803,
+          "upstream": 2803,
+          "audit": 2803
+        },
+        "errors": []
+      },
+      "audit": {
+        "received": 3069,
+        "persisted": 3052,
+        "uncertain": 11,
+        "dropped": 6,
+        "stored": 3062,
+        "pending": 0,
+        "unknownStored": 10
+      }
+    },
+    "auditByInstance": [
+      {
+        "instance": "A",
+        "passed": true,
+        "errors": [],
+        "received": 1807,
+        "persisted": 1807,
+        "pending": 0,
+        "uncertain": 0,
+        "dropped": 0,
+        "stored": 1807,
+        "unknownStored": 0,
+        "absent": 0
+      },
+      {
+        "instance": "B",
+        "passed": true,
+        "errors": [],
+        "received": 746,
+        "persisted": 745,
+        "pending": 0,
+        "uncertain": 1,
+        "dropped": 0,
+        "stored": 745,
+        "unknownStored": 0,
+        "absent": 1
+      },
+      {
+        "instance": "AEXIT",
+        "passed": true,
+        "errors": [],
+        "received": 516,
+        "persisted": 500,
+        "pending": 0,
+        "uncertain": 10,
+        "dropped": 6,
+        "stored": 510,
+        "unknownStored": 10,
+        "absent": 6
+      }
+    ],
+    "processes": [
+      {
+        "label": "A",
+        "stopElapsedMs": 2821.1840000000084,
+        "exitCode": 143
+      },
+      {
+        "label": "BINVALID",
+        "exitCode": 1
+      },
+      {
+        "label": "B",
+        "stopElapsedMs": 2533.4898000000103,
+        "exitCode": 143
+      },
+      {
+        "label": "AEXIT",
+        "stopElapsedMs": 2693.873099999997,
+        "exitCode": 143
+      }
+    ],
+    "versionRecovery": 731.3552000000054,
+    "fullRecoveryCheckMs": 1677.1431000000011,
+    "cleanup": {
+      "namedGatewayClientsAbsent": true,
+      "ownedContainersAbsent": true,
+      "ownedVolumesAbsent": true,
+      "networkAbsent": true,
+      "credentialsRemoved": true
+    }
+  },
+  "codeCi": {
+    "runs": [
+      {
+        "id": 37593391639,
+        "name": "Verify",
+        "sha": "4d57be740a9776a3e5967a60dfcaccde6dd42bc1",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zcht23333/ZenithGateway/actions/runs/37593391639"
+      },
+      {
+        "id": 37593391597,
+        "name": "Rolling replacement",
+        "sha": "4d57be740a9776a3e5967a60dfcaccde6dd42bc1",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zcht23333/ZenithGateway/actions/runs/37593391597"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 11470360053,
+        "name": "zenith-rolling-37593391597-1",
+        "digest": "sha256:64ded68e5170f725406135a1a50122e4994deb1b13de1c38f672585639fc1028",
+        "size": 64749949
+      },
+      {
+        "id": 11469641266,
+        "name": "zenith-rolling-live-37593391597-1",
+        "digest": "sha256:17ade79a2758935ffb8e4a4ba1c70c494eacefd0f87c3fefa4433300a25ae122",
+        "size": 2967968
+      }
+    ],
+    "note": "Run status and logs inspected. Latest artifacts remain on GitHub; local archive fetch hit TLS failure followed by two automatic-review timeouts. Do not claim locally verified archive digest for these artifacts."
+  },
+  "artifacts": {
+    "localReport": {
+      "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-05/report.json",
+      "sha256": "699759f4da9c0db258093a69bfe04e1ec98a2d4e8f2330ed7acef1906c23d982",
+      "bytes": 6668143
+    },
+    "localLedger": {
+      "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-05/ingress-all.json",
+      "sha256": "b52aa0836022ea760d256e36ba71231796a43750933a9fa90b99f6398db00ab2",
+      "bytes": 807779
+    },
+    "upstream": {
+      "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-05/upstream-all.json",
+      "sha256": "9ee8f97792eb7de88d7bc13dccee8ca33a2fd2fb764d4270726161b353283b9d",
+      "bytes": 864356
+    },
+    "audit": {
+      "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-05/audits-all.json",
+      "sha256": "b5d4ff2be16ce292388c7760c05bd0fcb7d20aa2cecbe89b283ae09a8b524fae",
+      "bytes": 1614127
+    },
+    "codeCiLog": {
+      "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-ci-05.log",
+      "sha256": "656173b6679c2699e77d53a01e6b83c37cb3a22f205b6cad50db6073bf597a32",
+      "bytes": 60534
+    },
+    "media": [
+      {
+        "path": "docs/backend-rolling-replacement-demo.png",
+        "sha256": "fc8f47f2251178a475a804fdd908b49d73b2fd49e85d0737bcef8596c7e4da3a"
+      },
+      {
+        "path": "docs/backend-rolling-replacement-demo.webm",
+        "sha256": "95c4c086c8c1885d6d5dea56cf3818bef052cb7bdac23b76d293ee83b6951d7e"
+      }
+    ],
+    "videoValidation": {
+      "passed": true,
+      "checkedAt": "2026-10-07T08:32:18.785Z",
+      "browser": "154.0.8037.98",
+      "bytes": 1425954,
+      "durationSeconds": 23.08,
+      "width": 1280,
+      "height": 900,
+      "frames": [
+        {
+          "requested": 0.2,
+          "current": 0.2,
+          "readyState": 4,
+          "error": null
+        },
+        {
+          "requested": 6,
+          "current": 6,
+          "readyState": 4,
+          "error": null
+        },
+        {
+          "requested": 12,
+          "current": 12,
+          "readyState": 4,
+          "error": null
+        },
+        {
+          "requested": 18,
+          "current": 18,
+          "readyState": 4,
+          "error": null
+        },
+        {
+          "requested": 22.88,
+          "current": 22.88,
+          "readyState": 4,
+          "error": null
+        }
+      ],
+      "quality": {
+        "totalVideoFrames": 794,
+        "droppedVideoFrames": 0
+      }
+    },
+    "rawEvidenceManifest": {
+      "path": ".dev/rolling-replacement-20261007-b129ad6e/evidence-manifest.json",
+      "sha256": "771c2c56588696b11331909fbba6b8c70dce9539aca7f1865c4a4232fb4b7c82",
+      "files": 347,
+      "bytes": 168657772
+    }
+  },
+  "previousAttempts": [
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-01/rolling-live",
+      "passed": false,
+      "error": "Error: read ECONNRESET",
+      "jarSha256": "131ad3fbc1c6f370ed0be3d2e5d6b20d80272d403366b1699dfab7d00acacbb2",
+      "entrySha256": "a80be92292d3a044369dc4b0829b0b0ad1313aec131f14daf2c7442bab10e0f9",
+      "checksCompleted": 0,
+      "windows": 0,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "HAProxy control listener was not ready; bounded read-only readiness added.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-01/rolling-live/report.json",
+        "sha256": "69fe90ff9680761a465d880b006dbf0a4b4c05bb646a4916927a7625fce4b53c",
+        "bytes": 5606
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-02/rolling-live",
+      "passed": false,
+      "error": "Error: B background versions recovered exceeded 20000 ms: ",
+      "jarSha256": "d5a7c12246361b819138660e2e5c9ca29a20af675e73c34ce47dcc484a128e2c",
+      "entrySha256": "ac28890efaa283afb9db921efcf02a8dccc40e6e3427b5d1fa97252923ead2f1",
+      "checksCompleted": 2,
+      "windows": 3,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Never-used limiter was unchecked; initial traffic gate separated from promotion.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-02/rolling-live/report.json",
+        "sha256": "70e63d55ff95700effde18513310ff3327d6b3d5c927f4fe7ff7119d5cf959aa",
+        "bytes": 1054439
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-03/rolling-live",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+      "jarSha256": "7eafe8c655019d7dedba5270924653598f89560d168ce9029a4893ce407d42fb",
+      "entrySha256": "c6ae126131ab45200abb1c3a5796d575afa82c245f3dd3301a00f0c61a0c4aaf",
+      "checksCompleted": 4,
+      "windows": 11,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Normal rolling passed; pre-header FIN propagation assumption was invalid.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-03/rolling-live/report.json",
+        "sha256": "2a4387d116ee6fe64bcfecb4ec779ecfcd7f1c725cfae704fc2d834a67e41716",
+        "bytes": 5414521
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-04/rolling-live",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:",
+      "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+      "entrySha256": "acbff1adb6450d28360c44f418a7646fff2b4d2f91dc1774932239f408a006fa",
+      "checksCompleted": 0,
+      "windows": 2,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "250 complete HTTP 200 responses but one gateway cancellation; cause not established; promotion stopped.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-attempt-04/rolling-live/report.json",
+        "sha256": "e4cec77997ab751d2ae59832901ec2a053b6f2568ef00970773f8a45bba53729",
+        "bytes": 681720
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-01",
+      "passed": false,
+      "error": "browserType.launch: Executable doesn't exist at C:\\Users\\张常皓\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1243\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+      "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+      "entrySha256": "f0e466a0856083064755340f574e5bf80de0338a4d6cfc9ed53f2c690f4cd0f2",
+      "checksCompleted": 3,
+      "windows": 6,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Missing bundled browser; recording startup cleanup fixed. Exact owned Node PID subsequently terminated; no development process touched.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-01/report.json",
+        "sha256": "b3cad719969c26414710f812d02024b5305d1cd7b7738ef0ebd76dc33352eb06",
+        "bytes": 2751250
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-02",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+      "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+      "entrySha256": "838d80206aa79ba339e5da16cd5402b1d5c21b047a2dd05725930e35ed7c09b0",
+      "checksCompleted": 4,
+      "windows": 12,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Host reset did not propagate before deadline; moved cancellation probe into Linux driver.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-02/report.json",
+        "sha256": "f2219d5c3cef9928958b9aa81054d1edd774e5c1b4d405698e1691276ceb13e0",
+        "bytes": 5822181
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-03",
+      "passed": true,
+      "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+      "entrySha256": "6a919805dc44bf06f348028b58b4362aa09dea313b9a12c04fd67c6627ecf00f",
+      "checksCompleted": 6,
+      "windows": 13,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Full pass with warm latency failure retained. Pre-header reset happened to propagate in this attempt.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-03/report.json",
+        "sha256": "4c56d10b092c80fb1fae8bf343db29a2b85000191f0ee5aa99801643fc3c060d",
+        "bytes": 6386045
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-04",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+      "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+      "entrySha256": "604d79f11c04b19499f47838959e9bffb5f059783dc400f3771e0788c0be8749",
+      "checksCompleted": 4,
+      "windows": 12,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Full normal rolling pass, pre-header Linux reset did not propagate before deadline; replaced assumed timing with controlled active-stream boundary.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-04/report.json",
+        "sha256": "9cd33abdc653d9a66e4d95c56863b9d8097719449255248c6d06b6f881f0e7ee",
+        "bytes": 5827536
+      }
+    },
+    {
+      "directory": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-05",
+      "passed": true,
+      "jarSha256": "67fc11007ae530e6bd18f0c3be7c9a6abca11f15dde7a30104dbd7495fa609fa",
+      "entrySha256": "6c2fb4fa656e75bd808cc20d8af935b02a7ac97a3358305c037a5831647bb8d4",
+      "checksCompleted": 6,
+      "windows": 13,
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "note": "Final controlled active-stream cancellation, full flow and accounting passed; first AEXIT warm window failed latency and was retained.",
+      "report": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/rolling-local-05/report.json",
+        "sha256": "699759f4da9c0db258093a69bfe04e1ec98a2d4e8f2330ed7acef1906c23d982",
+        "bytes": 6668143
+      }
+    }
+  ],
+  "toolChecks": {
+    "windows": {
+      "tests": 60,
+      "pass": 60,
+      "log": {
+        "path": ".dev/rolling-replacement-20261007-b129ad6e/tools-final-03.log",
+        "sha256": "39d69fc822d863083c18d03b5e48f17fdff276df23be0ed3b75acb2ef8d30e0f",
+        "bytes": 5764
+      }
+    },
+    "newRollingTests": 18
+  },
+  "environment": {
+    "comparison": {
+      "containers": [],
+      "networks": [
+        {
+          "InputObject": "a800fc8d45aee0210fdc01effd161cf9ea0da92be1915b3843adad239a938024 bridge",
+          "SideIndicator": "=>"
+        },
+        {
+          "InputObject": "a59f2590f6c958d283e9c7fb1960c9783f34da82fe65f4d75c016e89984c4dbb bridge",
+          "SideIndicator": "<="
+        }
+      ],
+      "volumes": [],
+      "running": [],
+      "defaultBridgeBefore": "a59f2590f6c958d283e9c7fb1960c9783f34da82fe65f4d75c016e89984c4dbb",
+      "defaultBridgeAfter": "a800fc8d45aee0210fdc01effd161cf9ea0da92be1915b3843adad239a938024"
+    },
+    "preservation": {
+      "checkedAt": "2026-10-07T08:42:08.941Z",
+      "rootHead": "8dded422930d93a0810e4641e51e6f327fad62d6",
+      "comparedFiles": 516,
+      "changed": [
+        {
+          "path": "README.md",
+          "before": "a3382b504179556f3042c4612cc067deb50d5077a9b88bfa65cc163f94b97589",
+          "after": "b6df8e96421bceda56b8e1e51118155c1ec5127a849e4d041b09b47020304ce4"
+        },
+        {
+          "path": "verification/acceptance-plan.mjs",
+          "before": "232b5dbd83c7e552b5a9ded715789e55bc4e201de4b131b3dab5cd213b501fc4",
+          "after": "ffc3b9acb23e55fe9bdb218ecf48299d27d7dab7c7741ecdc9249ba652b742d5"
+        },
+        {
+          "path": "docs/product-showcase.md",
+          "before": "1282b3d25fa5188d15f4132918cd566c2e8ab07ac13397fbfca5d8251397d34b",
+          "after": "a70c944b18ee843bf4edfaa15c598214c0d9f8476eb7372298f2ff377e5aac89"
+        }
+      ],
+      "missing": [],
+      "unexpected": [],
+      "note": "Compares original captured build inputs and documents. Original dirty main and IDE edits were not checked out or staged.",
+      "passed": true
+    },
+    "initialDockerRunning": false,
+    "dockerFinalState": "running_no_containers_running",
+    "note": "Only this run owned resources were removed. Existing containers and volumes unchanged. Default bridge identity changed again; cause not established. Previously recorded initial engine-unavailable inventory is not a valid empty inventory.",
+    "dockerNote": "Docker was initially unavailable/off, became available after earlier launch attempts with cause not established. Dedicated resources were removed; Docker Desktop remains running. Do not claim the desktop application was restored to its original off state.",
+    "finalHostProcessInventory": "Not independently re-enumerated: sandbox CIM read was denied. The controller and video-check sessions exited normally; owned Docker resources and named Redis clients were checked by the completed live script."
+  },
+  "notExecuted": [
+    "Old full release live matrix (configuration receipts/rollback/route/limiter/proxy suites) not rerun: no gateway business code changes; full backend/frontend/build and new real LB scenarios ran in CI.",
+    "One-hour capacity and RSS attribution",
+    "Cloud or multi-LB propagation, TLS, HTTP/2, sticky sessions, SIGKILL lossless recovery, automatic recovery after both candidates fail"
+  ],
+  "boundaries": [
+    "50 requests/s for 5-second windows proves the stated flow only. 4000 requests/s one hour remains failed; no certified healthy hour tier.",
+    "Pre-header FIN/RST propagation is not guaranteed; active-stream cancellation is verified with a controlled subsequent upstream write.",
+    "One remote complete-200/gateway-cancelled sample remains unassigned and is retained as a failed promotion window.",
+    "Audit uncertain can be present in Redis; it cannot be reclassified as confirmed or missing solely from the gateway timeout.",
+    "At most two gateway JVMs; gateway does not manage LB weights itself. Original main and development instances remain unchanged."
+  ],
+  "delivery": {
+    "publishedCodeCommit": "4d57be740a9776a3e5967a60dfcaccde6dd42bc1",
+    "branch": "zch/rolling-replacement-20261007",
+    "mainMerged": false,
+    "developmentInstancesUpgraded": false,
+    "pendingFiles": [
+      ".github/workflows/rolling-replacement.yml",
+      "verification/rolling-replacement-summary.mjs",
+      "README.md",
+      "docs/product-showcase.md",
+      "docs/backend-rolling-replacement.md",
+      "docs/backend-rolling-replacement-validation.json",
+      "docs/backend-rolling-replacement-demo.png",
+      "docs/backend-rolling-replacement-demo.webm"
+    ],
+    "blocker": "Automatic permission review rejected the final local git commit twice because its review service connection failed. User authorization for scoped pushes is already present. No workaround was used.",
+    "checksNotRun": [
+      "New compact CI-summary workflow step was exercised on archived real reports locally but not yet on remote CI. Final documentation/media files remain uncommitted."
+    ],
+    "userDecisionPending": false,
+    "userDecision": "先交付验收，保留待提交文件"
+  }
+}
