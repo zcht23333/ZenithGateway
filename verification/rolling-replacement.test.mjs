@@ -1,5 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import http from 'node:http'
+import {finishRecording} from './rolling-replacement-recording.mjs'
 import {candidateGate,assessRollingWindow,reconcileRollingLedger,reconcileAuditSettlement,rollingPlan} from './rolling-replacement-core.mjs'
 const versions={runtime:'runtime:2',route:'routes:3'}
 function snapshot(n=0){return {ready:true,life:{instanceId:'A',phase:'ready',draining:false,adoptedRuntimeVersion:versions.runtime,adoptedRouteVersion:versions.route,admitted:n,completed:n,clientCancelled:0,audit:{received:n,persisted:n,pending:0,uncertain:0,dropped:0}},runtimeSync:{status:'ok'},routeSync:{status:'ok'},limit:{transportState:'healthy',outcomes:{},observations:{executions:{unknown:0}},queued:0,queueCapacity:64,commandsInFlight:0,workers:8,retainedTasks:0,admissionCapacity:72,availableDecisionPermits:72},proxy:{activeProxyRequests:0,policy:{maxConnectionsPerOrigin:100,maxPendingAcquiresPerOrigin:100}},poolFull:0}}
@@ -72,4 +74,15 @@ test('audit reconciliation permits unknown rows to be stored or absent but never
 test('audit settlement cannot conceal missing terminal counts or an unclosed writer',()=>{
  assert(!reconcileAuditSettlement({received:10,persisted:8,pending:1,uncertain:1,dropped:0},8).passed)
  assert(!reconcileAuditSettlement({received:10,persisted:8,pending:0,uncertain:1,dropped:0},8).passed)
+})
+test('a failed browser launch cannot leave its real loopback listener running',async()=>{
+ const server=http.createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve))
+ try{await finishRecording({server},{});assert.equal(server.listening,false)}finally{server.close()}
+})
+test('a failed final frame still closes the browser, context and real recording listener',async()=>{
+ const server=http.createServer();await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let contextClosed=false,browserClosed=false
+ try{
+  await assert.rejects(finishRecording({server,page:{waitForFunction:async()=>{throw new Error('frame unavailable')},video:()=>null},context:{close:async()=>{contextClosed=true}},browser:{close:async()=>{browserClosed=true}}},{}),/frame unavailable/)
+  assert(contextClosed&&browserClosed);assert.equal(server.listening,false)
+ }finally{server.close()}
 })

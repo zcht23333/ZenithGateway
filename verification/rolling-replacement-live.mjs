@@ -14,6 +14,7 @@ import {redisCommand} from '../benchmarks/redis.mjs'
 import {fileHash} from './acceptance-core.mjs'
 import {scopedDockerArgs} from './acceptance-scope.mjs'
 import {rollingPlan as plan,candidateGate,assessRollingWindow,reconcileRollingLedger,reconcileAuditSettlement} from './rolling-replacement-core.mjs'
+import {finishRecording} from './rolling-replacement-recording.mjs'
 const exec=promisify(execFile),root=resolve('.'),id=randomUUID().slice(0,8)
 const arg=(n,d)=>process.argv.includes(n)?process.argv[process.argv.indexOf(n)+1]:d
 const out=resolve(arg('--out','.dev/rolling-live-'+id)),sourceJar=resolve(arg('--jar','backend/target/zg-1.0.0.jar'))
@@ -112,6 +113,11 @@ async function hit(path,{agent,method='GET'}={}){
  return {done,cancel(mode='fin'){end('client_cancelled');if(mode==='reset'){assert(req.socket,'reset requires an established socket');req.socket.resetAndDestroy()}else req.destroy()},get body(){return body},get status(){return status}}
 }
 async function arrival(id){return until('upstream arrival '+id,async()=>{const state=await ctrl();return state.rows.find(x=>x.id===id)})}
+async function linuxCancellationProbe(id){
+ await api(driver,'/probe-start',{method:'POST',body:JSON.stringify({id})})
+ const done=until('Linux probe '+id,async()=>{const job=await api(driver,'/probe/'+id);return job.state==='complete'?job.result:false},28000).then(row=>{report.requests.push(row);return row})
+ return {done,cancel:mode=>api(driver,'/probe-cancel',{method:'POST',body:JSON.stringify({id,mode})})}
+}
 async function auditDump(i){
  const total=Number(await redisCommand(redisPort,['LLEN',i.auditKey]));assert(total<50000)
  const rows=[];for(let n=0;n<total;n+=500)for(const text of await redisCommand(redisPort,['LRANGE',i.auditKey,n,Math.min(n+499,total-1)]))rows.push({...JSON.parse(text),instance:i.slot})
@@ -129,16 +135,12 @@ async function startRecording(){if(!process.argv.includes('--record'))return
  const {chromium}=await import(pathToFileURL(resolve(process.env.PLAYWRIGHT_MODULE||'.dev/browser/node_modules/playwright/index.mjs')))
  const html=await readFile(new URL('./rolling-replacement-demo.html',import.meta.url),'utf8')
  demoServer=http.createServer((req,res)=>{res.setHeader('Cache-Control','no-store');if(req.url==='/state'){res.setHeader('Content-Type','application/json');res.end(JSON.stringify(report.timeline))}else{res.setHeader('Content-Type','text/html; charset=utf-8');res.end(html)}})
- await new Promise(r=>demoServer.listen(0,'127.0.0.1',r));browser=await chromium.launch({headless:true});context=await browser.newContext({viewport:{width:1280,height:900},recordVideo:{dir:join(out,'video'),size:{width:1280,height:900}}});page=await context.newPage();await page.goto('http://127.0.0.1:'+demoServer.address().port)
+ await new Promise(r=>demoServer.listen(0,'127.0.0.1',r));browser=await chromium.launch({headless:true,timeout:10000,...(process.env.PLAYWRIGHT_CHANNEL?{channel:process.env.PLAYWRIGHT_CHANNEL}:{})});report.recording={browserVersion:browser.version(),channel:process.env.PLAYWRIGHT_CHANNEL||'bundled chromium'};context=await browser.newContext({viewport:{width:1280,height:900},recordVideo:{dir:join(out,'video'),size:{width:1280,height:900}}});page=await context.newPage();await page.goto('http://127.0.0.1:'+demoServer.address().port)
 }
 async function endRecording(){
- if(!page)return
- const currentPage=page,currentContext=context,currentBrowser=browser,currentServer=demoServer
- page=null;context=null;browser=null;demoServer=null;let failure
- try{await currentPage.waitForFunction(title=>document.querySelector('#current')?.textContent===title,report.timeline.at(-1)?.title,{timeout:3000});await currentPage.screenshot({path:join(out,'rolling-demo.png')})}catch(e){failure=e}
- try{const video=currentPage.video();await currentContext.close();await video.saveAs(join(out,'rolling-demo.webm'))}catch(e){failure||=e}
- finally{await currentBrowser.close();await new Promise(r=>currentServer.close(r))}
- if(failure)throw failure
+ if(!page&&!context&&!browser&&!demoServer)return
+ const owned={page,context,browser,server:demoServer};page=null;context=null;browser=null;demoServer=null
+ await finishRecording(owned,{title:report.timeline.at(-1)?.title,screenshotPath:join(out,'rolling-demo.png'),videoPath:join(out,'rolling-demo.webm')})
 }
 try{
  await save('plan.json',plan);await mkdir(secrets);await writeFile(secret,token)
@@ -188,13 +190,13 @@ try{
  // Independent exit-fault exercise, still at most two live gateway JVMs. Restart A as the old instance.
  A=await startup('AEXIT',{auditProxy:true});A.slot='a';await readyServer(A,'a');await weight(100,0);await healthy('aexit-preparation',{members:[A]})
  const exitBaseline=await settle(A)
- const slow=await hit('/probe/hold/exit-over',{method:'POST'}),stream=await hit('/probe/stream/exit-partial'),cancel=await hit('/probe/hold/exit-cancel'),halfClose=await hit('/probe/hold/exit-fin')
+ const slow=await hit('/probe/hold/exit-over',{method:'POST'}),stream=await hit('/probe/stream/exit-partial'),cancel=await linuxCancellationProbe('exit-cancel'),halfClose=await linuxCancellationProbe('exit-fin')
  for(const key of ['exit-over','exit-partial','exit-cancel','exit-fin'])await arrival(key);await until('partial response really sent',()=>stream.body.includes('part-0'))
  await ctrl('/redis',{partitionB:false,auditMode:'drop-reply'})
  const auditRequests=await Promise.all(Array.from({length:12},(_,n)=>hit('/probe/quick/audit-pending-'+n).then(h=>h.done)));assert(auditRequests.every(r=>r.status===200))
  await until('audit events pending and Redis replies suppressed',async()=>{const life=await api(A.base,'/settings/lifecycle'),c=await ctrl();return life.audit.pending>0&&c.suppressed>0})
  await command('set server gateway/a state maint');await weight(0,100)
- const faultDrain=drain(A);await until('AEXIT draining',()=>api(A.base,'/settings/lifecycle').then(x=>x.draining),2000);halfClose.cancel();cancel.cancel('reset')
+ const faultDrain=drain(A);await until('AEXIT draining',()=>api(A.base,'/settings/lifecycle').then(x=>x.draining),2000);await Promise.all([halfClose.cancel('fin'),cancel.cancel('reset')])
  const [slowResult,streamResult,cancelResult,halfCloseResult]=await Promise.all([slow.done,stream.done,cancel.done,halfClose.done]);const finalFault=await faultDrain
  await save('exit-fault-results.json',{exitBaseline,slowResult,streamResult,cancelResult,halfCloseResult,finalFault})
  assert.equal(slowResult.status,503);assert.equal(streamResult.status,200);assert.notEqual(streamResult.termination,'complete');assert(!streamResult.body.includes('shutdown_deadline'));assert.equal(cancelResult.termination,'client_cancelled')
