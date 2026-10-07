@@ -86,3 +86,14 @@ test('a failed final frame still closes the browser, context and real recording 
   assert(contextClosed&&browserClosed);assert.equal(server.listening,false)
  }finally{server.close()}
 })
+test('CI summary preserves scalar JAR identity and per-file frontend digests',async()=>{
+ const {mkdtemp,writeFile,rm}=await import('node:fs/promises'),{tmpdir}=await import('node:os'),{join,resolve,sep,basename}=await import('node:path'),{execFile}=await import('node:child_process'),{promisify}=await import('node:util')
+ const dir=await mkdtemp(join(tmpdir(),'zenith-rolling-summary-'))
+ try{
+  const artifacts={jarSha256:'a'.repeat(64),frontend:[{path:'index.html',sha256:'b'.repeat(64)}]}
+  await writeFile(join(dir,'build.json'),JSON.stringify({passed:true,source:{commit:'test',dirty:false,files:[]},steps:[],artifacts,cleanup:{passed:true}}))
+  const {stdout}=await promisify(execFile)(process.execPath,['verification/rolling-replacement-summary.mjs',join(dir,'build.json'),join(dir,'missing-live.json')],{env:{...process.env,GITHUB_STEP_SUMMARY:''},timeout:5000})
+  const output=JSON.parse(stdout.split('ROLLING_SUMMARY_BEGIN\n')[1].split('ROLLING_SUMMARY_END')[0])
+  assert.deepEqual(output.build.artifacts,artifacts);assert.equal(output.live,null);assert.equal(output.build.source.dirty,false)
+ }finally{const target=resolve(dir);assert(target.startsWith(resolve(tmpdir())+sep)&&basename(target).startsWith('zenith-rolling-summary-'));await rm(target,{recursive:true,force:true})}
+})

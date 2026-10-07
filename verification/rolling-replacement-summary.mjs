@@ -8,7 +8,7 @@ const build=await read(buildPath),live=await read(livePath)
 const summary={
  build:build?{passed:build.passed,source:{commit:build.source?.commit,dirty:build.source?.dirty,sha256:build.source?.sha256,files:build.source?.files?.length},
   steps:build.steps.map(s=>({name:s.name,passed:s.passed,result:s.result})),
-  artifacts:Object.fromEntries(Object.entries(build.artifacts??{}).map(([k,v])=>[k,{sha256:v.sha256,bytes:v.bytes,files:v.files?.length}])),cleanupPassed:build.cleanup?.passed}:null,
+  artifacts:build.artifacts,cleanupPassed:build.cleanup?.passed}:null,
  live:live?{passed:live.passed,error:live.error,startedAt:live.startedAt,completedAt:live.completedAt,jarSha256:live.jarSha256,entrySha256:live.entrySha256,
   host:live.host,plan:live.plan,images:live.images,containers:live.containers,cleanup:live.cleanup,
   checks:live.checks.map(c=>({name:c.name,drainMs:c.drain?.elapsedMs,
