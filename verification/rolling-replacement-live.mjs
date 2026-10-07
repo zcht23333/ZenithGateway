@@ -13,7 +13,7 @@ import {setTimeout as delay} from 'node:timers/promises'
 import {redisCommand} from '../benchmarks/redis.mjs'
 import {fileHash} from './acceptance-core.mjs'
 import {scopedDockerArgs} from './acceptance-scope.mjs'
-import {rollingPlan as plan,candidateGate,assessRollingWindow,reconcileRollingLedger} from './rolling-replacement-core.mjs'
+import {rollingPlan as plan,candidateGate,assessRollingWindow,reconcileRollingLedger,reconcileAuditSettlement} from './rolling-replacement-core.mjs'
 const exec=promisify(execFile),root=resolve('.'),id=randomUUID().slice(0,8)
 const arg=(n,d)=>process.argv.includes(n)?process.argv[process.argv.indexOf(n)+1]:d
 const out=resolve(arg('--out','.dev/rolling-live-'+id)),sourceJar=resolve(arg('--jar','backend/target/zg-1.0.0.jar'))
@@ -76,6 +76,11 @@ async function snapshot(i){
  return {at:new Date().toISOString(),ready:life.phase==='ready',life,limit,proxy,runtimeSync,routeSync,poolFull}
 }
 async function settle(i){return until(i.label+' idle and audit settled',async()=>{const s=await snapshot(i);return s.life.activeBusinessRequests===0&&s.life.audit.pending===0&&s.limit.retainedTasks===0&&s.proxy.activeProxyRequests===0?s:false},plan.auditSettleMs)}
+async function waitCandidate(i,name,initialTraffic=false){
+ const observations=[];let last
+ try{return await until(name,async()=>{last=await snapshot(i);const gate=candidateGate(last,versions,{initialTraffic});observations.push({at:last.at,gate,config:last.life.adoptedRuntimeVersion,route:last.life.adoptedRouteVersion,runtimeSync:last.runtimeSync.status,routeSync:last.routeSync.status,limiter:last.limit.transportState});if(!gate.allowed)await delay(250);return gate.allowed},plan.recoveryMs)}
+ finally{await save(name+'.json',{initialTraffic,versions,observations,last})}
+}
 async function measure(name,{rate=plan.rate,seconds=plan.windowSeconds,members=[A,B].filter(Boolean),fault=false}={}){
  const collect=async()=>Object.fromEntries(await Promise.all(members.map(async i=>[i.label,await snapshot(i)])))
  const before=await collect(),samples=[],sampleErrors=[];let sampling=true
@@ -152,12 +157,12 @@ try{
  const routes=await api(A.base,'/settings/routes');const changed=await api(A.base,'/settings/routes',{method:'POST',body:JSON.stringify({expectedVersion:routes.version,route})});versions={runtime:updated.version,route:changed.version}
  const lag=candidateGate(await snapshot(B),versions);assert(!lag.allowed&&lag.reasons.includes('runtime_version_not_adopted')&&lag.reasons.includes('route_version_not_adopted'))
  const isolated=await measure('a-during-b-lag',{members:[A]});assert(isolated.assessment.healthy);assert(isolated.upstream.every(x=>x.instance==='a'));report.checks.push({name:'stale local versions prevent B promotion without foreground adoption reads',gate:lag,weights:{...weights}})
- await ctrl('/redis',{partitionB:false});await until('B background versions recovered',async()=>candidateGate(await snapshot(B),versions).allowed,plan.recoveryMs)
+ await ctrl('/redis',{partitionB:false});await waitCandidate(B,'b-background-versions-recovered',true)
  await weight(90,10);await healthy('b-small-warm')
  await ctrl('/redis',{partitionB:true});const fault=await measure('b-entry-fault',{fault:true});assert(!fault.assessment.healthy&&fault.assessment.reasons.includes('fault_forward'))
  await weight(100,0);const paused=await measure('a-after-b-withdrawn',{members:[A]});assert(paused.assessment.healthy);assert(paused.upstream.every(x=>x.instance==='a'))
  report.checks.push({name:'B Redis fault stops promotion despite fail-open HTTP 200; A remains available',faultWindow:fault.name,withdrawalWindow:paused.name})
- await ctrl('/redis',{partitionB:false});await until('B recovery before reevaluation',async()=>candidateGate(await snapshot(B),versions).allowed,plan.recoveryMs);await settle(B)
+ await ctrl('/redis',{partitionB:false});await waitCandidate(B,'b-recovery-before-reevaluation');await settle(B)
  await startRecording();await event('开始正常滚动替换：B 已恢复并追平两个版本',{versions})
  const agent=new http.Agent({keepAlive:true,maxSockets:1});agents.add(agent)
  const keep=await hit('/probe/quick/keep-before',{agent});const keepBefore=await keep.done;assert.equal(keepBefore.instance,'a')
@@ -174,6 +179,7 @@ try{
  report.checks.push({name:'healthy rolling replacement and same client keep-alive connection reselects B',keepBefore,keepAfter,drain:A.drain,exit:A.exit});await event('正常替换完成：B 继续服务，A 排空并退出',{drainMs:A.drain.elapsedMs,exitMs:A.stopElapsedMs});await endRecording()
  // Independent exit-fault exercise, still at most two live gateway JVMs. Restart A as the old instance.
  A=await startup('AEXIT',{auditProxy:true});A.slot='a';await readyServer(A,'a');await weight(100,0);await healthy('aexit-preparation',{members:[A]})
+ const exitBaseline=await settle(A)
  const slow=await hit('/probe/hold/exit-over',{method:'POST'}),stream=await hit('/probe/stream/exit-partial'),cancel=await hit('/probe/hold/exit-cancel')
  for(const key of ['exit-over','exit-partial','exit-cancel'])await arrival(key);await until('partial response really sent',()=>stream.body.includes('part-0'))
  await ctrl('/redis',{partitionB:false,auditMode:'drop-reply'})
@@ -183,19 +189,27 @@ try{
  const faultDrain=drain(A);await until('AEXIT draining',()=>api(A.base,'/settings/lifecycle').then(x=>x.draining),2000);cancel.cancel()
  const [slowResult,streamResult,cancelResult]=await Promise.all([slow.done,stream.done,cancel.done]);const finalFault=await faultDrain
  assert.equal(slowResult.status,503);assert.equal(streamResult.status,200);assert.notEqual(streamResult.termination,'complete');assert(!streamResult.body.includes('shutdown_deadline'));assert.equal(cancelResult.termination,'client_cancelled')
+ assert.equal(finalFault.admitted-exitBaseline.life.admitted,15);assert.equal(finalFault.completed-exitBaseline.life.completed,15)
+ assert.equal(finalFault.deadlineTerminated-exitBaseline.life.deadlineTerminated,2);assert.equal(finalFault.clientCancelled-exitBaseline.life.clientCancelled,1)
  const auditState=finalFault.audit;assert.equal(auditState.received,auditState.persisted+auditState.pending+auditState.uncertain+auditState.dropped);assert(auditState.uncertain+auditState.dropped>0);assert.equal(auditState.pending,0)
  const healthyB=measure('b-during-a-fault-exit',{members:[B]});await stop(A);assert((await healthyB).assessment.healthy);await ctrl('/redis',{partitionB:false,auditMode:'normal'})
  report.checks.push({name:'bounded old-instance exit with write in-flight, partial response, cancellation and audit reply loss',slowResult,streamResult,cancelResult,drain:A.drain,exit:A.exit,auditState})
  await settle(B);await drain(B);await stop(B)
  const upstream=(await ctrl()).rows,audits=[]
- for(const i of instances.filter(x=>!x.invalid))audits.push(...await auditDump(i))
+ report.auditSettlement=[]
+ for(const i of instances.filter(x=>!x.invalid)){const rows=await auditDump(i),settlement=reconcileAuditSettlement(i.drain.final.audit,rows.length);assert(settlement.passed,JSON.stringify(settlement));report.auditSettlement.push({instance:i.label,...settlement});audits.push(...rows)}
  const ingress=[...report.requests]
  for(const f of await readdir(out))if(f.endsWith('-ingress.jsonl'))for(const line of (await readFile(join(out,f),'utf8')).trim().split('\n').filter(Boolean))ingress.push(JSON.parse(line))
- const normalIngress=ingress.filter(r=>!r.path.includes('/exit-')&&!r.path.includes('/audit-pending-')),normalIds=new Set(normalIngress.map(r=>r.path.split('/').at(-1)))
+ const isFault=path=>/\/(exit-|audit-pending-|b-entry-fault-)/.test(path)
+ const normalIngress=ingress.filter(r=>!isFault(r.path)),normalIds=new Set(normalIngress.map(r=>r.path.split('/').at(-1)))
  const reconciliation=reconcileRollingLedger(normalIngress,upstream.filter(r=>normalIds.has(r.id)),audits.filter(r=>normalIds.has(r.path.split('/').at(-1))))
  assert(reconciliation.passed,JSON.stringify(reconciliation.errors));assert.equal(new Set(upstream.map(r=>r.id)).size,upstream.length,'Upstream duplicate execution')
  assert.equal(new Set(ingress.map(r=>r.path)).size,ingress.length,'Duplicate ingress IDs')
- const faultAudit=audits.filter(r=>/\/exit-|\/audit-pending-/.test(r.path)),faultUpstream=upstream.filter(r=>/^exit-|^audit-pending-/.test(r.id))
+ const faultAudit=audits.filter(r=>isFault(r.path)),faultUpstream=upstream.filter(r=>isFault(r.path)),allIds=new Set(ingress.map(r=>r.path.split('/').at(-1)))
+ assert(audits.every(r=>allIds.has(r.path.split('/').at(-1))),'Unissued audit event')
+ assert.equal(new Set(audits.map(r=>r.path.split('/').at(-1))).size,audits.length,'Duplicate audit per ingress')
+ assert.equal(instances.filter(i=>!i.invalid).reduce((n,i)=>n+i.drain.final.completed,0),ingress.length,'Exactly one instance terminal per ingress')
+ assert.equal(report.auditSettlement.reduce((n,s)=>n+s.received,0),ingress.length,'Exactly one audit admission per ingress')
  report.accounting={normal:reconciliation,allIngress:ingress.length,allUpstream:upstream.length,allStoredAudits:audits.length,faultAudit,faultUpstream,
   note:'Fault audit uncertain may be stored; dropped are not promised persisted. Do not equate unknown with absent.'}
  assert.equal(ingress.length,upstream.length);await save('ingress-all.json',ingress);await save('upstream-all.json',upstream);await save('audits-all.json',audits)

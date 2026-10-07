@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import {candidateGate,assessRollingWindow,reconcileRollingLedger,rollingPlan} from './rolling-replacement-core.mjs'
+import {candidateGate,assessRollingWindow,reconcileRollingLedger,reconcileAuditSettlement,rollingPlan} from './rolling-replacement-core.mjs'
 const versions={runtime:'runtime:2',route:'routes:3'}
 function snapshot(n=0){return {ready:true,life:{instanceId:'A',phase:'ready',draining:false,adoptedRuntimeVersion:versions.runtime,adoptedRouteVersion:versions.route,admitted:n,completed:n,clientCancelled:0,audit:{received:n,persisted:n,pending:0,uncertain:0,dropped:0}},runtimeSync:{status:'ok'},routeSync:{status:'ok'},limit:{transportState:'healthy',outcomes:{},observations:{executions:{unknown:0}},queued:0,queueCapacity:64,commandsInFlight:0,workers:8,retainedTasks:0,admissionCapacity:72,availableDecisionPermits:72},proxy:{activeProxyRequests:0,policy:{maxConnectionsPerOrigin:100,maxPendingAcquiresPerOrigin:100}},poolFull:0}}
 function window(){return {before:{A:snapshot()},after:{A:snapshot(20)},result:{offered:20,issued:20,finished:20,transportErrors:0,statuses:{200:20},versions:{[versions.route]:20},schedulerMisses:0,capacityMisses:0,latencyMs:{p95:20,p99:30}},upstreamCount:20}}
@@ -12,6 +12,11 @@ test('missing diagnostics and failed synchronization prevent promotion',()=>{
  assert(!candidateGate(null,versions).allowed)
  const s=snapshot();s.routeSync.status='failed';assert(!candidateGate(s,versions).allowed)
  s.routeSync.status='ok';s.limit.transportState='recovering';assert(!candidateGate(s,versions).allowed)
+})
+test('an unused limiter can enter bounded initial traffic but cannot pass a healthy promotion window',()=>{
+ const s=snapshot();s.limit.transportState='unchecked'
+ assert(!candidateGate(s,versions).allowed);assert(candidateGate(s,versions,{initialTraffic:true}).allowed)
+ s.limit.transportState='degraded';assert(!candidateGate(s,versions,{initialTraffic:true}).allowed)
 })
 test('a complete healthy window reconciles entry, instances, upstream and audit',()=>{
  const s=window(),result=assessRollingWindow(s,rollingPlan,versions);assert(result.healthy);assert.equal(result.completed,20);assert.equal(result.audit,20)
@@ -52,4 +57,19 @@ test('ledger rejects duplicates, unissued execution and missing audit rows',()=>
 test('a cancelled partial response is never represented as a healthy completed response',()=>{
  assert(!reconcileRollingLedger(ingress,upstream,[{...audit[0],outcome:'cancelled'}]).passed)
  const s=window();s.after.A.life.clientCancelled=1;assert(assessRollingWindow(s,rollingPlan,versions).reasons.includes('client_cancelled'))
+})
+test('missing arrival, tail latency, version coverage or resource observations cannot be healthy',()=>{
+ for(const change of [s=>delete s.result.offered,s=>delete s.result.latencyMs.p99,s=>s.result.versions={},s=>delete s.after.A.limit.commandsInFlight]){
+  const s=window();change(s);assert(!assessRollingWindow(s,rollingPlan,versions).healthy)
+ }
+})
+test('audit reconciliation permits unknown rows to be stored or absent but never assumes either',()=>{
+ const s={received:10,persisted:6,pending:0,uncertain:3,dropped:1}
+ for(const stored of [6,7,8,9])assert(reconcileAuditSettlement(s,stored).passed)
+ for(const stored of [5,10])assert(!reconcileAuditSettlement(s,stored).passed)
+ assert.equal(reconcileAuditSettlement(s,7).unknownStored,1)
+})
+test('audit settlement cannot conceal missing terminal counts or an unclosed writer',()=>{
+ assert(!reconcileAuditSettlement({received:10,persisted:8,pending:1,uncertain:1,dropped:0},8).passed)
+ assert(!reconcileAuditSettlement({received:10,persisted:8,pending:0,uncertain:1,dropped:0},8).passed)
 })
