@@ -28,7 +28,7 @@ const jar=join(out,'gateway.jar'),secrets=join(out,'credentials'),secret=join(se
 await copyFile(sourceJar,jar)
 const report={startedAt:new Date().toISOString(),plan,images,jarSha256:await fileHash(jar),entrySha256:await fileHash(new URL(import.meta.url)),
  host:{platform:os.platform(),release:os.release(),arch:os.arch(),cpus:os.cpus().length,cpuModel:os.cpus()[0]?.model,memoryBytes:os.totalmem()},
- checks:[],windows:[],processes:[],requests:[],timeline:[],control:[],cleanup:{},passed:false}
+ checks:[],windows:[],processes:[],containers:[],requests:[],timeline:[],control:[],cleanup:{},passed:false}
 const owned=[],volumes=new Set(),instances=[],agents=new Set();let createdNetwork=false,redisPort,worker,driver,entry,adminPort,A,B,versions,weights={a:100,b:0},browser,context,page,demoServer
 const docker=async(args,timeout=30000)=>(await exec('docker',scopedDockerArgs(args),{encoding:'utf8',windowsHide:true,timeout,maxBuffer:8*1024*1024})).stdout.trim()
 const save=(name,value)=>writeFile(join(out,name),JSON.stringify(value,null,2)+'\n')
@@ -36,7 +36,13 @@ async function until(label,probe,budget=20000){const end=performance.now()+budge
 async function event(title,data={}){const e={at:new Date().toISOString(),title,weights:{...weights},...data};report.timeline.push(e);console.log(title,JSON.stringify(data));await save('timeline.json',report.timeline)}
 async function api(base,path,options={}){const r=await fetch(base+path,{...options,headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',...options.headers},signal:AbortSignal.timeout(3000)});const text=await r.text();let body;try{body=JSON.parse(text)}catch{body=text}if(!r.ok)throw new Error(path+' '+r.status+' '+text.slice(0,200));return body}
 const ctrl=(path='/status',body)=>api(worker,path,body===undefined?{}:{method:'POST',body:JSON.stringify(body)})
-async function run(name,args){await docker(['run','-d','--pull=never','--name',name,'--label','zenith.verification='+prefix,'--network',network,...args]);owned.push(name);const i=JSON.parse(await docker(['inspect',name]))[0];for(const m of i.Mounts)if(m.Type==='volume')volumes.add(m.Name);return i}
+async function run(name,args){
+ await docker(['run','-d','--pull=never','--name',name,'--label','zenith.verification='+prefix,'--network',network,...args]);owned.push(name)
+ const i=JSON.parse(await docker(['inspect',name]))[0];for(const m of i.Mounts)if(m.Type==='volume')volumes.add(m.Name)
+ report.containers.push({name,id:i.Id,image:i.Image,requestedImage:i.Config.Image,nanoCpus:i.HostConfig.NanoCpus,memoryBytes:i.HostConfig.Memory,pidsLimit:i.HostConfig.PidsLimit,network,ports:i.NetworkSettings.Ports})
+ assert(i.HostConfig.NanoCpus>0&&i.HostConfig.Memory>0&&i.HostConfig.PidsLimit>0,'Every test container requires explicit resource limits')
+ await save('containers.json',report.containers);return i
+}
 async function port(name,p){return Number((await docker(['port',name,p+'/tcp'])).split(':').at(-1))}
 async function command(text){
  assert(!text.includes('\n'));let value=''
@@ -78,9 +84,9 @@ async function snapshot(i){
 }
 async function settle(i){return until(i.label+' idle and audit settled',async()=>{const s=await snapshot(i);return s.life.activeBusinessRequests===0&&s.life.audit.pending===0&&s.limit.retainedTasks===0&&s.proxy.activeProxyRequests===0?s:false},plan.auditSettleMs)}
 async function waitCandidate(i,name,initialTraffic=false){
- const observations=[];let last
+ const observations=[],startedAt=new Date().toISOString(),start=performance.now();let last
  try{return await until(name,async()=>{last=await snapshot(i);const gate=candidateGate(last,versions,{initialTraffic});observations.push({at:last.at,gate,config:last.life.adoptedRuntimeVersion,route:last.life.adoptedRouteVersion,runtimeSync:last.runtimeSync.status,routeSync:last.routeSync.status,limiter:last.limit.transportState});if(!gate.allowed)await delay(250);return gate.allowed},plan.recoveryMs)}
- finally{await save(name+'.json',{initialTraffic,versions,observations,last})}
+ finally{await save(name+'.json',{startedAt,elapsedMs:performance.now()-start,initialTraffic,versions,observations,last})}
 }
 async function measure(name,{rate=plan.rate,seconds=plan.windowSeconds,members=[A,B].filter(Boolean),fault=false}={}){
  const collect=async()=>Object.fromEntries(await Promise.all(members.map(async i=>[i.label,await snapshot(i)])))
@@ -144,6 +150,7 @@ async function endRecording(){
 }
 try{
  await save('plan.json',plan);await mkdir(secrets);await writeFile(secret,token)
+ report.host.docker=JSON.parse(await docker(['info','--format','{"cpus":{{.NCPU}},"memoryBytes":{{.MemTotal}},"kernel":{{json .KernelVersion}},"version":{{json .ServerVersion}}}']))
  if(process.argv.includes('--prepare'))for(const image of Object.values(images))await docker(['pull',image],180000)
  await docker(['network','create',network]);createdNetwork=true
  const redisName=prefix+'-redis';await run(redisName,['--network-alias','redis','--cpus=1','--memory=512m','--pids-limit=128','--tmpfs','/data:rw,size=16m','-p','127.0.0.1::6379',images.redis,'--save','','--appendonly','no']);redisPort=await port(redisName,6379)
