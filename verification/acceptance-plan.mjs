@@ -19,7 +19,7 @@ export const releaseChecks = [
   ['namedGatewayClientsAbsent','ownedContainersAbsent','ownedVolumesAbsent','networkAbsent','credentialsRemoved'], {mode, timeoutMs:420000}))
 ]
 export const toolTests = ['benchmarks/capacity-load.test.mjs','benchmarks/stability-load.test.mjs',
- 'verification/traffic-lifecycle-gates.test.mjs','verification/acceptance.test.mjs']
+ 'verification/traffic-lifecycle-gates.test.mjs','verification/acceptance.test.mjs','verification/rolling-replacement.test.mjs']
 export function requiredImages(tier) {
  if (!['commit','release'].includes(tier)) throw new Error('tier must be commit or release')
  return tier === 'release' ? Object.values(images) : [images.redis, images.prometheus]

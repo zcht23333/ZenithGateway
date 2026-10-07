@@ -1,0 +1,52 @@
+name: Rolling replacement
+on:
+  workflow_dispatch:
+  push:
+    branches: ['zch/rolling-replacement-20261007']
+permissions:
+  contents: read
+jobs:
+  rolling:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Download and verify Microsoft JDK 21.0.12.1
+        run: |
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/zenith-jdk.tar.gz" https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-linux-x64.tar.gz
+          echo "4c0c7f5cd0b6bb81109d01f13a1678ee0f73f36c1020080d97c4de3ce3cac207  $RUNNER_TEMP/zenith-jdk.tar.gz" | sha256sum --check
+      - uses: actions/setup-java@v6
+        with:
+          distribution: jdkfile
+          jdk-file: ${{ runner.temp }}/zenith-jdk.tar.gz
+          java-version: '21.0.12.1'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.node-version'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Build and verify the exact clean commit
+        run: node verification/acceptance.mjs --tier commit --out "$RUNNER_TEMP/rolling-build" --images prepare
+      - name: Prepare isolated browser recording
+        run: |
+          npm install --prefix "$RUNNER_TEMP/rolling-browser" --no-save --no-audit --no-fund playwright@1.63.0
+          node "$RUNNER_TEMP/rolling-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Real HAProxy rolling replacement and failure checks
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/rolling-browser/node_modules/playwright/index.mjs
+        run: node verification/rolling-replacement-live.mjs --prepare --record --jar "$RUNNER_TEMP/rolling-build/artifacts/gateway.jar" --out "$RUNNER_TEMP/rolling-live"
+      - name: Preserve every success or failure
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: zenith-rolling-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/rolling-build/
+            !${{ runner.temp }}/rolling-build/workspace/
+            ${{ runner.temp }}/rolling-live/
+            !${{ runner.temp }}/rolling-live/credentials/**
+            !${{ runner.temp }}/rolling-live/gateway.jar
