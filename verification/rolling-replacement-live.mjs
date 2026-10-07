@@ -109,7 +109,7 @@ async function hit(path,{agent,method='GET'}={}){
  req=http.request(entry+path,{method,agent},res=>{status=res.statusCode;selected=res.headers['x-verification-instance'];localPort=req.socket.localPort;reused=req.reusedSocket
   res.on('data',b=>{body+=b.toString();if(body.length>65536)req.destroy()});res.once('end',()=>end('complete'));res.once('aborted',()=>end('aborted'));res.once('error',()=>end('response_error'))
  });req.once('error',e=>end(e.code||'request_error'));req.end()
- return {done,cancel(){req.destroy();end('client_cancelled')},get body(){return body},get status(){return status}}
+ return {done,cancel(mode='fin'){end('client_cancelled');if(mode==='reset'){assert(req.socket,'reset requires an established socket');req.socket.resetAndDestroy()}else req.destroy()},get body(){return body},get status(){return status}}
 }
 async function arrival(id){return until('upstream arrival '+id,async()=>{const state=await ctrl();return state.rows.find(x=>x.id===id)})}
 async function auditDump(i){
@@ -180,20 +180,21 @@ try{
  // Independent exit-fault exercise, still at most two live gateway JVMs. Restart A as the old instance.
  A=await startup('AEXIT',{auditProxy:true});A.slot='a';await readyServer(A,'a');await weight(100,0);await healthy('aexit-preparation',{members:[A]})
  const exitBaseline=await settle(A)
- const slow=await hit('/probe/hold/exit-over',{method:'POST'}),stream=await hit('/probe/stream/exit-partial'),cancel=await hit('/probe/hold/exit-cancel')
- for(const key of ['exit-over','exit-partial','exit-cancel'])await arrival(key);await until('partial response really sent',()=>stream.body.includes('part-0'))
+ const slow=await hit('/probe/hold/exit-over',{method:'POST'}),stream=await hit('/probe/stream/exit-partial'),cancel=await hit('/probe/hold/exit-cancel'),halfClose=await hit('/probe/hold/exit-fin')
+ for(const key of ['exit-over','exit-partial','exit-cancel','exit-fin'])await arrival(key);await until('partial response really sent',()=>stream.body.includes('part-0'))
  await ctrl('/redis',{partitionB:false,auditMode:'drop-reply'})
  const auditRequests=await Promise.all(Array.from({length:12},(_,n)=>hit('/probe/quick/audit-pending-'+n).then(h=>h.done)));assert(auditRequests.every(r=>r.status===200))
  await until('audit events pending and Redis replies suppressed',async()=>{const life=await api(A.base,'/settings/lifecycle'),c=await ctrl();return life.audit.pending>0&&c.suppressed>0})
  await command('set server gateway/a state maint');await weight(0,100)
- const faultDrain=drain(A);await until('AEXIT draining',()=>api(A.base,'/settings/lifecycle').then(x=>x.draining),2000);cancel.cancel()
- const [slowResult,streamResult,cancelResult]=await Promise.all([slow.done,stream.done,cancel.done]);const finalFault=await faultDrain
+ const faultDrain=drain(A);await until('AEXIT draining',()=>api(A.base,'/settings/lifecycle').then(x=>x.draining),2000);halfClose.cancel();cancel.cancel('reset')
+ const [slowResult,streamResult,cancelResult,halfCloseResult]=await Promise.all([slow.done,stream.done,cancel.done,halfClose.done]);const finalFault=await faultDrain
+ await save('exit-fault-results.json',{exitBaseline,slowResult,streamResult,cancelResult,halfCloseResult,finalFault})
  assert.equal(slowResult.status,503);assert.equal(streamResult.status,200);assert.notEqual(streamResult.termination,'complete');assert(!streamResult.body.includes('shutdown_deadline'));assert.equal(cancelResult.termination,'client_cancelled')
- assert.equal(finalFault.admitted-exitBaseline.life.admitted,15);assert.equal(finalFault.completed-exitBaseline.life.completed,15)
- assert.equal(finalFault.deadlineTerminated-exitBaseline.life.deadlineTerminated,2);assert.equal(finalFault.clientCancelled-exitBaseline.life.clientCancelled,1)
+ assert.equal(finalFault.admitted-exitBaseline.life.admitted,16);assert.equal(finalFault.completed-exitBaseline.life.completed,16)
+ assert.equal(finalFault.deadlineTerminated-exitBaseline.life.deadlineTerminated,3);assert.equal(finalFault.clientCancelled-exitBaseline.life.clientCancelled,1)
  const auditState=finalFault.audit;assert.equal(auditState.received,auditState.persisted+auditState.pending+auditState.uncertain+auditState.dropped);assert(auditState.uncertain+auditState.dropped>0);assert.equal(auditState.pending,0)
  const healthyB=measure('b-during-a-fault-exit',{members:[B]});await stop(A);assert((await healthyB).assessment.healthy);await ctrl('/redis',{partitionB:false,auditMode:'normal'})
- report.checks.push({name:'bounded old-instance exit with write in-flight, partial response, cancellation and audit reply loss',slowResult,streamResult,cancelResult,drain:A.drain,exit:A.exit,auditState})
+ report.checks.push({name:'bounded old-instance exit with write in-flight, partial response, FIN versus RST cancellation and audit reply loss',slowResult,streamResult,cancelResult,halfCloseResult,drain:A.drain,exit:A.exit,auditState})
  await settle(B);await drain(B);await stop(B)
  const upstream=(await ctrl()).rows,audits=[]
  report.auditSettlement=[]

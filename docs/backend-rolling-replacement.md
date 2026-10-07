@@ -35,6 +35,8 @@ HAProxy 固定摘要 `sha256:56b887da77428b7a6621e59e480cdbd330cc805c22d3cedb66c
 
 HAProxy Runtime 控制端口和上游/发生器控制端口仅发布在本机随机 loopback 端口；网关管理端仍有本轮随机 Bearer 认证。此入口是测试工具，不应直接作为生产控制面暴露。
 
+取消需区分客户端到 LB 和 LB 到网关两段连接。第 3 轮真实实验发现，客户端在响应头前 `destroy()` 产生的关闭，没有立刻结束 HAProxy 已派发的请求，最终由网关排空截止结束；不能要求网关记录一个尚未收到的取消信号。本入口分别验证这种关闭与明确的 TCP RST，并保存两端不同的终态。HAProxy 默认对输入关闭采取保守行为；`abortonclose` 的文档范围主要是队列与建连，不能将其当作已派发业务的撤销保证（[官方说明](https://docs.haproxy.org/3.0/configuration.html#4-option%20abortonclose)）。
+
 ## 复跑
 
 ```text
