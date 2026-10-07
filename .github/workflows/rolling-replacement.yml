@@ -50,3 +50,14 @@ jobs:
             ${{ runner.temp }}/rolling-live/
             !${{ runner.temp }}/rolling-live/credentials/**
             !${{ runner.temp }}/rolling-live/gateway.jar
+      - name: Preserve compact live evidence for failure diagnosis
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: zenith-rolling-live-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            ${{ runner.temp }}/rolling-live/
+            !${{ runner.temp }}/rolling-live/credentials/**
+            !${{ runner.temp }}/rolling-live/gateway.jar

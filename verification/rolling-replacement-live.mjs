@@ -32,7 +32,7 @@ const owned=[],volumes=new Set(),instances=[],agents=new Set();let createdNetwor
 const docker=async(args,timeout=30000)=>(await exec('docker',scopedDockerArgs(args),{encoding:'utf8',windowsHide:true,timeout,maxBuffer:8*1024*1024})).stdout.trim()
 const save=(name,value)=>writeFile(join(out,name),JSON.stringify(value,null,2)+'\n')
 async function until(label,probe,budget=20000){const end=performance.now()+budget;let last;do{try{const value=await probe(Math.max(1,end-performance.now()));if(value)return value}catch(e){last=e.message}await delay(50)}while(performance.now()<end);throw new Error(label+' exceeded '+budget+' ms: '+(last||''))}
-async function event(title,data={}){const e={at:new Date().toISOString(),title,weights:{...weights},...data};report.timeline.push(e);console.log(title);await save('timeline.json',report.timeline)}
+async function event(title,data={}){const e={at:new Date().toISOString(),title,weights:{...weights},...data};report.timeline.push(e);console.log(title,JSON.stringify(data));await save('timeline.json',report.timeline)}
 async function api(base,path,options={}){const r=await fetch(base+path,{...options,headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',...options.headers},signal:AbortSignal.timeout(3000)});const text=await r.text();let body;try{body=JSON.parse(text)}catch{body=text}if(!r.ok)throw new Error(path+' '+r.status+' '+text.slice(0,200));return body}
 const ctrl=(path='/status',body)=>api(worker,path,body===undefined?{}:{method:'POST',body:JSON.stringify(body)})
 async function run(name,args){await docker(['run','-d','--pull=never','--name',name,'--label','zenith.verification='+prefix,'--network',network,...args]);owned.push(name);const i=JSON.parse(await docker(['inspect',name]))[0];for(const m of i.Mounts)if(m.Type==='volume')volumes.add(m.Name);return i}
@@ -129,9 +129,17 @@ async function startRecording(){if(!process.argv.includes('--record'))return
  const {chromium}=await import(pathToFileURL(resolve(process.env.PLAYWRIGHT_MODULE||'.dev/browser/node_modules/playwright/index.mjs')))
  const html=await readFile(new URL('./rolling-replacement-demo.html',import.meta.url),'utf8')
  demoServer=http.createServer((req,res)=>{res.setHeader('Cache-Control','no-store');if(req.url==='/state'){res.setHeader('Content-Type','application/json');res.end(JSON.stringify(report.timeline))}else{res.setHeader('Content-Type','text/html; charset=utf-8');res.end(html)}})
- await new Promise(r=>demoServer.listen(0,'127.0.0.1',r));browser=await chromium.launch({headless:true});context=await browser.newContext({viewport:{width:1280,height:800},recordVideo:{dir:join(out,'video'),size:{width:1280,height:800}}});page=await context.newPage();await page.goto('http://127.0.0.1:'+demoServer.address().port)
+ await new Promise(r=>demoServer.listen(0,'127.0.0.1',r));browser=await chromium.launch({headless:true});context=await browser.newContext({viewport:{width:1280,height:900},recordVideo:{dir:join(out,'video'),size:{width:1280,height:900}}});page=await context.newPage();await page.goto('http://127.0.0.1:'+demoServer.address().port)
 }
-async function endRecording(){if(!page)return;await page.screenshot({path:join(out,'rolling-demo.png')});const video=page.video();await context.close();await video.saveAs(join(out,'rolling-demo.webm'));await browser.close();await new Promise(r=>demoServer.close(r));page=null;context=null;browser=null;demoServer=null}
+async function endRecording(){
+ if(!page)return
+ const currentPage=page,currentContext=context,currentBrowser=browser,currentServer=demoServer
+ page=null;context=null;browser=null;demoServer=null;let failure
+ try{await currentPage.waitForFunction(title=>document.querySelector('#current')?.textContent===title,report.timeline.at(-1)?.title,{timeout:3000});await currentPage.screenshot({path:join(out,'rolling-demo.png')})}catch(e){failure=e}
+ try{const video=currentPage.video();await currentContext.close();await video.saveAs(join(out,'rolling-demo.webm'))}catch(e){failure||=e}
+ finally{await currentBrowser.close();await new Promise(r=>currentServer.close(r))}
+ if(failure)throw failure
+}
 try{
  await save('plan.json',plan);await mkdir(secrets);await writeFile(secret,token)
  if(process.argv.includes('--prepare'))for(const image of Object.values(images))await docker(['pull',image],180000)
@@ -219,11 +227,15 @@ try{
  assert.equal(Number(frontend.req_tot),ingress.length,'HAProxy HTTP requests must match the client ledger, including keep-alive reuse');assert.equal(Number(backend.wretr),0);assert.equal(Number(backend.wredis),0)
  report.accounting.haproxy={requests:Number(frontend.req_tot),retries:Number(backend.wretr),redispatches:Number(backend.wredis)}
  await save('haproxy-final-stat.json',{csv,rows:lbRows,state:await command('show servers state')});report.passed=true
-}catch(e){report.error=e.stack;process.exitCode=1;console.error(e)}
+}catch(e){
+ report.error=e.stack;process.exitCode=1;console.error(e)
+ report.failureSnapshots=Object.fromEntries(await Promise.all(instances.filter(i=>!i.invalid&&!i.stopped).map(async i=>[i.label,await snapshot(i).catch(error=>({error:error.message}))])))
+}
 finally{
  await endRecording().catch(e=>report.recordingError=e.message);for(const a of agents)a.destroy()
  if(worker)await ctrl('/redis',{partitionB:false,auditMode:'normal'}).catch(()=>{})
  for(const i of instances)if(!i.stopped)try{await stop(i)}catch(e){report.cleanup[i.label+'StopError']=e.message;await docker(['kill',i.name],3000).catch(()=>{})}
+ if(!report.passed&&redisPort){report.failureCleanupAudits={};for(const i of instances.filter(x=>!x.invalid)){try{const rows=await auditDump(i);report.failureCleanupAudits[i.label]={records:rows.length,note:'Read after failure cleanup restored the test wire and stopped this JVM; not an earlier healthy-window confirmation.'}}catch(e){report.failureCleanupAudits[i.label]={error:e.message}}}}
  if(redisPort){const clients=await redisCommand(redisPort,['CLIENT','LIST']).catch(e=>'UNAVAILABLE:'+e.message);await writeFile(join(out,'clients-final.txt'),clients);report.cleanup.namedGatewayClientsAbsent=!clients.startsWith('UNAVAILABLE')&&instances.every(i=>!i.identity||!clients.includes(i.identity.instanceId))}
  for(const name of owned){await writeFile(join(out,name+'.log'),await docker(['logs',name]).catch(e=>e.message));await docker(['rm','-fv',name]).catch(e=>report.cleanup[name]=e.message)}
  if(createdNetwork)await docker(['network','rm',network]).catch(e=>report.cleanup.networkError=e.message)
