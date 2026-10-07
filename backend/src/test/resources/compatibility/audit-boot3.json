@@ -1,0 +1,10 @@
+{
+  "eventId": "legacy-process:42",
+  "timestamp": 1790123456789,
+  "method": "GET",
+  "path": "/legacy/中文?q=\"test\"",
+  "statusCode": 503,
+  "durationMs": 2011,
+  "clientIp": "2001:db8::1",
+  "outcome": "completed"
+}

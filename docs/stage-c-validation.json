@@ -1,0 +1,2326 @@
+{
+  "stage": "C",
+  "completedAt": "2026-09-26T03:30:06.806623+00:00",
+  "status": "implementation and self-verification complete; submitted for final user acceptance",
+  "unitTests": {
+    "command": "npm --prefix frontend test",
+    "passed": 41,
+    "failed": 0,
+    "new": 2
+  },
+  "productionBuild": {
+    "command": "npm --prefix frontend run build",
+    "passed": true,
+    "modules": 666,
+    "assets": [
+      {
+        "file": "frontend/dist/assets/chart-C3x7u5aX.js",
+        "bytes": 502986,
+        "gzipBytes": 170807,
+        "sha256": "11b0c6d2fd7ef0b313736aa96e4cf9b809a90ad5feae0c9c1d425e4e5afa8dee"
+      },
+      {
+        "file": "frontend/dist/assets/Dashboard-BEaFi63J.css",
+        "bytes": 20272,
+        "gzipBytes": 4626,
+        "sha256": "e19c6ab0a7f63999eec340387069046f33178115d675255dc57bc06b16db5fa9"
+      },
+      {
+        "file": "frontend/dist/assets/Dashboard-DhN0_0TD.js",
+        "bytes": 25938,
+        "gzipBytes": 9408,
+        "sha256": "de46ad40c89f3f5e7d300aa0efe109ae7f99b4453d4587d1a2cbfd7fc7ae635d"
+      },
+      {
+        "file": "frontend/dist/assets/DispatchCopy-BxpZ-of6.css",
+        "bytes": 628,
+        "gzipBytes": 356,
+        "sha256": "e9667a3986484c23f67bad8d318ec68442a1d87b16b5b14208269879045a472e"
+      },
+      {
+        "file": "frontend/dist/assets/DispatchCopy-s5di3g1S.js",
+        "bytes": 985,
+        "gzipBytes": 623,
+        "sha256": "258178c865eccb58eab3d1359f60891ac7ae31e0cdf894672c5caf2085dd8865"
+      },
+      {
+        "file": "frontend/dist/assets/index-ClUBq9CJ.js",
+        "bytes": 130075,
+        "gzipBytes": 50990,
+        "sha256": "9fa9b1e09e01c4b72184b5760bc5b5ca96f0623e71621d4bfe7839ad9b7be41f"
+      },
+      {
+        "file": "frontend/dist/assets/index-DbmKC8R1.css",
+        "bytes": 11211,
+        "gzipBytes": 3267,
+        "sha256": "f128a817a0bb2fadc377ecdd50087b75afad8fca91d889ae8c9d9696328d031e"
+      },
+      {
+        "file": "frontend/dist/assets/RouteDispatch-CiojBEPw.js",
+        "bytes": 49980,
+        "gzipBytes": 16987,
+        "sha256": "f9607143deb36d0a2eeb87cff8bcff7bcb2c8e8ea3e8050d079e212ec259c015"
+      },
+      {
+        "file": "frontend/dist/assets/RouteDispatch-DS5YzAKK.css",
+        "bytes": 64692,
+        "gzipBytes": 12891,
+        "sha256": "ec0da0090975f1f99c6d1e9b50c7425051757d344eb53711e2303d3e45a64320"
+      },
+      {
+        "file": "frontend/dist/assets/Settings-B71dgdS9.js",
+        "bytes": 14153,
+        "gzipBytes": 5171,
+        "sha256": "8284dc3b00edb4c8a3eec3d992cb8897112e83fbf8b4d6e2a78624fb2f9496a6"
+      },
+      {
+        "file": "frontend/dist/assets/Settings-BpOd-FiU.css",
+        "bytes": 11728,
+        "gzipBytes": 3007,
+        "sha256": "bfe78ea7703fdca0ae1423b8ec59cb821beb11ded1ca12890beb2d0d49ec5c0d"
+      }
+    ],
+    "warnings": [
+      "ECharts chart chunk is approximately 503 kB uncompressed; now loaded only by overview."
+    ]
+  },
+  "browserGroups": 59,
+  "isolatedLiveGroups": 22,
+  "checks": {
+    "overviewBrowser": {
+      "count": 13,
+      "passed": true,
+      "source": ".dev/overview-stage-a/browser-validation.json",
+      "report": {
+        "startedAt": "2026-09-26T03:13:27.925Z",
+        "checks": [
+          "Normal first viewport prioritises QPS, P95 and two aligned trends, followed by the audit summary",
+          "Inspecting actual samples changes the readout without replacing current-window metrics",
+          "Audit details separate process counters from current queue state and explain uncertain writes",
+          "Recent records expose full long paths, exact JSON, dates, cancellation and status zero",
+          "Zero traffic, empty history, first loading, disabled monitoring and P95 overflow remain distinct",
+          "Partial failures retain timestamped old data and allow independent source recovery",
+          "320–1440px layouts keep all three navigation destinations available and long records usable",
+          "Explicit overview and route previews remain isolated from management APIs",
+          "Formal overview loads sources independently; unknown metrics stay dashes while audit records arrive",
+          "A failed records refresh retains old records; other data stays readable and retry clears the error",
+          "An open but silent stream becomes stale; a new event and reconnect recover without clearing audits",
+          "Navigation and formal-to-preview transitions release subscriptions and record polling",
+          "Non-preview URLs and expired credentials still require management authentication"
+        ],
+        "screenshots": [
+          {
+            "file": "docs/images/overview-stage-a-normal-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/overview-stage-a-empty-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/overview-stage-a-overflow-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/overview-stage-a-gaps-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/overview-stage-a-partial-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": true
+          },
+          {
+            "file": "docs/images/overview-stage-a-audit-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/overview-stage-a-normal-390.png",
+            "width": 390,
+            "height": 844,
+            "fullPage": true
+          },
+          {
+            "file": "docs/images/overview-stage-a-first-screen-390.png",
+            "width": 390,
+            "height": 844,
+            "fullPage": false
+          }
+        ],
+        "layouts": [
+          {
+            "width": 1440,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 960,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 700,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 320,
+            "horizontalOverflow": false
+          }
+        ],
+        "errors": [],
+        "previewApi": [],
+        "passed": true,
+        "mockedFormal": {
+          "sourceFailuresInjected": true,
+          "managementWrites": 0,
+          "requests": {
+            "/settings/runtime": 4,
+            "/dashboard/snapshot": 4,
+            "/dashboard/series": 5,
+            "/monitor/audit/recent": 7,
+            "/monitor/audit/status": 5,
+            "/settings/sse-token": 5
+          }
+        }
+      }
+    },
+    "settingsBrowser": {
+      "count": 16,
+      "passed": true,
+      "source": ".dev/settings-stage-b/browser-validation.json",
+      "report": {
+        "startedAt": "2026-09-26T03:12:54.727Z",
+        "checks": [
+          "Desktop first viewport exposes all six parameters, exact units, baseline and disabled no-change save",
+          "Changed fields alone form current-to-draft comparisons; raw invalid values stay visible and block saving",
+          "Saving freezes edits and repeat submissions; confirmed values become the baseline",
+          "First loading and failed reads expose no defaults; a local retry establishes the baseline",
+          "Explicit save rejection preserves editable differences and a subsequent save can succeed",
+          "A lost response requires a read first; matching server values reconcile without another write",
+          "A confirmed save survives a later read failure and its independent retry",
+          "Disabled limiting retains its values; impossible bucket combinations explain behavior without inventing validation",
+          "Mobile and narrow layouts retain readable fields, summaries and all navigation destinations",
+          "Unsaved preview navigation and browser unloading are guarded; confirmed discard exits normally",
+          "Formal management authentication and initial source failure preserve an unknown baseline until retry",
+          "Formal PUT sends exactly six valid fields once and adopts effective values without an extra GET",
+          "Formal refresh retains edited fields while updating untouched server values",
+          "Formal rejected saves retain draft and inline server errors; network and 500 failures require reconciliation",
+          "Expired credentials preserve the draft in memory and re-authentication reads before enabling a save",
+          "Formal navigation, including trailing-slash settings URLs, and disconnect protect drafts; confirmed discard clears retained state"
+        ],
+        "screenshots": [
+          {
+            "file": "docs/images/settings-stage-b-normal-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-dirty-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-invalid-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": true
+          },
+          {
+            "file": "docs/images/settings-stage-b-saved-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-loading-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-read-failure-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-rejected-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-uncertain-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-saved-read-failure-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": true
+          },
+          {
+            "file": "docs/images/settings-stage-b-normal-390.png",
+            "width": 390,
+            "height": 844,
+            "fullPage": true
+          },
+          {
+            "file": "docs/images/settings-stage-b-first-screen-390.png",
+            "width": 390,
+            "height": 844,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/settings-stage-b-read-failure-390.png",
+            "width": 390,
+            "height": 844,
+            "fullPage": true
+          },
+          {
+            "file": "docs/images/settings-stage-b-auth-restored-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          }
+        ],
+        "layouts": [
+          {
+            "width": 1440,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 1100,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 960,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 700,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 390,
+            "horizontalOverflow": false
+          },
+          {
+            "width": 320,
+            "horizontalOverflow": false
+          }
+        ],
+        "previewApi": [],
+        "pageErrors": [],
+        "passed": true,
+        "mockedFormal": {
+          "reads": 10,
+          "writes": 5,
+          "bodies": [
+            {
+              "rateLimitEnabled": true,
+              "replenishRate": 40,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1
+            },
+            {
+              "rateLimitEnabled": true,
+              "replenishRate": 42,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1
+            },
+            {
+              "rateLimitEnabled": true,
+              "replenishRate": 43,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1
+            },
+            {
+              "rateLimitEnabled": true,
+              "replenishRate": 44,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1
+            },
+            {
+              "rateLimitEnabled": true,
+              "replenishRate": 44,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1
+            }
+          ],
+          "sourceFailuresInjected": true,
+          "credentialPersistence": {
+            "local": 0,
+            "session": 0
+          }
+        },
+        "completedAt": "2026-09-26T03:13:07.651Z"
+      }
+    },
+    "routePolishBrowser": {
+      "count": 10,
+      "passed": true,
+      "source": ".dev/route-polish/browser-validation.json",
+      "report": {
+        "generatedAt": "2026-09-26T03:12:54.459Z",
+        "base": "http://127.0.0.1:15175",
+        "checks": [
+          "Shared ID/Path/URI search and rule filters preserve the canvas until explicit selection",
+          "All 32 complete IDs, paths and URI fields compare in rows without truncation",
+          "Keyboard navigation waits for Enter; selection closes the directory and reveals its dock page",
+          "Long and short route switches keep the title, endpoint and path origins stable",
+          "Node rest/hover/selected states differ without permanent glow; closing restores context and focus",
+          "Both conditional branches remain visible beside their expanded node at desktop widths",
+          "Full fields and new header copy controls retain exact URI/path values; cached directory remains read-only",
+          "Expanded directory fits 320–1440px and mobile selection returns to the inline path inspector",
+          "Final normal, dense and expanded-node screenshots capture actual 1440×900 first viewports",
+          "Preview remains isolated and produces no JavaScript errors"
+        ],
+        "layouts": [
+          {
+            "width": 1440,
+            "long": {
+              ".dispatch-route-identity h1": {
+                "x": 38,
+                "y": 144,
+                "width": 1093,
+                "height": 76.15625,
+                "top": 144,
+                "right": 1131,
+                "bottom": 220.15625,
+                "left": 38
+              },
+              ".dispatch-route-endpoints": {
+                "x": 38,
+                "y": 228.15625,
+                "width": 1364,
+                "height": 45,
+                "top": 228.15625,
+                "right": 1402,
+                "bottom": 273.15625,
+                "left": 38
+              },
+              ".dispatch-map": {
+                "x": 38,
+                "y": 285.15625,
+                "width": 1364,
+                "height": 391.0625,
+                "top": 285.15625,
+                "right": 1402,
+                "bottom": 676.21875,
+                "left": 38
+              }
+            },
+            "short": {
+              ".dispatch-route-identity h1": {
+                "x": 38,
+                "y": 144,
+                "width": 1093,
+                "height": 76.15625,
+                "top": 144,
+                "right": 1131,
+                "bottom": 220.15625,
+                "left": 38
+              },
+              ".dispatch-route-endpoints": {
+                "x": 38,
+                "y": 228.15625,
+                "width": 1364,
+                "height": 45,
+                "top": 228.15625,
+                "right": 1402,
+                "bottom": 273.15625,
+                "left": 38
+              },
+              ".dispatch-map": {
+                "x": 38,
+                "y": 285.15625,
+                "width": 1364,
+                "height": 391.0625,
+                "top": 285.15625,
+                "right": 1402,
+                "bottom": 676.21875,
+                "left": 38
+              }
+            }
+          },
+          {
+            "width": 960,
+            "long": {
+              ".dispatch-route-identity h1": {
+                "x": 30,
+                "y": 144,
+                "width": 661,
+                "height": 68.4375,
+                "top": 144,
+                "right": 691,
+                "bottom": 212.4375,
+                "left": 30
+              },
+              ".dispatch-route-endpoints": {
+                "x": 30,
+                "y": 220.4375,
+                "width": 900,
+                "height": 42,
+                "top": 220.4375,
+                "right": 930,
+                "bottom": 262.4375,
+                "left": 30
+              },
+              ".dispatch-map": {
+                "x": 30,
+                "y": 274.4375,
+                "width": 900,
+                "height": 370.78125,
+                "top": 274.4375,
+                "right": 930,
+                "bottom": 645.21875,
+                "left": 30
+              }
+            },
+            "short": {
+              ".dispatch-route-identity h1": {
+                "x": 30,
+                "y": 144,
+                "width": 661,
+                "height": 68.4375,
+                "top": 144,
+                "right": 691,
+                "bottom": 212.4375,
+                "left": 30
+              },
+              ".dispatch-route-endpoints": {
+                "x": 30,
+                "y": 220.4375,
+                "width": 900,
+                "height": 42,
+                "top": 220.4375,
+                "right": 930,
+                "bottom": 262.4375,
+                "left": 30
+              },
+              ".dispatch-map": {
+                "x": 30,
+                "y": 274.4375,
+                "width": 900,
+                "height": 370.78125,
+                "top": 274.4375,
+                "right": 930,
+                "bottom": 645.21875,
+                "left": 30
+              }
+            }
+          },
+          {
+            "width": 768,
+            "long": {
+              ".dispatch-route-identity h1": {
+                "x": 24,
+                "y": 142,
+                "width": 485,
+                "height": 57.59375,
+                "top": 142,
+                "right": 509,
+                "bottom": 199.59375,
+                "left": 24
+              },
+              ".dispatch-route-endpoints": {
+                "x": 24,
+                "y": 207.59375,
+                "width": 720,
+                "height": 58.5,
+                "top": 207.59375,
+                "right": 744,
+                "bottom": 266.09375,
+                "left": 24
+              },
+              ".dispatch-map": {
+                "x": 24,
+                "y": 278.09375,
+                "width": 720,
+                "height": 370,
+                "top": 278.09375,
+                "right": 744,
+                "bottom": 648.09375,
+                "left": 24
+              }
+            },
+            "short": {
+              ".dispatch-route-identity h1": {
+                "x": 24,
+                "y": 142,
+                "width": 485,
+                "height": 57.59375,
+                "top": 142,
+                "right": 509,
+                "bottom": 199.59375,
+                "left": 24
+              },
+              ".dispatch-route-endpoints": {
+                "x": 24,
+                "y": 207.59375,
+                "width": 720,
+                "height": 58.5,
+                "top": 207.59375,
+                "right": 744,
+                "bottom": 266.09375,
+                "left": 24
+              },
+              ".dispatch-map": {
+                "x": 24,
+                "y": 278.09375,
+                "width": 720,
+                "height": 370,
+                "top": 278.09375,
+                "right": 744,
+                "bottom": 648.09375,
+                "left": 24
+              }
+            }
+          },
+          {
+            "width": 390,
+            "long": {
+              ".dispatch-route-identity h1": {
+                "x": 20,
+                "y": 162.59375,
+                "width": 350,
+                "height": 86.390625,
+                "top": 162.59375,
+                "right": 370,
+                "bottom": 248.984375,
+                "left": 20
+              },
+              ".dispatch-route-endpoints": {
+                "x": 20,
+                "y": 260.984375,
+                "width": 350,
+                "height": 135,
+                "top": 260.984375,
+                "right": 370,
+                "bottom": 395.984375,
+                "left": 20
+              },
+              ".dispatch-map": {
+                "x": 20,
+                "y": 466.984375,
+                "width": 350,
+                "height": 574,
+                "top": 466.984375,
+                "right": 370,
+                "bottom": 1040.984375,
+                "left": 20
+              }
+            },
+            "short": {
+              ".dispatch-route-identity h1": {
+                "x": 20,
+                "y": 162.59375,
+                "width": 350,
+                "height": 86.390625,
+                "top": 162.59375,
+                "right": 370,
+                "bottom": 248.984375,
+                "left": 20
+              },
+              ".dispatch-route-endpoints": {
+                "x": 20,
+                "y": 260.984375,
+                "width": 350,
+                "height": 135,
+                "top": 260.984375,
+                "right": 370,
+                "bottom": 395.984375,
+                "left": 20
+              },
+              ".dispatch-map": {
+                "x": 20,
+                "y": 466.984375,
+                "width": 350,
+                "height": 574,
+                "top": 466.984375,
+                "right": 370,
+                "bottom": 1040.984375,
+                "left": 20
+              }
+            }
+          },
+          {
+            "width": 320,
+            "long": {
+              ".dispatch-route-identity h1": {
+                "x": 20,
+                "y": 162.59375,
+                "width": 280,
+                "height": 105.59375,
+                "top": 162.59375,
+                "right": 300,
+                "bottom": 268.1875,
+                "left": 20
+              },
+              ".dispatch-route-endpoints": {
+                "x": 20,
+                "y": 280.1875,
+                "width": 280,
+                "height": 126,
+                "top": 280.1875,
+                "right": 300,
+                "bottom": 406.1875,
+                "left": 20
+              },
+              ".dispatch-map": {
+                "x": 20,
+                "y": 522.1875,
+                "width": 280,
+                "height": 627,
+                "top": 522.1875,
+                "right": 300,
+                "bottom": 1149.1875,
+                "left": 20
+              }
+            },
+            "short": {
+              ".dispatch-route-identity h1": {
+                "x": 20,
+                "y": 162.59375,
+                "width": 280,
+                "height": 105.59375,
+                "top": 162.59375,
+                "right": 300,
+                "bottom": 268.1875,
+                "left": 20
+              },
+              ".dispatch-route-endpoints": {
+                "x": 20,
+                "y": 280.1875,
+                "width": 280,
+                "height": 126,
+                "top": 280.1875,
+                "right": 300,
+                "bottom": 406.1875,
+                "left": 20
+              },
+              ".dispatch-map": {
+                "x": 20,
+                "y": 522.1875,
+                "width": 280,
+                "height": 596,
+                "top": 522.1875,
+                "right": 300,
+                "bottom": 1118.1875,
+                "left": 20
+              }
+            }
+          }
+        ],
+        "screenshots": [
+          {
+            "file": "docs/images/routes-polish-directory-1440.png",
+            "width": 1440,
+            "height": 900
+          },
+          {
+            "file": "docs/images/routes-polish-directory-390.png",
+            "width": 390,
+            "height": 900
+          },
+          {
+            "file": "docs/images/routes-polish-node-390.png",
+            "width": 390,
+            "height": 900
+          },
+          {
+            "file": "docs/images/routes-polish-normal-1440.png",
+            "width": 1440,
+            "height": 900
+          },
+          {
+            "file": "docs/images/routes-polish-dense-1440.png",
+            "width": 1440,
+            "height": 900
+          },
+          {
+            "file": "docs/images/routes-polish-node-1440.png",
+            "width": 1440,
+            "height": 900
+          },
+          {
+            "file": "docs/images/routes-polish-dense-960.png",
+            "width": 960,
+            "height": 900
+          }
+        ],
+        "pageErrors": [],
+        "apiRequests": [],
+        "passed": true,
+        "visibleRowsAt1440": 10
+      }
+    },
+    "routeBrowser": {
+      "count": 14,
+      "passed": true,
+      "source": ".dev/route-dispatch/browser-validation.json",
+      "report": {
+        "generatedAt": "2026-09-26T03:20:47.101Z",
+        "base": "http://127.0.0.1:15175",
+        "checks": [
+          "Normal route exposes actual ordered stages and conditional 429/503 branches",
+          "Node expands in place, exposes complete rewrite example and fields, Escape restores focus",
+          "Route switching removes unsupported stages and closes prior node panel",
+          "Search and filters keep current route until explicit selection; locate restores its directory page",
+          "32 routes paginate 6 per page, keep selection while browsing, and support keyboard selection across pages",
+          "Long route fields are complete, selectable and copyable as text and JSON",
+          "Configuration error is centralized, cached canvas remains, writes block, details and retry work",
+          "Preview create/edit/delete retains validation and generated-rule examples without live writes",
+          "320–1440px layouts keep long names readable and directory responsive at 6/4/2 entries",
+          "Mobile paging keeps the selected route; selection and node expansion fold the directory",
+          "Scenario tabs switch fixtures, and clicking the current tab preserves selection",
+          "Motion represents selection/expansion and honors reduced-motion preference",
+          "Normal, exception and 32-route browser screenshots fit a 1440×900 first viewport",
+          "Preview produces no JavaScript errors and makes no backend API requests"
+        ],
+        "layouts": [
+          {
+            "width": 1440,
+            "height": 900,
+            "documentWidth": 1440,
+            "documentHeight": 900,
+            "cardCount": 6,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 676.21875,
+              "width": 1440,
+              "height": 223.78125,
+              "top": 676.21875,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 11,
+                "y": 463.15625,
+                "width": 220,
+                "height": 66.78125,
+                "top": 463.15625,
+                "right": 231,
+                "bottom": 529.9375,
+                "left": 11
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 310.5,
+                "y": 423.15625,
+                "width": 220,
+                "height": 47.1875,
+                "top": 423.15625,
+                "right": 530.5,
+                "bottom": 470.34375,
+                "left": 310.5
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 610,
+                "y": 401.15625,
+                "width": 220,
+                "height": 47.1875,
+                "top": 401.15625,
+                "right": 830,
+                "bottom": 448.34375,
+                "left": 610
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 909.5,
+                "y": 423.15625,
+                "width": 220,
+                "height": 47.1875,
+                "top": 423.15625,
+                "right": 1129.5,
+                "bottom": 470.34375,
+                "left": 909.5
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 1209,
+                "y": 399.15625,
+                "width": 220,
+                "height": 66.78125,
+                "top": 399.15625,
+                "right": 1429,
+                "bottom": 465.9375,
+                "left": 1209
+              }
+            ]
+          },
+          {
+            "width": 1280,
+            "height": 900,
+            "documentWidth": 1280,
+            "documentHeight": 900,
+            "cardCount": 4,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 714.609375,
+              "width": 1280,
+              "height": 185.390625,
+              "top": 714.609375,
+              "right": 1280,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 11,
+                "y": 463.15625,
+                "width": 220,
+                "height": 66.78125,
+                "top": 463.15625,
+                "right": 231,
+                "bottom": 529.9375,
+                "left": 11
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 270.5,
+                "y": 423.15625,
+                "width": 220,
+                "height": 47.1875,
+                "top": 423.15625,
+                "right": 490.5,
+                "bottom": 470.34375,
+                "left": 270.5
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 530,
+                "y": 401.15625,
+                "width": 220,
+                "height": 47.1875,
+                "top": 401.15625,
+                "right": 750,
+                "bottom": 448.34375,
+                "left": 530
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 789.5,
+                "y": 423.15625,
+                "width": 220,
+                "height": 47.1875,
+                "top": 423.15625,
+                "right": 1009.5,
+                "bottom": 470.34375,
+                "left": 789.5
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 1049,
+                "y": 399.15625,
+                "width": 220,
+                "height": 66.78125,
+                "top": 399.15625,
+                "right": 1269,
+                "bottom": 465.9375,
+                "left": 1049
+              }
+            ]
+          },
+          {
+            "width": 1100,
+            "height": 900,
+            "documentWidth": 1100,
+            "documentHeight": 900,
+            "cardCount": 4,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 678.5,
+              "width": 1100,
+              "height": 221.5,
+              "top": 678.5,
+              "right": 1100,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 6.1015625,
+                "y": 452.4375,
+                "width": 199.796875,
+                "height": 61.1875,
+                "top": 452.4375,
+                "right": 205.8984375,
+                "bottom": 513.625,
+                "left": 6.1015625
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 228.1015625,
+                "y": 412.4375,
+                "width": 199.796875,
+                "height": 47.1875,
+                "top": 412.4375,
+                "right": 427.8984375,
+                "bottom": 459.625,
+                "left": 228.1015625
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 450.1015625,
+                "y": 390.4375,
+                "width": 199.796875,
+                "height": 47.1875,
+                "top": 390.4375,
+                "right": 649.8984375,
+                "bottom": 437.625,
+                "left": 450.1015625
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 672.1015625,
+                "y": 412.4375,
+                "width": 199.796875,
+                "height": 47.1875,
+                "top": 412.4375,
+                "right": 871.8984375,
+                "bottom": 459.625,
+                "left": 672.1015625
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 894.1015625,
+                "y": 388.4375,
+                "width": 199.796875,
+                "height": 61.1875,
+                "top": 388.4375,
+                "right": 1093.8984375,
+                "bottom": 449.625,
+                "left": 894.1015625
+              }
+            ]
+          },
+          {
+            "width": 960,
+            "height": 900,
+            "documentWidth": 960,
+            "documentHeight": 900,
+            "cardCount": 4,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 645.21875,
+              "width": 960,
+              "height": 254.78125,
+              "top": 645.21875,
+              "right": 960,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 21.8515625,
+                "y": 452.4375,
+                "width": 168.296875,
+                "height": 61.1875,
+                "top": 452.4375,
+                "right": 190.1484375,
+                "bottom": 513.625,
+                "left": 21.8515625
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 208.8515625,
+                "y": 412.4375,
+                "width": 168.296875,
+                "height": 47.1875,
+                "top": 412.4375,
+                "right": 377.1484375,
+                "bottom": 459.625,
+                "left": 208.8515625
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 395.8515625,
+                "y": 390.4375,
+                "width": 168.296875,
+                "height": 47.1875,
+                "top": 390.4375,
+                "right": 564.1484375,
+                "bottom": 437.625,
+                "left": 395.8515625
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 582.8515625,
+                "y": 412.4375,
+                "width": 168.296875,
+                "height": 47.1875,
+                "top": 412.4375,
+                "right": 751.1484375,
+                "bottom": 459.625,
+                "left": 582.8515625
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 769.8515625,
+                "y": 388.4375,
+                "width": 168.296875,
+                "height": 61.1875,
+                "top": 388.4375,
+                "right": 938.1484375,
+                "bottom": 449.625,
+                "left": 769.8515625
+              }
+            ]
+          },
+          {
+            "width": 850,
+            "height": 900,
+            "documentWidth": 850,
+            "documentHeight": 903,
+            "cardCount": 4,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 648.09375,
+              "width": 850,
+              "height": 254.78125,
+              "top": 648.09375,
+              "right": 850,
+              "bottom": 902.875,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 10.953125,
+                "y": 456.09375,
+                "width": 152.09375,
+                "height": 56.875,
+                "top": 456.09375,
+                "right": 163.046875,
+                "bottom": 512.96875,
+                "left": 10.953125
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 179.953125,
+                "y": 416.09375,
+                "width": 152.09375,
+                "height": 42.890625,
+                "top": 416.09375,
+                "right": 332.046875,
+                "bottom": 458.984375,
+                "left": 179.953125
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 348.953125,
+                "y": 394.09375,
+                "width": 152.09375,
+                "height": 42.890625,
+                "top": 394.09375,
+                "right": 501.046875,
+                "bottom": 436.984375,
+                "left": 348.953125
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 517.953125,
+                "y": 416.09375,
+                "width": 152.09375,
+                "height": 42.890625,
+                "top": 416.09375,
+                "right": 670.046875,
+                "bottom": 458.984375,
+                "left": 517.953125
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 686.953125,
+                "y": 392.09375,
+                "width": 152.09375,
+                "height": 56.875,
+                "top": 392.09375,
+                "right": 839.046875,
+                "bottom": 448.96875,
+                "left": 686.953125
+              }
+            ]
+          },
+          {
+            "width": 768,
+            "height": 900,
+            "documentWidth": 768,
+            "documentHeight": 940,
+            "cardCount": 4,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 648.09375,
+              "width": 768,
+              "height": 292.28125,
+              "top": 648.09375,
+              "right": 768,
+              "bottom": 940.375,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 20.1796875,
+                "y": 456.09375,
+                "width": 133.640625,
+                "height": 56.875,
+                "top": 456.09375,
+                "right": 153.8203125,
+                "bottom": 512.96875,
+                "left": 20.1796875
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 168.6796875,
+                "y": 416.09375,
+                "width": 133.640625,
+                "height": 42.890625,
+                "top": 416.09375,
+                "right": 302.3203125,
+                "bottom": 458.984375,
+                "left": 168.6796875
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 317.1796875,
+                "y": 394.09375,
+                "width": 133.640625,
+                "height": 42.890625,
+                "top": 394.09375,
+                "right": 450.8203125,
+                "bottom": 436.984375,
+                "left": 317.1796875
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 465.6796875,
+                "y": 416.09375,
+                "width": 133.640625,
+                "height": 42.890625,
+                "top": 416.09375,
+                "right": 599.3203125,
+                "bottom": 458.984375,
+                "left": 465.6796875
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 614.1796875,
+                "y": 392.09375,
+                "width": 133.640625,
+                "height": 75.0625,
+                "top": 392.09375,
+                "right": 747.8203125,
+                "bottom": 467.15625,
+                "left": 614.1796875
+              }
+            ]
+          },
+          {
+            "width": 701,
+            "height": 900,
+            "documentWidth": 701,
+            "documentHeight": 900,
+            "cardCount": 2,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 678.5,
+              "width": 701,
+              "height": 221.5,
+              "top": 678.5,
+              "right": 701,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 27.71875,
+                "y": 484.890625,
+                "width": 118.5625,
+                "height": 56.875,
+                "top": 484.890625,
+                "right": 146.28125,
+                "bottom": 541.765625,
+                "left": 27.71875
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 159.46875,
+                "y": 444.890625,
+                "width": 118.5625,
+                "height": 42.890625,
+                "top": 444.890625,
+                "right": 278.03125,
+                "bottom": 487.78125,
+                "left": 159.46875
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 291.21875,
+                "y": 422.890625,
+                "width": 118.5625,
+                "height": 42.890625,
+                "top": 422.890625,
+                "right": 409.78125,
+                "bottom": 465.78125,
+                "left": 291.21875
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 422.96875,
+                "y": 444.890625,
+                "width": 118.5625,
+                "height": 42.890625,
+                "top": 444.890625,
+                "right": 541.53125,
+                "bottom": 487.78125,
+                "left": 422.96875
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 554.71875,
+                "y": 420.890625,
+                "width": 118.5625,
+                "height": 75.0625,
+                "top": 420.890625,
+                "right": 673.28125,
+                "bottom": 495.953125,
+                "left": 554.71875
+              }
+            ]
+          },
+          {
+            "width": 700,
+            "height": 900,
+            "documentWidth": 700,
+            "documentHeight": 1276,
+            "cardCount": 2,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 664.5,
+              "width": 700,
+              "height": 235.5,
+              "top": 664.5,
+              "right": 700,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 86,
+                "y": 535.484375,
+                "width": 263.671875,
+                "height": 41,
+                "top": 535.484375,
+                "right": 349.671875,
+                "bottom": 576.484375,
+                "left": 86
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 86,
+                "y": 609.734375,
+                "width": 70.125,
+                "height": 42.5,
+                "top": 609.734375,
+                "right": 156.125,
+                "bottom": 652.234375,
+                "left": 86
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 86,
+                "y": 714.734375,
+                "width": 66,
+                "height": 42.5,
+                "top": 714.734375,
+                "right": 152,
+                "bottom": 757.234375,
+                "left": 86
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 86,
+                "y": 789.734375,
+                "width": 77,
+                "height": 42.5,
+                "top": 789.734375,
+                "right": 163,
+                "bottom": 832.234375,
+                "left": 86
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 86,
+                "y": 895.484375,
+                "width": 263.671875,
+                "height": 41,
+                "top": 895.484375,
+                "right": 349.671875,
+                "bottom": 936.484375,
+                "left": 86
+              }
+            ]
+          },
+          {
+            "width": 390,
+            "height": 900,
+            "documentWidth": 390,
+            "documentHeight": 1300,
+            "cardCount": 2,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 640.9375,
+              "width": 390,
+              "height": 259.0625,
+              "top": 640.9375,
+              "right": 390,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 86,
+                "y": 535.484375,
+                "width": 263.671875,
+                "height": 41,
+                "top": 535.484375,
+                "right": 349.671875,
+                "bottom": 576.484375,
+                "left": 86
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 86,
+                "y": 609.734375,
+                "width": 70.125,
+                "height": 42.5,
+                "top": 609.734375,
+                "right": 156.125,
+                "bottom": 652.234375,
+                "left": 86
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 86,
+                "y": 714.734375,
+                "width": 66,
+                "height": 42.5,
+                "top": 714.734375,
+                "right": 152,
+                "bottom": 757.234375,
+                "left": 86
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 86,
+                "y": 789.734375,
+                "width": 77,
+                "height": 42.5,
+                "top": 789.734375,
+                "right": 163,
+                "bottom": 832.234375,
+                "left": 86
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 86,
+                "y": 895.484375,
+                "width": 263.671875,
+                "height": 41,
+                "top": 895.484375,
+                "right": 349.671875,
+                "bottom": 936.484375,
+                "left": 86
+              }
+            ]
+          },
+          {
+            "width": 320,
+            "height": 900,
+            "documentWidth": 320,
+            "documentHeight": 1440,
+            "cardCount": 2,
+            "selectedVisible": true,
+            "dock": {
+              "x": 0,
+              "y": 608.75,
+              "width": 320,
+              "height": 291.25,
+              "top": 608.75,
+              "right": 320,
+              "bottom": 900,
+              "left": 0
+            },
+            "identityClipped": false,
+            "cardLabelClipped": false,
+            "stationLabels": [
+              {
+                "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+                "x": 86,
+                "y": 587.1875,
+                "width": 214,
+                "height": 63.5,
+                "top": 587.1875,
+                "right": 300,
+                "bottom": 650.6875,
+                "left": 86
+              },
+              {
+                "text": "全局限流按 IP 的令牌桶",
+                "x": 86,
+                "y": 680.4375,
+                "width": 70.125,
+                "height": 42.5,
+                "top": 680.4375,
+                "right": 156.125,
+                "bottom": 722.9375,
+                "left": 86
+              },
+              {
+                "text": "路径重写改写请求路径",
+                "x": 86,
+                "y": 785.4375,
+                "width": 66,
+                "height": 42.5,
+                "top": 785.4375,
+                "right": 152,
+                "bottom": 827.9375,
+                "left": 86
+              },
+              {
+                "text": "熔断保护调用异常时降级",
+                "x": 86,
+                "y": 860.4375,
+                "width": 77,
+                "height": 42.5,
+                "top": 860.4375,
+                "right": 163,
+                "bottom": 902.9375,
+                "left": 86
+              },
+              {
+                "text": "enterprise-order-…nternal:8080目标服务 · URI",
+                "x": 86,
+                "y": 984.6875,
+                "width": 214,
+                "height": 63.5,
+                "top": 984.6875,
+                "right": 300,
+                "bottom": 1048.1875,
+                "left": 86
+              }
+            ]
+          }
+        ],
+        "screenshots": [
+          {
+            "file": "docs/images/routes-dispatch-mobile-node-390.png",
+            "width": 390,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-normal-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-exception-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-dense-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-rewrite-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-exception-detail-1440.png",
+            "width": 1440,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-960.png",
+            "width": 960,
+            "height": 900,
+            "fullPage": false
+          },
+          {
+            "file": "docs/images/routes-dispatch-390.png",
+            "width": 390,
+            "height": 900,
+            "fullPage": false
+          }
+        ],
+        "pageErrors": [],
+        "apiRequests": [],
+        "passed": true
+      }
+    },
+    "stageCBrowser": {
+      "count": 6,
+      "passed": true,
+      "source": ".dev/stage-c/browser-validation.json",
+      "report": {
+        "startedAt": "2026-09-26T03:23:21.550Z",
+        "checks": [
+          "A delayed chart engine does not delay metrics or records; leaving before it arrives creates no orphan canvas",
+          "A failed chart import is explicit; explicit reload recovers while numbers and record copy remain usable",
+          "Page chunk failure has a recoverable shell without a false configuration baseline",
+          "P95 overflow has its own labelled time lane, keyboard readout and readable phone layout",
+          "Mobile changed-count entry follows the draft, focuses the full review and disappears after restoring or saving",
+          "Typing and invalid errors remain unobstructed in a reduced viewport; all mobile navigation stays reachable"
+        ],
+        "errors": [],
+        "previewApi": [],
+        "passed": true
+      }
+    },
+    "settingsLive": {
+      "count": 6,
+      "passed": true,
+      "source": ".dev/settings-stage-b/live-validation.json",
+      "report": {
+        "startedAt": "2026-09-26T03:25:58.583Z",
+        "isolated": true,
+        "checks": [
+          "Real authentication loads the six exact backend values with no demo controls",
+          "One UI save updates the live runtime and Redis; all six returned fields become the baseline",
+          "A subsequent failed read does not undo the real confirmed save; retry restores reading",
+          "An actually committed write with a dropped response reconciles via GET without duplicate PUT",
+          "Shared navigation reaches actual overview and routes after a save, including the changed metric window",
+          "Restoring the original six values through the UI is confirmed by runtime and Redis reads"
+        ],
+        "pageErrors": [],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "PUT",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "PUT",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/series"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/sse-token"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/stream"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/routes"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "PUT",
+            "path": "/settings/runtime"
+          }
+        ],
+        "cleanup": {
+          "originalConfigurationRestored": true,
+          "backendExitCode": 0,
+          "redisRemoved": true
+        },
+        "passed": true,
+        "baseline": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        },
+        "confirmed": {
+          "rateLimitEnabled": false,
+          "replenishRate": 37,
+          "burstCapacity": 74,
+          "requestedTokens": 2,
+          "monitorWindowSeconds": 17,
+          "emitIntervalSeconds": 2
+        },
+        "runtimeGets": 8,
+        "runtimePuts": 3,
+        "completedAt": "2026-09-26T03:26:18.019Z"
+      }
+    },
+    "routesLive": {
+      "count": 12,
+      "passed": true,
+      "source": ".dev/route-dispatch-live/validation.json",
+      "report": {
+        "startedAt": "2026-09-26T03:25:55.287Z",
+        "checks": [
+          "Real authentication and delayed initial loading: no fake route, empty-state action or demo controls",
+          "Initial route-read failure is distinct from a confirmed empty directory and recovers",
+          "UI create uses server validation, persists to Redis and forwards a real rewritten request",
+          "Editing updates forwarding, ordinary HTTP 500 passes through, and connection failure falls back to 503",
+          "Runtime polling updates the actual token-bucket stage and conditional branch",
+          "Failed refresh keeps actual cached route and blocks writes, then retry restores editing",
+          "Successful create followed by failed list refresh retains previous selection and reports both outcomes",
+          "Unavailable runtime/metrics/audit never appear healthy or as zero, and refresh recovers them",
+          "Disabled monitoring and latency overflow retain existing business semantics",
+          "Live navigation, narrow layout and copied fields remain connected to actual routes",
+          "Confirmed live deletion removes persisted and runtime routes; refresh failure is reported without losing context",
+          "Disconnect cancels polling; expired credentials return to login; preview remains isolated"
+        ],
+        "pageErrors": [],
+        "requestCounts": {
+          "/settings/runtime": 23,
+          "/settings/routes": 24,
+          "/dashboard/snapshot": 16,
+          "/monitor/audit/status": 16,
+          "/settings/routes/secondary-route": 1,
+          "/settings/routes/dispatch-smoke": 1
+        },
+        "cleanup": {
+          "backendExitCode": 0,
+          "testRedisRemoved": true
+        },
+        "passed": true,
+        "browser": "153.0.4234.48",
+        "completedAt": "2026-09-26T03:26:29.898Z"
+      }
+    },
+    "showcaseLive": {
+      "count": 4,
+      "passed": true,
+      "source": ".dev/stage-c/showcase-validation.json",
+      "report": {
+        "startedAt": "2026-09-26T03:23:22.021Z",
+        "isolated": true,
+        "ui": "http://127.0.0.1:15175",
+        "checks": [
+          "Actual authenticated overview receives nonzero traffic and audit records from the isolated backend",
+          "Route directory search selects an actual route; rewrite and circuit branches expand in place",
+          "One real settings save updates the returned baseline and independently verified Redis value",
+          "Returning to overview confirms the new 30-second window through actual metrics, not a preview linkage"
+        ],
+        "pageErrors": [],
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/series"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/sse-token"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/stream"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/routes"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "PUT",
+            "path": "/settings/runtime"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/snapshot"
+          },
+          {
+            "method": "GET",
+            "path": "/dashboard/series"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/settings/sse-token"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/stream"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/status"
+          },
+          {
+            "method": "GET",
+            "path": "/monitor/audit/recent"
+          }
+        ],
+        "traffic": {
+          "attempted": 1009,
+          "statuses": {
+            "200": 986,
+            "500": 23
+          }
+        },
+        "cleanup": {
+          "originalConfigurationRestored": true,
+          "backendExitCode": 0,
+          "redisRemoved": true
+        },
+        "passed": true,
+        "baseline": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        },
+        "routeCount": 6,
+        "confirmed": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 2
+        },
+        "confirmedSnapshot": {
+          "avgLatencyMs": 68.1876923076923,
+          "cancelled": 0,
+          "completedTotal": 953,
+          "enabled": true,
+          "errors": 0,
+          "latencyOverflow": 0,
+          "p95LatencyMs": 173,
+          "qps": 10.833333333333334,
+          "requestCount": 325,
+          "status2xx": 317,
+          "status3xx": 0,
+          "status4xx": 0,
+          "status5xx": 8,
+          "timestamp": 1790393108629,
+          "unknownStatus": 0,
+          "windowSeconds": 30
+        },
+        "visibleWindow": "当前窗口 30 秒 · 已结束代理请求 332 次平均延迟 70.2 ms 同一窗口内：取消 0 次、请求异常 0 次、未形成 HTTP 状态 0 次。这些分类可能重叠，不相加作为请求总量。QPS = 窗口已结束请求数 ÷ 窗口秒数。",
+        "recordedSteps": [
+          {
+            "atSeconds": 21.1,
+            "text": "02 / 检查入口、规则与目标"
+          },
+          {
+            "atSeconds": 46.1,
+            "text": "03 / 当前 → 待保存 → 服务端确认"
+          },
+          {
+            "atSeconds": 64.1,
+            "text": "04 / 回到概览，确认 30 秒统计窗口"
+          }
+        ],
+        "recordedElapsedSeconds": 80.001,
+        "video": {
+          "file": "docs/media/stage-c-product-demo.webm",
+          "width": 1440,
+          "height": 900,
+          "caption": "recording-only environment/action labels; no fixture metrics"
+        },
+        "completedAt": "2026-09-26T03:25:23.716Z"
+      }
+    }
+  },
+  "network": {
+    "comparison": [
+      {
+        "name": "login",
+        "beforeGzipBytes": 271792,
+        "afterGzipBytes": 54469,
+        "reductionPercent": 79.96
+      },
+      {
+        "name": "settings",
+        "beforeGzipBytes": 271792,
+        "afterGzipBytes": 62737,
+        "reductionPercent": 76.92
+      },
+      {
+        "name": "overview",
+        "beforeGzipBytes": 271792,
+        "afterGzipBytes": 241287,
+        "reductionPercent": 11.22
+      }
+    ],
+    "before": "docs/stage-c-network-before.json",
+    "after": "docs/stage-c-network-after.json",
+    "compression": "gzip",
+    "unit": "decimal kB; compressed JS/CSS response bodies; HTML, headers and API excluded",
+    "measurement": "actual Edge CDP; new context and disabled cache for each direct entry; settings/overview totals include authenticated entry plus login common assets; isolated API fixture"
+  },
+  "recording": {
+    "file": "docs/media/stage-c-product-demo.webm",
+    "durationSeconds": 80.04,
+    "width": 1440,
+    "height": 900,
+    "fps": 25,
+    "codec": "VP8",
+    "actualFramesInspectedSeconds": [
+      35,
+      58,
+      70
+    ],
+    "liveTraffic": {
+      "attempted": 1009,
+      "statuses": {
+        "200": 986,
+        "500": 23
+      }
+    },
+    "captionIsRecordingOnly": true
+  },
+  "limits": [
+    "No exact value beyond P95 > 60000 ms is available from the backend.",
+    "ECharts engine remains approximately 503 kB before gzip.",
+    "Failed ES module loading requires explicit page reload; no forced reload or credential persistence.",
+    "Phone keyboard checked with reduced viewport, not a physical OS keyboard.",
+    "No gateway throughput benchmark or backend full test suite rerun in this frontend scope."
+  ],
+  "changedFiles": [
+    {
+      "file": "frontend/src/components/AsyncPage.vue",
+      "sha256": "f3fe22145c4024d0f25c90076c2899863d33e837ac7e64aeef9590caa38bc59e"
+    },
+    {
+      "file": "frontend/src/components/DispatchCopy.vue",
+      "sha256": "88592a606a8114dfe84ea8de8456de91d30bc2192d41d689c8c18432d8207261"
+    },
+    {
+      "file": "frontend/src/components/TrafficChart.vue",
+      "sha256": "7114b5201fe7b99639bae05b031f394cab4065e2faa121b18fb71962a6df8992"
+    },
+    {
+      "file": "frontend/src/overview/chart.ts",
+      "sha256": "fe42b8218481f43821bef366b8f0b14a30381b2de8724e5db292f288d1eebcf5"
+    },
+    {
+      "file": "frontend/src/overview/model.ts",
+      "sha256": "9930364435842f276ba6286232567819aa1f3acbbce292df90c09f6e10e2f532"
+    },
+    {
+      "file": "frontend/src/router/index.ts",
+      "sha256": "c6d90b553d4fe454996d466411ab539d717845d65a7a5eab93dc3dd5ca5fb37b"
+    },
+    {
+      "file": "frontend/src/styles/overview.css",
+      "sha256": "c64c141728130d73ed1b8bf39cfb0da943caa9d4b933c3d96f5514c96eda2d91"
+    },
+    {
+      "file": "frontend/src/styles/product.css",
+      "sha256": "0739c67c523ce9161013b8ed08880ff6d9c335ab38ec2dbec1d35154286d1ef8"
+    },
+    {
+      "file": "frontend/src/styles/route-dispatch.css",
+      "sha256": "62e72babc41c8c5b7485895befe646fb97877cc78c05d0b05b8fad1d5c2dbf58"
+    },
+    {
+      "file": "frontend/src/styles/settings.css",
+      "sha256": "76c1c21d79ce475fe6b9785fab0852abfe15f8b4eb7ee32bd491070efd74fc4b"
+    },
+    {
+      "file": "frontend/src/views/Settings.vue",
+      "sha256": "c23392c12f4a77858c00152f7f39682e07d42e0e5904f41187e56700c8566d73"
+    },
+    {
+      "file": "frontend/tests/overview.test.mjs",
+      "sha256": "87e3ae008effc8bb8e27441d2e1b3638ad756b3790d46085a3bbaff2dcb84418"
+    },
+    {
+      "file": "verification/overview-stage-a.mjs",
+      "sha256": "6a6f00bf40acdc0f0777cd5b11f4c82c871c462c679a0cd35c9e05434c0975e8"
+    },
+    {
+      "file": "verification/stage-c-browser.mjs",
+      "sha256": "11af3ab0b010d56b578ffd422415baad71de2ac0e0a1003a3a72c2423ab8de28"
+    },
+    {
+      "file": "verification/stage-c-network.mjs",
+      "sha256": "0a37b5a6dd83ea68f875060987d662b31ef3b8ea4b30b401989e8890c79ed1c2"
+    },
+    {
+      "file": "verification/stage-c-showcase.mjs",
+      "sha256": "e044c368ee4c37395ffea72e8f47d352a01abbb5bd3a5beef094530597c9fad2"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "docs/images/stage-c-chart-failure-1440.png",
+      "bytes": 259756,
+      "sha256": "3854aa6d31b083a5e423fa0401cde453ab324eae8b6317adac82e393372b54df"
+    },
+    {
+      "file": "docs/images/stage-c-chart-failure-390.png",
+      "bytes": 270844,
+      "sha256": "d65e296fc79e50510c914a2f91d28bb0a20e178a470001fb9896e62051b34de8"
+    },
+    {
+      "file": "docs/images/stage-c-chart-loading-1440.png",
+      "bytes": 257056,
+      "sha256": "f4c06e1384953354f2c382b9eda875e4a96276baaaebf9086a282081b86e847b"
+    },
+    {
+      "file": "docs/images/stage-c-mobile-after-390.png",
+      "bytes": 87515,
+      "sha256": "9ccfec1b485ac059bf6d07613c948eb717e90abb8724a591e7f05f4e91e9a6f9"
+    },
+    {
+      "file": "docs/images/stage-c-mobile-before-390.png",
+      "bytes": 84148,
+      "sha256": "8c5b5a545ec906d43d79e2e63bf0ca9b92b39f87638ef238f61e64afcf1f8b2e"
+    },
+    {
+      "file": "docs/images/stage-c-mobile-input-390.png",
+      "bytes": 29911,
+      "sha256": "81e1f7c8323ee386eaa9deff21a284bd0690669eaccebd2298e5d2e45dad0530"
+    },
+    {
+      "file": "docs/images/stage-c-mobile-review-390.png",
+      "bytes": 85644,
+      "sha256": "c831f59c048604dae1b82e1a483fda58469d93a7d9b79d32cb95e9397277d2ea"
+    },
+    {
+      "file": "docs/images/stage-c-p95-after-1440.png",
+      "bytes": 411107,
+      "sha256": "3a9b5b82c35380628b9d060ce0895d2547e397073d7da2f0ed0559bb4302f8a9"
+    },
+    {
+      "file": "docs/images/stage-c-p95-after-390.png",
+      "bytes": 308556,
+      "sha256": "3f44173df568446fc3f80a86b4be40b7f3c4ad8dbfae3f36af060244ba40b12d"
+    },
+    {
+      "file": "docs/images/stage-c-p95-before-1440.png",
+      "bytes": 393526,
+      "sha256": "edf6005bc383f6ed3ee80c2e7f049987425168f762f4632826e5f0c1ba99b458"
+    },
+    {
+      "file": "docs/images/stage-c-product-overview-1440.png",
+      "bytes": 395353,
+      "sha256": "9d386779d2e2cf66045e67bda8dd365934a2055f569f9d1a721e5f693d53f08a"
+    },
+    {
+      "file": "docs/images/stage-c-product-overview-confirmed-1440.png",
+      "bytes": 399839,
+      "sha256": "0da2e1067e8b634fdc0a9ad3a77aa48a63922d55bb4549b2dd94ec3983e82164"
+    },
+    {
+      "file": "docs/images/stage-c-product-routes-1440.png",
+      "bytes": 393056,
+      "sha256": "e54f1ae4e7d74b779d1ce6593ffb5263feaa70894d522d0ab730542abe0afbd9"
+    },
+    {
+      "file": "docs/images/stage-c-product-settings-1440.png",
+      "bytes": 260025,
+      "sha256": "6c88dded51ebe9a442d2bec5427ba9bc10ed655981f32d257355b71fc7f0eb29"
+    },
+    {
+      "file": "docs/images/stage-c-product-settings-confirmed-1440.png",
+      "bytes": 261734,
+      "sha256": "c050a97b75ff8d7630429ce874cbaa25e62dfa1cc64a13ef3cca1219ba149da7"
+    },
+    {
+      "file": "docs/images/stage-c-regression-routes-polish-dense-1440.png",
+      "bytes": 420431,
+      "sha256": "9813498854284e6c47b6a7b7d14fd70abe6821928d82f624332a83b6e98c467e"
+    },
+    {
+      "file": "docs/images/stage-c-regression-routes-polish-node-390.png",
+      "bytes": 108018,
+      "sha256": "4837f71cf7af36cb166a85eea598d9e7798c6633956282789e78c02590c5fbd1"
+    },
+    {
+      "file": "docs/media/stage-c-product-demo.webm",
+      "bytes": 6475083,
+      "sha256": "cbb3ee7fb9588888fcceed9aa63df1160a1c590751328bc198369b16ac3b5f06"
+    },
+    {
+      "file": "docs/product-showcase.md",
+      "bytes": 3217,
+      "sha256": "061d204d045b2a925a68bdadf46bccd0148c771d7ef57e380f1f074bcfc957f1"
+    },
+    {
+      "file": "docs/stage-c-final.md",
+      "bytes": 11235,
+      "sha256": "53e0d6e4b071f72fd13583611e13a7de91bc167833f4e527e8112dfed2e5f09e"
+    },
+    {
+      "file": "docs/stage-c-network-after.json",
+      "bytes": 6831,
+      "sha256": "56e1708f509cb96a5f098e86aefdeeb79e470064b90f32d6f8978b4cb7f42b74"
+    },
+    {
+      "file": "docs/stage-c-network-before.json",
+      "bytes": 3722,
+      "sha256": "926bc6227f1371cdaeed86c49a11ebf08f2c77c35cbae0a0de41d17a3cda8090"
+    }
+  ]
+}

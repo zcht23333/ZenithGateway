@@ -1,0 +1,295 @@
+{
+  "status": "ready_for_independent_acceptance",
+  "completedAt": "2026-10-05T05:27:10.236219+00:00",
+  "scope": "Monitoring consumers only; failure policies and application sources unchanged",
+  "productJarSha256": "ec12b79e361d44e73ab33a4da1f026a616a43ac21227957b667059308aaa38fb",
+  "fileHashes": {
+    "observability/prometheus/alerts.yml": "482f4489c4dcd29b441c5da53b2cd001d43c6ee443685a06c88a9826cb0ee613",
+    "observability/prometheus/alerts.test.yml": "5921aa128675963efddadbec51b179c57bfb2485604fcb89119d1e223cb93dfa",
+    "observability/prometheus/limiter-alerts.test.yml": "2828bf89a9acb2df5a0985c71695dd8f3408dea89bedb5e7910dcaf997a13be9",
+    "observability/grafana/dashboards/zenith.json": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+    "observability/test-monitoring.mjs": "4858ab312aed61af845861b746df80f36f6d5741e385c21e1cdf0df2488052b3",
+    "observability/demo.mjs": "6ef4f9a7b88d29155e5ea7f5093709372e04d59ae70b866529dade2abd9b4b43",
+    ".github/workflows/verify.yml": "f3c4c84fe79b0148782dc153455feddc6be1198ab330a7f2f9700fe0646379e0",
+    "verification/limiter-monitoring-live.mjs": "708c827f5c95973ea344de4363606ffa6cad85d8e872c76f7275562a3e1c47fa",
+    "docs/observability.md": "92296fec6eff194e56bbd1cc8b143ca0c4132acfa98f1115704daba15a4c7d12",
+    "docs/backend-limiter-monitoring.md": "2c6cc3f17bdc7272bd5ffb66217f88512158e01cbab712b72fb7407d5cc4911c"
+  },
+  "metric": {
+    "javaName": "zenith.ratelimit.decisions",
+    "observedPrometheusName": "zenith_ratelimit_decisions_total",
+    "type": "counter",
+    "productLabels": [
+      "event",
+      "action",
+      "execution",
+      "application"
+    ],
+    "scrapeLabels": [
+      "job",
+      "instance"
+    ],
+    "registeredSeriesPerInstance": 36,
+    "unknownIsOverlapping": true,
+    "discoveryEvidence": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\discovery\\report.json"
+  },
+  "ruleAndDashboardTests": {
+    "dashboardSha256": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+    "dashboardPanels": 27,
+    "dashboardQueries": 41,
+    "dashboardCases": 8,
+    "dashboardAssertions": 97,
+    "ruleCases": 27,
+    "ruleAssertions": 86,
+    "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+    "passed": true
+  },
+  "live": {
+    "startedAt": "2026-10-05T05:21:10.937Z",
+    "completedAt": "2026-10-05T05:25:10.980Z",
+    "groupsPassed": 8,
+    "groups": [
+      "Actual metric family, fixed tags, scoped scrape authentication and missing-family state",
+      "Confirmed permit, explicit bypass and 429 create distinct facts without fault alerts",
+      "Executed Redis reply loss: same fact with forward/200 or reject/503, never retries or refunds",
+      "Local admission saturation retains local fact and chosen policy without changing Redis-fault semantics",
+      "Recovery resolves trailing-window fault alerts and zero traffic has zero rates but no ratios",
+      "Cancellation after dispatch counts unknown/cancel once without a non-cancelled uncertainty alert",
+      "Successful scrape with missing metrics differs from a failed scrape and target filtering works",
+      "HTTP, actual upstream receipt, terminal diagnostics, raw Prometheus and final audit reconcile"
+    ],
+    "requestsIncludingAllWarmups": 36,
+    "lostReplyOperations": 10,
+    "requestAccounting": [
+      {
+        "instance": "A-allow:63125",
+        "requestsIncludingWarmup": 18,
+        "warmup": 1,
+        "statusCounts": {
+          "200": 16,
+          "429": 1,
+          "0": 1
+        },
+        "terminalModes": {
+          "complete": 17,
+          "client-cancelled": 1
+        },
+        "decisionCount": 18,
+        "auditCount": 18,
+        "upstreamReceived": 16,
+        "events": {
+          "disabled": 1,
+          "allowed": 3,
+          "limited": 0,
+          "unfulfillable": 1,
+          "local_unavailable": 1,
+          "redis_unconfirmed": 11,
+          "cancelled": 1
+        },
+        "actions": {
+          "forward": 16,
+          "reject": 1,
+          "cancel": 1
+        },
+        "executions": {
+          "not_sent": 6,
+          "not_written": 0,
+          "confirmed": 4,
+          "unknown": 8
+        }
+      },
+      {
+        "instance": "B-strict:63414",
+        "requestsIncludingWarmup": 17,
+        "warmup": 1,
+        "statusCounts": {
+          "200": 4,
+          "429": 1,
+          "503": 12
+        },
+        "terminalModes": {
+          "complete": 17
+        },
+        "decisionCount": 17,
+        "auditCount": 17,
+        "upstreamReceived": 4,
+        "events": {
+          "disabled": 1,
+          "allowed": 3,
+          "limited": 0,
+          "unfulfillable": 1,
+          "local_unavailable": 2,
+          "redis_unconfirmed": 10,
+          "cancelled": 0
+        },
+        "actions": {
+          "forward": 4,
+          "reject": 13,
+          "cancel": 0
+        },
+        "executions": {
+          "not_sent": 6,
+          "not_written": 0,
+          "confirmed": 4,
+          "unknown": 7
+        }
+      }
+    ],
+    "parameters": {
+      "workers": 2,
+      "queueCapacity": 4,
+      "decisionTimeoutMs": 1500,
+      "resultHandoff": false,
+      "scrapeSeconds": 5,
+      "evaluationSeconds": 5
+    },
+    "images": {
+      "promImage": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "grafImage": "grafana/grafana:13.1.6@sha256:d8276d620291d3aaae3e31dde6d63e6807afee49825f04e8aa7392bbe024216f"
+    },
+    "isolation": {
+      "name": "zenith-limiter-a4210625",
+      "redisPort": 63118,
+      "namespace": "zg:rl:test:a4210625-468c-4e81-8b59-89d688b3442f",
+      "upstreamPort": 63117,
+      "proxyAPort": 63123,
+      "proxyBPort": 63124
+    },
+    "rawReport": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\validation.json",
+    "alertTransitions": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\alert-transitions.json",
+    "queryBatches": 5,
+    "queriedExpressions": 205,
+    "screenshots": [
+      {
+        "name": "01-baseline-all",
+        "instance": ".*",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\01-baseline-all.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\01-baseline-all-browser.txt"
+      },
+      {
+        "name": "03-allow-fault",
+        "instance": "A-allow:63125",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\03-allow-fault.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\03-allow-fault-browser.txt"
+      },
+      {
+        "name": "04-strict-fault",
+        "instance": "B-strict:63414",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\04-strict-fault.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\04-strict-fault-browser.txt"
+      },
+      {
+        "name": "04-strict-latency-final",
+        "instance": "B-strict:63414",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\04-strict-latency-final.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\04-strict-latency-final-browser.txt"
+      },
+      {
+        "name": "05-zero-traffic",
+        "instance": "A-allow:63125",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\05-zero-traffic.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\05-zero-traffic-browser.txt"
+      },
+      {
+        "name": "06-zero-ratio",
+        "instance": "A-allow:63125",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\06-zero-ratio.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\06-zero-ratio-browser.txt"
+      },
+      {
+        "name": "08-missing-family",
+        "instance": "B-metrics-disabled:56386",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\08-missing-family.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\08-missing-family-browser.txt"
+      },
+      {
+        "name": "09-scrape-failed",
+        "instance": "A-allow:63125",
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\09-scrape-failed.png",
+        "pageErrors": [],
+        "text": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f\\final-evidence\\09-scrape-failed-browser.txt"
+      }
+    ]
+  },
+  "preservation": {
+    "baselineFilesChecked": 399,
+    "unchangedFiles": 393,
+    "changedExistingFiles": [
+      "observability/demo.mjs",
+      "observability/grafana/dashboards/zenith.json",
+      "observability/prometheus/alerts.test.yml",
+      "observability/prometheus/alerts.yml",
+      "docs/observability.md",
+      ".github/workflows/verify.yml"
+    ],
+    "backendAndFrontendSourcesUnchanged": true,
+    "historicalAcceptanceEvidenceUnchanged": true,
+    "existingContainersUnchanged": true,
+    "oldContainerStates": [
+      "608cd9bfbfe8 zenithgateway-dev-0cca169bd52a-6379 created",
+      "0bd8e6da994e zenith-benchmark-redis-1 exited",
+      "0d0b1eddce10 safebuild-redis exited",
+      "b7294eee3606 zhijian exited",
+      "8d049f9551c5 healthcare-redis exited",
+      "da80330b0473 zenith-redis exited"
+    ],
+    "developmentInstancesUpgraded": false
+  },
+  "cleanup": {
+    "liveHarness": {
+      "zg-monitor-65766825-grafanaRemoved": true,
+      "zg-monitor-65766825-prometheusRemoved": true,
+      "monitorNetworkRemoved": true,
+      "ephemeralCredentialsRemoved": true,
+      "A-allowExitCode": 0,
+      "B-strictExitCode": 0,
+      "B-metrics-disabledExitCode": 0,
+      "proxyAClosed": true,
+      "proxyBClosed": true,
+      "upstreamClosed": true,
+      "redisRemoved": true
+    },
+    "ownedPortsClosed": [
+      63118,
+      63117,
+      63123,
+      63124,
+      63125,
+      63414,
+      56386,
+      56694,
+      56710
+    ],
+    "allAttemptRedisContainersRemoved": true,
+    "allAttemptSecretsRemoved": true,
+    "browserClosedByAwaitedHarnessFinally": true
+  },
+  "notExecuted": [
+    "Complete backend tests and frontend tests/build: no business/application changes; prior acceptance only inspected",
+    "Old full configuration, proxy, limiter and capacity benchmarks: out of this monitoring-consumer scope",
+    "Legacy fixed Compose observability/demo.mjs end-to-end run: syntax and protocol adaptation checked only",
+    "Remote GitHub Actions execution and external alert notification delivery",
+    "New capacity, cold-start or RSS investigations; development-instance upgrade"
+  ],
+  "capacityConclusionUnchanged": "4000 req/s for one hour failed; no load tier has passed a one-hour capacity validation",
+  "knownBoundaries": [
+    "Prometheus is sampled; increase is extrapolated, not an exact event ledger",
+    "Unknown debit cancellation remains counted but excluded from its alert threshold",
+    "MetricsMissing detects entire-family absence, not every partial relabelling defect",
+    "Removed service-discovery targets need a separate expected-target inventory",
+    "Existing limiter histogram finite buckets stop at 1s; values at the ceiling cannot resolve longer waits",
+    "Resolved alerts do not confirm old unknown operations or upstream receipt"
+  ],
+  "intermediateEvidence": "D:\\Java\\ZenithGateway\\.dev\\limiter-monitoring-20261005-c0e0196f",
+  "reproduce": [
+    "node observability/test-monitoring.mjs --report <new output.json>",
+    "node verification/limiter-monitoring-live.mjs --out <fresh directory>"
+  ]
+}

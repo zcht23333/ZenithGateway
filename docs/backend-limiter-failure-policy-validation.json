@@ -1,0 +1,766 @@
+{
+  "completedAt": "2026-10-04T16:06:23.561781+00:00",
+  "scope": "Limiter failure policies and explicit overload rejection; correctness only",
+  "implemented": true,
+  "submittedForAcceptance": true,
+  "developmentInstanceUpgraded": false,
+  "productionJar": {
+    "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-failure-policy-20261004\\live-3\\gateway-final.jar",
+    "sha256": "ec12b79e361d44e73ab33a4da1f026a616a43ac21227957b667059308aaa38fb",
+    "sameArtifactForLiveAndRegressions": true
+  },
+  "startupDefaults": {
+    "localFailurePolicy": "allow",
+    "redisFailurePolicy": "allow",
+    "resultHandoffEnabled": false,
+    "workers": 8,
+    "queueCapacity": 64,
+    "decisionTimeoutMs": 500,
+    "probeIntervalMs": 1000
+  },
+  "runtimeProtocolChanged": false,
+  "bucketFormatChanged": false,
+  "automaticQuotaRetriesAdded": false,
+  "primaryVerification": {
+    "entry": "verification/limiter-failure-policy-live.mjs",
+    "report": "./.dev/limiter-failure-policy-20261004/live-3/report.json",
+    "checks": 25,
+    "requests": 70,
+    "warmupRequests": 5,
+    "responseCounts": {
+      "200": 41,
+      "503": 21,
+      "0": 4,
+      "429": 4
+    },
+    "upstreamReceived": 41,
+    "rejectedRequestsReachingUpstream": 0,
+    "cancelledRequestsReachingUpstream": 0,
+    "recoveryMs": {
+      "A-default-admission": 142,
+      "A-default-lost-reply": 255,
+      "B-strict-admission": 209,
+      "B-strict-lost-reply": 38,
+      "A-local-strict-admission": 211,
+      "A-local-strict-lost-reply": 275,
+      "B-redis-strict-admission": 90,
+      "B-redis-strict-lost-reply": 261,
+      "A-default-disconnect": 41,
+      "B-strict-disconnect": 262
+    },
+    "maximumObservedRequestMs": 1590.2796000000017,
+    "isolation": {
+      "name": "zenith-limiter-ce8eeeaf",
+      "redisPort": 57755,
+      "namespace": "zg:rl:test:ce8eeeaf-cc87-411f-b1c5-1dc0edfddbe2",
+      "upstreamPort": 57754,
+      "proxyAPort": 57760,
+      "proxyBPort": 57761
+    },
+    "fixture": {
+      "sha256": "1903c285803b8bb7033611e64826298c6cfa452180aeb6fdde9d009394e81063",
+      "productionJarContainsFixture": false,
+      "layer": "A separately loaded test-only GlobalFilter holds one synchronous result consumer with one bounded latch (5s). Real gateway, production limiter, Redis, upstream and HTTP are unchanged. Not a performance experiment."
+    },
+    "resources": {
+      "workers": 1,
+      "queueCapacity": 1,
+      "admissionCapacity": 2,
+      "decisionTimeoutMs": 1500,
+      "probeIntervalMs": 300,
+      "maxFixtureHoldMs": 5000,
+      "resultWorkersWhenEnabled": 1
+    },
+    "checksPassed": [
+      "All four independent policy combinations bind; authenticated no-store local diagnostics disclose policy",
+      "A-default admission saturation chooses only local policy and recovery uses Redis policy",
+      "A-default executed debit with lost reply preserves unknown, never retries or refunds, and obeys Redis policy",
+      "B-strict admission saturation chooses only local policy and recovery uses Redis policy",
+      "B-strict executed debit with lost reply preserves unknown, never retries or refunds, and obeys Redis policy",
+      "A-local-strict admission saturation chooses only local policy and recovery uses Redis policy",
+      "A-local-strict executed debit with lost reply preserves unknown, never retries or refunds, and obeys Redis policy",
+      "B-redis-strict admission saturation chooses only local policy and recovery uses Redis policy",
+      "B-redis-strict executed debit with lost reply preserves unknown, never retries or refunds, and obeys Redis policy",
+      "A-default actual executor rejection and queued deadline retain local reason, with no Redis dispatch",
+      "A-default Redis connection loss follows Redis policy, records unknown and restores automatically",
+      "A-default cancelling queued work records not_sent, without a policy rejection or upstream request",
+      "A-default cancellation after a committed debit closes resources without refund or success accounting",
+      "A-default damaged bucket has a definite not_written fact while quota remains unconfirmed",
+      "B-strict actual executor rejection and queued deadline retain local reason, with no Redis dispatch",
+      "B-strict Redis connection loss follows Redis policy, records unknown and restores automatically",
+      "B-strict cancelling queued work records not_sent, without a policy rejection or upstream request",
+      "B-strict cancellation after a committed debit closes resources without refund or success accounting",
+      "B-strict damaged bucket has a definite not_written fact while quota remains unconfirmed",
+      "Quota exhaustion is 429 in both modes; impossible cost never advertises retry time",
+      "Explicit runtime disable remains a bypass even in strict mode; policies do not change six-field protocol",
+      "Strict handoff mode bounds occupied result stages and rejects admission before Redis",
+      "Real recovery forwards only with a new confirmed decision; local diagnostics add zero runtime configuration reads",
+      "HTTP, upstream, terminal facts/actions/executions, Prometheus counters and final audit reconcile exactly once",
+      "Invalid local and Redis policies fail real startup without silently allowing"
+    ],
+    "extraRuntimeConfigurationReads": 0,
+    "instances": {
+      "A-default": {
+        "policies": [
+          "allow",
+          "allow"
+        ],
+        "outcomes": {
+          "disabled": 0,
+          "allowed": 5,
+          "limited": 1,
+          "unfulfillable": 1,
+          "redis_fail_open": 6,
+          "local_fail_open": 6,
+          "redis_rejected": 0,
+          "local_rejected": 0,
+          "cancelled": 2
+        },
+        "actions": {
+          "forward": 17,
+          "reject": 2,
+          "cancel": 2
+        },
+        "executions": {
+          "not_sent": 9,
+          "not_written": 1,
+          "confirmed": 7,
+          "unknown": 4
+        },
+        "auditRecords": 21,
+        "upstreamReceived": 17
+      },
+      "B-strict": {
+        "policies": [
+          "reject",
+          "reject"
+        ],
+        "outcomes": {
+          "disabled": 1,
+          "allowed": 10,
+          "limited": 1,
+          "unfulfillable": 1,
+          "redis_fail_open": 0,
+          "local_fail_open": 0,
+          "redis_rejected": 6,
+          "local_rejected": 6,
+          "cancelled": 2
+        },
+        "actions": {
+          "forward": 11,
+          "reject": 14,
+          "cancel": 2
+        },
+        "executions": {
+          "not_sent": 10,
+          "not_written": 1,
+          "confirmed": 12,
+          "unknown": 4
+        },
+        "auditRecords": 27,
+        "upstreamReceived": 11
+      },
+      "A-local-strict": {
+        "policies": [
+          "reject",
+          "allow"
+        ],
+        "outcomes": {
+          "disabled": 0,
+          "allowed": 1,
+          "limited": 0,
+          "unfulfillable": 0,
+          "redis_fail_open": 4,
+          "local_fail_open": 0,
+          "redis_rejected": 0,
+          "local_rejected": 4,
+          "cancelled": 0
+        },
+        "actions": {
+          "forward": 5,
+          "reject": 4,
+          "cancel": 0
+        },
+        "executions": {
+          "not_sent": 6,
+          "not_written": 0,
+          "confirmed": 1,
+          "unknown": 2
+        },
+        "auditRecords": 9,
+        "upstreamReceived": 5
+      },
+      "B-redis-strict": {
+        "policies": [
+          "allow",
+          "reject"
+        ],
+        "outcomes": {
+          "disabled": 0,
+          "allowed": 1,
+          "limited": 0,
+          "unfulfillable": 0,
+          "redis_fail_open": 0,
+          "local_fail_open": 4,
+          "redis_rejected": 4,
+          "local_rejected": 0,
+          "cancelled": 0
+        },
+        "actions": {
+          "forward": 5,
+          "reject": 4,
+          "cancel": 0
+        },
+        "executions": {
+          "not_sent": 6,
+          "not_written": 0,
+          "confirmed": 1,
+          "unknown": 2
+        },
+        "auditRecords": 9,
+        "upstreamReceived": 5
+      },
+      "B-strict-handoff": {
+        "policies": [
+          "reject",
+          "reject"
+        ],
+        "outcomes": {
+          "disabled": 0,
+          "allowed": 3,
+          "limited": 0,
+          "unfulfillable": 0,
+          "redis_fail_open": 0,
+          "local_fail_open": 0,
+          "redis_rejected": 0,
+          "local_rejected": 1,
+          "cancelled": 0
+        },
+        "actions": {
+          "forward": 3,
+          "reject": 1,
+          "cancel": 0
+        },
+        "executions": {
+          "not_sent": 1,
+          "not_written": 0,
+          "confirmed": 3,
+          "unknown": 0
+        },
+        "auditRecords": 4,
+        "upstreamReceived": 3
+      }
+    }
+  },
+  "tests": {
+    "backend": {
+      "tests": 236,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "tests": 107,
+      "failed": 0,
+      "skipped": 0,
+      "buildPassed": true
+    },
+    "backendProductionBuildPassed": true,
+    "rateLimitRegression": {
+      "checks": 22,
+      "requests": 181,
+      "handoffEnabled": true,
+      "passed": true
+    },
+    "proxyRegression": {
+      "checks": 24,
+      "requests": 102,
+      "startupRejections": 2,
+      "passed": true
+    }
+  },
+  "retainedUnsuccessfulAttempts": [
+    {
+      "attempt": "test Redis short image tag",
+      "reason": "Image short tag unavailable with pull=never; retried using existing pinned digest; no container created"
+    },
+    {
+      "attempt": "live-1",
+      "reason": "Harness appended duplicate flags; Spring joined 400 and 1500. Deduplicated startup options; automatic cleanup completed"
+    },
+    {
+      "attempt": "live-2",
+      "reason": "Test-only fixture jar omitted parent package directory entries; classpath component scan could not discover it. Fixed packaging and reran live-3; automatic cleanup completed"
+    }
+  ],
+  "capacityConclusion": {
+    "changed": false,
+    "fourThousandPerSecondOneHourPassed": false,
+    "newCapacityCertified": false,
+    "reference": "docs/backend-capacity-calibration.md",
+    "protective503IsHealthyCapacityFailure": true
+  },
+  "notExecuted": [
+    "New throughput calibration or one-hour soak",
+    "Cold-start traffic admission improvement",
+    "RSS growth analysis",
+    "Browser visual/interaction review",
+    "All standalone runtime sync/receipts/rollback/route publication live entrypoints; full backend tests and the real configuration/route operations within executed suites did run"
+  ],
+  "compatibility": {
+    "diagnosticSchemaVersion": 3,
+    "newOutcomes": [
+      "local_rejected",
+      "redis_rejected"
+    ],
+    "storageMigrationRequired": false,
+    "rollbackCaution": "Older binaries cannot enforce either new reject policy, even if startup configuration still says reject"
+  },
+  "cleanup": {
+    "containers": {
+      "checkedAt": "2026-10-04T16:00:48.432285+00:00",
+      "before": "608cd9bfbfe8 zenithgateway-dev-0cca169bd52a-6379 created\n0bd8e6da994e zenith-benchmark-redis-1 exited\n0d0b1eddce10 safebuild-redis exited\nb7294eee3606 zhijian exited\n8d049f9551c5 healthcare-redis exited\nda80330b0473 zenith-redis exited\n",
+      "after": "608cd9bfbfe8 zenithgateway-dev-0cca169bd52a-6379 created\n0bd8e6da994e zenith-benchmark-redis-1 exited\n0d0b1eddce10 safebuild-redis exited\nb7294eee3606 zhijian exited\n8d049f9551c5 healthcare-redis exited\nda80330b0473 zenith-redis exited\n",
+      "unchanged": true
+    },
+    "processes": {
+      "checkedAt": "2026-10-04T16:00:48.5856688Z",
+      "remaining": [],
+      "count": 0
+    },
+    "live": {
+      "A-defaultExitCode": 0,
+      "B-strictExitCode": 0,
+      "A-local-strictExitCode": 0,
+      "B-redis-strictExitCode": 0,
+      "B-strict-handoffExitCode": 0,
+      "proxyAClosed": true,
+      "proxyBClosed": true,
+      "upstreamClosed": true,
+      "redisRemoved": true
+    },
+    "rateLimitRegression": {
+      "AExitCode": 0,
+      "BExitCode": 0,
+      "B-untrustedExitCode": 0,
+      "proxyAClosed": true,
+      "proxyBClosed": true,
+      "upstreamClosed": true,
+      "redisRemoved": true
+    },
+    "proxyRegression": {
+      "gatewayExitCode": 0,
+      "upstreamClosed": true,
+      "httpsUpstreamClosed": true,
+      "redisRemoved": true,
+      "privateTlsKeyRemoved": true
+    },
+    "shutdownLogChecks": {
+      "A-default": {
+        "exitCode": 0,
+        "workersAndCommandsZero": true,
+        "deliveriesAndRetainedTasksZero": true
+      },
+      "B-strict": {
+        "exitCode": 0,
+        "workersAndCommandsZero": true,
+        "deliveriesAndRetainedTasksZero": true
+      },
+      "A-local-strict": {
+        "exitCode": 0,
+        "workersAndCommandsZero": true,
+        "deliveriesAndRetainedTasksZero": true
+      },
+      "B-redis-strict": {
+        "exitCode": 0,
+        "workersAndCommandsZero": true,
+        "deliveriesAndRetainedTasksZero": true
+      },
+      "B-strict-handoff": {
+        "exitCode": 0,
+        "workersAndCommandsZero": true,
+        "deliveriesAndRetainedTasksZero": true
+      }
+    },
+    "testRedisContainer": "zenith-policy-tests-49a97784",
+    "testRedisRemoved": true
+  },
+  "sourceHashes": {
+    "backend/src/main/java/com/zch/filter/RateLimitFilter.java": "9badbc5658f4ea74e4ccb6274d291c011688091d97d7704f9734d69f738bcdb4",
+    "backend/src/main/java/com/zch/monitor/AuditEvent.java": "a4397bfdd4198318d21ac5990782daaae5d3bc076a68660514eece856c262a37",
+    "backend/src/main/java/com/zch/monitor/GatewayMetrics.java": "9af3da060c8f4c5df08588efe02652658a0090d0dc7f7377aa6f4a463480f166",
+    "backend/src/main/java/com/zch/monitor/RequestCompletionRecorder.java": "60ced7d5389f0f314795725b81d1258d9881ce7611647ea7d959b5c0d78f85d4",
+    "backend/src/main/java/com/zch/monitor/RequestObservation.java": "2c2463818e827767e2c4f0e514acc8f6230d85fb59e82cfe8cabcdb7f2eb7199",
+    "backend/src/main/java/com/zch/monitor/TrafficData.java": "936538dd11c0888ceb6fdb7a2bfaa5ac8163bc33fc0a76d6d1cfdf670dce087d",
+    "backend/src/main/java/com/zch/ratelimit/LimitDecision.java": "326cd14f89fb5d67ac7415cd601003e5aa27c3f08d46b09ff7449497dffce743",
+    "backend/src/main/java/com/zch/ratelimit/LimiterProperties.java": "b2422c99bf9ffe3051e54a28a1a07564a38d4a950fb075b957ead5cb4cade323",
+    "backend/src/main/java/com/zch/ratelimit/LimiterTelemetry.java": "af376f2c61b07585c57e9b615aacf7c4d194e959a1bf580f79d4208bdfd95b03",
+    "backend/src/main/java/com/zch/ratelimit/RedisRateLimiter.java": "50152263ca152d4a921fa420bdd08eae5afeb5d70c95e91dceb247a1a636c12a",
+    "backend/src/main/resources/application.yml": "5d6cc8bdc167d6e8966a7a08972f8f2791a2ea830901b03223d7d61dfdfd4e27",
+    "backend/src/test/java/com/zch/filter/RateLimitFilterTest.java": "c56ea974d1b4ad5f65c8b510595242f3a4492890f5b78a58f86cfb8ab68a5bb8",
+    "backend/src/test/java/com/zch/monitor/RequestCompletionRecorderTest.java": "1b7d92ac6ea6b3f8cc1f651757fdac577a1dcc7e9c8b2053c06897600e13e038",
+    "backend/src/test/java/com/zch/ratelimit/RedisRateLimiterHandoffTest.java": "df50de995cf602d9c5047ffbe28eebe14b7f97b46a63d8d4d64f2ed97e0bb66a",
+    "frontend/src/overview/model.ts": "b4d9731de43444990fcea517ec26e462650e1d7d0cb8b66b6774abf1cb5760ef",
+    "frontend/src/stores/traffic.ts": "247a2edb8d2a46a23e901bfc0a1f7498ed7612bdfd41f291267a8dfa28807599",
+    "frontend/tests/overview.test.mjs": "742ed6b8d9e4f1d05db0e03d94faa4fa4b9acd40cb5775ddd12bab476b6f3b5c",
+    "verification/rate-limit-harness.mjs": "5517bbbfa1c6614367adef722e3393d604f50a153af950eef8b120cd74115627",
+    "backend/src/test/java/com/zch/ratelimit/LimitDecisionPolicyTest.java": "498a116fa1bca2157c3d638354385465bcf20bdf30912979c877ae91b96b0513",
+    "backend/src/test/java/com/zch/verification/LimiterPolicyGate.java": "ed28b302fcf9a88ae65bb5483b59e19d594fbd34ca090e91b296e228516e4355",
+    "verification/limiter-failure-policy-live.mjs": "1a127b41dadce0b5600460f3d3da2977d2d316244531b971acba5b8a422300d9",
+    "docs/backend-limiter-failure-policy.md": "78112a404bc6824edb6d7660fdcf1b1010a4914ecc9265851f61ee68c0e754c1"
+  },
+  "artifacts": {
+    ".dev/limiter-failure-policy-20261004/backend-verify.log": {
+      "sha256": "805108a8f95d48f234f42572970184fe100d105998cd889ed15cce97e269f845",
+      "bytes": 62843
+    },
+    ".dev/limiter-failure-policy-20261004/baseline.json": {
+      "sha256": "1b80aa4ec0ed9ce0e709c150729968ffbf76d8e0db38b21c207563c79e032167",
+      "bytes": 72010
+    },
+    ".dev/limiter-failure-policy-20261004/container-cleanup.json": {
+      "sha256": "26ec00c70298155bc022fe8ecdefcb3e1be359da0321c1ca9b2437b79bff942b",
+      "bytes": 594
+    },
+    ".dev/limiter-failure-policy-20261004/delivery-qa.json": {
+      "sha256": "5e7df863a8b41bb80f80ff9ea1aa79f05c30eb4a6dee52a0b23212f82f5b9b2a",
+      "bytes": 2419
+    },
+    ".dev/limiter-failure-policy-20261004/frontend-build.log": {
+      "sha256": "82b5a5c0a7b351a6515c6b401ab6ca9875c7a32960b5dc785b10a1ea08862a50",
+      "bytes": 1435
+    },
+    ".dev/limiter-failure-policy-20261004/frontend-tests.log": {
+      "sha256": "72b32a65de40af4a32928807b4cf36b9a060798eb3222180286542537ae83b9a",
+      "bytes": 10724
+    },
+    ".dev/limiter-failure-policy-20261004/live-1.log": {
+      "sha256": "dd819f20b79811fc9bc785eb5071b48d32a1a5f866c05ef9c2b105fe913b5390",
+      "bytes": 668
+    },
+    ".dev/limiter-failure-policy-20261004/live-2.log": {
+      "sha256": "eb5329dae8c5c30939b485b737a6032055e63d06f85d9579a9169710344268b2",
+      "bytes": 1884
+    },
+    ".dev/limiter-failure-policy-20261004/live-3.log": {
+      "sha256": "0fbf5f17ad2a39267ccb903182caa4ce0398766a78564f4de74135dcfdf4bbc7",
+      "bytes": 2699
+    },
+    ".dev/limiter-failure-policy-20261004/process-cleanup.json": {
+      "sha256": "43c2a600aea752d7275c1755ac7f3ec7af3332a38463830cbb43fc96a776fe7d",
+      "bytes": 88
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression.log": {
+      "sha256": "1cfe090183cda5b5784ad529055a8bbb67b84238d16b7dd4f3da367b0993db44",
+      "bytes": 2223
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression.log": {
+      "sha256": "fc6e51811718ee82812fe2139d650959f50d3ae759a7a93c83ed130c7931cb18",
+      "bytes": 2311
+    },
+    ".dev/limiter-failure-policy-20261004/targeted-tests.log": {
+      "sha256": "d76fe7ead0ff68669311c7b5295ef43e81f281012180984e0a0d59a25485e66b",
+      "bytes": 7657
+    },
+    ".dev/limiter-failure-policy-20261004/test-redis-cleanup.txt": {
+      "sha256": "2d5b876a426cb2b19c70d515be61fd401cbd5327da104b9e2165f387f3efea0f",
+      "bytes": 29
+    },
+    ".dev/limiter-failure-policy-20261004/test-redis-id.txt": {
+      "sha256": "5d039aa1b51bdf83dd9e25678cf562b6964079319c48eb692bda808d2e348f94",
+      "bytes": 65
+    },
+    ".dev/limiter-failure-policy-20261004/test-redis-name.txt": {
+      "sha256": "2d33f3239b8d8415bdd6241d7e098ebce07f7f47591c497daed8653ae27cf4ab",
+      "bytes": 30
+    },
+    ".dev/limiter-failure-policy-20261004/test-redis-port.txt": {
+      "sha256": "b850ff3c104c63717f105ba95d32abc4281fdbdc4b1c1c09a11fb96ae4814f5e",
+      "bytes": 7
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/A-default.log": {
+      "sha256": "1d763c02fb687bfb14989e47dc59c468fb8be5a622285ded64b2e7af032145ea",
+      "bytes": 3793
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/gateway-final.jar": {
+      "sha256": "ec12b79e361d44e73ab33a4da1f026a616a43ac21227957b667059308aaa38fb",
+      "bytes": 67120961
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/limiter-policy-fixture.jar": {
+      "sha256": "549e4325ed8bacd87e811c5d82b26450519be7c1e121a52a310f3bda87559c7c",
+      "bytes": 3504
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/proxyA-frames.json": {
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/proxyB-frames.json": {
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/report.json": {
+      "sha256": "276111356153d30d17b8c1ba31281ad75f8f06015dce5cdd1da2dd627299ec11",
+      "bytes": 1464
+    },
+    ".dev/limiter-failure-policy-20261004/live-1/upstream.json": {
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/A-default.log": {
+      "sha256": "1283ffe1d7de079a31a0ff3cc884af499204e60fd44a24a9cf0e3bf76603e686",
+      "bytes": 13323
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/A-local-strict.log": {
+      "sha256": "1f90dfd4525c87eea682e9644fcf97702e23c790d877aefacfb00b05a1220dd3",
+      "bytes": 14599
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/B-redis-strict.log": {
+      "sha256": "0aacdc492add289ba13d9608ca51f729242652477d5a723a7842e8f6c8207197",
+      "bytes": 14610
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/B-strict.log": {
+      "sha256": "1651e3be3f7724792343be7eb886531627833f8890bd1c4976b3a66839738983",
+      "bytes": 15634
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/gateway-final.jar": {
+      "sha256": "ec12b79e361d44e73ab33a4da1f026a616a43ac21227957b667059308aaa38fb",
+      "bytes": 67120961
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/limiter-policy-fixture.jar": {
+      "sha256": "ac36f3ad0c3e72decd6248b4ffcd13c7d2ae67a78e7d7eb5f81e368a6b032d05",
+      "bytes": 3504
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/proxyA-frames.json": {
+      "sha256": "ce61e90df46825eeadfc25e97584f2bcbbbdde75782c8ba2e6452de585f7d9d2",
+      "bytes": 293476
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/proxyB-frames.json": {
+      "sha256": "374caddcb5328b3d83c8683d2923ba2d7483dc2b022f9173318fd9a00923abfa",
+      "bytes": 238622
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/report.json": {
+      "sha256": "eae0341478fbce905681120a102a20f46888383658a282adf9e5fb506c570d90",
+      "bytes": 309036
+    },
+    ".dev/limiter-failure-policy-20261004/live-2/upstream.json": {
+      "sha256": "5165aaf2566ec5f0bef6af15c65f469411bd41e833b91b683e63b8f6b5069383",
+      "bytes": 2404
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/A-default.log": {
+      "sha256": "06646774efcc5e9548f5dcf10f22b4d694d81fcd6fc5a84e1eea5f0876f5a9e6",
+      "bytes": 14667
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/A-local-strict.log": {
+      "sha256": "c6bd4f51d3098a5ff152bff5f73c962215df0e67a66bbf207fd3b9c0411ee68c",
+      "bytes": 15852
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/B-redis-strict.log": {
+      "sha256": "77cc3a3dc73b21d4779cc0066ef3693d1e47323e2f50dcd8488aff527faf22a1",
+      "bytes": 15863
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/B-strict-handoff.log": {
+      "sha256": "430d3c12de2e6d902c2bf53e7de5532f425ca32813ecc2a447d725712cef02ef",
+      "bytes": 12676
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/B-strict.log": {
+      "sha256": "64d38545baf2ee02edbd9d7f8ba919f1d890d69eb8544819815c4cb8a28c89a6",
+      "bytes": 19341
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/gateway-final.jar": {
+      "sha256": "ec12b79e361d44e73ab33a4da1f026a616a43ac21227957b667059308aaa38fb",
+      "bytes": 67120961
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/invalid-local-failure-policy.log": {
+      "sha256": "d59e16c9a4a7be96d62e51ef0d5e60f665cb2f9dacaf84db07bed45919b0bcf3",
+      "bytes": 3990
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/invalid-redis-failure-policy.log": {
+      "sha256": "db32533b6f879afabbadf947f2db7bbb63388a64f294c120f161dce6db9e76ab",
+      "bytes": 3990
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/limiter-policy-fixture.jar": {
+      "sha256": "1903c285803b8bb7033611e64826298c6cfa452180aeb6fdde9d009394e81063",
+      "bytes": 3798
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/proxyA-frames.json": {
+      "sha256": "5b6c6a10b2da1d1029de5e86c5a3ac6d96f9f0ee745dde425a1a527df3f520c8",
+      "bytes": 414458
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/proxyB-frames.json": {
+      "sha256": "8390c567e41e614055b7a84f96b8005a08f60a8fb3ebb4e7c456de10aaf3391e",
+      "bytes": 462781
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/report.json": {
+      "sha256": "7b9b24219e4e21c196c5ab322ebdce8fd06bee1f33b3ad531273ad59ee5886de",
+      "bytes": 568663
+    },
+    ".dev/limiter-failure-policy-20261004/live-3/upstream.json": {
+      "sha256": "2ceae0e4be8408e5b6f6a228697342cda6a2fdd54c37f0c1c9f6227b7952daf4",
+      "bytes": 4924
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression/gateway-restarted.log": {
+      "sha256": "87f749e69ed3fe6f3c0333ef30be2639c10749cdafe4d4401f6af7c495596425",
+      "bytes": 119263
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression/gateway.log": {
+      "sha256": "65fed1f73c0939cbc216f4cba36dfda6d49f56cb165470296e195e660da74b50",
+      "bytes": 273888
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression/report.json": {
+      "sha256": "48dfd71feaf24ce475db3ca54d8f51c27df8e147e19479d0fa2d3da331dbc97e",
+      "bytes": 1026019
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression/startup-0.log": {
+      "sha256": "8687db2198b8c01f53da562e2b77b519d666911c5b41fa70e3dfe1d788ad3374",
+      "bytes": 11007
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression/startup-1.log": {
+      "sha256": "279e13c7d191c8b7d933d4cd2c70717ebe5828a4b1a2c3525fa9c7848d1c587c",
+      "bytes": 9571
+    },
+    ".dev/limiter-failure-policy-20261004/proxy-regression/upstream.json": {
+      "sha256": "c2bb2f3826ba0a12f40752a368724e222e94874fdbcde65b5bff7b040835673e",
+      "bytes": 33359
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/A.log": {
+      "sha256": "7eaf273b2ef1fa07cc5e39fe997d047489104da5ccd5b35ff27af010d3f73968",
+      "bytes": 17584
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/B-untrusted.log": {
+      "sha256": "6f14344de8c8b4afa8fbd0cd3bf064c36550c5c47eeeac2167c1d58d0f3c8283",
+      "bytes": 13782
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/B.log": {
+      "sha256": "5df93070720cba28b8f1a34fa07e9c1504c86819ca9693d8fc554c5cd36551b5",
+      "bytes": 18938
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/proxyA-frames.json": {
+      "sha256": "1b13fdb0052963181e7123e67b6d95b47c4c08a0a0ddf1767df9ecbf32d1240d",
+      "bytes": 159618
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/proxyB-frames.json": {
+      "sha256": "104176cf03fd0bbf00f331037ae1a67b3254fe8c6956dc4270b0470db74461a7",
+      "bytes": 168155
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/report.json": {
+      "sha256": "0bfe33e79f28a5033a03c63d29605878cd75315abc702907ba13f9499a821a6f",
+      "bytes": 657468
+    },
+    ".dev/limiter-failure-policy-20261004/rate-limit-regression/upstream.json": {
+      "sha256": "7e4558b7879f1abad114d4f5232a953521c5fe2adfeed74f95083b832913428a",
+      "bytes": 18482
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.GatewayRuntimePropertiesBindingTest.xml": {
+      "sha256": "765a0c4ea5bb7896f683db677e0aaf357e3f25853950fb02a2fb79858a54b220",
+      "bytes": 46735
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.RedisRuntimeConfigSyncReaderIntegrationTest.xml": {
+      "sha256": "487ed57ac19ed48f3b2165460898b1f1a0d216008f800c6dcc3f54e658fa2405",
+      "bytes": 46384
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.RuntimeConfigConcurrencyTest.xml": {
+      "sha256": "87c6b49935901d7b4dd933293c95dd04d3711b07706ea00323ea0ca1a2683c34",
+      "bytes": 46786
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.RuntimeConfigOperationsTest.xml": {
+      "sha256": "a718bd79499bcf2c73f737e866af49da97954d3caa3befeec3a1b493e19955f5",
+      "bytes": 47077
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.RuntimeConfigPersistenceTest.xml": {
+      "sha256": "0ff0006dc873d6c730296a66b3c630a09e452460d16190722572cc4e112eee26",
+      "bytes": 47216
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.RuntimeConfigRollbackTest.xml": {
+      "sha256": "f9d127b16dc9c08f2ed4ece1dce7542069a8dd406fda632ff522ef4fa04ab7a5",
+      "bytes": 47118
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.RuntimeConfigSyncTest.xml": {
+      "sha256": "3ba464d0c635eab60b3ee436ce4a73d9aa31939294c5d37f56175fa92ec1817b",
+      "bytes": 52563
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.config.StartupReadinessIntegrationTest.xml": {
+      "sha256": "8eaa5cf417618c20e23975697f5db5f1b84255937075f7860922d9518c7547d2",
+      "bytes": 56219
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.filter.AdminAuthFilterTest.xml": {
+      "sha256": "4c5ec66bbb92c84d470b88b666f8106d89200948ea559189c074aabf71629d2c",
+      "bytes": 48031
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.filter.RateLimitFilterTest.xml": {
+      "sha256": "f447a17e2f361f36f769e01cacb8ee4b7c8e02568f13950375f7044c4ff8ec0a",
+      "bytes": 48110
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.filter.ReadinessFilterTest.xml": {
+      "sha256": "28e78d9913ba9b070c6654bd7a4b99a1afba04fa649605927ac1da93093b3f05",
+      "bytes": 46943
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.monitor.AuditEventPublisherTest.xml": {
+      "sha256": "edada6b9727dc9fe50440835173db697ecd43671252ff34e6ffd474ceff2ccfb",
+      "bytes": 50510
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.monitor.GatewayMetricsTest.xml": {
+      "sha256": "bda7cda5879e1382b80d8bbb58afdbb0f0747c70bf7e13cc89157e2e8dd9fa2a",
+      "bytes": 46946
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.monitor.RedisAuditBatchWriterIntegrationTest.xml": {
+      "sha256": "24ffe9cc3408e1d19ab98046592bc119c5bde6913c62d71b26e2f70595bb9e13",
+      "bytes": 47952
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.monitor.RequestCompletionRecorderTest.xml": {
+      "sha256": "61d7512d2cc158dc08ebc4b26198e54cda6fa1f846070ab8ff385fc5c611bb81",
+      "bytes": 49274
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.monitor.TrafficMetricsServiceTest.xml": {
+      "sha256": "b418868735036c0c914de64122ada405e426f49c723623150d35cb7c53a6c284",
+      "bytes": 47586
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.proxy.ProxyResilienceTest.xml": {
+      "sha256": "1e12c1696cb78a689fe0f2b040e0bd9c6e231ae6b7fc5d2275f7a5d32c327c60",
+      "bytes": 50622
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.proxy.UpstreamTransportErrorsTest.xml": {
+      "sha256": "fbb21a0dd66d7b29c2f5ca6e3d7b93ce14f9a2bcc5c8061edd2c954f25d0cb21",
+      "bytes": 47125
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.ratelimit.LimitDecisionPolicyTest.xml": {
+      "sha256": "ccdb79e48f037aaa529c9a86d952c85092ffd58c5cc17216a69f12cbddfe8bf7",
+      "bytes": 47276
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.ratelimit.LimiterPropertiesTest.xml": {
+      "sha256": "6e8a2327140d2a2a5355375270da5d503ddca78f42bab9f26603ba3f7d6e16b3",
+      "bytes": 46962
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.ratelimit.LimiterSaturationSamplesTest.xml": {
+      "sha256": "a34cc2ff80e9637e7df70271a328cc4a64099cbc61e222cb2aa7ad368abd2f4d",
+      "bytes": 47194
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.ratelimit.RateLimitScriptIntegrationTest.xml": {
+      "sha256": "42f6dd47640980937ee614e0e71146c9677420d732436d9f30a312e72cefaef0",
+      "bytes": 50789
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.ratelimit.RedisRateLimiterHandoffTest.xml": {
+      "sha256": "79430ee0e2d3b7f7063a0402e0dac7178aa843c78afb56a06c4ba89be56e7307",
+      "bytes": 52550
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.ratelimit.RedisRateLimiterLifecycleTest.xml": {
+      "sha256": "6faf19e3ae9e8b5058311dff7d545bfe6d1155b993e46b0ea7bdbf32d6f13880",
+      "bytes": 47275
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.route.DynamicRouteServiceTest.xml": {
+      "sha256": "f425962fc44100760f97fbd8d56ea456d22a96b6d206801743486e8874a5f15e",
+      "bytes": 61393
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.route.GatewayRedisIntegrationTest.xml": {
+      "sha256": "06560be8894f6fd9aa8fc32658cd04c208c53bc765a734137ccfdae598b0663f",
+      "bytes": 72567
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.route.RoutePublicationRedisTest.xml": {
+      "sha256": "4a44318056cad24953bc93b90f7784399ace6cdfafb3a1ad590ec9b0fd79312d",
+      "bytes": 48395
+    },
+    ".dev/limiter-failure-policy-20261004/surefire-reports/TEST-com.zch.util.ClientIpResolverTest.xml": {
+      "sha256": "5fe70cbee8d164b068786c3ed0c1e74b13a7e773a75ab23a6aa4ea38b963e988",
+      "bytes": 47474
+    }
+  }
+}

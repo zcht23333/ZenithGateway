@@ -1,0 +1,8 @@
+{
+  "rateLimitEnabled": false,
+  "replenishRate": 37,
+  "burstCapacity": 51,
+  "requestedTokens": 2,
+  "monitorWindowSeconds": 12,
+  "emitIntervalSeconds": 2
+}

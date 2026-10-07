@@ -1,0 +1,100 @@
+server:
+  port: 8080
+  forward-headers-strategy: none
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  application:
+    name: zenith-gateway
+  threads:
+    virtual:
+      enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DB:0}
+      timeout: 2s
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+zenith:
+  lifecycle:
+    request-drain-timeout-ms: 10000
+    cancellation-settle-timeout-ms: 1000
+  observability:
+    enabled: true
+  admin:
+    token: ${ZENITH_ADMIN_TOKEN:}
+    token-header: Authorization
+    metrics-token: ${ZENITH_METRICS_TOKEN:}
+  proxy:
+    trusted-proxies: []
+    resilience:
+      connect-timeout-ms: 1000
+      headers-timeout-ms: 2000
+      read-idle-timeout-ms: 3000
+      total-timeout-ms: 5000
+      max-connections: 100
+      max-pending-acquires: 100
+      acquire-timeout-ms: 500
+      sliding-window-size: 20
+      minimum-calls: 10
+      failure-rate-threshold: 50
+      open-wait-ms: 10000
+      half-open-calls: 2
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://127.0.0.1:5173
+  rate-limit:
+    enabled: true
+    replenish-rate: 20
+    burst-capacity: 20
+    requested-tokens: 1
+  limiter:
+    namespace: zg:rl:v2
+    workers: 8
+    queue-capacity: 64
+    local-failure-policy: allow
+    redis-failure-policy: allow
+    result-handoff-enabled: false
+    result-workers: 2
+    decision-timeout-ms: 500
+    probe-interval-ms: 1000
+  audit:
+    enabled: true
+    buffer-size: 20000
+    buffer-max-bytes: 16777216
+    event-max-bytes: 65536
+    batch-size: 100
+    batch-max-bytes: 262144
+    flush-interval-ms: 20
+    command-timeout-ms: 1000
+    retry-max-elapsed-ms: 10000
+    dedup-ttl-seconds: 120
+    shutdown-drain-timeout-ms: 5000
+    redis-key: zg:audit:events
+    redis-max-entries: 5000
+  monitor:
+    enabled: true
+    window-seconds: 10
+    emit-interval-seconds: 1
+  route:
+    redis-key: zg:routes
+

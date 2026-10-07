@@ -1,0 +1,100 @@
+name: zenith-observability
+services:
+  redis:
+    image: redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 2s
+      retries: 12
+  gateway:
+    build:
+      context: ../backend
+    image: zenith-gateway:local
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      REDIS_HOST: redis
+      SPRING_CONFIG_IMPORT: configtree:/run/secrets/
+    secrets:
+      - source: gateway-admin
+        target: zenith.admin.token
+      - source: gateway-metrics
+        target: zenith.admin.metrics-token
+    ports:
+      - "127.0.0.1:18083:8080"
+    healthcheck:
+      test: ["CMD", "java", "-cp", "/app", "Probe", "http://127.0.0.1:8080/actuator/health/readiness"]
+      interval: 10s
+      timeout: 4s
+      start_period: 30s
+      retries: 12
+    stop_grace_period: 45s
+  prometheus:
+    image: prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.retention.time=7d"]
+    volumes:
+      - ./prometheus:/etc/prometheus:ro
+      - prometheus-data:/prometheus
+    secrets:
+      - source: gateway-metrics
+        target: metrics-token
+    ports:
+      - "127.0.0.1:19090:9090"
+  grafana:
+    image: grafana/grafana:13.1.6@sha256:d8276d620291d3aaae3e31dde6d63e6807afee49825f04e8aa7392bbe024216f
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana-password
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+    secrets:
+      - source: grafana-password
+        target: grafana-password
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "127.0.0.1:13000:3000"
+  upstream:
+    profiles: ["demo"]
+    image: node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6
+    command: ["node", "/demo/upstream.mjs"]
+    volumes:
+      - ./upstream.mjs:/demo/upstream.mjs:ro
+  verify:
+    profiles: ["verify"]
+    build:
+      context: ..
+      dockerfile: verification/Dockerfile
+    image: zenith-verify:local
+    network_mode: "service:redis"
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      ZENITH_TEST_REDIS_PORT: "6379"
+    volumes:
+      - ${ZENITH_MAVEN_REPOSITORY:-../.dev/linux-m2}:/root/.m2/repository
+      - ../.dev/third-round/linux:/reports
+      - linux-npm:/root/.npm
+secrets:
+  gateway-admin:
+    file: ../.dev/observability/secrets/admin-token
+  gateway-metrics:
+    file: ../.dev/observability/secrets/metrics-token
+  grafana-password:
+    file: ../.dev/observability/secrets/grafana-password
+volumes:
+  redis-data:
+  prometheus-data:
+  grafana-data:
+  linux-npm:

@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-07T06:09:05.006Z",
+  "status": "ready_for_acceptance",
+  "passed": true,
+  "scope": "P2: bounded Linux process-group termination after the direct parent closes; tooling only",
+  "source": {
+    "commit": "8dded422930d93a0810e4641e51e6f327fad62d6",
+    "dirty": true,
+    "changedFiles": [
+      {
+        "path": "verification/acceptance-core.mjs",
+        "sha256": "0dc07a8d73c66417473d90ae3c23ee8c78bec8073fa8cc5f46428e968d8fd07e"
+      },
+      {
+        "path": "verification/acceptance.test.mjs",
+        "sha256": "abd6b4b7a453baa6897178491cee2368652e798e1721a34a21ffea1612200766"
+      },
+      {
+        "path": "verification/fixtures/acceptance-process-tree.mjs",
+        "sha256": "bd854855894ac27d8af1937338a0989f5c46ae902a96365e6111b8aefee32f16"
+      }
+    ],
+    "snapshot": ".dev/release-process-group-p2-20261007-85f2c149/failure-timeout-prepared/source-manifest.json",
+    "snapshotInputs": 317,
+    "snapshotSha256": "594eb298effcfdfde3e17b5f430cceda024aac8bdb673f76dab1f760e46ff2bf",
+    "note": "Workspace snapshot, not a new Git commit or a rebuilt production JAR"
+  },
+  "toolchain": {
+    "node": "v24.21.0",
+    "linuxImage": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+    "linuxCommands": ".dev/release-process-group-p2-20261007-85f2c149/linux-runs.json",
+    "initCommand": ".dev/release-process-group-p2-20261007-85f2c149/linux-init-run.json"
+  },
+  "termination": {
+    "posix": {
+      "termGraceMs": 5000,
+      "killConfirmationMs": 1000,
+      "stdioCloseMs": 1000
+    },
+    "windows": {
+      "taskkillMs": 10000,
+      "stdioCloseMs": 1000
+    },
+    "semantics": "Direct parent close does not cancel or shorten group escalation. First stop reason wins. Failed confirmation stays explicit; zombies may keep group identity after execution ends."
+  },
+  "tests": {
+    "windows": {
+      "tests": 42,
+      "pass": 42,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "durationMs": 5110.9473,
+      "log": ".dev/release-process-group-p2-20261007-85f2c149/windows-tools-unrestricted.log"
+    },
+    "linux": {
+      "tests": 42,
+      "pass": 42,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "durationMs": 32377.88952,
+      "log": ".dev/release-process-group-p2-20261007-85f2c149/linux-tools.log"
+    }
+  },
+  "reproduction": {
+    "script": ".dev/review-release-acceptance-20261007-261ae875/linux-timeout-process-group.mjs",
+    "unchangedFixture": true,
+    "before": {
+      "report": ".dev/release-process-group-p2-20261007-85f2c149/before-reproduction/linux-timeout-process-group.json",
+      "cases": [
+        {
+          "label": "attached-pipes-control",
+          "parentResult": {
+            "exitCode": null,
+            "terminationSignal": "SIGTERM",
+            "timedOut": true,
+            "aborted": false,
+            "elapsedMs": 6019.706119,
+            "passed": false
+          },
+          "childPid": 25,
+          "childStillExecutingAfterEscalationWindow": false
+        },
+        {
+          "label": "detached-stdio-reproduction",
+          "parentResult": {
+            "exitCode": null,
+            "terminationSignal": "SIGTERM",
+            "timedOut": true,
+            "aborted": false,
+            "elapsedMs": 1005.7206969999988,
+            "passed": false
+          },
+          "childPid": 39,
+          "childStillExecutingAfterEscalationWindow": true
+        }
+      ],
+      "expectedFailure": true
+    },
+    "after": {
+      "report": ".dev/release-process-group-p2-20261007-85f2c149/after-reproduction/linux-timeout-process-group.json",
+      "cases": [
+        {
+          "label": "attached-pipes-control",
+          "parentResult": {
+            "exitCode": null,
+            "terminationSignal": "SIGTERM",
+            "error": "Process-group disappearance was not confirmed after SIGKILL (unreaped zombies can also keep a group present)",
+            "timedOut": true,
+            "aborted": false,
+            "termination": {
+              "method": "process-group",
+              "pid": 14,
+              "termSent": true,
+              "killSent": true,
+              "groupGone": false,
+              "error": "Process-group disappearance was not confirmed after SIGKILL (unreaped zombies can also keep a group present)"
+            },
+            "elapsedMs": 7011.498329,
+            "passed": false
+          },
+          "childPid": 25,
+          "childStillExecutingAfterEscalationWindow": false
+        },
+        {
+          "label": "detached-stdio-reproduction",
+          "parentResult": {
+            "exitCode": null,
+            "terminationSignal": "SIGTERM",
+            "error": "Process-group disappearance was not confirmed after SIGKILL (unreaped zombies can also keep a group present)",
+            "timedOut": true,
+            "aborted": false,
+            "termination": {
+              "method": "process-group",
+              "pid": 32,
+              "termSent": true,
+              "killSent": true,
+              "groupGone": false,
+              "error": "Process-group disappearance was not confirmed after SIGKILL (unreaped zombies can also keep a group present)"
+            },
+            "elapsedMs": 7005.886528999999,
+            "passed": false
+          },
+          "childPid": 39,
+          "childStillExecutingAfterEscalationWindow": false
+        }
+      ],
+      "note": "No init: writes stopped, group disappearance unconfirmed and reported as an error"
+    },
+    "withInit": {
+      "report": ".dev/release-process-group-p2-20261007-85f2c149/after-reproduction-init/linux-timeout-process-group.json",
+      "cases": [
+        {
+          "label": "attached-pipes-control",
+          "parentResult": {
+            "exitCode": null,
+            "terminationSignal": "SIGTERM",
+            "timedOut": true,
+            "aborted": false,
+            "termination": {
+              "method": "process-group",
+              "pid": 15,
+              "termSent": true,
+              "killSent": true,
+              "groupGone": true
+            },
+            "elapsedMs": 6059.159932,
+            "passed": false
+          },
+          "childPid": 26,
+          "childStillExecutingAfterEscalationWindow": false
+        },
+        {
+          "label": "detached-stdio-reproduction",
+          "parentResult": {
+            "exitCode": null,
+            "terminationSignal": "SIGTERM",
+            "timedOut": true,
+            "aborted": false,
+            "termination": {
+              "method": "process-group",
+              "pid": 33,
+              "termSent": true,
+              "killSent": true,
+              "groupGone": true
+            },
+            "elapsedMs": 6055.332231999999,
+            "passed": false
+          },
+          "childPid": 40,
+          "childStillExecutingAfterEscalationWindow": false
+        }
+      ]
+    }
+  },
+  "failureDrills": [
+    {
+      "startedAt": "2026-10-07T06:03:58.9601532+00:00",
+      "matchedExpectation": true,
+      "cleanup": {
+        "before": {
+          "containers": [
+            "68e42959bb56"
+          ],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "after": {
+          "containers": [],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "forced": true,
+        "errors": [],
+        "passed": true,
+        "credentials": {
+          "passed": true,
+          "removed": []
+        },
+        "hostAudit": {
+          "containers": {
+            "added": [],
+            "removed": []
+          },
+          "volumes": {
+            "added": [],
+            "removed": []
+          },
+          "networks": {
+            "added": [],
+            "removed": []
+          },
+          "images": {
+            "added": [],
+            "removed": []
+          },
+          "passed": true
+        }
+      },
+      "injection": {
+        "name": "injected-failure",
+        "status": "failed",
+        "startedAt": "2026-10-07T06:04:11.852Z",
+        "command": "D:\\Java\\ZenithGateway\\.dev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+        "args": [
+          "-e",
+          "console.error('intentional acceptance exit failure');process.exit(71)"
+        ],
+        "log": "logs/injected-failure.log",
+        "exitCode": 71,
+        "terminationSignal": null,
+        "error": "Error: Command failed: injected-failure exit=71 timeout=false\n    at step (file:///D:/Java/ZenithGateway/verification/acceptance.mjs:43:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///D:/Java/ZenithGateway/verification/acceptance.mjs:80:3",
+        "timedOut": false,
+        "aborted": false,
+        "elapsedMs": 69.73830000000089,
+        "passed": false,
+        "completedAt": "2026-10-07T06:04:11.923Z"
+      },
+      "exitCode": 1,
+      "completedAt": "2026-10-07T06:04:15.2182131+00:00",
+      "mode": "exit",
+      "report": ".dev/release-process-group-p2-20261007-85f2c149/failure-exit-prepared/report.json"
+    },
+    {
+      "startedAt": "2026-10-07T06:04:15.2347398+00:00",
+      "matchedExpectation": true,
+      "cleanup": {
+        "before": {
+          "containers": [
+            "d4d16ab9e979"
+          ],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "after": {
+          "containers": [],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "forced": true,
+        "errors": [],
+        "passed": true,
+        "credentials": {
+          "passed": true,
+          "removed": []
+        },
+        "hostAudit": {
+          "containers": {
+            "added": [],
+            "removed": []
+          },
+          "volumes": {
+            "added": [],
+            "removed": []
+          },
+          "networks": {
+            "added": [],
+            "removed": []
+          },
+          "images": {
+            "added": [],
+            "removed": []
+          },
+          "passed": true
+        }
+      },
+      "injection": {
+        "name": "injected-failure",
+        "status": "failed",
+        "startedAt": "2026-10-07T06:04:29.151Z",
+        "command": "D:\\Java\\ZenithGateway\\.dev\\toolchains\\node-v24.21.0-win-x64\\node.exe",
+        "args": [
+          "-e",
+          "console.log('intentional acceptance timeout');setInterval(()=>{},1000)"
+        ],
+        "log": "logs/injected-failure.log",
+        "exitCode": 1,
+        "terminationSignal": null,
+        "error": "Error: Command failed: injected-failure exit=1 timeout=true\n    at step (file:///D:/Java/ZenithGateway/verification/acceptance.mjs:43:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///D:/Java/ZenithGateway/verification/acceptance.mjs:80:3",
+        "timedOut": true,
+        "aborted": false,
+        "termination": {
+          "method": "taskkill",
+          "pid": 23200,
+          "confirmed": true
+        },
+        "elapsedMs": 688.0833999999995,
+        "passed": false,
+        "completedAt": "2026-10-07T06:04:29.841Z"
+      },
+      "exitCode": 1,
+      "completedAt": "2026-10-07T06:04:32.9684288+00:00",
+      "mode": "timeout",
+      "report": ".dev/release-process-group-p2-20261007-85f2c149/failure-timeout-prepared/report.json"
+    }
+  ],
+  "retainedFailedAttempts": [
+    {
+      "log": ".dev/release-process-group-p2-20261007-85f2c149/windows-tools.log",
+      "passed": 36,
+      "failed": 6,
+      "cause": "Sandbox taskkill access denied; owned temp directories archived and removed",
+      "probe": ".dev/release-process-group-p2-20261007-85f2c149/windows-taskkill-sandbox.json"
+    },
+    {
+      "report": ".dev/release-process-group-p2-20261007-85f2c149/failure-exit/report.json",
+      "cause": "Cached pinned Redis image was absent; injection never ran; reran with prepare in new directories"
+    }
+  ],
+  "cleanup": {
+    "passed": true,
+    "ownedContainersRemaining": 0,
+    "nodeProcessesRemaining": 0,
+    "originalContainers": 6,
+    "originalVolumes": 168,
+    "containersAndVolumesUnchanged": true,
+    "networkDifferences": [
+      {
+        "InputObject": "ab67e57d069d7eee7f5f2bab3433d443790c04d65b56f57aa2534d999b9ecd68 bridge",
+        "SideIndicator": "=>"
+      },
+      {
+        "InputObject": "d0da0a694f6f37dbeab5dba320e29ddf6e29fbc869f1ffed0ddbc7a9cf51348e bridge",
+        "SideIndicator": "<="
+      }
+    ],
+    "networkNote": "Default bridge identity changed again; cause not attributed",
+    "hostEvidence": ".dev/release-process-group-p2-20261007-85f2c149/host-after.json",
+    "temporaryDirectories": ".dev/release-process-group-p2-20261007-85f2c149/temp-cleanup.json",
+    "dockerRestoredToOff": true,
+    "dockerEvidence": ".dev/release-process-group-p2-20261007-85f2c149/docker-restoration-summary.json",
+    "retained": "Evidence, source snapshots and downloaded fixed-image cache"
+  },
+  "preservation": {
+    "report": ".dev/release-process-group-p2-20261007-85f2c149/preservation.json",
+    "reviewEvidenceUnchanged": 688,
+    "historicalArchivedBuildInputsUnchanged": 316,
+    "historicalIndexAgainstCurrentFiles": {
+      "total": 345,
+      "unchanged": 343,
+      "changed": [
+        {
+          "path": "verification/acceptance-core.mjs",
+          "before": "3053900efcf53082f78450d5511a9df887ba7a2583b90027c8e75df19221192e",
+          "after": "0dc07a8d73c66417473d90ae3c23ee8c78bec8073fa8cc5f46428e968d8fd07e"
+        },
+        {
+          "path": "verification/acceptance.test.mjs",
+          "before": "c91777f91d4339c8fb0bf9c7a717258ec15a275809b22d0c614f64dcb95d2a46",
+          "after": "abd6b4b7a453baa6897178491cee2368652e798e1721a34a21ffea1612200766"
+        }
+      ],
+      "missing": []
+    },
+    "developmentJar": {
+      "path": "backend/target/zg-1.0.0.jar",
+      "sha256": "fbe42aac9cf1ede1c4ee5e9dd4223771d4f1329e6358ba070bd51ee39db16391"
+    },
+    "developmentInstanceUpgraded": false
+  },
+  "notExecuted": [
+    "Full commit/release build matrix",
+    "Backend and frontend application tests / production build",
+    "Remote GitHub Actions",
+    "Browser interaction matrix",
+    "Real gateway proxy / limiter / configuration matrix",
+    "Cold-start comparison",
+    "One-hour capacity / RSS experiment"
+  ],
+  "boundaries": [
+    "No guarantee for descendants escaping into a different session/process group",
+    "SIGKILL of the acceptance runner or host loss can prevent cleanup",
+    "Uninterruptible kernel waits or permission failures remain explicit unconfirmed termination",
+    "Normal successful daemonizing commands are outside this timeout fix",
+    "No one-hour healthy capacity tier is certified; previous 4000 req/s one-hour run remains failed"
+  ],
+  "evidenceRoot": ".dev/release-process-group-p2-20261007-85f2c149",
+  "artifactIndex": ".dev/release-process-group-p2-20261007-85f2c149/artifact-index.json"
+}

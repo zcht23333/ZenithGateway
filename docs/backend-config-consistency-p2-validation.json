@@ -1,0 +1,478 @@
+{
+  "date": "2026-09-27",
+  "scope": [
+    "benchmark cold startup",
+    "unreviewed conflict differences after reread"
+  ],
+  "frontendTests": {
+    "passed": 57,
+    "failed": 0,
+    "newRegressionTests": 6,
+    "log": ".dev\\config-consistency-p2\\frontend-tests.log"
+  },
+  "builds": {
+    "frontend": "typecheck and production build passed",
+    "backend": "package passed; existing backend tests not rerun",
+    "remainingWarning": "existing ECharts chunk is over 500 kB"
+  },
+  "before": {
+    "sameVersionRead": "remoteChanges incorrectly empty",
+    "newerVersionRead": "10 -> 45 incorrectly shown as 30 -> 45",
+    "log": ".dev\\config-consistency-p2\\unit-before.log"
+  },
+  "coldStart": {
+    "startedAt": "2026-09-27T09:01:04.297Z",
+    "isolated": true,
+    "project": "zenith-cold-23bfaf55c5",
+    "checks": [
+      "Illegal original 1000000 startup parameters still fail with an empty runtime key",
+      "The real benchmark runner cold-starts at 10000 and completes normal warmup and measurement without 429",
+      "A fixed arrival above the enabled limiter maximum is rejected before launching the gateway",
+      "The actual profile Compose gateway cold-starts from a missing configuration key",
+      "Actual profile driver warmup completes without 429 or lost accounting",
+      "Actual profile driver measure completes without 429 or lost accounting"
+    ],
+    "evidence": {
+      "illegalStartup": {
+        "exitCode": 1,
+        "missingBeforeStart": true,
+        "missingAfterExit": true,
+        "rate": 1000000,
+        "capacity": 1000000
+      },
+      "benchmark": {
+        "source": "D:\\Java\\ZenithGateway\\benchmarks\\results\\2026-09-27T09-01-25-986Z\\summary.json",
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "confirmed": {
+          "rateLimitEnabled": true,
+          "replenishRate": 10000,
+          "burstCapacity": 10000,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "version": "defa64b1-8628-44b5-8d9d-d09e3bd9762e:1",
+          "source": "redis",
+          "confirmation": "read",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 10000,
+            "burstCapacity": 10000,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "defa64b1-8628-44b5-8d9d-d09e3bd9762e:1"
+          }
+        },
+        "runtimeKey": "zg:benchmark:runtime:2026-09-27T09-01-25-986Z:rate-limit-audit:1",
+        "missingBeforeStart": true,
+        "warmup": {
+          "elapsedSeconds": 15.0040634,
+          "requests": 13475,
+          "issued": 13475,
+          "offered": 13475,
+          "requestsPerSecond": 898.090046726942,
+          "statuses": {
+            "200": 13475
+          },
+          "transportErrors": 0,
+          "arrivalRate": 0,
+          "schedulerMisses": 0,
+          "capacityMisses": 0,
+          "peakInFlight": 16,
+          "latencyMs": {
+            "average": 17.718232727272728,
+            "p50": 16.071,
+            "p95": 33.215,
+            "p99": 47.391,
+            "max": 97.599
+          },
+          "scheduledLatencyMs": {
+            "average": 17.718992356215214,
+            "p50": 16.071,
+            "p95": 33.215,
+            "p99": 47.391,
+            "max": 97.599
+          }
+        },
+        "requests": 57922,
+        "statuses": {
+          "200": 57922
+        },
+        "transportErrors": 0,
+        "requestsPerSecond": 1930.5531612419718,
+        "audit": {
+          "received": 57922,
+          "persisted": 57922,
+          "dropped": 0,
+          "uncertain": 0,
+          "retries": 0
+        },
+        "redisCommands": {
+          "eval": 1311,
+          "evalsha": 57922,
+          "lpush": 1311,
+          "ltrim": 1311
+        }
+      },
+      "profile": {
+        "missingBeforeStart": true,
+        "confirmed": {
+          "rateLimitEnabled": true,
+          "replenishRate": 10000,
+          "burstCapacity": 10000,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "version": "edd082b0-dae5-4b08-b097-37b4c83b6be5:1",
+          "source": "redis",
+          "confirmation": "read",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 10000,
+            "burstCapacity": 10000,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "edd082b0-dae5-4b08-b097-37b4c83b6be5:1"
+          }
+        },
+        "stored": {
+          "rateLimitEnabled": true,
+          "version": "edd082b0-dae5-4b08-b097-37b4c83b6be5:1",
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "burstCapacity": 10000,
+          "schemaVersion": 1,
+          "replenishRate": 10000
+        },
+        "warmup": {
+          "seconds": 45,
+          "connections": 16,
+          "startedAt": "2026-09-27T09:02:47.241Z",
+          "elapsedSeconds": 45.001854005999995,
+          "requests": 225778,
+          "issued": 225778,
+          "offered": 225778,
+          "requestsPerSecond": 5017.082184433946,
+          "statuses": {
+            "200": 225778
+          },
+          "transportErrors": 0,
+          "arrivalRate": 0,
+          "schedulerMisses": 0,
+          "capacityMisses": 0,
+          "peakInFlight": 16,
+          "latencyMs": {
+            "average": 3.1696151307921943,
+            "p50": 2.469,
+            "p95": 6.831,
+            "p99": 15.375,
+            "max": 307.967
+          },
+          "scheduledLatencyMs": {
+            "average": 3.169819942598482,
+            "p50": 2.469,
+            "p95": 6.831,
+            "p99": 15.375,
+            "max": 307.967
+          },
+          "audit": {
+            "received": 225778,
+            "persisted": 225778,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "finalPending": 0
+        },
+        "measure": {
+          "seconds": 60,
+          "connections": 16,
+          "startedAt": "2026-09-27T09:03:33.432Z",
+          "elapsedSeconds": 60.001941595000005,
+          "requests": 358889,
+          "issued": 358889,
+          "offered": 358889,
+          "requestsPerSecond": 5981.289779294516,
+          "statuses": {
+            "200": 358889
+          },
+          "transportErrors": 0,
+          "arrivalRate": 0,
+          "schedulerMisses": 0,
+          "capacityMisses": 0,
+          "peakInFlight": 16,
+          "latencyMs": {
+            "average": 2.6565947967198773,
+            "p50": 2.387,
+            "p95": 4.615,
+            "p99": 7.227,
+            "max": 23.599
+          },
+          "scheduledLatencyMs": {
+            "average": 2.6567106960648,
+            "p50": 2.387,
+            "p95": 4.615,
+            "p99": 7.227,
+            "max": 23.599
+          },
+          "audit": {
+            "received": 358889,
+            "persisted": 358889,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "finalPending": 0
+        }
+      }
+    },
+    "cleanup": {
+      "hostRedisRemoved": true,
+      "profileRemoved": true,
+      "secretRemoved": true
+    },
+    "passed": true,
+    "environment": {
+      "dockerCpus": 16,
+      "node": "v24.21.0",
+      "redisImage": "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "jarSha256": "67333df811cc71bbc4dced65bb9387cabf297492a72f1ce07eb95a95335cfa0b"
+    },
+    "completedAt": "2026-09-27T09:04:37.337Z"
+  },
+  "browser": {
+    "startedAt": "2026-09-27T09:05:58.859Z",
+    "isolated": true,
+    "checks": [
+      "A real conflict retains draft rate 40 and displays window 10 to 30",
+      "Repeated same-version reads preserve 10 to 30 and never resend the draft",
+      "A later update still compares from 10 while adopting the newest CAS version and untouched capacity",
+      "Unavailable reads and authentication recovery preserve comparison and draft without automatic writes",
+      "Manual review and save submit the latest version once and preserve all other writers values",
+      "A subsequent conflict and discarded draft start and clear the comparison at the correct boundaries"
+    ],
+    "evidence": {
+      "initial": {
+        "rateLimitEnabled": true,
+        "replenishRate": 20,
+        "burstCapacity": 20,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "version": "296102ea-e686-4aa6-903a-fb82b67486a1:1",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "version": "296102ea-e686-4aa6-903a-fb82b67486a1:1"
+        }
+      },
+      "firstConflict": {
+        "latest": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 1,
+          "version": "296102ea-e686-4aa6-903a-fb82b67486a1:2",
+          "source": "redis",
+          "confirmation": "committed",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 20,
+            "burstCapacity": 20,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 1,
+            "version": "296102ea-e686-4aa6-903a-fb82b67486a1:2"
+          }
+        },
+        "differences": [
+          "指标统计窗口10 → 30"
+        ]
+      },
+      "sameVersionReread": {
+        "differences": [
+          "指标统计窗口10 → 30"
+        ],
+        "puts": 1
+      },
+      "laterRead": {
+        "latest": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 60,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 45,
+          "emitIntervalSeconds": 1,
+          "version": "296102ea-e686-4aa6-903a-fb82b67486a1:3",
+          "source": "redis",
+          "confirmation": "committed",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 20,
+            "burstCapacity": 60,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 45,
+            "emitIntervalSeconds": 1,
+            "version": "296102ea-e686-4aa6-903a-fb82b67486a1:3"
+          }
+        },
+        "differences": [
+          "令牌桶容量20 → 60",
+          "指标统计窗口10 → 45"
+        ],
+        "puts": 1
+      },
+      "confirmed": {
+        "rateLimitEnabled": true,
+        "version": "296102ea-e686-4aa6-903a-fb82b67486a1:4",
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 45,
+        "emitIntervalSeconds": 1,
+        "burstCapacity": 60,
+        "schemaVersion": 1,
+        "replenishRate": 40
+      },
+      "requests": [
+        {
+          "submitted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 40,
+            "burstCapacity": 20,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "expectedVersion": "296102ea-e686-4aa6-903a-fb82b67486a1:1"
+          },
+          "status": 409,
+          "response": {
+            "expectedVersion": "296102ea-e686-4aa6-903a-fb82b67486a1:1",
+            "current": {
+              "rateLimitEnabled": true,
+              "replenishRate": 20,
+              "burstCapacity": 20,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "version": "296102ea-e686-4aa6-903a-fb82b67486a1:2"
+            },
+            "adoptionIssue": null,
+            "code": "CONFIG_VERSION_CONFLICT",
+            "outcome": "not-written",
+            "message": "配置已被其他提交更新，请核对最新值与草稿后再次提交",
+            "adopted": {
+              "rateLimitEnabled": true,
+              "replenishRate": 20,
+              "burstCapacity": 20,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "version": "296102ea-e686-4aa6-903a-fb82b67486a1:2"
+            }
+          }
+        },
+        {
+          "submitted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 40,
+            "burstCapacity": 60,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 45,
+            "emitIntervalSeconds": 1,
+            "expectedVersion": "296102ea-e686-4aa6-903a-fb82b67486a1:3"
+          },
+          "status": 200,
+          "response": {
+            "rateLimitEnabled": true,
+            "replenishRate": 40,
+            "burstCapacity": 60,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 45,
+            "emitIntervalSeconds": 1,
+            "version": "296102ea-e686-4aa6-903a-fb82b67486a1:4",
+            "source": "redis",
+            "confirmation": "committed",
+            "adopted": {
+              "rateLimitEnabled": true,
+              "replenishRate": 40,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 45,
+              "emitIntervalSeconds": 1,
+              "version": "296102ea-e686-4aa6-903a-fb82b67486a1:4"
+            }
+          }
+        },
+        {
+          "submitted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 50,
+            "burstCapacity": 60,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 45,
+            "emitIntervalSeconds": 1,
+            "expectedVersion": "296102ea-e686-4aa6-903a-fb82b67486a1:4"
+          },
+          "status": 409,
+          "response": {
+            "expectedVersion": "296102ea-e686-4aa6-903a-fb82b67486a1:4",
+            "current": {
+              "rateLimitEnabled": true,
+              "replenishRate": 40,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 60,
+              "emitIntervalSeconds": 1,
+              "version": "296102ea-e686-4aa6-903a-fb82b67486a1:5"
+            },
+            "adoptionIssue": null,
+            "code": "CONFIG_VERSION_CONFLICT",
+            "outcome": "not-written",
+            "message": "配置已被其他提交更新，请核对最新值与草稿后再次提交",
+            "adopted": {
+              "rateLimitEnabled": true,
+              "replenishRate": 40,
+              "burstCapacity": 60,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 60,
+              "emitIntervalSeconds": 1,
+              "version": "296102ea-e686-4aa6-903a-fb82b67486a1:5"
+            }
+          }
+        }
+      ]
+    },
+    "pageErrors": [],
+    "cleanup": {
+      "backendExitCode": 0,
+      "redisRemoved": true,
+      "previewClosed": true
+    },
+    "passed": true,
+    "browser": "153.0.4234.48",
+    "completedAt": "2026-09-27T09:06:23.483Z"
+  },
+  "screenshots": [
+    "images/config-consistency-p2-reread-1440.png",
+    "images/config-consistency-p2-newer-read-1440.png",
+    "images/config-consistency-p2-newer-read-390.png"
+  ],
+  "passed": true
+}

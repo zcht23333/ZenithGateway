@@ -1,0 +1,874 @@
+{
+  "generatedAt": "2026-09-25T12:41:01.901Z",
+  "base": "http://127.0.0.1:15174",
+  "checks": [
+    "Normal route exposes actual ordered stages and conditional 429/503 branches",
+    "Node expands in place, exposes complete rewrite example and fields, Escape restores focus",
+    "Route switching removes unsupported stages and closes prior node panel",
+    "Search and filters keep current route until explicit selection; locate restores its directory page",
+    "32 routes paginate 6 per page, keep selection while browsing, and support keyboard selection across pages",
+    "Long route fields are complete, selectable and copyable as text and JSON",
+    "Configuration error is centralized, cached canvas remains, writes block, details and retry work",
+    "Preview create/edit/delete retains validation and generated-rule examples without live writes",
+    "320–1440px layouts keep long names readable and directory responsive at 6/4/2 entries",
+    "Mobile paging keeps the selected route; selection and node expansion fold the directory",
+    "Scenario tabs switch fixtures, and clicking the current tab preserves selection",
+    "Motion represents selection/expansion and honors reduced-motion preference",
+    "Normal, exception and 32-route browser screenshots fit a 1440×900 first viewport",
+    "Preview produces no JavaScript errors and makes no backend API requests"
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "cardCount": 6,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 676.21875,
+        "width": 1440,
+        "height": 223.78125,
+        "top": 676.21875,
+        "right": 1440,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 11,
+          "y": 444,
+          "width": 220,
+          "height": 66.78125,
+          "top": 444,
+          "right": 231,
+          "bottom": 510.78125,
+          "left": 11
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 310.5,
+          "y": 404,
+          "width": 220,
+          "height": 47.1875,
+          "top": 404,
+          "right": 530.5,
+          "bottom": 451.1875,
+          "left": 310.5
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 610,
+          "y": 382,
+          "width": 220,
+          "height": 47.1875,
+          "top": 382,
+          "right": 830,
+          "bottom": 429.1875,
+          "left": 610
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 909.5,
+          "y": 404,
+          "width": 220,
+          "height": 47.1875,
+          "top": 404,
+          "right": 1129.5,
+          "bottom": 451.1875,
+          "left": 909.5
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 1209,
+          "y": 364,
+          "width": 220,
+          "height": 66.78125,
+          "top": 364,
+          "right": 1429,
+          "bottom": 430.78125,
+          "left": 1209
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "documentWidth": 1280,
+      "documentHeight": 900,
+      "cardCount": 4,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 698.5,
+        "width": 1280,
+        "height": 201.5,
+        "top": 698.5,
+        "right": 1280,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 11,
+          "y": 467.875,
+          "width": 220,
+          "height": 66.78125,
+          "top": 467.875,
+          "right": 231,
+          "bottom": 534.65625,
+          "left": 11
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 270.5,
+          "y": 427.875,
+          "width": 220,
+          "height": 47.1875,
+          "top": 427.875,
+          "right": 490.5,
+          "bottom": 475.0625,
+          "left": 270.5
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 530,
+          "y": 405.875,
+          "width": 220,
+          "height": 47.1875,
+          "top": 405.875,
+          "right": 750,
+          "bottom": 453.0625,
+          "left": 530
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 789.5,
+          "y": 427.875,
+          "width": 220,
+          "height": 47.1875,
+          "top": 427.875,
+          "right": 1009.5,
+          "bottom": 475.0625,
+          "left": 789.5
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 1049,
+          "y": 387.875,
+          "width": 220,
+          "height": 66.78125,
+          "top": 387.875,
+          "right": 1269,
+          "bottom": 454.65625,
+          "left": 1049
+        }
+      ]
+    },
+    {
+      "width": 1100,
+      "height": 900,
+      "documentWidth": 1100,
+      "documentHeight": 900,
+      "cardCount": 4,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 678.5,
+        "width": 1100,
+        "height": 221.5,
+        "top": 678.5,
+        "right": 1100,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 6.1015625,
+          "y": 466.5,
+          "width": 199.796875,
+          "height": 61.1875,
+          "top": 466.5,
+          "right": 205.8984375,
+          "bottom": 527.6875,
+          "left": 6.1015625
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 228.1015625,
+          "y": 426.5,
+          "width": 199.796875,
+          "height": 47.1875,
+          "top": 426.5,
+          "right": 427.8984375,
+          "bottom": 473.6875,
+          "left": 228.1015625
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 450.1015625,
+          "y": 404.5,
+          "width": 199.796875,
+          "height": 47.1875,
+          "top": 404.5,
+          "right": 649.8984375,
+          "bottom": 451.6875,
+          "left": 450.1015625
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 672.1015625,
+          "y": 426.5,
+          "width": 199.796875,
+          "height": 47.1875,
+          "top": 426.5,
+          "right": 871.8984375,
+          "bottom": 473.6875,
+          "left": 672.1015625
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 894.1015625,
+          "y": 386.5,
+          "width": 199.796875,
+          "height": 61.1875,
+          "top": 386.5,
+          "right": 1093.8984375,
+          "bottom": 447.6875,
+          "left": 894.1015625
+        }
+      ]
+    },
+    {
+      "width": 960,
+      "height": 900,
+      "documentWidth": 960,
+      "documentHeight": 900,
+      "cardCount": 4,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 645.21875,
+        "width": 960,
+        "height": 254.78125,
+        "top": 645.21875,
+        "right": 960,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 21.8515625,
+          "y": 466.5,
+          "width": 168.296875,
+          "height": 61.1875,
+          "top": 466.5,
+          "right": 190.1484375,
+          "bottom": 527.6875,
+          "left": 21.8515625
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 208.8515625,
+          "y": 426.5,
+          "width": 168.296875,
+          "height": 47.1875,
+          "top": 426.5,
+          "right": 377.1484375,
+          "bottom": 473.6875,
+          "left": 208.8515625
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 395.8515625,
+          "y": 404.5,
+          "width": 168.296875,
+          "height": 47.1875,
+          "top": 404.5,
+          "right": 564.1484375,
+          "bottom": 451.6875,
+          "left": 395.8515625
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 582.8515625,
+          "y": 426.5,
+          "width": 168.296875,
+          "height": 47.1875,
+          "top": 426.5,
+          "right": 751.1484375,
+          "bottom": 473.6875,
+          "left": 582.8515625
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 769.8515625,
+          "y": 386.5,
+          "width": 168.296875,
+          "height": 61.1875,
+          "top": 386.5,
+          "right": 938.1484375,
+          "bottom": 447.6875,
+          "left": 769.8515625
+        }
+      ]
+    },
+    {
+      "width": 850,
+      "height": 900,
+      "documentWidth": 850,
+      "documentHeight": 900,
+      "cardCount": 4,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 645.21875,
+        "width": 850,
+        "height": 254.78125,
+        "top": 645.21875,
+        "right": 850,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 10.953125,
+          "y": 465.5,
+          "width": 152.09375,
+          "height": 56.875,
+          "top": 465.5,
+          "right": 163.046875,
+          "bottom": 522.375,
+          "left": 10.953125
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 179.953125,
+          "y": 425.5,
+          "width": 152.09375,
+          "height": 42.890625,
+          "top": 425.5,
+          "right": 332.046875,
+          "bottom": 468.390625,
+          "left": 179.953125
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 348.953125,
+          "y": 403.5,
+          "width": 152.09375,
+          "height": 42.890625,
+          "top": 403.5,
+          "right": 501.046875,
+          "bottom": 446.390625,
+          "left": 348.953125
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 517.953125,
+          "y": 425.5,
+          "width": 152.09375,
+          "height": 42.890625,
+          "top": 425.5,
+          "right": 670.046875,
+          "bottom": 468.390625,
+          "left": 517.953125
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 686.953125,
+          "y": 385.5,
+          "width": 152.09375,
+          "height": 56.875,
+          "top": 385.5,
+          "right": 839.046875,
+          "bottom": 442.375,
+          "left": 686.953125
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 900,
+      "documentWidth": 768,
+      "documentHeight": 936,
+      "cardCount": 4,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 643.21875,
+        "width": 768,
+        "height": 292.28125,
+        "top": 643.21875,
+        "right": 768,
+        "bottom": 935.5,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 20.1796875,
+          "y": 470.21875,
+          "width": 133.640625,
+          "height": 56.875,
+          "top": 470.21875,
+          "right": 153.8203125,
+          "bottom": 527.09375,
+          "left": 20.1796875
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 168.6796875,
+          "y": 430.21875,
+          "width": 133.640625,
+          "height": 42.890625,
+          "top": 430.21875,
+          "right": 302.3203125,
+          "bottom": 473.109375,
+          "left": 168.6796875
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 317.1796875,
+          "y": 408.21875,
+          "width": 133.640625,
+          "height": 42.890625,
+          "top": 408.21875,
+          "right": 450.8203125,
+          "bottom": 451.109375,
+          "left": 317.1796875
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 465.6796875,
+          "y": 430.21875,
+          "width": 133.640625,
+          "height": 42.890625,
+          "top": 430.21875,
+          "right": 599.3203125,
+          "bottom": 473.109375,
+          "left": 465.6796875
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 614.1796875,
+          "y": 390.21875,
+          "width": 133.640625,
+          "height": 75.0625,
+          "top": 390.21875,
+          "right": 747.8203125,
+          "bottom": 465.28125,
+          "left": 614.1796875
+        }
+      ]
+    },
+    {
+      "width": 701,
+      "height": 900,
+      "documentWidth": 701,
+      "documentHeight": 900,
+      "cardCount": 2,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 678.5,
+        "width": 701,
+        "height": 221.5,
+        "top": 678.5,
+        "right": 701,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 27.71875,
+          "y": 470.21875,
+          "width": 118.5625,
+          "height": 56.875,
+          "top": 470.21875,
+          "right": 146.28125,
+          "bottom": 527.09375,
+          "left": 27.71875
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 159.46875,
+          "y": 430.21875,
+          "width": 118.5625,
+          "height": 42.890625,
+          "top": 430.21875,
+          "right": 278.03125,
+          "bottom": 473.109375,
+          "left": 159.46875
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 291.21875,
+          "y": 408.21875,
+          "width": 118.5625,
+          "height": 42.890625,
+          "top": 408.21875,
+          "right": 409.78125,
+          "bottom": 451.109375,
+          "left": 291.21875
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 422.96875,
+          "y": 430.21875,
+          "width": 118.5625,
+          "height": 42.890625,
+          "top": 430.21875,
+          "right": 541.53125,
+          "bottom": 473.109375,
+          "left": 422.96875
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 554.71875,
+          "y": 390.21875,
+          "width": 118.5625,
+          "height": 75.0625,
+          "top": 390.21875,
+          "right": 673.28125,
+          "bottom": 465.28125,
+          "left": 554.71875
+        }
+      ]
+    },
+    {
+      "width": 700,
+      "height": 900,
+      "documentWidth": 700,
+      "documentHeight": 1126,
+      "cardCount": 2,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 664.5,
+        "width": 700,
+        "height": 235.5,
+        "top": 664.5,
+        "right": 700,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 86,
+          "y": 384.5,
+          "width": 263.671875,
+          "height": 41,
+          "top": 384.5,
+          "right": 349.671875,
+          "bottom": 425.5,
+          "left": 86
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 86,
+          "y": 458.75,
+          "width": 70.125,
+          "height": 42.5,
+          "top": 458.75,
+          "right": 156.125,
+          "bottom": 501.25,
+          "left": 86
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 86,
+          "y": 563.75,
+          "width": 66,
+          "height": 42.5,
+          "top": 563.75,
+          "right": 152,
+          "bottom": 606.25,
+          "left": 86
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 86,
+          "y": 638.75,
+          "width": 77,
+          "height": 42.5,
+          "top": 638.75,
+          "right": 163,
+          "bottom": 681.25,
+          "left": 86
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 86,
+          "y": 744.5,
+          "width": 263.671875,
+          "height": 41,
+          "top": 744.5,
+          "right": 349.671875,
+          "bottom": 785.5,
+          "left": 86
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "documentWidth": 390,
+      "documentHeight": 1218,
+      "cardCount": 2,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 640.9375,
+        "width": 390,
+        "height": 259.0625,
+        "top": 640.9375,
+        "right": 390,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 86,
+          "y": 453.671875,
+          "width": 263.671875,
+          "height": 41,
+          "top": 453.671875,
+          "right": 349.671875,
+          "bottom": 494.671875,
+          "left": 86
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 86,
+          "y": 527.921875,
+          "width": 70.125,
+          "height": 42.5,
+          "top": 527.921875,
+          "right": 156.125,
+          "bottom": 570.421875,
+          "left": 86
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 86,
+          "y": 632.921875,
+          "width": 66,
+          "height": 42.5,
+          "top": 632.921875,
+          "right": 152,
+          "bottom": 675.421875,
+          "left": 86
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 86,
+          "y": 707.921875,
+          "width": 77,
+          "height": 42.5,
+          "top": 707.921875,
+          "right": 163,
+          "bottom": 750.421875,
+          "left": 86
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 86,
+          "y": 813.671875,
+          "width": 263.671875,
+          "height": 41,
+          "top": 813.671875,
+          "right": 349.671875,
+          "bottom": 854.671875,
+          "left": 86
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 900,
+      "documentWidth": 320,
+      "documentHeight": 1423,
+      "cardCount": 2,
+      "selectedVisible": true,
+      "dock": {
+        "x": 0,
+        "y": 608.75,
+        "width": 320,
+        "height": 291.25,
+        "top": 608.75,
+        "right": 320,
+        "bottom": 900,
+        "left": 0
+      },
+      "identityClipped": false,
+      "cardLabelClipped": false,
+      "stationLabels": [
+        {
+          "text": "/api/enterprise/a…ements/v2/**匹配入口 · Path",
+          "x": 86,
+          "y": 569.5625,
+          "width": 214,
+          "height": 63.5,
+          "top": 569.5625,
+          "right": 300,
+          "bottom": 633.0625,
+          "left": 86
+        },
+        {
+          "text": "全局限流按 IP 的令牌桶",
+          "x": 86,
+          "y": 662.8125,
+          "width": 70.125,
+          "height": 42.5,
+          "top": 662.8125,
+          "right": 156.125,
+          "bottom": 705.3125,
+          "left": 86
+        },
+        {
+          "text": "路径重写改写请求路径",
+          "x": 86,
+          "y": 767.8125,
+          "width": 66,
+          "height": 42.5,
+          "top": 767.8125,
+          "right": 152,
+          "bottom": 810.3125,
+          "left": 86
+        },
+        {
+          "text": "熔断保护调用异常时降级",
+          "x": 86,
+          "y": 842.8125,
+          "width": 77,
+          "height": 42.5,
+          "top": 842.8125,
+          "right": 163,
+          "bottom": 885.3125,
+          "left": 86
+        },
+        {
+          "text": "enterprise-order-…nternal:8080目标服务 · URI",
+          "x": 86,
+          "y": 967.0625,
+          "width": 214,
+          "height": 63.5,
+          "top": 967.0625,
+          "right": 300,
+          "bottom": 1030.5625,
+          "left": 86
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "docs/images/routes-dispatch-mobile-node-390.png",
+      "width": 390,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-normal-1440.png",
+      "width": 1440,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-exception-1440.png",
+      "width": 1440,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-dense-1440.png",
+      "width": 1440,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-rewrite-1440.png",
+      "width": 1440,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-exception-detail-1440.png",
+      "width": 1440,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-960.png",
+      "width": 960,
+      "height": 900,
+      "fullPage": false
+    },
+    {
+      "file": "docs/images/routes-dispatch-390.png",
+      "width": 390,
+      "height": 900,
+      "fullPage": false
+    }
+  ],
+  "pageErrors": [],
+  "apiRequests": [],
+  "passed": true,
+  "scope": "Dispatch experiment 02 at /routes/preview; live /routes and backend unchanged.",
+  "unitTests": {
+    "command": "npm --prefix frontend test",
+    "passed": 15,
+    "newRuleIllustrationTests": 5,
+    "result": "passed"
+  },
+  "productionBuild": {
+    "command": "npm --prefix frontend run build",
+    "result": "passed",
+    "includes": "vue-tsc --noEmit and vite build",
+    "modules": 650,
+    "jsKilobytes": 701.37,
+    "jsGzipKilobytes": 242.77,
+    "cssKilobytes": 73.72,
+    "existingWarning": "Main JS chunk exceeds 500 kB."
+  },
+  "ruleExampleVerification": {
+    "result": "passed",
+    "examples": 34,
+    "fixtures": 32,
+    "additionalExamples": [
+      "Java-quoted prefix",
+      "Custom /v2/ segment replacement"
+    ],
+    "engine": "Spring PathPatternParser from project artifact (Spring 7.0.9), Java Pattern/Matcher on Java 21",
+    "method": "Checked that generated input matches actual Path pattern and Java rewrite output equals displayed example."
+  },
+  "apiContract": "Demo only; no backend process or live mutation used during this round."
+}

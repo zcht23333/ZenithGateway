@@ -1,0 +1,96 @@
+{
+  "verifiedAt": "2026-09-24T03:17:09.036945+00:00",
+  "build": {
+    "passed": true,
+    "typescript": true,
+    "warning": "Vite main chunk exceeds 500 kB; no new frontend dependencies were added."
+  },
+  "existingFrontendTests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "preview": {
+    "checks": [
+      "selection and keyboard navigation show only configured stages, including 429/503 branches",
+      "ID/Path/URI search, filter combinations and empty results preserve selection consistency",
+      "read failure retains cached routes, marks them unconfirmed, blocks writes and recovers on retry",
+      "32 routes paginate in groups of eight; searching resets the page and selects a visible route",
+      "390–1920px layouts: no horizontal overflow or clipped paths; mobile selection jumps to the detail and back",
+      "demo create/edit/delete, path validation, modal focus trap, Escape and readonly IDs",
+      "preview stays isolated: zero API requests and zero browser exceptions"
+    ],
+    "pageErrors": [],
+    "apiRequests": [],
+    "layouts": [
+      {
+        "width": 1920,
+        "scrollWidth": 1920,
+        "clipped": [],
+        "pathFont": "15px"
+      },
+      {
+        "width": 1600,
+        "scrollWidth": 1600,
+        "clipped": [],
+        "pathFont": "15px"
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "clipped": [],
+        "pathFont": "15px"
+      },
+      {
+        "width": 1280,
+        "scrollWidth": 1280,
+        "clipped": [],
+        "pathFont": "15px"
+      },
+      {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "clipped": [],
+        "pathFont": "15px"
+      },
+      {
+        "width": 768,
+        "scrollWidth": 768,
+        "clipped": [],
+        "pathFont": "15px"
+      },
+      {
+        "width": 390,
+        "scrollWidth": 390,
+        "clipped": [],
+        "pathFont": "15px"
+      }
+    ],
+    "browser": "153.0.4234.48",
+    "success": true
+  },
+  "liveBackend": {
+    "checks": [
+      "real backend authentication, empty state and memory-only credentials",
+      "server Java-regex validation preserves draft; valid UI save persists to Redis and rewrites traffic to a real upstream",
+      "editing updates runtime routing; HTTP 500 is forwarded, while connection failure takes the implemented 503 fallback",
+      "global runtime polling displays token replenishment units correctly when a request costs two tokens",
+      "injected route-read 503 retains the actual loaded config and recovers through the real API",
+      "successful writes followed by failed refresh are reported accurately without retrying or losing the saved config",
+      "navigation preserves real configuration; confirmed deletion removes the Redis rule and runtime route",
+      "an existing rule with null rewrite fields can enable rewriting and forward correctly",
+      "expired credentials return to the existing login screen",
+      "isolated test backend shut down gracefully"
+    ],
+    "pageErrors": [],
+    "browser": "153.0.4234.48",
+    "success": true,
+    "ownedRedisKeysRemoved": 5
+  },
+  "screenshots": [
+    "routes-orbit-normal.png",
+    "routes-orbit-exception.png",
+    "routes-orbit-dense.png",
+    "routes-orbit-editor.png",
+    "routes-orbit-mobile.png"
+  ]
+}

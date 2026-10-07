@@ -1,0 +1,741 @@
+{
+  "createdAt": "2026-10-04T08:07:24.019947+00:00",
+  "status": "completed_with_documented_boundaries",
+  "evidenceRoot": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh",
+  "tests": {
+    "backend": {
+      "tests": 216,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "capacityLoad": {
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "exitCode": 0
+    }
+  },
+  "attempts": 10,
+  "completedExperiments": 9,
+  "loadWindows": 38,
+  "jarEquivalence": {
+    "jarEntries": {
+      "added": [
+        "BOOT-INF/classes/application-capacity.yml"
+      ],
+      "removed": [],
+      "changed": []
+    },
+    "backendTests": {
+      "tests": 216,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "preservation": {
+      "files": 293,
+      "changed": []
+    }
+  },
+  "optionalProfile": {
+    "name": "capacity",
+    "workers": 8,
+    "queueCapacity": 128,
+    "defaultQueueUnchanged": 64,
+    "decisionTimeoutMs": 500,
+    "maximumAdmittedDecisions": 136,
+    "activatedOnlyInOwnedExperiments": true
+  },
+  "soak": {
+    "durationSeconds": 900,
+    "offered": 3600000,
+    "finished": 3599831,
+    "generatorMisses": 169,
+    "missPercent": 0.004694444444444445,
+    "successfulRequestsPerSecond": 3999.7994464272565,
+    "http200LatencyMs": {
+      "count": 3599831,
+      "p50": 1.272,
+      "p95": 2.099,
+      "p99": 3.293,
+      "max": 80.767,
+      "mean": 1.3828125484224119
+    },
+    "assessment": {
+      "healthy": true,
+      "issues": [],
+      "limiterFailOpen": 0,
+      "resourceBreaches": [],
+      "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+    },
+    "auditConfirmed": 3599831,
+    "auditDropped": 0,
+    "auditUncertain": 0,
+    "resources": {
+      "A": {
+        "heapBytes": {
+          "samples": 437,
+          "min": 45936120,
+          "median": 125697632,
+          "max": 205289104
+        },
+        "directBytes": {
+          "samples": 437,
+          "min": 5023752,
+          "median": 5031944,
+          "max": 5064712
+        },
+        "rssBytes": {
+          "samples": 87,
+          "min": 551956480,
+          "median": 584597504,
+          "max": 591937536
+        },
+        "jvmCpuFraction": {
+          "samples": 437,
+          "min": 0.02183406113537118,
+          "median": 0.47436264680607276,
+          "max": 0.5999368487527629
+        },
+        "threads": {
+          "samples": 437,
+          "min": 50,
+          "median": 50,
+          "max": 50
+        },
+        "auditPending": {
+          "samples": 437,
+          "min": 0,
+          "median": 44,
+          "max": 93
+        },
+        "auditReservedBytes": {
+          "samples": 437,
+          "min": 0,
+          "median": 83260,
+          "max": 175992
+        },
+        "limiterQueue": {
+          "samples": 437,
+          "min": 0,
+          "median": 0,
+          "max": 10
+        },
+        "limiterCommands": {
+          "samples": 437,
+          "min": 0,
+          "median": 2,
+          "max": 8
+        },
+        "limiterConnections": {
+          "samples": 437,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "limiterScheduled": {
+          "samples": 437,
+          "min": 1,
+          "median": 4,
+          "max": 17
+        },
+        "proxyConnections": {
+          "samples": 437,
+          "min": 10,
+          "median": 23,
+          "max": 100
+        },
+        "proxyPending": {
+          "samples": 437,
+          "min": 0,
+          "median": 0,
+          "max": 2
+        },
+        "chronologicalThirds": [
+          {
+            "heap": {
+              "samples": 145,
+              "min": 45936120,
+              "median": 124901320,
+              "max": 198138608
+            },
+            "rss": {
+              "samples": 29,
+              "min": 551956480,
+              "median": 569524224,
+              "max": 582369280
+            },
+            "direct": {
+              "samples": 145,
+              "min": 5023752,
+              "median": 5031944,
+              "max": 5031944
+            },
+            "threads": {
+              "samples": 145,
+              "min": 50,
+              "median": 50,
+              "max": 50
+            },
+            "auditPending": {
+              "samples": 145,
+              "min": 0,
+              "median": 43,
+              "max": 88
+            }
+          },
+          {
+            "heap": {
+              "samples": 146,
+              "min": 48204576,
+              "median": 126118304.0,
+              "max": 203134104
+            },
+            "rss": {
+              "samples": 29,
+              "min": 582369280,
+              "median": 584597504,
+              "max": 586694656
+            },
+            "direct": {
+              "samples": 146,
+              "min": 5031944,
+              "median": 5031944.0,
+              "max": 5031944
+            },
+            "threads": {
+              "samples": 146,
+              "min": 50,
+              "median": 50.0,
+              "max": 50
+            },
+            "auditPending": {
+              "samples": 146,
+              "min": 3,
+              "median": 44.5,
+              "max": 88
+            }
+          },
+          {
+            "heap": {
+              "samples": 146,
+              "min": 49892656,
+              "median": 125852392.0,
+              "max": 205289104
+            },
+            "rss": {
+              "samples": 29,
+              "min": 586825728,
+              "median": 589971456,
+              "max": 591937536
+            },
+            "direct": {
+              "samples": 146,
+              "min": 5031944,
+              "median": 5031944.0,
+              "max": 5064712
+            },
+            "threads": {
+              "samples": 146,
+              "min": 50,
+              "median": 50.0,
+              "max": 50
+            },
+            "auditPending": {
+              "samples": 146,
+              "min": 0,
+              "median": 43.5,
+              "max": 93
+            }
+          }
+        ]
+      }
+    }
+  },
+  "mutationEvents": [
+    {
+      "name": "runtime-window-12",
+      "plannedSeconds": 10,
+      "startedAt": "2026-10-04T07:59:44.368Z",
+      "result": {
+        "version": "186e1916-a633-4e4c-832f-21a3de664a96:2",
+        "adoption": [
+          {
+            "label": "A",
+            "elapsedMs": 21.937999999994645,
+            "version": "186e1916-a633-4e4c-832f-21a3de664a96:2"
+          },
+          {
+            "label": "B",
+            "elapsedMs": 351.5112999999983,
+            "version": "186e1916-a633-4e4c-832f-21a3de664a96:2"
+          }
+        ]
+      },
+      "completedAt": "2026-10-04T07:59:44.719Z"
+    },
+    {
+      "name": "route-v2",
+      "plannedSeconds": 23,
+      "startedAt": "2026-10-04T07:59:57.365Z",
+      "result": {
+        "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:34",
+        "adoption": [
+          {
+            "label": "A",
+            "elapsedMs": 19.739100000006147,
+            "proof": {
+              "label": "A",
+              "status": 200,
+              "body": "V2:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:34",
+              "elapsedMs": 3.6644999999989523,
+              "at": "2026-10-04T07:59:57.385Z"
+            }
+          },
+          {
+            "label": "B",
+            "elapsedMs": 468.78369999999995,
+            "proof": {
+              "label": "B",
+              "status": 200,
+              "body": "V2:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:34",
+              "elapsedMs": 3.880300000004354,
+              "at": "2026-10-04T07:59:57.834Z"
+            }
+          }
+        ]
+      },
+      "completedAt": "2026-10-04T07:59:57.834Z"
+    },
+    {
+      "name": "runtime-window-10",
+      "plannedSeconds": 38,
+      "startedAt": "2026-10-04T08:00:12.365Z",
+      "result": {
+        "version": "186e1916-a633-4e4c-832f-21a3de664a96:3",
+        "adoption": [
+          {
+            "label": "A",
+            "elapsedMs": 10.248600000006263,
+            "version": "186e1916-a633-4e4c-832f-21a3de664a96:3"
+          },
+          {
+            "label": "B",
+            "elapsedMs": 341.8323000000091,
+            "version": "186e1916-a633-4e4c-832f-21a3de664a96:3"
+          }
+        ]
+      },
+      "completedAt": "2026-10-04T08:00:12.707Z"
+    },
+    {
+      "name": "route-v1",
+      "plannedSeconds": 51,
+      "startedAt": "2026-10-04T08:00:25.364Z",
+      "result": {
+        "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:35",
+        "adoption": [
+          {
+            "label": "A",
+            "elapsedMs": 21.311699999991106,
+            "proof": {
+              "label": "A",
+              "status": 200,
+              "body": "V1:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:35",
+              "elapsedMs": 2.535200000012992,
+              "at": "2026-10-04T08:00:25.386Z"
+            }
+          },
+          {
+            "label": "B",
+            "elapsedMs": 577.4539999999979,
+            "proof": {
+              "label": "B",
+              "status": 200,
+              "body": "V1:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:35",
+              "elapsedMs": 2.1235000000160653,
+              "at": "2026-10-04T08:00:25.942Z"
+            }
+          }
+        ]
+      },
+      "completedAt": "2026-10-04T08:00:25.942Z"
+    }
+  ],
+  "cleanupAndPreservation": {
+    "checkedAt": "2026-10-04T08:07:24.019947+00:00",
+    "remainingOwnedContainers": [],
+    "remainingOwnedNetworks": [],
+    "remainingOwnedCredentials": [],
+    "remainingRunnerProcesses": [],
+    "buildRedisPresent": false,
+    "preservation": {
+      "checkedFiles": 293,
+      "changedFiles": []
+    },
+    "backendTests": {
+      "tests": 216,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "reportAccountingChecked": true,
+    "note": "existing-output-guard/secrets/zenith.admin.token is a deliberately retained dummy sentinel, not a real credential."
+  },
+  "rawRuns": [
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-queue-128\\summary.json",
+      "sha256": "039071513477435910b9a1570a0becdb4a36455144e779cce8e558f72e59b3b1",
+      "phase": "compare",
+      "executionPassed": true,
+      "stages": 4,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-6e4beefe-driver-4": "already_removed",
+        "zg-capacity-6e4beefe-driver-3": "already_removed",
+        "zg-capacity-6e4beefe-driver-2": "already_removed",
+        "zg-capacity-6e4beefe-driver-1": "already_removed",
+        "zg-capacity-6e4beefe-gateway-a": "removed",
+        "zg-capacity-6e4beefe-proxy": "removed",
+        "zg-capacity-6e4beefe-upstream": "removed",
+        "zg-capacity-6e4beefe-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-16\\summary.json",
+      "sha256": "0113f56422d56550e8a2d09c52e2b1e413190f6fbe150c3a7b7125ef483240d9",
+      "phase": "compare",
+      "executionPassed": true,
+      "stages": 4,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-e5eb609b-driver-4": "already_removed",
+        "zg-capacity-e5eb609b-driver-3": "already_removed",
+        "zg-capacity-e5eb609b-driver-2": "already_removed",
+        "zg-capacity-e5eb609b-driver-1": "already_removed",
+        "zg-capacity-e5eb609b-gateway-a": "removed",
+        "zg-capacity-e5eb609b-proxy": "removed",
+        "zg-capacity-e5eb609b-upstream": "removed",
+        "zg-capacity-e5eb609b-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-8\\summary.json",
+      "sha256": "f6c06ac0f2191dbf979128e5559a7d844618385172f4d25b2b18910ec0e608b3",
+      "phase": "compare",
+      "executionPassed": true,
+      "stages": 4,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-7225730d-driver-4": "already_removed",
+        "zg-capacity-7225730d-driver-3": "already_removed",
+        "zg-capacity-7225730d-driver-2": "already_removed",
+        "zg-capacity-7225730d-driver-1": "already_removed",
+        "zg-capacity-7225730d-gateway-a": "removed",
+        "zg-capacity-7225730d-proxy": "removed",
+        "zg-capacity-7225730d-upstream": "removed",
+        "zg-capacity-7225730d-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "sha256": "fb2a877394faac7a731387b3f2f9abdd78c36d581086f6053bf4759d071501e4",
+      "phase": "faults",
+      "executionPassed": true,
+      "stages": 5,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-513d2ab1-driver-5": "already_removed",
+        "zg-capacity-513d2ab1-driver-4": "already_removed",
+        "zg-capacity-513d2ab1-driver-3": "already_removed",
+        "zg-capacity-513d2ab1-driver-2": "already_removed",
+        "zg-capacity-513d2ab1-driver-1": "already_removed",
+        "zg-capacity-513d2ab1-gateway-a": "removed",
+        "zg-capacity-513d2ab1-proxy": "removed",
+        "zg-capacity-513d2ab1-upstream": "removed",
+        "zg-capacity-513d2ab1-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\mutations-capacity\\summary.json",
+      "sha256": "75aed22060044020b12255ccbf9b56c07c431e1d832586c5b43f37651bba6472",
+      "phase": "mutations",
+      "executionPassed": true,
+      "stages": 2,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "BGraceful": true,
+        "zg-capacity-59f5714f-driver-2": "already_removed",
+        "zg-capacity-59f5714f-driver-1": "already_removed",
+        "zg-capacity-59f5714f-gateway-b": "removed",
+        "zg-capacity-59f5714f-gateway-a": "removed",
+        "zg-capacity-59f5714f-proxy": "removed",
+        "zg-capacity-59f5714f-upstream": "removed",
+        "zg-capacity-59f5714f-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\pilot\\summary.json",
+      "sha256": "97d0d7cc299ef4e858c9679a8c02a888e06ad58712d2e69055a8372069c88fb2",
+      "phase": "pilot",
+      "executionPassed": false,
+      "stages": 0,
+      "error": "Error: Command failed: docker image inspect redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499 --format {{.Id}}\nError response from daemon: No such image: redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499\n\n    at genericNodeError (node:internal/errors:986:15)\n    at wrappedFn (node:internal/errors:540:14)\n    at ChildProcess.exithandler (node:child_process:417:12)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1141:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:306:5)",
+      "cleanup": {
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\pilot-v2\\summary.json",
+      "sha256": "c4f8398922fbbe0f99b5b5c905e4750e6ddbf552786c3a4b7b58d0fc7972322e",
+      "phase": "pilot",
+      "executionPassed": true,
+      "stages": 2,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-d77a49d2-driver-2": "already_removed",
+        "zg-capacity-d77a49d2-driver-1": "already_removed",
+        "zg-capacity-d77a49d2-gateway-a": "removed",
+        "zg-capacity-d77a49d2-proxy": "removed",
+        "zg-capacity-d77a49d2-upstream": "removed",
+        "zg-capacity-d77a49d2-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\summary.json",
+      "sha256": "0da887b1d8321c5e689e5996fad1d219f3b2341faf141336ad706690a616bdbc",
+      "phase": "profile",
+      "executionPassed": true,
+      "stages": 2,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-f748d471-driver-2": "already_removed",
+        "zg-capacity-f748d471-driver-1": "already_removed",
+        "zg-capacity-f748d471-gateway-a": "removed",
+        "zg-capacity-f748d471-proxy": "removed",
+        "zg-capacity-f748d471-upstream": "removed",
+        "zg-capacity-f748d471-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "sha256": "cb0a0adf0ef106479076ca3744e6351166567cef0b060a727d3d00c98fff81ce",
+      "phase": "ramp",
+      "executionPassed": true,
+      "stages": 13,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-7b89610e-driver-13": "already_removed",
+        "zg-capacity-7b89610e-driver-12": "already_removed",
+        "zg-capacity-7b89610e-driver-11": "already_removed",
+        "zg-capacity-7b89610e-driver-10": "already_removed",
+        "zg-capacity-7b89610e-driver-9": "already_removed",
+        "zg-capacity-7b89610e-driver-8": "already_removed",
+        "zg-capacity-7b89610e-driver-7": "already_removed",
+        "zg-capacity-7b89610e-driver-6": "already_removed",
+        "zg-capacity-7b89610e-driver-5": "already_removed",
+        "zg-capacity-7b89610e-driver-4": "already_removed",
+        "zg-capacity-7b89610e-driver-3": "already_removed",
+        "zg-capacity-7b89610e-driver-2": "already_removed",
+        "zg-capacity-7b89610e-driver-1": "already_removed",
+        "zg-capacity-7b89610e-gateway-a": "removed",
+        "zg-capacity-7b89610e-proxy": "removed",
+        "zg-capacity-7b89610e-upstream": "removed",
+        "zg-capacity-7b89610e-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\soak-capacity\\summary.json",
+      "sha256": "7338d7372c90adfe9eef744eac73119a13e6b3891a7170d78cee26dc72e886b9",
+      "phase": "soak",
+      "executionPassed": true,
+      "stages": 2,
+      "error": null,
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-a0e7f141-driver-2": "already_removed",
+        "zg-capacity-a0e7f141-driver-1": "already_removed",
+        "zg-capacity-a0e7f141-gateway-a": "removed",
+        "zg-capacity-a0e7f141-proxy": "removed",
+        "zg-capacity-a0e7f141-upstream": "removed",
+        "zg-capacity-a0e7f141-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\backend-capacity-study.md",
+      "bytes": 14577,
+      "sha256": "488842ea9c5f226ac4c1d79b184f8dc6e42658cfd10a7e21da2d25813f31f434"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\backend-capacity-summary-2026-10-04.json",
+      "bytes": 185984,
+      "sha256": "ff7f594c6017dc2860f76ee757dc9cdb71bb57fd4c68a824eeb0a71bfc53d941"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\images\\capacity-20261004\\capacity-comparison.png",
+      "bytes": 109605,
+      "sha256": "0e59468701bc16688bc591295c7cfb5c48e1f4e74e459948dd7c27e6ac60401b"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\images\\capacity-20261004\\capacity-soak.png",
+      "bytes": 477209,
+      "sha256": "2ef35798ddd9523fd42a9ae3967c7d15ba5b3dcd1dfa8d9f8fc05ea305cff0ba"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\identity.json",
+      "bytes": 240,
+      "sha256": "1098208386ada420d6eddbd78f33112362cd67895bc08bb184af7583f1f3556a"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\package-equivalence.json",
+      "bytes": 311,
+      "sha256": "b8273ffb1c6bf89786848f96716ccbbff6ad67cfbd1e90f0c830acced310fb60"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\backend-build-run.json",
+      "bytes": 328,
+      "sha256": "fef3989cd2a46405c3f7fbcdff9bf178731b2e0cd87c61d81074f347961f3fd4"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\backend-verify.log",
+      "bytes": 56743,
+      "sha256": "2e074d6bc018ea1d934161c2f965e817b6eeddde909b775b57317b3f0a0d9e4c"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\capacity-load-tests.log",
+      "bytes": 490,
+      "sha256": "ff80b9dad901d570323bd6581d2b15f7e002c1fdc434221865cc82a9dd371e8e"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\existing-output-guard-check.json",
+      "bytes": 100,
+      "sha256": "4cd0e2d52304dcc63fb620bcebf0acc88af3106d9a8f49c43479fe09ecb60b78"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\final-cleanup.json",
+      "bytes": 571,
+      "sha256": "f5877800d124830b13739f6c69f6c311b606b6a09268812ced686126a324771e"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\harness-final-manifest.json",
+      "bytes": 831,
+      "sha256": "d29409173172d1805acf1c96a4c7128a8341df4e6a7b1c86e83da71af807b4a3"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\02-jfr\\capacity.jfr",
+      "bytes": 6430077,
+      "sha256": "9729c4fa67cb490d1c81a4d95d1598beca0301a0c9abfe8ba42fc0a7a76e2d76"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\jfr-summary.json",
+      "bytes": 58385,
+      "sha256": "1a528ddd3e7ae839ca459949fbf0fbedd20608dbe911f977aba902c20e4fa32d"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\execution-attribution.json",
+      "bytes": 76624,
+      "sha256": "50ffd7fc9c4d94f9bd874179c7a570bbb1dddcc9b98e7a498fdabd27d513db87"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+      "bytes": 67094287,
+      "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\candidate.jar",
+      "bytes": 67094734,
+      "sha256": "55e6be5e9888f97a33651732e6823a19caeabac91659e0eb75dbb5dbe615c2cf"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\finalize-evidence.py",
+      "bytes": 8363,
+      "sha256": "cf689e5b855b054ae95a252a25d0a0fd60651b2c7bcc2cdd8cbb610dfaa3bf87"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\capacity.mjs",
+      "bytes": 25998,
+      "sha256": "366f02ee1cb71a3d18e38ff287099a60594b1b8a3f6e8003ca22eae9ee295c76"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\capacity-worker.mjs",
+      "bytes": 4677,
+      "sha256": "e5f9148ece8114607b0d8e65d4a039fc71115a071734aace6af9b42b6764e482"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\capacity-load.mjs",
+      "bytes": 5529,
+      "sha256": "b032fafb2c07aa0ba86d46bd611b9cc78fd7896a7b9625e1421cacb771c47d0e"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\capacity-load.test.mjs",
+      "bytes": 2461,
+      "sha256": "1323b6ec8b87d810a53f97b7e7337733afdd29c29b96ce184897e6d609c86280"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\redis.mjs",
+      "bytes": 2340,
+      "sha256": "d0a9a2958dd9240e120a78d9fd40fe765997f5b2f2c40f66479ed008c4dbe8e9"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\summarize-capacity.py",
+      "bytes": 5887,
+      "sha256": "8360714dd569eba37d0b51d4908a22fcfb7f3f078e4ab6bd25ed3b9bed6761bc"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\plot-capacity.py",
+      "bytes": 5511,
+      "sha256": "443174fff1ce9e6175f81e73ab8761e472aec664e03c03f3f544f6575924b72e"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\CAPACITY.md",
+      "bytes": 9072,
+      "sha256": "a9f630cee7dcbbed0f86c42ed41f3b6bde598ab8e6c70ab22a8d3112fa9f74e4"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\backend\\src\\main\\resources\\application-capacity.yml",
+      "bytes": 277,
+      "sha256": "7696008a3f34ce1a1ce65b44e6878e8d1dc6109038df2f0e9356048bd71dd506"
+    }
+  ],
+  "limits": [
+    "One development host and Docker Desktop VM, not production capacity.",
+    "6000/s is three short samples; the measured 15-minute soak is 4000/s.",
+    "RSS grew from 526.39 to 564.52 MiB, including slow growth at the end; no no-leak claim.",
+    "Redis disconnect caused 21746 explicit audit drops and 43 uncertain records; recovery cannot recover dropped events.",
+    "Warmups and the JFR sample are preserved and excluded from unprofiled capacity claims.",
+    "No frontend change or frontend regression rerun. Existing development instance was not upgraded."
+  ]
+}

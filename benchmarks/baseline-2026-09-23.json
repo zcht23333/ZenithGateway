@@ -1,0 +1,146 @@
+{
+  "runId": "2026-09-23T03-18-18-600Z",
+  "environment": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "node": "v24.14.0",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+    "logicalCpus": 16,
+    "memoryBytes": 34082521088
+  },
+  "workload": {
+    "durationSeconds": 30,
+    "warmupSeconds": 15,
+    "connections": 16,
+    "redisDelayMs": 50,
+    "closedLoop": true,
+    "jvm": "-Xms256m -Xmx512m",
+    "note": "Generator, upstream and gateway share one host. Not a production capacity estimate."
+  },
+  "scenarios": [
+    {
+      "name": "forward-only",
+      "rateLimit": false,
+      "auditEnabled": false,
+      "delayed": false,
+      "elapsedSeconds": 30.0006905,
+      "requests": 243626,
+      "requestsPerSecond": 8120.679755687623,
+      "statuses": {
+        "200": 243626
+      },
+      "transportErrors": 0,
+      "latencyMs": {
+        "average": 1.9651766601265874,
+        "p50": 1.837,
+        "p95": 2.805,
+        "p99": 3.963,
+        "max": 14.647
+      },
+      "cpuFractionAverage": 0.21187573803402338,
+      "heapBytesPeakSampled": 186385456,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0
+      },
+      "resourceSamples": 29,
+      "samplingErrors": [],
+      "wholeRunLogCountsIncludingWarmup": {}
+    },
+    {
+      "name": "rate-limit",
+      "rateLimit": true,
+      "auditEnabled": false,
+      "delayed": false,
+      "elapsedSeconds": 30.00150510000001,
+      "requests": 153979,
+      "requestsPerSecond": 5132.375842037337,
+      "statuses": {
+        "200": 153979
+      },
+      "transportErrors": 0,
+      "latencyMs": {
+        "average": 3.107853778762039,
+        "p50": 2.947,
+        "p95": 4.487,
+        "p99": 6.455,
+        "max": 17.103
+      },
+      "cpuFractionAverage": 0.2510315430614848,
+      "heapBytesPeakSampled": 190317232,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0
+      },
+      "resourceSamples": 29,
+      "samplingErrors": [],
+      "wholeRunLogCountsIncludingWarmup": {}
+    },
+    {
+      "name": "rate-limit-audit",
+      "rateLimit": true,
+      "auditEnabled": true,
+      "delayed": false,
+      "elapsedSeconds": 30.00208859999999,
+      "requests": 120647,
+      "requestsPerSecond": 4021.286704686288,
+      "statuses": {
+        "200": 120647
+      },
+      "transportErrors": 0,
+      "latencyMs": {
+        "average": 3.9657960164778236,
+        "p50": 3.801,
+        "p95": 5.443,
+        "p99": 8.163,
+        "max": 15.919
+      },
+      "cpuFractionAverage": 0.24559341293180464,
+      "heapBytesPeakSampled": 171842944,
+      "audit": {
+        "received": 120647,
+        "persisted": 107580,
+        "dropped": 13067
+      },
+      "resourceSamples": 29,
+      "samplingErrors": [],
+      "wholeRunLogCountsIncludingWarmup": {
+        "FAIL_NON_SERIALIZED": 18095
+      }
+    },
+    {
+      "name": "redis-delay",
+      "rateLimit": true,
+      "auditEnabled": true,
+      "delayed": true,
+      "elapsedSeconds": 30.010505600000005,
+      "requests": 7920,
+      "requestsPerSecond": 263.90758308317197,
+      "statuses": {
+        "200": 7920
+      },
+      "transportErrors": 0,
+      "latencyMs": {
+        "average": 60.61555353535354,
+        "p50": 60.575,
+        "p95": 68.479,
+        "p99": 70.527,
+        "max": 77.247
+      },
+      "cpuFractionAverage": 0.030627044398868555,
+      "heapBytesPeakSampled": 182801536,
+      "audit": {
+        "received": 7920,
+        "persisted": 6156,
+        "dropped": 1752
+      },
+      "resourceSamples": 29,
+      "samplingErrors": [],
+      "wholeRunLogCountsIncludingWarmup": {
+        "FAIL_NON_SERIALIZED": 2942
+      }
+    }
+  ]
+}

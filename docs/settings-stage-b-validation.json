@@ -1,0 +1,526 @@
+{
+  "generatedAt": "2026-09-26T02:59:24.782721+00:00",
+  "stage": "B - system settings",
+  "implementationComplete": true,
+  "designAcceptance": "pending user review",
+  "previousStageAcceptance": "User accepted Stage A design and preview interactions on 2026-09-26",
+  "unitTests": {
+    "passed": 39,
+    "failed": 0,
+    "newTests": 14,
+    "command": "npm --prefix frontend test"
+  },
+  "productionBuild": {
+    "passed": true,
+    "command": "npm --prefix frontend run build",
+    "modules": 662,
+    "javascriptKB": 719.54,
+    "javascriptGzipKB": 250.56,
+    "warning": "Main JavaScript chunk exceeds 500 kB; no dependency changes"
+  },
+  "settingsBrowser": {
+    "startedAt": "2026-09-26T02:54:11.670Z",
+    "checks": [
+      "Desktop first viewport exposes all six parameters, exact units, baseline and disabled no-change save",
+      "Changed fields alone form current-to-draft comparisons; raw invalid values stay visible and block saving",
+      "Saving freezes edits and repeat submissions; confirmed values become the baseline",
+      "First loading and failed reads expose no defaults; a local retry establishes the baseline",
+      "Explicit save rejection preserves editable differences and a subsequent save can succeed",
+      "A lost response requires a read first; matching server values reconcile without another write",
+      "A confirmed save survives a later read failure and its independent retry",
+      "Disabled limiting retains its values; impossible bucket combinations explain behavior without inventing validation",
+      "Mobile and narrow layouts retain readable fields, summaries and all navigation destinations",
+      "Unsaved preview navigation and browser unloading are guarded; confirmed discard exits normally",
+      "Formal management authentication and initial source failure preserve an unknown baseline until retry",
+      "Formal PUT sends exactly six valid fields once and adopts effective values without an extra GET",
+      "Formal refresh retains edited fields while updating untouched server values",
+      "Formal rejected saves retain draft and inline server errors; network and 500 failures require reconciliation",
+      "Expired credentials preserve the draft in memory and re-authentication reads before enabling a save",
+      "Formal navigation, including trailing-slash settings URLs, and disconnect protect drafts; confirmed discard clears retained state"
+    ],
+    "screenshots": [
+      {
+        "file": "docs/images/settings-stage-b-normal-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-dirty-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-invalid-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": true
+      },
+      {
+        "file": "docs/images/settings-stage-b-saved-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-loading-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-read-failure-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-rejected-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-uncertain-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-saved-read-failure-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": true
+      },
+      {
+        "file": "docs/images/settings-stage-b-normal-390.png",
+        "width": 390,
+        "height": 844,
+        "fullPage": true
+      },
+      {
+        "file": "docs/images/settings-stage-b-first-screen-390.png",
+        "width": 390,
+        "height": 844,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/settings-stage-b-read-failure-390.png",
+        "width": 390,
+        "height": 844,
+        "fullPage": true
+      },
+      {
+        "file": "docs/images/settings-stage-b-auth-restored-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      }
+    ],
+    "layouts": [
+      {
+        "width": 1440,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 1100,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 960,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 700,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 390,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 320,
+        "horizontalOverflow": false
+      }
+    ],
+    "previewApi": [],
+    "pageErrors": [],
+    "passed": true,
+    "mockedFormal": {
+      "reads": 10,
+      "writes": 5,
+      "bodies": [
+        {
+          "rateLimitEnabled": true,
+          "replenishRate": 40,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        },
+        {
+          "rateLimitEnabled": true,
+          "replenishRate": 42,
+          "burstCapacity": 60,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        },
+        {
+          "rateLimitEnabled": true,
+          "replenishRate": 43,
+          "burstCapacity": 60,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        },
+        {
+          "rateLimitEnabled": true,
+          "replenishRate": 44,
+          "burstCapacity": 60,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        },
+        {
+          "rateLimitEnabled": true,
+          "replenishRate": 44,
+          "burstCapacity": 60,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1
+        }
+      ],
+      "sourceFailuresInjected": true,
+      "credentialPersistence": {
+        "local": 0,
+        "session": 0
+      }
+    },
+    "completedAt": "2026-09-26T02:54:25.027Z"
+  },
+  "mobileInteraction": {
+    "startedAt": "2026-09-26T02:57:38.768Z",
+    "errors": [],
+    "apiRequests": [],
+    "passed": true,
+    "flow": "390px: edit two values, inspect differences, save, verify confirmed baseline"
+  },
+  "realSettings": {
+    "startedAt": "2026-09-26T02:52:31.512Z",
+    "isolated": true,
+    "checks": [
+      "Real authentication loads the six exact backend values with no demo controls",
+      "One UI save updates the live runtime and Redis; all six returned fields become the baseline",
+      "A subsequent failed read does not undo the real confirmed save; retry restores reading",
+      "An actually committed write with a dropped response reconciles via GET without duplicate PUT",
+      "Shared navigation reaches actual overview and routes after a save, including the changed metric window",
+      "Restoring the original six values through the UI is confirmed by runtime and Redis reads"
+    ],
+    "pageErrors": [],
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/dashboard/snapshot"
+      },
+      {
+        "method": "GET",
+        "path": "/dashboard/series"
+      },
+      {
+        "method": "GET",
+        "path": "/monitor/audit/recent"
+      },
+      {
+        "method": "GET",
+        "path": "/monitor/audit/status"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/sse-token"
+      },
+      {
+        "method": "GET",
+        "path": "/monitor/stream"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/routes"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "GET",
+        "path": "/dashboard/snapshot"
+      },
+      {
+        "method": "GET",
+        "path": "/monitor/audit/status"
+      },
+      {
+        "method": "GET",
+        "path": "/settings/runtime"
+      },
+      {
+        "method": "PUT",
+        "path": "/settings/runtime"
+      }
+    ],
+    "cleanup": {
+      "originalConfigurationRestored": true,
+      "backendExitCode": 0,
+      "redisRemoved": true
+    },
+    "passed": true,
+    "baseline": {
+      "rateLimitEnabled": true,
+      "replenishRate": 20,
+      "burstCapacity": 20,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 10,
+      "emitIntervalSeconds": 1
+    },
+    "confirmed": {
+      "rateLimitEnabled": false,
+      "replenishRate": 37,
+      "burstCapacity": 74,
+      "requestedTokens": 2,
+      "monitorWindowSeconds": 17,
+      "emitIntervalSeconds": 2
+    },
+    "runtimeGets": 8,
+    "runtimePuts": 3,
+    "completedAt": "2026-09-26T02:52:50.881Z"
+  },
+  "regressions": {
+    "overview": {
+      "startedAt": "2026-09-26T02:51:28.978Z",
+      "checks": [
+        "Normal first viewport prioritises QPS, P95 and two aligned trends, followed by the audit summary",
+        "Inspecting actual samples changes the readout without replacing current-window metrics",
+        "Audit details separate process counters from current queue state and explain uncertain writes",
+        "Recent records expose full long paths, exact JSON, dates, cancellation and status zero",
+        "Zero traffic, empty history, first loading, disabled monitoring and P95 overflow remain distinct",
+        "Partial failures retain timestamped old data and allow independent source recovery",
+        "320–1440px layouts keep all three navigation destinations available and long records usable",
+        "Explicit overview and route previews remain isolated from management APIs",
+        "Formal overview loads sources independently; unknown metrics stay dashes while audit records arrive",
+        "A failed records refresh retains old records; other data stays readable and retry clears the error",
+        "An open but silent stream becomes stale; a new event and reconnect recover without clearing audits",
+        "Navigation and formal-to-preview transitions release subscriptions and record polling",
+        "Non-preview URLs and expired credentials still require management authentication"
+      ],
+      "passed": true,
+      "errors": [],
+      "previewApi": []
+    },
+    "routes": {
+      "generatedAt": "2026-09-26T02:51:27.169Z",
+      "checks": [
+        "Shared ID/Path/URI search and rule filters preserve the canvas until explicit selection",
+        "All 32 complete IDs, paths and URI fields compare in rows without truncation",
+        "Keyboard navigation waits for Enter; selection closes the directory and reveals its dock page",
+        "Long and short route switches keep the title, endpoint and path origins stable",
+        "Node rest/hover/selected states differ without permanent glow; closing restores context and focus",
+        "Both conditional branches remain visible beside their expanded node at desktop widths",
+        "Full fields and new header copy controls retain exact URI/path values; cached directory remains read-only",
+        "Expanded directory fits 320–1440px and mobile selection returns to the inline path inspector",
+        "Final normal, dense and expanded-node screenshots capture actual 1440×900 first viewports",
+        "Preview remains isolated and produces no JavaScript errors"
+      ],
+      "passed": true,
+      "pageErrors": [],
+      "apiRequests": []
+    }
+  },
+  "artifacts": [
+    {
+      "file": "docs/images/settings-stage-b-auth-restored-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Formal component with isolated mocked management responses",
+      "sha256": "86471aa6050879bb41f6dc8354d5f8dc2cba2905212be45735709db19832297a"
+    },
+    {
+      "file": "docs/images/settings-stage-b-dirty-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "9d2db8fedb097708fa16b3a0a82bd61285da0d7bff8f413d17e2a742a7049a7f"
+    },
+    {
+      "file": "docs/images/settings-stage-b-first-screen-390.png",
+      "width": 390,
+      "height": 844,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "b4c44a5fb15800accde14de1b91b14416bbb44c18e87520de45b3877bdd4fd34"
+    },
+    {
+      "file": "docs/images/settings-stage-b-invalid-1440.png",
+      "width": 1440,
+      "height": 1269,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "09cb6e4c5e552153c43db4a38dcefa8f473e4e0ff860e78d36f1bba49b0147d3"
+    },
+    {
+      "file": "docs/images/settings-stage-b-live-saved-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Real isolated backend and Redis",
+      "sha256": "0a6d36e564a81f4c209944404706b73352cc3eeff480ad5d2d5e828c6cedb359"
+    },
+    {
+      "file": "docs/images/settings-stage-b-loading-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "6d8af2e6b6cbbb4186d750f764cc4eaf487192d0912a0bcde159b6579d75e14c"
+    },
+    {
+      "file": "docs/images/settings-stage-b-normal-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "372677802be23cdd8a80213ebbcf628914172f99275dabbafe8ca828e38e3beb"
+    },
+    {
+      "file": "docs/images/settings-stage-b-normal-390.png",
+      "width": 390,
+      "height": 2249,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "4624fc5f3b9f321d7c0ca5339ea6fe065660080fabc161a7efc885f3e956935c"
+    },
+    {
+      "file": "docs/images/settings-stage-b-read-failure-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "1a1a27eacc65563510c4ef6c778885c78a667ce1965902640153ea25b3dc8f26"
+    },
+    {
+      "file": "docs/images/settings-stage-b-read-failure-390.png",
+      "width": 390,
+      "height": 2365,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "aef7a87d4af1dbd4845338346d27b9d8b65a76feac51c23a7513a99912d2a001"
+    },
+    {
+      "file": "docs/images/settings-stage-b-rejected-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "1df07f4a9318757c7ac8027cf0449b74d9ed857345d05244d3accdccb719b050"
+    },
+    {
+      "file": "docs/images/settings-stage-b-saved-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "1b3c0e581cf8364db5b389699b5dee32d7146f39d8452a11689c4dfbf2598c00"
+    },
+    {
+      "file": "docs/images/settings-stage-b-saved-390.png",
+      "width": 390,
+      "height": 2342,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "8f1e3b8f06601326756c4fe6a7900b4c4ea8ea16ed6bf072526d20dd7dd30587"
+    },
+    {
+      "file": "docs/images/settings-stage-b-saved-read-failure-1440.png",
+      "width": 1440,
+      "height": 1112,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "eb6f3037d4f4b401c03ba4d0aa2b07d2cd71962ffa57a9a2d316aae5073db0cf"
+    },
+    {
+      "file": "docs/images/settings-stage-b-uncertain-1440.png",
+      "width": 1440,
+      "height": 900,
+      "source": "Explicitly labelled local settings preview",
+      "sha256": "bea5b9a5010af1b94f3466e94db5470250044e8efa87b2af37837f5d6e88c028"
+    }
+  ],
+  "video": {
+    "file": "docs/media/settings-stage-b-interaction.webm",
+    "durationSeconds": 13.2,
+    "width": 1440,
+    "height": 900,
+    "fps": 25,
+    "format": "WebM/VP8",
+    "source": "Actual Edge interaction in the explicitly labelled isolated settings preview",
+    "visuallyInspectedFramesSeconds": [
+      3,
+      7,
+      10
+    ],
+    "sha256": "dcf300a1768d577db27bc42ea6c59e558cabc0c1d0781ba8df80b9bafdf5f871"
+  },
+  "scopeReview": {
+    "baselineArchive": ".dev/settings-stage-b/before.zip",
+    "modifiedExistingFiles": [
+      "frontend/src/App.vue",
+      "frontend/src/components/AdminAccess.vue",
+      "frontend/src/components/ZenithHeader.vue",
+      "frontend/src/router/index.ts",
+      "frontend/src/styles/product.css",
+      "frontend/src/views/Settings.vue"
+    ],
+    "newFiles": [
+      "frontend/src/settings/editor.ts",
+      "frontend/src/settings/leave.ts",
+      "frontend/src/settings/model.ts",
+      "frontend/src/settings/preview.ts",
+      "frontend/src/styles/settings.css",
+      "frontend/tests/settings.test.mjs",
+      "verification/settings-stage-b-live.mjs",
+      "verification/settings-stage-b.mjs"
+    ],
+    "verifiedUnchanged": [
+      "frontend/src/views/Dashboard.vue",
+      "frontend/src/components/TrafficChart.vue",
+      "frontend/src/components/AuditHealth.vue",
+      "frontend/src/components/LogStream.vue",
+      "frontend/src/views/RouteDispatch.vue",
+      "frontend/src/styles/route-dispatch.css",
+      "frontend/src/stores/traffic.ts",
+      "frontend/src/api.ts"
+    ],
+    "backendChanges": false,
+    "dependencyChanges": false
+  }
+}

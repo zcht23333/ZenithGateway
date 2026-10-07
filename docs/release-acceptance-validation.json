@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-06T15:49:36.246187+00:00",
+  "status": "ready_for_acceptance",
+  "passed": true,
+  "scope": "Unified clean-input commit/release acceptance and three backend showcase cases; no product behavior or capacity change",
+  "evidenceRoot": ".dev/release-acceptance-20261006-7af109be",
+  "finalReport": ".dev/release-acceptance-20261006-7af109be/release-verified/report.json",
+  "finalSummary": ".dev/release-acceptance-20261006-7af109be/release-verified/summary.md",
+  "source": {
+    "commit": "8dded422930d93a0810e4641e51e6f327fad62d6",
+    "dirty": true,
+    "allowDirty": true,
+    "sha256": "7564f0a36bfe85f519c41e8e4fe1811c1258e87cd984664f67d4dc50141713a5",
+    "archiveSha256": "33f481b44ea5beb37c2a6f6f373b7392af531b5a6f1eda1b2dbca8e7c6a464bd",
+    "inputsUnchangedAfterChecks": true
+  },
+  "sourceNote": "Explicit dirty workspace snapshot; not a claim that the historical HEAD contains these changes. Git identity plus per-file input hashes are retained.",
+  "toolchains": {
+    "node": "v24.21.0",
+    "platform": "win32",
+    "arch": "x64",
+    "javaHome": "D:\\Java\\ZenithGateway\\.dev\\toolchains\\jdk-21.0.12.1+1"
+  },
+  "images": {
+    "mode": "prepare",
+    "required": [
+      "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+      "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+    ]
+  },
+  "elapsedSeconds": 809.884,
+  "artifact": {
+    "jar": ".dev/release-acceptance-20261006-7af109be/release-verified/artifacts/gateway.jar",
+    "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+    "sourceArchive": ".dev/release-acceptance-20261006-7af109be/release-verified/artifacts/source.tar",
+    "frontendFiles": [
+      {
+        "path": "assets/chart-4H820nNL.js",
+        "sha256": "d16fd5bfd6351afa26b986746274208fa56253f140abf77c7c21595e7d3e519d"
+      },
+      {
+        "path": "assets/Dashboard-BEaFi63J.css",
+        "sha256": "e19c6ab0a7f63999eec340387069046f33178115d675255dc57bc06b16db5fa9"
+      },
+      {
+        "path": "assets/Dashboard-Cpm6VwdR.js",
+        "sha256": "09eb9e5a351f65ce94d3374eaf482197e73ab4373f2ee14c3d6c206e01999888"
+      },
+      {
+        "path": "assets/DispatchCopy-BxpZ-of6.css",
+        "sha256": "e9667a3986484c23f67bad8d318ec68442a1d87b16b5b14208269879045a472e"
+      },
+      {
+        "path": "assets/DispatchCopy-DPK8XSfH.js",
+        "sha256": "bb3a68df1c85e72d19190dbcef9f6f14803d8572cbc6ee671d0b6f07a672e7da"
+      },
+      {
+        "path": "assets/index-DbmKC8R1.css",
+        "sha256": "f128a817a0bb2fadc377ecdd50087b75afad8fca91d889ae8c9d9696328d031e"
+      },
+      {
+        "path": "assets/index-nQW7hr6V.js",
+        "sha256": "856e633b9e19553ff131ed6ca3f1dd64d820b9074ea5c07b65c33b1830090205"
+      },
+      {
+        "path": "assets/RouteDispatch-ClaEf5sq.css",
+        "sha256": "84411b254204a94a1993c0c9bb5d6b87889f5b2ad4b05a9434dc15a9b1f865d2"
+      },
+      {
+        "path": "assets/RouteDispatch-pfTon45m.js",
+        "sha256": "dc98f7288cea1cb99e0a03d8e6cf1cd76308b9a8662ce11334ece9c137baf598"
+      },
+      {
+        "path": "assets/Settings-2PD5mkuE.js",
+        "sha256": "c2f4eee3441a0601f8176f823ebc94b1447f17091f55a7384e02d0ff36e7bfa3"
+      },
+      {
+        "path": "assets/Settings-8Mj5QvVf.css",
+        "sha256": "046d48344d83d55b6ac852dbdc70cff8fb614025e669484b8aafa9d84317afc2"
+      },
+      {
+        "path": "index.html",
+        "sha256": "f37daf826b26809b8666ed845d08ab0fddf270d0213ad9ec4dd26010297abffd"
+      }
+    ]
+  },
+  "executed": {
+    "backend": {
+      "tests": 252,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "tests": 107,
+      "pass": 107,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "tools": {
+      "tests": 37,
+      "pass": 37,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "monitoringFixtures": {
+      "dashboardSha256": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+      "dashboardPanels": 27,
+      "dashboardQueries": 41,
+      "dashboardCases": 8,
+      "dashboardAssertions": 97,
+      "ruleCases": 27,
+      "ruleAssertions": 86,
+      "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "passed": true
+    },
+    "backendBuild": "clean verify",
+    "frontendBuild": "npm ci and production build",
+    "workflowSyntax": "Two YAML files parsed with duplicate-key rejection; not a remote Actions execution",
+    "liveEntries": 10,
+    "liveChecks": 142
+  },
+  "live": [
+    {
+      "name": "config-sync",
+      "checks": 10,
+      "elapsedMs": 91867.31289999999,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "BExitCode": 0,
+        "B-restartedExitCode": 0,
+        "AExitCode": 0,
+        "proxyClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/config-sync/report.json"
+    },
+    {
+      "name": "config-operations",
+      "checks": 11,
+      "elapsedMs": 48968.5275,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [
+        "browser: HTTP reply loss, auth recovery and conflict UI"
+      ],
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "A-restartedExitCode": 0,
+        "proxyClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/config-operations/report.json"
+    },
+    {
+      "name": "config-rollback",
+      "checks": 9,
+      "elapsedMs": 49772.9834,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [
+        "browser: rollback selection/conflict, HTTP reply loss, auth recovery and discard lifecycle"
+      ],
+      "cleanup": {
+        "BExitCode": 0,
+        "browserClosed": true,
+        "AExitCode": 0,
+        "B-restartedExitCode": 0,
+        "proxyClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/config-rollback/report.json"
+    },
+    {
+      "name": "route-publication",
+      "checks": 19,
+      "elapsedMs": 113003.47699999996,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "A-1ExitCode": 0,
+        "B-2ExitCode": 0,
+        "B-missing-3ExitCode": 1,
+        "B-recovered-4ExitCode": 0,
+        "B-no-rewrite-5ExitCode": 0,
+        "M-migrated-6ExitCode": 0,
+        "AProxyClosed": true,
+        "BProxyClosed": true,
+        "upstreamsClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/route-publication/report.json"
+    },
+    {
+      "name": "proxy-resilience",
+      "checks": 24,
+      "elapsedMs": 77791.94660000002,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "gatewayExitCode": 0,
+        "upstreamClosed": true,
+        "httpsUpstreamClosed": true,
+        "redisRemoved": true,
+        "privateTlsKeyRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/proxy-resilience/report.json"
+    },
+    {
+      "name": "rate-limit",
+      "checks": 22,
+      "elapsedMs": 45457.18629999994,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/rate-limit/report.json"
+    },
+    {
+      "name": "rate-limit-malformed",
+      "checks": 17,
+      "elapsedMs": 14226.69140000001,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "AExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/rate-limit-malformed/report.json"
+    },
+    {
+      "name": "limiter-policy",
+      "checks": 25,
+      "elapsedMs": 108193.97680000006,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "A-defaultExitCode": 0,
+        "B-strictExitCode": 0,
+        "A-local-strictExitCode": 0,
+        "B-redis-strictExitCode": 0,
+        "B-strict-handoffExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/limiter-policy/report.json"
+    },
+    {
+      "name": "lifecycle-functional",
+      "checks": 4,
+      "elapsedMs": 114728.50359999994,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumes": [
+          "4a1dcd732aa84acaccc5414c364991cad41e0f7a5188d1a18a6fd7c2ba4d565c"
+        ],
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/lifecycle-functional/report.json"
+    },
+    {
+      "name": "lifecycle-signal",
+      "checks": 1,
+      "elapsedMs": 31698.577500000014,
+      "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+      "notExecuted": [],
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumes": [
+          "586588f2b857cdf937ee5b6234940b75c7cc87f7956b049e6f79fc1868b2260b"
+        ],
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/release-verified/checks/lifecycle-signal/report.json"
+    }
+  ],
+  "failurePaths": [
+    {
+      "mode": "exit",
+      "expectedFailureVerified": true,
+      "exitCode": 71,
+      "timedOut": false,
+      "remainingStepsNotRun": 6,
+      "cleanup": {
+        "before": {
+          "containers": [
+            "bdbd38075769"
+          ],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "after": {
+          "containers": [],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "forced": true,
+        "errors": [],
+        "passed": true,
+        "credentials": {
+          "passed": true,
+          "removed": []
+        },
+        "hostAudit": {
+          "containers": {
+            "added": [],
+            "removed": []
+          },
+          "volumes": {
+            "added": [],
+            "removed": []
+          },
+          "networks": {
+            "added": [],
+            "removed": []
+          },
+          "images": {
+            "added": [],
+            "removed": []
+          },
+          "passed": true
+        }
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/final-failure-exit/report.json"
+    },
+    {
+      "mode": "timeout",
+      "expectedFailureVerified": true,
+      "exitCode": 1,
+      "timedOut": true,
+      "remainingStepsNotRun": 6,
+      "cleanup": {
+        "before": {
+          "containers": [
+            "a96819947466"
+          ],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "after": {
+          "containers": [],
+          "networks": [],
+          "volumes": [],
+          "java": []
+        },
+        "forced": true,
+        "errors": [],
+        "passed": true,
+        "credentials": {
+          "passed": true,
+          "removed": []
+        },
+        "hostAudit": {
+          "containers": {
+            "added": [],
+            "removed": []
+          },
+          "volumes": {
+            "added": [],
+            "removed": []
+          },
+          "networks": {
+            "added": [],
+            "removed": []
+          },
+          "images": {
+            "added": [],
+            "removed": []
+          },
+          "passed": true
+        }
+      },
+      "report": ".dev/release-acceptance-20261006-7af109be/final-failure-timeout/report.json"
+    }
+  ],
+  "cacheMissingFailure": ".dev/release-acceptance-20261006-7af109be/self-exit-01/report.json",
+  "cleanupRegression": {
+    "beforeAfterProbe": ".dev/release-acceptance-20261006-7af109be/anonymous-volume-probe.json",
+    "supersededRuns": [
+      {
+        "run": "release-01",
+        "accepted": false,
+        "reason": "Functional checks passed, but anonymous volume leftovers invalidated cleanup; raw report retained without alteration",
+        "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+        "report": ".dev/release-acceptance-20261006-7af109be/release-01/report.json"
+      },
+      {
+        "run": "release-final",
+        "accepted": false,
+        "reason": "Functional checks passed, but anonymous volume leftovers invalidated cleanup; raw report retained without alteration",
+        "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+        "report": ".dev/release-acceptance-20261006-7af109be/release-final/report.json"
+      },
+      {
+        "run": "final-verified",
+        "accepted": false,
+        "reason": "Functional checks passed, but anonymous volume leftovers invalidated cleanup; raw report retained without alteration",
+        "jarSha256": "80698cf553c1f5176a8f1086d6e78cc7c4021397d7076dd59b09b074328d6231",
+        "report": ".dev/release-acceptance-20261006-7af109be/final-verified/report.json"
+      }
+    ],
+    "assessment": ".dev/release-acceptance-20261006-7af109be/superseded-cleanup-assessment.json",
+    "ownedResidualsCleaned": 15,
+    "attributionAndCleanup": ".dev/release-acceptance-20261006-7af109be/cleanup-owned-residuals.json"
+  },
+  "cleanup": {
+    "final": {
+      "before": {
+        "containers": [],
+        "networks": [],
+        "volumes": [],
+        "java": []
+      },
+      "after": {
+        "containers": [],
+        "networks": [],
+        "volumes": [],
+        "java": []
+      },
+      "forced": false,
+      "errors": [],
+      "passed": true,
+      "credentials": {
+        "passed": true,
+        "removed": []
+      },
+      "hostAudit": {
+        "containers": {
+          "added": [],
+          "removed": []
+        },
+        "volumes": {
+          "added": [],
+          "removed": []
+        },
+        "networks": {
+          "added": [],
+          "removed": []
+        },
+        "images": {
+          "added": [],
+          "removed": []
+        },
+        "passed": true
+      }
+    },
+    "originalContainerCount": 6,
+    "originalVolumeCount": 168,
+    "originalContainersAndVolumesPreserved": true,
+    "networks": {
+      "added": [
+        "8e010436f8b93e836e8f06b3e10e33033e75da7949e62618c3bc95a27bafc2a5 bridge"
+      ],
+      "removed": [
+        "4930f6519c9eb5d3cde0c6354747f8fa4cd909f91618f8fa11878e956e8ab71d bridge"
+      ]
+    },
+    "networkAttribution": "Default bridge identity changes retained as environmental evidence; cause not established. No default bridge deletion requested.",
+    "images": {
+      "added": [],
+      "removed": []
+    },
+    "retained": "Build inputs, logs, reports, source archives and packaged artifacts remain as evidence; dependency/image caches retained."
+  },
+  "preservation": {
+    "priorArtifactsChecked": 160,
+    "priorArtifactHashMismatches": [],
+    "applicationSourceFilesUnchanged": 161,
+    "rootBackendJarUnchanged": "fbe42aac9cf1ede1c4ee5e9dd4223771d4f1329e6358ba070bd51ee39db16391",
+    "developmentInstancesUpgraded": false,
+    "gitCommitCreated": false
+  },
+  "notExecuted": [
+    "Remote GitHub Actions run",
+    "Standalone browser acceptance matrices (including HTTP reply-loss UI flows)",
+    "Standalone real Prometheus/Grafana fault chain and browser screenshots",
+    "Standalone legacy 124-check migration and compatibility bundle",
+    "Full cold-start immediate-versus-ramp comparison",
+    "External load balancer rolling replacement",
+    "One-hour capacity validation",
+    "RSS attribution",
+    "Cross-operating-system bit-for-bit rebuild verification"
+  ],
+  "capacityConclusion": "4000 req/s one-hour run remains failed; no one-hour validated healthy tier; limiter result handoff remains disabled by default.",
+  "remainingBoundaries": [
+    "Clean build inputs do not imply empty Maven/npm caches or an entirely fresh host.",
+    "Original standalone verification entrypoints remain available; optional backend-only modes explicitly omit browser checks.",
+    "SIGKILL, host crash or Docker daemon failure may prevent finally cleanup; scope labels and the last report aid recovery.",
+    "Unrelated concurrent Docker resource changes make conservation checks fail conservatively, never trigger global pruning.",
+    "Source tar supports input inspection and separate Maven/npm rebuilds; unified runner requires a Git workspace."
+  ]
+}

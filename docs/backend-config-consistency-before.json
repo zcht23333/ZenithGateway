@@ -1,0 +1,88 @@
+{
+  "startedAt": "2026-09-26T03:47:13.024Z",
+  "isolated": true,
+  "checks": [
+    "Legacy actual gateway accepts stale B and overwrites A window 30 back to 10"
+  ],
+  "pageErrors": [],
+  "requests": [],
+  "cleanup": {
+    "originalConfigurationRestored": true,
+    "backendExitCode": 0,
+    "redisRemoved": true
+  },
+  "passed": true,
+  "baseline": {
+    "rateLimitEnabled": true,
+    "replenishRate": 20,
+    "burstCapacity": 20,
+    "requestedTokens": 1,
+    "monitorWindowSeconds": 10,
+    "emitIntervalSeconds": 1
+  },
+  "evidence": {
+    "aRead": {
+      "rateLimitEnabled": true,
+      "replenishRate": 20,
+      "burstCapacity": 20,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 10,
+      "emitIntervalSeconds": 1
+    },
+    "bRead": {
+      "rateLimitEnabled": true,
+      "replenishRate": 20,
+      "burstCapacity": 20,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 10,
+      "emitIntervalSeconds": 1
+    },
+    "confirmedA": {
+      "rateLimitEnabled": true,
+      "replenishRate": 20,
+      "burstCapacity": 20,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 30,
+      "emitIntervalSeconds": 1
+    },
+    "confirmedB": {
+      "rateLimitEnabled": true,
+      "replenishRate": 40,
+      "burstCapacity": 20,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 10,
+      "emitIntervalSeconds": 1
+    },
+    "stored": {
+      "rateLimitEnabled": true,
+      "replenishRate": 40,
+      "burstCapacity": 20,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 10,
+      "emitIntervalSeconds": 1
+    }
+  },
+  "completedAt": "2026-09-26T03:47:31.636Z",
+  "controlledJavaReproductions": {
+    "source": "verification/legacy/RuntimeConfigLegacyEvidenceTest.java",
+    "kind": "controlled Java test; Redis reply loss here is a mocked boundary, separate from the new real Redis test",
+    "tests": [
+      {
+        "name": "staleWholeFormOverwritesEarlierWindow",
+        "passed": true
+      },
+      {
+        "name": "readBetweenTheTwoPublicationsObservesAMixedConfiguration",
+        "passed": true
+      },
+      {
+        "name": "lostStoreReplyLeavesMemoryAndGetOldDespiteStoredWrite",
+        "passed": true
+      },
+      {
+        "name": "firstResponseCanContainSecondCommitsValues",
+        "passed": true
+      }
+    ]
+  }
+}

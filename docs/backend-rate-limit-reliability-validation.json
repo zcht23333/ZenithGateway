@@ -1,0 +1,734 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-03T14:08:34.204171+00:00",
+  "status": "ready-for-independent-acceptance",
+  "scope": "Distributed client-IP token bucket; standalone Redis 7.4; no development deployment",
+  "artifacts": {
+    "backend": {
+      "path": "D:/Java/ZenithGateway/backend/target/zg-1.0.0.jar",
+      "sha256": "bd6b93f07883153239e1a87757d84e2131a68c1e9ddaad28054e1964d2dcb1e8",
+      "bytes": 67050950
+    },
+    "baselineBackend": {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/before.jar",
+      "sha256": "13237d9543e92c3cc1f16372e30162ecb1935a417d875e713d21a7b82301c0d8",
+      "bytes": 67029556
+    },
+    "taskStartBackup": {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/before.zip",
+      "sha256": "b7094b9c9a1f9e35c3b77f3195ce9304563bea7b1e0be9e241d1cf048d2d06d8",
+      "bytes": 983154
+    },
+    "sourceManifest": {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/source-manifest-bounded.json",
+      "sha256": "d3b572f29193e4106525ab4c130472a284697f77ee16f51e2b7ca3f2f8945a92",
+      "bytes": 35200
+    },
+    "productionLua": {
+      "path": "D:/Java/ZenithGateway/backend/src/main/resources/rate-limit.lua",
+      "sha256": "5ca041db1be173825b07a8d0204f4e1ac686057500e623158f62e88d63bb3334",
+      "bytes": 4571
+    },
+    "liveEntry": {
+      "path": "D:/Java/ZenithGateway/verification/rate-limit-reliability-live.mjs",
+      "sha256": "2669d692c34940947a305baf48f96ee422cf3fa190fdc3e9d5072e1b20e51d87",
+      "bytes": 24565
+    },
+    "libraries": [
+      "spring-cloud-gateway-server-webflux-5.0.3.jar",
+      "reactor-netty-http-1.3.7.jar",
+      "lettuce-core-7.5.2.RELEASE.jar"
+    ],
+    "frontendBuildFiles": [
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/chart-DoVEyLBb.js",
+        "sha256": "9f6b94dec261291643f26c111d7e094b3631600bf0902318708d0cb8ad5b2059",
+        "bytes": 502986
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/Dashboard-BEaFi63J.css",
+        "sha256": "e19c6ab0a7f63999eec340387069046f33178115d675255dc57bc06b16db5fa9",
+        "bytes": 20272
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/Dashboard-CApopQCl.js",
+        "sha256": "76c0f912d8bd1863ba791863c7639fbb05666803f58e9f197c42f74de9dd66b8",
+        "bytes": 25938
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/DispatchCopy-BxpZ-of6.css",
+        "sha256": "e9667a3986484c23f67bad8d318ec68442a1d87b16b5b14208269879045a472e",
+        "bytes": 628
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/DispatchCopy-CDll1osE.js",
+        "sha256": "c7d8b9a74fbcad40ef0f1fc752c05e8b53887f39c1e2a0daea54b0f1756795c0",
+        "bytes": 985
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/index-BI3NbW_1.js",
+        "sha256": "bd4ca14b3c7763e1086d69661df73a61cb35f00b4c3028234300fb4beb92132c",
+        "bytes": 144294
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/index-DbmKC8R1.css",
+        "sha256": "f128a817a0bb2fadc377ecdd50087b75afad8fca91d889ae8c9d9696328d031e",
+        "bytes": 11211
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/RouteDispatch-D4TZobaw.js",
+        "sha256": "1dcc8611294d01e158c8925063383a906a9e31cf3ad8e995f40681356f14b1ab",
+        "bytes": 50295
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/RouteDispatch-DS5YzAKK.css",
+        "sha256": "ec0da0090975f1f99c6d1e9b50c7425051757d344eb53711e2303d3e45a64320",
+        "bytes": 64692
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/Settings-8Mj5QvVf.css",
+        "sha256": "046d48344d83d55b6ac852dbdc70cff8fb614025e669484b8aafa9d84317afc2",
+        "bytes": 19086
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/assets/Settings-D_BmTdg_.js",
+        "sha256": "4e93a4074973854ed515d9f065b9dc6dd8881c93d6db8af7fe09a67078ee5807",
+        "bytes": 28203
+      },
+      {
+        "path": "D:/Java/ZenithGateway/frontend/dist/index.html",
+        "sha256": "0cd2ec3777dca912015466c40d01dc95b6f7e6e47ea5d640adb4c478de9bbc6e",
+        "bytes": 450
+      }
+    ]
+  },
+  "environment": {
+    "platform": "Windows x64 / Java NIO, Docker standalone Redis",
+    "toolchains": {
+      "java": {
+        "home": "D:\\Java\\ZenithGateway\\.dev\\toolchains\\jdk-21.0.12.1+1",
+        "version": "Microsoft OpenJDK 21.0.12.1",
+        "url": "https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-windows-x64.zip",
+        "sha256": "192441a9d27da813bada974bb88b4cf64d37a9589ed37f204374d411ca5ce07f"
+      },
+      "maven": {
+        "archive": "apache-maven-3.9.16-bin.zip",
+        "url": "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip",
+        "sha512": "ed41650d42485cfc243fad22158caf9cbb5dc408ce7a09ddb94dd42a019de929ca43065bfa450612cf12bf78b5cafa3884b96c090de326ff590448c933454af3",
+        "home": "D:\\Java\\ZenithGateway\\.dev\\toolchains\\apache-maven-3.9.16"
+      },
+      "node": {
+        "archive": "node-v24.21.0-win-x64.zip",
+        "url": "https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip",
+        "sha256": "158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e541",
+        "home": "D:\\Java\\ZenithGateway\\.dev\\toolchains\\node-v24.21.0-win-x64"
+      }
+    },
+    "redisImage": "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+    "redisPersistence": "Test-only save disabled and appendonly no",
+    "isolation": {
+      "name": "zenith-limiter-914ab552",
+      "redisPort": 55045,
+      "namespace": "zg:rl:test:914ab552-fbba-40bb-94c4-7a99681994fc",
+      "upstreamPort": 55044,
+      "proxyAPort": 55050,
+      "proxyBPort": 55051
+    },
+    "gatewayPorts": {
+      "A": [
+        55052
+      ],
+      "B": [
+        54561
+      ],
+      "B-untrusted": [
+        52836
+      ]
+    },
+    "jvm": [
+      "-Xms128m",
+      "-Xmx384m",
+      "-XX:ActiveProcessorCount=4"
+    ],
+    "limiter": {
+      "workers": 2,
+      "queueCapacity": 4,
+      "decisionTimeoutMs": 400,
+      "probeIntervalMs": 300
+    },
+    "initialQuota": {
+      "capacity": 20,
+      "ratePerSecond": 1,
+      "cost": 1
+    },
+    "runtimeSync": {
+      "intervalMs": 200,
+      "timeoutMs": 200,
+      "staleAfterMs": 1000
+    }
+  },
+  "executed": {
+    "backend": {
+      "command": "mvn -f backend/pom.xml verify",
+      "passed": true,
+      "tests": 176,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/backend-bounded.log",
+        "sha256": "f48d82fa3d55636758d4fc583362dbe399df5dc0c5d5ef62996e8916a887318b",
+        "bytes": 30007
+      },
+      "suites": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/test-suites-bounded.json",
+        "sha256": "2455cb233280409e554f972c14f100b42c88e49e95df32f4634c9c69986a2975",
+        "bytes": 3425
+      },
+      "environment": {
+        "port": "65267",
+        "backendExitCode": 0,
+        "container": "zenith-limiter-tests-89a972a9",
+        "redisRemoved": true
+      }
+    },
+    "frontend": {
+      "tests": 88,
+      "passed": 88,
+      "failures": 0,
+      "skipped": 0,
+      "productionBuild": true,
+      "testLog": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/frontend-test.log",
+        "sha256": "c1c4f88a46fb0e928d160ff568749e1f77997e64df5b5350f4aca78e81a5b6f3",
+        "bytes": 9082
+      },
+      "buildLog": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/frontend-build.log",
+        "sha256": "89ac5a3b0284eb573116458e214017ca85684b85dd18ddd24ce26963be9cf331",
+        "bytes": 1435
+      },
+      "buildWarning": "Existing 502.99 kB ECharts chunk exceeds the 500 kB advisory threshold"
+    },
+    "baseline": {
+      "groups": 4,
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/baseline-f60dfd93/report.json",
+        "sha256": "aa73c887e9fd38b7af94e308c6dde3bd9fa04b3a87dd3eb6c955f17a45433153",
+        "bytes": 55853
+      },
+      "checks": [
+        "Healthy legacy shared bucket is atomic at fixed configuration",
+        "Legacy time rollback script fixture demonstrates repeated refill",
+        "Legacy Retry-After ignores actual deficit and impossible costs",
+        "Legacy timed-out decisions can remain on the wire and debit after fail-open"
+      ],
+      "clockSpent": 6,
+      "clockUniqueIntervalAllowance": 4,
+      "lateCommands": 12,
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    "limiter": {
+      "groups": 22,
+      "passed": true,
+      "httpRequests": 184,
+      "warmupRequests": 6,
+      "formalRequests": 178,
+      "mappedAndAuditedRequests": 181,
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-914ab552/report.json",
+        "sha256": "2e5e03574c8a8f6432ea7038a00784cd710e5dad0cac7ee8e97b8d19e079d76a",
+        "bytes": 358195
+      },
+      "checks": [
+        "Two authenticated local diagnostics, isolated namespace and bounded ownership",
+        "Two instances debit the same IP atomically with actual refill included; separate clients remain independent",
+        "Actual request cost and atomic deficit determine Retry-After; impossible cost has no promised recovery time",
+        "Real Redis elapsed time replenishes capacity; rejected requests persist time and balances",
+        "Controlled Lua time fixture rejects duplicate refill after rollback without changing either host clock",
+        "Gateway-clock skew cannot influence production Lua time or issue extra credit",
+        "Idle expiration is no earlier than universal quota recovery; policy survives collection and stale recreation",
+        "A newer policy settles old-rate credit then clamps; stale B cannot restore capacity, rate or cost",
+        "Disable and re-enable propagate asynchronously; bypass never resets retained credit",
+        "Foreign epoch and invalid bucket produce explicit degradation without repairing or overwriting state",
+        "Trusted IP walk and untrusted peers cannot spoof independent quotas",
+        "Executed command with lost reply is not retried or refunded; fail-open remains separately visible",
+        "Sustained overload and withheld commands keep queue, physical I/O and wait bounded; closed commands never replay",
+        "Transport disconnection degrades only quota decisions and background probes recover automatically",
+        "Client cancellation closes actual pending I/O without success accounting or automatic refund",
+        "Cancelling after Redis executed preserves the debit and never repeats the operation",
+        "A real Redis write pause bounds waiting and probes; commands received before timeout remain explicitly uncertain",
+        "Offline legacy migration and explicit epoch adoption preserve credit without changing runtime configuration",
+        "EVAL is cache independent: SCRIPT FLUSH causes one decision and no retry",
+        "Proxy requests and local diagnostics add zero runtime configuration queries",
+        "Every proxy entry reconciles to one final audit and an independent quota outcome",
+        "Graceful shutdown closes held limiter I/O and its workers; no client or command survives the instance"
+      ],
+      "sharedLedger": {
+        "spentMilli": 20000,
+        "initialMilli": 20000,
+        "refillUpperBoundMilli": 74,
+        "boundMilli": 20074
+      },
+      "faultMaxObservedHttpMs": 410.2934000000023,
+      "saturatedOwnership": {
+        "commandsInFlight": 2,
+        "queued": 4,
+        "admissionCapacity": 6,
+        "availableDecisionPermits": 0,
+        "scheduledTasks": 7,
+        "connectionSlots": 2
+      },
+      "peakCommands": 2,
+      "peakQueue": 4,
+      "recoveryAfterExplicitReleaseMs": {
+        "lostReply": 73,
+        "overload": 140,
+        "disconnect": 232
+      },
+      "executionAfterRealRedisPause": null,
+      "accountingByQuotaOutcome": {
+        "allowed": 50,
+        "redis_fail_open": 76,
+        "cancelled": 2,
+        "local_fail_open": 25,
+        "disabled": 3,
+        "limited": 24,
+        "unfulfillable": 1
+      },
+      "extraRuntimeQueries": 0,
+      "frames": [
+        {
+          "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-914ab552/proxyA-frames.json",
+          "sha256": "278eac15f6a9e13a3c1aa9182f572e8e12ba0a37af1062470a9b2774e699b0e8",
+          "bytes": 139459
+        },
+        {
+          "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-914ab552/proxyB-frames.json",
+          "sha256": "fad6b9a964bffac77b24ead613401e76c1390e4796e36d476c897c4111141416",
+          "bytes": 144261
+        }
+      ],
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    "proxy": {
+      "groups": 24,
+      "httpRequests": 102,
+      "passed": true,
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/live-07fa608c/report.json",
+        "sha256": "223325e84e45411b20f978f5db61825b226bd4e0914862f52df6f5f02e2f8414",
+        "bytes": 978278
+      },
+      "cleanup": {
+        "gatewayExitCode": 0,
+        "upstreamClosed": true,
+        "httpsUpstreamClosed": true,
+        "redisRemoved": true,
+        "privateTlsKeyRemoved": true
+      }
+    },
+    "configurationAndBrowser": {
+      "passed": true,
+      "runner": {
+        "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/regression-4f617506/report.json",
+        "sha256": "f8d63076290269a22aa9b85b183c1a0439f122268bf8275cf315d7432ad492ad",
+        "bytes": 724
+      },
+      "configurationRunner": {
+        "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/report.json",
+        "sha256": "0dc149e1de348b637c612d27c917035d9ba9567935c1a3123c8549b14b7ba3c0",
+        "bytes": 1498
+      },
+      "configurationEntries": [
+        {
+          "entry": "config-rollback-live.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-rollback-live.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-rollback-live.mjs.log",
+            "sha256": "53457f3e3156a2e3ce4c014caa152d0b51bd8e8e28d2411b7cbb96544044429f",
+            "bytes": 1547
+          }
+        },
+        {
+          "entry": "config-sync-live.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-sync-live.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-sync-live.mjs.log",
+            "sha256": "e0f921ca587126af3a12bee3b779114152fcffdb5c280eb6e9f67f59cd8b6771",
+            "bytes": 1131
+          }
+        },
+        {
+          "entry": "config-operations-live.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-operations-live.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-operations-live.mjs.log",
+            "sha256": "3b846fc2702bef372e2f927ead21227921d07b316c0d6fa8f03e00a1814c94bb",
+            "bytes": 1460
+          }
+        },
+        {
+          "entry": "config-operations-regression.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-operations-regression.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-operations-regression.mjs.log",
+            "sha256": "c7aa9321a5b9c66357a0a6214951d2b135a695344e79fc83a6d6415571a4e71a",
+            "bytes": 186
+          }
+        },
+        {
+          "entry": "config-operations-migration.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-operations-migration.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-operations-migration.mjs.log",
+            "sha256": "2830ddd812ca6c7e213e6585959571071f1f371ba919fec5e3a87caf160879b9",
+            "bytes": 72
+          }
+        },
+        {
+          "entry": "config-consistency-rollback.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-consistency-rollback.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-consistency-rollback.mjs.log",
+            "sha256": "e2922e3607d4b15d2f957e1d50d9316ef2362ddb5ebc89d96dda12fb1f14e9fb",
+            "bytes": 987
+          }
+        },
+        {
+          "entry": "config-operations-p2.mjs",
+          "exitCode": 0,
+          "log": "D:\\Java\\ZenithGateway\\.dev\\config-rollback\\regression-3e90cddd\\config-operations-p2.mjs.log",
+          "logArtifact": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/config-operations-p2.mjs.log",
+            "sha256": "24be0a49d0ddaabc7ac9bc1157fec92be6583e26085fea0c137daaaf1c8b77ca",
+            "bytes": 704
+          }
+        }
+      ],
+      "realConfigurationSuites": [
+        {
+          "suite": "rollback-live",
+          "groups": 12,
+          "passed": true,
+          "report": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/rollback-live/report.json",
+            "sha256": "d04fe2cb53703c54c26a09fa53b638512b976611904b9a2dd32cd0770a7a75ac",
+            "bytes": 48053
+          },
+          "cleanup": {
+            "BExitCode": 0,
+            "browserClosed": true,
+            "previewClosed": true,
+            "AExitCode": 0,
+            "B-restartedExitCode": 0,
+            "proxyClosed": true,
+            "proxyBClosed": true,
+            "upstreamClosed": true,
+            "redisRemoved": true
+          }
+        },
+        {
+          "suite": "sync",
+          "groups": 10,
+          "passed": true,
+          "report": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/sync/report.json",
+            "sha256": "8564885b4e6280293c61e938d553e459a8df138f3e839989961b4af95a89f412",
+            "bytes": 78575
+          },
+          "cleanup": {
+            "BExitCode": 0,
+            "B-restartedExitCode": 0,
+            "AExitCode": 0,
+            "proxyClosed": true,
+            "upstreamClosed": true,
+            "redisRemoved": true
+          }
+        },
+        {
+          "suite": "operations",
+          "groups": 12,
+          "passed": true,
+          "report": {
+            "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-3e90cddd/operations/report.json",
+            "sha256": "ecafb67baea68eec50a1c6e8376e3900b0b14b497b1090d3b647f1271e74e818",
+            "bytes": 38697
+          },
+          "cleanup": {
+            "AExitCode": 0,
+            "BExitCode": 0,
+            "A-restartedExitCode": 0,
+            "proxyClosed": true,
+            "redisRemoved": true
+          }
+        }
+      ],
+      "browserSuites": [
+        {
+          "suite": "routes-preview",
+          "report": {
+            "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/regression-4f617506/routes-preview/browser-validation.json",
+            "sha256": "46eb2e7b6a38bbce3319a100224948485f66509c857afa8dd0ccb7d0b84e07e1",
+            "bytes": 23203
+          },
+          "runnerExitCode": 0
+        },
+        {
+          "suite": "routes-live",
+          "report": {
+            "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/regression-4f617506/routes-live/validation.json",
+            "sha256": "107207ee2744ff1a63a366094bf88d230820de12f7f740c06450839af66cbba1",
+            "bytes": 1707
+          },
+          "runnerExitCode": 0
+        }
+      ],
+      "previewClosed": true
+    }
+  },
+  "preservation": {
+    "missingOriginalFiles": [],
+    "existingFilesChangedThisRound": [
+      "backend/src/main/java/com/zch/filter/AdminAuthFilter.java",
+      "backend/src/main/java/com/zch/filter/RateLimitFilter.java",
+      "backend/src/main/java/com/zch/monitor/AuditEvent.java",
+      "backend/src/main/java/com/zch/monitor/RequestCompletionRecorder.java",
+      "backend/src/main/java/com/zch/monitor/RequestObservation.java",
+      "backend/src/main/java/com/zch/monitor/TrafficData.java",
+      "backend/src/main/resources/application.yml",
+      "backend/src/test/java/com/zch/filter/RateLimitFilterTest.java",
+      "backend/src/test/java/com/zch/route/GatewayRedisIntegrationTest.java",
+      "frontend/src/overview/model.ts",
+      "frontend/src/stores/traffic.ts",
+      "frontend/tests/overview.test.mjs"
+    ],
+    "priorDocumentsVerifiedByteIdentical": 55,
+    "originalDocumentsUntouched": true,
+    "developmentInstancesUpgraded": false,
+    "intermediateEvidenceRetained": [
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/baseline/report.json",
+        "passed": true,
+        "groups": 4,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/baseline-f60dfd93/report.json",
+        "passed": true,
+        "groups": 4,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-20360d17/report.json",
+        "passed": true,
+        "groups": 21,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-2e3f1c4d/report.json",
+        "passed": true,
+        "groups": 22,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-36dc5502/report.json",
+        "passed": false,
+        "groups": 8,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-5333fbf9/report.json",
+        "passed": true,
+        "groups": 22,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-58cb348c/report.json",
+        "passed": true,
+        "groups": 17,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-69c2f2a8/report.json",
+        "passed": true,
+        "groups": 20,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-7cdf174c/report.json",
+        "passed": true,
+        "groups": 22,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-7f63e899/report.json",
+        "passed": true,
+        "groups": 22,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/live-f33aca93/report.json",
+        "passed": true,
+        "groups": 22,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/smoke/report.json",
+        "passed": false,
+        "groups": 0,
+        "cleanup": {
+          "AExitCode": 1,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-reliability/smoke-fixed/report.json",
+        "passed": true,
+        "groups": 0,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        }
+      }
+    ]
+  },
+  "cleanup": {
+    "checkedAt": "2026-10-03T22:08:34.0488013+08:00",
+    "remainingLimiterProcesses": [],
+    "remainingLimiterContainers": []
+  },
+  "guaranteeLimits": [
+    "Healthy quota bound excludes fail-open, external deletion/eviction, Redis persistence loss and failover rollback",
+    "Gateway timeout/connection close cannot undo a command already received by Redis; no retry or refund",
+    "Time rollback is a controlled Lua-source fixture; caller-clock skew uses unused legacy time hints, not changed JVM/host clocks",
+    "Idle expiry exercised with real PXAT and historical-time fixture; no actual 2.78-hour wait",
+    "Config enable/disable propagation is asynchronous; saving is not immediate fleet-wide policy enforcement",
+    "Migration and epoch adoption are offline per-bucket operations, not an all-keys transaction"
+  ],
+  "notExecuted": [
+    "Linux epoll",
+    "Redis TLS/ACL matrix for the new dedicated client",
+    "Long-duration production load or capacity benchmark",
+    "Redis OOM failure between the two SET commands",
+    "Redis persistence restart/failover guarantees",
+    "Development/production upgrade or host-clock alteration"
+  ],
+  "priorEvidenceOnly": [
+    "Previous independent proxy P2 original reproducer scripts were reviewed; the expanded 24-group matrix was personally rerun",
+    "Earlier Redis authentication/platform acceptance records were read, not represented as new tests"
+  ]
+}

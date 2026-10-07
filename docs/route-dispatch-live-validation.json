@@ -1,0 +1,60 @@
+{
+  "startedAt": "2026-09-25T13:04:32.459Z",
+  "checks": [
+    "Real authentication and delayed initial loading: no fake route, empty-state action or demo controls",
+    "Initial route-read failure is distinct from a confirmed empty directory and recovers",
+    "UI create uses server validation, persists to Redis and forwards a real rewritten request",
+    "Editing updates forwarding, ordinary HTTP 500 passes through, and connection failure falls back to 503",
+    "Runtime polling updates the actual token-bucket stage and conditional branch",
+    "Failed refresh keeps actual cached route and blocks writes, then retry restores editing",
+    "Successful create followed by failed list refresh retains previous selection and reports both outcomes",
+    "Unavailable runtime/metrics/audit never appear healthy or as zero, and refresh recovers them",
+    "Disabled monitoring and latency overflow retain existing business semantics",
+    "Live navigation, narrow layout and copied fields remain connected to actual routes",
+    "Confirmed live deletion removes persisted and runtime routes; refresh failure is reported without losing context",
+    "Disconnect cancels polling; expired credentials return to login; preview remains isolated"
+  ],
+  "pageErrors": [],
+  "requestCounts": {
+    "/settings/runtime": 23,
+    "/settings/routes": 24,
+    "/dashboard/snapshot": 16,
+    "/monitor/audit/status": 16,
+    "/settings/routes/secondary-route": 1,
+    "/settings/routes/dispatch-smoke": 1
+  },
+  "cleanup": {
+    "backendExitCode": 0,
+    "testRedisRemoved": true
+  },
+  "passed": true,
+  "browser": "153.0.4234.48",
+  "completedAt": "2026-09-25T13:05:07.371Z",
+  "unitTests": {
+    "passed": 15,
+    "failed": 0,
+    "command": "npm --prefix frontend test"
+  },
+  "previewRegression": {
+    "result": "passed",
+    "checks": 14,
+    "command": "node verification/route-dispatch.mjs",
+    "apiRequests": 0
+  },
+  "build": {
+    "result": "passed",
+    "command": "npm --prefix frontend run build",
+    "modules": 648,
+    "jsKilobytes": 686.69,
+    "jsGzipKilobytes": 239.27,
+    "cssKilobytes": 74.45,
+    "warning": "Existing main JS chunk exceeds 500 kB."
+  },
+  "screenshot": {
+    "file": "docs/images/routes-dispatch-live-1440.png",
+    "width": 1440,
+    "height": 900,
+    "data": "Real API responses from an isolated test backend."
+  },
+  "scope": "Route dispatch design promoted to /routes; existing auth and backend API contracts retained."
+}

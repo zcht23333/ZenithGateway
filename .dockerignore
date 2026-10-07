@@ -1,0 +1,8 @@
+.git
+.dev
+.idea
+.claude
+**/node_modules
+**/target
+**/dist
+benchmarks/results

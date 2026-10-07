@@ -1,0 +1,289 @@
+{
+  "generatedAt": "2026-09-27T13:05:48.311324+00:00",
+  "scope": "Runtime full-snapshot rollback; independent environments only; developer instances not upgraded",
+  "passed": true,
+  "counts": {
+    "backendTests": 125,
+    "frontendTests": 86,
+    "rollbackStorageGroups": 10,
+    "rollbackLiveGroups": 12,
+    "syncGroups": 10,
+    "operationGroups": 12,
+    "consistencyGroups": 20,
+    "conflictP2Groups": 6,
+    "settingsBrowserGroups": 16,
+    "migrationGroups": 5,
+    "formatRecoveryGroups": 8,
+    "operationsP2Groups": 9
+  },
+  "reports": [
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/report.json",
+      "sha256": "68eaa2153f9f10045f53bab976afcb20c38fb0436f834d1fced97342342a0fc1"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/report.json",
+      "sha256": "19a3c6d3b8bc04ba084174b15c9bbd389b58388a20211aa4c7465d0d90e9dcca"
+    },
+    {
+      "path": ".dev/config-rollback/storage-be2a3f4d/report.json",
+      "sha256": "32ced24501d38630fecb03f44ed3ecec217669ff12399daac1881bca693ece7d"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/sync/report.json",
+      "sha256": "ed1d89725835374e64b7e66a9f8e78265d367fe6fc2b7b64ca5257d3ef036d45"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/operations/report.json",
+      "sha256": "a3922db452b72c61246431eede7c77252b5048041182135d0ea336078dfc6f48"
+    },
+    {
+      "path": ".dev/config-operations/compatibility-7b0e2be6/report.json",
+      "sha256": "d8dc2e66d0cb126f622d6ffea57f2b8f773ef4b007d364cf132093d9c7e792f6"
+    },
+    {
+      "path": ".dev/config-operations/compatibility-7b0e2be6/p2/report.json",
+      "sha256": "963592675fac9d3e3f068e0545d107ef79d1eff26b92777308a5954f21e221b5"
+    },
+    {
+      "path": ".dev/config-operations/migration-2e543ba3/report.json",
+      "sha256": "4f1648051c4cb390626f5405350d3661191c9a1fd8882118905edb1e97032c7d"
+    },
+    {
+      "path": ".dev/config-operations-p2/browser-4d6fbb06/report.json",
+      "sha256": "33bc2b83f3be9d3a088446f04b13ee0110ba66f45fea4ca4820d659885bddd7c"
+    }
+  ],
+  "logs": [
+    {
+      "path": ".dev/config-rollback/backend-tests.log",
+      "sha256": "cbc4b6bdf16debc94441c507514f00285f12f76d1fce1953d5d96cc7db86647c"
+    },
+    {
+      "path": ".dev/config-rollback/frontend-tests.log",
+      "sha256": "492aff2f96baa382b6add8ca22e42a2cae7d027ea24e897479aa3814344ff707"
+    },
+    {
+      "path": ".dev/config-rollback/frontend-build.log",
+      "sha256": "c814a9b2c9a2f2afcb02a3da38d04d331a9c0e53d6f89e1e9ebb928fee2a6584"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-consistency-rollback.mjs.log",
+      "sha256": "2b474d030bb2df17ec7558f3629eabef1eed27ef1d98ada97bc6359a62bf8000"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-operations-live.mjs.log",
+      "sha256": "d1b89a39ed0d3b73c700e223ba44325c1afe80718fd61661abd39e03a8b9332d"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-operations-migration.mjs.log",
+      "sha256": "398eab9e64e4f6190a959094536ff926f0b558dfbca581a8e72932c6798d7458"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-operations-p2.mjs.log",
+      "sha256": "fd4f534ca84e226850dbccbdf6be244d6b674e0cdcb18aa3575f526cc5e664bb"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-operations-regression.mjs.log",
+      "sha256": "4d86b61ad9e83cc4a757a19c61a8e8af1c22efb219b2d20247a373ca02a0f955"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-rollback-live.mjs.log",
+      "sha256": "b2dbf87dc653d3473bf82e48b8b58acb435684de46fffdb7bd4a309271933f20"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/config-sync-live.mjs.log",
+      "sha256": "37b81e252e8d6cc6a55768a62d64a28ace2f411f64686e59b751be34b72d77da"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "backend/src/main/java/com/zch/config/RuntimeConfigController.java",
+      "sha256": "aa454bebc236f8b26cc51958e8a2af0e5e55e44af2269c5218fa18016a232032"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/config/RuntimeConfigPersistence.java",
+      "sha256": "a01f42f3d2ae86697ffcf6c1f55f381775e24380ee1f86fb194ad5763800cbca"
+    },
+    {
+      "path": "backend/src/main/resources/runtime-config.lua",
+      "sha256": "182ca7fdc8c9066fb26787b907e36b7e041f9e9c11af86003cd786c7c72699a0"
+    },
+    {
+      "path": "backend/src/test/java/com/zch/config/RedisRuntimeConfigSyncReaderIntegrationTest.java",
+      "sha256": "45dcfd9a283863a35fc5633e4f899e8317cce209fa76cf3880523aef2ad2ee40"
+    },
+    {
+      "path": "backend/src/test/java/com/zch/route/GatewayRedisIntegrationTest.java",
+      "sha256": "789d050b348456d75a7b51ae515bfe279ca8a28a41ce498b30ef536b978d0915"
+    },
+    {
+      "path": "frontend/src/settings/editor.ts",
+      "sha256": "a0ad5ed48666fd4cd62b418c2c208ec9de85e9543672389d65de9809519ffaa8"
+    },
+    {
+      "path": "frontend/src/settings/operations.ts",
+      "sha256": "76e842f5236527294a691224ffd101a095dcbf78e50d83bc1337f425bf77180a"
+    },
+    {
+      "path": "frontend/src/styles/settings.css",
+      "sha256": "08ada67250cb4762ae29f9ddf607734139e5ace3cbe435dfa1511a53a134030e"
+    },
+    {
+      "path": "frontend/src/views/Settings.vue",
+      "sha256": "d64a59d8887593eccb5fbf51d5114339f9d38d4338ef7e105e1d56d5c87da9bc"
+    },
+    {
+      "path": "verification/config-consistency-live.mjs",
+      "sha256": "d247b69ec0d8740dddd7277e5206722ea583c38c19bb6dece3832a4f9fc3c113"
+    },
+    {
+      "path": "verification/config-consistency-rollback.mjs",
+      "sha256": "38ea8b3baf758bfd74ac99d23df91a8d2ee4b58d3e0b0f75c458b1fa4a05c819"
+    },
+    {
+      "path": "verification/config-operations-live.mjs",
+      "sha256": "dd67eeec555dd4ab409f421f723573fb6819f9851359f701e98a56947bf238da"
+    },
+    {
+      "path": "verification/config-operations-migration.mjs",
+      "sha256": "492870907715fa46d7f4d8b96432881f07cee892c6bb90c50253a284dc54a4c3"
+    },
+    {
+      "path": "verification/runtime-config-fault-proxy.mjs",
+      "sha256": "e086ac63fe74d5d0f0aad68b56058f70b52ac56c50a18fe05c27dce91bbd3236"
+    },
+    {
+      "path": "verification/runtime-config-storage.mjs",
+      "sha256": "909c4e23e1fedc3fb4c3b2bbfdb2bf9882ae8a06840493915a3a1e3825bc1f97"
+    },
+    {
+      "path": "docs/backend-config-operations.md",
+      "sha256": "232244cce3099610b6b4ae818f7ebfaa7c1ad5a85f29287aec02ca3774d9338c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "10619f24fe5cf883dc27397e78ee6bac22ec77e653500c159b9892afb832b857"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/config/RuntimeConfigSource.java",
+      "sha256": "41fee2af8557c4d9b6e6be60f8df458a9e0efd7a691db1236267dcafc913ef42"
+    },
+    {
+      "path": "backend/src/test/java/com/zch/config/RuntimeConfigRollbackTest.java",
+      "sha256": "ff71ac4bd07690f8604b77df7517f17f11f007a17f66cf8487d57e8bcf7130da"
+    },
+    {
+      "path": "backend/src/test/resources/compatibility/runtime-schema2.lua",
+      "sha256": "c48ec29280a3c944359d732a0de4a71df5d7b3b1740e3dcc265b190eb97710a1"
+    },
+    {
+      "path": "frontend/src/components/SettingsHistory.vue",
+      "sha256": "76b47371563ed6e7f3f04a8e0b4f1cd87383124197fc6585005f52723607bac8"
+    },
+    {
+      "path": "frontend/tests/settings-rollback.test.mjs",
+      "sha256": "c2ed7076b9f3d31679a0ec101be6fb93c3b9527c17518253d457b9e5e480dd98"
+    },
+    {
+      "path": "verification/config-rollback-storage.mjs",
+      "sha256": "ce60b5707ffc3ed0a6179012dea13717c3d0e43ceac68a5315c507ded98b3bbf"
+    },
+    {
+      "path": "verification/config-rollback-live.mjs",
+      "sha256": "e58f03b29ac46d05baa98e0cabd295717f254e039745b6c3a11caa50a22b72a4"
+    },
+    {
+      "path": "verification/config-rollback-regression.mjs",
+      "sha256": "8567dd0283cb13e05bcafc951d7491616b6424b7aa7cbd4a08d53d265935ed87"
+    },
+    {
+      "path": "docs/backend-config-rollback.md",
+      "sha256": "e0b3cf9748ed6b980ed75a890c482c186d2b3d9496069678a604c228d8632523"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "backend/target/zg-1.0.0.jar",
+      "sha256": "7d85e32aa9754e55808faa88f6d9913d3ffc25ea39a25de1f1aae4015694c0e4"
+    },
+    {
+      "path": "frontend/dist/index.html",
+      "sha256": "0602b70861ba530d75f45af4158259203cd65f4fce242c85594c7f7d8e450b0d"
+    },
+    {
+      "path": "frontend/dist/assets/Settings-8Mj5QvVf.css",
+      "sha256": "046d48344d83d55b6ac852dbdc70cff8fb614025e669484b8aafa9d84317afc2"
+    },
+    {
+      "path": "frontend/dist/assets/Settings-COwHVFEU.js",
+      "sha256": "b57fbefd364ebddbe498debee8c43641032b0b2dfeba04ff53e0a82095b4877b"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/history-selection-1440.png",
+      "sha256": "1c76fa2e878b0c7223cc07cfdfd9b6f9f2b2f2fa934e67bf48ce53fbbb17d5c8"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/rollback-conflict-1440.png",
+      "sha256": "73b3cab7b52737ae7531086183e9e38bdbe07f3370f986457df46ca27b5feef7"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/rollback-differences-1440.png",
+      "sha256": "9bbcc0101c4fe741e3feaed2398ae45b7fe09cd17cc1a22c57e0f3a3e4c014a5"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/rollback-differences-390.png",
+      "sha256": "366d6e729a5410ff0b69391b1a2939dffceceb646d98a18e82203bf7fa5a287e"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/rollback-old-receipt-current-1440.png",
+      "sha256": "31632e17d7d58692e467d2d1a315d0c5ffe80d81202c6288b92a800eb255e2f1"
+    },
+    {
+      "path": ".dev/config-rollback/regression-41f7c2f1/rollback-live/rollback-success-1440.png",
+      "sha256": "b141afe1d8a8327717c10968208a7bd49c4b6b2c0101b01e02e1ea14b068bec3"
+    }
+  ],
+  "business": {
+    "source": {
+      "version": "5264418e-ebfa-4200-899a-371b1e1879eb:2",
+      "operationId": "c49fbeed-6394-422d-802e-41ec864cba24"
+    },
+    "operationId": "5a226691-6376-48c4-b93e-b1c343b5f79a",
+    "beforeVersion": "5264418e-ebfa-4200-899a-371b1e1879eb:3",
+    "afterVersion": "5264418e-ebfa-4200-899a-371b1e1879eb:4",
+    "confirmedAt": "2026-09-27T12:52:39.598Z",
+    "adoptedAt": "2026-09-27T12:52:41.561305100Z",
+    "observedAt": "2026-09-27T12:52:41.622Z",
+    "observedPropagationMs": 2023.7560000000012,
+    "beforeHttp": 429,
+    "afterHttp": 200,
+    "additionalConfigQueries": 0,
+    "redisBackedReadsUsedToObserveB": 0
+  },
+  "cleanup": {
+    "live": {
+      "BExitCode": 0,
+      "browserClosed": true,
+      "previewClosed": true,
+      "AExitCode": 0,
+      "B-restartedExitCode": 0,
+      "proxyClosed": true,
+      "proxyBClosed": true,
+      "upstreamClosed": true,
+      "redisRemoved": true
+    },
+    "storage": {
+      "redisRemoved": true
+    },
+    "finalRunningContainers": [],
+    "finalMatchingVerificationProcesses": []
+  },
+  "bounds": [
+    "24h receipt retention conditional on authoritative Redis data preservation",
+    "512 active receipts; 100 successful historical entries / 7d",
+    "One authority, asynchronous instance adoption; no Redis failover exactly-once guarantee",
+    "Coordinated schema 2 to 3 upgrade; no mixed-version deployment",
+    "Mobile history and full comparison need vertical scrolling"
+  ]
+}

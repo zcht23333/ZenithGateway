@@ -1,0 +1,338 @@
+{
+  "rule_files": [
+    "alerts.yml"
+  ],
+  "evaluation_interval": "5s",
+  "tests": [
+    {
+      "name": "idle audit never stalls",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "zenith_audit_pending{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "0+0x8"
+        },
+        {
+          "series": "zenith_audit_oldest_age{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "20000+0x8"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithAuditStalled",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "stalled audit fires and drains",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "zenith_audit_pending{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "100 100 100 100 0 0"
+        },
+        {
+          "series": "zenith_audit_oldest_age{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "15000+0x5"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "30s",
+          "alertname": "ZenithAuditStalled",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "gateway:8080",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Audit backlog is not draining",
+                "description": "Pending events have waited more than ten seconds. Check Redis and the audit writer."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "75s",
+          "alertname": "ZenithAuditStalled",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "unknown write only alerts on recent increase",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "zenith_audit_uncertain_total{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "0 0 1 1 1 1 1 1 1"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "45s",
+          "alertname": "ZenithAuditUncertain",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "gateway:8080",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Some audit write results are unknown",
+                "description": "Redis may have committed a timed-out batch. Do not treat this count as confirmed loss."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "ZenithAuditUncertain",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "scrape failure respects for and recovers",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "1 0 0 0 1 1"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "30s",
+          "alertname": "ZenithGatewayUnavailable",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "45s",
+          "alertname": "ZenithGatewayUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "gateway:8080",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Gateway metrics cannot be scraped",
+                "description": "Check the gateway, network and scrape credential before diagnosing application failure."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "75s",
+          "alertname": "ZenithGatewayUnavailable",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "audit pressure zenith_audit_pending preserves hold and recovery",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "zenith_audit_pending{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "90+0x4 0+0x12"
+        },
+        {
+          "series": "zenith_audit_capacity{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "100+0x16"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "10s",
+          "alertname": "ZenithAuditBufferPressure",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15s",
+          "alertname": "ZenithAuditBufferPressure",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "gateway:8080",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Audit admission budget exceeds eighty percent",
+                "description": "Inspect writer throughput and Redis latency before increasing the memory budget."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "25s",
+          "alertname": "ZenithAuditBufferPressure",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "audit pressure zenith_audit_queue_bytes preserves hold and recovery",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "zenith_audit_queue_bytes{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "90+0x4 0+0x12"
+        },
+        {
+          "series": "zenith_audit_byte_capacity{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "100+0x16"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "10s",
+          "alertname": "ZenithAuditBufferPressure",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "15s",
+          "alertname": "ZenithAuditBufferPressure",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "gateway:8080",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Audit admission budget exceeds eighty percent",
+                "description": "Inspect writer throughput and Redis latency before increasing the memory budget."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "25s",
+          "alertname": "ZenithAuditBufferPressure",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "explicit audit drops retain purpose across counter reset and recovery",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "zenith_audit_dropped_total{job=\"zenith-gateway\",instance=\"gateway:8080\",reason=\"queue_full\"}",
+          "values": "5+0x12 0 1+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "65s",
+          "alertname": "ZenithAuditDropped",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "75s",
+          "alertname": "ZenithAuditDropped",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "instance": "gateway:8080",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Audit events were explicitly dropped",
+                "description": "Inspect the bounded reason labels. Clearing this alert does not recover lost events."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "140s",
+          "alertname": "ZenithAuditDropped",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "gateway latency keeps independent throughput and duration gate",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=\"gateway:8080\",le=\"0.1\"}",
+          "values": "0+0x24"
+        },
+        {
+          "series": "zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=\"gateway:8080\",le=\"1\"}",
+          "values": "0+75x24"
+        },
+        {
+          "series": "zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=\"gateway:8080\",le=\"+Inf\"}",
+          "values": "0+75x24"
+        },
+        {
+          "series": "zenith_gateway_requests_seconds_count{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "0+75x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "70s",
+          "alertname": "ZenithGatewayLatency",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "75s",
+          "alertname": "ZenithGatewayLatency",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "instance": "gateway:8080",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Gateway P95 latency exceeds 250 milliseconds",
+                "description": "Compare limiter decision wait, error outcomes, JVM allocation and GC. This is an initial demo threshold."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "low request throughput does not page latency",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=\"gateway:8080\",le=\"0.1\"}",
+          "values": "0+0x24"
+        },
+        {
+          "series": "zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=\"gateway:8080\",le=\"1\"}",
+          "values": "0+25x24"
+        },
+        {
+          "series": "zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=\"gateway:8080\",le=\"+Inf\"}",
+          "values": "0+25x24"
+        },
+        {
+          "series": "zenith_gateway_requests_seconds_count{job=\"zenith-gateway\",instance=\"gateway:8080\"}",
+          "values": "0+25x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithGatewayLatency",
+          "exp_alerts": []
+        }
+      ]
+    }
+  ]
+}

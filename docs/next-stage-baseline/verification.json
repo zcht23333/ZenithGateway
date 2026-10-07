@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-25",
+  "kind": "Read-only current-page browser baseline, not acceptance of redesigned pages",
+  "source": "D:\\Java\\ZenithGateway\\work\\console-preparation-1790345070450",
+  "browser": "Headless Microsoft Edge via Playwright",
+  "pages": [
+    {
+      "name": "overview",
+      "url": "http://127.0.0.1:5173/",
+      "screenshot": "overview-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "settings",
+      "url": "http://127.0.0.1:5173/settings",
+      "screenshot": "settings-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "routes-baseline",
+      "url": "http://127.0.0.1:5173/routes",
+      "screenshot": "routes-baseline-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    {
+      "name": "overview-mobile",
+      "url": null,
+      "screenshot": "overview-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "name": "settings-mobile",
+      "url": null,
+      "screenshot": "settings-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "horizontalOverflow": false
+    }
+  ],
+  "pageScriptErrors": [],
+  "blockedWriteAttempts": [],
+  "note": "Non-GET/HEAD/OPTIONS requests were blocked during capture; no settings or routes were submitted."
+}

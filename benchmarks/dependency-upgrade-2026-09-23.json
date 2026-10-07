@@ -1,0 +1,3654 @@
+{
+  "date": "2026-09-23",
+  "versions": {
+    "java": "Microsoft OpenJDK 21.0.12.1+1",
+    "node": "24.21.0",
+    "redis": "7.4.11",
+    "oldBoot": "3.2.4",
+    "newBoot": "4.1.1",
+    "newCloud": "2025.1.3",
+    "newGateway": "5.0.3"
+  },
+  "limits": [
+    "Shared Windows laptop; no isolated production capacity claim.",
+    "One-second resource sampling is not a continuous peak bound.",
+    "Redis retains newest 5000 rows; full audit totals use acknowledgement counters.",
+    "All initial and paired measurements are retained; no outlier removal.",
+    "Remote GitHub Actions was not executed."
+  ],
+  "artifacts": {
+    ".dev/upgrade-baseline/baseline.jar": "b0d2a0d4c06fa17d91d5cb2d2e6c9413411a215fd8236927b44965525962069a",
+    "backend/target/zg-1.0.0.jar": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365",
+    "benchmarks/run.mjs": "e4fbb6acb86fdf840d7acd370629e2cc9125363493e28e016c8fecaaad62c2ad",
+    "benchmarks/load.mjs": "5f8ce818f11e6484a6e2e6984dc613e7271cdf808c3667cb5524436b24dbd601",
+    "benchmarks/lifecycle.mjs": "108ad14588fd5a20d01848be1e980d92dabd9ef5e46cf5f00f7a17efba0fe034"
+  },
+  "interleavedOrder": [
+    {
+      "sequence": 1,
+      "variant": "old",
+      "startedAt": "2026-09-23T07:41:16.7347656Z",
+      "jar": ".dev/upgrade-baseline/baseline.jar",
+      "jarSha256": "b0d2a0d4c06fa17d91d5cb2d2e6c9413411a215fd8236927b44965525962069a",
+      "report": "benchmarks/results/2026-09-23T07-41-16-808Z/summary.json"
+    },
+    {
+      "sequence": 2,
+      "variant": "new",
+      "startedAt": "2026-09-23T07:43:04.9180975Z",
+      "jar": "backend/target/zg-1.0.0.jar",
+      "jarSha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365",
+      "report": "benchmarks/results/2026-09-23T07-43-04-965Z/summary.json"
+    },
+    {
+      "sequence": 3,
+      "variant": "new",
+      "startedAt": "2026-09-23T07:44:59.8752564Z",
+      "jar": "backend/target/zg-1.0.0.jar",
+      "jarSha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365",
+      "report": "benchmarks/results/2026-09-23T07-44-59-927Z/summary.json"
+    },
+    {
+      "sequence": 4,
+      "variant": "old",
+      "startedAt": "2026-09-23T07:46:54.5569612Z",
+      "jar": ".dev/upgrade-baseline/baseline.jar",
+      "jarSha256": "b0d2a0d4c06fa17d91d5cb2d2e6c9413411a215fd8236927b44965525962069a",
+      "report": "benchmarks/results/2026-09-23T07-46-54-619Z/summary.json"
+    },
+    {
+      "sequence": 5,
+      "variant": "old",
+      "startedAt": "2026-09-23T07:48:45.0006835Z",
+      "jar": ".dev/upgrade-baseline/baseline.jar",
+      "jarSha256": "b0d2a0d4c06fa17d91d5cb2d2e6c9413411a215fd8236927b44965525962069a",
+      "report": "benchmarks/results/2026-09-23T07-48-45-057Z/summary.json"
+    },
+    {
+      "sequence": 6,
+      "variant": "new",
+      "startedAt": "2026-09-23T07:50:33.5427896Z",
+      "jar": "backend/target/zg-1.0.0.jar",
+      "jarSha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365",
+      "report": "benchmarks/results/2026-09-23T07-50-33-599Z/summary.json"
+    }
+  ],
+  "comparisons": [
+    {
+      "stage": "initial",
+      "scenario": "forward-only",
+      "throughputChangePercent": -10.946717254206462,
+      "p95ChangePercent": 10.986596352450007
+    },
+    {
+      "stage": "initial",
+      "scenario": "rate-limit-audit",
+      "throughputChangePercent": -13.012009512449463,
+      "p95ChangePercent": 24.31024503183483
+    },
+    {
+      "stage": "paired",
+      "scenario": "forward-only",
+      "throughputChangePercent": 1.626361576937163,
+      "p95ChangePercent": -6.53632915086082
+    },
+    {
+      "stage": "paired",
+      "scenario": "rate-limit-audit",
+      "throughputChangePercent": 1.6501910628464955,
+      "p95ChangePercent": -0.2621661477961612
+    },
+    {
+      "stage": "all-observed",
+      "scenario": "forward-only",
+      "throughputChangePercent": -0.6810459552794246,
+      "p95ChangePercent": 0.4206393718451995
+    },
+    {
+      "stage": "all-observed",
+      "scenario": "rate-limit-audit",
+      "throughputChangePercent": -9.995199555656775,
+      "p95ChangePercent": 13.558093166576036
+    }
+  ],
+  "aggregates": [
+    {
+      "group": "initial-old",
+      "scenario": "rate-limit-audit",
+      "repetitions": 3,
+      "throughput": {
+        "median": 4683.5528489161625,
+        "min": 4645.778442826062,
+        "max": 4815.640781009763
+      },
+      "p95Ms": 5.183,
+      "p99Ms": 7.575,
+      "cpuFractionMedian": 0.2557321858928155,
+      "heapMiBPeakSampled": 185.65792846679688,
+      "pendingPeakSampled": 104,
+      "reservedBytesPeakSampled": 148096,
+      "oldestAgeMsPeakSampled": 22,
+      "requests": 424370,
+      "audit": {
+        "received": 424370,
+        "persisted": 424370,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "all-observed-old",
+      "scenario": "rate-limit-audit",
+      "repetitions": 6,
+      "throughput": {
+        "median": 4664.665645871112,
+        "min": 4223.175497589143,
+        "max": 4815.640781009763
+      },
+      "p95Ms": 5.5169999999999995,
+      "p99Ms": 8.061,
+      "cpuFractionMedian": 0.2537612267062227,
+      "heapMiBPeakSampled": 185.65792846679688,
+      "pendingPeakSampled": 106,
+      "reservedBytesPeakSampled": 150944,
+      "oldestAgeMsPeakSampled": 28,
+      "requests": 819342,
+      "audit": {
+        "received": 819342,
+        "persisted": 819342,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "initial-old",
+      "scenario": "forward-only",
+      "repetitions": 3,
+      "throughput": {
+        "median": 6536.629593544086,
+        "min": 6377.143405054076,
+        "max": 7554.05902446151
+      },
+      "p95Ms": 4.551,
+      "p99Ms": 7.307,
+      "cpuFractionMedian": 0.20215108848809257,
+      "heapMiBPeakSampled": 184.33480072021484,
+      "pendingPeakSampled": 0,
+      "reservedBytesPeakSampled": 0,
+      "oldestAgeMsPeakSampled": 0,
+      "requests": 614069,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "all-observed-old",
+      "scenario": "forward-only",
+      "repetitions": 6,
+      "throughput": {
+        "median": 7084.724603285153,
+        "min": 6377.143405054076,
+        "max": 7554.05902446151
+      },
+      "p95Ms": 3.566,
+      "p99Ms": 5.191,
+      "cpuFractionMedian": 0.20487637170727158,
+      "heapMiBPeakSampled": 184.95020294189453,
+      "pendingPeakSampled": 0,
+      "reservedBytesPeakSampled": 0,
+      "oldestAgeMsPeakSampled": 0,
+      "requests": 1258022,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "initial-new",
+      "scenario": "rate-limit-audit",
+      "repetitions": 3,
+      "throughput": {
+        "median": 4074.1285066945934,
+        "min": 3471.724627579447,
+        "max": 4401.122100648782
+      },
+      "p95Ms": 6.443,
+      "p99Ms": 8.335,
+      "cpuFractionMedian": 0.2371594563897852,
+      "heapMiBPeakSampled": 185.74754333496094,
+      "pendingPeakSampled": 106,
+      "reservedBytesPeakSampled": 149672,
+      "oldestAgeMsPeakSampled": 22,
+      "requests": 358435,
+      "audit": {
+        "received": 358435,
+        "persisted": 358435,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "all-observed-new",
+      "scenario": "rate-limit-audit",
+      "repetitions": 6,
+      "throughput": {
+        "median": 4198.423005962129,
+        "min": 3471.724627579447,
+        "max": 4914.619068158013
+      },
+      "p95Ms": 6.265,
+      "p99Ms": 8.387,
+      "cpuFractionMedian": 0.2511768879596046,
+      "heapMiBPeakSampled": 186.6951675415039,
+      "pendingPeakSampled": 106,
+      "reservedBytesPeakSampled": 150944,
+      "oldestAgeMsPeakSampled": 22,
+      "requests": 757724,
+      "audit": {
+        "received": 757724,
+        "persisted": 757724,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "initial-new",
+      "scenario": "forward-only",
+      "repetitions": 3,
+      "throughput": {
+        "median": 5821.08323398403,
+        "min": 5076.668250094383,
+        "max": 7145.850171225984
+      },
+      "p95Ms": 5.051,
+      "p99Ms": 6.067,
+      "cpuFractionMedian": 0.20106500563113214,
+      "heapMiBPeakSampled": 186.3069305419922,
+      "pendingPeakSampled": 0,
+      "reservedBytesPeakSampled": 0,
+      "oldestAgeMsPeakSampled": 0,
+      "requests": 541332,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "all-observed-new",
+      "scenario": "forward-only",
+      "repetitions": 6,
+      "throughput": {
+        "median": 7036.4743729317925,
+        "min": 5076.668250094383,
+        "max": 7558.895558467543
+      },
+      "p95Ms": 3.581,
+      "p99Ms": 5.157,
+      "cpuFractionMedian": 0.20999835674773,
+      "heapMiBPeakSampled": 186.3069305419922,
+      "pendingPeakSampled": 0,
+      "reservedBytesPeakSampled": 0,
+      "oldestAgeMsPeakSampled": 0,
+      "requests": 1196772,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "faults-new",
+      "scenario": "audit-delay",
+      "repetitions": 1,
+      "throughput": {
+        "median": 3891.8839543824834,
+        "min": 3891.8839543824834,
+        "max": 3891.8839543824834
+      },
+      "p95Ms": 7.271,
+      "p99Ms": 10.671,
+      "cpuFractionMedian": 0.23557081202614058,
+      "heapMiBPeakSampled": 185.49710083007812,
+      "pendingPeakSampled": 11881,
+      "reservedBytesPeakSampled": 16776144,
+      "oldestAgeMsPeakSampled": 6752,
+      "requests": 116764,
+      "audit": {
+        "received": 116764,
+        "persisted": 65918,
+        "dropped": 50846,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "faults-new",
+      "scenario": "redis-delay",
+      "repetitions": 1,
+      "throughput": {
+        "median": 258.5265754242205,
+        "min": 258.5265754242205,
+        "max": 258.5265754242205
+      },
+      "p95Ms": 64.127,
+      "p99Ms": 65.791,
+      "cpuFractionMedian": 0.026698306451880944,
+      "heapMiBPeakSampled": 180.08334350585938,
+      "pendingPeakSampled": 32,
+      "reservedBytesPeakSampled": 45184,
+      "oldestAgeMsPeakSampled": 108,
+      "requests": 7760,
+      "audit": {
+        "received": 7760,
+        "persisted": 7760,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "faults-new",
+      "scenario": "audit-disconnect",
+      "repetitions": 1,
+      "throughput": {
+        "median": 4820.368271016893,
+        "min": 4820.368271016893,
+        "max": 4820.368271016893
+      },
+      "p95Ms": 5.051,
+      "p99Ms": 7.211,
+      "cpuFractionMedian": 0.28332286155310127,
+      "heapMiBPeakSampled": 186.23561096191406,
+      "pendingPeakSampled": 256,
+      "reservedBytesPeakSampled": 362600,
+      "oldestAgeMsPeakSampled": 11654,
+      "requests": 144639,
+      "audit": {
+        "received": 144639,
+        "persisted": 84419,
+        "dropped": 60126,
+        "uncertain": 94,
+        "retries": 33
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "sustained-new",
+      "scenario": "rate-limit-audit",
+      "repetitions": 3,
+      "throughput": {
+        "median": 2988.804998111617,
+        "min": 2987.377496523386,
+        "max": 2995.685267863106
+      },
+      "p95Ms": 5.351,
+      "p99Ms": 24.255,
+      "cpuFractionMedian": 0.14392701012218917,
+      "heapMiBPeakSampled": 189.22601318359375,
+      "pendingPeakSampled": 103,
+      "reservedBytesPeakSampled": 146672,
+      "oldestAgeMsPeakSampled": 34,
+      "requests": 2691660,
+      "audit": {
+        "received": 2691660,
+        "persisted": 2691660,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 8288,
+      "capacityMisses": 52,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "paired-old",
+      "scenario": "rate-limit-audit",
+      "repetitions": 3,
+      "throughput": {
+        "median": 4252.542430104328,
+        "min": 4223.175497589143,
+        "max": 4689.369314292199
+      },
+      "p95Ms": 6.103,
+      "p99Ms": 8.479,
+      "cpuFractionMedian": 0.2492550252253693,
+      "heapMiBPeakSampled": 183.942626953125,
+      "pendingPeakSampled": 106,
+      "reservedBytesPeakSampled": 150944,
+      "oldestAgeMsPeakSampled": 28,
+      "requests": 394972,
+      "audit": {
+        "received": 394972,
+        "persisted": 394972,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "paired-old",
+      "scenario": "forward-only",
+      "repetitions": 3,
+      "throughput": {
+        "median": 7243.472007849624,
+        "min": 6925.977198720682,
+        "max": 7295.170232049553
+      },
+      "p95Ms": 3.427,
+      "p99Ms": 4.911,
+      "cpuFractionMedian": 0.2051483788318611,
+      "heapMiBPeakSampled": 184.95020294189453,
+      "pendingPeakSampled": 0,
+      "reservedBytesPeakSampled": 0,
+      "oldestAgeMsPeakSampled": 0,
+      "requests": 643953,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "paired-new",
+      "scenario": "rate-limit-audit",
+      "repetitions": 3,
+      "throughput": {
+        "median": 4322.717505229664,
+        "min": 4071.5685991846135,
+        "max": 4914.619068158013
+      },
+      "p95Ms": 6.087,
+      "p99Ms": 8.439,
+      "cpuFractionMedian": 0.2667373429746746,
+      "heapMiBPeakSampled": 186.6951675415039,
+      "pendingPeakSampled": 106,
+      "reservedBytesPeakSampled": 150944,
+      "oldestAgeMsPeakSampled": 22,
+      "requests": 399289,
+      "audit": {
+        "received": 399289,
+        "persisted": 399289,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    },
+    {
+      "group": "paired-new",
+      "scenario": "forward-only",
+      "repetitions": 3,
+      "throughput": {
+        "median": 7361.27705342149,
+        "min": 6927.098574637602,
+        "max": 7558.895558467543
+      },
+      "p95Ms": 3.203,
+      "p99Ms": 4.827,
+      "cpuFractionMedian": 0.21123328026387017,
+      "heapMiBPeakSampled": 186.16139221191406,
+      "pendingPeakSampled": 0,
+      "reservedBytesPeakSampled": 0,
+      "oldestAgeMsPeakSampled": 0,
+      "requests": 655440,
+      "audit": {
+        "received": 0,
+        "persisted": 0,
+        "dropped": 0,
+        "uncertain": 0,
+        "retries": 0
+      },
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "transportErrors": 0,
+      "non200": 0,
+      "accountingFailures": 0,
+      "duplicateRetainedIds": 0,
+      "samplingErrors": 0,
+      "pendingFinalTotal": 0
+    }
+  ],
+  "lifecycle": {
+    "source": "benchmarks/results/lifecycle-2026-09-23T07-23-59-473Z/summary.json",
+    "sha256": "9c115346d3b3205abc5287adbcb3aa1eb94edff2a25116e2eddc7500ce8e725a",
+    "report": {
+      "runId": "lifecycle-2026-09-23T07-23-59-473Z",
+      "results": [
+        {
+          "mode": "graceful",
+          "before": {
+            "enabled": true,
+            "accepting": true,
+            "received": 231,
+            "persisted": 31,
+            "dropped": 0,
+            "droppedByReason": {
+              "shutdown": 0,
+              "byte_limit": 0,
+              "oversized": 0,
+              "queue_full": 0,
+              "serialization": 0
+            },
+            "uncertain": 0,
+            "queueDepth": 190,
+            "inFlight": 10,
+            "pending": 200,
+            "reservedBytes": 281584,
+            "oldestAgeMs": 97,
+            "retries": 0,
+            "lastBatchSize": 1,
+            "lastBatchDurationMs": 51,
+            "lastSuccessAgeMs": 165,
+            "capacity": 20000,
+            "maxReservedBytes": 16777216
+          },
+          "retained": 231,
+          "durationMs": 4798,
+          "exitCode": 0
+        },
+        {
+          "mode": "forced",
+          "before": {
+            "enabled": true,
+            "accepting": true,
+            "received": 201,
+            "persisted": 1,
+            "dropped": 0,
+            "droppedByReason": {
+              "queue_full": 0,
+              "oversized": 0,
+              "byte_limit": 0,
+              "shutdown": 0,
+              "serialization": 0
+            },
+            "uncertain": 0,
+            "queueDepth": 190,
+            "inFlight": 10,
+            "pending": 200,
+            "reservedBytes": 281128,
+            "oldestAgeMs": 123,
+            "retries": 0,
+            "lastBatchSize": 1,
+            "lastBatchDurationMs": 60,
+            "lastSuccessAgeMs": 272,
+            "capacity": 20000,
+            "maxReservedBytes": 16777216
+          },
+          "retained": 11,
+          "unwrittenAfterKill": 190
+        },
+        {
+          "mode": "lost-ack",
+          "before": {
+            "enabled": true,
+            "accepting": true,
+            "received": 1,
+            "persisted": 1,
+            "dropped": 0,
+            "droppedByReason": {
+              "queue_full": 0,
+              "serialization": 0,
+              "shutdown": 0,
+              "byte_limit": 0,
+              "oversized": 0
+            },
+            "uncertain": 0,
+            "queueDepth": 0,
+            "inFlight": 0,
+            "pending": 0,
+            "reservedBytes": 0,
+            "oldestAgeMs": 0,
+            "retries": 0,
+            "lastBatchSize": 1,
+            "lastBatchDurationMs": 60,
+            "lastSuccessAgeMs": 35,
+            "capacity": 20000,
+            "maxReservedBytes": 16777216
+          },
+          "after": {
+            "enabled": true,
+            "accepting": true,
+            "received": 2,
+            "persisted": 2,
+            "dropped": 0,
+            "droppedByReason": {
+              "queue_full": 0,
+              "serialization": 0,
+              "shutdown": 0,
+              "byte_limit": 0,
+              "oversized": 0
+            },
+            "uncertain": 0,
+            "queueDepth": 0,
+            "inFlight": 0,
+            "pending": 0,
+            "reservedBytes": 0,
+            "oldestAgeMs": 0,
+            "retries": 1,
+            "lastBatchSize": 1,
+            "lastBatchDurationMs": 1111,
+            "lastSuccessAgeMs": 36,
+            "capacity": 20000,
+            "maxReservedBytes": 16777216
+          },
+          "retained": 2,
+          "duplicateIds": 0
+        }
+      ],
+      "lowTrafficVisibilityFromResponseMs": {
+        "samples": 30,
+        "p50": 25.98080000000118,
+        "p95": 39.58900000000176,
+        "max": 41.54820000000109
+      }
+    }
+  },
+  "runs": [
+    {
+      "group": "initial-old",
+      "source": "benchmarks/results/2026-09-23T06-44-54-952Z/summary.json",
+      "sha256": "58e331ec18bbc5d6d230f1b22283c41c7c63d3c1006131353cfae80753000e84",
+      "report": {
+        "runId": "2026-09-23T06-44-54-952Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 3,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.0015831,
+            "requests": 140514,
+            "issued": 140514,
+            "offered": 140514,
+            "requestsPerSecond": 4683.5528489161625,
+            "statuses": {
+              "200": 140514
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.4052148967362683,
+              "p50": 3.171,
+              "p95": 5.175,
+              "p99": 7.087,
+              "max": 28.191
+            },
+            "scheduledLatencyMs": {
+              "average": 3.405324779025577,
+              "p50": 3.171,
+              "p95": 5.179,
+              "p99": 7.087,
+              "max": 28.191
+            },
+            "cpuFractionAverage": 0.2557321858928155,
+            "heapBytesPeakSampled": 183152936,
+            "pendingPeakSampled": 104,
+            "reservedBytesPeakSampled": 148096,
+            "oldestAgeMsPeakSampled": 22,
+            "audit": {
+              "received": 140514,
+              "persisted": 140514,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 140514,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1515,
+              "evalsha": 140514,
+              "lpush": 1515,
+              "ltrim": 1515
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 197183,
+              "persisted": 197183,
+              "dropped": 0,
+              "droppedByReason": {
+                "serialization": 0,
+                "queue_full": 0,
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 86,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 862,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.0016189,
+            "requests": 226634,
+            "issued": 226634,
+            "offered": 226634,
+            "requestsPerSecond": 7554.05902446151,
+            "statuses": {
+              "200": 226634
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.1116258504902174,
+              "p50": 1.956,
+              "p95": 3.121,
+              "p99": 4.411,
+              "max": 27.023
+            },
+            "scheduledLatencyMs": {
+              "average": 2.1116952354898206,
+              "p50": 1.956,
+              "p95": 3.121,
+              "p99": 4.411,
+              "max": 27.023
+            },
+            "cpuFractionAverage": 0.20215108848809257,
+            "heapBytesPeakSampled": 188453976,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 2,
+            "elapsedSeconds": 30.002775200000002,
+            "requests": 191332,
+            "issued": 191332,
+            "offered": 191332,
+            "requestsPerSecond": 6377.143405054076,
+            "statuses": {
+              "200": 191332
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.5011560794848746,
+              "p50": 2.153,
+              "p95": 4.551,
+              "p99": 7.307,
+              "max": 26.815
+            },
+            "scheduledLatencyMs": {
+              "average": 2.5012376131540988,
+              "p50": 2.153,
+              "p95": 4.555,
+              "p99": 7.307,
+              "max": 26.815
+            },
+            "cpuFractionAverage": 0.21022899041283072,
+            "heapBytesPeakSampled": 189458824,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 2,
+            "elapsedSeconds": 30.001407200000017,
+            "requests": 144476,
+            "issued": 144476,
+            "offered": 144476,
+            "requestsPerSecond": 4815.640781009763,
+            "statuses": {
+              "200": 144476
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.3115347808632576,
+              "p50": 3.073,
+              "p95": 5.183,
+              "p99": 7.575,
+              "max": 23.471
+            },
+            "scheduledLatencyMs": {
+              "average": 3.3116445984108087,
+              "p50": 3.073,
+              "p95": 5.183,
+              "p99": 7.575,
+              "max": 23.471
+            },
+            "cpuFractionAverage": 0.2562410293779147,
+            "heapBytesPeakSampled": 194676448,
+            "pendingPeakSampled": 103,
+            "reservedBytesPeakSampled": 146672,
+            "oldestAgeMsPeakSampled": 22,
+            "audit": {
+              "received": 144476,
+              "persisted": 144476,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 144476,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1540,
+              "evalsha": 144476,
+              "lpush": 1540,
+              "ltrim": 1540
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 186744,
+              "persisted": 186744,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 20,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 804,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 3,
+            "elapsedSeconds": 30.001430699999997,
+            "requests": 139380,
+            "issued": 139380,
+            "offered": 139380,
+            "requestsPerSecond": 4645.778442826062,
+            "statuses": {
+              "200": 139380
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.43269178504807,
+              "p50": 3.135,
+              "p95": 5.547,
+              "p99": 7.843,
+              "max": 21.903
+            },
+            "scheduledLatencyMs": {
+              "average": 3.432811120677285,
+              "p50": 3.135,
+              "p95": 5.547,
+              "p99": 7.843,
+              "max": 21.903
+            },
+            "cpuFractionAverage": 0.25179026751962996,
+            "heapBytesPeakSampled": 187301008,
+            "pendingPeakSampled": 98,
+            "reservedBytesPeakSampled": 139552,
+            "oldestAgeMsPeakSampled": 18,
+            "audit": {
+              "received": 139380,
+              "persisted": 139380,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 139380,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1523,
+              "evalsha": 139380,
+              "lpush": 1523,
+              "ltrim": 1523
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 183839,
+              "persisted": 183839,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 69,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 877,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 3,
+            "elapsedSeconds": 30.00062910000002,
+            "requests": 196103,
+            "issued": 196103,
+            "offered": 196103,
+            "requestsPerSecond": 6536.629593544086,
+            "statuses": {
+              "200": 196103
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.4401936278384317,
+              "p50": 2.047,
+              "p95": 4.599,
+              "p99": 8.431,
+              "max": 30.687
+            },
+            "scheduledLatencyMs": {
+              "average": 2.4402716276650533,
+              "p50": 2.047,
+              "p95": 4.599,
+              "p99": 8.431,
+              "max": 30.687
+            },
+            "cpuFractionAverage": 0.19934139197787185,
+            "heapBytesPeakSampled": 193289048,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "initial-new",
+      "source": "benchmarks/results/2026-09-23T07-15-08-210Z/summary.json",
+      "sha256": "0bf7fc57337fa248c8d7727eb85ca8e94c6cb653e5a31cecac83572303d9b962",
+      "report": {
+        "runId": "2026-09-23T07-15-08-210Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 3,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.002121500000005,
+            "requests": 132043,
+            "issued": 132043,
+            "offered": 132043,
+            "requestsPerSecond": 4401.122100648782,
+            "statuses": {
+              "200": 132043
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.6230587838810084,
+              "p50": 3.345,
+              "p95": 5.719,
+              "p99": 8.335,
+              "max": 22.399
+            },
+            "scheduledLatencyMs": {
+              "average": 3.6231756700468787,
+              "p50": 3.345,
+              "p95": 5.719,
+              "p99": 8.335,
+              "max": 22.399
+            },
+            "cpuFractionAverage": 0.26357764970372405,
+            "heapBytesPeakSampled": 193734176,
+            "pendingPeakSampled": 106,
+            "reservedBytesPeakSampled": 149672,
+            "oldestAgeMsPeakSampled": 22,
+            "audit": {
+              "received": 132043,
+              "persisted": 132043,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 132043,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1470,
+              "evalsha": 132043,
+              "lpush": 1470,
+              "ltrim": 1470
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 187367,
+              "persisted": 187367,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 17,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 111,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.001804300000003,
+            "requests": 174643,
+            "issued": 174643,
+            "offered": 174643,
+            "requestsPerSecond": 5821.08323398403,
+            "statuses": {
+              "200": 174643
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.7396103250631287,
+              "p50": 2.337,
+              "p95": 5.051,
+              "p99": 6.067,
+              "max": 35.455
+            },
+            "scheduledLatencyMs": {
+              "average": 2.7396992722296343,
+              "p50": 2.337,
+              "p95": 5.051,
+              "p99": 6.067,
+              "max": 35.487
+            },
+            "cpuFractionAverage": 0.20106500563113214,
+            "heapBytesPeakSampled": 195356976,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 2,
+            "elapsedSeconds": 30.0013695,
+            "requests": 152307,
+            "issued": 152307,
+            "offered": 152307,
+            "requestsPerSecond": 5076.668250094383,
+            "statuses": {
+              "200": 152307
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.141064658879763,
+              "p50": 2.911,
+              "p95": 5.407,
+              "p99": 6.351,
+              "max": 28.255
+            },
+            "scheduledLatencyMs": {
+              "average": 3.1411648184259424,
+              "p50": 2.911,
+              "p95": 5.407,
+              "p99": 6.351,
+              "max": 28.255
+            },
+            "cpuFractionAverage": 0.183784489867419,
+            "heapBytesPeakSampled": 192235240,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 2,
+            "elapsedSeconds": 30.002667600000017,
+            "requests": 104161,
+            "issued": 104161,
+            "offered": 104161,
+            "requestsPerSecond": 3471.724627579447,
+            "statuses": {
+              "200": 104161
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 4.592153397144805,
+              "p50": 4.279,
+              "p95": 7.535,
+              "p99": 9.607,
+              "max": 22.959
+            },
+            "scheduledLatencyMs": {
+              "average": 4.592299929916187,
+              "p50": 4.279,
+              "p95": 7.535,
+              "p99": 9.607,
+              "max": 22.959
+            },
+            "cpuFractionAverage": 0.2308828815986819,
+            "heapBytesPeakSampled": 194358272,
+            "pendingPeakSampled": 88,
+            "reservedBytesPeakSampled": 124256,
+            "oldestAgeMsPeakSampled": 19,
+            "audit": {
+              "received": 104161,
+              "persisted": 104161,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 104161,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1392,
+              "evalsha": 104161,
+              "lpush": 1392,
+              "ltrim": 1392
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 140350,
+              "persisted": 140350,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 30,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 362,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          },
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 3,
+            "elapsedSeconds": 30.001753700000002,
+            "requests": 122231,
+            "issued": 122231,
+            "offered": 122231,
+            "requestsPerSecond": 4074.1285066945934,
+            "statuses": {
+              "200": 122231
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.913549647798022,
+              "p50": 3.573,
+              "p95": 6.443,
+              "p99": 7.975,
+              "max": 26.591
+            },
+            "scheduledLatencyMs": {
+              "average": 3.913668578347555,
+              "p50": 3.573,
+              "p95": 6.443,
+              "p99": 7.975,
+              "max": 26.591
+            },
+            "cpuFractionAverage": 0.2371594563897852,
+            "heapBytesPeakSampled": 194770416,
+            "pendingPeakSampled": 95,
+            "reservedBytesPeakSampled": 135280,
+            "oldestAgeMsPeakSampled": 22,
+            "audit": {
+              "received": 122231,
+              "persisted": 122231,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 122231,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1434,
+              "evalsha": 122231,
+              "lpush": 1434,
+              "ltrim": 1434
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 156780,
+              "persisted": 156780,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 40,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 220,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 3,
+            "elapsedSeconds": 30.00090889999998,
+            "requests": 214382,
+            "issued": 214382,
+            "offered": 214382,
+            "requestsPerSecond": 7145.850171225984,
+            "statuses": {
+              "200": 214382
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.232145931094961,
+              "p50": 2.042,
+              "p95": 3.447,
+              "p99": 4.715,
+              "max": 22.447
+            },
+            "scheduledLatencyMs": {
+              "average": 2.2322173876538143,
+              "p50": 2.042,
+              "p95": 3.447,
+              "p99": 4.715,
+              "max": 22.447
+            },
+            "cpuFractionAverage": 0.22517388738710475,
+            "heapBytesPeakSampled": 192244272,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "faults-new",
+      "source": "benchmarks/results/2026-09-23T07-20-54-975Z/summary.json",
+      "sha256": "b4d9c3e8704daf86fad0a666b293c1148eb1326ecfe076438ff118ccf7cf8c62",
+      "report": {
+        "runId": "2026-09-23T07-20-54-975Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "audit-delay",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "auditDelayed": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.001922299999997,
+            "requests": 116764,
+            "issued": 116764,
+            "offered": 116764,
+            "requestsPerSecond": 3891.8839543824834,
+            "statuses": {
+              "200": 116764
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 4.097503990956117,
+              "p50": 3.561,
+              "p95": 7.271,
+              "p99": 10.671,
+              "max": 30.175
+            },
+            "scheduledLatencyMs": {
+              "average": 4.0976400859854065,
+              "p50": 3.561,
+              "p95": 7.271,
+              "p99": 10.671,
+              "max": 30.175
+            },
+            "cpuFractionAverage": 0.23557081202614058,
+            "heapBytesPeakSampled": 194507808,
+            "pendingPeakSampled": 11881,
+            "reservedBytesPeakSampled": 16776144,
+            "oldestAgeMsPeakSampled": 6752,
+            "audit": {
+              "received": 116764,
+              "persisted": 65918,
+              "dropped": 50846,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 116764,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 660,
+              "evalsha": 116764,
+              "lpush": 660,
+              "ltrim": 660
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 158442,
+              "persisted": 103423,
+              "dropped": 55019,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 55019,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 81,
+              "lastBatchDurationMs": 61,
+              "lastSuccessAgeMs": 0,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          },
+          {
+            "name": "redis-delay",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "delayed": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.016256500000004,
+            "requests": 7760,
+            "issued": 7760,
+            "offered": 7760,
+            "requestsPerSecond": 258.5265754242205,
+            "statuses": {
+              "200": 7760
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 61.878973195876284,
+              "p50": 61.951,
+              "p95": 64.127,
+              "p99": 65.791,
+              "max": 75.519
+            },
+            "scheduledLatencyMs": {
+              "average": 61.879072164948454,
+              "p50": 61.951,
+              "p95": 64.127,
+              "p99": 65.791,
+              "max": 75.519
+            },
+            "cpuFractionAverage": 0.026698306451880944,
+            "heapBytesPeakSampled": 188831072,
+            "pendingPeakSampled": 32,
+            "reservedBytesPeakSampled": 45184,
+            "oldestAgeMsPeakSampled": 108,
+            "audit": {
+              "received": 7760,
+              "persisted": 7760,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 7760,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 485,
+              "evalsha": 7760,
+              "lpush": 485,
+              "ltrim": 485
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 11633,
+              "persisted": 11633,
+              "dropped": 0,
+              "droppedByReason": {
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0,
+                "oversized": 0,
+                "byte_limit": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 16,
+              "lastBatchDurationMs": 61,
+              "lastSuccessAgeMs": 312,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "audit-disconnect",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "auditFault": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.005798700000014,
+            "requests": 144639,
+            "issued": 144639,
+            "offered": 144639,
+            "requestsPerSecond": 4820.368271016893,
+            "statuses": {
+              "200": 144639
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.3088399463491864,
+              "p50": 3.077,
+              "p95": 5.051,
+              "p99": 7.211,
+              "max": 21.487
+            },
+            "scheduledLatencyMs": {
+              "average": 3.308965721555044,
+              "p50": 3.077,
+              "p95": 5.051,
+              "p99": 7.211,
+              "max": 21.487
+            },
+            "cpuFractionAverage": 0.28332286155310127,
+            "heapBytesPeakSampled": 195282192,
+            "pendingPeakSampled": 256,
+            "reservedBytesPeakSampled": 362600,
+            "oldestAgeMsPeakSampled": 11654,
+            "audit": {
+              "received": 144639,
+              "persisted": 84419,
+              "dropped": 60126,
+              "uncertain": 94,
+              "retries": 33
+            },
+            "monitorCompleted": 144639,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 915,
+              "evalsha": 144639,
+              "lpush": 915,
+              "ltrim": 915
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 196996,
+              "persisted": 136776,
+              "dropped": 60126,
+              "droppedByReason": {
+                "serialization": 0,
+                "queue_full": 60126,
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0
+              },
+              "uncertain": 94,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 33,
+              "lastBatchSize": 56,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 219,
+              "capacity": 256,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "sustained-new",
+      "source": "benchmarks/results/2026-09-23T07-24-43-081Z/summary.json",
+      "sha256": "92c73d10b0a9e95f399871fa04541ab62eafde475195f727e26e5523a38ddc39",
+      "report": {
+        "runId": "2026-09-23T07-24-43-081Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 300,
+          "warmupSeconds": 15,
+          "connections": 256,
+          "redisDelayMs": 50,
+          "arrivalRate": 3000,
+          "repetitions": 3,
+          "closedLoop": false,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 300.0071937,
+            "requests": 896663,
+            "issued": 896663,
+            "offered": 900000,
+            "requestsPerSecond": 2988.804998111617,
+            "statuses": {
+              "200": 896663
+            },
+            "transportErrors": 0,
+            "arrivalRate": 3000,
+            "schedulerMisses": 3337,
+            "capacityMisses": 0,
+            "peakInFlight": 90,
+            "latencyMs": {
+              "average": 3.060102755438777,
+              "p50": 2.243,
+              "p95": 5.351,
+              "p99": 27.151,
+              "max": 65.599
+            },
+            "scheduledLatencyMs": {
+              "average": 4.145663544720815,
+              "p50": 3.223,
+              "p95": 6.719,
+              "p99": 32.991,
+              "max": 75.455
+            },
+            "cpuFractionAverage": 0.14392701012218917,
+            "heapBytesPeakSampled": 197812856,
+            "pendingPeakSampled": 103,
+            "reservedBytesPeakSampled": 146672,
+            "oldestAgeMsPeakSampled": 34,
+            "audit": {
+              "received": 896663,
+              "persisted": 896663,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 896663,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 12526,
+              "evalsha": 896663,
+              "lpush": 12526,
+              "ltrim": 12526
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 935709,
+              "persisted": 935709,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 36,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 224,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 288,
+            "samplingErrors": []
+          },
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 2,
+            "elapsedSeconds": 300.01062840000003,
+            "requests": 896245,
+            "issued": 896245,
+            "offered": 900000,
+            "requestsPerSecond": 2987.377496523386,
+            "statuses": {
+              "200": 896245
+            },
+            "transportErrors": 0,
+            "arrivalRate": 3000,
+            "schedulerMisses": 3755,
+            "capacityMisses": 0,
+            "peakInFlight": 128,
+            "latencyMs": {
+              "average": 2.967568299962622,
+              "p50": 2.267,
+              "p95": 5.099,
+              "p99": 24.255,
+              "max": 66.751
+            },
+            "scheduledLatencyMs": {
+              "average": 4.039563711931447,
+              "p50": 3.245,
+              "p95": 6.427,
+              "p99": 29.855,
+              "max": 68.543
+            },
+            "cpuFractionAverage": 0.14288832030199125,
+            "heapBytesPeakSampled": 196940760,
+            "pendingPeakSampled": 101,
+            "reservedBytesPeakSampled": 143824,
+            "oldestAgeMsPeakSampled": 33,
+            "audit": {
+              "received": 896245,
+              "persisted": 896245,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 896245,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 12456,
+              "evalsha": 896245,
+              "lpush": 12456,
+              "ltrim": 12456
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 935698,
+              "persisted": 935698,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 59,
+              "lastBatchDurationMs": 2,
+              "lastSuccessAgeMs": 496,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 289,
+            "samplingErrors": []
+          },
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 3,
+            "elapsedSeconds": 300.0154955,
+            "requests": 898752,
+            "issued": 898752,
+            "offered": 900000,
+            "requestsPerSecond": 2995.685267863106,
+            "statuses": {
+              "200": 898752
+            },
+            "transportErrors": 0,
+            "arrivalRate": 3000,
+            "schedulerMisses": 1196,
+            "capacityMisses": 52,
+            "peakInFlight": 256,
+            "latencyMs": {
+              "average": 2.9297022671437727,
+              "p50": 2.223,
+              "p95": 5.879,
+              "p99": 19.167,
+              "max": 180.735
+            },
+            "scheduledLatencyMs": {
+              "average": 3.9990440110286265,
+              "p50": 3.157,
+              "p95": 7.467,
+              "p99": 23.487,
+              "max": 184.063
+            },
+            "cpuFractionAverage": 0.1481886299863322,
+            "heapBytesPeakSampled": 198417856,
+            "pendingPeakSampled": 96,
+            "reservedBytesPeakSampled": 136704,
+            "oldestAgeMsPeakSampled": 31,
+            "audit": {
+              "received": 898752,
+              "persisted": 898752,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 898752,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 10858,
+              "evalsha": 898752,
+              "lpush": 10858,
+              "ltrim": 10858
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 939285,
+              "persisted": 939285,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 15,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 98,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 288,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "paired-old",
+      "source": "benchmarks/results/2026-09-23T07-41-16-808Z/summary.json",
+      "sha256": "771286f19a143fcc54158333fd82b704e66ee2d2fd7631b51363b266d9058e69",
+      "report": {
+        "runId": "2026-09-23T07-41-16-808Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.001358,
+            "requests": 126701,
+            "issued": 126701,
+            "offered": 126701,
+            "requestsPerSecond": 4223.175497589143,
+            "statuses": {
+              "200": 126701
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.7759734019463145,
+              "p50": 3.347,
+              "p95": 6.287,
+              "p99": 11.199,
+              "max": 38.015
+            },
+            "scheduledLatencyMs": {
+              "average": 3.776099415158523,
+              "p50": 3.347,
+              "p95": 6.287,
+              "p99": 11.199,
+              "max": 38.015
+            },
+            "cpuFractionAverage": 0.23554449940199476,
+            "heapBytesPeakSampled": 184069888,
+            "pendingPeakSampled": 104,
+            "reservedBytesPeakSampled": 148096,
+            "oldestAgeMsPeakSampled": 28,
+            "audit": {
+              "received": 126701,
+              "persisted": 126701,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 126701,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1459,
+              "evalsha": 126701,
+              "lpush": 1459,
+              "ltrim": 1459
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 167346,
+              "persisted": 167346,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 52,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 227,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.000676300000006,
+            "requests": 207784,
+            "issued": 207784,
+            "offered": 207784,
+            "requestsPerSecond": 6925.977198720682,
+            "statuses": {
+              "200": 207784
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.3030639414006857,
+              "p50": 2.075,
+              "p95": 3.705,
+              "p99": 5.471,
+              "max": 23.311
+            },
+            "scheduledLatencyMs": {
+              "average": 2.3031366803988758,
+              "p50": 2.075,
+              "p95": 3.705,
+              "p99": 5.471,
+              "max": 23.311
+            },
+            "cpuFractionAverage": 0.2051483788318611,
+            "heapBytesPeakSampled": 187962864,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "paired-new",
+      "source": "benchmarks/results/2026-09-23T07-43-04-965Z/summary.json",
+      "sha256": "26ca3a14fd311d47ed245e8e780168d5b79bbc49a981c8b2c9b028c596249295",
+      "report": {
+        "runId": "2026-09-23T07-43-04-965Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.0015114,
+            "requests": 147446,
+            "issued": 147446,
+            "offered": 147446,
+            "requestsPerSecond": 4914.619068158013,
+            "statuses": {
+              "200": 147446
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.244610989786091,
+              "p50": 3.039,
+              "p95": 4.907,
+              "p99": 6.999,
+              "max": 25.583
+            },
+            "scheduledLatencyMs": {
+              "average": 3.2447234512974243,
+              "p50": 3.039,
+              "p95": 4.907,
+              "p99": 6.999,
+              "max": 25.583
+            },
+            "cpuFractionAverage": 0.2742852668812292,
+            "heapBytesPeakSampled": 195764072,
+            "pendingPeakSampled": 103,
+            "reservedBytesPeakSampled": 145436,
+            "oldestAgeMsPeakSampled": 22,
+            "audit": {
+              "received": 147446,
+              "persisted": 147446,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 147446,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1549,
+              "evalsha": 147446,
+              "lpush": 1549,
+              "ltrim": 1549
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 192837,
+              "persisted": 192837,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 8,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 880,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.000679099999992,
+            "requests": 226772,
+            "issued": 226772,
+            "offered": 226772,
+            "requestsPerSecond": 7558.895558467543,
+            "statuses": {
+              "200": 226772
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.110071724022366,
+              "p50": 1.953,
+              "p95": 3.139,
+              "p99": 4.287,
+              "max": 18.351
+            },
+            "scheduledLatencyMs": {
+              "average": 2.1101380461432626,
+              "p50": 1.953,
+              "p95": 3.139,
+              "p99": 4.287,
+              "max": 18.351
+            },
+            "cpuFractionAverage": 0.21123328026387017,
+            "heapBytesPeakSampled": 194552832,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "paired-new",
+      "source": "benchmarks/results/2026-09-23T07-44-59-927Z/summary.json",
+      "sha256": "95e1f748e51120f926a55ff4093fe23cdf5c2d10c45a36ef5a22879359ac4ff4",
+      "report": {
+        "runId": "2026-09-23T07-44-59-927Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.001729200000003,
+            "requests": 129689,
+            "issued": 129689,
+            "offered": 129689,
+            "requestsPerSecond": 4322.717505229664,
+            "statuses": {
+              "200": 129689
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.6888220280825665,
+              "p50": 3.383,
+              "p95": 6.087,
+              "p99": 8.439,
+              "max": 24.159
+            },
+            "scheduledLatencyMs": {
+              "average": 3.6889356229132773,
+              "p50": 3.385,
+              "p95": 6.087,
+              "p99": 8.439,
+              "max": 24.159
+            },
+            "cpuFractionAverage": 0.2667373429746746,
+            "heapBytesPeakSampled": 189077080,
+            "pendingPeakSampled": 87,
+            "reservedBytesPeakSampled": 122844,
+            "oldestAgeMsPeakSampled": 19,
+            "audit": {
+              "received": 129689,
+              "persisted": 129689,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 129689,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1463,
+              "evalsha": 129689,
+              "lpush": 1463,
+              "ltrim": 1463
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 169399,
+              "persisted": 169399,
+              "dropped": 0,
+              "droppedByReason": {
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 79,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 1076,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.00173849999999,
+            "requests": 207825,
+            "issued": 207825,
+            "offered": 207825,
+            "requestsPerSecond": 6927.098574637602,
+            "statuses": {
+              "200": 207825
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.3023318224467704,
+              "p50": 2.071,
+              "p95": 3.715,
+              "p99": 5.487,
+              "max": 23.535
+            },
+            "scheduledLatencyMs": {
+              "average": 2.302412149645134,
+              "p50": 2.071,
+              "p95": 3.715,
+              "p99": 5.487,
+              "max": 23.535
+            },
+            "cpuFractionAverage": 0.21481951568925814,
+            "heapBytesPeakSampled": 195122360,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0,
+                "oversized": 0,
+                "byte_limit": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "paired-old",
+      "source": "benchmarks/results/2026-09-23T07-46-54-619Z/summary.json",
+      "sha256": "a62e4b601a9b1f767fdb8e3f7e7bf285a83fe7e623920908ded544ce27c0409a",
+      "report": {
+        "runId": "2026-09-23T07-46-54-619Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.001475799999998,
+            "requests": 140688,
+            "issued": 140688,
+            "offered": 140688,
+            "requestsPerSecond": 4689.369314292199,
+            "statuses": {
+              "200": 140688
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.4007385491299895,
+              "p50": 3.121,
+              "p95": 5.487,
+              "p99": 8.279,
+              "max": 26.991
+            },
+            "scheduledLatencyMs": {
+              "average": 3.400859042704424,
+              "p50": 3.121,
+              "p95": 5.487,
+              "p99": 8.279,
+              "max": 26.991
+            },
+            "cpuFractionAverage": 0.2492550252253693,
+            "heapBytesPeakSampled": 192877824,
+            "pendingPeakSampled": 106,
+            "reservedBytesPeakSampled": 149672,
+            "oldestAgeMsPeakSampled": 21,
+            "audit": {
+              "received": 140688,
+              "persisted": 140688,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 140688,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1523,
+              "evalsha": 140688,
+              "lpush": 1523,
+              "ltrim": 1523
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 178813,
+              "persisted": 178813,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 1,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 1029,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.000807799999993,
+            "requests": 218861,
+            "issued": 218861,
+            "offered": 218861,
+            "requestsPerSecond": 7295.170232049553,
+            "statuses": {
+              "200": 218861
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.186566400592157,
+              "p50": 1.989,
+              "p95": 3.427,
+              "p99": 4.911,
+              "max": 24.815
+            },
+            "scheduledLatencyMs": {
+              "average": 2.1866386519297634,
+              "p50": 1.989,
+              "p95": 3.429,
+              "p99": 4.911,
+              "max": 24.815
+            },
+            "cpuFractionAverage": 0.2109221478352754,
+            "heapBytesPeakSampled": 193934344,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "paired-old",
+      "source": "benchmarks/results/2026-09-23T07-48-45-057Z/summary.json",
+      "sha256": "4b38c51724a9c889072f7b64bfc571ddbe4f217090954ce9da6c391330ed9b86",
+      "report": {
+        "runId": "2026-09-23T07-48-45-057Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.001581899999998,
+            "requests": 127583,
+            "issued": 127583,
+            "offered": 127583,
+            "requestsPerSecond": 4252.542430104328,
+            "statuses": {
+              "200": 127583
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.7498637827923784,
+              "p50": 3.443,
+              "p95": 6.103,
+              "p99": 8.479,
+              "max": 33.023
+            },
+            "scheduledLatencyMs": {
+              "average": 3.749982513344254,
+              "p50": 3.443,
+              "p95": 6.103,
+              "p99": 8.479,
+              "max": 33.023
+            },
+            "cpuFractionAverage": 0.25675115064158466,
+            "heapBytesPeakSampled": 191619680,
+            "pendingPeakSampled": 106,
+            "reservedBytesPeakSampled": 150944,
+            "oldestAgeMsPeakSampled": 21,
+            "audit": {
+              "received": 127583,
+              "persisted": 127583,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 127583,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1461,
+              "evalsha": 127583,
+              "lpush": 1461,
+              "ltrim": 1461
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 170906,
+              "persisted": 170906,
+              "dropped": 0,
+              "droppedByReason": {
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0,
+                "serialization": 0,
+                "queue_full": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 67,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 915,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.000530099999988,
+            "requests": 217308,
+            "issued": 217308,
+            "offered": 217308,
+            "requestsPerSecond": 7243.472007849624,
+            "statuses": {
+              "200": 217308
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.2020850129769727,
+              "p50": 2.021,
+              "p95": 3.343,
+              "p99": 4.727,
+              "max": 24.591
+            },
+            "scheduledLatencyMs": {
+              "average": 2.2021453973162517,
+              "p50": 2.021,
+              "p95": 3.343,
+              "p99": 4.727,
+              "max": 24.591
+            },
+            "cpuFractionAverage": 0.20460436458268205,
+            "heapBytesPeakSampled": 188214624,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "group": "paired-new",
+      "source": "benchmarks/results/2026-09-23T07-50-33-599Z/summary.json",
+      "sha256": "48d22f7c077e858d676f028ca5f0cccb3ecb36b79b97953bc687ff053b744d1c",
+      "report": {
+        "runId": "2026-09-23T07-50-33-599Z",
+        "environment": {
+          "platform": "win32",
+          "release": "10.0.26200",
+          "node": "v24.21.0",
+          "cpu": "13th Gen Intel(R) Core(TM) i5-13500H",
+          "logicalCpus": 16,
+          "memoryBytes": 34082521088
+        },
+        "workload": {
+          "durationSeconds": 30,
+          "warmupSeconds": 15,
+          "connections": 16,
+          "redisDelayMs": 50,
+          "arrivalRate": 0,
+          "repetitions": 1,
+          "closedLoop": true,
+          "jvm": "-Xms256m -Xmx512m",
+          "note": "Generator, upstream and gateway share one host. Redis retains only the newest 5000 events; full accounting uses acknowledgements."
+        },
+        "scenarios": [
+          {
+            "name": "rate-limit-audit",
+            "rateLimit": true,
+            "monitorEnabled": true,
+            "auditEnabled": true,
+            "repetition": 1,
+            "elapsedSeconds": 30.001704999999998,
+            "requests": 122154,
+            "issued": 122154,
+            "offered": 122154,
+            "requestsPerSecond": 4071.5685991846135,
+            "statuses": {
+              "200": 122154
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 3.916078605694451,
+              "p50": 3.259,
+              "p95": 7.911,
+              "p99": 13.551,
+              "max": 57.887
+            },
+            "scheduledLatencyMs": {
+              "average": 3.9162024166216414,
+              "p50": 3.259,
+              "p95": 7.911,
+              "p99": 13.551,
+              "max": 57.887
+            },
+            "cpuFractionAverage": 0.23877612621548513,
+            "heapBytesPeakSampled": 191965696,
+            "pendingPeakSampled": 106,
+            "reservedBytesPeakSampled": 150944,
+            "oldestAgeMsPeakSampled": 21,
+            "audit": {
+              "received": 122154,
+              "persisted": 122154,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 122154,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "reconciliationGap": 0,
+            "retainedRows": 5000,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 1465,
+              "evalsha": 122154,
+              "lpush": 1465,
+              "ltrim": 1465
+            },
+            "finalAudit": {
+              "enabled": true,
+              "accepting": true,
+              "received": 159377,
+              "persisted": 159377,
+              "dropped": 0,
+              "droppedByReason": {
+                "serialization": 0,
+                "queue_full": 0,
+                "oversized": 0,
+                "byte_limit": 0,
+                "shutdown": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 82,
+              "lastBatchDurationMs": 1,
+              "lastSuccessAgeMs": 565,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 28,
+            "samplingErrors": []
+          },
+          {
+            "name": "forward-only",
+            "rateLimit": false,
+            "monitorEnabled": false,
+            "auditEnabled": false,
+            "repetition": 1,
+            "elapsedSeconds": 30.000636899999996,
+            "requests": 220843,
+            "issued": 220843,
+            "offered": 220843,
+            "requestsPerSecond": 7361.27705342149,
+            "statuses": {
+              "200": 220843
+            },
+            "transportErrors": 0,
+            "arrivalRate": 0,
+            "schedulerMisses": 0,
+            "capacityMisses": 0,
+            "peakInFlight": 16,
+            "latencyMs": {
+              "average": 2.1666511820614645,
+              "p50": 2.004,
+              "p95": 3.203,
+              "p99": 4.827,
+              "max": 21.087
+            },
+            "scheduledLatencyMs": {
+              "average": 2.166720774486853,
+              "p50": 2.004,
+              "p95": 3.203,
+              "p99": 4.827,
+              "max": 21.087
+            },
+            "cpuFractionAverage": 0.20876343323158977,
+            "heapBytesPeakSampled": 195204368,
+            "pendingPeakSampled": 0,
+            "reservedBytesPeakSampled": 0,
+            "oldestAgeMsPeakSampled": 0,
+            "audit": {
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "uncertain": 0,
+              "retries": 0
+            },
+            "monitorCompleted": 0,
+            "monitorGap": null,
+            "auditGap": null,
+            "reconciliationGap": 0,
+            "retainedRows": 0,
+            "duplicateRetainedIds": 0,
+            "redisCommands": {
+              "eval": 0,
+              "evalsha": 0,
+              "lpush": 0,
+              "ltrim": 0
+            },
+            "finalAudit": {
+              "enabled": false,
+              "accepting": false,
+              "received": 0,
+              "persisted": 0,
+              "dropped": 0,
+              "droppedByReason": {
+                "queue_full": 0,
+                "serialization": 0,
+                "shutdown": 0,
+                "byte_limit": 0,
+                "oversized": 0
+              },
+              "uncertain": 0,
+              "queueDepth": 0,
+              "inFlight": 0,
+              "pending": 0,
+              "reservedBytes": 0,
+              "oldestAgeMs": 0,
+              "retries": 0,
+              "lastBatchSize": 0,
+              "lastBatchDurationMs": 0,
+              "lastSuccessAgeMs": null,
+              "capacity": 20000,
+              "maxReservedBytes": 16777216
+            },
+            "resourceSamples": 29,
+            "samplingErrors": []
+          }
+        ]
+      }
+    }
+  ]
+}

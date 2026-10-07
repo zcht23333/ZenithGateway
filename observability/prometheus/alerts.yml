@@ -1,0 +1,90 @@
+groups:
+  - name: zenith
+    rules:
+      - alert: ZenithGatewayUnavailable
+        expr: up{job="zenith-gateway"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: Gateway metrics cannot be scraped
+          description: Check the gateway, network and scrape credential before diagnosing application failure.
+      - alert: ZenithAuditStalled
+        expr: zenith_audit_pending{job="zenith-gateway"} > 0 and zenith_audit_oldest_age{job="zenith-gateway"} > 10000
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: Audit backlog is not draining
+          description: Pending events have waited more than ten seconds. Check Redis and the audit writer.
+      - alert: ZenithAuditBufferPressure
+        expr: (zenith_audit_pending{job="zenith-gateway"} / zenith_audit_capacity{job="zenith-gateway"} > 0.8) or (zenith_audit_queue_bytes{job="zenith-gateway"} / zenith_audit_byte_capacity{job="zenith-gateway"} > 0.8)
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: Audit admission budget exceeds eighty percent
+          description: Inspect writer throughput and Redis latency before increasing the memory budget.
+      - alert: ZenithAuditDropped
+        expr: sum by (instance) (increase(zenith_audit_dropped_total{job="zenith-gateway"}[1m])) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: Audit events were explicitly dropped
+          description: Inspect the bounded reason labels. Clearing this alert does not recover lost events.
+      - alert: ZenithAuditUncertain
+        expr: increase(zenith_audit_uncertain_total{job="zenith-gateway"}[1m]) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: Some audit write results are unknown
+          description: Redis may have committed a timed-out batch. Do not treat this count as confirmed loss.
+      # Fact + action are independent of debit certainty and final HTTP outcome.
+      - alert: ZenithRateLimitFailOpen
+        expr: |
+          (sum by (job, instance, event) (rate(zenith_ratelimit_decisions_total{job="zenith-gateway",event=~"local_unavailable|redis_unconfirmed",action="forward"}[1m])) > 0)
+          and on (job, instance) (up{job="zenith-gateway"} == 1)
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rate limiter admitted requests without confirmed quota"
+          description: '{{ $labels.instance }}: {{ $labels.event }} caused fail-open decisions in the last minute. Forward is a limiter action, not proof of upstream receipt or HTTP success. Check final outcomes and limiter diagnostics.'
+      - alert: ZenithRateLimitProtectiveRejection
+        expr: |
+          (sum by (job, instance, event) (rate(zenith_ratelimit_decisions_total{job="zenith-gateway",event=~"local_unavailable|redis_unconfirmed",action="reject"}[1m])) > 0)
+          and on (job, instance) (up{job="zenith-gateway"} == 1)
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rate limiter selected protective rejection"
+          description: '{{ $labels.instance }}: {{ $labels.event }} caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately.'
+      - alert: ZenithRateLimitDebitUncertain
+        expr: |
+          (sum by (job, instance) (increase(zenith_ratelimit_decisions_total{job="zenith-gateway",execution="unknown",action=~"forward|reject"}[1m])) >= 3)
+          and on (job, instance) (up{job="zenith-gateway"} == 1)
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Repeated rate-limit debit results are unknown"
+          description: '{{ $labels.instance }}: estimated one-minute increase is at least 3 non-cancelled unknown decisions for 30 seconds. Redis may have debited tokens. Do not retry or refund from this signal; cancelled unknown decisions remain visible in the dashboard.'
+      - alert: ZenithRateLimitMetricsMissing
+        expr: |
+          (up{job="zenith-gateway"} == 1)
+          unless on (job, instance) count by (job, instance) (zenith_ratelimit_decisions_total{job="zenith-gateway"})
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rate-limit decision metrics are missing"
+          description: '{{ $labels.instance }}: scrape succeeded but the decision metric family is absent. Check observability.enabled, gateway version and metric relabelling. This is not zero traffic or a healthy limiter.'
+      - alert: ZenithGatewayLatency
+        expr: histogram_quantile(0.95, sum by (le, instance) (rate(zenith_gateway_requests_seconds_bucket{job="zenith-gateway"}[1m]))) > 0.25 and sum by (instance) (rate(zenith_gateway_requests_seconds_count{job="zenith-gateway"}[1m])) > 10
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: Gateway P95 latency exceeds 250 milliseconds
+          description: Compare limiter decision wait, error outcomes, JVM allocation and GC. This is an initial demo threshold.

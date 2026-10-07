@@ -1,5 +1,5 @@
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 .kotlin
@@ -45,3 +45,11 @@ build/
 **/target/
 # 屏蔽环境变量本地文件
 .env.local
+# Local credentials and benchmark output
+.env
+.env.*
+!.env.example
+benchmarks/results/
+
+# Local development launcher logs
+/.dev/

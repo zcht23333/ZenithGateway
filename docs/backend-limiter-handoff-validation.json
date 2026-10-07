@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-04T12:38:42.668963+00:00",
+  "task": "Limiter diagnostic correction and bounded optional result handoff",
+  "status": "completed_with_capacity_gate_failed",
+  "conclusion": {
+    "diagnosticsFixed": true,
+    "handoffImplemented": true,
+    "handoffDefaultEnabled": false,
+    "functionalRegressionPassed": true,
+    "capacityAt4000RpsPassed": false,
+    "longSoakExecuted": false,
+    "developmentDeploymentChanged": false,
+    "limits": "Candidate comparisons improved observed saturation and latency but still failed every main phase health gate. Do not claim sustained 4000 req/s capacity or attribute the entire tail to one component."
+  },
+  "artifacts": {
+    "performanceCandidate": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/candidate.jar",
+      "sha256": "cd0ac8c35ba5e2780d805695336c623244457631e20f30c624520538a46e93f7",
+      "bytes": 67107061
+    },
+    "finalBuild": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/final.jar",
+      "sha256": "cded544d461de791cb91e3778c98fe550f8c53ec910856f5197a3ffb31bca77c",
+      "bytes": 67107223
+    },
+    "currentBuildSameAsFinal": true,
+    "finalSourceManifest": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/final-source-hashes.json",
+      "sha256": "bc04f51f24f35e2e52cd34bca024b69ff21585dd55c85e4c48b75798e69902a6",
+      "bytes": 13803
+    },
+    "candidateSourcePath": ".dev/limiter-handoff-20261004-eb92530a/candidate-sources",
+    "candidateToFinalDifferentFiles": [
+      "src/main/java/com/zch/ratelimit/LimiterProperties.java",
+      "src/main/java/com/zch/ratelimit/RedisRateLimiter.java",
+      "src/main/resources/application.yml",
+      "src/test/java/com/zch/ratelimit/LimiterPropertiesTest.java",
+      "src/test/java/com/zch/ratelimit/RedisRateLimiterHandoffTest.java"
+    ],
+    "changesAfterPerformance": "Default handoff changed to false; interrupted shutdown drains queued deliveries and restores interruption; shutdown scheduling rejection reports stopped. Full paired performance not repeated on final binary.",
+    "candidateSourceManifest": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/candidate-source-hashes.json",
+      "sha256": "2bfc5c7b814c78a3e4d6b1c5c93ed7becb47bbcd548ef44da030b17fbae2f8ba",
+      "bytes": 13803
+    },
+    "candidatePom": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/candidate-pom.xml",
+      "sha256": "15e3562a7c1b46e61ab6dbaf3c9181908f10eb5247c74ff5153106e171b05915",
+      "bytes": 2666
+    },
+    "candidateSourceLayout": "candidate-sources contains the contents of backend/src; candidate-pom.xml is the unchanged build definition, verified against the archived baseline."
+  },
+  "performance": {
+    "scope": "Frozen candidate only; same jar, explicit inline/handoff flags; warmups preserved",
+    "raw": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/comparison/summary.json",
+      "sha256": "7ed94dab7ae6e3ff66a75b5fb0b160efda679f9ba4811c60a5d4ff6302542d25",
+      "bytes": 15957760
+    },
+    "analysis": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/comparison/analysis.json",
+      "sha256": "7d005d63d886a24a8e412ff31f33391f12938cdd774dbde31056c4025793a896",
+      "bytes": 25261
+    },
+    "harnessCompleted": true,
+    "allMainPhasesHealthy": false,
+    "parameters": {
+      "rate": 4000,
+      "workers": 8,
+      "queueCapacity": 128,
+      "applicationProfile": "capacity",
+      "routeCount": 32,
+      "seconds": 180,
+      "warmSeconds": 30,
+      "warmRate": 1000,
+      "soakSeconds": 900,
+      "repetitions": 3,
+      "images": {
+        "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+      },
+      "coldStrategy": "immediate",
+      "longSeconds": 3600,
+      "idleSeconds": 600,
+      "sampleInterval": 2000,
+      "modes": [
+        "none",
+        "light",
+        "native",
+        "native",
+        "light",
+        "none"
+      ],
+      "probeEnabled": true,
+      "study": "handoff",
+      "redisHost": null,
+      "cpuSets": {
+        "redis": "0-1",
+        "upstream": "2-3",
+        "gatewayA": "4-7",
+        "driver": "8-11",
+        "faultProxy": "12",
+        "gatewayB": "4-7"
+      },
+      "heap": "256m/512m",
+      "directMemoryLimit": "256m",
+      "gc": "G1",
+      "nativeMemoryTracking": "summary",
+      "gatewayMemoryLimit": "1g",
+      "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+    },
+    "environment": {
+      "cpus": 16,
+      "memoryBytes": 16630611968,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "os": "Docker Desktop",
+      "startedHost": "win32"
+    },
+    "actualStageNames": [
+      "warmup-A-1000",
+      "warmup-A-target",
+      "warmup-B-1000",
+      "warmup-B-target",
+      "01-A-inline",
+      "02-B-handoff",
+      "03-B-handoff",
+      "04-A-inline"
+    ],
+    "mainRows": [
+      {
+        "stage": "01-A-inline",
+        "requests": 701353,
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "rps": 3896.2947881590067,
+        "http200P95ms": 51.007,
+        "http200P99ms": 102.655,
+        "rejections": {
+          "admission_full": 4647,
+          "executor_rejected": 1903,
+          "delivery_rejected": 0
+        },
+        "observedPeaks": {
+          "commandsInFlight": 8,
+          "activeWorkers": 8,
+          "queued": 123,
+          "activeDeliveries": 0,
+          "queuedDeliveries": 0,
+          "retainedTasks": 131
+        },
+        "auditGap": 0,
+        "monitorGap": 0,
+        "auditDropped": 0,
+        "auditUncertain": 0,
+        "generatorMisses": 18647,
+        "queueFull": 6550
+      },
+      {
+        "stage": "02-B-handoff",
+        "requests": 718195,
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "rps": 3989.8662262834264,
+        "http200P95ms": 8.351,
+        "http200P99ms": 27.775,
+        "rejections": {
+          "admission_full": 254,
+          "executor_rejected": 0,
+          "delivery_rejected": 0
+        },
+        "observedPeaks": {
+          "commandsInFlight": 6,
+          "activeWorkers": 8,
+          "queued": 62,
+          "activeDeliveries": 2,
+          "queuedDeliveries": 17,
+          "retainedTasks": 71
+        },
+        "auditGap": 0,
+        "monitorGap": 0,
+        "auditDropped": 0,
+        "auditUncertain": 0,
+        "generatorMisses": 1805,
+        "queueFull": 254
+      },
+      {
+        "stage": "03-B-handoff",
+        "requests": 716257,
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "rps": 3979.0556077629512,
+        "http200P95ms": 11.463,
+        "http200P99ms": 39.327,
+        "rejections": {
+          "admission_full": 238,
+          "executor_rejected": 0,
+          "delivery_rejected": 0
+        },
+        "observedPeaks": {
+          "commandsInFlight": 8,
+          "activeWorkers": 8,
+          "queued": 73,
+          "activeDeliveries": 2,
+          "queuedDeliveries": 15,
+          "retainedTasks": 81
+        },
+        "auditGap": 0,
+        "monitorGap": 0,
+        "auditDropped": 0,
+        "auditUncertain": 0,
+        "generatorMisses": 3743,
+        "queueFull": 238
+      },
+      {
+        "stage": "04-A-inline",
+        "requests": 707340,
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "rps": 3929.553212802784,
+        "http200P95ms": 43.263,
+        "http200P99ms": 78.399,
+        "rejections": {
+          "admission_full": 2608,
+          "executor_rejected": 1185,
+          "delivery_rejected": 0
+        },
+        "observedPeaks": {
+          "commandsInFlight": 8,
+          "activeWorkers": 8,
+          "queued": 128,
+          "activeDeliveries": 0,
+          "queuedDeliveries": 0,
+          "retainedTasks": 136
+        },
+        "auditGap": 0,
+        "monitorGap": 0,
+        "auditDropped": 0,
+        "auditUncertain": 0,
+        "generatorMisses": 12660,
+        "queueFull": 3793
+      }
+    ],
+    "mainTotals": {
+      "A": {
+        "requests": 1408693,
+        "queueFull": 10343
+      },
+      "B": {
+        "requests": 1434452,
+        "queueFull": 492
+      }
+    },
+    "requestsIncludingWarmup": 3378775,
+    "failOpenIncludingWarmup": 11261,
+    "warmupHttp503": 30,
+    "warmup503CauseResolved": false,
+    "cautions": [
+      "Only two main phases per mode on a shared host; timing and warmup confound causal interpretation.",
+      "Histogram wall times include GC and scheduling; not server-only Redis time.",
+      "Observed resource peaks are sampled, not exact maxima.",
+      "Unused inherited longSeconds/soakSeconds/modes settings do not mean those scenarios ran.",
+      "A uses original early admission release; B includes reserved result ownership as well as thread handoff."
+    ],
+    "archivedHarnessPath": ".dev/limiter-handoff-20261004-eb92530a/comparison-tools"
+  },
+  "verification": {
+    "backend": {
+      "statistics": {
+        "tests": 223,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "productionJarBuilt": true,
+      "realRedisEnabled": true,
+      "log": {
+        "path": ".dev/limiter-handoff-20261004-eb92530a/final-backend-verify.log",
+        "sha256": "0882ccd83cc256146fbcd9900f06955caea2258fc82141485ba7606459942d35",
+        "bytes": 60199
+      },
+      "archivedReports": ".dev/limiter-handoff-20261004-eb92530a/final-surefire-reports",
+      "newHandoffTests": 7
+    },
+    "rateLimit": {
+      "groups": 22,
+      "recordedRequests": 181,
+      "handoffExplicitlyEnabled": true,
+      "passed": true,
+      "report": {
+        "path": ".dev/limiter-handoff-20261004-eb92530a/final-rate-limit-live/report.json",
+        "sha256": "e01bf145ac00399485e35fb60e451a769980e9c7c2c80d7de14d94f20e6f48f8",
+        "bytes": 603493
+      },
+      "hotPath": {
+        "proxyRequests": 10,
+        "localDiagnosticReads": 20,
+        "extraRuntimeConfigurationQueries": 0,
+        "backgroundReads": 1,
+        "limiterCommands": 10
+      },
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    "proxy": {
+      "groups": 24,
+      "recordedRequests": 102,
+      "passed": true,
+      "startupChecks": [
+        {
+          "name": "invalid total budget",
+          "exitCode": 1,
+          "expected": "Invalid zenith.proxy.resilience policy"
+        },
+        {
+          "name": "Retry filter is prohibited",
+          "exitCode": 1,
+          "expected": "Proxy Retry filters are disabled in this release"
+        }
+      ],
+      "report": {
+        "path": ".dev/limiter-handoff-20261004-eb92530a/final-proxy-live/report.json",
+        "sha256": "1ddce37864f8f76540a0c84988262a88ae17b7e6df497fd53e3e3ade0c599b00",
+        "bytes": 1012807
+      },
+      "initialLimiterEnabled": true,
+      "initialHandoffEnabled": true,
+      "deliveredBeforeRestart": 121,
+      "resourceStateBeforeRestart": {
+        "commandsInFlight": 0,
+        "retainedTasks": 0,
+        "queued": 0,
+        "queuedDeliveries": 0,
+        "activeDeliveries": 0
+      },
+      "cleanup": {
+        "gatewayExitCode": 0,
+        "upstreamClosed": true,
+        "httpsUpstreamClosed": true,
+        "redisRemoved": true,
+        "privateTlsKeyRemoved": true
+      },
+      "scopeNote": "The original matrix disables rate limiting late in the run and then restarts; not every recorded request uses handoff."
+    },
+    "tooling": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/tooling-checks.json",
+      "sha256": "8e165cc924919c535ef1d9922f24c9a753da336d444163b798769d94fb00b17d",
+      "bytes": 221
+    },
+    "notExecuted": [
+      "Frontend tests, frontend production build and browser: no frontend changes.",
+      "One-hour or longer load soak: short phases failed health gate.",
+      "Final binary full A-B-B-A performance repeat.",
+      "All legacy route publication/config sync/operations/rollback external suites; backend full tests and related limiter/proxy suites were executed.",
+      "Original archived multi-million-request diagnostic study or new JFR causality study.",
+      "Deployment or upgrade of existing developer instances."
+    ],
+    "toolSyntax": "node --check passed on limiter-handoff.mjs, limiter-diagnosis.mjs, rate-limit-reliability-live.mjs and proxy-resilience-live.mjs."
+  },
+  "cleanup": {
+    "finalCheck": {
+      "path": ".dev/limiter-handoff-20261004-eb92530a/cleanup-check.json",
+      "sha256": "f9a1854caee881cf1a80ccfe506192975b50f0dc247d4f0e067379f729e13167",
+      "bytes": 2499
+    },
+    "passed": true,
+    "preexistingContainersUnchanged": true,
+    "preexistingContainerCount": 6,
+    "comparison": {
+      "AGraceful": true,
+      "BGraceful": true,
+      "zg-limiter-diag-50c5ac7a-driver-8": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-7": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-6": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-5": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-4": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-3": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-2": "already_removed",
+      "zg-limiter-diag-50c5ac7a-driver-1": "already_removed",
+      "zg-limiter-diag-50c5ac7a-gateway-b": "removed",
+      "zg-limiter-diag-50c5ac7a-gateway-a": "removed",
+      "zg-limiter-diag-50c5ac7a-proxy": "removed",
+      "zg-limiter-diag-50c5ac7a-upstream": "removed",
+      "zg-limiter-diag-50c5ac7a-redis": "removed",
+      "networkRemoved": true,
+      "credentialRemoved": true
+    },
+    "backendRedis": [
+      {
+        "exitCode": 0,
+        "container": "zg-handoff-tests-9857444e3d",
+        "removed": true,
+        "port": "52035"
+      },
+      {
+        "exitCode": 0,
+        "port": "55538",
+        "removed": true,
+        "container": "zg-handoff-final-3ba3406000"
+      }
+    ],
+    "evidenceRetained": true
+  },
+  "preservation": {
+    "path": ".dev/limiter-handoff-20261004-eb92530a/preservation-check.json",
+    "sha256": "63c1bb5587fb43cfe52cd5dc935f68e8ba346679b371d8739c6fb439268fb73b",
+    "bytes": 1057
+  },
+  "documentation": "docs/backend-limiter-handoff.md",
+  "reproductionGuide": "benchmarks/LIMITER-HANDOFF.md",
+  "entrypoint": "benchmarks/limiter-handoff.mjs"
+}

@@ -1,0 +1,6657 @@
+{
+  "runs": [
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\pilot\\summary.json",
+      "phase": "pilot",
+      "executionPassed": false,
+      "error": "Error: Command failed: docker image inspect redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499 --format {{.Id}}\nError response from daemon: No such image: redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499\n\n    at genericNodeError (node:internal/errors:986:15)\n    at wrappedFn (node:internal/errors:540:14)\n    at ChildProcess.exithandler (node:child_process:417:12)\n    at ChildProcess.emit (node:events:514:28)\n    at maybeClose (node:internal/child_process:1141:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:306:5)",
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 1000,
+        "workers": 8,
+        "routeCount": 32,
+        "seconds": 20,
+        "warmSeconds": 20,
+        "soakSeconds": 900,
+        "repetitions": 1,
+        "images": {
+          "redis": "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk:21-ubuntu@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630587392,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\pilot-v2\\summary.json",
+      "phase": "pilot",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 1000,
+        "workers": 8,
+        "routeCount": 32,
+        "seconds": 20,
+        "warmSeconds": 20,
+        "soakSeconds": 900,
+        "repetitions": 1,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630587392,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-d77a49d2-driver-2": "already_removed",
+        "zg-capacity-d77a49d2-driver-1": "already_removed",
+        "zg-capacity-d77a49d2-gateway-a": "removed",
+        "zg-capacity-d77a49d2-proxy": "removed",
+        "zg-capacity-d77a49d2-upstream": "removed",
+        "zg-capacity-d77a49d2-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 1000,
+        "workers": 8,
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 30,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-7b89610e-driver-13": "already_removed",
+        "zg-capacity-7b89610e-driver-12": "already_removed",
+        "zg-capacity-7b89610e-driver-11": "already_removed",
+        "zg-capacity-7b89610e-driver-10": "already_removed",
+        "zg-capacity-7b89610e-driver-9": "already_removed",
+        "zg-capacity-7b89610e-driver-8": "already_removed",
+        "zg-capacity-7b89610e-driver-7": "already_removed",
+        "zg-capacity-7b89610e-driver-6": "already_removed",
+        "zg-capacity-7b89610e-driver-5": "already_removed",
+        "zg-capacity-7b89610e-driver-4": "already_removed",
+        "zg-capacity-7b89610e-driver-3": "already_removed",
+        "zg-capacity-7b89610e-driver-2": "already_removed",
+        "zg-capacity-7b89610e-driver-1": "already_removed",
+        "zg-capacity-7b89610e-gateway-a": "removed",
+        "zg-capacity-7b89610e-proxy": "removed",
+        "zg-capacity-7b89610e-upstream": "removed",
+        "zg-capacity-7b89610e-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\summary.json",
+      "phase": "profile",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 6000,
+        "workers": 8,
+        "routeCount": 32,
+        "seconds": 60,
+        "warmSeconds": 60,
+        "warmRate": 6000,
+        "soakSeconds": 900,
+        "repetitions": 1,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-f748d471-driver-2": "already_removed",
+        "zg-capacity-f748d471-driver-1": "already_removed",
+        "zg-capacity-f748d471-gateway-a": "removed",
+        "zg-capacity-f748d471-proxy": "removed",
+        "zg-capacity-f748d471-upstream": "removed",
+        "zg-capacity-f748d471-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-8\\summary.json",
+      "phase": "compare",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 6000,
+        "workers": 8,
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 60,
+        "warmRate": 6000,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-7225730d-driver-4": "already_removed",
+        "zg-capacity-7225730d-driver-3": "already_removed",
+        "zg-capacity-7225730d-driver-2": "already_removed",
+        "zg-capacity-7225730d-driver-1": "already_removed",
+        "zg-capacity-7225730d-gateway-a": "removed",
+        "zg-capacity-7225730d-proxy": "removed",
+        "zg-capacity-7225730d-upstream": "removed",
+        "zg-capacity-7225730d-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-16\\summary.json",
+      "phase": "compare",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 6000,
+        "workers": 16,
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 60,
+        "warmRate": 6000,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-e5eb609b-driver-4": "already_removed",
+        "zg-capacity-e5eb609b-driver-3": "already_removed",
+        "zg-capacity-e5eb609b-driver-2": "already_removed",
+        "zg-capacity-e5eb609b-driver-1": "already_removed",
+        "zg-capacity-e5eb609b-gateway-a": "removed",
+        "zg-capacity-e5eb609b-proxy": "removed",
+        "zg-capacity-e5eb609b-upstream": "removed",
+        "zg-capacity-e5eb609b-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-queue-128\\summary.json",
+      "phase": "compare",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\baseline.jar",
+        "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      "config": {
+        "rate": 6000,
+        "workers": 8,
+        "queueCapacity": 128,
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 60,
+        "warmRate": 6000,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-6e4beefe-driver-4": "already_removed",
+        "zg-capacity-6e4beefe-driver-3": "already_removed",
+        "zg-capacity-6e4beefe-driver-2": "already_removed",
+        "zg-capacity-6e4beefe-driver-1": "already_removed",
+        "zg-capacity-6e4beefe-gateway-a": "removed",
+        "zg-capacity-6e4beefe-proxy": "removed",
+        "zg-capacity-6e4beefe-upstream": "removed",
+        "zg-capacity-6e4beefe-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\soak-capacity\\summary.json",
+      "phase": "soak",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\candidate.jar",
+        "sha256": "55e6be5e9888f97a33651732e6823a19caeabac91659e0eb75dbb5dbe615c2cf"
+      },
+      "config": {
+        "rate": 4000,
+        "workers": 8,
+        "queueCapacity": 128,
+        "applicationProfile": "capacity",
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 60,
+        "warmRate": 4000,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-a0e7f141-driver-2": "already_removed",
+        "zg-capacity-a0e7f141-driver-1": "already_removed",
+        "zg-capacity-a0e7f141-gateway-a": "removed",
+        "zg-capacity-a0e7f141-proxy": "removed",
+        "zg-capacity-a0e7f141-upstream": "removed",
+        "zg-capacity-a0e7f141-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "phase": "faults",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\candidate.jar",
+        "sha256": "55e6be5e9888f97a33651732e6823a19caeabac91659e0eb75dbb5dbe615c2cf"
+      },
+      "config": {
+        "rate": 2000,
+        "workers": 8,
+        "queueCapacity": 128,
+        "applicationProfile": "capacity",
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 60,
+        "warmRate": 2000,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "zg-capacity-513d2ab1-driver-5": "already_removed",
+        "zg-capacity-513d2ab1-driver-4": "already_removed",
+        "zg-capacity-513d2ab1-driver-3": "already_removed",
+        "zg-capacity-513d2ab1-driver-2": "already_removed",
+        "zg-capacity-513d2ab1-driver-1": "already_removed",
+        "zg-capacity-513d2ab1-gateway-a": "removed",
+        "zg-capacity-513d2ab1-proxy": "removed",
+        "zg-capacity-513d2ab1-upstream": "removed",
+        "zg-capacity-513d2ab1-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\mutations-capacity\\summary.json",
+      "phase": "mutations",
+      "executionPassed": true,
+      "error": null,
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\candidate.jar",
+        "sha256": "55e6be5e9888f97a33651732e6823a19caeabac91659e0eb75dbb5dbe615c2cf"
+      },
+      "config": {
+        "rate": 2000,
+        "workers": 8,
+        "queueCapacity": 128,
+        "applicationProfile": "capacity",
+        "routeCount": 32,
+        "seconds": 30,
+        "warmSeconds": 60,
+        "warmRate": 2000,
+        "soakSeconds": 900,
+        "repetitions": 3,
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gatewayA": "4-7",
+          "driver": "8-11",
+          "faultProxy": "12",
+          "gatewayB": "13-15"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "gc": "G1",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "note": "Dedicated logical CPU sets within the same Docker Desktop VM; not production sizing. All normal samples include limiter, monitoring and audit."
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630611968,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "cleanup": {
+        "AGraceful": true,
+        "BGraceful": true,
+        "zg-capacity-59f5714f-driver-2": "already_removed",
+        "zg-capacity-59f5714f-driver-1": "already_removed",
+        "zg-capacity-59f5714f-gateway-b": "removed",
+        "zg-capacity-59f5714f-gateway-a": "removed",
+        "zg-capacity-59f5714f-proxy": "removed",
+        "zg-capacity-59f5714f-upstream": "removed",
+        "zg-capacity-59f5714f-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      }
+    }
+  ],
+  "stages": [
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\pilot-v2\\summary.json",
+      "phase": "pilot",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 20,
+      "offeredRate": 1000,
+      "offered": 20000,
+      "issued": 20000,
+      "finished": 20000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 999.7975305521791,
+      "http200LatencyMs": {
+        "count": 20000,
+        "p50": 1.445,
+        "p95": 14.039,
+        "p99": 100.351,
+        "max": 657.407,
+        "mean": 7.55159895
+      },
+      "statuses": {
+        "200": 20000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 20000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 20000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 10,
+            "min": 47772976,
+            "median": 108623320.0,
+            "max": 181854800
+          },
+          "directBytes": {
+            "samples": 10,
+            "min": 4876296,
+            "median": 4876296.0,
+            "max": 4876296
+          },
+          "rssBytes": {
+            "samples": 2,
+            "min": 529780736,
+            "median": 532580352.0,
+            "max": 535379968
+          },
+          "jvmCpuFraction": {
+            "samples": 10,
+            "min": 0,
+            "median": 0.29321340867022594,
+            "max": 0.9233390119250426
+          },
+          "threads": {
+            "samples": 10,
+            "min": 48,
+            "median": 48.0,
+            "max": 49
+          },
+          "auditPending": {
+            "samples": 10,
+            "min": 1,
+            "median": 15.5,
+            "max": 22
+          },
+          "auditReservedBytes": {
+            "samples": 10,
+            "min": 1820,
+            "median": 28876.0,
+            "max": 41108
+          },
+          "limiterQueue": {
+            "samples": 10,
+            "min": 0,
+            "median": 0.0,
+            "max": 8
+          },
+          "limiterCommands": {
+            "samples": 10,
+            "min": 0,
+            "median": 1.0,
+            "max": 6
+          },
+          "limiterConnections": {
+            "samples": 10,
+            "min": 6,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 10,
+            "min": 1,
+            "median": 2.0,
+            "max": 15
+          },
+          "proxyConnections": {
+            "samples": 10,
+            "min": 5,
+            "median": 100.0,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 10,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 21,
+        "min": 0.11648501488600219,
+        "median": 0.22812778912586826,
+        "max": 0.5927860473984758
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\pilot-v2\\summary.json",
+      "phase": "pilot",
+      "stage": "steady-1",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 20,
+      "offeredRate": 1000,
+      "offered": 20000,
+      "issued": 20000,
+      "finished": 20000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 999.8061291431974,
+      "http200LatencyMs": {
+        "count": 20000,
+        "p50": 1.09,
+        "p95": 2.061,
+        "p99": 2.895,
+        "max": 15.839,
+        "mean": 1.2207529
+      },
+      "statuses": {
+        "200": 20000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 20000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 20000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 10,
+            "min": 43615464,
+            "median": 127295580.0,
+            "max": 179978744
+          },
+          "directBytes": {
+            "samples": 10,
+            "min": 4876296,
+            "median": 4876296.0,
+            "max": 4876296
+          },
+          "rssBytes": {
+            "samples": 2,
+            "min": 539574272,
+            "median": 541343744.0,
+            "max": 543113216
+          },
+          "jvmCpuFraction": {
+            "samples": 10,
+            "min": 0.125259385021694,
+            "median": 0.17409707844490452,
+            "max": 0.2423112767940354
+          },
+          "threads": {
+            "samples": 10,
+            "min": 49,
+            "median": 50.0,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 10,
+            "min": 3,
+            "median": 12.0,
+            "max": 22
+          },
+          "auditReservedBytes": {
+            "samples": 10,
+            "min": 5604,
+            "median": 22422.0,
+            "max": 41108
+          },
+          "limiterQueue": {
+            "samples": 10,
+            "min": 0,
+            "median": 0.0,
+            "max": 1
+          },
+          "limiterCommands": {
+            "samples": 10,
+            "min": 0,
+            "median": 0.5,
+            "max": 2
+          },
+          "limiterConnections": {
+            "samples": 10,
+            "min": 8,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 10,
+            "min": 1,
+            "median": 1.0,
+            "max": 3
+          },
+          "proxyConnections": {
+            "samples": 10,
+            "min": 100,
+            "median": 100.0,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 10,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 20,
+        "min": 0.13445645175568496,
+        "median": 0.18501258877405077,
+        "max": 0.4182196607682567
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 1000,
+      "offered": 30000,
+      "issued": 30000,
+      "finished": 30000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 999.8748421997691,
+      "http200LatencyMs": {
+        "count": 30000,
+        "p50": 1.157,
+        "p95": 6.575,
+        "p99": 53.599,
+        "max": 377.343,
+        "mean": 3.8799404666666666
+      },
+      "statuses": {
+        "200": 30000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 30000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 30000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 41246432,
+            "median": 121574528,
+            "max": 188057064
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4851720,
+            "median": 4859912,
+            "max": 4859912
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 528973824,
+            "median": 532512768,
+            "max": 543653888
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0,
+            "median": 0.2001865091700342,
+            "max": 0.9577960140679953
+          },
+          "threads": {
+            "samples": 15,
+            "min": 46,
+            "median": 49,
+            "max": 49
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 1,
+            "median": 10,
+            "max": 20
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 1856,
+            "median": 18680,
+            "max": 37360
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 1
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 5
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 2,
+            "max": 3
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 21,
+            "median": 70,
+            "max": 70
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.12072824520718596,
+        "median": 0.1812413922877228,
+        "max": 0.9739718830035213
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-2000-repeat-1",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 2000,
+      "offered": 60000,
+      "issued": 59954,
+      "finished": 59954,
+      "generatorMisses": 46,
+      "missPercent": 0.07666666666666666,
+      "successfulRequestsPerSecond": 1998.2931741871862,
+      "http200LatencyMs": {
+        "count": 59954,
+        "p50": 1.367,
+        "p95": 3.293,
+        "p99": 26.591,
+        "max": 155.519,
+        "mean": 2.261365613637122
+      },
+      "statuses": {
+        "200": 59954
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 59898,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 56,
+        "cancelled": 0
+      },
+      "auditConfirmed": 59954,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 56,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 48779672,
+            "median": 117092232,
+            "max": 187499680
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4859912,
+            "median": 4859912,
+            "max": 4876296
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 548896768,
+            "median": 551124992,
+            "max": 552435712
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.04507949285570537,
+            "median": 0.33186675047140163,
+            "max": 0.5743393823623051
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 6,
+            "median": 21,
+            "max": 39
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 11220,
+            "median": 39240,
+            "max": 72876
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 1
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 2,
+            "max": 3
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 3,
+            "max": 4
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 70,
+            "median": 88,
+            "max": 88
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 30,
+        "min": 0.2165486681604421,
+        "median": 0.28589112692300744,
+        "max": 0.6238914792736164
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-4000-repeat-1",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 4000,
+      "offered": 120000,
+      "issued": 119671,
+      "finished": 119671,
+      "generatorMisses": 329,
+      "missPercent": 0.27416666666666667,
+      "successfulRequestsPerSecond": 3988.5732572580164,
+      "http200LatencyMs": {
+        "count": 119671,
+        "p50": 1.373,
+        "p95": 2.717,
+        "p99": 6.011,
+        "max": 116.095,
+        "mean": 1.6703599451830435
+      },
+      "statuses": {
+        "200": 119671
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 119671,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 119671,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 45606536,
+            "median": 129187912,
+            "max": 189216576
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4892680,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 555450368,
+            "median": 556892160,
+            "max": 560693248
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.06803594351732992,
+            "median": 0.5096427442301612,
+            "max": 0.6041275797373358
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 5,
+            "median": 46,
+            "max": 84
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 9400,
+            "median": 86492,
+            "max": 157944
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 17
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 5
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 3,
+            "max": 18
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 88,
+            "median": 88,
+            "max": 88
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.2128626526499696,
+        "median": 0.4244713156761122,
+        "max": 0.7169280112408843
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-6000-repeat-1",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179471,
+      "finished": 179471,
+      "generatorMisses": 529,
+      "missPercent": 0.29388888888888887,
+      "successfulRequestsPerSecond": 5981.7684696810775,
+      "http200LatencyMs": {
+        "count": 179471,
+        "p50": 2.751,
+        "p95": 19.727,
+        "p99": 35.455,
+        "max": 84.095,
+        "mean": 5.929039276540499
+      },
+      "statuses": {
+        "200": 179471
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 174108,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 5363,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179471,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 5363,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 49891664,
+            "median": 121950104,
+            "max": 192910488
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 561086464,
+            "median": 561479680,
+            "max": 563314688
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.1090909090909091,
+            "median": 0.7834534628643058,
+            "max": 0.8895839849859244
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 68,
+            "max": 142
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 127864,
+            "max": 269120
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 4,
+            "max": 63
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 7,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 9,
+            "max": 72
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 88,
+            "median": 99,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.5524948643204929,
+        "median": 0.8104023802870642,
+        "max": 1.0352179709250169
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-8000-repeat-1",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 8000,
+      "offered": 240000,
+      "issued": 238595,
+      "finished": 238595,
+      "generatorMisses": 1405,
+      "missPercent": 0.5854166666666667,
+      "successfulRequestsPerSecond": 7949.671421118502,
+      "http200LatencyMs": {
+        "count": 238595,
+        "p50": 3.633,
+        "p95": 17.247,
+        "p99": 31.199,
+        "max": 135.295,
+        "mean": 6.215003512227834
+      },
+      "statuses": {
+        "200": 238595
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 226980,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 11615,
+        "cancelled": 0
+      },
+      "auditConfirmed": 238595,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 11615,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 74629632,
+            "median": 134462024,
+            "max": 197308232
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 563220480,
+            "median": 564756480,
+            "max": 568033280
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.12152332049636286,
+            "median": 0.8465675419171148,
+            "max": 0.898974199564812
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 74,
+            "max": 106
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 139144,
+            "max": 201236
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 6,
+            "max": 64
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 15,
+            "max": 73
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 1
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.6839736049789124,
+        "median": 0.8939645303947341,
+        "max": 1.0705428573964253
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-8000-repeat-2",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 8000,
+      "offered": 240000,
+      "issued": 238885,
+      "finished": 238885,
+      "generatorMisses": 1115,
+      "missPercent": 0.46458333333333335,
+      "successfulRequestsPerSecond": 7958.73118335516,
+      "http200LatencyMs": {
+        "count": 238885,
+        "p50": 10.671,
+        "p95": 18.719,
+        "p99": 26.815,
+        "max": 116.991,
+        "mean": 10.461911321347092
+      },
+      "statuses": {
+        "200": 238885
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 208146,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 30739,
+        "cancelled": 0
+      },
+      "auditConfirmed": 238885,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 30739,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 47835800,
+            "median": 117835640,
+            "max": 190946720
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 564269056,
+            "median": 565055488,
+            "max": 565448704
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.163265306122449,
+            "median": 0.8789688777114115,
+            "max": 0.8973214285714285
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 39,
+            "max": 116
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 73596,
+            "max": 218956
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 60,
+            "max": 64
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 69,
+            "max": 73
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.4940650201012934,
+        "median": 0.984403998827218,
+        "max": 1.2466050991904623
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-6000-repeat-2",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179553,
+      "finished": 179553,
+      "generatorMisses": 447,
+      "missPercent": 0.24833333333333332,
+      "successfulRequestsPerSecond": 5984.673632101027,
+      "http200LatencyMs": {
+        "count": 179553,
+        "p50": 2.361,
+        "p95": 7.471,
+        "p99": 13.423,
+        "max": 104.895,
+        "mean": 3.0979768313534164
+      },
+      "statuses": {
+        "200": 179553
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179345,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 208,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179553,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 208,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 51659160,
+            "median": 98693656,
+            "max": 170210368
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4933640
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 566235136,
+            "median": 566235136,
+            "max": 566759424
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.15439780636996414,
+            "median": 0.7583176396735719,
+            "max": 0.8191858630482802
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 89,
+            "max": 107
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 167356,
+            "max": 202480
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 7
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 6,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 9,
+            "max": 15
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.5468819090850978,
+        "median": 0.7502752891297785,
+        "max": 0.8849478522428461
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-4000-repeat-2",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 4000,
+      "offered": 120000,
+      "issued": 119828,
+      "finished": 119828,
+      "generatorMisses": 172,
+      "missPercent": 0.14333333333333334,
+      "successfulRequestsPerSecond": 3993.8652710921974,
+      "http200LatencyMs": {
+        "count": 119828,
+        "p50": 1.549,
+        "p95": 2.791,
+        "p99": 5.043,
+        "max": 75.647,
+        "mean": 1.7833514954768501
+      },
+      "statuses": {
+        "200": 119828
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 119828,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 119828,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 51392632,
+            "median": 138073736,
+            "max": 201135960
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 567283712,
+            "median": 567545856,
+            "max": 567808000
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.1627931433378904,
+            "median": 0.5277078085642317,
+            "max": 0.6265060240963856
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 38,
+            "max": 85
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 71908,
+            "max": 160856
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 5
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 2,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 3,
+            "max": 14
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.22276988060455144,
+        "median": 0.460361664233288,
+        "max": 0.6672123110140952
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-2000-repeat-2",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 2000,
+      "offered": 60000,
+      "issued": 60000,
+      "finished": 60000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 1999.8210336825712,
+      "http200LatencyMs": {
+        "count": 60000,
+        "p50": 1.17,
+        "p95": 2.015,
+        "p99": 2.863,
+        "max": 17.711,
+        "mean": 1.2718356000000002
+      },
+      "statuses": {
+        "200": 60000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 60000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 60000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 48408520,
+            "median": 116903656,
+            "max": 193650664
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 567939072,
+            "median": 568201216,
+            "max": 568201216
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.1148936170212766,
+            "median": 0.2827650922740069,
+            "max": 0.3745743473325766
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 4,
+            "median": 20,
+            "max": 55
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 7568,
+            "median": 37852,
+            "max": 104084
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 2
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 4
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 2,
+            "max": 5
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 30,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.19183887661518592,
+        "median": 0.23965973985360356,
+        "max": 0.9747472457664986
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-2000-repeat-3",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 2000,
+      "offered": 60000,
+      "issued": 60000,
+      "finished": 60000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 1999.7680161780352,
+      "http200LatencyMs": {
+        "count": 60000,
+        "p50": 1.085,
+        "p95": 1.707,
+        "p99": 2.439,
+        "max": 17.535,
+        "mean": 1.1513114166666667
+      },
+      "statuses": {
+        "200": 60000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 60000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 60000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 49504976,
+            "median": 122670048,
+            "max": 196009680
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 568332288,
+            "median": 568725504,
+            "max": 575803392
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.06713705366688048,
+            "median": 0.2521957340025094,
+            "max": 0.3251323575210215
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 12,
+            "median": 29,
+            "max": 64
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 22716,
+            "median": 54880,
+            "max": 121112
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 2
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 4
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 3,
+            "max": 5
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 30,
+            "median": 30,
+            "max": 30
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.0989344425170747,
+        "median": 0.2241441699140103,
+        "max": 0.3902974642575507
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-4000-repeat-3",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 4000,
+      "offered": 120000,
+      "issued": 119713,
+      "finished": 119713,
+      "generatorMisses": 287,
+      "missPercent": 0.23916666666666667,
+      "successfulRequestsPerSecond": 3989.5413031493563,
+      "http200LatencyMs": {
+        "count": 119713,
+        "p50": 1.467,
+        "p95": 2.639,
+        "p99": 4.787,
+        "max": 104.959,
+        "mean": 1.7140977504531671
+      },
+      "statuses": {
+        "200": 119713
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 119713,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 119713,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 47762344,
+            "median": 134140976,
+            "max": 203641072
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 567177216,
+            "median": 567701504,
+            "max": 567701504
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.09055159953236264,
+            "median": 0.5231296402055967,
+            "max": 0.5849056603773586
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 35,
+            "max": 87
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 66232,
+            "max": 164640
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 7
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 3,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 4,
+            "max": 9
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 12,
+            "median": 13,
+            "max": 30
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.38974186018260004,
+        "median": 0.4484893507065551,
+        "max": 0.6409739153155818
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-6000-repeat-3",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179520,
+      "finished": 179520,
+      "generatorMisses": 480,
+      "missPercent": 0.26666666666666666,
+      "successfulRequestsPerSecond": 5983.079894052854,
+      "http200LatencyMs": {
+        "count": 179520,
+        "p50": 1.928,
+        "p95": 3.783,
+        "p99": 6.455,
+        "max": 103.423,
+        "mean": 2.246646635472371
+      },
+      "statuses": {
+        "200": 179520
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179504,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 16,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179520,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 16,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 68414200,
+            "median": 139430104,
+            "max": 192010320
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4933640
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 568487936,
+            "median": 568750080,
+            "max": 569012224
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.11606571367612545,
+            "median": 0.6978074356530028,
+            "max": 0.7702020202020202
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 46,
+            "max": 99
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 87044,
+            "max": 187344
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 7
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 3,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 6,
+            "max": 12
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 16,
+            "median": 30,
+            "max": 30
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.47131631417398495,
+        "median": 0.6509771175294173,
+        "max": 0.779377940152186
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\ramp\\summary.json",
+      "phase": "ramp",
+      "stage": "rate-8000-repeat-3",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 8000,
+      "offered": 240000,
+      "issued": 238939,
+      "finished": 238939,
+      "generatorMisses": 1061,
+      "missPercent": 0.44208333333333333,
+      "successfulRequestsPerSecond": 7960.045349724149,
+      "http200LatencyMs": {
+        "count": 238939,
+        "p50": 3.029,
+        "p95": 12.583,
+        "p99": 18.719,
+        "max": 156.543,
+        "mean": 4.487619350545537
+      },
+      "statuses": {
+        "200": 238939
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 234434,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 4505,
+        "cancelled": 0
+      },
+      "auditConfirmed": 238939,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 4505,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 56638312,
+            "median": 135907168,
+            "max": 202186608
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 569798656,
+            "median": 570191872,
+            "max": 570454016
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.15426997245179064,
+            "median": 0.8425023577491355,
+            "max": 0.8832647896235368
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 55,
+            "max": 137
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 104072,
+            "max": 259252
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 3,
+            "max": 58
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 9,
+            "max": 67
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 30,
+            "median": 46,
+            "max": 96
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.7201722549192124,
+        "median": 0.8784168983497782,
+        "max": 1.041454416328341
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\summary.json",
+      "phase": "profile",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 6000,
+      "offered": 360000,
+      "issued": 314715,
+      "finished": 314715,
+      "generatorMisses": 45285,
+      "missPercent": 12.579166666666667,
+      "successfulRequestsPerSecond": 5244.8048597750585,
+      "http200LatencyMs": {
+        "count": 314715,
+        "p50": 4.971,
+        "p95": 80.831,
+        "p99": 132.607,
+        "max": 4489.215,
+        "mean": 18.36777784980061
+      },
+      "statuses": {
+        "200": 314715
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 305235,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 9480,
+        "cancelled": 0
+      },
+      "auditConfirmed": 314715,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 9480,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 43832928,
+            "median": 102910424,
+            "max": 197848856
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 4417544,
+            "median": 5007368,
+            "max": 5015560
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 552759296,
+            "median": 570454016,
+            "max": 573468672
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0,
+            "median": 0.8658116984673132,
+            "max": 1
+          },
+          "threads": {
+            "samples": 29,
+            "min": 40,
+            "median": 50,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 53,
+            "max": 97
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 99652,
+            "max": 181232
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 7,
+            "max": 58
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 14,
+            "max": 67
+          },
+          "proxyConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 65
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 60,
+        "min": 0.533076574883816,
+        "median": 0.8796760778298703,
+        "max": 1.0021874291692991
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\summary.json",
+      "phase": "profile",
+      "stage": "jfr",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 6000,
+      "offered": 360000,
+      "issued": 314300,
+      "finished": 314300,
+      "generatorMisses": 45700,
+      "missPercent": 12.694444444444445,
+      "successfulRequestsPerSecond": 5237.908249579861,
+      "http200LatencyMs": {
+        "count": 314300,
+        "p50": 7.323,
+        "p95": 72.447,
+        "p99": 108.223,
+        "max": 5328.895,
+        "mean": 21.3632420458161
+      },
+      "statuses": {
+        "200": 314300
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 298881,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 15419,
+        "cancelled": 0
+      },
+      "auditConfirmed": 314300,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 15419,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 49758552,
+            "median": 110598104,
+            "max": 187769400
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 5048327,
+            "median": 5056519,
+            "max": 5056519
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 622841856,
+            "median": 650600448,
+            "max": 665542656
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0.26706827309236947,
+            "median": 0.8861309339125039,
+            "max": 1
+          },
+          "threads": {
+            "samples": 29,
+            "min": 52,
+            "median": 52,
+            "max": 52
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 59,
+            "max": 154
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 110944,
+            "max": 290708
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 12,
+            "max": 64
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 15,
+            "max": 73
+          },
+          "proxyConnections": {
+            "samples": 29,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 35
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 60,
+        "min": 0.3629838497782037,
+        "median": 0.8870803377767846,
+        "max": 1.0119108242015868
+      },
+      "jfr": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\profile-8\\02-jfr\\capacity.jfr",
+        "sha256": "9729c4fa67cb490d1c81a4d95d1598beca0301a0c9abfe8ba42fc0a7a76e2d76"
+      }
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-8\\summary.json",
+      "phase": "compare",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 6000,
+      "offered": 360000,
+      "issued": 343562,
+      "finished": 343562,
+      "generatorMisses": 16438,
+      "missPercent": 4.566111111111111,
+      "successfulRequestsPerSecond": 5725.8082704191,
+      "http200LatencyMs": {
+        "count": 343562,
+        "p50": 1.753,
+        "p95": 43.583,
+        "p99": 79.551,
+        "max": 3749.887,
+        "mean": 7.39418436264779
+      },
+      "statuses": {
+        "200": 343562
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 342065,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 1497,
+        "cancelled": 0
+      },
+      "auditConfirmed": 343562,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 1497,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 56248360,
+            "median": 99466312,
+            "max": 194963136
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 4876296,
+            "median": 4884488,
+            "max": 4892680
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 531820544,
+            "median": 541425664,
+            "max": 543391744
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0,
+            "median": 0.6853226727584237,
+            "max": 1
+          },
+          "threads": {
+            "samples": 29,
+            "min": 48,
+            "median": 50,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 60,
+            "max": 109
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 111948,
+            "max": 204956
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 2,
+            "max": 26
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 4,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 8,
+            "max": 34
+          },
+          "proxyConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 13
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 61,
+        "min": 0.501741996284513,
+        "median": 0.6127711398873837,
+        "max": 0.7772979699067396
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-8\\summary.json",
+      "phase": "compare",
+      "stage": "steady-1",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179422,
+      "finished": 179422,
+      "generatorMisses": 578,
+      "missPercent": 0.3211111111111111,
+      "successfulRequestsPerSecond": 5980.242165080537,
+      "http200LatencyMs": {
+        "count": 179422,
+        "p50": 1.964,
+        "p95": 3.931,
+        "p99": 8.903,
+        "max": 156.415,
+        "mean": 2.4122896690483886
+      },
+      "statuses": {
+        "200": 179422
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179300,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 122,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179422,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 122,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 65111304,
+            "median": 154772432,
+            "max": 196175736
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4892680,
+            "median": 4892680,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 566067200,
+            "median": 567902208,
+            "max": 568819712
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.4175491679273827,
+            "median": 0.70825456836799,
+            "max": 0.7359283113973677
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 8,
+            "median": 59,
+            "max": 102
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 15040,
+            "median": 110932,
+            "max": 191796
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 2,
+            "max": 7
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 3,
+            "max": 11
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.3627310236956135,
+        "median": 0.6498292369890128,
+        "max": 0.8701926839823831
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-8\\summary.json",
+      "phase": "compare",
+      "stage": "steady-2",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179578,
+      "finished": 179578,
+      "generatorMisses": 422,
+      "missPercent": 0.23444444444444446,
+      "successfulRequestsPerSecond": 5985.265065919667,
+      "http200LatencyMs": {
+        "count": 179578,
+        "p50": 1.914,
+        "p95": 3.703,
+        "p99": 6.947,
+        "max": 102.207,
+        "mean": 2.216502951363753
+      },
+      "statuses": {
+        "200": 179578
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179576,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 2,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179578,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 2,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 45557744,
+            "median": 128015448,
+            "max": 195025776
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4900872
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 575504384,
+            "median": 576290816,
+            "max": 576815104
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.276768119115393,
+            "median": 0.7066246056782335,
+            "max": 0.7477931904161412
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 58,
+            "max": 104
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 109052,
+            "max": 195556
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 10
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 4,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 8,
+            "max": 18
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.31397099131338,
+        "median": 0.6397125610146703,
+        "max": 0.762954853562729
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-8\\summary.json",
+      "phase": "compare",
+      "stage": "steady-3",
+      "workers": 8,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179557,
+      "finished": 179557,
+      "generatorMisses": 443,
+      "missPercent": 0.2461111111111111,
+      "successfulRequestsPerSecond": 5984.512828310336,
+      "http200LatencyMs": {
+        "count": 179557,
+        "p50": 1.959,
+        "p95": 3.671,
+        "p99": 6.047,
+        "max": 94.143,
+        "mean": 2.224257066001326
+      },
+      "statuses": {
+        "200": 179557
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179557,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179557,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 47538320,
+            "median": 130993424,
+            "max": 200664512
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4900872,
+            "median": 4900872,
+            "max": 4933640
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 577470464,
+            "median": 577863680,
+            "max": 578387968
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.3026459654493768,
+            "median": 0.7094382663244939,
+            "max": 0.7287653931165141
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 59,
+            "max": 95
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 110944,
+            "max": 178636
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 3,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 4,
+            "max": 12
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.5011122409136887,
+        "median": 0.6533811456510698,
+        "max": 0.7727979590724553
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-16\\summary.json",
+      "phase": "compare",
+      "stage": "warmup",
+      "workers": 16,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 6000,
+      "offered": 360000,
+      "issued": 342410,
+      "finished": 342410,
+      "generatorMisses": 17590,
+      "missPercent": 4.886111111111111,
+      "successfulRequestsPerSecond": 5706.491910971812,
+      "http200LatencyMs": {
+        "count": 342408,
+        "p50": 2.109,
+        "p95": 48.927,
+        "p99": 85.887,
+        "max": 3094.527,
+        "mean": 8.62921521401369
+      },
+      "statuses": {
+        "200": 342408,
+        "503": 2
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 341455,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 955,
+        "cancelled": 0
+      },
+      "auditConfirmed": 342410,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "non_200",
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 955,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 43513504,
+            "median": 124878304,
+            "max": 195487984
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 5072904,
+            "median": 5408776,
+            "max": 5408776
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 530685952,
+            "median": 550014976,
+            "max": 552636416
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0,
+            "median": 0.7127592708988058,
+            "max": 1
+          },
+          "threads": {
+            "samples": 29,
+            "min": 48,
+            "median": 58,
+            "max": 59
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 54,
+            "max": 102
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 100884,
+            "max": 191796
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 25
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 5,
+            "max": 15
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 16,
+            "max": 16
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 8,
+            "max": 42
+          },
+          "proxyConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 40
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 60,
+        "min": 0.5034125731590576,
+        "median": 0.6465030391883624,
+        "max": 0.8566471221423955
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-16\\summary.json",
+      "phase": "compare",
+      "stage": "steady-1",
+      "workers": 16,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179586,
+      "finished": 179586,
+      "generatorMisses": 414,
+      "missPercent": 0.23,
+      "successfulRequestsPerSecond": 5985.53756619226,
+      "http200LatencyMs": {
+        "count": 179586,
+        "p50": 1.89,
+        "p95": 3.421,
+        "p99": 6.451,
+        "max": 99.007,
+        "mean": 2.1591366754646795
+      },
+      "statuses": {
+        "200": 179586
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179586,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179586,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 47872616,
+            "median": 111478200,
+            "max": 186843720
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 5408776,
+            "median": 5416968,
+            "max": 5416968
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 553816064,
+            "median": 554340352,
+            "max": 555257856
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.375163970266725,
+            "median": 0.6904837179892507,
+            "max": 0.7152167752904506
+          },
+          "threads": {
+            "samples": 15,
+            "min": 58,
+            "median": 58,
+            "max": 58
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 40,
+            "max": 94
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 75212,
+            "max": 176756
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 7
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 4,
+            "max": 6
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 16,
+            "median": 16,
+            "max": 16
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 6,
+            "max": 12
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.2740997362813826,
+        "median": 0.6268078954754277,
+        "max": 0.8304804345377824
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-16\\summary.json",
+      "phase": "compare",
+      "stage": "steady-2",
+      "workers": 16,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179605,
+      "finished": 179605,
+      "generatorMisses": 395,
+      "missPercent": 0.21944444444444444,
+      "successfulRequestsPerSecond": 5986.172234639014,
+      "http200LatencyMs": {
+        "count": 179605,
+        "p50": 1.864,
+        "p95": 3.309,
+        "p99": 5.775,
+        "max": 96.127,
+        "mean": 2.1292137412655547
+      },
+      "statuses": {
+        "200": 179605
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179600,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 5,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179605,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 5,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 56111232,
+            "median": 121902472,
+            "max": 194341128
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 5416968,
+            "median": 5416968,
+            "max": 5416968
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 556175360,
+            "median": 557617152,
+            "max": 557879296
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.30209911274615886,
+            "median": 0.6976744186046512,
+            "max": 0.7118932727788816
+          },
+          "threads": {
+            "samples": 15,
+            "min": 58,
+            "median": 58,
+            "max": 58
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 61,
+            "max": 99
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 114704,
+            "max": 186156
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 8
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 4,
+            "max": 11
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 16,
+            "median": 16,
+            "max": 16
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 7,
+            "max": 12
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.35889553408134856,
+        "median": 0.6258224904518135,
+        "max": 0.7538007571344036
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-workers-16\\summary.json",
+      "phase": "compare",
+      "stage": "steady-3",
+      "workers": 16,
+      "queueCapacity": 64,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179464,
+      "finished": 179464,
+      "generatorMisses": 536,
+      "missPercent": 0.29777777777777775,
+      "successfulRequestsPerSecond": 5981.481038669894,
+      "http200LatencyMs": {
+        "count": 179464,
+        "p50": 1.891,
+        "p95": 3.405,
+        "p99": 6.171,
+        "max": 153.343,
+        "mean": 2.254397767797441
+      },
+      "statuses": {
+        "200": 179464
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179445,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 19,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179464,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 19,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 51345064,
+            "median": 122925704,
+            "max": 191858856
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 5416968,
+            "median": 5416968,
+            "max": 5416968
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 564015104,
+            "median": 564277248,
+            "max": 565456896
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.30816505706760317,
+            "median": 0.6924540266328472,
+            "max": 0.726813880126183
+          },
+          "threads": {
+            "samples": 15,
+            "min": 58,
+            "median": 58,
+            "max": 58
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 14,
+            "median": 49,
+            "max": 98
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 26320,
+            "median": 92144,
+            "max": 184288
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 5,
+            "max": 12
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 16,
+            "median": 16,
+            "max": 16
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 7,
+            "max": 13
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.3180848716626598,
+        "median": 0.6385465081508312,
+        "max": 0.7768087683370547
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-queue-128\\summary.json",
+      "phase": "compare",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 6000,
+      "offered": 360000,
+      "issued": 345304,
+      "finished": 345304,
+      "generatorMisses": 14696,
+      "missPercent": 4.082222222222223,
+      "successfulRequestsPerSecond": 5754.73002224969,
+      "http200LatencyMs": {
+        "count": 345304,
+        "p50": 1.733,
+        "p95": 39.519,
+        "p99": 72.319,
+        "max": 3346.431,
+        "mean": 6.860552432059866
+      },
+      "statuses": {
+        "200": 345304
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 344816,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 488,
+        "cancelled": 0
+      },
+      "auditConfirmed": 345304,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 488,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 53008768,
+            "median": 121105808,
+            "max": 195582832
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 4859912,
+            "median": 4868104,
+            "max": 4909064
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 554737664,
+            "median": 559386624,
+            "max": 562139136
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0,
+            "median": 0.6744405924992121,
+            "max": 1
+          },
+          "threads": {
+            "samples": 29,
+            "min": 47,
+            "median": 49,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 54,
+            "max": 102
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 101532,
+            "max": 191808
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 1,
+            "max": 93
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 5,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 1,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 8,
+            "max": 102
+          },
+          "proxyConnections": {
+            "samples": 29,
+            "min": 17,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 35
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 61,
+        "min": 0.29929584737404036,
+        "median": 0.5878086275311988,
+        "max": 0.7838603246550658
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-queue-128\\summary.json",
+      "phase": "compare",
+      "stage": "steady-1",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179622,
+      "finished": 179622,
+      "generatorMisses": 378,
+      "missPercent": 0.21,
+      "successfulRequestsPerSecond": 5986.748836495485,
+      "http200LatencyMs": {
+        "count": 179622,
+        "p50": 1.955,
+        "p95": 3.827,
+        "p99": 7.367,
+        "max": 107.199,
+        "mean": 2.2591737370700695
+      },
+      "statuses": {
+        "200": 179622
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179622,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179622,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 50017216,
+            "median": 124032960,
+            "max": 195985584
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4884488,
+            "median": 4884488,
+            "max": 4884488
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 564236288,
+            "median": 567119872,
+            "max": 567250944
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.41962922573609596,
+            "median": 0.7076727964489538,
+            "max": 0.739474517252295
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 31,
+            "max": 104
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 58292,
+            "max": 195568
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 6,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 7,
+            "max": 11
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.42267561050904995,
+        "median": 0.6444028291290255,
+        "max": 0.8793897041755062
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-queue-128\\summary.json",
+      "phase": "compare",
+      "stage": "steady-2",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179599,
+      "finished": 179599,
+      "generatorMisses": 401,
+      "missPercent": 0.22277777777777777,
+      "successfulRequestsPerSecond": 5985.759628513493,
+      "http200LatencyMs": {
+        "count": 179599,
+        "p50": 1.953,
+        "p95": 3.935,
+        "p99": 7.451,
+        "max": 95.295,
+        "mean": 2.270958446316516
+      },
+      "statuses": {
+        "200": 179599
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179599,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179599,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 53155560,
+            "median": 108122008,
+            "max": 173068400
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4884488,
+            "median": 4884488,
+            "max": 4884488
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 568037376,
+            "median": 568823808,
+            "max": 569479168
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.29499561018437226,
+            "median": 0.7100666878374087,
+            "max": 0.7394863110358453
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 76,
+            "max": 104
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 0,
+            "median": 142904,
+            "max": 195556
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 6,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 7,
+            "max": 12
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.22702532387232513,
+        "median": 0.6529506148341445,
+        "max": 0.77808039553505
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\compare-queue-128\\summary.json",
+      "phase": "compare",
+      "stage": "steady-3",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 6000,
+      "offered": 180000,
+      "issued": 179719,
+      "finished": 179719,
+      "generatorMisses": 281,
+      "missPercent": 0.15611111111111112,
+      "successfulRequestsPerSecond": 5990.170204921317,
+      "http200LatencyMs": {
+        "count": 179719,
+        "p50": 1.946,
+        "p95": 3.619,
+        "p99": 6.479,
+        "max": 69.823,
+        "mean": 2.2085078372347944
+      },
+      "statuses": {
+        "200": 179719
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 179719,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 179719,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 54818704,
+            "median": 135233608,
+            "max": 198215896
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4884488,
+            "median": 4884488,
+            "max": 4884488
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 570527744,
+            "median": 570658816,
+            "max": 571052032
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.308431629532547,
+            "median": 0.7136030582988213,
+            "max": 0.7428391564368901
+          },
+          "threads": {
+            "samples": 15,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 8,
+            "median": 43,
+            "max": 91
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 15052,
+            "median": 80852,
+            "max": 171116
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 6
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 4,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 5,
+            "max": 14
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 31,
+        "min": 0.6166936534809435,
+        "median": 0.663841704180992,
+        "max": 0.9678072128139927
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\soak-capacity\\summary.json",
+      "phase": "soak",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 4000,
+      "offered": 240000,
+      "issued": 235152,
+      "finished": 235152,
+      "generatorMisses": 4848,
+      "missPercent": 2.02,
+      "successfulRequestsPerSecond": 3919.0174143503214,
+      "http200LatencyMs": {
+        "count": 235152,
+        "p50": 1.226,
+        "p95": 16.703,
+        "p99": 67.199,
+        "max": 2633.727,
+        "mean": 5.303384364155951
+      },
+      "statuses": {
+        "200": 235152
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 235152,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 235152,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "generator_misses_over_1_percent"
+        ],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 30,
+            "min": 43326720,
+            "median": 108265100.0,
+            "max": 198603296
+          },
+          "directBytes": {
+            "samples": 30,
+            "min": 4999176,
+            "median": 5011464.0,
+            "max": 5023752
+          },
+          "rssBytes": {
+            "samples": 6,
+            "min": 538062848,
+            "median": 548417536.0,
+            "max": 551301120
+          },
+          "jvmCpuFraction": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.4577173487660543,
+            "max": 1
+          },
+          "threads": {
+            "samples": 30,
+            "min": 46,
+            "median": 49.5,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 30,
+            "min": 0,
+            "median": 35.0,
+            "max": 89
+          },
+          "auditReservedBytes": {
+            "samples": 30,
+            "min": 0,
+            "median": 65818.0,
+            "max": 166288
+          },
+          "limiterQueue": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 11
+          },
+          "limiterCommands": {
+            "samples": 30,
+            "min": 0,
+            "median": 2.0,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 30,
+            "min": 1,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 30,
+            "min": 1,
+            "median": 5.0,
+            "max": 12
+          },
+          "proxyConnections": {
+            "samples": 30,
+            "min": 1,
+            "median": 100.0,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 61,
+        "min": 0.3692699802525955,
+        "median": 0.3853588187870723,
+        "max": 0.982700922529574
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\soak-capacity\\summary.json",
+      "phase": "soak",
+      "stage": "sustained",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 900,
+      "offeredRate": 4000,
+      "offered": 3600000,
+      "issued": 3599831,
+      "finished": 3599831,
+      "generatorMisses": 169,
+      "missPercent": 0.004694444444444445,
+      "successfulRequestsPerSecond": 3999.7994464272565,
+      "http200LatencyMs": {
+        "count": 3599831,
+        "p50": 1.272,
+        "p95": 2.099,
+        "p99": 3.293,
+        "max": 80.767,
+        "mean": 1.3828125484224119
+      },
+      "statuses": {
+        "200": 3599831
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 3599831,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 3599831,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 437,
+            "min": 45936120,
+            "median": 125697632,
+            "max": 205289104
+          },
+          "directBytes": {
+            "samples": 437,
+            "min": 5023752,
+            "median": 5031944,
+            "max": 5064712
+          },
+          "rssBytes": {
+            "samples": 87,
+            "min": 551956480,
+            "median": 584597504,
+            "max": 591937536
+          },
+          "jvmCpuFraction": {
+            "samples": 437,
+            "min": 0.02183406113537118,
+            "median": 0.47436264680607276,
+            "max": 0.5999368487527629
+          },
+          "threads": {
+            "samples": 437,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 437,
+            "min": 0,
+            "median": 44,
+            "max": 93
+          },
+          "auditReservedBytes": {
+            "samples": 437,
+            "min": 0,
+            "median": 83260,
+            "max": 175992
+          },
+          "limiterQueue": {
+            "samples": 437,
+            "min": 0,
+            "median": 0,
+            "max": 10
+          },
+          "limiterCommands": {
+            "samples": 437,
+            "min": 0,
+            "median": 2,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 437,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 437,
+            "min": 1,
+            "median": 4,
+            "max": 17
+          },
+          "proxyConnections": {
+            "samples": 437,
+            "min": 10,
+            "median": 23,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 437,
+            "min": 0,
+            "median": 0,
+            "max": 2
+          },
+          "chronologicalThirds": [
+            {
+              "heap": {
+                "samples": 145,
+                "min": 45936120,
+                "median": 124901320,
+                "max": 198138608
+              },
+              "rss": {
+                "samples": 29,
+                "min": 551956480,
+                "median": 569524224,
+                "max": 582369280
+              },
+              "direct": {
+                "samples": 145,
+                "min": 5023752,
+                "median": 5031944,
+                "max": 5031944
+              },
+              "threads": {
+                "samples": 145,
+                "min": 50,
+                "median": 50,
+                "max": 50
+              },
+              "auditPending": {
+                "samples": 145,
+                "min": 0,
+                "median": 43,
+                "max": 88
+              }
+            },
+            {
+              "heap": {
+                "samples": 146,
+                "min": 48204576,
+                "median": 126118304.0,
+                "max": 203134104
+              },
+              "rss": {
+                "samples": 29,
+                "min": 582369280,
+                "median": 584597504,
+                "max": 586694656
+              },
+              "direct": {
+                "samples": 146,
+                "min": 5031944,
+                "median": 5031944.0,
+                "max": 5031944
+              },
+              "threads": {
+                "samples": 146,
+                "min": 50,
+                "median": 50.0,
+                "max": 50
+              },
+              "auditPending": {
+                "samples": 146,
+                "min": 3,
+                "median": 44.5,
+                "max": 88
+              }
+            },
+            {
+              "heap": {
+                "samples": 146,
+                "min": 49892656,
+                "median": 125852392.0,
+                "max": 205289104
+              },
+              "rss": {
+                "samples": 29,
+                "min": 586825728,
+                "median": 589971456,
+                "max": 591937536
+              },
+              "direct": {
+                "samples": 146,
+                "min": 5031944,
+                "median": 5031944.0,
+                "max": 5064712
+              },
+              "threads": {
+                "samples": 146,
+                "min": 50,
+                "median": 50.0,
+                "max": 50
+              },
+              "auditPending": {
+                "samples": 146,
+                "min": 0,
+                "median": 43.5,
+                "max": 93
+              }
+            }
+          ]
+        }
+      },
+      "driverCpuCores": {
+        "samples": 900,
+        "min": 0.3777911354419207,
+        "median": 0.39872149736819573,
+        "max": 0.6826926303221492
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "phase": "faults",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 2000,
+      "offered": 120000,
+      "issued": 119308,
+      "finished": 119308,
+      "generatorMisses": 692,
+      "missPercent": 0.5766666666666667,
+      "successfulRequestsPerSecond": 1988.3267665372668,
+      "http200LatencyMs": {
+        "count": 119308,
+        "p50": 1.024,
+        "p95": 5.163,
+        "p99": 78.207,
+        "max": 1553.407,
+        "mean": 4.533821219029738
+      },
+      "statuses": {
+        "200": 119308
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 119308,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 119308,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 30,
+            "min": 42358448,
+            "median": 119458280.0,
+            "max": 198708928
+          },
+          "directBytes": {
+            "samples": 30,
+            "min": 5007368,
+            "median": 5015560.0,
+            "max": 5023752
+          },
+          "rssBytes": {
+            "samples": 6,
+            "min": 551186432,
+            "median": 566390784.0,
+            "max": 568750080
+          },
+          "jvmCpuFraction": {
+            "samples": 30,
+            "min": 0.2333019755409219,
+            "median": 0.24941070364274354,
+            "max": 1
+          },
+          "threads": {
+            "samples": 30,
+            "min": 48,
+            "median": 49.5,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 30,
+            "min": 1,
+            "median": 28.5,
+            "max": 44
+          },
+          "auditReservedBytes": {
+            "samples": 30,
+            "min": 1820,
+            "median": 53586.0,
+            "max": 82216
+          },
+          "limiterQueue": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 3
+          },
+          "limiterConnections": {
+            "samples": 30,
+            "min": 8,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 30,
+            "min": 1,
+            "median": 1.0,
+            "max": 5
+          },
+          "proxyConnections": {
+            "samples": 30,
+            "min": 32,
+            "median": 100.0,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 60,
+        "min": 0.20799102231754543,
+        "median": 0.22033432962504862,
+        "max": 0.6152261393274919
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "phase": "faults",
+      "stage": "redis-latency",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 50,
+      "offeredRate": 2000,
+      "offered": 100000,
+      "issued": 99948,
+      "finished": 99948,
+      "generatorMisses": 52,
+      "missPercent": 0.052,
+      "successfulRequestsPerSecond": 1998.8678513525283,
+      "http200LatencyMs": {
+        "count": 99948,
+        "p50": 0.881,
+        "p95": 2.245,
+        "p99": 483.071,
+        "max": 519.423,
+        "mean": 14.845880407812063
+      },
+      "statuses": {
+        "200": 99948
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 61270,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 21063,
+        "local_fail_open": 17615,
+        "cancelled": 0
+      },
+      "auditConfirmed": 99948,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 38678,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [
+        {
+          "name": "redis-delay-50ms",
+          "plannedSeconds": 10,
+          "startedAt": "2026-10-04T07:54:19.403Z",
+          "result": {
+            "state": {
+              "delayMs": 50,
+              "disconnected": false
+            },
+            "stats": {
+              "role": "proxy",
+              "requests": 0,
+              "active": 0,
+              "peakActive": 0,
+              "sockets": 26,
+              "peakSockets": 26,
+              "timers": 0,
+              "peakTimers": 0,
+              "pendingBytes": 0,
+              "peakPendingBytes": 0,
+              "overflow": 0
+            },
+            "memory": {
+              "rss": 74653696,
+              "heapTotal": 12263424,
+              "heapUsed": 9388832,
+              "external": 5756301,
+              "arrayBuffers": 1904789
+            },
+            "cpu": {
+              "user": 4053026,
+              "system": 6356722
+            },
+            "at": "2026-10-04T07:54:19.410Z"
+          },
+          "completedAt": "2026-10-04T07:54:19.410Z"
+        },
+        {
+          "name": "redis-delay-recover",
+          "plannedSeconds": 30,
+          "startedAt": "2026-10-04T07:54:39.403Z",
+          "result": {
+            "state": {
+              "delayMs": 0,
+              "disconnected": false
+            },
+            "stats": {
+              "role": "proxy",
+              "requests": 0,
+              "active": 0,
+              "peakActive": 0,
+              "sockets": 26,
+              "peakSockets": 26,
+              "timers": 9,
+              "peakTimers": 11,
+              "pendingBytes": 2596,
+              "peakPendingBytes": 11387,
+              "overflow": 0
+            },
+            "memory": {
+              "rss": 75702272,
+              "heapTotal": 11739136,
+              "heapUsed": 10114896,
+              "external": 4705759,
+              "arrayBuffers": 854247
+            },
+            "cpu": {
+              "user": 4278479,
+              "system": 6464735
+            },
+            "at": "2026-10-04T07:54:39.405Z"
+          },
+          "completedAt": "2026-10-04T07:54:39.406Z"
+        }
+      ],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 25,
+            "min": 42150296,
+            "median": 109538504,
+            "max": 191925144
+          },
+          "directBytes": {
+            "samples": 25,
+            "min": 4499464,
+            "median": 5023752,
+            "max": 5023752
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 569405440,
+            "median": 573206528,
+            "max": 574386176
+          },
+          "jvmCpuFraction": {
+            "samples": 25,
+            "min": 0.02351510237178188,
+            "median": 0.22088987062164722,
+            "max": 0.2475528891695611
+          },
+          "threads": {
+            "samples": 25,
+            "min": 50,
+            "median": 50,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 25,
+            "min": 7,
+            "median": 33,
+            "max": 1051
+          },
+          "auditReservedBytes": {
+            "samples": 25,
+            "min": 13160,
+            "median": 62052,
+            "max": 2041436
+          },
+          "limiterQueue": {
+            "samples": 25,
+            "min": 0,
+            "median": 0,
+            "max": 128
+          },
+          "limiterCommands": {
+            "samples": 25,
+            "min": 0,
+            "median": 0,
+            "max": 8
+          },
+          "limiterConnections": {
+            "samples": 25,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 25,
+            "min": 1,
+            "median": 1,
+            "max": 137
+          },
+          "proxyConnections": {
+            "samples": 25,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 25,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 50,
+        "min": 0.1772253887882156,
+        "median": 0.19444432462985417,
+        "max": 0.38953932874051866
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "phase": "faults",
+      "stage": "redis-disconnect",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 50,
+      "offeredRate": 2000,
+      "offered": 100000,
+      "issued": 100000,
+      "finished": 100000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 1999.8382580412883,
+      "http200LatencyMs": {
+        "count": 100000,
+        "p50": 0.879,
+        "p95": 1.356,
+        "p99": 1.877,
+        "max": 13.143,
+        "mean": 0.92674316
+      },
+      "statuses": {
+        "200": 100000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 68882,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 31118,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 78211,
+      "auditDropped": 21746,
+      "auditUncertain": 43,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "audit_not_confirmed",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 31118,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [
+        {
+          "name": "redis-disconnect",
+          "plannedSeconds": 10,
+          "startedAt": "2026-10-04T07:55:11.430Z",
+          "result": {
+            "state": {
+              "delayMs": 0,
+              "disconnected": true
+            },
+            "stats": {
+              "role": "proxy",
+              "requests": 0,
+              "active": 0,
+              "peakActive": 0,
+              "sockets": 26,
+              "peakSockets": 26,
+              "timers": 0,
+              "peakTimers": 11,
+              "pendingBytes": 0,
+              "peakPendingBytes": 11387,
+              "overflow": 0
+            },
+            "memory": {
+              "rss": 75960320,
+              "heapTotal": 12787712,
+              "heapUsed": 10778656,
+              "external": 6762632,
+              "arrayBuffers": 2911120
+            },
+            "cpu": {
+              "user": 5710645,
+              "system": 8791738
+            },
+            "at": "2026-10-04T07:55:11.432Z"
+          },
+          "completedAt": "2026-10-04T07:55:11.434Z"
+        },
+        {
+          "name": "redis-reconnect",
+          "plannedSeconds": 25,
+          "startedAt": "2026-10-04T07:55:26.424Z",
+          "result": {
+            "state": {
+              "delayMs": 0,
+              "disconnected": false
+            },
+            "stats": {
+              "role": "proxy",
+              "requests": 0,
+              "active": 0,
+              "peakActive": 0,
+              "sockets": 0,
+              "peakSockets": 26,
+              "timers": 0,
+              "peakTimers": 11,
+              "pendingBytes": 0,
+              "peakPendingBytes": 11387,
+              "overflow": 0
+            },
+            "memory": {
+              "rss": 76091392,
+              "heapTotal": 12787712,
+              "heapUsed": 10294288,
+              "external": 4063681,
+              "arrayBuffers": 212169
+            },
+            "cpu": {
+              "user": 5728080,
+              "system": 8791738
+            },
+            "at": "2026-10-04T07:55:26.428Z"
+          },
+          "completedAt": "2026-10-04T07:55:26.428Z"
+        }
+      ],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 25,
+            "min": 41076744,
+            "median": 119762008,
+            "max": 200074008
+          },
+          "directBytes": {
+            "samples": 25,
+            "min": 4171784,
+            "median": 4974600,
+            "max": 5023752
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 574517248,
+            "median": 583409664,
+            "max": 586706944
+          },
+          "jvmCpuFraction": {
+            "samples": 25,
+            "min": 0.07180851063829788,
+            "median": 0.22474747474747475,
+            "max": 0.2620472440944882
+          },
+          "threads": {
+            "samples": 25,
+            "min": 50,
+            "median": 75,
+            "max": 75
+          },
+          "auditPending": {
+            "samples": 25,
+            "min": 4,
+            "median": 35,
+            "max": 8593
+          },
+          "auditReservedBytes": {
+            "samples": 25,
+            "min": 7520,
+            "median": 65812,
+            "max": 16776752
+          },
+          "limiterQueue": {
+            "samples": 25,
+            "min": 0,
+            "median": 0,
+            "max": 1
+          },
+          "limiterCommands": {
+            "samples": 25,
+            "min": 0,
+            "median": 0,
+            "max": 4
+          },
+          "limiterConnections": {
+            "samples": 25,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 25,
+            "min": 1,
+            "median": 1,
+            "max": 5
+          },
+          "proxyConnections": {
+            "samples": 25,
+            "min": 100,
+            "median": 100,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 25,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 50,
+        "min": 0.17268423827379387,
+        "median": 0.1901416077931854,
+        "max": 0.37393309714577966
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "phase": "faults",
+      "stage": "upstream-slow",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 2000,
+      "offered": 120000,
+      "issued": 120000,
+      "finished": 120000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 1024.3274654838415,
+      "http200LatencyMs": {
+        "count": 61462,
+        "p50": 0.973,
+        "p95": 1.406,
+        "p99": 2.063,
+        "max": 15.479,
+        "mean": 1.0304958510949855
+      },
+      "statuses": {
+        "200": 61462,
+        "503": 57874,
+        "504": 664
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 120000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 120000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "non_200"
+        ],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [
+        {
+          "name": "upstream-delay-2500ms",
+          "plannedSeconds": 10,
+          "startedAt": "2026-10-04T07:56:03.455Z",
+          "result": {
+            "state": {
+              "delayMs": 2500,
+              "disconnected": false
+            },
+            "stats": {
+              "role": "upstream",
+              "requests": 339359,
+              "active": 0,
+              "peakActive": 1,
+              "sockets": 100,
+              "peakSockets": 100,
+              "timers": 0,
+              "peakTimers": 0,
+              "pendingBytes": 0,
+              "peakPendingBytes": 0,
+              "overflow": 0
+            },
+            "memory": {
+              "rss": 81735680,
+              "heapTotal": 13049856,
+              "heapUsed": 10216128,
+              "external": 4063675,
+              "arrayBuffers": 146627
+            },
+            "cpu": {
+              "user": 13201231,
+              "system": 8058912
+            },
+            "at": "2026-10-04T07:56:03.458Z"
+          },
+          "completedAt": "2026-10-04T07:56:03.459Z"
+        },
+        {
+          "name": "upstream-recover",
+          "plannedSeconds": 30,
+          "startedAt": "2026-10-04T07:56:23.449Z",
+          "result": {
+            "state": {
+              "delayMs": 0,
+              "disconnected": false
+            },
+            "stats": {
+              "role": "upstream",
+              "requests": 340023,
+              "active": 6,
+              "peakActive": 100,
+              "sockets": 6,
+              "peakSockets": 100,
+              "timers": 6,
+              "peakTimers": 100,
+              "pendingBytes": 0,
+              "peakPendingBytes": 0,
+              "overflow": 0
+            },
+            "memory": {
+              "rss": 85929984,
+              "heapTotal": 15933440,
+              "heapUsed": 14398880,
+              "external": 4063672,
+              "arrayBuffers": 146624
+            },
+            "cpu": {
+              "user": 13347193,
+              "system": 8132805
+            },
+            "at": "2026-10-04T07:56:23.452Z"
+          },
+          "completedAt": "2026-10-04T07:56:23.452Z"
+        }
+      ],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 30,
+            "min": 52378616,
+            "median": 125156764.0,
+            "max": 196979096
+          },
+          "directBytes": {
+            "samples": 30,
+            "min": 4974600,
+            "median": 4974600.0,
+            "max": 4974600
+          },
+          "rssBytes": {
+            "samples": 6,
+            "min": 583671808,
+            "median": 600530944.0,
+            "max": 607428608
+          },
+          "jvmCpuFraction": {
+            "samples": 30,
+            "min": 0.0751049259995582,
+            "median": 0.22473401848501828,
+            "max": 0.2903834066624764
+          },
+          "threads": {
+            "samples": 30,
+            "min": 75,
+            "median": 75.0,
+            "max": 75
+          },
+          "auditPending": {
+            "samples": 30,
+            "min": 0,
+            "median": 27.0,
+            "max": 43
+          },
+          "auditReservedBytes": {
+            "samples": 30,
+            "min": 0,
+            "median": 50766.0,
+            "max": 83432
+          },
+          "limiterQueue": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 3
+          },
+          "limiterCommands": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 5
+          },
+          "limiterConnections": {
+            "samples": 30,
+            "min": 8,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 30,
+            "min": 1,
+            "median": 1.0,
+            "max": 6
+          },
+          "proxyConnections": {
+            "samples": 30,
+            "min": 0,
+            "median": 9.0,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.0,
+            "max": 100
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 60,
+        "min": 0.17930798789330488,
+        "median": 0.19941585666749612,
+        "max": 0.3871801458885089
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\faults-capacity\\summary.json",
+      "phase": "faults",
+      "stage": "recovered",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 30,
+      "offeredRate": 2000,
+      "offered": 60000,
+      "issued": 60000,
+      "finished": 60000,
+      "generatorMisses": 0,
+      "missPercent": 0.0,
+      "successfulRequestsPerSecond": 1999.7522714885088,
+      "http200LatencyMs": {
+        "count": 60000,
+        "p50": 0.966,
+        "p95": 1.411,
+        "p99": 2.059,
+        "max": 21.519,
+        "mean": 1.03233315
+      },
+      "statuses": {
+        "200": 60000
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 60000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 60000,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 15,
+            "min": 58534016,
+            "median": 127764256,
+            "max": 200136280
+          },
+          "directBytes": {
+            "samples": 15,
+            "min": 4974600,
+            "median": 4974600,
+            "max": 5007368
+          },
+          "rssBytes": {
+            "samples": 3,
+            "min": 602775552,
+            "median": 603348992,
+            "max": 604610560
+          },
+          "jvmCpuFraction": {
+            "samples": 15,
+            "min": 0.0626359286646368,
+            "median": 0.22849888924151063,
+            "max": 0.2490613266583229
+          },
+          "threads": {
+            "samples": 15,
+            "min": 75,
+            "median": 75,
+            "max": 75
+          },
+          "auditPending": {
+            "samples": 15,
+            "min": 8,
+            "median": 28,
+            "max": 53
+          },
+          "auditReservedBytes": {
+            "samples": 15,
+            "min": 15040,
+            "median": 52640,
+            "max": 99664
+          },
+          "limiterQueue": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 6
+          },
+          "limiterCommands": {
+            "samples": 15,
+            "min": 0,
+            "median": 1,
+            "max": 3
+          },
+          "limiterConnections": {
+            "samples": 15,
+            "min": 8,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 15,
+            "min": 1,
+            "median": 3,
+            "max": 9
+          },
+          "proxyConnections": {
+            "samples": 15,
+            "min": 10,
+            "median": 10,
+            "max": 10
+          },
+          "proxyPending": {
+            "samples": 15,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 30,
+        "min": 0.18872515601015455,
+        "median": 0.19885982945942587,
+        "max": 0.41366130556769953
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\mutations-capacity\\summary.json",
+      "phase": "mutations",
+      "stage": "warmup",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 60,
+      "offeredRate": 2000,
+      "offered": 120000,
+      "issued": 118184,
+      "finished": 118184,
+      "generatorMisses": 1816,
+      "missPercent": 1.5133333333333334,
+      "successfulRequestsPerSecond": 1969.5492348867763,
+      "http200LatencyMs": {
+        "count": 118180,
+        "p50": 1.088,
+        "p95": 9.311,
+        "p99": 151.039,
+        "max": 2414.591,
+        "mean": 6.93809134371298
+      },
+      "statuses": {
+        "200": 118180,
+        "503": 4
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 118176,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 8,
+        "cancelled": 0
+      },
+      "auditConfirmed": 118184,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": false,
+        "issues": [
+          "non_200",
+          "generator_misses_over_1_percent",
+          "limiter_fail_open"
+        ],
+        "limiterFailOpen": 8,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 55347280,
+            "median": 122998640,
+            "max": 189787224
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 4999176,
+            "median": 5007368,
+            "max": 5015560
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 541130752,
+            "median": 555286528,
+            "max": 564330496
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0,
+            "median": 0.1482866043613707,
+            "max": 0.8665377176015474
+          },
+          "threads": {
+            "samples": 29,
+            "min": 46,
+            "median": 50,
+            "max": 51
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 16,
+            "max": 32
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 29900,
+            "max": 59788
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 10
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 7
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 7,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 1,
+            "max": 18
+          },
+          "proxyConnections": {
+            "samples": 29,
+            "min": 27,
+            "median": 55,
+            "max": 55
+          },
+          "proxyPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 0
+          }
+        },
+        "B": {
+          "heapBytes": {
+            "samples": 29,
+            "min": 48291824,
+            "median": 135526464,
+            "max": 191822808
+          },
+          "directBytes": {
+            "samples": 29,
+            "min": 3688456,
+            "median": 3975176,
+            "max": 3991560
+          },
+          "rssBytes": {
+            "samples": 5,
+            "min": 516612096,
+            "median": 525537280,
+            "max": 532615168
+          },
+          "jvmCpuFraction": {
+            "samples": 29,
+            "min": 0.11913814955640051,
+            "median": 0.13160392280923758,
+            "max": 0.7385120350109409
+          },
+          "threads": {
+            "samples": 29,
+            "min": 43,
+            "median": 47,
+            "max": 49
+          },
+          "auditPending": {
+            "samples": 29,
+            "min": 0,
+            "median": 4,
+            "max": 32
+          },
+          "auditReservedBytes": {
+            "samples": 29,
+            "min": 0,
+            "median": 7484,
+            "max": 59788
+          },
+          "limiterQueue": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 6
+          },
+          "limiterCommands": {
+            "samples": 29,
+            "min": 0,
+            "median": 0,
+            "max": 3
+          },
+          "limiterConnections": {
+            "samples": 29,
+            "min": 0,
+            "median": 8,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 29,
+            "min": 1,
+            "median": 1,
+            "max": 9
+          },
+          "proxyConnections": {
+            "samples": 28,
+            "min": 100,
+            "median": 100.0,
+            "max": 100
+          },
+          "proxyPending": {
+            "samples": 28,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 60,
+        "min": 0.21832932194384505,
+        "median": 0.2336976390939275,
+        "max": 0.6201281521288342
+      },
+      "jfr": null
+    },
+    {
+      "source": "D:\\Java\\ZenithGateway\\.dev\\capacity-20261004-2l8omgjh\\mutations-capacity\\summary.json",
+      "phase": "mutations",
+      "stage": "configuration-and-routes",
+      "workers": 8,
+      "queueCapacity": 128,
+      "routes": 32,
+      "durationSeconds": 70,
+      "offeredRate": 2000,
+      "offered": 140000,
+      "issued": 139950,
+      "finished": 139950,
+      "generatorMisses": 50,
+      "missPercent": 0.03571428571428571,
+      "successfulRequestsPerSecond": 1999.2031603042544,
+      "http200LatencyMs": {
+        "count": 139950,
+        "p50": 1.001,
+        "p95": 1.545,
+        "p99": 2.697,
+        "max": 66.175,
+        "mean": 1.0899635512683101
+      },
+      "statuses": {
+        "200": 139950
+      },
+      "transportErrors": 0,
+      "limiterOutcomes": {
+        "disabled": 0,
+        "allowed": 139963,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "cancelled": 0
+      },
+      "auditConfirmed": 139963,
+      "auditDropped": 0,
+      "auditUncertain": 0,
+      "accountingGaps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "assessment": {
+        "healthy": true,
+        "issues": [],
+        "limiterFailOpen": 0,
+        "resourceBreaches": [],
+        "criteria": "100% HTTP 200; no transport error, limiter fail-open, audit drop/unknown, accounting gap or sampling error; <=1% generator missed slots"
+      },
+      "events": [
+        {
+          "name": "runtime-window-12",
+          "plannedSeconds": 10,
+          "startedAt": "2026-10-04T07:59:44.368Z",
+          "result": {
+            "version": "186e1916-a633-4e4c-832f-21a3de664a96:2",
+            "adoption": [
+              {
+                "label": "A",
+                "elapsedMs": 21.937999999994645,
+                "version": "186e1916-a633-4e4c-832f-21a3de664a96:2"
+              },
+              {
+                "label": "B",
+                "elapsedMs": 351.5112999999983,
+                "version": "186e1916-a633-4e4c-832f-21a3de664a96:2"
+              }
+            ]
+          },
+          "completedAt": "2026-10-04T07:59:44.719Z"
+        },
+        {
+          "name": "route-v2",
+          "plannedSeconds": 23,
+          "startedAt": "2026-10-04T07:59:57.365Z",
+          "result": {
+            "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:34",
+            "adoption": [
+              {
+                "label": "A",
+                "elapsedMs": 19.739100000006147,
+                "proof": {
+                  "label": "A",
+                  "status": 200,
+                  "body": "V2:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:34",
+                  "elapsedMs": 3.6644999999989523,
+                  "at": "2026-10-04T07:59:57.385Z"
+                }
+              },
+              {
+                "label": "B",
+                "elapsedMs": 468.78369999999995,
+                "proof": {
+                  "label": "B",
+                  "status": 200,
+                  "body": "V2:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:34",
+                  "elapsedMs": 3.880300000004354,
+                  "at": "2026-10-04T07:59:57.834Z"
+                }
+              }
+            ]
+          },
+          "completedAt": "2026-10-04T07:59:57.834Z"
+        },
+        {
+          "name": "runtime-window-10",
+          "plannedSeconds": 38,
+          "startedAt": "2026-10-04T08:00:12.365Z",
+          "result": {
+            "version": "186e1916-a633-4e4c-832f-21a3de664a96:3",
+            "adoption": [
+              {
+                "label": "A",
+                "elapsedMs": 10.248600000006263,
+                "version": "186e1916-a633-4e4c-832f-21a3de664a96:3"
+              },
+              {
+                "label": "B",
+                "elapsedMs": 341.8323000000091,
+                "version": "186e1916-a633-4e4c-832f-21a3de664a96:3"
+              }
+            ]
+          },
+          "completedAt": "2026-10-04T08:00:12.707Z"
+        },
+        {
+          "name": "route-v1",
+          "plannedSeconds": 51,
+          "startedAt": "2026-10-04T08:00:25.364Z",
+          "result": {
+            "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:35",
+            "adoption": [
+              {
+                "label": "A",
+                "elapsedMs": 21.311699999991106,
+                "proof": {
+                  "label": "A",
+                  "status": 200,
+                  "body": "V1:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:35",
+                  "elapsedMs": 2.535200000012992,
+                  "at": "2026-10-04T08:00:25.386Z"
+                }
+              },
+              {
+                "label": "B",
+                "elapsedMs": 577.4539999999979,
+                "proof": {
+                  "label": "B",
+                  "status": 200,
+                  "body": "V1:/bench/proof:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "version": "ce4daa94-fac0-40b9-9483-4dd867793af6:35",
+                  "elapsedMs": 2.1235000000160653,
+                  "at": "2026-10-04T08:00:25.942Z"
+                }
+              }
+            ]
+          },
+          "completedAt": "2026-10-04T08:00:25.942Z"
+        }
+      ],
+      "resources": {
+        "A": {
+          "heapBytes": {
+            "samples": 34,
+            "min": 46517016,
+            "median": 99607156.0,
+            "max": 195978968
+          },
+          "directBytes": {
+            "samples": 34,
+            "min": 5015560,
+            "median": 5015560.0,
+            "max": 5023752
+          },
+          "rssBytes": {
+            "samples": 6,
+            "min": 564985856,
+            "median": 572637184.0,
+            "max": 577806336
+          },
+          "jvmCpuFraction": {
+            "samples": 34,
+            "min": 0.029514563106796114,
+            "median": 0.13125907006443374,
+            "max": 0.223250077089115
+          },
+          "threads": {
+            "samples": 34,
+            "min": 50,
+            "median": 50.0,
+            "max": 50
+          },
+          "auditPending": {
+            "samples": 34,
+            "min": 0,
+            "median": 10.0,
+            "max": 32
+          },
+          "auditReservedBytes": {
+            "samples": 34,
+            "min": 0,
+            "median": 18692.0,
+            "max": 59788
+          },
+          "limiterQueue": {
+            "samples": 34,
+            "min": 0,
+            "median": 0.0,
+            "max": 1
+          },
+          "limiterCommands": {
+            "samples": 34,
+            "min": 0,
+            "median": 0.0,
+            "max": 4
+          },
+          "limiterConnections": {
+            "samples": 34,
+            "min": 8,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 34,
+            "min": 1,
+            "median": 1.0,
+            "max": 5
+          },
+          "proxyConnections": {
+            "samples": 34,
+            "min": 55,
+            "median": 56.0,
+            "max": 56
+          },
+          "proxyPending": {
+            "samples": 34,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        },
+        "B": {
+          "heapBytes": {
+            "samples": 34,
+            "min": 41790864,
+            "median": 101185100.0,
+            "max": 191384752
+          },
+          "directBytes": {
+            "samples": 34,
+            "min": 3991560,
+            "median": 3991560.0,
+            "max": 3991560
+          },
+          "rssBytes": {
+            "samples": 6,
+            "min": 536809472,
+            "median": 550539264.0,
+            "max": 551849984
+          },
+          "jvmCpuFraction": {
+            "samples": 34,
+            "min": 0.03025014543339151,
+            "median": 0.12330834345673396,
+            "max": 0.20554344440984118
+          },
+          "threads": {
+            "samples": 34,
+            "min": 48,
+            "median": 48.0,
+            "max": 48
+          },
+          "auditPending": {
+            "samples": 34,
+            "min": 0,
+            "median": 5.0,
+            "max": 32
+          },
+          "auditReservedBytes": {
+            "samples": 34,
+            "min": 0,
+            "median": 9352.0,
+            "max": 60172
+          },
+          "limiterQueue": {
+            "samples": 34,
+            "min": 0,
+            "median": 0.0,
+            "max": 1
+          },
+          "limiterCommands": {
+            "samples": 34,
+            "min": 0,
+            "median": 0.0,
+            "max": 3
+          },
+          "limiterConnections": {
+            "samples": 34,
+            "min": 8,
+            "median": 8.0,
+            "max": 8
+          },
+          "limiterScheduled": {
+            "samples": 34,
+            "min": 1,
+            "median": 1.0,
+            "max": 4
+          },
+          "proxyConnections": {
+            "samples": 34,
+            "min": 100,
+            "median": 101.0,
+            "max": 101
+          },
+          "proxyPending": {
+            "samples": 34,
+            "min": 0,
+            "median": 0.0,
+            "max": 0
+          }
+        }
+      },
+      "driverCpuCores": {
+        "samples": 70,
+        "min": 0.19273395344922903,
+        "median": 0.20228512244718128,
+        "max": 0.43922723520916235
+      },
+      "jfr": null
+    }
+  ],
+  "interpretation": [
+    "HTTP 200 throughput is not healthy limiter throughput when any fail-open occurs.",
+    "Do not average percentile values across samples; raw per-run histograms remain the source.",
+    "Memory/connection numbers are sampled observations, not proof against all leaks or hidden resources.",
+    "Warmups and JFR runs are not unprofiled capacity comparisons.",
+    "These CPU sets share one Docker Desktop VM and host; no production capacity claim."
+  ]
+}

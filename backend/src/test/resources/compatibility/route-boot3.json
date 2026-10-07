@@ -1,0 +1,11 @@
+{
+  "id": "legacy-route",
+  "path": "/legacy/**",
+  "uri": "https://example.com",
+  "rewriteEnabled": true,
+  "rewriteRegex": "^\\Q/legacy\\E/(?<segment>.*)$",
+  "rewriteReplacement": "/${segment}",
+  "circuitBreakerEnabled": true,
+  "circuitBreakerName": "cb-legacy-route",
+  "fallbackPath": "/fallback/default"
+}

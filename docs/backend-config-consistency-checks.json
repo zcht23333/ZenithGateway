@@ -1,0 +1,398 @@
+{
+  "date": "2026-09-26",
+  "backend": {
+    "command": "mvn -f backend/pom.xml clean verify",
+    "isolatedRedis": true,
+    "redisVersion": "7.4-alpine",
+    "tests": 102,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "com.zch.config.GatewayRuntimePropertiesBindingTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.config.RuntimeConfigConcurrencyTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.config.RuntimeConfigPersistenceTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.config.StartupReadinessIntegrationTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.filter.AdminAuthFilterTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.filter.RateLimitFilterTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.filter.ReadinessFilterTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.monitor.AuditEventPublisherTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.monitor.GatewayMetricsTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.monitor.RedisAuditBatchWriterIntegrationTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.monitor.RequestCompletionRecorderTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.monitor.TrafficMetricsServiceTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.route.DynamicRouteServiceTest",
+        "tests": 24,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.route.GatewayRedisIntegrationTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.zch.util.ClientIpResolverTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "frontend": {
+    "command": "npm --prefix frontend test",
+    "tests": 51,
+    "passed": 51,
+    "failed": 0,
+    "productionBuild": {
+      "command": "npm --prefix frontend run build",
+      "passed": true,
+      "typescriptPassed": true,
+      "modules": 666,
+      "warning": "Existing lazy ECharts chunk remains 502.99 kB minified; no new eager chart load"
+    },
+    "testLog": ".dev/config-consistency/frontend-test.log",
+    "buildLog": ".dev/config-consistency/frontend-build.log"
+  },
+  "browser": {
+    "settings": {
+      "passed": true,
+      "checks": [
+        "Desktop first viewport exposes all six parameters, exact units, baseline and disabled no-change save",
+        "Changed fields alone form current-to-draft comparisons; raw invalid values stay visible and block saving",
+        "Saving freezes edits and repeat submissions; confirmed values become the baseline",
+        "First loading and failed reads expose no defaults; a local retry establishes the baseline",
+        "Explicit save rejection preserves editable differences and a subsequent save can succeed",
+        "A lost response requires a read first; matching server values reconcile without another write",
+        "A confirmed save survives a later read failure and its independent retry",
+        "Disabled limiting retains its values; impossible bucket combinations explain behavior without inventing validation",
+        "Mobile and narrow layouts retain readable fields, summaries and all navigation destinations",
+        "Unsaved preview navigation and browser unloading are guarded; confirmed discard exits normally",
+        "Formal management authentication and initial source failure preserve an unknown baseline until retry",
+        "Formal PUT sends six valid fields and expectedVersion once and adopts effective values without an extra GET",
+        "Formal refresh retains edited fields while updating untouched server values",
+        "Formal rejected saves retain draft and inline server errors; network and 500 failures require reconciliation",
+        "Expired credentials preserve the draft in memory and re-authentication reads before enabling a save",
+        "Formal navigation, including trailing-slash settings URLs, and disconnect protect drafts; confirmed discard clears retained state"
+      ],
+      "errors": [],
+      "cleanup": null,
+      "source": ".dev/settings-stage-b/browser-validation.json"
+    },
+    "overview": {
+      "passed": true,
+      "checks": [
+        "Normal first viewport prioritises QPS, P95 and two aligned trends, followed by the audit summary",
+        "Inspecting actual samples changes the readout without replacing current-window metrics",
+        "Audit details separate process counters from current queue state and explain uncertain writes",
+        "Recent records expose full long paths, exact JSON, dates, cancellation and status zero",
+        "Zero traffic, empty history, first loading, disabled monitoring and P95 overflow remain distinct",
+        "Partial failures retain timestamped old data and allow independent source recovery",
+        "320–1440px layouts keep all three navigation destinations available and long records usable",
+        "Explicit overview and route previews remain isolated from management APIs",
+        "Formal overview loads sources independently; unknown metrics stay dashes while audit records arrive",
+        "A failed records refresh retains old records; other data stays readable and retry clears the error",
+        "An open but silent stream becomes stale; a new event and reconnect recover without clearing audits",
+        "Navigation and formal-to-preview transitions release subscriptions and record polling",
+        "Non-preview URLs and expired credentials still require management authentication"
+      ],
+      "errors": [],
+      "cleanup": null,
+      "source": ".dev/overview-stage-a/browser-validation.json"
+    },
+    "routes": {
+      "passed": true,
+      "checks": [
+        "Shared ID/Path/URI search and rule filters preserve the canvas until explicit selection",
+        "All 32 complete IDs, paths and URI fields compare in rows without truncation",
+        "Keyboard navigation waits for Enter; selection closes the directory and reveals its dock page",
+        "Long and short route switches keep the title, endpoint and path origins stable",
+        "Node rest/hover/selected states differ without permanent glow; closing restores context and focus",
+        "Both conditional branches remain visible beside their expanded node at desktop widths",
+        "Full fields and new header copy controls retain exact URI/path values; cached directory remains read-only",
+        "Expanded directory fits 320–1440px and mobile selection returns to the inline path inspector",
+        "Final normal, dense and expanded-node screenshots capture actual 1440×900 first viewports",
+        "Preview remains isolated and produces no JavaScript errors"
+      ],
+      "errors": [],
+      "cleanup": null,
+      "source": ".dev/route-polish/browser-validation.json"
+    },
+    "settingsRealBackend": {
+      "passed": true,
+      "checks": [
+        "Real authentication loads the six exact backend values with no demo controls",
+        "One UI save updates the live runtime and Redis; all six returned fields become the baseline",
+        "A subsequent failed read does not undo the real confirmed save; retry restores reading",
+        "An actually committed write with a dropped response reconciles via GET without duplicate PUT",
+        "Shared navigation reaches actual overview and routes after a save, including the changed metric window",
+        "Restoring the original six values through the UI is confirmed by runtime and Redis reads"
+      ],
+      "errors": [],
+      "cleanup": {
+        "originalConfigurationRestored": true,
+        "backendExitCode": 0,
+        "redisRemoved": true
+      },
+      "source": ".dev/settings-stage-b/live-validation.json"
+    },
+    "versionPreview": {
+      "checks": [
+        "Conflict preview exposes separate stored, adopted and submitted versions; complete values are selectable for copying",
+        "Explicit reviewed retry keeps the other change and makes no management API requests"
+      ],
+      "errors": [],
+      "apiRequests": [],
+      "passed": true,
+      "source": ".dev/config-consistency/preview-validation.json"
+    }
+  },
+  "rollback": {
+    "passed": true,
+    "checks": [
+      "Authenticated backup preserves exact raw bytes and refuses overwriting an existing backup",
+      "Downgrade refuses to overwrite values changed since the backup",
+      "Offline downgrade leaves exactly the old six-field JSON",
+      "Restore creates a new generation with the backed-up six values, invalidating stale clients",
+      "Tampered backups cannot be restored",
+      "Missing-key recovery uses an atomic absence check and starts a fresh generation",
+      "Lua increments the last safe decimal revision exactly once and refuses overflow",
+      "A wrong Redis key type is rejected without deleting or replacing evidence"
+    ],
+    "cleanup": {
+      "redisRemoved": true
+    },
+    "restored": {
+      "mode": "restore",
+      "key": "zg:test:rollback:1708007a-182d-4bf8-b3ed-fb9d42b779ae",
+      "backupSha256": "4aa1bd1dcf489a8304abaee48127df4ceab4da1e56fe05f196e4480a13178f8b",
+      "written": true,
+      "version": "19584f70-3377-4206-b4ca-51e64d7136b5:1"
+    }
+  },
+  "realRedisConsistency": {
+    "source": "docs/backend-config-consistency-validation.json",
+    "passed": true,
+    "checks": 20
+  },
+  "boundaries": [
+    "No automatic multi-instance synchronization",
+    "No operation-ID or history attribution after a lost acknowledgement",
+    "No Redis disk, replica failover or cluster consistency guarantee",
+    "Old and new writers must not run concurrently during migration"
+  ],
+  "verificationNotes": [
+    "An initial full-test invocation inherited an unavailable port 16379 from the local toolchain script. It was corrected to a disposable random-port Redis; the final clean verify has no failures or skips."
+  ],
+  "changedExistingSourceFiles": [
+    {
+      "file": "backend/src/main/java/com/zch/config/GatewayRuntimeProperties.java",
+      "beforeSha256": "929abeef8efb16ba1a7b2242d23a20951d9982b2c8244b488a43aa72f0a0a253",
+      "afterSha256": "c3766bf66fcbdb7a3b62d38c043a0d1649b48108390aaec715515c661ee5e0b6"
+    },
+    {
+      "file": "backend/src/main/java/com/zch/config/RuntimeConfigController.java",
+      "beforeSha256": "af72527ace3aaad9fc39d7ad83485ddb1ddd8b9e195c5b1da69dee647b305b22",
+      "afterSha256": "6d1cd4e990cab928bbd3eca438a251edac55bffea43c897702c9524d12415461"
+    },
+    {
+      "file": "backend/src/main/java/com/zch/config/RuntimeConfigPersistence.java",
+      "beforeSha256": "af29e10bac1766801cfdb0e1f6632e8d4f882dc4a0f91c64816a0ad47abea0d2",
+      "afterSha256": "1c0212e4c549038014726ebc36af1231ed0a83c8ca5eed773e8ea3ab77cf3e03"
+    },
+    {
+      "file": "backend/src/test/java/com/zch/config/RuntimeConfigConcurrencyTest.java",
+      "beforeSha256": "b2121df8d3d7d43c4310564f4f660a335bc718d2659c86c4dfc7e65fd3703d8a",
+      "afterSha256": "1b6afe457fc2a810a90e21ac1259c847dd9d039f496f8a7cc96517820cb01bd7"
+    },
+    {
+      "file": "backend/src/test/java/com/zch/config/RuntimeConfigPersistenceTest.java",
+      "beforeSha256": "3515f98a3f92968c24ea01838862319f0020f9079474469cf810ea064f0361e5",
+      "afterSha256": "b3eb126e3787320473f76455d61980604767bebe1951a5470e95f60aedfe55c5"
+    },
+    {
+      "file": "backend/src/test/java/com/zch/config/StartupReadinessIntegrationTest.java",
+      "beforeSha256": "7f5f604d6669a3a2e9e4180f7f1b55db042e23ea6ac2c74cc0d39ff2ecebb3a7",
+      "afterSha256": "1fc81e30b28b15b9f32484c441329bd260c05a5c8e5a49557044f92a17d73232"
+    },
+    {
+      "file": "backend/src/test/java/com/zch/filter/RateLimitFilterTest.java",
+      "beforeSha256": "e6582b3bf11026173ad36843a73457b1f3c5fdf33746a4ffe6723f9f85a2be3b",
+      "afterSha256": "f5f2cde445db131603be1220f98d6924f253afb0970b0c620646a0bf160485c9"
+    },
+    {
+      "file": "backend/src/test/java/com/zch/route/GatewayRedisIntegrationTest.java",
+      "beforeSha256": "13a3ffdbe53e0c47ea638f3e8a930159fe16da9696c7f0366a96c18fc98ac864",
+      "afterSha256": "d19d7d27c395c7c755d509a3551476bae0926bd900d1f25822b0bf14dc904cc5"
+    },
+    {
+      "file": "frontend/src/api.ts",
+      "beforeSha256": "e5b09160fa6ac537b8ad0f1ed1d45b4411fbdadd11ba095f020ebeb283a99598",
+      "afterSha256": "f73e2baf45639243523546b1d43a87a811f5a84848a30f998503190ddfe58bb6"
+    },
+    {
+      "file": "frontend/src/settings/editor.ts",
+      "beforeSha256": "4540e4731926b085b8061c5c2ad79c9fd13ce4613270c6a2934c3559cf3a8bd7",
+      "afterSha256": "6c9a13de9ba9d6017bee8c0f71b19f2055e93841fc9d2e5fcfd60cc7bd6127e9"
+    },
+    {
+      "file": "frontend/src/settings/model.ts",
+      "beforeSha256": "5c060726e8ef3b1d25769c5535f6948f3913232d5612c1674fb4a52dd91afcfc",
+      "afterSha256": "da5a11e8430f94fa6e9f57afad9aa0c7d5c5a05aa7972edcbec49b80bb135126"
+    },
+    {
+      "file": "frontend/src/settings/preview.ts",
+      "beforeSha256": "69c2c58417277133d011662c54de14cdc1261d3963644eacdac3e06cb64431b8",
+      "afterSha256": "8b28e8c382c3748c2a58ee9b4a15fdb79c77b2bdf97cf6478f625174d6d3c789"
+    },
+    {
+      "file": "frontend/src/stores/traffic.ts",
+      "beforeSha256": "3ff681ca142bb220aa0d02db913a21176d96ef533a4496b6dae4de41f3fac696",
+      "afterSha256": "4b5ede984f344238872fb68731b2dbd6f0f6c5a2f6ec01f08f3941f266da0395"
+    },
+    {
+      "file": "frontend/src/styles/settings.css",
+      "beforeSha256": "76c1c21d79ce475fe6b9785fab0852abfe15f8b4eb7ee32bd491070efd74fc4b",
+      "afterSha256": "bb25308d495ec12aa26791bf333230c761593c0fc4ddf85cd81de9c74f7a9246"
+    },
+    {
+      "file": "frontend/src/views/Settings.vue",
+      "beforeSha256": "c23392c12f4a77858c00152f7f39682e07d42e0e5904f41187e56700c8566d73",
+      "afterSha256": "1cd2c1f91da36d8e05e860722a253988d14ed5c374329c0e9ca977294f198845"
+    },
+    {
+      "file": "frontend/tests/settings.test.mjs",
+      "beforeSha256": "0688f0c094b11963ac9b8dd82837cba5e911ad06c515f0f6c83b5505ee8a905a",
+      "afterSha256": "2a53a6dcbc9f0e6081538ffd126b3138d94aa5c5f0cfb8b38340b7f0e0c3e11a"
+    },
+    {
+      "file": "verification/route-dispatch-live.mjs",
+      "beforeSha256": "e76dfe77da48806e975427331b719ceffdc4a112cad52d1e448a7af3a2fd516d",
+      "afterSha256": "ad9fa70cbe1ca1bd8ff24942d7f897d9edc146360a78b556a45caeab7878ee7a"
+    },
+    {
+      "file": "verification/settings-stage-b-live.mjs",
+      "beforeSha256": "26b812456cda1159cc43429ba2fa428fc718d1031a977ce56e911aef35441c78",
+      "afterSha256": "cfe454d95b5f7b8cdaa10b60e9be442cfe03b27e981c2e0b4de2e58269c485d4"
+    },
+    {
+      "file": "verification/settings-stage-b.mjs",
+      "beforeSha256": "4872e81f00eaf86a4b9ec300868ee494567371ed4f52c14cd502a5ff9bba0eaa",
+      "afterSha256": "5bda0805dcc186bcaf08347c3d840f21778110f4aaff8d256e362729a4cf2460"
+    },
+    {
+      "file": "verification/stage-c-network.mjs",
+      "beforeSha256": "0a37b5a6dd83ea68f875060987d662b31ef3b8ea4b30b401989e8890c79ed1c2",
+      "afterSha256": "f75ae2704f65c7daa1812391e1c4067c5b314586cab516b0881b732d645884bb"
+    },
+    {
+      "file": "verification/stage-c-showcase.mjs",
+      "beforeSha256": "e044c368ee4c37395ffea72e8f47d352a01abbb5bd3a5beef094530597c9fad2",
+      "afterSha256": "8684e8bd912c39dd47cb90a6c18c099f0a7a3443fb581faf70663a04e11c0bed"
+    },
+    {
+      "file": "observability/demo.mjs",
+      "beforeSha256": "170dfeba652ed2ad90feea578a3615f38494768aec5b2f2378fc67473f55204c",
+      "afterSha256": "c82086234f37dd5b67f10c39e8e13a9a21a65d77aa65d08c7c3178d8d90139a7"
+    }
+  ],
+  "newCoreFiles": [
+    "backend/src/main/java/com/zch/config/RuntimeConfigSnapshot.java",
+    "backend/src/main/java/com/zch/config/ConfigProblem.java",
+    "backend/src/main/resources/runtime-config.lua"
+  ],
+  "generatedAt": "2026-09-26T04:22:09.921281+00:00",
+  "additionalChangedExistingSourceFiles": [
+    {
+      "file": "benchmarks/redis.mjs",
+      "reason": "Authenticated and database-scoped Redis command support for offline recovery"
+    }
+  ],
+  "artifacts": [
+    "docs/backend-config-consistency.md",
+    "docs/backend-config-consistency-before.json",
+    "docs/backend-config-consistency-validation.json",
+    "docs/images/config-consistency-conflict-1440.png",
+    "docs/images/config-consistency-conflict-390.png",
+    "docs/images/config-consistency-unconfirmed-1440.png",
+    "docs/images/config-consistency-confirmed-1440.png"
+  ],
+  "passed": true
+}

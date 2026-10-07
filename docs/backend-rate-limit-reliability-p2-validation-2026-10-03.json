@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "task": "Rate limit JSON false P2 fix",
+  "status": "ready_for_independent_acceptance",
+  "recordedAt": "2026-10-03T14:43:29.525848+00:00",
+  "productionChange": "Only missing Redis bulk reply is absence; reject decoded non-table JSON before existence checks, preserve invalid bytes and return redis_fail_open/not_written.",
+  "artifacts": {
+    "before": {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before.jar",
+      "sha256": "bd6b93f07883153239e1a87757d84e2131a68c1e9ddaad28054e1964d2dcb1e8"
+    },
+    "candidate": {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/candidate.jar",
+      "sha256": "f803d536bc1df1d09be9ac19fde493ebb50d954cd9cd1f5affe5ff415850a636"
+    },
+    "buildOutput": {
+      "path": "D:/Java/ZenithGateway/backend/target/zg-1.0.0.jar",
+      "sha256": "f803d536bc1df1d09be9ac19fde493ebb50d954cd9cd1f5affe5ff415850a636"
+    },
+    "changedJarEntries": [
+      "BOOT-INF/classes/rate-limit.lua"
+    ]
+  },
+  "source": {
+    "backend/src/main/resources/rate-limit.lua": {
+      "path": "D:/Java/ZenithGateway/backend/src/main/resources/rate-limit.lua",
+      "sha256": "c3cf623bda65913bca12d3f66315a7026c16a8d215f0fad65dc350e93e65c59e"
+    },
+    "backend/src/test/java/com/zch/ratelimit/RateLimitScriptIntegrationTest.java": {
+      "path": "D:/Java/ZenithGateway/backend/src/test/java/com/zch/ratelimit/RateLimitScriptIntegrationTest.java",
+      "sha256": "bbeab8e0a8926c049169eef853178ad29fec69849f89b5790d30616cfb934a74"
+    },
+    "verification/rate-limit-malformed-live.mjs": {
+      "path": "D:/Java/ZenithGateway/verification/rate-limit-malformed-live.mjs",
+      "sha256": "21df332b067be3eda0558c1f8b9731802dbd6b814d5220d1a9f18458d53d6db8"
+    },
+    "verification/rate-limit-reliability-live.mjs": {
+      "path": "D:/Java/ZenithGateway/verification/rate-limit-reliability-live.mjs",
+      "sha256": "2669d692c34940947a305baf48f96ee422cf3fa190fdc3e9d5072e1b20e51d87"
+    },
+    "verification/rate-limit-harness.mjs": {
+      "path": "D:/Java/ZenithGateway/verification/rate-limit-harness.mjs",
+      "sha256": "90a56677df5fc0158bbb173c2890336defa721ed9d043c1dc28ee11e10cd5859"
+    }
+  },
+  "backend": {
+    "command": "mvn -f backend/pom.xml verify",
+    "environment": {
+      "startedAt": "2026-10-03T14:35:39.8986975Z",
+      "container": "zenith-limiter-p2-unit-bb9195f587",
+      "image": "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "command": "mvn -f backend/pom.xml verify",
+      "exitCode": 0,
+      "containerId": "11383f6cf9e587a7051221173d461dfc6abca5b47ef201a6aeaca70cbeb36ba1",
+      "redisPort": 63680,
+      "redisRemoved": true,
+      "completedAt": "2026-10-03T14:36:23.2882740Z"
+    },
+    "counts": {
+      "tests": 192,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "limiterScriptTests": 28,
+    "addedTestInvocations": 16,
+    "build": "success",
+    "copiedXmlDirectory": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports"
+  },
+  "runs": [
+    {
+      "name": "before",
+      "passed": false,
+      "executionCompleted": true,
+      "checks": 0,
+      "boundaryCases": 14,
+      "failedBoundaryCases": 2,
+      "httpRequests": 16,
+      "warmupRequests": 2,
+      "jarSha256": "bd6b93f07883153239e1a87757d84e2131a68c1e9ddaad28054e1964d2dcb1e8",
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before/report.json",
+        "sha256": "9c3a10ef871f643750d0078f5e2c48b8d0e01091788fb96d79b7a9f08814c733"
+      },
+      "isolation": {
+        "name": "zenith-limiter-4c6b5bc3",
+        "redisPort": 50432,
+        "namespace": "zg:rl:test:4c6b5bc3-d5aa-4132-a522-d38f5d8dd6cc",
+        "upstreamPort": 52771,
+        "proxyAPort": 50433,
+        "proxyBPort": 50434
+      },
+      "cleanup": {
+        "AExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    {
+      "name": "after-original",
+      "passed": true,
+      "executionCompleted": true,
+      "checks": 0,
+      "boundaryCases": 14,
+      "failedBoundaryCases": 0,
+      "httpRequests": 16,
+      "warmupRequests": 2,
+      "jarSha256": "f803d536bc1df1d09be9ac19fde493ebb50d954cd9cd1f5affe5ff415850a636",
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original/report.json",
+        "sha256": "1e34666c39c6b120495f8654fdefe9e3cd86c9402ec4cfca39e0643195970fec"
+      },
+      "isolation": {
+        "name": "zenith-limiter-8162b0db",
+        "redisPort": 53592,
+        "namespace": "zg:rl:test:8162b0db-c7dc-4531-a949-1d32391a3fda",
+        "upstreamPort": 53591,
+        "proxyAPort": 53595,
+        "proxyBPort": 53596
+      },
+      "cleanup": {
+        "AExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    {
+      "name": "format-regression",
+      "passed": true,
+      "executionCompleted": true,
+      "checks": 17,
+      "boundaryCases": 21,
+      "failedBoundaryCases": 0,
+      "httpRequests": 26,
+      "warmupRequests": 2,
+      "jarSha256": "f803d536bc1df1d09be9ac19fde493ebb50d954cd9cd1f5affe5ff415850a636",
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression/report.json",
+        "sha256": "55b31aa38d4942886901e3deb944fa100fa0a3dbd10aa68c0109b7d672ff4e51"
+      },
+      "isolation": {
+        "name": "zenith-limiter-12b80355",
+        "redisPort": 54778,
+        "namespace": "zg:rl:test:12b80355-efb6-4af8-aefc-1f60ef4f9778",
+        "upstreamPort": 54777,
+        "proxyAPort": 54779,
+        "proxyBPort": 54780
+      },
+      "cleanup": {
+        "AExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    {
+      "name": "limiter",
+      "passed": true,
+      "executionCompleted": null,
+      "checks": 22,
+      "boundaryCases": 0,
+      "failedBoundaryCases": 0,
+      "httpRequests": 184,
+      "warmupRequests": 6,
+      "jarSha256": "f803d536bc1df1d09be9ac19fde493ebb50d954cd9cd1f5affe5ff415850a636",
+      "report": {
+        "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/report.json",
+        "sha256": "d6fbcd42ca6a607fd5c586058053a93e84c374fd541397e54f124ed8fdeba6b0"
+      },
+      "isolation": {
+        "name": "zenith-limiter-01364e36",
+        "redisPort": 63238,
+        "namespace": "zg:rl:test:01364e36-4768-47af-8988-fcc4bdfa87cf",
+        "upstreamPort": 53254,
+        "proxyAPort": 63239,
+        "proxyBPort": 63240
+      },
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    }
+  ],
+  "liveCommands": [
+    {
+      "name": "after-original",
+      "script": ".dev/rate-limit-acceptance-1a1021e053f/malformed-state-repro.mjs",
+      "startedAt": "2026-10-03T14:37:09.8690506Z",
+      "completedAt": "2026-10-03T14:37:24.0963469Z",
+      "exitCode": 0,
+      "report": ".dev/rate-limit-false-fix-1791037925516/after-original/report.json"
+    },
+    {
+      "name": "format-regression",
+      "script": "verification/rate-limit-malformed-live.mjs",
+      "startedAt": "2026-10-03T14:37:24.1190455Z",
+      "completedAt": "2026-10-03T14:37:38.5735260Z",
+      "exitCode": 0,
+      "report": ".dev/rate-limit-false-fix-1791037925516/format-regression/report.json"
+    },
+    {
+      "name": "limiter",
+      "script": "verification/rate-limit-reliability-live.mjs",
+      "startedAt": "2026-10-03T14:37:38.5757729Z",
+      "completedAt": "2026-10-03T14:38:25.2440445Z",
+      "exitCode": 0,
+      "report": ".dev/rate-limit-false-fix-1791037925516/limiter/report.json"
+    }
+  ],
+  "matrixFacts": {
+    "sharedMilliTokens": {
+      "spentMilli": 20000,
+      "initialMilli": 20000,
+      "refillUpperBoundMilli": 93,
+      "boundMilli": 20093
+    },
+    "overload": {
+      "maximumWaitMs": 416.30019999999786,
+      "saturated": {
+        "commandsInFlight": 2,
+        "queued": 4,
+        "scheduledTasks": 7,
+        "admissionCapacity": 6
+      }
+    },
+    "hotPath": {
+      "proxyRequests": 10,
+      "localDiagnosticReads": 20,
+      "extraRuntimeConfigurationQueries": 0,
+      "backgroundReads": 1,
+      "limiterCommands": 10
+    },
+    "recoveryMs": {
+      "lostReply": 9,
+      "overload": 127,
+      "disconnect": 115
+    }
+  },
+  "liveParameters": {
+    "redisImage": "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+    "initialCapacity": 20,
+    "initialRate": 1,
+    "initialCost": 1,
+    "workers": 2,
+    "queueCapacity": 4,
+    "decisionTimeoutMs": 400,
+    "probeIntervalMs": 300,
+    "syncIntervalMs": 200,
+    "syncTimeoutMs": 200,
+    "syncStaleAfterMs": 1000,
+    "note": "Full JVM arguments are in unchanged rate-limit-harness.mjs; all live runs use owned random ports and namespaces."
+  },
+  "preservation": {
+    "filesChecked": 316,
+    "changedExistingFiles": [
+      "backend/src/main/resources/rate-limit.lua",
+      "backend/src/test/java/com/zch/ratelimit/RateLimitScriptIntegrationTest.java"
+    ],
+    "unchangedExistingFiles": 314,
+    "unchangedExistingDocs": 141,
+    "unchangedFrontendFiles": 42
+  },
+  "cleanup": {
+    "checkedAt": "2026-10-03T14:40:01.9206902Z",
+    "ownedContainers": [
+      "zenith-limiter-4c6b5bc3",
+      "zenith-limiter-8162b0db",
+      "zenith-limiter-12b80355",
+      "zenith-limiter-01364e36",
+      "zenith-limiter-p2-unit-bb9195f587"
+    ],
+    "namespaces": [
+      "zg:rl:test:4c6b5bc3-d5aa-4132-a522-d38f5d8dd6cc",
+      "zg:rl:test:8162b0db-c7dc-4531-a949-1d32391a3fda",
+      "zg:rl:test:12b80355-efb6-4af8-aefc-1f60ef4f9778",
+      "zg:rl:test:01364e36-4768-47af-8988-fcc4bdfa87cf"
+    ],
+    "remainingOwnedContainers": [],
+    "remainingOwnedProcesses": [],
+    "devInstancesChanged": false
+  },
+  "devInstancesUpgraded": false,
+  "storageMigrationRequired": false,
+  "notRerun": [
+    "Frontend tests, typecheck and frontend build",
+    "24-group proxy live matrix",
+    "Independent invalid-startup checks",
+    "Full configuration synchronization, operations and rollback live matrices",
+    "Browser regression"
+  ],
+  "remainingBoundaries": [
+    "Fail-open still permits traffic when storage is malformed.",
+    "Previously overwritten corrupt data and already spent quota are not automatically restored.",
+    "Old instances still contain the defect until upgraded.",
+    "Persistence, failover, TLS/ACL, long-duration production load guarantees remain unchanged."
+  ],
+  "evidence": [
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/backend-verify.log",
+      "sha256": "033e70a5746fcab4dee69b39cc3fa68b7412532fd5492deec45d9ade66c8b6d1"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/backend-tests.json",
+      "sha256": "3f334a25685169afd512492f3a06d0affd46cfb9aaaca016eac37651f46e59d7"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/backend-environment.json",
+      "sha256": "f3b3f696fabbf9f97c1a4a05408e8cd95fb0657d9ea9d3931aa712be543bca10"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/live-runs.json",
+      "sha256": "6e600d2b831b3c61419400f764e92c567272722058d251492ba4b9ec7fbf3fb0"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/cleanup-check.json",
+      "sha256": "6929f8dfe261768664fd08fc63ee1c4788241a5726fbc3812e336d7772095fc7"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/preservation.json",
+      "sha256": "9c28743095562a72fd473963158e8ba6a5a726b8ceae3ac81b1a0f0741618457"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before-source-manifest.json",
+      "sha256": "24bdb52e5d5931f1392b0cc67083df2c894a87c24e9b70bfd0194d25d1707b0c"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-acceptance-1a1021e053f/malformed-state-repro.mjs",
+      "sha256": "aa8a6fdc00073c45d95d737a3c4d9f12bc56e3c481f61c5b613cca06961016ba"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/docs/backend-rate-limit-reliability-p2-fix-2026-10-03.md",
+      "sha256": "be662cdba494ae7c43c8968cf72cd78dab7c55d85e50f487076958f5069f00e1"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before.log",
+      "sha256": "a3b16f4f78c918d46a968f17d134430acf6130d93628324cf0bac1b1d97838e1"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before/A.log",
+      "sha256": "d05feee6a2447164057d8352fa2baf8a532780900295ee2a159c5dc057d2a3fd"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before/proxyA-frames.json",
+      "sha256": "bd3ef4a9e4dcc8cf85cdd5b5b0edeb7102463cc8bcd608d9bce9017ea60768b3"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before/proxyB-frames.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before/report.json",
+      "sha256": "9c3a10ef871f643750d0078f5e2c48b8d0e01091788fb96d79b7a9f08814c733"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/before/upstream.json",
+      "sha256": "a1a09125d81cfa07b74d2bc06dedf01a57b4a5dbbaa79cceb06550ac1ac8d166"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original.log",
+      "sha256": "20ae9641a0de360811303475ac53c57f7715df75720b0aff89d0534bc69e75fc"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original/A.log",
+      "sha256": "ccad098a712868b76002fc98cd032d7853ee4661a0fc0428f12c0dfbf8042f7a"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original/proxyA-frames.json",
+      "sha256": "9a9a7df5f5dd25a4e1ffd7c17faaa92c5d3eb6a51f6f129777804511ed81ae4c"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original/proxyB-frames.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original/report.json",
+      "sha256": "1e34666c39c6b120495f8654fdefe9e3cd86c9402ec4cfca39e0643195970fec"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/after-original/upstream.json",
+      "sha256": "069d3f1164d619b50ad8af28157b7a6588b758cf899b1ef3edd328840493d064"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression.log",
+      "sha256": "974932e7ed8009cfefa34f1e637e59327306a250cd6d7af0451cd46260b13585"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression/A.log",
+      "sha256": "b6fa401533315ce7cb60f14dc81181190576a4e13bc5286a4ccf47e24e4b939c"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression/proxyA-frames.json",
+      "sha256": "e77df8974978818a30a2c1540cb7b67f18b7442b795a42cb9366549970221779"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression/proxyB-frames.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression/report.json",
+      "sha256": "55b31aa38d4942886901e3deb944fa100fa0a3dbd10aa68c0109b7d672ff4e51"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/format-regression/upstream.json",
+      "sha256": "595110f3258f65e7b6e730c7897c6d73036ffb846f9a0c64bb9d161dedf8d736"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter.log",
+      "sha256": "edc5eb57b1559334518d4d93dd79cf3b249833c7e8d969d3ceffd57bf7037242"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/A.log",
+      "sha256": "47a8ff403f1fef28d131b25ccea53addab1ee1d5896683c4348e90bc40655c21"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/B-untrusted.log",
+      "sha256": "f69af086bb5b981027a42863df35ffd6d74767ea9416b946260b9972337b933a"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/B.log",
+      "sha256": "8e610381d00dc0a4a934c5a5eb2aa5256481debeee90eb5cad182916c4a11462"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/epoch-backup.jsonl",
+      "sha256": "2e64e0ffba20f1cf1356b2d63151a480c0665b1cee0c95ab277240403fb6477c"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/legacy-backup.jsonl",
+      "sha256": "49eed20176a25d4a0ad55db19d89761d5eb380f5b273d2ec725bf75e34dbe9e1"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/proxyA-frames.json",
+      "sha256": "12fe2485d68b3513e406e7392b83bdf87009e60dccaaa57b30245463c6cc609a"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/proxyB-frames.json",
+      "sha256": "3577ce11ab64e19056e5ff64c8b08be2a120a07bbfd5a1e91820c686cf2472df"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/report.json",
+      "sha256": "d6fbcd42ca6a607fd5c586058053a93e84c374fd541397e54f124ed8fdeba6b0"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/limiter/upstream.json",
+      "sha256": "52b27915835385fa33726bbc395493e1bc41c64d284cb9e24ce51bbc85bede8a"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.GatewayRuntimePropertiesBindingTest.xml",
+      "sha256": "62f306988f13ecc34aa79c5537d9f10795b2e3e0f6aec6f6c2f922c83732c92e"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.RedisRuntimeConfigSyncReaderIntegrationTest.xml",
+      "sha256": "75a0f2dd2c9e0841e5e8383bf6c42671acb7d633c15961a8cdd15b258c6cf511"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.RuntimeConfigConcurrencyTest.xml",
+      "sha256": "33515e679d32640ce085e836ebb9b70798892b541fe9ee57b40fd7501edf949f"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.RuntimeConfigOperationsTest.xml",
+      "sha256": "ea130b6ff84d6e99d248b9d1397c1d7fcad28f039bff4dfeb212aade0cebaf82"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.RuntimeConfigPersistenceTest.xml",
+      "sha256": "abbfe2be5b6bc467eb49c92c8006082be0cc8fd80addfc6f6a4a2d1024070708"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.RuntimeConfigRollbackTest.xml",
+      "sha256": "518309e6271dbf0beb2fe6e664f13b50fce9635f95cf6f4720fa8fe217285963"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.RuntimeConfigSyncTest.xml",
+      "sha256": "8ea9fcbd9055c83d837047107db4428a2958fed90fbeb16df0d302e6326ec638"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.config.StartupReadinessIntegrationTest.xml",
+      "sha256": "9c1d40bb2bf7419bfcf9ec288e82379f266440e3be9b4868a1f543d083d1691f"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.filter.AdminAuthFilterTest.xml",
+      "sha256": "560a965ba7843cbfa7800571faa172c6c37ce02780e0140850166a374e625ec3"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.filter.RateLimitFilterTest.xml",
+      "sha256": "70c7535d7fd0dbef45093ef219473b9df74c107c57524449f16f1cba0cb73e46"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.filter.ReadinessFilterTest.xml",
+      "sha256": "ab8e38a39b1b7b9f0e6504d1fc5ef92aa78705c73df92905f159eda518b2adc3"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.monitor.AuditEventPublisherTest.xml",
+      "sha256": "77dacfb07360e197ced197a7e594bc9121c17af4488f2036630aa211343a099e"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.monitor.GatewayMetricsTest.xml",
+      "sha256": "b3c563b12eb00cbf8cc2a680f0012b763510c56c55976f21ff175bdcbe7e18e7"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.monitor.RedisAuditBatchWriterIntegrationTest.xml",
+      "sha256": "4e05be5ccba4abf473a7fe2518a40d3c9142fe6e46a2997fb295c7e555fd3014"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.monitor.RequestCompletionRecorderTest.xml",
+      "sha256": "e7090f7adb3e77a7bc7d455cf614eefb0e2ba8844c85e17978a2145f4c971b17"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.monitor.TrafficMetricsServiceTest.xml",
+      "sha256": "133717f2e974fe52a60e9de22213c1e04b8629095b145d8c1f9d7355dce6d71f"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.proxy.ProxyResilienceTest.xml",
+      "sha256": "c3adf1ee4ed07d7c8c09f63c96a84681a5fbe49cfd213788bebd1df9ba6369d5"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.proxy.UpstreamTransportErrorsTest.xml",
+      "sha256": "2443d7f4d9e472fe6fbc7a0370d8b501d6723fee98f38f0feaac1a0be5bb0abe"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.ratelimit.LimiterPropertiesTest.xml",
+      "sha256": "3345c1d479f847ebcb391eb4a83a47abf8e324bdcbfcfedeaf63cfb185b583ed"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.ratelimit.RateLimitScriptIntegrationTest.xml",
+      "sha256": "5d6dacfc4efae3f62e8b01e19ee516e7fde72128f88537847ec5e91b8f230bfe"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.ratelimit.RedisRateLimiterLifecycleTest.xml",
+      "sha256": "41a8eae24d80d2be9d1bc823e454a780d6add0b947f6dfa2683ebd8818049178"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.route.DynamicRouteServiceTest.xml",
+      "sha256": "02e1e4e6041fda2cb5ff7dcd893a3dd1ac099947e164582522e27bd92c041a0d"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.route.GatewayRedisIntegrationTest.xml",
+      "sha256": "62dcac7ff12c704e4f940df450a1a3e24c113238065323d5ab9abcd778baeeb2"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/.dev/rate-limit-false-fix-1791037925516/surefire-reports/TEST-com.zch.util.ClientIpResolverTest.xml",
+      "sha256": "31daa22bbd7b755d81ba046219c5c5a2dc6b7910ec0844ffd95a1d3c4a953e25"
+    }
+  ]
+}

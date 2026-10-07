@@ -1,0 +1,1282 @@
+{
+  "date": "2026-09-23",
+  "observabilityComparison": {
+    "startedAt": "2026-09-23T08:45:50.024Z",
+    "baseline": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\third-round\\baseline.jar",
+      "sha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365"
+    },
+    "candidate": {
+      "path": "D:\\Java\\ZenithGateway\\backend\\target\\zg-1.0.0.jar",
+      "sha256": "dbac304a31567dec0ef788edc5205180741ed532ca62f043f0eee6189c94f169"
+    },
+    "runs": [
+      {
+        "name": "01-baseline",
+        "mode": "baseline",
+        "warmupRequests": 372190,
+        "startedAt": "2026-09-23T08:46:45.576Z",
+        "elapsedSeconds": 60.11114432,
+        "requests": 440632,
+        "issued": 440632,
+        "offered": 440632,
+        "requestsPerSecond": 7330.288002076751,
+        "statuses": {
+          "200": 440632
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 2.1698166247571673,
+          "p50": 1.701,
+          "p95": 3.717,
+          "p99": 11.695,
+          "max": 140.927
+        },
+        "scheduledLatencyMs": {
+          "average": 2.1699789847310225,
+          "p50": 1.701,
+          "p95": 3.717,
+          "p99": 11.695,
+          "max": 140.927
+        },
+        "audit": {
+          "received": 440632,
+          "persisted": 440632,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "02-candidate",
+        "mode": "candidate",
+        "warmupRequests": 350204,
+        "startedAt": "2026-09-23T08:48:43.714Z",
+        "elapsedSeconds": 60.015245519,
+        "requests": 514971,
+        "issued": 514971,
+        "offered": 514971,
+        "requestsPerSecond": 8580.669720612363,
+        "statuses": {
+          "200": 514971
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.8544477164733548,
+          "p50": 1.495,
+          "p95": 2.615,
+          "p99": 10.447,
+          "max": 149.631
+        },
+        "scheduledLatencyMs": {
+          "average": 1.854593361567933,
+          "p50": 1.495,
+          "p95": 2.615,
+          "p99": 10.447,
+          "max": 149.631
+        },
+        "audit": {
+          "received": 514971,
+          "persisted": 514971,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "03-meters-disabled",
+        "mode": "meters-disabled",
+        "warmupRequests": 330132,
+        "startedAt": "2026-09-23T08:50:41.981Z",
+        "elapsedSeconds": 60.001151673,
+        "requests": 481098,
+        "issued": 481098,
+        "offered": 481098,
+        "requestsPerSecond": 8018.146095293866,
+        "statuses": {
+          "200": 481098
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.9844702825619729,
+          "p50": 1.581,
+          "p95": 2.927,
+          "p99": 10.775,
+          "max": 162.047
+        },
+        "scheduledLatencyMs": {
+          "average": 1.9846152301610065,
+          "p50": 1.581,
+          "p95": 2.927,
+          "p99": 10.775,
+          "max": 162.047
+        },
+        "audit": {
+          "received": 481098,
+          "persisted": 481098,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "04-meters-disabled",
+        "mode": "meters-disabled",
+        "warmupRequests": 331293,
+        "startedAt": "2026-09-23T08:52:40.045Z",
+        "elapsedSeconds": 60.001252352,
+        "requests": 452030,
+        "issued": 452030,
+        "offered": 452030,
+        "requestsPerSecond": 7533.676086428097,
+        "statuses": {
+          "200": 452030
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 2.112076430767869,
+          "p50": 1.644,
+          "p95": 3.103,
+          "p99": 14.151,
+          "max": 153.471
+        },
+        "scheduledLatencyMs": {
+          "average": 2.112211831073159,
+          "p50": 1.645,
+          "p95": 3.103,
+          "p99": 14.151,
+          "max": 153.471
+        },
+        "audit": {
+          "received": 452030,
+          "persisted": 452030,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "05-candidate",
+        "mode": "candidate",
+        "warmupRequests": 321139,
+        "startedAt": "2026-09-23T08:54:40.389Z",
+        "elapsedSeconds": 60.011892064,
+        "requests": 460301,
+        "issued": 460301,
+        "offered": 460301,
+        "requestsPerSecond": 7670.163098825638,
+        "statuses": {
+          "200": 460301
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 2.0745359710276534,
+          "p50": 1.612,
+          "p95": 3.005,
+          "p99": 13.975,
+          "max": 147.839
+        },
+        "scheduledLatencyMs": {
+          "average": 2.074690052813268,
+          "p50": 1.612,
+          "p95": 3.005,
+          "p99": 13.983,
+          "max": 147.839
+        },
+        "audit": {
+          "received": 460301,
+          "persisted": 460301,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "06-baseline",
+        "mode": "baseline",
+        "warmupRequests": 360959,
+        "startedAt": "2026-09-23T08:56:38.150Z",
+        "elapsedSeconds": 60.001347594,
+        "requests": 529576,
+        "issued": 529576,
+        "offered": 529576,
+        "requestsPerSecond": 8826.068434052244,
+        "statuses": {
+          "200": 529576
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.8028048476517062,
+          "p50": 1.477,
+          "p95": 2.651,
+          "p99": 9.087,
+          "max": 138.495
+        },
+        "scheduledLatencyMs": {
+          "average": 1.802880610148496,
+          "p50": 1.477,
+          "p95": 2.651,
+          "p99": 9.087,
+          "max": 138.495
+        },
+        "audit": {
+          "received": 529576,
+          "persisted": 529576,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "07-jfr-candidate",
+        "mode": "jfr-candidate",
+        "warmupRequests": 293277,
+        "startedAt": "2026-09-23T08:58:37.276Z",
+        "elapsedSeconds": 60.00170541,
+        "requests": 393847,
+        "issued": 393847,
+        "offered": 393847,
+        "requestsPerSecond": 6563.9300967995605,
+        "statuses": {
+          "200": 393847
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 2.424228769039754,
+          "p50": 1.746,
+          "p95": 4.911,
+          "p99": 15.663,
+          "max": 181.119
+        },
+        "scheduledLatencyMs": {
+          "average": 2.424380216175317,
+          "p50": 1.746,
+          "p95": 4.911,
+          "p99": 15.663,
+          "max": 181.119
+        },
+        "audit": {
+          "received": 393847,
+          "persisted": 393847,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      }
+    ],
+    "workload": {
+      "warmupSeconds": 45,
+      "measureSeconds": 60,
+      "connections": 16,
+      "arrivalRate": 0,
+      "gatewayCpuSet": "4-7",
+      "redisCpuSet": "0-1",
+      "upstreamCpuSet": "2-3",
+      "driverCpuSet": "8-11",
+      "heap": "-Xms256m -Xmx512m",
+      "activeProcessorCount": 4,
+      "note": "Docker Desktop Linux VM, disjoint logical CPU sets on one physical host; closed-loop capacity comparison. Not production sizing.",
+      "collectorNote": "No collector flag supplied in this initial experiment. Its JFR run observed DefNew/SerialOld."
+    },
+    "docker": {
+      "cpus": 16,
+      "memoryBytes": 16630611968,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "operatingSystem": "Docker Desktop"
+    },
+    "java": "openjdk 21.0.12.1 2026-08-18 LTS\nOpenJDK Runtime Environment Microsoft-14941483 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Microsoft-14941483 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+    "jfr": {
+      "file": "zenith.jfr",
+      "sha256": "26aecd64f4473b3bad3c27087c0e5737433e9f7c252c6f23eff9bf6dba890da0"
+    },
+    "passed": true,
+    "finishedAt": "2026-09-23T08:59:41.950Z",
+    "aggregate": {
+      "baseline": {
+        "samples": 2,
+        "medianRequestsPerSecond": 8078.178218064497,
+        "minimumRequestsPerSecond": 7330.288002076751,
+        "maximumRequestsPerSecond": 8826.068434052244,
+        "confirmed": 970208,
+        "dropped": 0,
+        "uncertain": 0
+      },
+      "candidate": {
+        "samples": 2,
+        "medianRequestsPerSecond": 8125.4164097190005,
+        "minimumRequestsPerSecond": 7670.163098825638,
+        "maximumRequestsPerSecond": 8580.669720612363,
+        "confirmed": 975272,
+        "dropped": 0,
+        "uncertain": 0
+      },
+      "jfr-candidate": {
+        "samples": 1,
+        "medianRequestsPerSecond": 6563.9300967995605,
+        "minimumRequestsPerSecond": 6563.9300967995605,
+        "maximumRequestsPerSecond": 6563.9300967995605,
+        "confirmed": 393847,
+        "dropped": 0,
+        "uncertain": 0
+      },
+      "meters-disabled": {
+        "samples": 2,
+        "medianRequestsPerSecond": 7775.911090860982,
+        "minimumRequestsPerSecond": 7533.676086428097,
+        "maximumRequestsPerSecond": 8018.146095293866,
+        "confirmed": 933128,
+        "dropped": 0,
+        "uncertain": 0
+      }
+    }
+  },
+  "dependencyUpgradeComparison": {
+    "startedAt": "2026-09-23T09:02:26.890Z",
+    "baseline": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\upgrade-baseline\\baseline.jar",
+      "sha256": "b0d2a0d4c06fa17d91d5cb2d2e6c9413411a215fd8236927b44965525962069a"
+    },
+    "candidate": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\third-round\\baseline.jar",
+      "sha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365"
+    },
+    "runs": [
+      {
+        "name": "01-baseline",
+        "mode": "baseline",
+        "warmupRequests": 414254,
+        "startedAt": "2026-09-23T09:03:21.832Z",
+        "elapsedSeconds": 60.001753889,
+        "requests": 560990,
+        "issued": 560990,
+        "offered": 560990,
+        "requestsPerSecond": 9349.560031825089,
+        "statuses": {
+          "200": 560990
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.7020400221037808,
+          "p50": 1.376,
+          "p95": 2.313,
+          "p99": 9.247,
+          "max": 137.855
+        },
+        "scheduledLatencyMs": {
+          "average": 1.7021555785308118,
+          "p50": 1.376,
+          "p95": 2.313,
+          "p99": 9.247,
+          "max": 137.855
+        },
+        "audit": {
+          "received": 560990,
+          "persisted": 560990,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "02-candidate",
+        "mode": "candidate",
+        "warmupRequests": 362279,
+        "startedAt": "2026-09-23T09:05:19.401Z",
+        "elapsedSeconds": 60.001369453,
+        "requests": 558413,
+        "issued": 558413,
+        "offered": 558413,
+        "requestsPerSecond": 9306.670915859904,
+        "statuses": {
+          "200": 558413
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.7099469729393837,
+          "p50": 1.398,
+          "p95": 2.303,
+          "p99": 7.567,
+          "max": 139.647
+        },
+        "scheduledLatencyMs": {
+          "average": 1.7100156586612418,
+          "p50": 1.398,
+          "p95": 2.303,
+          "p99": 7.567,
+          "max": 139.647
+        },
+        "audit": {
+          "received": 558413,
+          "persisted": 558413,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "03-candidate",
+        "mode": "candidate",
+        "warmupRequests": 382451,
+        "startedAt": "2026-09-23T09:07:16.799Z",
+        "elapsedSeconds": 60.001222711000004,
+        "requests": 560876,
+        "issued": 560876,
+        "offered": 560876,
+        "requestsPerSecond": 9347.742840200068,
+        "statuses": {
+          "200": 560876
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.7022831142712471,
+          "p50": 1.416,
+          "p95": 2.357,
+          "p99": 6.807,
+          "max": 147.967
+        },
+        "scheduledLatencyMs": {
+          "average": 1.702389105613362,
+          "p50": 1.416,
+          "p95": 2.357,
+          "p99": 6.807,
+          "max": 147.967
+        },
+        "audit": {
+          "received": 560876,
+          "persisted": 560876,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      },
+      {
+        "name": "04-baseline",
+        "mode": "baseline",
+        "warmupRequests": 346181,
+        "startedAt": "2026-09-23T09:09:13.905Z",
+        "elapsedSeconds": 60.001471806,
+        "requests": 547356,
+        "issued": 547356,
+        "offered": 547356,
+        "requestsPerSecond": 9122.376227198909,
+        "statuses": {
+          "200": 547356
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 1.7440607100314969,
+          "p50": 1.394,
+          "p95": 2.421,
+          "p99": 9.943,
+          "max": 136.447
+        },
+        "scheduledLatencyMs": {
+          "average": 1.7441836227245158,
+          "p50": 1.394,
+          "p95": 2.423,
+          "p99": 9.943,
+          "max": 136.447
+        },
+        "audit": {
+          "received": 547356,
+          "persisted": 547356,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      }
+    ],
+    "workload": {
+      "warmupSeconds": 45,
+      "measureSeconds": 60,
+      "connections": 16,
+      "arrivalRate": 0,
+      "gatewayCpuSet": "4-7",
+      "redisCpuSet": "0-1",
+      "upstreamCpuSet": "2-3",
+      "driverCpuSet": "8-11",
+      "heap": "-Xms256m -Xmx512m",
+      "activeProcessorCount": 4,
+      "note": "Docker Desktop Linux VM, disjoint logical CPU sets on one physical host; closed-loop capacity comparison. Not production sizing.",
+      "collectorNote": "Same original 1 GiB container/JVM flags as initial experiment, without an explicit collector. Do not pool with explicit-G1 measurements."
+    },
+    "docker": {
+      "cpus": 16,
+      "memoryBytes": 16630611968,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "operatingSystem": "Docker Desktop"
+    },
+    "java": "openjdk 21.0.12.1 2026-08-18 LTS\nOpenJDK Runtime Environment Microsoft-14941483 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Microsoft-14941483 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+    "passed": true,
+    "finishedAt": "2026-09-23T09:10:18.144Z",
+    "aggregate": {
+      "baseline": {
+        "samples": 2,
+        "medianRequestsPerSecond": 9235.968129511999,
+        "minimumRequestsPerSecond": 9122.376227198909,
+        "maximumRequestsPerSecond": 9349.560031825089,
+        "confirmed": 1108346,
+        "dropped": 0,
+        "uncertain": 0
+      },
+      "candidate": {
+        "samples": 2,
+        "medianRequestsPerSecond": 9327.206878029985,
+        "minimumRequestsPerSecond": 9306.670915859904,
+        "maximumRequestsPerSecond": 9347.742840200068,
+        "confirmed": 1119289,
+        "dropped": 0,
+        "uncertain": 0
+      }
+    }
+  },
+  "g1Diagnostic": {
+    "startedAt": "2026-09-23T09:11:35.844Z",
+    "baseline": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\third-round\\baseline.jar",
+      "sha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365"
+    },
+    "candidate": {
+      "path": "D:\\Java\\ZenithGateway\\backend\\target\\zg-1.0.0.jar",
+      "sha256": "dbac304a31567dec0ef788edc5205180741ed532ca62f043f0eee6189c94f169"
+    },
+    "runs": [
+      {
+        "name": "01-jfr-candidate",
+        "mode": "jfr-candidate",
+        "vmFlags": "1:\n-XX:ActiveProcessorCount=4 -XX:CICompilerCount=3 -XX:ConcGCThreads=1 -XX:G1ConcRefinementThreads=4 -XX:G1EagerReclaimRemSetThreshold=12 -XX:G1HeapRegionSize=1048576 -XX:G1RemSetArrayOfCardsEntries=12 -XX:G1RemSetHowlMaxNumBuckets=8 -XX:G1RemSetHowlNumBuckets=4 -XX:GCDrainStackTargetSize=64 -XX:InitialHeapSize=268435456 -XX:MarkStackSize=4194304 -XX:MaxHeapSize=536870912 -XX:MaxNewSize=321912832 -XX:MinHeapDeltaBytes=1048576 -XX:MinHeapSize=268435456 -XX:NonNMethodCodeHeapSize=5832780 -XX:NonProfiledCodeHeapSize=122912730 -XX:ProfiledCodeHeapSize=122912730 -XX:ReservedCodeCacheSize=251658240 -XX:+SegmentedCodeCache -XX:SoftMaxHeapSize=536870912 -XX:-THPStackMitigation -XX:+UseCompressedOops -XX:+UseG1GC",
+        "warmupRequests": 298942,
+        "startedAt": "2026-09-23T09:12:32.560Z",
+        "elapsedSeconds": 60.001220821,
+        "requests": 441839,
+        "issued": 441839,
+        "offered": 441839,
+        "requestsPerSecond": 7363.833501290353,
+        "statuses": {
+          "200": 441839
+        },
+        "transportErrors": 0,
+        "arrivalRate": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "peakInFlight": 16,
+        "latencyMs": {
+          "average": 2.159938740129323,
+          "p50": 1.699,
+          "p95": 4.787,
+          "p99": 9.071,
+          "max": 83.455
+        },
+        "scheduledLatencyMs": {
+          "average": 2.160093500121085,
+          "p50": 1.699,
+          "p95": 4.787,
+          "p99": 9.071,
+          "max": 83.455
+        },
+        "audit": {
+          "received": 441839,
+          "persisted": 441839,
+          "dropped": 0,
+          "uncertain": 0
+        },
+        "finalPending": 0
+      }
+    ],
+    "workload": {
+      "warmupSeconds": 45,
+      "measureSeconds": 60,
+      "connections": 16,
+      "arrivalRate": 0,
+      "gatewayCpuSet": "4-7",
+      "redisCpuSet": "0-1",
+      "upstreamCpuSet": "2-3",
+      "driverCpuSet": "8-11",
+      "heap": "-Xms256m -Xmx512m",
+      "activeProcessorCount": 4,
+      "gc": "G1",
+      "note": "Docker Desktop Linux VM, disjoint logical CPU sets on one physical host; closed-loop capacity comparison. Not production sizing."
+    },
+    "docker": {
+      "cpus": 16,
+      "memoryBytes": 16630611968,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "operatingSystem": "Docker Desktop"
+    },
+    "java": "openjdk 21.0.12.1 2026-08-18 LTS\nOpenJDK Runtime Environment Microsoft-14941483 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Microsoft-14941483 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+    "jfr": {
+      "file": "zenith.jfr",
+      "sha256": "bde308918bd3694bded96399e5ef1e7fc2c3685b887ef40c3745d28ad1132ab7"
+    },
+    "passed": true,
+    "finishedAt": "2026-09-23T09:13:37.397Z",
+    "aggregate": {
+      "jfr-candidate": {
+        "samples": 1,
+        "medianRequestsPerSecond": 7363.833501290353,
+        "minimumRequestsPerSecond": 7363.833501290353,
+        "maximumRequestsPerSecond": 7363.833501290353,
+        "confirmed": 441839,
+        "dropped": 0,
+        "uncertain": 0
+      }
+    }
+  },
+  "serialJfr": {
+    "recordingSummary": "\n Version: 2.1\n Chunks: 1\n Start: 2026-09-23 08:58:36 (UTC)\n Duration: 61 s\n\n Event Type                                                       Count  Size (bytes) \n======================================================================================\n jdk.ObjectAllocationSample                                       17082        273991\n jdk.TenuringDistribution                                          6075         74494\n jdk.ExecutionSample                                               3138         37637\n jdk.NativeMethodSample                                            2802         33541\n jdk.JavaMonitorWait                                               2254         60768\n jdk.MetaspaceChunkFreeListSummary                                 1680         33600\n jdk.GCReferenceStatistics                                         1680         20175\n jdk.ThreadPark                                                    1388         49913\n jdk.ModuleExport                                                  1385         15079\n jdk.GCPhasePauseLevel1                                            1275         53958\n jdk.ThreadSleep                                                   1214         24217\n jdk.GCHeapSummary                                                  840         32778\n jdk.MetaspaceSummary                                               840         44520\n jdk.BooleanFlag                                                    506         15910\n jdk.ExecuteVMOperation                                             445          8366\n jdk.SafepointBegin                                                 444          7037\n jdk.GarbageCollection                                              420         10467\n jdk.GCCPUTime                                                      420          7626\n jdk.GCPhasePause                                                   420         10489\n jdk.YoungGarbageCollection                                         405          6064\n jdk.ActiveSetting                                                  389         11643\n jdk.Checkpoint                                                     312       2649522\n jdk.LongFlag                                                       161          5381\n jdk.ModuleRequire                                                  156          1560\n jdk.UnsignedLongFlag                                               134          4705\n jdk.ThreadCPULoad                                                  119          2023\n jdk.OldObjectSample                                                 63          2125\n jdk.ResidentSetSize                                                 61          1098\n jdk.ExceptionStatistics                                             61           888\n jdk.CPULoad                                                         61          1220\n jdk.JavaThreadStatistics                                            61           732\n jdk.ClassLoadingStatistics                                          61           671\n jdk.CompilerStatistics                                              61          1950\n jdk.GCPhasePauseLevel2                                              60          1995\n jdk.ThreadAllocationStatistics                                      58           694\n jdk.InitialSecurityProperty                                         49          2621\n jdk.Compilation                                                     42          1264\n jdk.NativeLibrary                                                   38          2490\n jdk.StringFlag                                                      28           875\n jdk.IntFlag                                                         25           956\n jdk.CompilerQueueUtilization                                        24           515\n jdk.CompilationFailure                                              17           756\n jdk.OldGarbageCollection                                            15           210\n jdk.InitialSystemProperty                                           15           971\n jdk.DoubleFlag                                                      15           620\n jdk.Deoptimization                                                  14           373\n jdk.UnsignedIntFlag                                                 14           487\n jdk.DirectBufferStatistics                                          12           312\n jdk.NetworkUtilization                                              11           187\n jdk.InitialEnvironmentVariable                                      10           386\n jdk.ThreadEnd                                                        8            80\n jdk.ClassLoaderStatistics                                            8           244\n jdk.GCHeapMemoryPoolUsage                                            6           202\n jdk.ThreadContextSwitchRate                                          6            72\n jdk.SymbolTableStatistics                                            6           234\n jdk.StringTableStatistics                                            6           234\n jdk.CodeCacheStatistics                                              6           198\n jdk.ClassRedefinition                                                5            60\n jdk.FinalizerStatistics                                              3            51\n jdk.ThreadStart                                                      2            24\n jdk.GCHeapMemoryUsage                                                2            42\n jdk.ContainerCPUUsage                                                2            60\n jdk.ContainerCPUThrottling                                           2            30\n jdk.ContainerMemoryUsage                                             2            46\n jdk.ContainerIOUsage                                                 2            34\n jdk.SystemProcess                                                    2           373\n jdk.PhysicalMemory                                                   2            36\n jdk.GCConfiguration                                                  2            52\n jdk.Metadata                                                         1        109373\n jdk.ActiveRecording                                                  1            66\n jdk.RetransformClasses                                               1            16\n jdk.MetaspaceGCThreshold                                             1            17\n jdk.ContainerConfiguration                                           1            60\n jdk.JVMInformation                                                   1           483\n jdk.OSInformation                                                    1           251\n jdk.VirtualizationInformation                                        1            32\n jdk.CPUInformation                                                   1          1467\n jdk.CPUTimeStampCounter                                              1            20\n jdk.ThreadDump                                                       1         24653\n jdk.CompilerConfiguration                                            1            11\n jdk.CodeCacheConfiguration                                           1            47\n jdk.GCSurvivorConfiguration                                          1            11\n jdk.GCTLABConfiguration                                              1            13\n jdk.GCHeapConfiguration                                              1            28\n jdk.YoungGenerationConfiguration                                     1            18\n jdk.FileForce                                                        0             0\n jdk.FileRead                                                         0             0\n jdk.FileWrite                                                        0             0\n jdk.SocketRead                                                       0             0\n jdk.JavaMonitorEnter                                                 0             0\n jdk.SocketWrite                                                      0             0\n jdk.JavaMonitorInflate                                               0             0\n jdk.JavaExceptionThrow                                               0             0\n jdk.SyncOnValueBasedClass                                            0             0\n jdk.ContinuationFreeze                                               0             0\n jdk.ContinuationThaw                                                 0             0\n jdk.ContinuationFreezeFast                                           0             0\n jdk.JavaErrorThrow                                                   0             0\n jdk.ContinuationFreezeSlow                                           0             0\n jdk.ContinuationThawFast                                             0             0\n jdk.ContinuationThawSlow                                             0             0\n jdk.ReservedStackActivation                                          0             0\n jdk.ClassLoad                                                        0             0\n jdk.ClassDefine                                                      0             0\n jdk.Deserialization                                                  0             0\n jdk.RedefineClasses                                                  0             0\n jdk.ProcessStart                                                     0             0\n jdk.ClassUnload                                                      0             0\n jdk.SecurityPropertyModification                                     0             0\n jdk.IntFlagChanged                                                   0             0\n jdk.UnsignedIntFlagChanged                                           0             0\n jdk.TLSHandshake                                                     0             0\n jdk.LongFlagChanged                                                  0             0\n jdk.UnsignedLongFlagChanged                                          0             0\n jdk.VirtualThreadPinned                                              0             0\n jdk.DoubleFlagChanged                                                0             0\n jdk.BooleanFlagChanged                                               0             0\n jdk.VirtualThreadSubmitFailed                                        0             0\n jdk.StringFlagChanged                                                0             0\n jdk.X509Certificate                                                  0             0\n jdk.X509Validation                                                   0             0\n jdk.MetaspaceAllocationFailure                                       0             0\n jdk.MetaspaceOOM                                                     0             0\n jdk.PSHeapSummary                                                    0             0\n jdk.G1HeapSummary                                                    0             0\n jdk.SystemGC                                                         0             0\n jdk.ParallelOldGarbageCollection                                     0             0\n jdk.G1GarbageCollection                                              0             0\n jdk.G1MMU                                                            0             0\n jdk.EvacuationInformation                                            0             0\n jdk.ObjectCountAfterGC                                               0             0\n jdk.G1EvacuationYoungStatistics                                      0             0\n jdk.G1EvacuationOldStatistics                                        0             0\n jdk.G1BasicIHOP                                                      0             0\n jdk.G1AdaptiveIHOP                                                   0             0\n jdk.PromoteObjectInNewPLAB                                           0             0\n jdk.PromoteObjectOutsidePLAB                                         0             0\n jdk.PromotionFailed                                                  0             0\n jdk.EvacuationFailed                                                 0             0\n jdk.ConcurrentModeFailure                                            0             0\n jdk.GCPhasePauseLevel3                                               0             0\n jdk.GCPhasePauseLevel4                                               0             0\n jdk.GCPhaseConcurrent                                                0             0\n jdk.GCPhaseConcurrentLevel1                                          0             0\n jdk.GCPhaseConcurrentLevel2                                          0             0\n jdk.GCPhaseParallel                                                  0             0\n jdk.AllocationRequiringGC                                            0             0\n jdk.G1HeapRegionTypeChange                                           0             0\n jdk.JITRestart                                                       0             0\n jdk.CompilerPhase                                                    0             0\n jdk.CompilerInlining                                                 0             0\n jdk.CodeCacheFull                                                    0             0\n jdk.SafepointStateSynchronization                                    0             0\n jdk.SafepointCleanup                                                 0             0\n jdk.SafepointCleanupTask                                             0             0\n jdk.SafepointEnd                                                     0             0\n jdk.Shutdown                                                         0             0\n jdk.ObjectAllocationInNewTLAB                                        0             0\n jdk.ObjectAllocationOutsideTLAB                                      0             0\n jdk.NativeMemoryUsage                                                0             0\n jdk.NativeMemoryUsageTotal                                           0             0\n jdk.DumpReason                                                       0             0\n io.netty.ReallocateBuffer                                            0             0\n jdk.DataLoss                                                         0             0\n io.lettuce.core.event.connection.JfrConnectionCreatedEvent           0             0\n jdk.ObjectCount                                                      0             0\n jdk.G1HeapRegionInformation                                          0             0\n jdk.ZYoungGarbageCollection                                          0             0\n jdk.ZOldGarbageCollection                                            0             0\n jdk.ZAllocationStall                                                 0             0\n jdk.ZPageAllocation                                                  0             0\n jdk.ZRelocationSet                                                   0             0\n io.lettuce.core.event.connection.JfrConnectionActivatedEvent         0             0\n jdk.ZRelocationSetGroup                                              0             0\n jdk.ZStatisticsCounter                                               0             0\n jdk.ZStatisticsSampler                                               0             0\n jdk.ZThreadPhase                                                     0             0\n jdk.ZUncommit                                                        0             0\n jdk.ZUnmap                                                           0             0\n jdk.ShenandoahHeapRegionStateChange                                  0             0\n jdk.ShenandoahHeapRegionInformation                                  0             0\n jdk.Flush                                                            0             0\n jdk.HeapDump                                                         0             0\n jdk.GCLocker                                                         0             0\n jdk.JavaAgent                                                        0             0\n jdk.NativeAgent                                                      0             0\n io.lettuce.core.event.connection.JfrConnectEvent                     0             0\n io.netty.AllocateChunk                                               0             0\n io.netty.AllocateBuffer                                              0             0\n jdk.VirtualThreadStart                                               0             0\n io.netty.FreeChunk                                                   0             0\n jdk.VirtualThreadEnd                                                 0             0\n io.netty.FreeBuffer                                                  0             0\n io.lettuce.core.event.connection.JfrConnectedEvent                   0             0\n jdk.SecurityProviderService                                          0             0\n",
+    "eventCounts": {
+      "jdk.ObjectAllocationSample": 17082,
+      "jdk.ExecutionSample": 3138,
+      "jdk.ThreadPark": 1388,
+      "jdk.GarbageCollection": 420
+    },
+    "executionTopFrames": [
+      [
+        "java.util.HashMap.getNode",
+        138
+      ],
+      [
+        "java.util.HashMap.putVal",
+        86
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.get",
+        85
+      ],
+      [
+        "reactor.util.context.ContextView.getOrDefault",
+        64
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.putVal",
+        57
+      ],
+      [
+        "java.util.ComparableTimSort.countRunAndMakeAscending",
+        56
+      ],
+      [
+        "ch.qos.logback.classic.Logger.isDebugEnabled",
+        47
+      ],
+      [
+        "java.lang.AbstractStringBuilder.ensureCapacityInternal",
+        42
+      ],
+      [
+        "reactor.core.publisher.InnerOperator.currentContext",
+        38
+      ],
+      [
+        "java.util.concurrent.ConcurrentSkipListMap.cpr",
+        37
+      ],
+      [
+        "io.netty.util.internal.RefCnt$UnsafeRefCnt.isLiveNonVolatile",
+        36
+      ],
+      [
+        "io.micrometer.core.instrument.ImmutableTag.equals",
+        36
+      ],
+      [
+        "org.springframework.web.reactive.result.condition.RequestMethodsRequestCondition.getMatchingCondition",
+        29
+      ],
+      [
+        "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueue.relaxedPoll",
+        29
+      ],
+      [
+        "java.util.Collections$UnmodifiableCollection.size",
+        28
+      ],
+      [
+        "io.netty.channel.AbstractChannelHandlerContext.findContextOutbound",
+        25
+      ],
+      [
+        "java.util.HashMap.resize",
+        25
+      ],
+      [
+        "java.lang.String.equals",
+        22
+      ],
+      [
+        "org.springframework.web.util.pattern.LiteralPathElement.matches",
+        22
+      ],
+      [
+        "io.micrometer.common.KeyValues.of",
+        22
+      ]
+    ],
+    "allocationWeightedBytesByClass": [
+      [
+        "io.netty.channel.DefaultChannelPromise",
+        11473981504
+      ],
+      [
+        "io.lettuce.core.datastructure.queue.HashIndexedQueue$Node",
+        6879073328
+      ],
+      [
+        "[B",
+        3098004976
+      ],
+      [
+        "reactor.core.publisher.FluxSwitchIfEmpty$SwitchIfEmptySubscriber",
+        3013015680
+      ],
+      [
+        "[Ljava.lang.Object;",
+        1949271544
+      ],
+      [
+        "java.lang.String",
+        1695702024
+      ],
+      [
+        "java.util.ArrayList",
+        837236448
+      ],
+      [
+        "[Ljava.util.HashMap$Node;",
+        820311648
+      ],
+      [
+        "java.util.LinkedHashMap$Entry",
+        730546176
+      ],
+      [
+        "java.util.HashMap$Node",
+        678664312
+      ],
+      [
+        "org.springframework.web.util.pattern.PathPattern$MatchingContext",
+        621197216
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap$Node",
+        570727032
+      ],
+      [
+        "org.springframework.util.LinkedCaseInsensitiveMap$1",
+        519287064
+      ],
+      [
+        "io.micrometer.core.instrument.ImmutableTag",
+        433940752
+      ],
+      [
+        "[Ljava.util.concurrent.ConcurrentHashMap$Node;",
+        412362792
+      ],
+      [
+        "io.netty.handler.codec.DefaultHeaders$HeaderEntry",
+        357244728
+      ],
+      [
+        "reactor.util.concurrent.SpscArrayQueue",
+        339592144
+      ],
+      [
+        "io.micrometer.common.KeyValues",
+        291574520
+      ],
+      [
+        "java.nio.HeapByteBuffer",
+        275296496
+      ],
+      [
+        "java.util.HashMap",
+        268279088
+      ]
+    ],
+    "allocationWeightedBytesByTopFrame": [
+      [
+        "io.netty.channel.DefaultChannelPipeline.newPromise",
+        11401002032
+      ],
+      [
+        "io.lettuce.core.datastructure.queue.HashIndexedQueue.offer",
+        6879073328
+      ],
+      [
+        "reactor.core.publisher.MonoSwitchIfEmpty.subscribeOrReturn",
+        3013015680
+      ],
+      [
+        "java.lang.StringLatin1.toLowerCase",
+        1590054112
+      ],
+      [
+        "java.lang.invoke.DirectMethodHandle.allocateInstance",
+        1510579240
+      ],
+      [
+        "java.util.concurrent.atomic.AtomicReferenceArray.<init>",
+        1048801952
+      ],
+      [
+        "java.util.HashMap.resize",
+        820311648
+      ],
+      [
+        "java.util.LinkedHashMap.newNode",
+        730546176
+      ],
+      [
+        "java.util.HashMap.newNode",
+        678664312
+      ],
+      [
+        "java.util.Arrays.copyOfRangeByte",
+        676910192
+      ],
+      [
+        "org.springframework.web.util.pattern.PathPattern.matches",
+        605351368
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.putVal",
+        567890152
+      ],
+      [
+        "java.util.Arrays.copyOf",
+        540374440
+      ],
+      [
+        "org.springframework.util.LinkedCaseInsensitiveMap.<init>",
+        519287064
+      ],
+      [
+        "java.util.ArrayList.grow",
+        442687472
+      ],
+      [
+        "io.micrometer.core.instrument.Tag.of",
+        433940752
+      ],
+      [
+        "io.netty.handler.codec.DefaultHeaders.<init>",
+        391489544
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.initTable",
+        350630920
+      ],
+      [
+        "com.zch.monitor.AuditEventPublisher.consume",
+        322867608
+      ],
+      [
+        "java.util.stream.StreamSupport.stream",
+        260716568
+      ]
+    ],
+    "allocationWeightedBytesTotal": 50287935568,
+    "threadParkSecondsByThread": [
+      [
+        "Common-Cleaner",
+        55.172325752000006
+      ],
+      [
+        "parallel-1",
+        35.174393768
+      ],
+      [
+        "Cleaner-0",
+        15.329003964
+      ],
+      [
+        "parallel-3",
+        9.905007339
+      ],
+      [
+        "parallel-2",
+        9.855348702000006
+      ],
+      [
+        "parallel-4",
+        9.817891941
+      ],
+      [
+        "zenith-audit-writer",
+        0.18248346
+      ],
+      [
+        "reactor-http-epoll-4",
+        0.020875911
+      ],
+      [
+        "reactor-http-epoll-2",
+        0.020821371
+      ]
+    ],
+    "monitorEnterSecondsByTopFrame": [],
+    "gcPauseSecondsTotal": 7.050903728999995,
+    "gcLongestPauseSeconds": 0.117411738,
+    "interpretation": [
+      "ExecutionSample counts are samples, not exact CPU time or an attribution of end-to-end latency.",
+      "AllocationSample weights estimate allocation; they are not retained heap measurements.",
+      "Park/monitor durations sum across threads and may exceed recording wall time.",
+      "A waiting worker or event loop is not by itself a bottleneck."
+    ],
+    "gcCollections": 420,
+    "gcNames": [
+      "DefNew",
+      "SerialOld"
+    ],
+    "gcCauses": [
+      "Allocation Failure"
+    ]
+  },
+  "g1Jfr": {
+    "recordingSummary": "\n Version: 2.1\n Chunks: 1\n Start: 2026-09-23 09:12:31 (UTC)\n Duration: 61 s\n\n Event Type                                                       Count  Size (bytes) \n======================================================================================\n jdk.GCPhaseParallel                                              52856       1508632\n jdk.ObjectAllocationSample                                       17336        277844\n jdk.PromoteObjectInNewPLAB                                        6522        123881\n jdk.ExecutionSample                                               3693         44291\n jdk.TenuringDistribution                                          3315         40798\n jdk.NativeMethodSample                                            2995         35791\n jdk.JavaMonitorWait                                               1975         53223\n jdk.ModuleExport                                                  1385         15079\n jdk.ThreadSleep                                                   1226         24451\n jdk.MetaspaceChunkFreeListSummary                                  884         17680\n jdk.GCReferenceStatistics                                          884         10608\n jdk.GCPhasePauseLevel1                                             663         27999\n jdk.ThreadPark                                                     529         18955\n jdk.BooleanFlag                                                    506         15910\n jdk.GCHeapSummary                                                  442         17680\n jdk.MetaspaceSummary                                               442         23426\n jdk.G1HeapSummary                                                  442         12148\n jdk.ActiveSetting                                                  389         11643\n jdk.Checkpoint                                                     353       3017707\n jdk.ExecuteVMOperation                                             265          4944\n jdk.SafepointBegin                                                 264          4199\n jdk.GarbageCollection                                              221          5504\n jdk.YoungGarbageCollection                                         221          3308\n jdk.G1GarbageCollection                                            221          3308\n jdk.G1MMU                                                          221          3315\n jdk.EvacuationInformation                                          221          6844\n jdk.G1EvacuationYoungStatistics                                    221          6201\n jdk.G1EvacuationOldStatistics                                      221          4929\n jdk.G1BasicIHOP                                                    221          8957\n jdk.G1AdaptiveIHOP                                                 221          9061\n jdk.GCCPUTime                                                      221          3878\n jdk.GCPhasePause                                                   221          5518\n jdk.LongFlag                                                       161          5381\n jdk.ModuleRequire                                                  156          1560\n jdk.UnsignedLongFlag                                               134          4702\n jdk.PromoteObjectOutsidePLAB                                       125          2153\n jdk.ThreadCPULoad                                                  121          2057\n jdk.ResidentSetSize                                                 61          1098\n jdk.ExceptionStatistics                                             61           884\n jdk.CPULoad                                                         61          1220\n jdk.JavaThreadStatistics                                            61           732\n jdk.ClassLoadingStatistics                                          61           671\n jdk.CompilerStatistics                                              61          1950\n jdk.ThreadAllocationStatistics                                      58           696\n jdk.Compilation                                                     49          1474\n jdk.InitialSecurityProperty                                         49          2621\n jdk.OldObjectSample                                                 48          1621\n jdk.NativeLibrary                                                   38          2490\n jdk.StringFlag                                                      28           875\n jdk.Deoptimization                                                  27           720\n jdk.IntFlag                                                         25           956\n jdk.CompilerQueueUtilization                                        24           518\n jdk.CompilationFailure                                              18           812\n jdk.InitialSystemProperty                                           15           971\n jdk.DoubleFlag                                                      15           620\n jdk.UnsignedIntFlag                                                 14           487\n jdk.ThreadEnd                                                       12           120\n jdk.DirectBufferStatistics                                          12           312\n jdk.NetworkUtilization                                              11           187\n jdk.InitialEnvironmentVariable                                      10           386\n jdk.ClassLoaderStatistics                                            8           244\n jdk.GCHeapMemoryPoolUsage                                            6           233\n jdk.ThreadContextSwitchRate                                          6            72\n jdk.SymbolTableStatistics                                            6           234\n jdk.StringTableStatistics                                            6           234\n jdk.CodeCacheStatistics                                              6           198\n jdk.ClassRedefinition                                                5            60\n jdk.ThreadStart                                                      4            48\n jdk.FinalizerStatistics                                              3            51\n jdk.GCHeapMemoryUsage                                                2            44\n jdk.SystemProcess                                                    2           387\n jdk.PhysicalMemory                                                   2            36\n jdk.ContainerCPUUsage                                                2            60\n jdk.ContainerCPUThrottling                                           2            30\n jdk.ContainerMemoryUsage                                             2            46\n jdk.GCConfiguration                                                  2            52\n jdk.ContainerIOUsage                                                 2            34\n jdk.Metadata                                                         1        109373\n jdk.RetransformClasses                                               1            16\n jdk.ActiveRecording                                                  1            66\n jdk.JVMInformation                                                   1           496\n jdk.OSInformation                                                    1           251\n jdk.VirtualizationInformation                                        1            32\n jdk.CPUInformation                                                   1          1467\n jdk.CPUTimeStampCounter                                              1            20\n jdk.ThreadDump                                                       1         23134\n jdk.CompilerConfiguration                                            1            11\n jdk.CodeCacheConfiguration                                           1            47\n jdk.ContainerConfiguration                                           1            60\n jdk.GCSurvivorConfiguration                                          1            11\n jdk.GCTLABConfiguration                                              1            13\n jdk.GCHeapConfiguration                                              1            28\n jdk.YoungGenerationConfiguration                                     1            18\n jdk.JavaMonitorEnter                                                 0             0\n jdk.JavaMonitorInflate                                               0             0\n jdk.SyncOnValueBasedClass                                            0             0\n jdk.ContinuationFreeze                                               0             0\n jdk.ContinuationThaw                                                 0             0\n jdk.ContinuationFreezeFast                                           0             0\n jdk.ContinuationFreezeSlow                                           0             0\n jdk.ContinuationThawFast                                             0             0\n jdk.ContinuationThawSlow                                             0             0\n jdk.ReservedStackActivation                                          0             0\n jdk.ClassLoad                                                        0             0\n jdk.ClassDefine                                                      0             0\n jdk.RedefineClasses                                                  0             0\n jdk.ClassUnload                                                      0             0\n jdk.IntFlagChanged                                                   0             0\n jdk.UnsignedIntFlagChanged                                           0             0\n jdk.LongFlagChanged                                                  0             0\n jdk.UnsignedLongFlagChanged                                          0             0\n jdk.DoubleFlagChanged                                                0             0\n jdk.BooleanFlagChanged                                               0             0\n jdk.StringFlagChanged                                                0             0\n jdk.MetaspaceGCThreshold                                             0             0\n jdk.MetaspaceAllocationFailure                                       0             0\n jdk.MetaspaceOOM                                                     0             0\n jdk.PSHeapSummary                                                    0             0\n jdk.SystemGC                                                         0             0\n jdk.ParallelOldGarbageCollection                                     0             0\n jdk.OldGarbageCollection                                             0             0\n jdk.ObjectCountAfterGC                                               0             0\n jdk.FileForce                                                        0             0\n jdk.PromotionFailed                                                  0             0\n jdk.EvacuationFailed                                                 0             0\n jdk.FileRead                                                         0             0\n jdk.ConcurrentModeFailure                                            0             0\n jdk.FileWrite                                                        0             0\n jdk.SocketRead                                                       0             0\n jdk.GCPhasePauseLevel2                                               0             0\n jdk.GCPhasePauseLevel3                                               0             0\n jdk.SocketWrite                                                      0             0\n jdk.GCPhasePauseLevel4                                               0             0\n jdk.GCPhaseConcurrent                                                0             0\n jdk.JavaExceptionThrow                                               0             0\n jdk.GCPhaseConcurrentLevel1                                          0             0\n jdk.GCPhaseConcurrentLevel2                                          0             0\n jdk.AllocationRequiringGC                                            0             0\n jdk.JavaErrorThrow                                                   0             0\n jdk.G1HeapRegionTypeChange                                           0             0\n jdk.JITRestart                                                       0             0\n jdk.CompilerPhase                                                    0             0\n jdk.Deserialization                                                  0             0\n jdk.CompilerInlining                                                 0             0\n jdk.CodeCacheFull                                                    0             0\n jdk.ProcessStart                                                     0             0\n jdk.SecurityPropertyModification                                     0             0\n jdk.SafepointStateSynchronization                                    0             0\n jdk.SafepointCleanup                                                 0             0\n jdk.TLSHandshake                                                     0             0\n jdk.SafepointCleanupTask                                             0             0\n jdk.SafepointEnd                                                     0             0\n jdk.VirtualThreadPinned                                              0             0\n jdk.Shutdown                                                         0             0\n jdk.VirtualThreadSubmitFailed                                        0             0\n jdk.ObjectAllocationInNewTLAB                                        0             0\n jdk.ObjectAllocationOutsideTLAB                                      0             0\n jdk.X509Certificate                                                  0             0\n jdk.NativeMemoryUsage                                                0             0\n jdk.X509Validation                                                   0             0\n jdk.NativeMemoryUsageTotal                                           0             0\n jdk.DumpReason                                                       0             0\n jdk.DataLoss                                                         0             0\n jdk.ObjectCount                                                      0             0\n jdk.G1HeapRegionInformation                                          0             0\n jdk.ZYoungGarbageCollection                                          0             0\n io.netty.AllocateChunk                                               0             0\n jdk.ZOldGarbageCollection                                            0             0\n jdk.ZAllocationStall                                                 0             0\n jdk.ZPageAllocation                                                  0             0\n jdk.ZRelocationSet                                                   0             0\n jdk.ZRelocationSetGroup                                              0             0\n jdk.ZStatisticsCounter                                               0             0\n jdk.ZStatisticsSampler                                               0             0\n jdk.ZThreadPhase                                                     0             0\n jdk.ZUncommit                                                        0             0\n jdk.ZUnmap                                                           0             0\n jdk.ShenandoahHeapRegionStateChange                                  0             0\n jdk.ShenandoahHeapRegionInformation                                  0             0\n jdk.Flush                                                            0             0\n jdk.HeapDump                                                         0             0\n jdk.GCLocker                                                         0             0\n jdk.JavaAgent                                                        0             0\n jdk.NativeAgent                                                      0             0\n io.lettuce.core.event.connection.JfrConnectedEvent                   0             0\n io.netty.ReallocateBuffer                                            0             0\n io.lettuce.core.event.connection.JfrConnectionActivatedEvent         0             0\n io.netty.AllocateBuffer                                              0             0\n io.netty.FreeBuffer                                                  0             0\n jdk.VirtualThreadStart                                               0             0\n jdk.VirtualThreadEnd                                                 0             0\n io.netty.FreeChunk                                                   0             0\n io.lettuce.core.event.connection.JfrConnectionCreatedEvent           0             0\n io.lettuce.core.event.connection.JfrConnectEvent                     0             0\n jdk.SecurityProviderService                                          0             0\n",
+    "eventCounts": {
+      "jdk.ObjectAllocationSample": 17336,
+      "jdk.ThreadPark": 529,
+      "jdk.ExecutionSample": 3693,
+      "jdk.GarbageCollection": 221
+    },
+    "executionTopFrames": [
+      [
+        "java.lang.String.hashCode",
+        155
+      ],
+      [
+        "java.lang.StringLatin1.toLowerCase",
+        142
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.putVal",
+        98
+      ],
+      [
+        "java.util.HashMap.getNode",
+        66
+      ],
+      [
+        "reactor.util.context.ContextView.getOrDefault",
+        65
+      ],
+      [
+        "java.util.HashMap.putVal",
+        60
+      ],
+      [
+        "java.util.ComparableTimSort.countRunAndMakeAscending",
+        46
+      ],
+      [
+        "io.netty.util.internal.shaded.org.jctools.queues.MpmcArrayQueue.relaxedPoll",
+        45
+      ],
+      [
+        "java.util.HashMap.resize",
+        43
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.get",
+        40
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.transfer",
+        33
+      ],
+      [
+        "java.util.HashMap$HashIterator.nextNode",
+        32
+      ],
+      [
+        "java.util.concurrent.ConcurrentSkipListMap.cpr",
+        29
+      ],
+      [
+        "reactor.netty.channel.ChannelOperations.channel",
+        29
+      ],
+      [
+        "java.lang.AbstractStringBuilder.ensureCapacityInternal",
+        28
+      ],
+      [
+        "java.util.concurrent.locks.LockSupport.unpark",
+        28
+      ],
+      [
+        "reactor.core.publisher.InnerOperator.currentContext",
+        26
+      ],
+      [
+        "java.util.regex.Matcher.reset",
+        26
+      ],
+      [
+        "io.netty.channel.epoll.EpollIoHandler.wakeup",
+        25
+      ],
+      [
+        "java.util.ComparableTimSort.binarySort",
+        24
+      ]
+    ],
+    "allocationWeightedBytesByClass": [
+      [
+        "io.netty.channel.DefaultChannelPromise",
+        11625339208
+      ],
+      [
+        "io.lettuce.core.datastructure.queue.HashIndexedQueue$Node",
+        7387147992
+      ],
+      [
+        "[B",
+        3398258816
+      ],
+      [
+        "io.netty.channel.epoll.EpollSocketChannel",
+        3273692840
+      ],
+      [
+        "[Ljava.lang.Object;",
+        2381243352
+      ],
+      [
+        "java.lang.String",
+        1881257592
+      ],
+      [
+        "org.springframework.web.util.pattern.PathPattern$MatchingContext",
+        897451136
+      ],
+      [
+        "[Ljava.util.HashMap$Node;",
+        856165416
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap$Node",
+        741682576
+      ],
+      [
+        "java.util.ArrayList",
+        649144968
+      ],
+      [
+        "java.util.HashMap$Node",
+        602636664
+      ],
+      [
+        "java.util.LinkedHashMap$Entry",
+        559276376
+      ],
+      [
+        "reactor.netty.http.client.HttpClientConfig",
+        506579912
+      ],
+      [
+        "io.netty.handler.codec.DefaultHeaders$HeaderEntry",
+        497224936
+      ],
+      [
+        "java.util.HashMap",
+        417972384
+      ],
+      [
+        "[I",
+        409992184
+      ],
+      [
+        "[Lio.micrometer.common.KeyValue;",
+        367297424
+      ],
+      [
+        "[Ljava.util.concurrent.ConcurrentHashMap$Node;",
+        350739336
+      ],
+      [
+        "org.springframework.util.LinkedCaseInsensitiveMap$1",
+        350097408
+      ],
+      [
+        "java.util.LinkedHashMap$LinkedEntryIterator",
+        339175248
+      ]
+    ],
+    "allocationWeightedBytesByTopFrame": [
+      [
+        "io.netty.channel.DefaultChannelPipeline.newPromise",
+        11455156256
+      ],
+      [
+        "io.lettuce.core.datastructure.queue.HashIndexedQueue.offer",
+        7387147992
+      ],
+      [
+        "io.netty.channel.epoll.EpollServerSocketChannel.newChildChannel",
+        3273692840
+      ],
+      [
+        "java.lang.StringLatin1.toLowerCase",
+        1722630464
+      ],
+      [
+        "java.lang.invoke.DirectMethodHandle.allocateInstance",
+        1686146520
+      ],
+      [
+        "java.util.concurrent.atomic.AtomicReferenceArray.<init>",
+        1241490528
+      ],
+      [
+        "org.springframework.web.util.pattern.PathPattern.matches",
+        889132392
+      ],
+      [
+        "java.util.HashMap.resize",
+        856165416
+      ],
+      [
+        "java.util.concurrent.ConcurrentHashMap.putVal",
+        739073080
+      ],
+      [
+        "java.util.ArrayList.grow",
+        656978512
+      ],
+      [
+        "java.util.Arrays.copyOfRangeByte",
+        644620568
+      ],
+      [
+        "java.util.HashMap.newNode",
+        602636664
+      ],
+      [
+        "java.util.LinkedHashMap.newNode",
+        559276376
+      ],
+      [
+        "java.util.Arrays.copyOf",
+        525504800
+      ],
+      [
+        "io.netty.handler.codec.DefaultHeaders.newHeaderEntry",
+        395596864
+      ],
+      [
+        "org.springframework.util.CollectionUtils.newHashMap",
+        392937544
+      ],
+      [
+        "java.util.regex.Matcher.<init>",
+        359636640
+      ],
+      [
+        "org.springframework.util.LinkedCaseInsensitiveMap.<init>",
+        350097408
+      ],
+      [
+        "java.util.LinkedHashMap$LinkedEntrySet.iterator",
+        339175248
+      ],
+      [
+        "io.micrometer.common.KeyValue.of",
+        336447480
+      ]
+    ],
+    "allocationWeightedBytesTotal": 54916148432,
+    "threadParkSecondsByThread": [
+      [
+        "Common-Cleaner",
+        54.667881806
+      ],
+      [
+        "parallel-1",
+        31.846246255000004
+      ],
+      [
+        "Cleaner-0",
+        12.148640415
+      ],
+      [
+        "parallel-4",
+        3.0997747949999974
+      ],
+      [
+        "parallel-2",
+        3.034992530000001
+      ],
+      [
+        "parallel-3",
+        3.029171068
+      ],
+      [
+        "zenith-audit-writer",
+        0.021406366
+      ]
+    ],
+    "monitorEnterSecondsByTopFrame": [],
+    "gcPauseSecondsTotal": 1.0334906580000003,
+    "gcLongestPauseSeconds": 0.009117728,
+    "interpretation": [
+      "ExecutionSample counts are samples, not exact CPU time or an attribution of end-to-end latency.",
+      "AllocationSample weights estimate allocation; they are not retained heap measurements.",
+      "Park/monitor durations sum across threads and may exceed recording wall time.",
+      "A waiting worker or event loop is not by itself a bottleneck."
+    ],
+    "gcCollections": 221,
+    "gcNames": [
+      "G1New"
+    ],
+    "gcCauses": [
+      "G1 Evacuation Pause"
+    ]
+  }
+}

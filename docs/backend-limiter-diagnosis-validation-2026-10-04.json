@@ -1,0 +1,149 @@
+{
+  "createdAt": "2026-10-04T11:43:20.192287+00:00",
+  "task": "Diagnose intermittent local rate-limiter fail-open; no production change or deployment",
+  "passed": true,
+  "integrityChecks": 39,
+  "stages": 19,
+  "totalRequests": 8508391,
+  "totalFailOpen": 6153,
+  "applicationSourceChanged": false,
+  "applicationRegressionSuitesRerun": false,
+  "mechanismTest": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "productionLimiterUnmodified": true
+  },
+  "preservation": {
+    "previousWorkspaceFiles": 543,
+    "previousContainerIdsAndStates": 6,
+    "previousRawEvidenceFiles": 270
+  },
+  "rawEvidenceRoot": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a",
+  "rawManifestEntries": 168,
+  "artifacts": [
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\backend-limiter-diagnosis.md",
+      "bytes": 11473,
+      "sha256": "ccd728996be4200baef53e4712323a2c515f0adc8521dc3faab71f53b3309b2b"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\backend-limiter-diagnosis-summary-2026-10-04.json",
+      "bytes": 436545,
+      "sha256": "b26ef1bb733f3fc38e1484fbad132b3b1e49f5c5140f72e49c33d718de42bc5f"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\images\\limiter-diagnosis-20261004\\limiter-diagnosis-comparison.png",
+      "bytes": 111665,
+      "sha256": "52d00955ee99c3d7ee936767eb465158ce8d262f174ba7c1bc372e294fa6a13b"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\docs\\images\\limiter-diagnosis-20261004\\limiter-diagnosis-comparison.svg",
+      "bytes": 102814,
+      "sha256": "a05535c97554bc105ad049892b479279efe2f9c5f51a6f202dfaa2ed61eb1fa5"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\LIMITER-DIAGNOSIS.md",
+      "bytes": 6396,
+      "sha256": "733fb55329a1143818ca05b99d7884341bbddd88e044dfce3626066bf7ee9c53"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\limiter-diagnosis.mjs",
+      "bytes": 31946,
+      "sha256": "90931ce59ee4b0e2f762145583e5fcbbd2729e9681ec17b741eb2ae5c259415e"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\prepare-limiter-diagnosis.py",
+      "bytes": 5590,
+      "sha256": "e8336d3d84185eedceb67ccc6749a912d32273818a005c233ea70968e9a3f909"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\summarize-limiter-diagnosis.py",
+      "bytes": 6080,
+      "sha256": "3512b5a2a9d440682734bb0ad77d5135e0117e104d2571eb2a999194e899c8a2"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\plot-limiter-diagnosis.py",
+      "bytes": 3038,
+      "sha256": "5c4f8a4d7a2db8b7a6f5b495972188f7610f7dc799743d292d1cd70af352db3a"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\validate-limiter-diagnosis.py",
+      "bytes": 5191,
+      "sha256": "f16a4091070a7e13c5dd24f9f7626e02d0362cbfe336baa304aaec3ad0518eea"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\diagnosis\\LimiterProbe.java",
+      "bytes": 7997,
+      "sha256": "2a0e7a61df5ece0e10128959262f5e632a29c6586ad0efbbf95db090c27be4c8"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\benchmarks\\diagnosis\\WorkerOccupancyTest.java",
+      "bytes": 4439,
+      "sha256": "9cc347314e7c3d9585465b9143caa45e455d8e371bb68248ddd6bec64f579786"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\evidence-manifest.json",
+      "bytes": 29723,
+      "sha256": "4a384675a647199023288fa96a0ab590dde119623587c50a8d070b0962979023"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\integrity-validation.json",
+      "bytes": 7087,
+      "sha256": "62085964697bf9790b0db3fba009c006a41590b9dcf1425a07b9a1ba0493e0cd"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\findings.json",
+      "bytes": 1411,
+      "sha256": "86ce485a46a1ff0832fe5a25137bc9c951e29b57107d6190694d2ac988ea6231"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\preservation-before.json",
+      "bytes": 95242,
+      "sha256": "87f3da69cab5ff0d956657ff2b7643d0a2dfc2ca44f32db0c215b19002d3febb"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\historical-evidence-and-network-check.json",
+      "bytes": 155,
+      "sha256": "899392a27b89b89dc60fda2b7ea2d4d270cd0e5d7df6989f90ce94f1e02fd0ed"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\existing-jfr-worker-stacks.json",
+      "bytes": 24370,
+      "sha256": "53e2933d5dac565d3dd5315c1f706bf269b88cf2b0373d6d757d63fb93d0d89c"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\original-hour-failure-windows.json",
+      "bytes": 21790,
+      "sha256": "50a8f30e6c4f6ac3d6c15f6272e46f577f732810c1ff843f0ae7625d1f41ea25"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\original-hour-driver-alignment.json",
+      "bytes": 11922,
+      "sha256": "ad60163d96582c2e5c5eb00b4c9c7d083f9956a369041d333f022232449994c3"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\jar-comparison.json",
+      "bytes": 727,
+      "sha256": "dbdb99672b1932973117f3a5ce0fa213b4b4cfbd5e8a1e7f66ccbe08143afdc2"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\fixture-source-identity.json",
+      "bytes": 282,
+      "sha256": "89fca13e2d20dc9a1bc07d91c8472a5df4935a42e98c34a8487d9eaed95d5625"
+    },
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-diagnosis-20261004-6337c56a\\roundtrip-direct\\connection-proof.json",
+      "bytes": 1337,
+      "sha256": "8413182a9fe5bf1affca9ae3dd376a02e20270e46fa02cbd4a9099e693b35223"
+    }
+  ],
+  "limitations": [
+    "All capacity failures are retained; integrity passed does not mean healthy capacity.",
+    "Injected diagnostics have overhead. Different observer/transport/roundtrip builds are frozen and archived separately.",
+    "Server timestamps have millisecond granularity and share this Docker VM clock; inline callbacks on worker threads are not network-arrival timestamps.",
+    "The experiment does not uniquely apportion every tail among server execution/response scheduling, kernel network, Lettuce I/O and worker scheduling.",
+    "4,000 req/s long-run healthy capacity remains unaccepted. No production fix was deployed."
+  ]
+}

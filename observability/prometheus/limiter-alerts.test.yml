@@ -1,0 +1,877 @@
+{
+  "rule_files": [
+    "alerts.yml"
+  ],
+  "evaluation_interval": "5s",
+  "tests": [
+    {
+      "name": "forward Redis fault respects 15 seconds and does not fire opposite action",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"not_sent\"}",
+          "values": "0+1x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "15s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "20s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter admitted requests without confirmed quota",
+                "description": "A: redis_unconfirmed caused fail-open decisions in the last minute. Forward is a limiter action, not proof of upstream receipt or HTTP success. Check final outcomes and limiter diagnostics."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "reject Redis fault respects 15 seconds and does not fire opposite action",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"reject\",execution=\"not_sent\"}",
+          "values": "0+1x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "15s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "20s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter selected protective rejection",
+                "description": "A: redis_unconfirmed caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "mixed policies retain instance and local versus Redis fact",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"B\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"local_unavailable\",action=\"reject\",execution=\"not_sent\"}",
+          "values": "0+1x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"unknown\"}",
+          "values": "0+1x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"B\",event=\"local_unavailable\",action=\"forward\",execution=\"not_sent\"}",
+          "values": "0+1x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"B\",event=\"redis_unconfirmed\",action=\"reject\",execution=\"unknown\"}",
+          "values": "0+1x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter admitted requests without confirmed quota",
+                "description": "A: redis_unconfirmed caused fail-open decisions in the last minute. Forward is a limiter action, not proof of upstream receipt or HTTP success. Check final outcomes and limiter diagnostics."
+              }
+            },
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "B",
+                "severity": "warning",
+                "event": "local_unavailable"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter admitted requests without confirmed quota",
+                "description": "B: local_unavailable caused fail-open decisions in the last minute. Forward is a limiter action, not proof of upstream receipt or HTTP success. Check final outcomes and limiter diagnostics."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "local_unavailable"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter selected protective rejection",
+                "description": "A: local_unavailable caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately."
+              }
+            },
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "B",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter selected protective rejection",
+                "description": "B: redis_unconfirmed caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Repeated rate-limit debit results are unknown",
+                "description": "A: estimated one-minute increase is at least 3 non-cancelled unknown decisions for 30 seconds. Redis may have debited tokens. Do not retry or refund from this signal; cancelled unknown decisions remain visible in the dashboard."
+              }
+            },
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "B",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Repeated rate-limit debit results are unknown",
+                "description": "B: estimated one-minute increase is at least 3 non-cancelled unknown decisions for 30 seconds. Redis may have debited tokens. Do not retry or refund from this signal; cancelled unknown decisions remain visible in the dashboard."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "normal permits explicit bypass and both quota rejections are not faults",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"allowed\",action=\"forward\",execution=\"confirmed\"}",
+          "values": "0+10x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"disabled\",action=\"forward\",execution=\"not_sent\"}",
+          "values": "0+10x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"limited\",action=\"reject\",execution=\"confirmed\"}",
+          "values": "0+10x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"unfulfillable\",action=\"reject\",execution=\"confirmed\"}",
+          "values": "0+10x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "cancelled debit unknown remains counted without paging on cancellation alone",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"cancelled\",action=\"cancel\",execution=\"unknown\"}",
+          "values": "0+10x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "confirmed faults do not become unknown",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"local_unavailable\",action=\"reject\",execution=\"confirmed\"}",
+          "values": "0+10x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "local_unavailable"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter selected protective rejection",
+                "description": "A: local_unavailable caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "unknown threshold and 30 second hold then trailing-window recovery",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"unknown\"}",
+          "values": "0 4+0x59"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "30s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "35s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Repeated rate-limit debit results are unknown",
+                "description": "A: estimated one-minute increase is at least 3 non-cancelled unknown decisions for 30 seconds. Redis may have debited tokens. Do not retry or refund from this signal; cancelled unknown decisions remain visible in the dashboard."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "70s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "70s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "one uncertain debit is visible but below paging threshold after full warmup",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"reject\",execution=\"unknown\"}",
+          "values": "0+0x12 1+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter selected protective rejection",
+                "description": "A: redis_unconfirmed caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "130s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "counter reset alone is not an incident",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"unknown\"}",
+          "values": "10+0x12 0+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "counter reset with subsequent failures is counted before aggregation",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"unknown\"}",
+          "values": "100+0x12 0 1 2 3 4 5 6 7 8 9 10 11 12"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter admitted requests without confirmed quota",
+                "description": "A: redis_unconfirmed caused fail-open decisions in the last minute. Forward is a limiter action, not proof of upstream receipt or HTTP success. Check final outcomes and limiter diagnostics."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "115s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Repeated rate-limit debit results are unknown",
+                "description": "A: estimated one-minute increase is at least 3 non-cancelled unknown decisions for 30 seconds. Redis may have debited tokens. Do not retry or refund from this signal; cancelled unknown decisions remain visible in the dashboard."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "healthy and failing instances remain separate even if the fleet has a counter reset",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"B\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"unknown\"}",
+          "values": "100+0x12 0+0x30"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"B\",event=\"redis_unconfirmed\",action=\"reject\",execution=\"unknown\"}",
+          "values": "0+1x42"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "B",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter selected protective rejection",
+                "description": "B: redis_unconfirmed caused protective rejections in the last minute. The policy selects HTTP 503 before proxying; this is not quota exhaustion (429). Check final outcomes separately."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "B",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Repeated rate-limit debit results are unknown",
+                "description": "B: estimated one-minute increase is at least 3 non-cancelled unknown decisions for 30 seconds. Redis may have debited tokens. Do not retry or refund from this signal; cancelled unknown decisions remain visible in the dashboard."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zero traffic with registered zero counters is not missing or failed",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"allowed\",action=\"forward\",execution=\"confirmed\"}",
+          "values": "0+0x60"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "missing metric family with successful scrape has its own sustained alert",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "25s",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "30s",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Rate-limit decision metrics are missing",
+                "description": "A: scrape succeeded but the decision metric family is absent. Check observability.enabled, gateway version and metric relabelling. This is not zero traffic or a healthy limiter."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "metric family restoration resolves missing alert without traffic",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"allowed\",action=\"forward\",execution=\"confirmed\"}",
+          "values": "_ _ _ _ _ _ _ _ 0+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "35s",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Rate-limit decision metrics are missing",
+                "description": "A: scrape succeeded but the decision metric family is absent. Check observability.enabled, gateway version and metric relabelling. This is not zero traffic or a healthy limiter."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "40s",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "scrape failure is neither zero traffic nor metric missing and gates recent fault samples",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x5 0+0x20"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"forward\",execution=\"unknown\"}",
+          "values": "0+1x5 stale"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "25s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "zenith-gateway",
+                "instance": "A",
+                "severity": "warning",
+                "event": "redis_unconfirmed"
+              },
+              "exp_annotations": {
+                "summary": "Rate limiter admitted requests without confirmed quota",
+                "description": "A: redis_unconfirmed caused fail-open decisions in the last minute. Forward is a limiter action, not proof of upstream receipt or HTTP success. Check final outcomes and limiter diagnostics."
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "35s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "scrape recovery does not fabricate an incident from a stable counter",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "0+0x12 1+0x24"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"redis_unconfirmed\",action=\"reject\",execution=\"unknown\"}",
+          "values": "_ _ _ _ _ _ _ _ _ _ _ _ _ 10+0x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "90s",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "legacy error timer cannot trigger a failure-action alert",
+      "interval": "5s",
+      "input_series": [
+        {
+          "series": "up{job=\"zenith-gateway\",instance=\"A\"}",
+          "values": "1+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=\"A\",event=\"allowed\",action=\"forward\",execution=\"confirmed\"}",
+          "values": "0+0x60"
+        },
+        {
+          "series": "zenith_ratelimit_redis_seconds_count{job=\"zenith-gateway\",instance=\"A\",outcome=\"error\"}",
+          "values": "0+20x24"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "removed target has no per-instance inventory; no fictitious zero or healthy signal",
+      "interval": "5s",
+      "input_series": [],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitFailOpen",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitProtectiveRejection",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitDebitUncertain",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "ZenithRateLimitMetricsMissing",
+          "exp_alerts": []
+        }
+      ]
+    }
+  ]
+}

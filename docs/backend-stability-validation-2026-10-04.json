@@ -1,0 +1,642 @@
+{
+  "createdAt": "2026-10-04T10:36:46.185411+00:00",
+  "scope": "Frozen-application memory and startup diagnosis; no development-instance upgrade.",
+  "frozenJarSha256": "55e6be5e9888f97a33651732e6823a19caeabac91659e0eb75dbb5dbe615c2cf",
+  "experimentIntegrityPassed": true,
+  "allWorkloadsHealthy": false,
+  "integrityChecks": [
+    {
+      "name": "frozen_jar",
+      "passed": true
+    },
+    {
+      "name": "fresh_run_identity",
+      "passed": true
+    },
+    {
+      "name": "predeclared_cold_order",
+      "passed": true
+    },
+    {
+      "name": "same_measured_harness",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/execution",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/limits",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/cleanup",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/cold-immediate/accounting",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/cold-immediate/observation",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/common_target",
+      "passed": true
+    },
+    {
+      "name": "cold-i1/two_instances",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/execution",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/limits",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/cleanup",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/cold-gradual/accounting",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/cold-gradual/observation",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/common_target",
+      "passed": true
+    },
+    {
+      "name": "cold-g1/two_instances",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/execution",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/limits",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/cleanup",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/cold-gradual/accounting",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/cold-gradual/observation",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/common_target",
+      "passed": true
+    },
+    {
+      "name": "cold-g2/two_instances",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/execution",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/limits",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/cleanup",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/cold-immediate/accounting",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/cold-immediate/observation",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/common_target",
+      "passed": true
+    },
+    {
+      "name": "cold-i2/two_instances",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/execution",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/limits",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/cleanup",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/cold-immediate/accounting",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/cold-immediate/observation",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/common_target",
+      "passed": true
+    },
+    {
+      "name": "cold-i3/two_instances",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/execution",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/limits",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/cleanup",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/cold-gradual/accounting",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/cold-gradual/observation",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/common_target",
+      "passed": true
+    },
+    {
+      "name": "cold-g3/two_instances",
+      "passed": true
+    },
+    {
+      "name": "longevity/execution",
+      "passed": true
+    },
+    {
+      "name": "longevity/limits",
+      "passed": true
+    },
+    {
+      "name": "longevity/cleanup",
+      "passed": true
+    },
+    {
+      "name": "longevity/warmup/accounting",
+      "passed": true
+    },
+    {
+      "name": "longevity/warmup/observation",
+      "passed": true
+    },
+    {
+      "name": "longevity/hour/accounting",
+      "passed": true
+    },
+    {
+      "name": "longevity/hour/observation",
+      "passed": true
+    },
+    {
+      "name": "longevity/reload/accounting",
+      "passed": true
+    },
+    {
+      "name": "longevity/reload/observation",
+      "passed": true
+    },
+    {
+      "name": "longevity/full_hour",
+      "passed": true
+    },
+    {
+      "name": "longevity/phase_order",
+      "passed": true
+    },
+    {
+      "name": "longevity/idle_durations",
+      "passed": true
+    },
+    {
+      "name": "longevity/reload_duration",
+      "passed": true
+    },
+    {
+      "name": "longevity/checkpoints",
+      "passed": true
+    },
+    {
+      "name": "longevity/interventions_only_after_measurement",
+      "passed": true
+    }
+  ],
+  "observations": [
+    {
+      "run": "cold-i1",
+      "stage": "cold-immediate",
+      "healthy": false,
+      "issues": [
+        "limiter_fail_open"
+      ],
+      "offered": 240000,
+      "issued": 237709,
+      "statuses": {
+        "200": 237709
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 138,
+      "capacityMisses": 2153,
+      "limiterFailOpen": 4
+    },
+    {
+      "run": "cold-g1",
+      "stage": "cold-gradual",
+      "healthy": true,
+      "issues": [],
+      "offered": 152000,
+      "issued": 152000,
+      "statuses": {
+        "200": 152000
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 0,
+      "capacityMisses": 0,
+      "limiterFailOpen": 0
+    },
+    {
+      "run": "cold-g2",
+      "stage": "cold-gradual",
+      "healthy": true,
+      "issues": [],
+      "offered": 152000,
+      "issued": 151979,
+      "statuses": {
+        "200": 151979
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 21,
+      "capacityMisses": 0,
+      "limiterFailOpen": 0
+    },
+    {
+      "run": "cold-i2",
+      "stage": "cold-immediate",
+      "healthy": false,
+      "issues": [
+        "non_200",
+        "generator_misses_over_1_percent",
+        "limiter_fail_open"
+      ],
+      "offered": 240000,
+      "issued": 237090,
+      "statuses": {
+        "200": 237003,
+        "503": 87
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 220,
+      "capacityMisses": 2690,
+      "limiterFailOpen": 2
+    },
+    {
+      "run": "cold-i3",
+      "stage": "cold-immediate",
+      "healthy": false,
+      "issues": [
+        "non_200",
+        "limiter_fail_open"
+      ],
+      "offered": 240000,
+      "issued": 238014,
+      "statuses": {
+        "200": 237992,
+        "503": 22
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 181,
+      "capacityMisses": 1805,
+      "limiterFailOpen": 4
+    },
+    {
+      "run": "cold-g3",
+      "stage": "cold-gradual",
+      "healthy": true,
+      "issues": [],
+      "offered": 152000,
+      "issued": 151985,
+      "statuses": {
+        "200": 151985
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 15,
+      "capacityMisses": 0,
+      "limiterFailOpen": 0
+    },
+    {
+      "run": "longevity",
+      "stage": "warmup",
+      "healthy": false,
+      "issues": [
+        "generator_misses_over_1_percent",
+        "limiter_fail_open"
+      ],
+      "offered": 240000,
+      "issued": 231185,
+      "statuses": {
+        "200": 231185
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 853,
+      "capacityMisses": 7962,
+      "limiterFailOpen": 1280
+    },
+    {
+      "run": "longevity",
+      "stage": "hour",
+      "healthy": false,
+      "issues": [
+        "limiter_fail_open"
+      ],
+      "offered": 14400000,
+      "issued": 14388952,
+      "statuses": {
+        "200": 14388952
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 7554,
+      "capacityMisses": 3494,
+      "limiterFailOpen": 23037
+    },
+    {
+      "run": "longevity",
+      "stage": "reload",
+      "healthy": true,
+      "issues": [],
+      "offered": 1200000,
+      "issued": 1199821,
+      "statuses": {
+        "200": 1199821
+      },
+      "transportErrors": 0,
+      "schedulerMisses": 179,
+      "capacityMisses": 0,
+      "limiterFailOpen": 0
+    }
+  ],
+  "preservation": {
+    "checkedAt": "2026-10-04T10:30:19.828181+00:00",
+    "preexistingFilesChecked": 397,
+    "changed": [],
+    "expectedExistingContainerNames": [
+      "zenithgateway-dev-0cca169bd52a-6379",
+      "zenith-benchmark-redis-1",
+      "safebuild-redis",
+      "zhijian",
+      "healthcare-redis",
+      "zenith-redis"
+    ],
+    "presentExistingContainers": [
+      {
+        "id": "608cd9bfbfe88107f332a5b769cbd81c404320083ab62a2863b756efe08e0dce",
+        "created": "2026-09-25T11:37:33.769008424Z",
+        "status": "created",
+        "startedAt": "0001-01-01T00:00:00Z",
+        "name": "zenithgateway-dev-0cca169bd52a-6379"
+      },
+      {
+        "id": "0bd8e6da994e6cc76037996c1c4455edf26402810bb026299a8eff491d763f4f",
+        "created": "2026-09-23T08:19:51.133046668Z",
+        "status": "exited",
+        "startedAt": "2026-09-24T03:13:45.397305855Z",
+        "name": "zenith-benchmark-redis-1"
+      },
+      {
+        "id": "0d0b1eddce108691db963c81b905466b175d0055f3de68d8bdb845fe56bbcd39",
+        "created": "2026-09-19T05:38:38.713839989Z",
+        "status": "exited",
+        "startedAt": "2026-09-19T06:13:56.909836559Z",
+        "name": "safebuild-redis"
+      },
+      {
+        "id": "b7294eee3606bc45102c1e9e7a01c56f77b53c050d8738f647d9d3a29f63483e",
+        "created": "2026-09-19T05:30:31.473876332Z",
+        "status": "exited",
+        "startedAt": "2026-09-21T01:00:41.038662631Z",
+        "name": "zhijian"
+      },
+      {
+        "id": "8d049f9551c53387ddc618a66dfa5de5041f52dbe7626ac8f9f3f2228dcf3e70",
+        "created": "2026-06-02T02:28:42.39473187Z",
+        "status": "exited",
+        "startedAt": "2026-06-26T05:02:34.456523056Z",
+        "name": "healthcare-redis"
+      },
+      {
+        "id": "da80330b0473baa2a89460f61464d8767d4f6a09de804a709f9c64613f353d38",
+        "created": "2026-03-26T05:39:14.66532899Z",
+        "status": "exited",
+        "startedAt": "2026-09-25T11:37:09.83629931Z",
+        "name": "zenith-redis"
+      }
+    ],
+    "missingExistingContainers": [],
+    "remainingStabilityContainers": [],
+    "remainingStabilityNetworks": [],
+    "sourceArchive": [
+      {
+        "file": "stability.mjs",
+        "sha256": "5e1a8417831cc5e6bed7418719c6d9cd48f375a3e0acc278c3592e1bfe1d4b01",
+        "bytes": 30039
+      },
+      {
+        "file": "stability-worker.mjs",
+        "sha256": "d18e817e4b8533c16ac836828694865f51e81cc2640159ca1cbe4115d2e37740",
+        "bytes": 4748
+      },
+      {
+        "file": "stability-load.mjs",
+        "sha256": "bdcce67bebbb8021662475ed1a68864634beee0c8bb21ada605fe21a903f4d07",
+        "bytes": 7328
+      },
+      {
+        "file": "stability-load.test.mjs",
+        "sha256": "2b5ffd671829f9a3c343b0a91032fdd540082443b64a886b0e79ccf861b989cf",
+        "bytes": 3733
+      },
+      {
+        "file": "summarize-stability.py",
+        "sha256": "5077ad7e42fa5fb5e32e575b9e6a8050208cdb3d0f57953c3870a0d03418a125",
+        "bytes": 9211
+      },
+      {
+        "file": "plot-stability.py",
+        "sha256": "046fea098aec60ac1f261b29ed4f543ada64385f8dabc7cee9b07996edfa37c4",
+        "bytes": 11258
+      },
+      {
+        "file": "validate-stability.py",
+        "sha256": "3a070e3cadd712e03998fcb83bbf044787ab71615301ded7b32a11818e42c2e6",
+        "bytes": 5575
+      },
+      {
+        "file": "STABILITY.md",
+        "sha256": "6b15f5b32ad09862d1e08b73d43ea904ce5a1cba44809c9371b9f0000b07c948",
+        "bytes": 8230
+      },
+      {
+        "file": "redis.mjs",
+        "sha256": "d0a9a2958dd9240e120a78d9fd40fe765997f5b2f2c40f66479ed008c4dbe8e9",
+        "bytes": 2340
+      }
+    ],
+    "measuredHarnessMatchesArchive": true,
+    "passed": true,
+    "containerLimit": "The initial capture recorded names, not IDs or states; the end capture records IDs, creation times and states. Presence and ownership-scoped cleanup are verified without claiming a before/after state comparison."
+  },
+  "evidenceRoot": "D:\\Java\\ZenithGateway\\.dev\\stability-20261004-7939c7ff",
+  "evidenceManifest": {
+    "path": ".dev/stability-20261004-7939c7ff/evidence-manifest.json",
+    "sha256": "3455fd55d09ea7ee317c998f5a2ed49e53e4bd0b58bc0820ab8f649083679eed",
+    "bytes": 45683
+  },
+  "rawRuns": [
+    {
+      "name": "cold-g1",
+      "path": ".dev/stability-20261004-7939c7ff/cold-g1/summary.json",
+      "sha256": "e6eee6c139ba2982e0f1c60ba9139f88e08257ac8f57f47bfc22c5ee09ac61c9",
+      "bytes": 2985542
+    },
+    {
+      "name": "cold-g2",
+      "path": ".dev/stability-20261004-7939c7ff/cold-g2/summary.json",
+      "sha256": "45d7d19b7c954571622cadf7f25ed2ec156f8fe8633e0bc675b26f3c18ad1f5b",
+      "bytes": 2985369
+    },
+    {
+      "name": "cold-g3",
+      "path": ".dev/stability-20261004-7939c7ff/cold-g3/summary.json",
+      "sha256": "a7ad3da801c019082a9f5b47bdc89335667e6d5ad6dcb3e463d76ec4227aa695",
+      "bytes": 2985011
+    },
+    {
+      "name": "cold-i1",
+      "path": ".dev/stability-20261004-7939c7ff/cold-i1/summary.json",
+      "sha256": "9ca7dd5c9c3227d14d87a451f81a0e64646c875c424a252036ca56e4f85098a6",
+      "bytes": 2833088
+    },
+    {
+      "name": "cold-i2",
+      "path": ".dev/stability-20261004-7939c7ff/cold-i2/summary.json",
+      "sha256": "06e5dcded1439ba3524af6de81633c39846102f9d773507ecac2c7c8258ce39d",
+      "bytes": 2823918
+    },
+    {
+      "name": "cold-i3",
+      "path": ".dev/stability-20261004-7939c7ff/cold-i3/summary.json",
+      "sha256": "be7ea46c1efc30980a103fa9e419bc646df5d9e278484d6b63018d029ce24a21",
+      "bytes": 2829263
+    },
+    {
+      "name": "longevity",
+      "path": ".dev/stability-20261004-7939c7ff/longevity/summary.json",
+      "sha256": "b2f6bf1711bb493ca014b7b82870423c452fa43a9e3dd7c199936f76a46ec496",
+      "bytes": 19959733
+    },
+    {
+      "name": "pilot",
+      "path": ".dev/stability-20261004-7939c7ff/pilot/summary.json",
+      "sha256": "edd5361f19f8b6306a5e5102fe385fd4fbc5af177195f90d5d13c54381d8d6c0",
+      "bytes": 100954
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/backend-stability-and-startup.md",
+      "sha256": "ebfd39e95273487590469327716c935ae8ebec2305da0478118b1d56b9378a37",
+      "bytes": 17241
+    },
+    {
+      "path": "docs/backend-stability-summary-2026-10-04.json",
+      "sha256": "5bf7d533b7f77c835b4064035278685e5b181bfc3e06af469c12dd1304989b50",
+      "bytes": 289548
+    },
+    {
+      "path": "benchmarks/STABILITY.md",
+      "sha256": "6b15f5b32ad09862d1e08b73d43ea904ce5a1cba44809c9371b9f0000b07c948",
+      "bytes": 8230
+    },
+    {
+      "path": "docs/images/stability-20261004/cold-start-comparison.png",
+      "sha256": "94b632b50d1651963460f2144e268be8921e77f61cc75c4007b7ec3f996130c1",
+      "bytes": 114003
+    },
+    {
+      "path": "docs/images/stability-20261004/cold-start-comparison.svg",
+      "sha256": "b52b8ce08298316316999ffdd881762bd60253cca3ab87902accdac0915bdd56",
+      "bytes": 30774
+    },
+    {
+      "path": "docs/images/stability-20261004/cold-start-pool.png",
+      "sha256": "dc11e40bbb9a9a49c3c74e2d0c78f8a0b766dd50ef8ec332e190a4caeafa1908",
+      "bytes": 122363
+    },
+    {
+      "path": "docs/images/stability-20261004/cold-start-pool.svg",
+      "sha256": "b23a29cb27cc9c8f7ab2cd24730b476cbdf55a020cd4c62b340e7e1764fb3270",
+      "bytes": 49805
+    },
+    {
+      "path": "docs/images/stability-20261004/memory-attribution.png",
+      "sha256": "36cb5b93b9330e6748b2c8dd9f7852f4656b3c04768d5b3a5cc44fefa426c272",
+      "bytes": 248660
+    },
+    {
+      "path": "docs/images/stability-20261004/memory-attribution.svg",
+      "sha256": "5297e993d2434937fe2a51bfc0bc0a6e3658364f2e63ff47630e2570cf7cb107",
+      "bytes": 88019
+    },
+    {
+      "path": "docs/images/stability-20261004/memory-timeline.png",
+      "sha256": "9f6bd88dd551724462e80c6b7568d711860fbe7808dbaeb3a266153bc226d7f2",
+      "bytes": 380223
+    },
+    {
+      "path": "docs/images/stability-20261004/memory-timeline.svg",
+      "sha256": "566f9dee810059d4503bc7e3eea640507c98787191edbbb93b9f20e56f204e9e",
+      "bytes": 194672
+    }
+  ],
+  "interpretation": [
+    "The 60-minute stage has 23,037 local fail-open decisions and is not a healthy-capacity result.",
+    "Trim and GC occur only after all measured traffic and idle stages. Their output is diagnostic, not a production policy.",
+    "RSS has not fully plateaued. Reclaimable memory is observed, but this run does not prove absence of every leak.",
+    "Cold strategy totals have different load mixes; compare the common final 60 seconds and preserve all initial failures.",
+    "No production migration, frontend change, default resource-limit change or development-instance upgrade was executed."
+  ],
+  "driverTests": {
+    "passed": 6,
+    "when": "Preparation phase of this run",
+    "source": "benchmarks/stability-load.test.mjs",
+    "note": "Terminal result was observed in this session; no separate initial unit-test log was saved."
+  }
+}

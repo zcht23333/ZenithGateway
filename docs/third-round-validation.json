@@ -1,0 +1,319 @@
+{
+  "checkedAt": "2026-09-23T09:19:04.173921+00:00",
+  "windowsBackend": {
+    "tests": 98,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "linuxBackend": {
+    "tests": 98,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "linuxFrontendTests": 10,
+  "linuxFrontendBuild": true,
+  "remoteGitHubActionsRun": false,
+  "powershellSmoke": {
+    "ps5": true,
+    "ps7": true
+  },
+  "observabilityDemo": {
+    "startedAt": "2026-09-23T09:14:49.980Z",
+    "finishedAt": "2026-09-23T09:17:05.798Z",
+    "checks": {
+      "dashboardPanels": 17,
+      "scopedAuthentication": true,
+      "alertsFired": [
+        "ZenithAuditUncertain",
+        "ZenithRateLimitDegraded",
+        "ZenithAuditStalled",
+        "ZenithGatewayLatency"
+      ],
+      "alertsCleared": true,
+      "reconciled": true,
+      "dashboardQueries": [
+        {
+          "panel": "Ready",
+          "series": 1
+        },
+        {
+          "panel": "Completed requests / s",
+          "series": 1
+        },
+        {
+          "panel": "Request P95",
+          "series": 1
+        },
+        {
+          "panel": "Audit pending",
+          "series": 1
+        },
+        {
+          "panel": "Audit dropped / 5 min",
+          "series": 1
+        },
+        {
+          "panel": "Audit uncertain / 5 min",
+          "series": 1
+        },
+        {
+          "panel": "Request completion outcomes",
+          "series": 4
+        },
+        {
+          "panel": "Request latency",
+          "series": 1
+        },
+        {
+          "panel": "Request latency",
+          "series": 1
+        },
+        {
+          "panel": "Request latency",
+          "series": 1
+        },
+        {
+          "panel": "Audit admission and confirmed writes",
+          "series": 1
+        },
+        {
+          "panel": "Audit admission and confirmed writes",
+          "series": 1
+        },
+        {
+          "panel": "Audit pending and in-flight",
+          "series": 1
+        },
+        {
+          "panel": "Audit pending and in-flight",
+          "series": 1
+        },
+        {
+          "panel": "Rate-limit Redis latency",
+          "series": 1
+        },
+        {
+          "panel": "Rate-limit Redis latency",
+          "series": 1
+        },
+        {
+          "panel": "Rate-limit Redis outcomes",
+          "series": 4
+        },
+        {
+          "panel": "Audit admission budget used",
+          "series": 1
+        },
+        {
+          "panel": "Audit admission budget used",
+          "series": 1
+        },
+        {
+          "panel": "Oldest pending audit age",
+          "series": 1
+        },
+        {
+          "panel": "JVM heap",
+          "series": 1
+        },
+        {
+          "panel": "JVM heap",
+          "series": 1
+        },
+        {
+          "panel": "Gateway process CPU",
+          "series": 1
+        },
+        {
+          "panel": "Currently firing alerts",
+          "series": 0
+        }
+      ]
+    },
+    "auditDelta": {
+      "received": 11374,
+      "persisted": 11071,
+      "dropped": 0,
+      "uncertain": 303
+    },
+    "phases": [
+      {
+        "name": "healthy",
+        "elapsedSeconds": 25.003867500000002,
+        "requests": 2985,
+        "issued": 2985,
+        "offered": 3000,
+        "requestsPerSecond": 119.38153167704955,
+        "statuses": {
+          "200": 2985
+        },
+        "transportErrors": 0,
+        "arrivalRate": 120,
+        "schedulerMisses": 15,
+        "capacityMisses": 0,
+        "peakInFlight": 3,
+        "latencyMs": {
+          "average": 2.9912911222780574,
+          "p50": 2.795,
+          "p95": 4.699,
+          "p99": 6.143,
+          "max": 12.143
+        },
+        "scheduledLatencyMs": {
+          "average": 15.865490117252932,
+          "p50": 15.207,
+          "p95": 23.023,
+          "p99": 26.799,
+          "max": 30.799
+        }
+      },
+      {
+        "name": "redis-paused",
+        "elapsedSeconds": 40.504431100000005,
+        "requests": 4799,
+        "issued": 4799,
+        "offered": 4800,
+        "requestsPerSecond": 118.48086418377073,
+        "statuses": {
+          "200": 4799
+        },
+        "transportErrors": 0,
+        "arrivalRate": 120,
+        "schedulerMisses": 1,
+        "capacityMisses": 0,
+        "peakInFlight": 63,
+        "latencyMs": {
+          "average": 502.22401667013963,
+          "p50": 502.271,
+          "p95": 503.295,
+          "p99": 504.575,
+          "max": 520.191
+        },
+        "scheduledLatencyMs": {
+          "average": 514.4143163158991,
+          "p50": 514.047,
+          "p95": 519.679,
+          "p99": 521.983,
+          "max": 529.919
+        }
+      },
+      {
+        "name": "recovered",
+        "elapsedSeconds": 30.010017499999986,
+        "requests": 3590,
+        "issued": 3590,
+        "offered": 3600,
+        "requestsPerSecond": 119.62672131064241,
+        "statuses": {
+          "200": 3590
+        },
+        "transportErrors": 0,
+        "arrivalRate": 120,
+        "schedulerMisses": 10,
+        "capacityMisses": 0,
+        "peakInFlight": 3,
+        "latencyMs": {
+          "average": 2.255231754874652,
+          "p50": 2.095,
+          "p95": 3.695,
+          "p99": 4.255,
+          "max": 10.887
+        },
+        "scheduledLatencyMs": {
+          "average": 15.299815041782729,
+          "p50": 14.623,
+          "p95": 22.671,
+          "p99": 25.967,
+          "max": 28.767
+        }
+      }
+    ],
+    "passed": true,
+    "restored": true
+  },
+  "grafanaBrowser": {
+    "queryResponses": 51,
+    "errors": [],
+    "title": "ZenithGateway / Operations - ZenithGateway - Dashboards - Grafana",
+    "passed": true
+  },
+  "addedDependenciesOSV": {
+    "checkedAt": "2026-09-23T08:56:51.884795+00:00",
+    "queries": [
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.micrometer:micrometer-registry-prometheus"
+        },
+        "version": "1.17.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.prometheus:prometheus-metrics-config"
+        },
+        "version": "1.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.prometheus:prometheus-metrics-core"
+        },
+        "version": "1.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.prometheus:prometheus-metrics-exposition-formats"
+        },
+        "version": "1.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.prometheus:prometheus-metrics-exposition-textformats"
+        },
+        "version": "1.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.prometheus:prometheus-metrics-model"
+        },
+        "version": "1.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Maven",
+          "name": "io.prometheus:prometheus-metrics-tracer-common"
+        },
+        "version": "1.7.0"
+      }
+    ],
+    "response": {
+      "results": [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    "advisoryMatches": 0
+  },
+  "baselineArchiveSha256": "5e73db69874391d2ed8261746b378b842e6ef5a07defead43180960740ed377a",
+  "baselineJarSha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365",
+  "candidateJarSha256": "dbac304a31567dec0ef788edc5205180741ed532ca62f043f0eee6189c94f169",
+  "artifactSha256": {
+    ".dev/third-round/profile/zenith.jfr": "26aecd64f4473b3bad3c27087c0e5737433e9f7c252c6f23eff9bf6dba890da0",
+    ".dev/third-round/g1-profile/zenith.jfr": "bde308918bd3694bded96399e5ef1e7fc2c3685b887ef40c3745d28ad1132ab7",
+    ".dev/third-round/linux/backend.log": "21784023412056a321f764f278b92893bec6c96e89f4d53f0cde7f5fc6aca442",
+    ".dev/third-round/linux/frontend-test.log": "6d29162358f00041fc67aabcd279dc59a26cec65ab1a23b605409571f92a4c30",
+    ".dev/third-round/linux/frontend-build.log": "11a55024de19544d9fec7a152b349986a7b567a851a1d1dbfbf389b287c6749a"
+  },
+  "containerGcVerified": "G1"
+}

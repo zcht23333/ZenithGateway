@@ -1,0 +1,594 @@
+{
+  "startedAt": "2026-09-26T04:10:45.406Z",
+  "isolated": true,
+  "redis": "7.4-alpine",
+  "checks": [
+    "Legacy six-field JSON migrates on startup; GET and adopted expose one version and no-store",
+    "Missing versions and invalid fields are definitively rejected without storage changes",
+    "A window=30 succeeds; stale B rate=40 conflicts and cannot restore window=10",
+    "Twelve independent same-version HTTP writers released by one gate produce exactly one commit",
+    "Concurrent API reads match complete snapshots in the real storage commit ledger",
+    "Redis ACL rejection proves not-written and leaves both stored and local snapshots unchanged",
+    "Redis before-execution reply fault is conservative; explicit storage read converges",
+    "Redis after-execution reply fault is conservative; explicit storage read converges",
+    "A current storage read after a lost acknowledgement can see a later writer, without attributing the original request",
+    "Concurrent missing-key initialization and legacy migration have one winner without overwriting values",
+    "Invalid legacy/schema/types/ranges and exhausted revisions are rejected unchanged",
+    "Online key loss never silently initializes and a new generation cannot replace a running local snapshot",
+    "A restarted gateway restores exactly the stored version and all six values",
+    "Browser stale form preserves its draft and requires explicit conflict review before the second PUT",
+    "HTTP success response loss preserves uncertainty through failed reads and reconciles without another PUT",
+    "Browser confirmation sees another real writer and requires fresh review while preserving the intended edit",
+    "Authentication expiry and rejected navigation retain the draft; reconnection reads and requires review",
+    "Overview and route navigation retain authentication; proxy traffic performs no runtime-config Redis reads",
+    "Warm management-operation costs are recorded separately from the proxy hot path",
+    "Malformed persisted configuration refuses restart without overwriting storage or becoming ready"
+  ],
+  "evidence": {
+    "migration": {
+      "legacy": {
+        "rateLimitEnabled": true,
+        "replenishRate": 20,
+        "burstCapacity": 20,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1
+      },
+      "response": {
+        "rateLimitEnabled": true,
+        "replenishRate": 20,
+        "burstCapacity": 20,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1"
+        }
+      },
+      "stored": {
+        "rateLimitEnabled": true,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1",
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "burstCapacity": 20,
+        "schemaVersion": 1,
+        "replenishRate": 20
+      }
+    },
+    "sequential": {
+      "aRead": {
+        "rateLimitEnabled": true,
+        "replenishRate": 20,
+        "burstCapacity": 20,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1"
+        }
+      },
+      "bRead": {
+        "rateLimitEnabled": true,
+        "replenishRate": 20,
+        "burstCapacity": 20,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1"
+        }
+      },
+      "accepted": {
+        "status": 200,
+        "body": {
+          "rateLimitEnabled": true,
+          "replenishRate": 20,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 1,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:2",
+          "source": "redis",
+          "confirmation": "committed",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 20,
+            "burstCapacity": 20,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 1,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:2"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "conflict": {
+        "status": 409,
+        "body": {
+          "expectedVersion": "48e52c6d-7acb-4c9e-911b-f0dad29af097:1",
+          "current": {
+            "rateLimitEnabled": true,
+            "replenishRate": 20,
+            "burstCapacity": 20,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 1,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:2"
+          },
+          "adoptionIssue": null,
+          "code": "CONFIG_VERSION_CONFLICT",
+          "outcome": "not-written",
+          "message": "配置已被其他提交更新，请核对最新值与草稿后再次提交",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 20,
+            "burstCapacity": 20,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 1,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:2"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "stored": {
+        "rateLimitEnabled": true,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:2",
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 30,
+        "emitIntervalSeconds": 1,
+        "burstCapacity": 20,
+        "schemaVersion": 1,
+        "replenishRate": 20
+      }
+    },
+    "concurrent": {
+      "expectedVersion": "48e52c6d-7acb-4c9e-911b-f0dad29af097:2",
+      "statuses": [
+        200,
+        409,
+        409,
+        409,
+        409,
+        409,
+        409,
+        409,
+        409,
+        409,
+        409,
+        409
+      ],
+      "accepted": {
+        "rateLimitEnabled": true,
+        "replenishRate": 100,
+        "burstCapacity": 20,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 30,
+        "emitIntervalSeconds": 1,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:3",
+        "source": "redis",
+        "confirmation": "committed",
+        "adopted": {
+          "rateLimitEnabled": true,
+          "replenishRate": 100,
+          "burstCapacity": 20,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 1,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:3"
+        }
+      }
+    },
+    "wholeReads": {
+      "commits": 24,
+      "reads": 48,
+      "distinctReadVersions": 16
+    },
+    "knownRejection": {
+      "status": 503,
+      "body": {
+        "code": "CONFIG_STORAGE_REJECTED",
+        "outcome": "not-written",
+        "message": "Redis 明确拒绝写入；本次配置未写入",
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 63,
+          "burstCapacity": 103,
+          "requestedTokens": 3,
+          "monitorWindowSeconds": 33,
+          "emitIntervalSeconds": 4,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+        }
+      },
+      "cacheControl": "no-store"
+    },
+    "beforeExecutionFault": {
+      "fault": {
+        "phase": "before",
+        "forwarded": false,
+        "expectedVersion": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+      },
+      "response": {
+        "status": 503,
+        "body": {
+          "code": "CONFIG_WRITE_UNCONFIRMED",
+          "outcome": "unknown",
+          "message": "未收到可靠的 Redis 写入确认；请读取存储核对，不能判定未写入",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 63,
+            "burstCapacity": 103,
+            "requestedTokens": 3,
+            "monitorWindowSeconds": 33,
+            "emitIntervalSeconds": 4,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "persisted": {
+        "rateLimitEnabled": false,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27",
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "burstCapacity": 103,
+        "schemaVersion": 1,
+        "replenishRate": 63
+      },
+      "local": {
+        "rateLimitEnabled": false,
+        "replenishRate": 63,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27",
+        "source": "local"
+      },
+      "unavailable": {
+        "status": 503,
+        "body": {
+          "code": "CONFIG_READ_UNAVAILABLE",
+          "outcome": "not-applicable",
+          "message": "无法从 Redis 确认当前配置；本地采用值不能代替存储确认",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 63,
+            "burstCapacity": 103,
+            "requestedTokens": 3,
+            "monitorWindowSeconds": 33,
+            "emitIntervalSeconds": 4,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "read": {
+        "rateLimitEnabled": false,
+        "replenishRate": 63,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 63,
+          "burstCapacity": 103,
+          "requestedTokens": 3,
+          "monitorWindowSeconds": 33,
+          "emitIntervalSeconds": 4,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+        }
+      }
+    },
+    "afterExecutionFault": {
+      "fault": {
+        "phase": "after",
+        "forwarded": true,
+        "redisReply": "{\"status\":\"ok\",\"snapshot\":{\"rateLimitEnabled\":false,\"version\":\"48e52c6d-7acb-4c9e-911b-f0dad29af097:28\",\"requestedTokens\":3,\"monitorWindowSeconds\":33,\"emitIntervalSeconds\":4,\"burstCapacity\":103,\"schemaVersion\":1,\"replenishRate\":79}}",
+        "expectedVersion": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+      },
+      "response": {
+        "status": 503,
+        "body": {
+          "code": "CONFIG_WRITE_UNCONFIRMED",
+          "outcome": "unknown",
+          "message": "未收到可靠的 Redis 写入确认；请读取存储核对，不能判定未写入",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 63,
+            "burstCapacity": 103,
+            "requestedTokens": 3,
+            "monitorWindowSeconds": 33,
+            "emitIntervalSeconds": 4,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "persisted": {
+        "rateLimitEnabled": false,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:28",
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "burstCapacity": 103,
+        "schemaVersion": 1,
+        "replenishRate": 79
+      },
+      "local": {
+        "rateLimitEnabled": false,
+        "replenishRate": 63,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27",
+        "source": "local"
+      },
+      "unavailable": {
+        "status": 503,
+        "body": {
+          "code": "CONFIG_READ_UNAVAILABLE",
+          "outcome": "not-applicable",
+          "message": "无法从 Redis 确认当前配置；本地采用值不能代替存储确认",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 63,
+            "burstCapacity": 103,
+            "requestedTokens": 3,
+            "monitorWindowSeconds": 33,
+            "emitIntervalSeconds": 4,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:27"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "read": {
+        "rateLimitEnabled": false,
+        "replenishRate": 79,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:28",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 79,
+          "burstCapacity": 103,
+          "requestedTokens": 3,
+          "monitorWindowSeconds": 33,
+          "emitIntervalSeconds": 4,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:28"
+        }
+      }
+    },
+    "interleavedConfirmation": {
+      "uncertain": {
+        "status": 503,
+        "body": {
+          "code": "CONFIG_WRITE_UNCONFIRMED",
+          "outcome": "unknown",
+          "message": "未收到可靠的 Redis 写入确认；请读取存储核对，不能判定未写入",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 79,
+            "burstCapacity": 103,
+            "requestedTokens": 3,
+            "monitorWindowSeconds": 33,
+            "emitIntervalSeconds": 4,
+            "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:28"
+          }
+        },
+        "cacheControl": "no-store"
+      },
+      "originalCommit": {
+        "rateLimitEnabled": false,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:29",
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "burstCapacity": 103,
+        "schemaVersion": 1,
+        "replenishRate": 80
+      },
+      "later": {
+        "rateLimitEnabled": false,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30",
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "burstCapacity": 103,
+        "schemaVersion": 1,
+        "replenishRate": 81
+      },
+      "read": {
+        "rateLimitEnabled": false,
+        "replenishRate": 81,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 81,
+          "burstCapacity": 103,
+          "requestedTokens": 3,
+          "monitorWindowSeconds": 33,
+          "emitIntervalSeconds": 4,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30"
+        }
+      }
+    },
+    "concurrentInitialization": {
+      "clients": 12,
+      "confirmed": {
+        "rateLimitEnabled": true,
+        "version": "9dcf04f8-3ffc-4a7a-ad45-d2398b81a1f2:1",
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "burstCapacity": 20,
+        "schemaVersion": 1,
+        "replenishRate": 100
+      }
+    },
+    "concurrentMigration": {
+      "clients": 12,
+      "confirmed": {
+        "rateLimitEnabled": true,
+        "version": "0e3a82af-e26c-4556-a27d-4e329d280397:1",
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "burstCapacity": 20,
+        "emitIntervalSeconds": 1,
+        "schemaVersion": 1,
+        "replenishRate": 37
+      }
+    },
+    "restart": {
+      "before": {
+        "rateLimitEnabled": false,
+        "replenishRate": 81,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 81,
+          "burstCapacity": 103,
+          "requestedTokens": 3,
+          "monitorWindowSeconds": 33,
+          "emitIntervalSeconds": 4,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30"
+        }
+      },
+      "after": {
+        "rateLimitEnabled": false,
+        "replenishRate": 81,
+        "burstCapacity": 103,
+        "requestedTokens": 3,
+        "monitorWindowSeconds": 33,
+        "emitIntervalSeconds": 4,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30",
+        "source": "redis",
+        "confirmation": "read",
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 81,
+          "burstCapacity": 103,
+          "requestedTokens": 3,
+          "monitorWindowSeconds": 33,
+          "emitIntervalSeconds": 4,
+          "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:30"
+        }
+      }
+    },
+    "httpReplyLoss": {
+      "stored": {
+        "rateLimitEnabled": true,
+        "version": "48e52c6d-7acb-4c9e-911b-f0dad29af097:34",
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 30,
+        "emitIntervalSeconds": 1,
+        "burstCapacity": 20,
+        "schemaVersion": 1,
+        "replenishRate": 44
+      },
+      "uiMessage": "已读取确认：存储当前值与草稿一致。此读取不能证明原提交是否执行。",
+      "additionalPuts": 0
+    },
+    "proxyHotPath": {
+      "actualProxiedRequests": 5,
+      "runtimeConfigurationQueries": 0,
+      "redisCommands": [
+        "EVALSHA",
+        "EVALSHA",
+        "EVALSHA",
+        "EVALSHA",
+        "EVALSHA"
+      ]
+    },
+    "managementTiming": {
+      "read": {
+        "samples": 20,
+        "medianMs": 4.09490000000369,
+        "p95Ms": 5.410799999997835,
+        "maxMs": 6.350500000000466
+      },
+      "write": {
+        "samples": 20,
+        "medianMs": 4.7149999999965075,
+        "p95Ms": 6.148500000002969,
+        "maxMs": 6.458899999997811
+      }
+    },
+    "invalidStartup": {
+      "exitCode": 1,
+      "readinessStatuses": [
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503,
+        503
+      ]
+    }
+  },
+  "pageErrors": [],
+  "cleanup": {
+    "originalValuesRestored": true,
+    "backendExitCode": 0,
+    "redisRemoved": true
+  },
+  "passed": true,
+  "completedAt": "2026-09-26T04:11:56.312Z"
+}

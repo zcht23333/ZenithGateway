@@ -1,0 +1,6 @@
+# Optional bounded-queue profile; see docs/backend-capacity-study.md.
+# Default profile remains at 8 workers + 64 queued decisions.
+# This profile allows 8 workers + 128 queued decisions; deadlines and fail-open policy are unchanged.
+zenith:
+  limiter:
+    queue-capacity: 128

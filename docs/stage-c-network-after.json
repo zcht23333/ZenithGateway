@@ -1,0 +1,254 @@
+{
+  "phase": "after",
+  "buildRoot": "D:\\Java\\ZenithGateway\\frontend\\dist",
+  "compression": "gzip",
+  "cache": "disabled; fresh browser context for each direct entry",
+  "api": "isolated fixture; actual authentication gate and Bearer exchange; no production API",
+  "entries": [
+    {
+      "name": "login",
+      "directPath": "/",
+      "loginAssets": [
+        {
+          "path": "/assets/index-ClUBq9CJ.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 51207,
+          "wireBytes": 51413
+        },
+        {
+          "path": "/assets/index-DbmKC8R1.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 3262,
+          "wireBytes": 3460
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/index-ClUBq9CJ.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 51207,
+          "wireBytes": 51413
+        },
+        {
+          "path": "/assets/index-DbmKC8R1.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 3262,
+          "wireBytes": 3460
+        }
+      ],
+      "compressedAssetBytes": 54469,
+      "wireAssetBytes": 54873,
+      "additionalAfterAuthentication": []
+    },
+    {
+      "name": "settings",
+      "directPath": "/settings",
+      "loginAssets": [
+        {
+          "path": "/assets/index-ClUBq9CJ.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 51207,
+          "wireBytes": 51413
+        },
+        {
+          "path": "/assets/index-DbmKC8R1.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 3262,
+          "wireBytes": 3460
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/index-ClUBq9CJ.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 51207,
+          "wireBytes": 51413
+        },
+        {
+          "path": "/assets/index-DbmKC8R1.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 3262,
+          "wireBytes": 3460
+        },
+        {
+          "path": "/assets/Settings-B71dgdS9.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 5262,
+          "wireBytes": 5467
+        },
+        {
+          "path": "/assets/Settings-BpOd-FiU.css",
+          "type": "Stylesheet",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 3006,
+          "wireBytes": 3204
+        }
+      ],
+      "compressedAssetBytes": 62737,
+      "wireAssetBytes": 63544,
+      "additionalAfterAuthentication": [
+        {
+          "path": "/assets/Settings-B71dgdS9.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 5262,
+          "wireBytes": 5467
+        },
+        {
+          "path": "/assets/Settings-BpOd-FiU.css",
+          "type": "Stylesheet",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 3006,
+          "wireBytes": 3204
+        }
+      ]
+    },
+    {
+      "name": "overview",
+      "directPath": "/",
+      "loginAssets": [
+        {
+          "path": "/assets/index-ClUBq9CJ.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 51207,
+          "wireBytes": 51413
+        },
+        {
+          "path": "/assets/index-DbmKC8R1.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 3262,
+          "wireBytes": 3460
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/index-ClUBq9CJ.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 51207,
+          "wireBytes": 51413
+        },
+        {
+          "path": "/assets/index-DbmKC8R1.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 3262,
+          "wireBytes": 3460
+        },
+        {
+          "path": "/assets/Dashboard-DhN0_0TD.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 9514,
+          "wireBytes": 9719
+        },
+        {
+          "path": "/assets/DispatchCopy-s5di3g1S.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 622,
+          "wireBytes": 826
+        },
+        {
+          "path": "/assets/DispatchCopy-BxpZ-of6.css",
+          "type": "Stylesheet",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 356,
+          "wireBytes": 553
+        },
+        {
+          "path": "/assets/Dashboard-BEaFi63J.css",
+          "type": "Stylesheet",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 4674,
+          "wireBytes": 4872
+        },
+        {
+          "path": "/assets/chart-C3x7u5aX.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 171652,
+          "wireBytes": 171859
+        }
+      ],
+      "compressedAssetBytes": 241287,
+      "wireAssetBytes": 242702,
+      "additionalAfterAuthentication": [
+        {
+          "path": "/assets/Dashboard-DhN0_0TD.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 9514,
+          "wireBytes": 9719
+        },
+        {
+          "path": "/assets/DispatchCopy-s5di3g1S.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 622,
+          "wireBytes": 826
+        },
+        {
+          "path": "/assets/DispatchCopy-BxpZ-of6.css",
+          "type": "Stylesheet",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 356,
+          "wireBytes": 553
+        },
+        {
+          "path": "/assets/Dashboard-BEaFi63J.css",
+          "type": "Stylesheet",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 4674,
+          "wireBytes": 4872
+        },
+        {
+          "path": "/assets/chart-C3x7u5aX.js",
+          "type": "Script",
+          "initiator": "script",
+          "status": 200,
+          "encodedBodyBytes": 171652,
+          "wireBytes": 171859
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

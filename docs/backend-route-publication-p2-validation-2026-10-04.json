@@ -1,0 +1,166 @@
+{
+  "generatedAt": "2026-10-04T06:39:35.298628+00:00",
+  "status": "fix-verified-awaiting-independent-acceptance",
+  "scope": "Freeze route editor controls while saving; preserve existing conflict, authentication and lifecycle semantics.",
+  "sourceIdentity": {
+    "frontend/src/components/RouteEditor.vue": "62ecba00f628114246582b9964ce3e40f8823da7166fca84547c519bb06dc5ec",
+    "frontend/tests/route-publication.test.mjs": "e0b6cf4a1c48c6841e0d3846287de37af98f316189f2fef426574ae3503dc892",
+    "verification/route-publication-browser.mjs": "2b87732f9b00c49afc37832b37dcd3b96d9459386fb46648d16539f29801702f",
+    "verification/route-publication-save-lock-browser.mjs": "bfc0285e4d12e32460684139748dfd635e05146ae22494d86f66b5ebf85ecd10"
+  },
+  "backendJarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670",
+  "backendJarUnchanged": true,
+  "frontendDist": {
+    "frontend/dist/index.html": "beddfd13a8504dbf1729fe5e72534618e9b8a359b2e97a073de0b809c24052f0",
+    "frontend/dist/assets/chart-phWgx0CX.js": "96b10d381cf8406a4cae5f6078c1ff4c865d21a973a7e876808b9e9dc45eaa79",
+    "frontend/dist/assets/Dashboard-BEaFi63J.css": "e19c6ab0a7f63999eec340387069046f33178115d675255dc57bc06b16db5fa9",
+    "frontend/dist/assets/Dashboard-C1PkfPn1.js": "3bd4ce4cef14f6281a9826d5ce2feeee4ffc1dd941342d646482c8a1a7df6972",
+    "frontend/dist/assets/DispatchCopy-BxpZ-of6.css": "e9667a3986484c23f67bad8d318ec68442a1d87b16b5b14208269879045a472e",
+    "frontend/dist/assets/DispatchCopy-NhXIkMqF.js": "e7528541003700ba851bd88b65db084b7549d7ba32a1917035bd77a130fb979e",
+    "frontend/dist/assets/index-BQqceC3a.js": "b4dd1faff3a73b6a9c054e72e42791baab74a37a88c1b048f5ab0828e1e01f51",
+    "frontend/dist/assets/index-DbmKC8R1.css": "f128a817a0bb2fadc377ecdd50087b75afad8fca91d889ae8c9d9696328d031e",
+    "frontend/dist/assets/RouteDispatch-Cb4jHsDR.js": "da7e546f0043d08c7338f66ef104ebed6b2381c01cdf74d0f545192b2402e901",
+    "frontend/dist/assets/RouteDispatch-ClaEf5sq.css": "84411b254204a94a1993c0c9bb5d6b87889f5b2ad4b05a9434dc15a9b1f865d2",
+    "frontend/dist/assets/Settings-8Mj5QvVf.css": "046d48344d83d55b6ac852dbdc70cff8fb614025e669484b8aafa9d84317afc2",
+    "frontend/dist/assets/Settings-CCcwxhuJ.js": "f009c8a264f47607d38bc06bbf914f2a44d1d317d64b9748d6a25b9f22c8a538"
+  },
+  "frontendTests": {
+    "passed": 106,
+    "failed": 0,
+    "log": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\frontend-test.log"
+  },
+  "frontendBuild": {
+    "passed": true,
+    "log": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\frontend-build.log",
+    "knownWarning": "Existing ECharts chunk 502.99 kB"
+  },
+  "browserRuns": {
+    "save-lock-browser-v2": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\save-lock-browser-v2\\report.json",
+      "sha256": "0f176adc8522a8516f417dc519cf7a538f71dc866b0fb9d109a3a6420ec03d33",
+      "passed": true,
+      "checks": 3,
+      "cleanup": {
+        "browserClosed": true,
+        "previewClosed": true,
+        "A-1ExitCode": 0,
+        "AProxyClosed": true,
+        "BProxyClosed": true,
+        "upstreamsClosed": true,
+        "redisRemoved": true
+      },
+      "startedAt": "2026-10-04T06:32:34.144Z",
+      "completedAt": "2026-10-04T06:32:51.556Z"
+    },
+    "routes-browser": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\routes-browser\\report.json",
+      "sha256": "228de2e7a73cd69cb8d0f1bd84c7599f7c96060ce57319fc0017edfd539347b7",
+      "passed": true,
+      "checks": 10,
+      "cleanup": {
+        "browserClosed": true,
+        "previewClosed": true,
+        "A-1ExitCode": 0,
+        "B-2ExitCode": 0,
+        "B-3ExitCode": 0,
+        "AProxyClosed": true,
+        "BProxyClosed": true,
+        "upstreamsClosed": true,
+        "redisRemoved": true
+      },
+      "startedAt": "2026-10-04T06:33:42.116Z",
+      "completedAt": "2026-10-04T06:34:21.817Z"
+    },
+    "original-repro": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\original-repro\\report.json",
+      "sha256": "6ea34e18204eb45c80a84987f0d195999a1af94939fc0c6783de42b6183e113b",
+      "passed": true,
+      "checks": 1,
+      "cleanup": {
+        "browserClosed": true,
+        "previewClosed": true,
+        "A-1ExitCode": 0,
+        "AProxyClosed": true,
+        "BProxyClosed": true,
+        "upstreamsClosed": true,
+        "redisRemoved": true
+      },
+      "startedAt": "2026-10-04T06:35:07.736Z",
+      "completedAt": "2026-10-04T06:35:22.631Z"
+    }
+  },
+  "screenshots": [
+    "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\save-lock-browser-v2\\create-saving-locked-390.png",
+    "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\save-lock-browser-v2\\edit-saved-unlocked-1440.png",
+    "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\save-lock-browser-v2\\edit-saving-locked-1440.png",
+    "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\save-lock-browser-v2\\rejected-draft-unlocked-1440.png"
+  ],
+  "cleanup": {
+    "path": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\cleanup-check.json",
+    "result": {
+      "checkedAt": "2026-10-04T14:37:11.3272328+08:00",
+      "ownedContainers": [
+        "zenith-route-e4f02939",
+        "zenith-route-e9d27378",
+        "zenith-route-420da704",
+        "zenith-route-32f74d0b"
+      ],
+      "ports": [
+        50342,
+        50472,
+        50473,
+        50482,
+        53903,
+        53904,
+        53907,
+        53910,
+        53911,
+        53913,
+        61106,
+        61107,
+        61109,
+        61757,
+        61758,
+        62557,
+        62558,
+        62560,
+        62563,
+        63122,
+        64105,
+        64106,
+        64111,
+        64112,
+        64113,
+        64115
+      ],
+      "remainingContainers": [],
+      "remainingListeners": [],
+      "remainingGatewayProcesses": [],
+      "passed": true
+    }
+  },
+  "preservation": {
+    "existingDocsCount": 153,
+    "changedExistingDocs": [],
+    "baselineManifest": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\baseline.json",
+    "developmentInstancesUpgraded": false
+  },
+  "failedIterationsRetained": [
+    {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\route-publication-save-lock-0350cb674142\\save-lock-browser\\report.json",
+      "reason": "Test helper waited for a disabled label to become enabled; replaced action with real mouse click. Product implementation unchanged after first build."
+    }
+  ],
+  "notExecutedThisRound": [
+    "Backend 216 tests",
+    "Route live 19 groups",
+    "Proxy 24 groups / 102 requests",
+    "Rate limiter 22 groups",
+    "Previous compatibility 124 checks",
+    "Development deployment"
+  ],
+  "documentation": {
+    "path": "D:\\Java\\ZenithGateway\\docs\\backend-route-publication-p2-fix-2026-10-04.md",
+    "sha256": "756dff960773dd71079c8084602c76a0e6541f8c756a7debf8a6857328416d7b"
+  }
+}

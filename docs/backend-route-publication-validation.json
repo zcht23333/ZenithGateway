@@ -1,0 +1,472 @@
+{
+  "generatedAt": "2026-10-04T05:37:47.866009+00:00",
+  "status": "ready-for-independent-acceptance",
+  "artifactIdentity": {
+    "backend": {
+      "path": "D:/Java/ZenithGateway/backend/target/zg-1.0.0.jar",
+      "sha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+    },
+    "baselineBackend": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/before.jar",
+      "sha256": "f803d536bc1df1d09be9ac19fde493ebb50d954cd9cd1f5affe5ff415850a636"
+    },
+    "sourceManifest": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/source-manifest.json",
+      "sha256": "4d7fd36c3d4ee316d16a965f1ebc568e33b9f7f1b700ae5a4971a7b847ffc84b"
+    },
+    "sourceArchive": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/source-after.zip",
+      "sha256": "89cb5256ee3e73affbff872f9e7f55b3d12a020d4a32f2433b5e131dc4edc4a4"
+    },
+    "frontendDistManifest": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/frontend-dist-manifest.json",
+      "sha256": "3593fbda07f7dd2e2b13732a9844273cb5b6cae9f92ffdd3c36c7db996b0250e"
+    },
+    "routeLua": {
+      "path": "D:/Java/ZenithGateway/backend/src/main/resources/route-publication.lua",
+      "sha256": "e142eed84f322111036d8bd205efa474e74f9a260dca1581fded0ad53b0cbd8f"
+    }
+  },
+  "baseline": {
+    "report": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/baseline-shared/report.json",
+      "sha256": "1b34c8166058dfef1c43eb22b70d406a2e4e4a382a96efb12d01693b9172600b"
+    },
+    "sourceBefore": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/before-source.zip",
+      "sha256": "565d78d7b20feaaf79c0e4553a7c7ac6d68525a8c2abb7f6197d589bb8496107"
+    },
+    "manifestBefore": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/before-manifest.json",
+      "sha256": "75460e8d97ada88592192aa802121aeba4ea22e900b70eff6785797b988c651e"
+    },
+    "observed": "A published V2 while B kept V1; stale B then overwrote the shared Hash. Real processes, not source inference. Earlier non-shared-key attempt retained separately."
+  },
+  "decisions": {
+    "version": "Independent UUID epoch + revision; schemaVersion 1",
+    "atomicStorage": "Lua compares version and raw baseline then one SET; boot uses one MSET with persistent guard",
+    "actualAdoption": "One AtomicReference holds the snapshot and real compiled Route list; primary RouteLocator replaces Gateway default cache",
+    "periodMs": 1000,
+    "redisBudgetMs": 750,
+    "staleAfterMs": 5000,
+    "maxPhysicalConnections": 2,
+    "maxApplicationCommands": 2,
+    "managementWorkers": 1,
+    "managementQueue": 16,
+    "syncWorkers": 1,
+    "syncQueuedChecks": 0,
+    "maxRoutes": 256,
+    "maxSnapshotBytes": 262144,
+    "operationReceiptsOrAutomaticRetry": false
+  },
+  "results": {
+    "healthyPropagationMs": 944.5324999999993,
+    "recoveryMs": 70.15459999999803,
+    "timingMeaning": "One sample per scenario, not a worst-case SLA. Recovery is sensitive to poll phase. Both asserted <3000 ms using real forwarding plus local endpoints.",
+    "requestsIncludingWarmupAndPolling": 410,
+    "hotPath": {
+      "proxyRequests": 12,
+      "localDiagnosticReads": 24,
+      "additionalRouteConfigQueries": 0,
+      "backgroundReads": 0,
+      "events": []
+    },
+    "peakRouteConnections": 2,
+    "queuePeak": 16,
+    "oldReplyDeliveredAt": "2026-10-04T05:26:41.243Z",
+    "oldBuildReordering": "Unit test with controlled barrier; old Redis read delivered after new adoption in real processes",
+    "oldBinaryFormatRollback": {
+      "instance": "M-legacy-7",
+      "path": "/probe/proof",
+      "status": 200,
+      "body": "V1:/probe/proof",
+      "version": "upstream-must-not-control-this",
+      "responseInstance": "upstream-must-not-control-this",
+      "elapsedMs": 81.63829999999143,
+      "at": "2026-10-04T05:28:11.578Z"
+    },
+    "pendingAdoption": "Real B lacks RewritePath factory; new stored rewrite remains unapplied and old plain Route forwards",
+    "responseVersionEvidence": "Upstream deliberately emits wrong same-named headers; gateway stamps only the matched version and instance before response commit"
+  },
+  "validation": {
+    "backend": {
+      "tests": 216,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "buildPassed": true,
+      "log": {
+        "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/backend-release.log",
+        "sha256": "49a2a7ed7e562dac0f5a0e84d1f6174fbcc2117235fb3c8156656b73ed7269c5"
+      },
+      "isolation": {
+        "name": "zenith-route-unit-a4c6485775",
+        "startedAt": "2026-10-04T05:25:12.4329106Z",
+        "exitCode": 0,
+        "redisPort": "53276",
+        "redisRemoved": true,
+        "completedAt": "2026-10-04T05:25:58.1676658Z"
+      }
+    },
+    "frontend": {
+      "tests": 102,
+      "failures": 0,
+      "buildPassed": true,
+      "testLog": {
+        "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/frontend-release-tests.log",
+        "sha256": "bffc8b6eee328ff7dc1d30f51084d8dac34f9646832d93686428b6433db25d83"
+      },
+      "buildLog": {
+        "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/frontend-release-build.log",
+        "sha256": "c70789da956b17da9d253e7c4d27436b41a6a453fa45bcf707b3738f6ff5258d"
+      },
+      "existingChartChunkSizeWarning": true
+    },
+    "routes": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-live/report.json",
+      "sha256": "8eb823479f02810f139616228b7b44eec96b7bc52268956fb7dd76f3bf6d3dfc",
+      "passed": true,
+      "checks": 19,
+      "cleanup": {
+        "A-1ExitCode": 0,
+        "B-2ExitCode": 0,
+        "B-missing-3ExitCode": 1,
+        "B-recovered-4ExitCode": 0,
+        "B-no-rewrite-5ExitCode": 0,
+        "M-migrated-6ExitCode": 0,
+        "M-legacy-7ExitCode": 0,
+        "AProxyClosed": true,
+        "BProxyClosed": true,
+        "upstreamsClosed": true,
+        "redisRemoved": true
+      },
+      "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+    },
+    "browser": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-browser/report.json",
+      "sha256": "e8baef3f85e2bec2dfc8118461ff05dc6fdac6582681050d1275f9351657144a",
+      "passed": true,
+      "checks": 10,
+      "cleanup": {
+        "browserClosed": true,
+        "previewClosed": true,
+        "A-1ExitCode": 0,
+        "B-2ExitCode": 0,
+        "B-3ExitCode": 0,
+        "AProxyClosed": true,
+        "BProxyClosed": true,
+        "upstreamsClosed": true,
+        "redisRemoved": true
+      },
+      "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+    },
+    "proxy": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-proxy/report.json",
+      "sha256": "be35c88f7a1d33d4030d62309811ff41767f406036a38e7cb614e1648de96dc2",
+      "passed": true,
+      "checks": 24,
+      "cleanup": {
+        "gatewayExitCode": 0,
+        "upstreamClosed": true,
+        "httpsUpstreamClosed": true,
+        "redisRemoved": true,
+        "privateTlsKeyRemoved": true
+      },
+      "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670",
+      "requests": 102
+    },
+    "limiter": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-limiter/report.json",
+      "sha256": "ef3f37dc6749e73b4437e08dca91a922d5aa85061e0f3448d5edfd34606a62eb",
+      "passed": true,
+      "checks": 22,
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670",
+      "requestsIncludingWarmup": 181
+    },
+    "compatibility": [
+      {
+        "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/regression-b7b1db23/report.json",
+        "sha256": "7b3ab441c320eafd53c7d3a9c3a2a907dc2f6ada9444182721efac2caf23e6e9",
+        "passed": true,
+        "checks": 3,
+        "cleanup": {},
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-741843f8/report.json",
+        "sha256": "51b28bea2e1e4889543c477a69db4ea18018d0e02bd713998fabfc4a6c11e9fd",
+        "passed": true,
+        "checks": 7,
+        "cleanup": {},
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-741843f8/sync/report.json",
+        "sha256": "96aa98f7e81f3ddaa1c90ddda7ffe8c96f47d88890ff68ad7b591fd3c36d6ac9",
+        "passed": true,
+        "checks": 10,
+        "cleanup": {
+          "BExitCode": 0,
+          "B-restartedExitCode": 0,
+          "AExitCode": 0,
+          "proxyClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-741843f8/operations/report.json",
+        "sha256": "e1f6f59e6be7a2b77b89b95d64415c3123423271782e8b38c1c5807d17c62b1f",
+        "passed": true,
+        "checks": 12,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "A-restartedExitCode": 0,
+          "proxyClosed": true,
+          "redisRemoved": true
+        },
+        "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-741843f8/rollback-live/report.json",
+        "sha256": "887f71290ff458209eeae567d0c0890c2e18683b675badb5312f25b1175efe69",
+        "passed": true,
+        "checks": 12,
+        "cleanup": {
+          "BExitCode": 0,
+          "browserClosed": true,
+          "previewClosed": true,
+          "AExitCode": 0,
+          "B-restartedExitCode": 0,
+          "proxyClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "jarSha256": "6580adaa99dc42be8f4c99c442c9d56fa7302016389d0ece0c9dc87a9318e670"
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-operations/compatibility-c1b65544/report.json",
+        "sha256": "d8dc2e66d0cb126f622d6ffea57f2b8f773ef4b007d364cf132093d9c7e792f6",
+        "passed": true,
+        "checks": 3,
+        "cleanup": {},
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-operations/compatibility-c1b65544/consistency/live.json",
+        "sha256": "6cb0809702217df4006bb0c9dca9417e09d97771a4e66880a4cd1ff777040b63",
+        "passed": true,
+        "checks": 20,
+        "cleanup": {
+          "originalValuesRestored": true,
+          "backendExitCode": 0,
+          "redisRemoved": true
+        },
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-operations/compatibility-c1b65544/p2/report.json",
+        "sha256": "75ca49003dfc3be6df875ec63005216096248c7126bcebb82e02e0890de17e8b",
+        "passed": true,
+        "checks": 6,
+        "cleanup": {
+          "backendExitCode": 0,
+          "redisRemoved": true,
+          "previewClosed": true
+        },
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-operations/compatibility-c1b65544/settings-preview/browser-validation.json",
+        "sha256": "397c253a328455c8888662dabe61dfd4534a2710b5332d2e86cad5a546dbedb2",
+        "passed": true,
+        "checks": 16,
+        "cleanup": {},
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-operations-p2/browser-41b00fc6/report.json",
+        "sha256": "d69a1bea12ce502b98e2a0a5576c89fb2dfa0dcc66ec15a570fa1da436367e48",
+        "passed": true,
+        "checks": 9,
+        "cleanup": {
+          "contextsClosed": true,
+          "browserClosed": true,
+          "previewClosed": true
+        },
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-operations/migration-e851358f/report.json",
+        "sha256": "35fd454719351deeccc19def98ca32c9327db5c1e3c78454772d25c65dab043d",
+        "passed": true,
+        "checks": 5,
+        "cleanup": {
+          "redisRemoved": true
+        },
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/regression-b7b1db23/routes-preview/browser-validation.json",
+        "sha256": "743b90e5695656748003ffe8de8890232761b425b9789a3ee5ba914852ee29aa",
+        "passed": true,
+        "checks": 14,
+        "cleanup": {},
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/proxy-resilience/regression-b7b1db23/routes-live/validation.json",
+        "sha256": "b55a6bd68b279d16c5049d7f24230c3f0d62b8f4beab4b39e4066cd2e75b3735",
+        "passed": true,
+        "checks": 12,
+        "cleanup": {
+          "backendExitCode": 0,
+          "testRedisRemoved": true
+        },
+        "jarSha256": null
+      },
+      {
+        "path": "D:/Java/ZenithGateway/.dev/config-rollback/regression-741843f8/config-consistency-rollback.mjs.log",
+        "sha256": "bfe4a0212d26503a807c116f3b44e10dfafbf56bf3e5c197a71aa4b22fd47b4e",
+        "passed": true,
+        "checks": 8,
+        "format": "JSON stdout includes eight checks and Redis cleanup"
+      }
+    ],
+    "benchmarkColdStart": {
+      "warmupSeconds": 1,
+      "connections": 2,
+      "redisRemoved": true,
+      "scenario": "rate-limit-monitor",
+      "redisPort": "59083",
+      "gatewayPort": "59082",
+      "purpose": "Cold start and route publication smoke; not a performance comparison",
+      "exitCode": 0,
+      "durationSeconds": 1,
+      "report": {
+        "path": "D:/Java/ZenithGateway/benchmarks/results/2026-10-04T05-13-37-712Z/summary.json",
+        "sha256": "dd6b77e70a5e7afe95324e3bab5af3d052c46089c3ad3de2f0e1e99a9043d60e"
+      },
+      "artifactNote": "918efe0f build before final diagnostic-reference and response-header refinements; route setup compatibility smoke, not throughput comparison"
+    }
+  },
+  "screenshots": [
+    {
+      "path": "D:/Java/ZenithGateway/docs/images/route-publication/normal-1440.png",
+      "sha256": "397df340bd150bb6fe0b14f91994b0c9453f0dc31906a3a6a3f6a90a3b8d2864"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/docs/images/route-publication/normal-390.png",
+      "sha256": "ec203db26826f59604a78dd470ea83f83ceb2a22ee89ecadc1138097f1284d52"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/docs/images/route-publication/conflict-1440.png",
+      "sha256": "a67ad3e930b14900e14c8aa1f1e93ec63d93eecc3db018730649253e2eab4972"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/docs/images/route-publication/unknown-1440.png",
+      "sha256": "ace583ebe5b3dc1824690ee8f9ee789e832b3ea6f9eb65f5042ff5f43143ac43"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/docs/images/route-publication/pending-build-1440.png",
+      "sha256": "94d772875756c38416c1e615b7b4155a8e79e509c794b5694cd0abf8ba46a5b4"
+    },
+    {
+      "path": "D:/Java/ZenithGateway/docs/images/route-publication/authentication-draft.png",
+      "sha256": "0ed3125ea6d6ee51739cd46bd23c7c85189ca036676767e5120b9d243aa87788"
+    }
+  ],
+  "rawEvidence": {
+    "root": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675",
+    "redisA": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-live/A-redis-frames.json",
+      "sha256": "82c3b17c8b64d2d48fce38c290917c61cda1c1547c53d9a99e3daa77db5c07c9"
+    },
+    "redisB": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-live/B-redis-frames.json",
+      "sha256": "a73d7b372413744efae33c5b1df156f5bb128a5aabd2122eee50630445046c04"
+    },
+    "upstream": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-live/upstream.json",
+      "sha256": "bb2d994720b266cb8d3e758ed536615d04cb833909d5153e341e50843f3f644a"
+    },
+    "browserRequests": {
+      "path": "D:/Java/ZenithGateway/.dev/route-publication-1791087989675/acceptance-browser/browser-requests.json",
+      "sha256": "318fa4639d00663e7ff5497e18c8cf9b03068baa4d36a35c6edc4735156ce21e"
+    }
+  },
+  "preservation": {
+    "missingOldFiles": [],
+    "changedExistingFiles": [
+      "backend/src/main/java/com/zch/route/DynamicRouteController.java",
+      "backend/src/main/java/com/zch/route/DynamicRouteService.java",
+      "backend/src/main/java/com/zch/route/RouteErrorHandler.java",
+      "backend/src/main/java/com/zch/route/RouteValidator.java",
+      "backend/src/test/java/com/zch/route/DynamicRouteServiceTest.java",
+      "backend/src/test/java/com/zch/route/GatewayRedisIntegrationTest.java",
+      "frontend/src/App.vue",
+      "frontend/src/components/RouteEditor.vue",
+      "frontend/src/routes/useRouteConsole.ts",
+      "frontend/src/stores/traffic.ts",
+      "frontend/src/views/RouteDispatch.vue",
+      "verification/config-consistency-live.mjs",
+      "verification/config-rollback-live.mjs",
+      "verification/config-sync-live.mjs",
+      "verification/overview-live-isolated.mjs",
+      "verification/proxy-resilience-live.mjs",
+      "verification/rate-limit-harness.mjs",
+      "verification/route-dispatch-live.mjs",
+      "verification/stage-c-showcase.mjs",
+      "benchmarks/lifecycle.mjs",
+      "benchmarks/profile-load.mjs",
+      "benchmarks/run.mjs",
+      "README.md"
+    ],
+    "priorDocsAndEvidenceUnchanged": 144,
+    "developmentInstancesUpgraded": false,
+    "gitCommitCreated": false
+  },
+  "cleanup": {
+    "checkedAt": "2026-10-04T05:37:47.4467405Z",
+    "remainingOwnedRouteContainers": [],
+    "remainingOwnedRouteGatewayProcesses": [],
+    "automaticPerRunCleanup": "See each linked report cleanup map; all final processes exited 0 except deliberate missing-authority startup exit 1",
+    "manualFailedBrowserCleanup": ".dev/route-publication-1791087989675/browser-second/manual-cleanup.json",
+    "benchmarkCleanup": ".dev/route-publication-1791087989675/benchmark-smoke.json",
+    "developmentInstancesUpgraded": false,
+    "removedResources": "Only this task created containers and processes; no existing keys or development instances were changed"
+  },
+  "failedIterationsRetained": [
+    "Initial baseline did not share route key; corrected run archived separately",
+    "Gateway introspection before ApplicationRunner fixed behind readiness gate",
+    "Old HGET regression assertion changed to JSON snapshot",
+    "Exact test Origin configured for random preview port",
+    "Browser test dialog listener fixed; browser-second/manual-cleanup.json records the only manual cleanup"
+  ],
+  "notExecuted": [
+    "Redis Cluster, Sentinel, replica failover or persistence loss guarantees",
+    "TLS/ACL integration of the new Redis route connection and offline maintenance tool; upstream HTTPS proxy is covered",
+    "Full-length load comparison, JFR compose and capacity benchmark at 256 routes",
+    "Full overview/stage-C showcase recording; settings and route browser regressions were executed",
+    "Development or production deployment/migration"
+  ],
+  "limits": [
+    "No route receipt: lost replies remain unknown; equal current values cannot prove original execution",
+    "Both snapshot and guard missing after restart cannot be distinguished from first deployment without external records",
+    "Adoption is local and asynchronous; old routes continue under Redis or build failure",
+    "Already matched in-flight requests may complete with the old Route",
+    "Third-party factories, hostile regex CPU cost, Redis failover and route history are outside the promise"
+  ]
+}

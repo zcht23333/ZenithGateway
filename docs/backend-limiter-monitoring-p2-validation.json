@@ -1,0 +1,190 @@
+{
+  "status": "ready_for_independent_p2_acceptance",
+  "completedAt": "2026-10-05T05:53:13.317666+00:00",
+  "scope": "CI pinned Prometheus image preparation and Linux permissions for generated public monitoring test inputs; no business or alert/dashboard semantic changes",
+  "evidenceRoot": "D:/Java/ZenithGateway/.dev/monitoring-ci-p2-20261005-e2fd341e",
+  "fileHashes": {
+    ".github/workflows/verify.yml": "858ab7092a2f33d593ec11e8cc73ef251b5515e0b5c2a862ec3c4f7326d570de",
+    "observability/test-monitoring.mjs": "a64f26a93633da49092fae92dbc40c4b8e00ae288bf50bad3f2db3be38e36c46",
+    "verification/monitoring-ci-no-cache.mjs": "cd5ac48d7eb75198408f3db3f0272b4938b8292a2c49417688704243a03a27b8",
+    "docs/backend-limiter-monitoring-p2.md": "9ebe5d393a0d8672fed0149f61dae92f3092ef0b95dab56fa2b2f506a3bd6e0a"
+  },
+  "previousDeliveryComparison": {
+    "observability/prometheus/alerts.yml": {
+      "before": "482f4489c4dcd29b441c5da53b2cd001d43c6ee443685a06c88a9826cb0ee613",
+      "after": "482f4489c4dcd29b441c5da53b2cd001d43c6ee443685a06c88a9826cb0ee613",
+      "unchanged": true
+    },
+    "observability/prometheus/alerts.test.yml": {
+      "before": "5921aa128675963efddadbec51b179c57bfb2485604fcb89119d1e223cb93dfa",
+      "after": "5921aa128675963efddadbec51b179c57bfb2485604fcb89119d1e223cb93dfa",
+      "unchanged": true
+    },
+    "observability/prometheus/limiter-alerts.test.yml": {
+      "before": "2828bf89a9acb2df5a0985c71695dd8f3408dea89bedb5e7910dcaf997a13be9",
+      "after": "2828bf89a9acb2df5a0985c71695dd8f3408dea89bedb5e7910dcaf997a13be9",
+      "unchanged": true
+    },
+    "observability/grafana/dashboards/zenith.json": {
+      "before": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+      "after": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+      "unchanged": true
+    },
+    "observability/test-monitoring.mjs": {
+      "before": "4858ab312aed61af845861b746df80f36f6d5741e385c21e1cdf0df2488052b3",
+      "after": "a64f26a93633da49092fae92dbc40c4b8e00ae288bf50bad3f2db3be38e36c46",
+      "unchanged": false
+    },
+    "observability/demo.mjs": {
+      "before": "6ef4f9a7b88d29155e5ea7f5093709372e04d59ae70b866529dade2abd9b4b43",
+      "after": "6ef4f9a7b88d29155e5ea7f5093709372e04d59ae70b866529dade2abd9b4b43",
+      "unchanged": true
+    },
+    ".github/workflows/verify.yml": {
+      "before": "f3c4c84fe79b0148782dc153455feddc6be1198ab330a7f2f9700fe0646379e0",
+      "after": "858ab7092a2f33d593ec11e8cc73ef251b5515e0b5c2a862ec3c4f7326d570de",
+      "unchanged": false
+    },
+    "verification/limiter-monitoring-live.mjs": {
+      "before": "708c827f5c95973ea344de4363606ffa6cad85d8e872c76f7275562a3e1c47fa",
+      "after": "708c827f5c95973ea344de4363606ffa6cad85d8e872c76f7275562a3e1c47fa",
+      "unchanged": true
+    },
+    "docs/observability.md": {
+      "before": "92296fec6eff194e56bbd1cc8b143ca0c4132acfa98f1115704daba15a4c7d12",
+      "after": "92296fec6eff194e56bbd1cc8b143ca0c4132acfa98f1115704daba15a4c7d12",
+      "unchanged": true
+    },
+    "docs/backend-limiter-monitoring.md": {
+      "before": "2c6cc3f17bdc7272bd5ffb66217f88512158e01cbab712b72fb7407d5cc4911c",
+      "after": "2c6cc3f17bdc7272bd5ffb66217f88512158e01cbab712b72fb7407d5cc4911c",
+      "unchanged": true
+    }
+  },
+  "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+  "helperImage": "docker:29.8.0-dind@sha256:5efed980cba3fc126cf54e21a5a6ff8849d05b6e0623d6e7612f48e9cd6cd17e",
+  "beforePreparation": {
+    "imageCount": 0,
+    "nodeExitCode": 1,
+    "passed": false,
+    "ruleCases": 0
+  },
+  "firstAttempt": {
+    "path": "cold-01/validation.json",
+    "passed": false,
+    "finding": "Image preparation succeeded and rules passed; generated dashboard fixture unreadable by container nobody user. Fixed before second fresh run."
+  },
+  "coldCacheLinux": {
+    "passed": true,
+    "path": "cold-02/validation.json",
+    "startedAt": "2026-10-05T05:46:56.035Z",
+    "finishedAt": "2026-10-05T05:49:00.569Z",
+    "nodeVersion": "v24.18.1",
+    "daemonVersion": "29.8.0",
+    "result": {
+      "dashboardSha256": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+      "dashboardPanels": 27,
+      "dashboardQueries": 41,
+      "dashboardCases": 8,
+      "dashboardAssertions": 97,
+      "ruleCases": 27,
+      "ruleAssertions": 86,
+      "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "passed": true
+    }
+  },
+  "windowsRegression": {
+    "nodeVersion": "v24.21.0",
+    "result": {
+      "dashboardSha256": "e0a1f45fc1d4a503c76a9d1f148c9cc06a416f48a58c40b7f8d463c7a4c9cee3",
+      "dashboardPanels": 27,
+      "dashboardQueries": 41,
+      "dashboardCases": 8,
+      "dashboardAssertions": 97,
+      "ruleCases": 27,
+      "ruleAssertions": 86,
+      "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "passed": true
+    }
+  },
+  "syntaxChecks": [
+    {
+      "entry": "observability/test-monitoring.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "entry": "verification/monitoring-ci-no-cache.mjs",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "workflowContract": {
+    "digestMatchesRunner": true,
+    "prepareBeforeTests": true,
+    "testRetainsPullNever": true,
+    "verifiedBy": "verification/monitoring-ci-no-cache.mjs"
+  },
+  "uniqueAssertions": 183,
+  "cleanup": {
+    "at": "2026-10-05T05:53:13.317000+00:00",
+    "testOwnedContainersNetworksVolumesRemoved": true,
+    "bootstrapHelperRemoved": true,
+    "preexistingContainersAndStatesUnchanged": true,
+    "preexistingVolumesUnchanged": true,
+    "preexistingImageCacheUnchanged": true,
+    "preexistingNetworkNamesUnchanged": true,
+    "exactNetworkIdsUnchangedFromFirstColdRun": true,
+    "exactNetworkIdsUnchangedFromInitialInventory": false,
+    "defaultBridgeIdObservation": {
+      "initial": "3b9d2ac061cb",
+      "beforeFirstColdRun": "539079023b34",
+      "final": "539079023b34",
+      "attribution": "Not established; changed before first isolated test. No default-network mutation was issued."
+    },
+    "rawEvidence": [
+      "baseline.json",
+      "cold-01/host-before.json",
+      "cold-01/host-after.json",
+      "cold-02/host-before.json",
+      "cold-02/host-after.json",
+      "cleanup.json",
+      "bootstrap-helper-remove.log",
+      "network-events.jsonl"
+    ]
+  },
+  "evidenceHashes": {
+    "baseline.json": "168cc54a8bc34b324e35f2033ca01ece53556f66060772aa020ad47934feb506",
+    "ci-p2.patch": "a5c366170386908fc454a100a2ff859ff48fc278ca4092f7877651333cee846d",
+    "cold-01/validation.json": "7c0f643ee9f0be59c0be415094b7a976fa03794bb284675a119f9d5db6e4bf6d",
+    "cold-01/with-prepare.log": "af6ff487e9350feb07846d9df078704d27d420d92f67eff69c154023f4a9152e",
+    "cold-02/validation.json": "c1b4d86d1728db6d8610c03d7361eee8e1a09899cc6936652f307e83b719d1b3",
+    "cold-02/cold-images.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cold-02/cold-inspect.log": "6e5b063e0390dca17d50da0b4eb99da610ef02dd1aad1c5b34256de978742e27",
+    "cold-02/without-prepare.log": "1817b0dcbb5fc5c7e1b4ed3a0bca22c1b9ec1354213a7c347e04d40e4f1f1207",
+    "cold-02/without-prepare.json": "b53b05b03e868c15e3a176bd264d24033e951ac1ed2f1ba308c7c593ce03d499",
+    "cold-02/prepare-image.log": "fabb9bcf6c77db0253c50c918d898f01142c94bef303f5558ff16179e189b27c",
+    "cold-02/prepared-image.json": "b12d83e98dc1a9afb0cd85afae370952eef86327cbe4b8d733bd27e0cf1e136c",
+    "cold-02/with-prepare.log": "4fec76bad8d803da563718757cdf6358e7b3e693d49834b215da82b2041464f5",
+    "cold-02/with-prepare.json": "ab0b263b9b71da1c1e776289c5dfc4f7852c49bc470c75aebcb034ab5906690d",
+    "cold-02/daemon-info.json": "c514a96d19eba4a4216aca70397ff19bbcb88a9aacab5c919c36b9b708cd3220",
+    "windows-monitoring.log": "f9dec6b8ad495fdf4f4fe61b32d148b1c419810d4cabc59c2a9c00878424441f",
+    "windows-monitoring.json": "ab0b263b9b71da1c1e776289c5dfc4f7852c49bc470c75aebcb034ab5906690d",
+    "cleanup.json": "431cf6f3613d4b8812488b22b704458964fe6a7cb183f2732fa7c43dde94fea0",
+    "cleanup-final.json": "2c09233c02a4ad63b34968bb179ee5cda49389d862dae9283562f14090921ab7",
+    "network-events.jsonl": "2fef5ebb97d0284e3721cd990b36834622f483cc896042c9762319e9dda05b48"
+  },
+  "notExecuted": [
+    "Remote GitHub Actions workflow",
+    "Real gateway/Redis fault chain",
+    "Browser/Grafana visual checks",
+    "Backend and frontend full tests or production build",
+    "Capacity, cold-start traffic and RSS experiments"
+  ],
+  "capacityConclusion": "4000 req/s for one hour remains not passed. No load tier has passed one-hour validation.",
+  "limits": [
+    "Isolated Linux Node 24.18.1 is the same major but not the exact remote CI Node 24.21.0; Windows Node 24.21.0 also passed.",
+    "Image preparation requires registry access and can fail explicitly under registry/network limits.",
+    "Bootstrap network identity difference is recorded without claiming full host network identity preservation."
+  ]
+}

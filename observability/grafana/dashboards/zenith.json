@@ -1,0 +1,1728 @@
+{
+  "id": null,
+  "uid": "zenith-operations",
+  "title": "ZenithGateway / Operations",
+  "tags": [
+    "zenith",
+    "gateway"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 41,
+  "version": 2,
+  "refresh": "5s",
+  "editable": false,
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "instance",
+        "label": "Instance",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "zenith-prometheus"
+        },
+        "query": {
+          "query": "label_values(up{job=\"zenith-gateway\"}, instance)",
+          "refId": "instance"
+        },
+        "definition": "label_values(up{job=\"zenith-gateway\"}, instance)",
+        "refresh": 1,
+        "sort": 1,
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        }
+      }
+    ]
+  },
+  "annotations": {
+    "list": []
+  },
+  "panels": [
+    {
+      "id": 18,
+      "title": "Monitoring data · per instance",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 4
+      },
+      "description": "1: scrape succeeds and decision family exists (including registered zero counters). 0: scrape fails. 2: scrape succeeds but decisions are missing; check observability.enabled/version/relabel. No data: target is not discovered. Presence is not a health verdict.",
+      "targets": [
+        {
+          "expr": "(count by (job, instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"}) > bool 0 and on (job, instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)) or on (job, instance) (2 * ((up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) unless on (job, instance) count by (job, instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"}))) or on (job, instance) (0 * (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 0))",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "SCRAPE FAILED",
+                  "color": "red",
+                  "index": 0
+                },
+                "1": {
+                  "text": "METRICS PRESENT",
+                  "color": "blue",
+                  "index": 1
+                },
+                "2": {
+                  "text": "DECISIONS MISSING",
+                  "color": "orange",
+                  "index": 2
+                }
+              }
+            },
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 1,
+      "title": "Ready",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "description": "Current readiness per selected instance, only with a successful scrape. Readiness is not a statement about limiter failure policy or all instances.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(min by (instance) (zenith_gateway_ready{job=\"zenith-gateway\",instance=~\"$instance\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · Ready",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "NOT READY",
+                  "color": "red"
+                },
+                "1": {
+                  "text": "READY",
+                  "color": "green"
+                }
+              }
+            },
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ],
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Final requests / s",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "description": "One terminal request record per gateway entry, including errors and cancellations. Limiter forward decisions do not prove HTTP success or upstream receipt.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (rate(zenith_gateway_requests_seconds_count{job=\"zenith-gateway\",instance=~\"$instance\"}[1m]))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · Completed requests / s",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Request P95",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 16,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "description": "",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(histogram_quantile(0.95,sum by(le, instance)(rate(zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · Request P95",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Audit pending",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 20,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "description": "",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (zenith_audit_pending{job=\"zenith-gateway\",instance=~\"$instance\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · Audit pending",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    },
+    {
+      "id": 19,
+      "type": "text",
+      "title": "Read facts → actions → final outcomes",
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 24,
+        "h": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "**Instance** selects the same target across every panel. Rates use the last **1 minute**. **Unknown debit overlaps actions — never add it to the request total.**\n\nA protective rejection selects **503**; quota rejection selects **429**. Forward is permission to proceed, not proof of upstream receipt. No ratio is shown at zero traffic. Check **Monitoring data** before interpreting an empty panel."
+      }
+    },
+    {
+      "id": 20,
+      "title": "Quota permitted",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 4,
+        "h": 5
+      },
+      "description": "Redis confirmed the quota decision; later proxying can still fail. Per-instance decisions/s over 1m. Registered counters show 0 when idle; missing/failed scrape shows no data.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"allowed\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 21,
+      "title": "Explicit bypass",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 4,
+        "y": 8,
+        "w": 4,
+        "h": 5
+      },
+      "description": "The runtime limiter is explicitly disabled. This is not Redis fault admission. Per-instance decisions/s over 1m. Registered counters show 0 when idle; missing/failed scrape shows no data.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"disabled\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 22,
+      "title": "Quota / 429",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 8,
+        "w": 4,
+        "h": 5
+      },
+      "description": "Confirmed quota refusal, including cost exceeding capacity. Final HTTP may be cancelled before delivery. Per-instance decisions/s over 1m. Registered counters show 0 when idle; missing/failed scrape shows no data.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=~\"limited|unfulfillable\",action=\"reject\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 23,
+      "title": "Fault forward",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 4,
+        "h": 5
+      },
+      "description": "Failure policy chose forwarding without quota confirmation. Break down local versus Redis in the decisions chart. Per-instance decisions/s over 1m. Registered counters show 0 when idle; missing/failed scrape shows no data.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=~\"local_unavailable|redis_unconfirmed\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 24,
+      "title": "Protective / 503",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 16,
+        "y": 8,
+        "w": 4,
+        "h": 5
+      },
+      "description": "Failure policy chose rejection before proxying. Separate from normal quota exhaustion. Per-instance decisions/s over 1m. Registered counters show 0 when idle; missing/failed scrape shows no data.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=~\"local_unavailable|redis_unconfirmed\",action=\"reject\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 25,
+      "title": "Debit unknown *",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 20,
+        "y": 8,
+        "w": 4,
+        "h": 5
+      },
+      "description": "Includes forward, reject and cancel. Redis may have consumed tokens. This dimension overlaps the other cards; it is not an additional request class. Per-instance decisions/s over 1m. Registered counters show 0 when idle; missing/failed scrape shows no data.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",execution=\"unknown\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 12,
+      "title": "Limiter decisions · fact + action",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 13,
+        "w": 14,
+        "h": 9
+      },
+      "description": "Non-overlapping fact/action classes including cancellations. Rate per second over 1m. Compare with terminal HTTP outcomes separately; unknown debit is a separate overlapping dimension.",
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"allowed\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · permitted",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"disabled\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · disabled / bypass",
+          "refId": "B"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=~\"limited|unfulfillable\",action=\"reject\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · quota / reject",
+          "refId": "C"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"local_unavailable\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · local / forward",
+          "refId": "D"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"redis_unconfirmed\",action=\"forward\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · Redis / forward",
+          "refId": "E"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"local_unavailable\",action=\"reject\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · local / reject",
+          "refId": "F"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"redis_unconfirmed\",action=\"reject\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · Redis / reject",
+          "refId": "G"
+        },
+        {
+          "expr": "sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=\"cancelled\",action=\"cancel\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · cancelled",
+          "refId": "H"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        }
+      }
+    },
+    {
+      "id": 26,
+      "title": "Debit unknown · action breakdown",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 14,
+        "y": 13,
+        "w": 10,
+        "h": 9
+      },
+      "description": "Unknown debit includes dispatch followed by cancellation. All actions remain counted here. The uncertainty alert uses only forward/reject (estimated increase >= 3 per 1m for 30s), reducing cancellation noise.",
+      "targets": [
+        {
+          "expr": "sum by (instance, action) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",execution=\"unknown\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · {{action}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        }
+      }
+    },
+    {
+      "id": 27,
+      "title": "Fault-action share · all limiter decisions",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 22,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Denominator: all terminal limiter decisions for this instance, including explicit bypass and cancellation. Numerators are disjoint fault actions. Unknown is not added. Zero denominator intentionally produces no ratio, not an error and not a fabricated 0%. Failed/missing scrape produces no data.",
+      "targets": [
+        {
+          "expr": "((100 * sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=~\"local_unavailable|redis_unconfirmed\",action=\"forward\"}[1m])) / sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"}[1m]))) and on (instance) (sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])) > 0)) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · fault forward / all decisions",
+          "refId": "A"
+        },
+        {
+          "expr": "((100 * sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\",event=~\"local_unavailable|redis_unconfirmed\",action=\"reject\"}[1m])) / sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"}[1m]))) and on (instance) (sum by (instance) (rate(zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])) > 0)) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1) and on (instance) count by (instance) (zenith_ratelimit_decisions_total{job=\"zenith-gateway\",instance=~\"$instance\"})",
+          "legendFormat": "{{instance}} · protective reject / all decisions",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        }
+      }
+    },
+    {
+      "id": 11,
+      "title": "Limiter decision wait · P95 / P99",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 22,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Wall-clock time from filter decision subscription until decision delivery or cancellation: local queue, connection, Redis round trip/timeout, decoding and optional result handoff plus scheduling pauses. Excludes subsequent upstream handling; disabled bypass is not timed. NOT Redis Lua execution time. Legacy timer outcome=error covers both fail-open and protective rejection.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(histogram_quantile(0.95,sum by(le, instance)(rate(zenith_ratelimit_redis_seconds_bucket{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · P95"
+        },
+        {
+          "refId": "B",
+          "expr": "(histogram_quantile(0.99,sum by(le, instance)(rate(zenith_ratelimit_redis_seconds_bucket{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · P99"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Final requests · HTTP class + outcome",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 30,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Terminal request statistics, including cancelled and error results. A recorded status is not proof the client received it. Upstream receipt requires independent upstream/audit evidence; this dashboard does not invent a delivery metric.",
+      "targets": [
+        {
+          "expr": "sum by (instance, status, outcome) (rate(zenith_gateway_requests_seconds_count{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · {{status}} / {{outcome}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "calcs": [
+            "max"
+          ],
+          "sortBy": "Max",
+          "sortDesc": true
+        }
+      }
+    },
+    {
+      "id": 8,
+      "title": "Request latency",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 30,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Aggregatable histogram estimates.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(histogram_quantile(0.5,sum by(le, instance)(rate(zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · P50"
+        },
+        {
+          "refId": "B",
+          "expr": "(histogram_quantile(0.95,sum by(le, instance)(rate(zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · P95"
+        },
+        {
+          "refId": "C",
+          "expr": "(histogram_quantile(0.99,sum by(le, instance)(rate(zenith_gateway_requests_seconds_bucket{job=\"zenith-gateway\",instance=~\"$instance\"}[1m])))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · P99"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Audit dropped / 5 min",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 38,
+        "w": 12,
+        "h": 4
+      },
+      "description": "",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (increase(zenith_audit_dropped_total{job=\"zenith-gateway\",instance=~\"$instance\"}[5m]))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · Audit dropped / 5 min",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Audit uncertain / 5 min",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 38,
+        "w": 12,
+        "h": 4
+      },
+      "description": "",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (increase(zenith_audit_uncertain_total{job=\"zenith-gateway\",instance=~\"$instance\"}[5m]))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · Audit uncertain / 5 min",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "text"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data",
+          "mappings": [
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "No data",
+                  "color": "gray"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "none"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Audit admission and confirmed writes",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 42,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Redis confirmation does not imply disk durability.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (rate(zenith_audit_received_total{job=\"zenith-gateway\",instance=~\"$instance\"}[1m]))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · received"
+        },
+        {
+          "refId": "B",
+          "expr": "(sum by (instance) (rate(zenith_audit_persisted_total{job=\"zenith-gateway\",instance=~\"$instance\"}[1m]))) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · confirmed"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "title": "Audit pending and in-flight",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 42,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Pending includes batching and in-flight events.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (zenith_audit_pending{job=\"zenith-gateway\",instance=~\"$instance\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · pending"
+        },
+        {
+          "refId": "B",
+          "expr": "(sum by (instance) (zenith_audit_inflight{job=\"zenith-gateway\",instance=~\"$instance\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · inflight"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "title": "Audit admission budget used",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 50,
+        "w": 12,
+        "h": 8
+      },
+      "description": "",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(100*max by (instance) (zenith_audit_pending{job=\"zenith-gateway\",instance=~\"$instance\"}/zenith_audit_capacity{job=\"zenith-gateway\",instance=~\"$instance\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · record budget"
+        },
+        {
+          "refId": "B",
+          "expr": "(100*max by (instance) (zenith_audit_queue_bytes{job=\"zenith-gateway\",instance=~\"$instance\"}/zenith_audit_byte_capacity{job=\"zenith-gateway\",instance=~\"$instance\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · byte budget"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "title": "Oldest pending audit age",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 50,
+        "w": 12,
+        "h": 8
+      },
+      "description": "Zero when no audit events are pending.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(max by (instance) (zenith_audit_oldest_age{job=\"zenith-gateway\",instance=~\"$instance\"})/1000) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · oldest"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "title": "JVM heap",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 58,
+        "w": 12,
+        "h": 8
+      },
+      "description": "",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(sum by (instance) (jvm_memory_used_bytes{job=\"zenith-gateway\",instance=~\"$instance\",area=\"heap\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · used"
+        },
+        {
+          "refId": "B",
+          "expr": "(sum by (instance) (jvm_memory_committed_bytes{job=\"zenith-gateway\",instance=~\"$instance\",area=\"heap\"})) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · committed"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "title": "Gateway process CPU",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 58,
+        "w": 12,
+        "h": 8
+      },
+      "description": "CPU fraction reported by the JVM in its container environment.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "(100*process_cpu_usage{job=\"zenith-gateway\",instance=~\"$instance\"}) and on (instance) (up{job=\"zenith-gateway\",instance=~\"$instance\"} == 1)",
+          "legendFormat": "{{instance}} · {{instance}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "title": "Currently firing alerts",
+      "type": "table",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "zenith-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 66,
+        "w": 24,
+        "h": 8
+      },
+      "description": "Evaluated by Prometheus. External notification receivers are not configured.",
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "ALERTS{instance=~\"$instance\",alertstate=\"firing\",alertname=~\"Zenith.*\"}",
+          "legendFormat": "",
+          "format": "table",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 8,
+            "showPoints": "never"
+          },
+          "noValue": "No data"
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true
+      }
+    }
+  ],
+  "description": "Limiter facts, chosen actions and final request outcomes are separate. Unknown debit overlaps action counts. Use Instance to localize; data availability distinguishes idle traffic from failed or missing scrapes."
+}

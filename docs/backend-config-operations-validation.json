@@ -1,0 +1,1266 @@
+{
+  "completedAt": "2026-09-27T11:06:45.700064+00:00",
+  "passed": true,
+  "scope": "Runtime configuration operation identity, atomic receipts, result confirmation and bounded history; isolated environments only",
+  "jarSha256": "db6dea23694fc057c016e90b35d2acfac518542af61cf279c8470360aa890e1b",
+  "retention": {
+    "receiptMilliseconds": 86400000,
+    "maxActiveReceipts": 512,
+    "historyMilliseconds": 604800000,
+    "maxHistory": 100
+  },
+  "backend": {
+    "tests": 119,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "build": "passed",
+    "log": ".dev/config-operations/backend-final.log",
+    "suites": [
+      {
+        "name": "com.zch.config.GatewayRuntimePropertiesBindingTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.config.RedisRuntimeConfigSyncReaderIntegrationTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.config.RuntimeConfigConcurrencyTest",
+        "tests": "4",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.config.RuntimeConfigOperationsTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.config.RuntimeConfigPersistenceTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.config.RuntimeConfigSyncTest",
+        "tests": "10",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.config.StartupReadinessIntegrationTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.filter.AdminAuthFilterTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.filter.RateLimitFilterTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.filter.ReadinessFilterTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.monitor.AuditEventPublisherTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.monitor.GatewayMetricsTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.monitor.RedisAuditBatchWriterIntegrationTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.monitor.RequestCompletionRecorderTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.monitor.TrafficMetricsServiceTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.route.DynamicRouteServiceTest",
+        "tests": "24",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.route.GatewayRedisIntegrationTest",
+        "tests": "5",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.zch.util.ClientIpResolverTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ]
+  },
+  "frontend": {
+    "tests": 63,
+    "failed": 0,
+    "productionBuild": "passed",
+    "logs": [
+      ".dev/config-operations/frontend-tests.log",
+      ".dev/config-operations/frontend-build.log"
+    ],
+    "remainingWarning": "Existing ECharts chunk 502.99 kB"
+  },
+  "operationMatrix": {
+    "groups": 12,
+    "report": ".dev/config-operations/live-43e978db1d/report.json",
+    "evidence": {
+      "migration": {
+        "before": {
+          "rateLimitEnabled": false,
+          "replenishRate": 20,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "schemaVersion": 1,
+          "version": "350de856-9509-48a1-8806-e1de9c270853:7"
+        },
+        "after": {
+          "operations": {},
+          "monitorWindowSeconds": 10,
+          "schemaVersion": 2,
+          "replenishRate": 20,
+          "rateLimitEnabled": false,
+          "history": {},
+          "requestedTokens": 1,
+          "burstCapacity": 40,
+          "version": "350de856-9509-48a1-8806-e1de9c270853:7",
+          "emitIntervalSeconds": 1
+        },
+        "oldCaller": {
+          "status": 428,
+          "body": {
+            "code": "CONFIG_OPERATION_REQUIRED",
+            "outcome": "not-written",
+            "message": "提交必须携带 operationId；请升级写入端",
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 20,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:7"
+            }
+          },
+          "cacheControl": "no-store"
+        }
+      },
+      "beforeExecution": {
+        "body": {
+          "rateLimitEnabled": false,
+          "replenishRate": 31,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+          "operationId": "a8fbae18-77eb-487d-b94a-d1465e792a46"
+        },
+        "during": {
+          "status": "unknown",
+          "checkedAt": 1790506821163,
+          "operationId": "a8fbae18-77eb-487d-b94a-d1465e792a46",
+          "reason": "no-available-receipt",
+          "source": "redis-receipt",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 20,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:7"
+          }
+        },
+        "result": {
+          "status": 503,
+          "body": {
+            "operationId": "a8fbae18-77eb-487d-b94a-d1465e792a46",
+            "code": "CONFIG_WRITE_UNCONFIRMED",
+            "outcome": "unknown",
+            "message": "未收到可靠确认；请按 operationId 查询本次提交结果",
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 20,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:7"
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        "retry": {
+          "status": 200,
+          "body": {
+            "rateLimitEnabled": false,
+            "replenishRate": 31,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+            "source": "redis",
+            "confirmation": "committed",
+            "receipt": {
+              "recordedAt": 1790506823221,
+              "after": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 31
+              },
+              "instanceId": "a297f3f9-dfc7-4447-afbf-2116d274a603",
+              "operationId": "a8fbae18-77eb-487d-b94a-d1465e792a46",
+              "before": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:7",
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 20
+              },
+              "request": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 31
+              },
+              "status": "committed",
+              "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+              "expiresAt": 1790593223221
+            },
+            "replayed": false,
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 31,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:8"
+            }
+          },
+          "cacheControl": "no-store"
+        }
+      },
+      "concurrent": {
+        "startedAt": "2026-09-27T11:00:23.298Z",
+        "confirmedAt": "2026-09-27T11:00:23.320Z",
+        "request": {
+          "rateLimitEnabled": false,
+          "replenishRate": 32,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+          "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc"
+        },
+        "responses": [
+          {
+            "status": 200,
+            "body": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+              "source": "redis",
+              "confirmation": "committed",
+              "receipt": {
+                "recordedAt": 1790506823306,
+                "after": {
+                  "rateLimitEnabled": false,
+                  "requestedTokens": 1,
+                  "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+                  "emitIntervalSeconds": 1,
+                  "burstCapacity": 40,
+                  "monitorWindowSeconds": 10,
+                  "replenishRate": 32
+                },
+                "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+                "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+                "before": {
+                  "rateLimitEnabled": false,
+                  "requestedTokens": 1,
+                  "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+                  "emitIntervalSeconds": 1,
+                  "burstCapacity": 40,
+                  "monitorWindowSeconds": 10,
+                  "replenishRate": 31
+                },
+                "request": {
+                  "rateLimitEnabled": false,
+                  "requestedTokens": 1,
+                  "emitIntervalSeconds": 1,
+                  "burstCapacity": 40,
+                  "monitorWindowSeconds": 10,
+                  "replenishRate": 32
+                },
+                "status": "committed",
+                "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+                "expiresAt": 1790593223306
+              },
+              "replayed": false,
+              "adopted": {
+                "rateLimitEnabled": false,
+                "replenishRate": 32,
+                "burstCapacity": 40,
+                "requestedTokens": 1,
+                "monitorWindowSeconds": 10,
+                "emitIntervalSeconds": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:9"
+              }
+            },
+            "cacheControl": "no-store"
+          },
+          {
+            "status": 200,
+            "body": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+              "source": "redis",
+              "confirmation": "committed",
+              "receipt": {
+                "recordedAt": 1790506823306,
+                "after": {
+                  "rateLimitEnabled": false,
+                  "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+                  "requestedTokens": 1,
+                  "monitorWindowSeconds": 10,
+                  "emitIntervalSeconds": 1,
+                  "burstCapacity": 40,
+                  "replenishRate": 32
+                },
+                "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+                "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+                "before": {
+                  "rateLimitEnabled": false,
+                  "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+                  "requestedTokens": 1,
+                  "monitorWindowSeconds": 10,
+                  "emitIntervalSeconds": 1,
+                  "burstCapacity": 40,
+                  "replenishRate": 31
+                },
+                "status": "committed",
+                "request": {
+                  "rateLimitEnabled": false,
+                  "requestedTokens": 1,
+                  "emitIntervalSeconds": 1,
+                  "burstCapacity": 40,
+                  "monitorWindowSeconds": 10,
+                  "replenishRate": 32
+                },
+                "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+                "expiresAt": 1790593223306
+              },
+              "replayed": true,
+              "adopted": {
+                "rateLimitEnabled": false,
+                "replenishRate": 32,
+                "burstCapacity": 40,
+                "requestedTokens": 1,
+                "monitorWindowSeconds": 10,
+                "emitIntervalSeconds": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:9"
+              }
+            },
+            "cacheControl": "no-store"
+          }
+        ]
+      },
+      "oldOperation": {
+        "queried": {
+          "status": "committed",
+          "checkedAt": 1790506823375,
+          "receipt": {
+            "recordedAt": 1790506823306,
+            "after": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+              "burstCapacity": 40,
+              "emitIntervalSeconds": 1,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 32
+            },
+            "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+            "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+            "before": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+              "burstCapacity": 40,
+              "emitIntervalSeconds": 1,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 31
+            },
+            "request": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "emitIntervalSeconds": 1,
+              "burstCapacity": 40,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 32
+            },
+            "status": "committed",
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+            "expiresAt": 1790593223306
+          },
+          "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+          "source": "redis-receipt",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 32,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 1,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:10"
+          }
+        },
+        "retry": {
+          "status": 200,
+          "body": {
+            "rateLimitEnabled": false,
+            "replenishRate": 32,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+            "source": "redis",
+            "confirmation": "committed",
+            "receipt": {
+              "recordedAt": 1790506823306,
+              "after": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 1,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 32
+              },
+              "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+              "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+              "before": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 1,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 31
+              },
+              "request": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 32
+              },
+              "status": "committed",
+              "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+              "expiresAt": 1790593223306
+            },
+            "replayed": true,
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 10,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:9"
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        "adopted": {
+          "rateLimitEnabled": false,
+          "replenishRate": 32,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 1,
+          "version": "350de856-9509-48a1-8806-e1de9c270853:10",
+          "source": "local"
+        },
+        "currentVersion": "350de856-9509-48a1-8806-e1de9c270853:10"
+      },
+      "definiteRejection": {
+        "request": {
+          "rateLimitEnabled": false,
+          "replenishRate": 77,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 10,
+          "emitIntervalSeconds": 1,
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+          "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17"
+        },
+        "rejected": {
+          "status": 409,
+          "body": {
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+            "current": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:10"
+            },
+            "receipt": {
+              "recordedAt": 1790506825396,
+              "instanceId": "a297f3f9-dfc7-4447-afbf-2116d274a603",
+              "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17",
+              "before": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:10",
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 30,
+                "replenishRate": 32
+              },
+              "code": "CONFIG_VERSION_CONFLICT",
+              "request": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 77
+              },
+              "status": "rejected",
+              "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+              "expiresAt": 1790593225396
+            },
+            "replayed": false,
+            "adoptionIssue": null,
+            "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17",
+            "code": "CONFIG_VERSION_CONFLICT",
+            "outcome": "not-written",
+            "message": "配置已被其他提交更新，请核对最新值与草稿后再次提交",
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:10"
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        "query": {
+          "status": "rejected",
+          "checkedAt": 1790506825403,
+          "receipt": {
+            "recordedAt": 1790506825396,
+            "code": "CONFIG_VERSION_CONFLICT",
+            "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17",
+            "before": {
+              "rateLimitEnabled": false,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:10",
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "burstCapacity": 40,
+              "replenishRate": 32
+            },
+            "instanceId": "a297f3f9-dfc7-4447-afbf-2116d274a603",
+            "request": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "emitIntervalSeconds": 1,
+              "burstCapacity": 40,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 77
+            },
+            "status": "rejected",
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+            "expiresAt": 1790593225396
+          },
+          "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17",
+          "source": "redis-receipt",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 32,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 1,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:10"
+          }
+        },
+        "replay": {
+          "status": 409,
+          "body": {
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+            "current": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:10"
+            },
+            "receipt": {
+              "recordedAt": 1790506825396,
+              "instanceId": "a297f3f9-dfc7-4447-afbf-2116d274a603",
+              "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17",
+              "before": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:10",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 1,
+                "monitorWindowSeconds": 30,
+                "replenishRate": 32
+              },
+              "code": "CONFIG_VERSION_CONFLICT",
+              "request": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 77
+              },
+              "status": "rejected",
+              "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:7",
+              "expiresAt": 1790593225396
+            },
+            "replayed": true,
+            "adoptionIssue": null,
+            "operationId": "8df2708b-b656-4084-8bed-a3dcf5efcf17",
+            "code": "CONFIG_VERSION_CONFLICT",
+            "outcome": "not-written",
+            "message": "配置已被其他提交更新，请核对最新值与草稿后再次提交",
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 32,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:10"
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        "receiptAddedWithoutVersionChange": true
+      },
+      "redisReplyLoss": {
+        "body": {
+          "rateLimitEnabled": false,
+          "replenishRate": 34,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 2,
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:11",
+          "operationId": "e8a529df-511e-442d-8c1f-5e40c7f5fb45"
+        },
+        "fault": {
+          "phase": "after",
+          "forwarded": true,
+          "redisReply": "{\"status\":\"ok\",\"snapshot\":{\"rateLimitEnabled\":false,\"requestedTokens\":1,\"version\":\"350de856-9509-48a1-8806-e1de9c270853:12\",\"emitIntervalSeconds\":2,\"burstCapacity\":40,\"monitorWindowSeconds\":30,\"replenishRate\":34},\"replayed\":false,\"receipt\":{\"recordedAt\":1790506825437,\"after\":{\"rateLimitEnabled\":false,\"requestedTokens\":1,\"version\":\"350de856-9509-48a1-8806-e1de9c270853:12\",\"emitIntervalSeconds\":2,\"burstCapacity\":40,\"monitorWindowSeconds\":30,\"replenishRate\":34},\"instanceId\":\"3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a\",\"operationId\":\"e8a529df-511e-442d-8c1f-5e40c7f5fb45\",\"before\":{\"rateLimitEnabled\":false,\"requestedTokens\":1,\"version\":\"350de856-9509-48a1-8806-e1de9c270853:11\",\"emitIntervalSeconds\":2,\"burstCapacity\":40,\"monitorWindowSeconds\":30,\"replenishRate\":32},\"request\":{\"rateLimitEnabled\":false,\"requestedTokens\":1,\"emitIntervalSeconds\":2,\"burstCapacity\":40,\"monitorWindowSeconds\":30,\"replenishRate\":34},\"status\":\"committed\",\"expectedVersion\":\"350de856-9509-48a1-8806-e1de9c270853:11\",\"expiresAt\":1790593225437}}",
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:11"
+        },
+        "unconfirmed": {
+          "status": 503,
+          "body": {
+            "operationId": "e8a529df-511e-442d-8c1f-5e40c7f5fb45",
+            "code": "CONFIG_WRITE_UNCONFIRMED",
+            "outcome": "unknown",
+            "message": "未收到可靠确认；请按 operationId 查询本次提交结果",
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 34,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 2,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:12"
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        "query": {
+          "status": "committed",
+          "checkedAt": 1790506827488,
+          "receipt": {
+            "recordedAt": 1790506825437,
+            "after": {
+              "rateLimitEnabled": false,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:12",
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 2,
+              "burstCapacity": 40,
+              "replenishRate": 34
+            },
+            "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+            "operationId": "e8a529df-511e-442d-8c1f-5e40c7f5fb45",
+            "before": {
+              "rateLimitEnabled": false,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:11",
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 2,
+              "burstCapacity": 40,
+              "replenishRate": 32
+            },
+            "status": "committed",
+            "request": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "emitIntervalSeconds": 2,
+              "burstCapacity": 40,
+              "monitorWindowSeconds": 30,
+              "replenishRate": 34
+            },
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:11",
+            "expiresAt": 1790593225437
+          },
+          "operationId": "e8a529df-511e-442d-8c1f-5e40c7f5fb45",
+          "source": "redis-receipt",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 34,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 2,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:12"
+          }
+        },
+        "retry": {
+          "status": 200,
+          "body": {
+            "rateLimitEnabled": false,
+            "replenishRate": 34,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 2,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:12",
+            "source": "redis",
+            "confirmation": "committed",
+            "receipt": {
+              "recordedAt": 1790506825437,
+              "after": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:12",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 2,
+                "monitorWindowSeconds": 30,
+                "replenishRate": 34
+              },
+              "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+              "operationId": "e8a529df-511e-442d-8c1f-5e40c7f5fb45",
+              "before": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:11",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 2,
+                "monitorWindowSeconds": 30,
+                "replenishRate": 32
+              },
+              "request": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "emitIntervalSeconds": 2,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 30,
+                "replenishRate": 34
+              },
+              "status": "committed",
+              "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:11",
+              "expiresAt": 1790593225437
+            },
+            "replayed": true,
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 35,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 2,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:13"
+            }
+          },
+          "cacheControl": "no-store"
+        },
+        "laterVersion": "350de856-9509-48a1-8806-e1de9c270853:13"
+      },
+      "restart": {
+        "query": {
+          "status": "committed",
+          "checkedAt": 1790506842108,
+          "receipt": {
+            "recordedAt": 1790506823306,
+            "after": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+              "burstCapacity": 40,
+              "emitIntervalSeconds": 1,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 32
+            },
+            "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+            "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+            "before": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+              "burstCapacity": 40,
+              "emitIntervalSeconds": 1,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 31
+            },
+            "request": {
+              "rateLimitEnabled": false,
+              "requestedTokens": 1,
+              "emitIntervalSeconds": 1,
+              "burstCapacity": 40,
+              "monitorWindowSeconds": 10,
+              "replenishRate": 32
+            },
+            "status": "committed",
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+            "expiresAt": 1790593223306
+          },
+          "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+          "source": "redis-receipt",
+          "adopted": {
+            "rateLimitEnabled": false,
+            "replenishRate": 35,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 2,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:13"
+          }
+        },
+        "retry": {
+          "status": 200,
+          "body": {
+            "rateLimitEnabled": false,
+            "replenishRate": 32,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+            "source": "redis",
+            "confirmation": "committed",
+            "receipt": {
+              "recordedAt": 1790506823306,
+              "after": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:9",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 1,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 32
+              },
+              "instanceId": "3d34c4d1-5ccf-47f5-a8ae-451c90e8c41a",
+              "operationId": "decf2e27-bb96-4a4d-8c3f-7d4709fc67fc",
+              "before": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "version": "350de856-9509-48a1-8806-e1de9c270853:8",
+                "burstCapacity": 40,
+                "emitIntervalSeconds": 1,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 31
+              },
+              "request": {
+                "rateLimitEnabled": false,
+                "requestedTokens": 1,
+                "emitIntervalSeconds": 1,
+                "burstCapacity": 40,
+                "monitorWindowSeconds": 10,
+                "replenishRate": 32
+              },
+              "status": "committed",
+              "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:8",
+              "expiresAt": 1790593223306
+            },
+            "replayed": true,
+            "adopted": {
+              "rateLimitEnabled": false,
+              "replenishRate": 35,
+              "burstCapacity": 40,
+              "requestedTokens": 1,
+              "monitorWindowSeconds": 30,
+              "emitIntervalSeconds": 2,
+              "version": "350de856-9509-48a1-8806-e1de9c270853:13"
+            }
+          },
+          "cacheControl": "no-store"
+        }
+      },
+      "commandFailure": {
+        "rejected": {
+          "status": "rejected"
+        },
+        "unchangedDocument": true,
+        "injectedBeforeCommit": true,
+        "naiveLuaAfterError": "updated"
+      },
+      "pagination": {
+        "firstPageVersions": [
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:111",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:110",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:109",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:108",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:107",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:106",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:105",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:104",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:103",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:102",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:101",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:100",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:99",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:98",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:97",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:96",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:95",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:94",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:93",
+          "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:92"
+        ],
+        "cursor": "6ee7bee1-2d0e-47ad-a21b-deabf6dba61f:92",
+        "totalReturned": 95,
+        "concurrentNewCommits": 5,
+        "noDuplicates": true,
+        "receiptSurvivedHistoryTrimming": true
+      },
+      "retention": {
+        "receiptMs": 86400000,
+        "historyMs": 604800000,
+        "receiptCount": 512,
+        "historyCount": 100,
+        "expiredQuery": "unknown",
+        "expiredPhysicallyRemovedOnNextWrite": true,
+        "capacityResult": {
+          "status": "receipt-capacity"
+        },
+        "replayAtCapacity": true,
+        "documentBytes": 497250,
+        "boundedFullDocumentReadMs": [
+          14.132200000000012,
+          13.816299999998591,
+          17.56980000000476,
+          12.412400000001071,
+          13.251000000003842,
+          13.055299999999988,
+          14.379899999999907,
+          13.151999999994587,
+          13.623499999994237,
+          13.875400000004447
+        ],
+        "capacityRoundTripMs": 172.39160000000265
+      },
+      "browser": {
+        "httpReplyLostOperation": {
+          "rateLimitEnabled": false,
+          "replenishRate": 71,
+          "burstCapacity": 40,
+          "requestedTokens": 1,
+          "monitorWindowSeconds": 30,
+          "emitIntervalSeconds": 2,
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:13",
+          "operationId": "f55d1a68-7dfc-41e4-b14c-f59fb4f3297a"
+        },
+        "originalReceipt": {
+          "recordedAt": 1790506850382,
+          "after": {
+            "rateLimitEnabled": false,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:14",
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 2,
+            "burstCapacity": 40,
+            "replenishRate": 71
+          },
+          "instanceId": "a297f3f9-dfc7-4447-afbf-2116d274a603",
+          "operationId": "f55d1a68-7dfc-41e4-b14c-f59fb4f3297a",
+          "before": {
+            "rateLimitEnabled": false,
+            "version": "350de856-9509-48a1-8806-e1de9c270853:13",
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 2,
+            "burstCapacity": 40,
+            "replenishRate": 35
+          },
+          "status": "committed",
+          "request": {
+            "rateLimitEnabled": false,
+            "requestedTokens": 1,
+            "emitIntervalSeconds": 2,
+            "burstCapacity": 40,
+            "monitorWindowSeconds": 30,
+            "replenishRate": 71
+          },
+          "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:13",
+          "expiresAt": 1790593250382
+        },
+        "laterVersion": "350de856-9509-48a1-8806-e1de9c270853:15",
+        "writes": [
+          {
+            "rateLimitEnabled": false,
+            "replenishRate": 71,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 30,
+            "emitIntervalSeconds": 2,
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:13",
+            "operationId": "f55d1a68-7dfc-41e4-b14c-f59fb4f3297a"
+          },
+          {
+            "rateLimitEnabled": false,
+            "replenishRate": 73,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 45,
+            "emitIntervalSeconds": 2,
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:15",
+            "operationId": "30677c02-1488-47cc-b7b2-e13114a2a6e2"
+          },
+          {
+            "rateLimitEnabled": false,
+            "replenishRate": 74,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 45,
+            "emitIntervalSeconds": 2,
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:16",
+            "operationId": "1eca7adf-c656-4d34-b730-d0c703fcb6f0"
+          },
+          {
+            "rateLimitEnabled": false,
+            "replenishRate": 74,
+            "burstCapacity": 40,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 55,
+            "emitIntervalSeconds": 2,
+            "expectedVersion": "350de856-9509-48a1-8806-e1de9c270853:17",
+            "operationId": "f240b542-7754-4688-97b1-2550c11790e2"
+          }
+        ],
+        "oldQueryDidNotRegressBaseline": true,
+        "noAutomaticWriteDuringQuery": true,
+        "draftSurvivedAuth": true,
+        "errors": []
+      }
+    },
+    "cleanup": {
+      "AExitCode": 0,
+      "BExitCode": 0,
+      "A-restartedExitCode": 0,
+      "proxyClosed": true,
+      "redisRemoved": true
+    }
+  },
+  "syncRegression": {
+    "groups": 10,
+    "report": ".dev/config-operations/sync-regression/report.json",
+    "firstPropagationMs": 1680.6556000000019,
+    "wavePropagationMs": [
+      2005.213499999998,
+      1957.214199999995,
+      2001.9461999999985,
+      1994.8470000000016
+    ],
+    "recoveryMs": 56.31750000000466,
+    "afterRestartMs": 1970.5078999999969,
+    "localObservation": {
+      "requests": 932,
+      "forbiddenRedisBackedReadsOnB": 0,
+      "allPublishedSnapshotsMatchedLedger": true,
+      "proxyPeakConnections": 2
+    },
+    "hotPath": {
+      "proxiedRequests": 20,
+      "localDiagnosticRequests": 10,
+      "configurationCommands": 0
+    },
+    "cleanup": {
+      "BExitCode": 0,
+      "B-restartedExitCode": 0,
+      "AExitCode": 0,
+      "proxyClosed": true,
+      "upstreamClosed": true,
+      "redisRemoved": true
+    }
+  },
+  "compatibility": {
+    "report": ".dev/config-operations/compatibility-cbce5899/report.json",
+    "entrypoints": [
+      {
+        "entry": "config-consistency-live.mjs",
+        "exitCode": 0
+      },
+      {
+        "entry": "config-consistency-p2.mjs",
+        "exitCode": 0
+      },
+      {
+        "entry": "settings-stage-b.mjs",
+        "exitCode": 0
+      }
+    ],
+    "consistencyGroups": 20,
+    "p2BrowserGroups": 6,
+    "settingsPreviewGroups": 16,
+    "previewClosed": true
+  },
+  "formatMigration": {
+    "groups": 5,
+    "report": ".dev/config-operations/migration-6c1b08f2/report.json",
+    "cleanup": {
+      "redisRemoved": true
+    }
+  },
+  "legacyRollback": {
+    "groups": 8,
+    "passed": true,
+    "log": ".dev/config-operations/rollback-run.log"
+  },
+  "images": [
+    ".dev/config-operations/live-43e978db1d/old-receipt-current-baseline-1440.png",
+    ".dev/config-operations/live-43e978db1d/old-receipt-current-baseline-390.png"
+  ],
+  "developmentInstanceUpgraded": false,
+  "previousEvidencePreserved": true,
+  "changedExistingFiles": [
+    "backend/src/main/java/com/zch/config/RuntimeConfigController.java",
+    "backend/src/main/java/com/zch/config/RuntimeConfigPersistence.java",
+    "backend/src/main/java/com/zch/filter/AdminAuthFilter.java",
+    "backend/src/main/resources/runtime-config.lua",
+    "backend/src/test/java/com/zch/config/RedisRuntimeConfigSyncReaderIntegrationTest.java",
+    "backend/src/test/java/com/zch/config/RuntimeConfigConcurrencyTest.java",
+    "backend/src/test/java/com/zch/config/RuntimeConfigPersistenceTest.java",
+    "backend/src/test/java/com/zch/route/GatewayRedisIntegrationTest.java",
+    "frontend/src/settings/editor.ts",
+    "frontend/src/settings/preview.ts",
+    "frontend/src/styles/settings.css",
+    "frontend/src/views/Settings.vue",
+    "frontend/tests/settings.test.mjs",
+    "verification/config-consistency-live.mjs",
+    "verification/config-consistency-p2.mjs",
+    "verification/config-consistency-rollback.mjs",
+    "verification/config-sync-live.mjs",
+    "verification/route-dispatch-live.mjs",
+    "verification/runtime-config-client.mjs",
+    "verification/runtime-config-storage.mjs",
+    "verification/settings-stage-b-live.mjs",
+    "verification/settings-stage-b.mjs",
+    "README.md"
+  ],
+  "harnessCorrections": [
+    "Initial test preview origin was not allowed by CORS; route-callback exception handling was corrected and own resources explicitly cleaned.",
+    "An older browser script now explicitly acknowledges the retained review baseline after receipt confirmation."
+  ],
+  "notCovered": [
+    "Redis crash/persistence/failover durability matrix",
+    "Large cluster stress at receipt capacity",
+    "Long-running wall-clock jumps",
+    "Cross-tab durable draft recovery",
+    "Safe historical configuration rollback"
+  ],
+  "environmentAudit": {
+    "checkedAt": "2026-09-27T11:06:46.0789177Z",
+    "matchingContainers": [],
+    "matchingProcesses": []
+  }
+}

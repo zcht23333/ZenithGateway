@@ -1,0 +1,1545 @@
+{
+  "date": "2026-09-23",
+  "toolchains": {
+    "java": {
+      "version": "Microsoft OpenJDK 21.0.12.1",
+      "url": "https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-windows-x64.zip",
+      "sha256": "192441a9d27da813bada974bb88b4cf64d37a9589ed37f204374d411ca5ce07f",
+      "linux": {
+        "url": "https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-linux-x64.tar.gz",
+        "sha256": "4c0c7f5cd0b6bb81109d01f13a1678ee0f73f36c1020080d97c4de3ce3cac207"
+      }
+    },
+    "maven": {
+      "archive": "apache-maven-3.9.16-bin.zip",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.16/apache-maven-3.9.16-bin.zip",
+      "sha512": "ed41650d42485cfc243fad22158caf9cbb5dc408ce7a09ddb94dd42a019de929ca43065bfa450612cf12bf78b5cafa3884b96c090de326ff590448c933454af3"
+    },
+    "node": {
+      "archive": "node-v24.21.0-win-x64.zip",
+      "url": "https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip",
+      "sha256": "158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e541"
+    }
+  },
+  "frontendResolvedAdvisories": [
+    {
+      "name": "baseline-browser-mapping",
+      "previousSeverity": "moderate",
+      "currentVersions": [
+        "2.11.25"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "baseline-browser-mapping",
+          "title": "baseline-browser-mapping process termination on invalid input causes denial of service",
+          "url": "https://github.com/advisories/GHSA-w5vr-8v7q-w6rv",
+          "range": ">=2.0.0 <2.11.0"
+        }
+      ]
+    },
+    {
+      "name": "brace-expansion",
+      "previousSeverity": "high",
+      "currentVersions": [],
+      "status": "absent from final tree",
+      "advisories": [
+        {
+          "name": "brace-expansion",
+          "title": "brace-expansion: Zero-step sequence causes process hang and memory exhaustion",
+          "url": "https://github.com/advisories/GHSA-f886-m6hf-6m8v",
+          "range": ">=2.0.0 <2.0.3"
+        },
+        {
+          "name": "brace-expansion",
+          "title": "brace-expansion: DoS via exponential-time expansion of consecutive non-expanding {} groups",
+          "url": "https://github.com/advisories/GHSA-3jxr-9vmj-r5cp",
+          "range": ">=2.0.0 <2.1.2"
+        },
+        {
+          "name": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded expansion length causing an out-of-memory process crash",
+          "url": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
+          "range": ">=2.0.0 <2.1.3"
+        },
+        {
+          "name": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
+          "url": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+          "range": ">=2.0.0 <2.1.4"
+        }
+      ]
+    },
+    {
+      "name": "browserslist",
+      "previousSeverity": "high",
+      "currentVersions": [
+        "4.29.0"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "browserslist",
+          "title": "Browserslist: Unbounded memory growth (no cache eviction) via distinct query results, leading to eventual OOM",
+          "url": "https://github.com/advisories/GHSA-c83g-rgw3-j3cx",
+          "range": "<=4.28.6"
+        },
+        {
+          "name": "browserslist",
+          "title": "Browserslist: Uncaught crash / prototype write via untrusted browserslist-stats.json custom stats (normalizeStats)",
+          "url": "https://github.com/advisories/GHSA-73wf-gq98-2v4g",
+          "range": "<=4.28.6"
+        }
+      ]
+    },
+    {
+      "name": "echarts",
+      "previousSeverity": "moderate",
+      "currentVersions": [
+        "6.1.0"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "echarts",
+          "title": "Apache ECharts has a cross-site scripting (XSS) vulnerability",
+          "url": "https://github.com/advisories/GHSA-fgmj-fm8m-jvvx",
+          "range": "<6.1.0"
+        }
+      ]
+    },
+    {
+      "name": "esbuild",
+      "previousSeverity": "moderate",
+      "currentVersions": [
+        "0.28.2"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "esbuild",
+          "title": "esbuild enables any website to send any requests to the development server and read the response",
+          "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+          "range": "<=0.24.2"
+        }
+      ]
+    },
+    {
+      "name": "nanoid",
+      "previousSeverity": "high",
+      "currentVersions": [
+        "3.3.19"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "nanoid",
+          "title": "nanoid: non-secure generators can loop indefinitely with negative size",
+          "url": "https://github.com/advisories/GHSA-28wg-ghj8-5hjv",
+          "range": "<3.3.16"
+        },
+        {
+          "name": "nanoid",
+          "title": "nanoid: custom generators can loop indefinitely when size is zero",
+          "url": "https://github.com/advisories/GHSA-2v37-7h3g-55p8",
+          "range": "<3.3.18"
+        },
+        {
+          "name": "nanoid",
+          "title": "nanoid: Integer Overflow or Wraparound",
+          "url": "https://github.com/advisories/GHSA-xwg4-73v4-xw9w",
+          "range": "<3.3.12"
+        }
+      ]
+    },
+    {
+      "name": "postcss",
+      "previousSeverity": "high",
+      "currentVersions": [
+        "8.5.28"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "postcss",
+          "title": "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
+          "url": "https://github.com/advisories/GHSA-qx2v-qp2m-jg93",
+          "range": "<8.5.10"
+        },
+        {
+          "name": "postcss",
+          "title": "PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments",
+          "url": "https://github.com/advisories/GHSA-6g55-p6wh-862q",
+          "range": "<=8.5.11"
+        },
+        {
+          "name": "postcss",
+          "title": "PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset",
+          "url": "https://github.com/advisories/GHSA-fxqj-rqcc-2cmp",
+          "range": "<=8.5.22"
+        },
+        {
+          "name": "postcss",
+          "title": "PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure",
+          "url": "https://github.com/advisories/GHSA-r28c-9q8g-f849",
+          "range": "<=8.5.17"
+        }
+      ]
+    },
+    {
+      "name": "postcss-selector-parser",
+      "previousSeverity": "low",
+      "currentVersions": [
+        "6.1.4"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "postcss-selector-parser",
+          "title": "postcss-selector-parser allows denial of service through uncontrolled AST recursion",
+          "url": "https://github.com/advisories/GHSA-w9m9-85wc-3x92",
+          "range": ">=6.1.0 <6.1.3"
+        }
+      ]
+    },
+    {
+      "name": "vite",
+      "previousSeverity": "high",
+      "currentVersions": [
+        "7.3.6"
+      ],
+      "status": "updated; no final npm advisory",
+      "advisories": [
+        {
+          "name": "vite",
+          "title": "Vite Vulnerable to Path Traversal in Optimized Deps `.map` Handling",
+          "url": "https://github.com/advisories/GHSA-4w7w-66w2-5vf9",
+          "range": "<=6.4.1"
+        },
+        {
+          "name": "vite",
+          "title": "launch-editor: NTLMv2 hash disclosure via UNC path handling on Windows",
+          "url": "https://github.com/advisories/GHSA-v6wh-96g9-6wx3",
+          "range": "<=6.4.2"
+        },
+        {
+          "name": "vite",
+          "title": "vite: `server.fs.deny` bypass on Windows alternate paths",
+          "url": "https://github.com/advisories/GHSA-fx2h-pf6j-xcff",
+          "range": "<=6.4.2"
+        }
+      ]
+    }
+  ],
+  "backendOsv": {
+    "timeUtc": "2026-09-23T07:05:36.697960+00:00",
+    "source": "https://api.osv.dev/v1/querybatch",
+    "packages": [
+      {
+        "name": "ch.qos.logback:logback-classic",
+        "version": "1.5.38",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "ch.qos.logback:logback-core",
+        "version": "1.5.38",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "com.fasterxml.jackson.core:jackson-annotations",
+        "version": "2.21",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "com.fasterxml.jackson.core:jackson-core",
+        "version": "2.21.5",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "com.fasterxml.jackson.core:jackson-databind",
+        "version": "2.21.5",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "com.fasterxml:classmate",
+        "version": "1.7.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "com.jayway.jsonpath:json-path",
+        "version": "2.10.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "com.vaadin.external.google:android-json",
+        "version": "0.0.20131108.vaadin1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "commons-logging:commons-logging",
+        "version": "1.3.6",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-annotations",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-bulkhead",
+        "version": "2.3.0",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-circuitbreaker",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-circularbuffer",
+        "version": "2.3.0",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-consumer",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-core",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-framework-common",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-micrometer",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-ratelimiter",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-reactor",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-retry",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-spring-boot3",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-spring6",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.github.resilience4j:resilience4j-timelimiter",
+        "version": "2.3.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.lettuce:lettuce-core",
+        "version": "7.5.2.RELEASE",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.micrometer:micrometer-commons",
+        "version": "1.17.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.micrometer:micrometer-core",
+        "version": "1.17.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.micrometer:micrometer-jakarta9",
+        "version": "1.17.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.micrometer:micrometer-observation",
+        "version": "1.17.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-buffer",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-base",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-classes-quic",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-compression",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-dns",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-http",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-http2",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-http3",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-native-quic",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.netty:netty-codec-socks",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-common",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-handler",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-handler-proxy",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-resolver",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-resolver-dns",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-resolver-dns-classes-macos",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.netty:netty-resolver-dns-native-macos",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.netty:netty-transport",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.netty:netty-transport-classes-epoll",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.netty:netty-transport-native-epoll",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "io.netty:netty-transport-native-unix-common",
+        "version": "4.2.17.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.projectreactor.addons:reactor-extra",
+        "version": "3.6.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.projectreactor.netty:reactor-netty-core",
+        "version": "1.3.7",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.projectreactor.netty:reactor-netty-http",
+        "version": "1.3.7",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.projectreactor:reactor-core",
+        "version": "3.8.7",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "io.projectreactor:reactor-test",
+        "version": "3.8.7",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "jakarta.activation:jakarta.activation-api",
+        "version": "2.1.4",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "jakarta.annotation:jakarta.annotation-api",
+        "version": "3.0.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "jakarta.validation:jakarta.validation-api",
+        "version": "3.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "jakarta.xml.bind:jakarta.xml.bind-api",
+        "version": "4.0.5",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "net.bytebuddy:byte-buddy",
+        "version": "1.18.11",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "net.bytebuddy:byte-buddy-agent",
+        "version": "1.18.11",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "net.minidev:accessors-smart",
+        "version": "2.6.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "net.minidev:json-smart",
+        "version": "2.6.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.apache.logging.log4j:log4j-api",
+        "version": "2.25.5",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.apache.logging.log4j:log4j-to-slf4j",
+        "version": "2.25.5",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.apache.tomcat.embed:tomcat-embed-el",
+        "version": "11.0.24",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.apiguardian:apiguardian-api",
+        "version": "1.1.2",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.assertj:assertj-core",
+        "version": "3.27.7",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.awaitility:awaitility",
+        "version": "4.3.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.bouncycastle:bcprov-jdk18on",
+        "version": "1.85.2",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.hamcrest:hamcrest",
+        "version": "3.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.hdrhistogram:HdrHistogram",
+        "version": "2.2.2",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "org.hibernate.validator:hibernate-validator",
+        "version": "9.1.3.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.jboss.logging:jboss-logging",
+        "version": "3.6.3.Final",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.jetbrains.kotlin:kotlin-stdlib",
+        "version": "2.3.21",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+        "version": "2.3.21",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+        "version": "2.3.21",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.jetbrains:annotations",
+        "version": "13.0",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.jspecify:jspecify",
+        "version": "1.0.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.junit.jupiter:junit-jupiter",
+        "version": "6.0.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.junit.jupiter:junit-jupiter-api",
+        "version": "6.0.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.junit.jupiter:junit-jupiter-engine",
+        "version": "6.0.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.junit.jupiter:junit-jupiter-params",
+        "version": "6.0.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.junit.platform:junit-platform-commons",
+        "version": "6.0.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.junit.platform:junit-platform-engine",
+        "version": "6.0.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.mockito:mockito-core",
+        "version": "5.23.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.mockito:mockito-junit-jupiter",
+        "version": "5.23.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.objenesis:objenesis",
+        "version": "3.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.opentest4j:opentest4j",
+        "version": "1.3.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.ow2.asm:asm",
+        "version": "9.7.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.reactivestreams:reactive-streams",
+        "version": "1.0.4",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.skyscreamer:jsonassert",
+        "version": "1.5.3",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.slf4j:jul-to-slf4j",
+        "version": "2.0.18",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.slf4j:slf4j-api",
+        "version": "2.0.18",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-actuator",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-actuator-autoconfigure",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-autoconfigure",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-data-commons",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-data-redis",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-data-redis-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-health",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-http-client",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-http-codec",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-http-converter",
+        "version": "4.1.1",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-jackson",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-micrometer-metrics",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-micrometer-observation",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-netty",
+        "version": "4.1.1",
+        "scopes": [
+          "runtime"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-persistence",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-reactor",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-reactor-netty",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-restclient",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-actuator",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-data-redis-reactive",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-data-redis-reactive-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-jackson",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-jackson-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-logging",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-micrometer-metrics",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-reactor-netty",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-validation",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-webflux",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-starter-webflux-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-test-autoconfigure",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-transaction",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-validation",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-web-server",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-webflux",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-webflux-test",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.boot:spring-boot-webtestclient",
+        "version": "4.1.1",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-circuitbreaker-resilience4j",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-commons",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-context",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-gateway-server-webflux",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-starter",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.cloud:spring-cloud-starter-gateway-server-webflux",
+        "version": "5.0.3",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.data:spring-data-commons",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.data:spring-data-keyvalue",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.data:spring-data-redis",
+        "version": "4.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework.security:spring-security-crypto",
+        "version": "7.1.1",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-aop",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-beans",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-context",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-context-support",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-core",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-expression",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-oxm",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-test",
+        "version": "7.0.9",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-tx",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-web",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.springframework:spring-webflux",
+        "version": "7.0.9",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "org.xmlunit:xmlunit-core",
+        "version": "2.11.0",
+        "scopes": [
+          "test"
+        ]
+      },
+      {
+        "name": "org.yaml:snakeyaml",
+        "version": "2.6",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "redis.clients.authentication:redis-authx-core",
+        "version": "0.1.1-beta2",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "tools.jackson.core:jackson-core",
+        "version": "3.1.5",
+        "scopes": [
+          "compile"
+        ]
+      },
+      {
+        "name": "tools.jackson.core:jackson-databind",
+        "version": "3.1.5",
+        "scopes": [
+          "compile"
+        ]
+      }
+    ],
+    "findings": [],
+    "details": {},
+    "errors": []
+  },
+  "limits": [
+    "OSV scan covers Maven dependency:tree (including test dependencies), not JDK/container OS/build-plugin dependencies.",
+    "No reported advisory is not proof of absence of vulnerabilities."
+  ],
+  "redis": {
+    "version": "7.4.11",
+    "image": "redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499"
+  },
+  "backendJackson2": {
+    "version": "2.21.5",
+    "source": "spring-cloud-circuitbreaker-resilience4j:5.0.3",
+    "decision": "Keep upstream-required Jackson 2 runtime. Application JSON uses injected Jackson 3 JsonMapper; no spring-boot-jackson2 or properties migrator."
+  },
+  "verification": {
+    "backendTests": 83,
+    "backendSkipped": 0,
+    "frontendTests": 10,
+    "frontendCleanInstall": true,
+    "browser": {
+      "checks": [
+        "authentication rejects invalid token and accepts valid token",
+        "route saved through UI and rewritten request reaches upstream",
+        "real SSE traffic, audit logs, ECharts canvas, tooltip and responsive resize",
+        "SSE reconnect after browser offline/online",
+        "navigation and route removal",
+        "authenticated graceful shutdown"
+      ],
+      "errors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "browser": "153.0.4234.48"
+    },
+    "rollback": {
+      "checks": [
+        "Boot 4 reads Boot 3 runtime, routes and pre-eventId audit rows; forwarding succeeds",
+        "Boot 3 reads Boot 4 runtime, newly stored routes and audit records; forwarding succeeds after rollback"
+      ],
+      "prefix": "zg:upgrade-roundtrip:1790147255732",
+      "oldRoute": {
+        "id": "rollback",
+        "path": "/rollback/**",
+        "uri": "http://127.0.0.1:56955",
+        "rewriteEnabled": true,
+        "rewriteRegex": "^\\Q/rollback\\E/(?<segment>.*)$",
+        "rewriteReplacement": "/${segment}",
+        "circuitBreakerEnabled": false,
+        "circuitBreakerName": "cb-rollback",
+        "fallbackPath": "/fallback/default"
+      },
+      "newRuntime": {
+        "rateLimitEnabled": false,
+        "replenishRate": 47,
+        "burstCapacity": 61,
+        "requestedTokens": 2,
+        "monitorWindowSeconds": 12,
+        "emitIntervalSeconds": 2
+      }
+    },
+    "remoteCiExecuted": false,
+    "windowsLauncher": {
+      "powershell51": [
+        "CheckOnly",
+        "SmokeTest with Wrapper build",
+        "Ctrl+C graceful shutdown"
+      ],
+      "powershell7": [
+        "CheckOnly",
+        "SmokeTest",
+        "Ctrl+C graceful shutdown"
+      ],
+      "customPortCorsRouteCreateStatus": 201,
+      "reusedRedisLeftRunning": true
+    },
+    "performance": {
+      "report": "../benchmarks/dependency-upgrade-2026-09-23.json",
+      "samples": 30,
+      "sustainedConfirmed": 2691660,
+      "sustainedDropped": 0,
+      "sustainedUncertain": 0,
+      "schedulerMisses": 8288,
+      "capacityMisses": 52,
+      "performanceNonRegressionProven": false,
+      "comparisons": [
+        {
+          "stage": "initial",
+          "scenario": "forward-only",
+          "throughputChangePercent": -10.946717254206462,
+          "p95ChangePercent": 10.986596352450007
+        },
+        {
+          "stage": "initial",
+          "scenario": "rate-limit-audit",
+          "throughputChangePercent": -13.012009512449463,
+          "p95ChangePercent": 24.31024503183483
+        },
+        {
+          "stage": "paired",
+          "scenario": "forward-only",
+          "throughputChangePercent": 1.626361576937163,
+          "p95ChangePercent": -6.53632915086082
+        },
+        {
+          "stage": "paired",
+          "scenario": "rate-limit-audit",
+          "throughputChangePercent": 1.6501910628464955,
+          "p95ChangePercent": -0.2621661477961612
+        },
+        {
+          "stage": "all-observed",
+          "scenario": "forward-only",
+          "throughputChangePercent": -0.6810459552794246,
+          "p95ChangePercent": 0.4206393718451995
+        },
+        {
+          "stage": "all-observed",
+          "scenario": "rate-limit-audit",
+          "throughputChangePercent": -9.995199555656775,
+          "p95ChangePercent": 13.558093166576036
+        }
+      ]
+    }
+  },
+  "artifacts": {
+    ".dev/upgrade-baseline/baseline.jar": {
+      "sha256": "b0d2a0d4c06fa17d91d5cb2d2e6c9413411a215fd8236927b44965525962069a",
+      "bytes": 43851491
+    },
+    "backend/target/zg-1.0.0.jar": {
+      "sha256": "42033e0a6f6fec2dfdd0fb51f2bfa16870a1a018e805f84a7dbdb9d6492e5365",
+      "bytes": 64512644
+    },
+    "frontend/package-lock.json": {
+      "sha256": "f5ba137668a34eb59e077ef4a36f90629506c2cf24035b069eab4e833550e000",
+      "bytes": 92347
+    }
+  },
+  "platform": {
+    "java": "Microsoft OpenJDK 21.0.12.1+1",
+    "maven": "3.9.16",
+    "springBoot": "4.1.1",
+    "springCloud": "2025.1.3",
+    "gateway": "5.0.3",
+    "springFramework": "7.0.9",
+    "jacksonApplication": "3.1.5",
+    "lettuce": "7.5.2.RELEASE",
+    "reactorCore": "3.8.7",
+    "reactorNetty": "1.3.7",
+    "netty": "4.2.17.Final",
+    "micrometer": "1.17.1",
+    "resilience4j": "2.3.0",
+    "node": "24.21.0",
+    "redis": "7.4.11"
+  },
+  "frontendAudit": {
+    "auditReportVersion": 2,
+    "vulnerabilities": {},
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "dependencies": {
+        "prod": 32,
+        "dev": 149,
+        "optional": 53,
+        "peer": 0,
+        "peerOptional": 0,
+        "total": 180
+      }
+    }
+  },
+  "acceptance": {
+    "dependencyMigration": "adopted as development baseline",
+    "windowsLocalValidation": "passed",
+    "remoteLinuxCi": "not executed",
+    "performance": "uncertain; no non-regression or improvement claim; controlled validation required before capacity claims"
+  }
+}

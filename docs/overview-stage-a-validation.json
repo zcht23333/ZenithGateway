@@ -1,0 +1,387 @@
+{
+  "generatedAt": "2026-09-25T15:07:03.348577+00:00",
+  "stage": "A - shared foundation and overview",
+  "implementationComplete": true,
+  "designAcceptance": "pending user review",
+  "unitTests": {
+    "passed": 25,
+    "failed": 0,
+    "command": "npm --prefix frontend test"
+  },
+  "productionBuild": {
+    "passed": true,
+    "command": "npm --prefix frontend run build",
+    "modules": 657,
+    "javascriptKB": 704.27,
+    "javascriptGzipKB": 245.42,
+    "warning": "Existing main bundle exceeds 500 kB; no dependency changes"
+  },
+  "overviewBrowser": {
+    "startedAt": "2026-09-25T15:03:31.587Z",
+    "checks": [
+      "Normal first viewport prioritises QPS, P95 and two aligned trends, followed by the audit summary",
+      "Inspecting actual samples changes the readout without replacing current-window metrics",
+      "Audit details separate process counters from current queue state and explain uncertain writes",
+      "Recent records expose full long paths, exact JSON, dates, cancellation and status zero",
+      "Zero traffic, empty history, first loading, disabled monitoring and P95 overflow remain distinct",
+      "Partial failures retain timestamped old data and allow independent source recovery",
+      "320–1440px layouts keep all three navigation destinations available and long records usable",
+      "Explicit overview and route previews remain isolated from management APIs",
+      "Formal overview loads sources independently; unknown metrics stay dashes while audit records arrive",
+      "A failed records refresh retains old records; other data stays readable and retry clears the error",
+      "An open but silent stream becomes stale; a new event and reconnect recover without clearing audits",
+      "Navigation and formal-to-preview transitions release subscriptions and record polling",
+      "Non-preview URLs and expired credentials still require management authentication"
+    ],
+    "screenshots": [
+      {
+        "file": "docs/images/overview-stage-a-normal-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/overview-stage-a-empty-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/overview-stage-a-overflow-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/overview-stage-a-gaps-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/overview-stage-a-partial-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": true
+      },
+      {
+        "file": "docs/images/overview-stage-a-audit-1440.png",
+        "width": 1440,
+        "height": 900,
+        "fullPage": false
+      },
+      {
+        "file": "docs/images/overview-stage-a-normal-390.png",
+        "width": 390,
+        "height": 844,
+        "fullPage": true
+      },
+      {
+        "file": "docs/images/overview-stage-a-first-screen-390.png",
+        "width": 390,
+        "height": 844,
+        "fullPage": false
+      }
+    ],
+    "layouts": [
+      {
+        "width": 1440,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 960,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 700,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 390,
+        "horizontalOverflow": false
+      },
+      {
+        "width": 320,
+        "horizontalOverflow": false
+      }
+    ],
+    "errors": [],
+    "previewApi": [],
+    "passed": true,
+    "mockedFormal": {
+      "sourceFailuresInjected": true,
+      "managementWrites": 0,
+      "requests": {
+        "/settings/runtime": 4,
+        "/dashboard/snapshot": 4,
+        "/dashboard/series": 5,
+        "/monitor/audit/recent": 7,
+        "/monitor/audit/status": 5,
+        "/settings/sse-token": 5
+      }
+    }
+  },
+  "routeRegressions": {
+    "routePolish": {
+      "generatedAt": "2026-09-25T14:43:45.967Z",
+      "passed": true,
+      "checks": [
+        "Shared ID/Path/URI search and rule filters preserve the canvas until explicit selection",
+        "All 32 complete IDs, paths and URI fields compare in rows without truncation",
+        "Keyboard navigation waits for Enter; selection closes the directory and reveals its dock page",
+        "Long and short route switches keep the title, endpoint and path origins stable",
+        "Node rest/hover/selected states differ without permanent glow; closing restores context and focus",
+        "Both conditional branches remain visible beside their expanded node at desktop widths",
+        "Full fields and new header copy controls retain exact URI/path values; cached directory remains read-only",
+        "Expanded directory fits 320–1440px and mobile selection returns to the inline path inspector",
+        "Final normal, dense and expanded-node screenshots capture actual 1440×900 first viewports",
+        "Preview remains isolated and produces no JavaScript errors"
+      ],
+      "pageErrors": [],
+      "apiRequests": []
+    },
+    "routeDispatch": {
+      "generatedAt": "2026-09-25T14:51:31.604Z",
+      "passed": true,
+      "checks": [
+        "Normal route exposes actual ordered stages and conditional 429/503 branches",
+        "Node expands in place, exposes complete rewrite example and fields, Escape restores focus",
+        "Route switching removes unsupported stages and closes prior node panel",
+        "Search and filters keep current route until explicit selection; locate restores its directory page",
+        "32 routes paginate 6 per page, keep selection while browsing, and support keyboard selection across pages",
+        "Long route fields are complete, selectable and copyable as text and JSON",
+        "Configuration error is centralized, cached canvas remains, writes block, details and retry work",
+        "Preview create/edit/delete retains validation and generated-rule examples without live writes",
+        "320–1440px layouts keep long names readable and directory responsive at 6/4/2 entries",
+        "Mobile paging keeps the selected route; selection and node expansion fold the directory",
+        "Scenario tabs switch fixtures, and clicking the current tab preserves selection",
+        "Motion represents selection/expansion and honors reduced-motion preference",
+        "Normal, exception and 32-route browser screenshots fit a 1440×900 first viewport",
+        "Preview produces no JavaScript errors and makes no backend API requests"
+      ],
+      "pageErrors": [],
+      "apiRequests": []
+    },
+    "routeLive": {
+      "startedAt": "2026-09-25T14:46:31.680Z",
+      "completedAt": "2026-09-25T14:47:06.552Z",
+      "passed": true,
+      "checks": [
+        "Real authentication and delayed initial loading: no fake route, empty-state action or demo controls",
+        "Initial route-read failure is distinct from a confirmed empty directory and recovers",
+        "UI create uses server validation, persists to Redis and forwards a real rewritten request",
+        "Editing updates forwarding, ordinary HTTP 500 passes through, and connection failure falls back to 503",
+        "Runtime polling updates the actual token-bucket stage and conditional branch",
+        "Failed refresh keeps actual cached route and blocks writes, then retry restores editing",
+        "Successful create followed by failed list refresh retains previous selection and reports both outcomes",
+        "Unavailable runtime/metrics/audit never appear healthy or as zero, and refresh recovers them",
+        "Disabled monitoring and latency overflow retain existing business semantics",
+        "Live navigation, narrow layout and copied fields remain connected to actual routes",
+        "Confirmed live deletion removes persisted and runtime routes; refresh failure is reported without losing context",
+        "Disconnect cancels polling; expired credentials return to login; preview remains isolated"
+      ],
+      "pageErrors": [],
+      "cleanup": {
+        "backendExitCode": 0,
+        "testRedisRemoved": true
+      }
+    }
+  },
+  "realOverview": {
+    "browser": {
+      "startedAt": "2026-09-25T15:03:50.007Z",
+      "kind": "Read-only live backend verification",
+      "responses": [
+        {
+          "path": "/api/settings/runtime",
+          "status": 401,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/settings/runtime",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/dashboard/snapshot",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/settings/sse-token",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/monitor/audit/status",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/dashboard/series",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/monitor/audit/recent",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/monitor/stream",
+          "status": 200,
+          "contentType": "text/event-stream;charset=UTF-8"
+        },
+        {
+          "path": "/api/settings/runtime",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/monitor/audit/status",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/dashboard/snapshot",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/settings/sse-token",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/dashboard/series",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/api/monitor/audit/recent",
+          "status": 200,
+          "contentType": "application/json"
+        },
+        {
+          "path": "/monitor/stream",
+          "status": 200,
+          "contentType": "text/event-stream;charset=UTF-8"
+        }
+      ],
+      "pageErrors": [],
+      "writes": [],
+      "passed": true,
+      "currentWindow": {
+        "qps": "0.30",
+        "p95": "84",
+        "scope": "当前窗口 10 秒 · 已结束代理请求 3 次平均延迟 31.7 ms 同一窗口内：取消 0 次、请求异常 0 次、未形成 HTTP 状态 0 次。这些分类可能重叠，不相加作为请求总量。QPS = 窗口已结束请求数 ÷ 窗口秒数。"
+      },
+      "recordCount": 3,
+      "observedFreshSseUpdate": true
+    },
+    "isolation": {
+      "startedAt": "2026-09-25T15:03:31.847Z",
+      "isolated": true,
+      "cleanup": {
+        "backendExitCode": 0,
+        "redisRemoved": true
+      },
+      "passed": true,
+      "realProxyRequests": 3,
+      "completedAt": "2026-09-25T15:03:57.664Z"
+    }
+  },
+  "artifacts": [
+    {
+      "file": "docs/images/overview-stage-a-audit-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "75ac58668aa2760835b96b29c9e148290ca421b2ee4235f85fd1c51ccd22937a"
+    },
+    {
+      "file": "docs/images/overview-stage-a-empty-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d261ceba5d206668aed8733624fe19cf5b91a613491a36bf62a34678ff1373b2"
+    },
+    {
+      "file": "docs/images/overview-stage-a-first-screen-390.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "f51208245ba6e80a1eb7cd2a175483d5bd4112f9aebc5bf392d7a69748b30f5b"
+    },
+    {
+      "file": "docs/images/overview-stage-a-gaps-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d16f3d22cc3eb69f71b6e5e651b7a37bd12cd9fd6e9a280a62ffb7059004ceed"
+    },
+    {
+      "file": "docs/images/overview-stage-a-live-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "e7e6e6d0c7d4eecb969a3eca64af0da7948e4b3fd4c598c0f94f4ba9d4c1d898"
+    },
+    {
+      "file": "docs/images/overview-stage-a-normal-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "dc7959f7bc7d02cc6cb12544a155c38c30b4aa1a0c467c711ed338a8b9244743"
+    },
+    {
+      "file": "docs/images/overview-stage-a-normal-390.png",
+      "width": 390,
+      "height": 2225,
+      "sha256": "0a5a9cb41dc0576e8661ce8975642cd1035125c931bb6c623dc97d611876c2c7"
+    },
+    {
+      "file": "docs/images/overview-stage-a-overflow-1440.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "14514ceac92839ea4b3362ceb3642c199bfa0f6e3a57723156806483612fa5c2"
+    },
+    {
+      "file": "docs/images/overview-stage-a-partial-1440.png",
+      "width": 1440,
+      "height": 1563,
+      "sha256": "dda04c775df8e500a09cb283a7ca29c16990d2f7d1303044d4b7bf7232d039e4"
+    }
+  ],
+  "video": {
+    "file": "docs/media/overview-stage-a-interaction.webm",
+    "seconds": 14.8,
+    "width": 1440,
+    "height": 900,
+    "fps": 25,
+    "format": "WebM/VP8",
+    "source": "Actual Edge interaction in explicitly labelled isolated overview preview",
+    "visuallyInspectedFramesSeconds": [
+      2,
+      6,
+      11
+    ],
+    "sha256": "9d194771e90f70beb238833ea9a84ce7faa12ea9ede05acd5f691bf42850ef8d"
+  },
+  "scopeReview": {
+    "baselineArchive": ".dev/overview-stage-a/before.zip",
+    "modifiedExistingFiles": [
+      "frontend/src/App.vue",
+      "frontend/src/components/AdminAccess.vue",
+      "frontend/src/components/AuditHealth.vue",
+      "frontend/src/components/LogStream.vue",
+      "frontend/src/components/TrafficChart.vue",
+      "frontend/src/router/index.ts",
+      "frontend/src/stores/traffic.ts",
+      "frontend/src/styles/route-dispatch.css",
+      "frontend/src/views/Dashboard.vue",
+      "frontend/src/views/RouteDispatch.vue"
+    ],
+    "verifiedUnchanged": [
+      "frontend/src/views/Settings.vue",
+      "frontend/src/api.ts"
+    ],
+    "backendChanges": false,
+    "settingsBodyChanges": false,
+    "dependencyChanges": false
+  }
+}

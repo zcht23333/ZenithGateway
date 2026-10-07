@@ -1,0 +1,1386 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-04T15:22:32.001965+00:00",
+  "scope": "One capacity exploration, one matched diagnostic pair, one full one-hour soak, then downshift; no worker/queue tuning",
+  "executionCompleted": true,
+  "oneHourCapacityCertified": false,
+  "certifiedOneHourRate": null,
+  "decision": "Keep handoff default false; 4000 req/s inline failed one-hour zero-fail-open criterion. Lower rates and handoff have no one-hour pass in this round.",
+  "artifact": {
+    "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/gateway-final.jar",
+    "sha256": "2eb6c17bbc8121dcaef2fb131d143165a08b37e0d44a3ba23ca088809236946d",
+    "backendTargetMatches": true,
+    "sourceHashes": {
+      "pom.xml": "15e3562a7c1b46e61ab6dbaf3c9181908f10eb5247c74ff5153106e171b05915",
+      "src/main/java/com/zch/GatewayApplication.java": "ce59a326f0ef957e88660ccbdf8f67b527ed0481c2d177f5377161a1f25b3b76",
+      "src/main/java/com/zch/config/AdminAuthProperties.java": "7efb34b2574395c19bff284716a08a0ddcdd947dc698e9979a21b2d2ca4576cd",
+      "src/main/java/com/zch/config/ConfigProblem.java": "63d718c3a666e7f26c64559009fab229598680155e5339fe2901036e218a5107",
+      "src/main/java/com/zch/config/ConfigUtils.java": "3dc74bb41a05d2ca9409a1115cf1a484b8d63569239bd438aaea619182cfedf1",
+      "src/main/java/com/zch/config/CorsConfig.java": "fc9e56f058bdd47c013c5fb53cb13946c0f6c28357ef8339ef6f1166b73f6f3a",
+      "src/main/java/com/zch/config/GatewayRuntimeProperties.java": "9f63fb0a8f77e031c18c424952c1fd36df3b652fa3ea70b21e38b0812e9a0263",
+      "src/main/java/com/zch/config/MonitorConfig.java": "a8f4bb4e8a27fad465b4a8e5e2d834b3c20a4ec6e30bdd5afad0857f8e4eed16",
+      "src/main/java/com/zch/config/ObservabilityConfiguration.java": "52552d9e270acce44108917865fb96f031a6f36ffa0117ccce15e87606b9c525",
+      "src/main/java/com/zch/config/ProxyProperties.java": "c41d762843f746869ac409f19d37f27512e50a1dbd4cb3176a6182e961cee87c",
+      "src/main/java/com/zch/config/RateLimitConfig.java": "fb1b6cebff95de57b1d24e251a3e3db863787def60461207b8294dd024c42e2e",
+      "src/main/java/com/zch/config/RedisRuntimeConfigSyncReader.java": "67a5d73d75411849a3e678023d80ac27b6c70fe502eafecb6ae512db6813e510",
+      "src/main/java/com/zch/config/RuntimeConfigController.java": "aa454bebc236f8b26cc51958e8a2af0e5e55e44af2269c5218fa18016a232032",
+      "src/main/java/com/zch/config/RuntimeConfigPersistence.java": "a01f42f3d2ae86697ffcf6c1f55f381775e24380ee1f86fb194ad5763800cbca",
+      "src/main/java/com/zch/config/RuntimeConfigSnapshot.java": "e4784b3bfdedcb7beace67632231bfd064faebb53543c8e7814d8708fa3a82dd",
+      "src/main/java/com/zch/config/RuntimeConfigSource.java": "41fee2af8557c4d9b6e6be60f8df458a9e0efd7a691db1236267dcafc913ef42",
+      "src/main/java/com/zch/config/RuntimeConfigSync.java": "14dc0221f21a9d6d01eee92e85ac2efa85809023bb5706eb55121228ebe6805e",
+      "src/main/java/com/zch/config/RuntimeConfigSyncController.java": "79a5370a4f6473aca21693ea100983b4197c1878fdd7075443f3cf363a2010c4",
+      "src/main/java/com/zch/config/RuntimeConfigSyncProperties.java": "5dfaad28ea485f9e243c0958e9bb2efce640b808e1e10b8eebd7fddc245cbace",
+      "src/main/java/com/zch/config/RuntimeConfigSyncReader.java": "1aec78c3f5adb16b5e90d217fa2eb6f41b59a69f20860d9915db3f037ff9ed77",
+      "src/main/java/com/zch/filter/AdminAuthFilter.java": "7ad759cb7658e113c05eaf057d9230513e89acd3ec63109d3e76ae13c2adf66b",
+      "src/main/java/com/zch/filter/AuditLogFilter.java": "3816900abbc3482b69037602d5f8c553396cf1edd79ce92f1ab00b6a69e14cb8",
+      "src/main/java/com/zch/filter/RateLimitFilter.java": "08394d7749ac38bbb4a0694e0b198ade7434535d454bafae97325e3e0fe6ebb1",
+      "src/main/java/com/zch/filter/ReadinessFilter.java": "87605b0d071ccd65a7181684b805dd1b235a9b18ba775503b019b2a1da118908",
+      "src/main/java/com/zch/monitor/AuditBatchWriter.java": "70e5e79327e1b104a053fc3e2f9361adac5a928b978d787f39ed969a6d52596c",
+      "src/main/java/com/zch/monitor/AuditEvent.java": "0e982918cdb70f0ad0844787d39f57fbaaf255a9730b86938e8ba21f22c7f7ac",
+      "src/main/java/com/zch/monitor/AuditEventPublisher.java": "c40bf6fabd846d847f69af5464437951df26eb9824745a396bb245edf915dd17",
+      "src/main/java/com/zch/monitor/AuditQueryController.java": "53fe8c3f883d39081b794e44ed42042951d7f2f4fe3a606d59851aea16ce46ba",
+      "src/main/java/com/zch/monitor/AuditStatus.java": "93dfc1e064068eb152239ede71a1017a17e950afe164f1932b796d69bb2ddc04",
+      "src/main/java/com/zch/monitor/AuditStatusController.java": "e78f1982def258485187de212dc8423a3d46f3879c3309b5684accf5057a2709",
+      "src/main/java/com/zch/monitor/DashboardController.java": "e295de9cd7ff5d17e9960cc86a822b411bdf7d39c85e6b3489bb8ecf6a478aa3",
+      "src/main/java/com/zch/monitor/GatewayMetrics.java": "6d97bb30e7dd2e00f010f9f1049d8927498da6c3250831056510ed872413e602",
+      "src/main/java/com/zch/monitor/LatencyHistogram.java": "5a6519bc53de8f7648d27061670c9f70a852a526212b9c9ac498513bf82c9128",
+      "src/main/java/com/zch/monitor/RedisAuditBatchWriter.java": "de8746496e6722f5cb8434979e22f87c68e3664c73546ce7f27ece96c5cab579",
+      "src/main/java/com/zch/monitor/RequestCompletionRecorder.java": "db2464997984f9086fc986be51d3e30e769d2c320dd8cb30240031232bffdf71",
+      "src/main/java/com/zch/monitor/RequestObservation.java": "e75c44ed1d91efa6e08421e8314a7f9055d54c49fe455e9e19f2581182a6e33c",
+      "src/main/java/com/zch/monitor/SseController.java": "fe22426b3e6a2be916643de28f6564decc85ed9b1a406272892b3ec0479cdb0c",
+      "src/main/java/com/zch/monitor/TrafficData.java": "3ed0a78b46a088ea2305ab22817e08cb4097e139293578ea61177a0b4f096eb8",
+      "src/main/java/com/zch/monitor/TrafficMetricsService.java": "4e0a583362b466b327a727f6190afa4de4d946a86837fcf0faecb9e445ee1ddb",
+      "src/main/java/com/zch/monitor/TrafficMetricsSnapshot.java": "630d2c88fddfa67a18c0ec31dd42c8f2a20f4cc86f4bff24dcf588b76c5d3f54",
+      "src/main/java/com/zch/proxy/ProxyBreakers.java": "f729419d7a778ac63654b69683352502b8c89c1dcd5ed4faa9a26846063abbf5",
+      "src/main/java/com/zch/proxy/ProxyClientConfiguration.java": "da6676542e87ea9fe53ccaec2a0115cdae067b5fcecd983dab8d6ab00c1cda41",
+      "src/main/java/com/zch/proxy/ProxyDiagnosticsController.java": "72930cbfc5ff534a4d7f6d23e7b9b5d7ab33648ae29ccfc01f1a293c08feb7cd",
+      "src/main/java/com/zch/proxy/ProxyFailure.java": "69e14984338c33bc03ce2cc0f6ec8520375624d759d9f9f2caec11cd2fa069a3",
+      "src/main/java/com/zch/proxy/ProxyPolicy.java": "4d0d388a1d63c5c4ba3f60b7e75c3e4771a95c7e278d50fd927b062f6081b67b",
+      "src/main/java/com/zch/proxy/ProxyResilienceFilter.java": "6bfadb08f4ba6f2f754a6f94c5d1d6529b5922b607a169a42231d7c90385cfda",
+      "src/main/java/com/zch/proxy/ProxyResponseLifecycle.java": "210541df8e7469d467970aea704f61ea07ccee76a25f98ae52dfdd0fbe3d908d",
+      "src/main/java/com/zch/proxy/UpstreamTransportErrors.java": "19cc839b8f177cd22328bb2f4fc5f73ac603ddd930d8051cd19bb77d03d02b02",
+      "src/main/java/com/zch/ratelimit/LimitDecision.java": "1d56b7930cecfecea93ba2ba35a75f25a8ef563147ba9f61e052f3980695858b",
+      "src/main/java/com/zch/ratelimit/LimiterDiagnosticsController.java": "29feae464e57bcd9cf174bb2d3805b82d2e03c177fc6a40e3b03a9c4c0576e86",
+      "src/main/java/com/zch/ratelimit/LimiterProperties.java": "4924c25858f3284eb85190cef7bf608338e8cde6d847cb41516f86627bdf97e5",
+      "src/main/java/com/zch/ratelimit/LimiterSaturationSamples.java": "57cf434555f1a73fa71c9cbbcf9b2f49100eeabf101143f70de085cdc5655c46",
+      "src/main/java/com/zch/ratelimit/LimiterTelemetry.java": "9be2ecdca663082906f0fc9f3f8f27ea19a04b0b553d979a8fdc5f8d9c7d56d3",
+      "src/main/java/com/zch/ratelimit/RateLimitDecider.java": "bb3ac788a413f79d937127f8a3fa45516eb6aa16d5031b6db39eb3c9fbfb7827",
+      "src/main/java/com/zch/ratelimit/RedisRateLimiter.java": "2bdaf8617962cd6cfd442f66e7624b967956a3dedbd0aa85334db844df0da4b8",
+      "src/main/java/com/zch/route/ActiveRoutes.java": "388a2e458dc2fd57dc8169d732258341603f4dd8e8f27600f3ddda959043d60b",
+      "src/main/java/com/zch/route/DynamicRouteController.java": "e5fe0133aa88d567c284b8b3cf0da95d809f227a5c3fb4bd8bc93b75ff19f6b8",
+      "src/main/java/com/zch/route/DynamicRouteService.java": "b261bcb7c4029486fb8b639ef1c99fad78a7074169dc3d309ca56a2a649611ab",
+      "src/main/java/com/zch/route/GatewayFallbackController.java": "f12d89958dc172de60844d181cb4686ef5ab0a4b1fc09569b644fcfd969f81c5",
+      "src/main/java/com/zch/route/RouteCompiler.java": "cd48f874c16ef50d911b99cb496aa8191329045de3892dcfe64024a784e09fe7",
+      "src/main/java/com/zch/route/RouteErrorHandler.java": "b8eb8023c6624e70923f9343cfa17a69bc6fee81c551782033ca42f1acfe6946",
+      "src/main/java/com/zch/route/RouteProblem.java": "eb14cb3b25fd81d3e22d2635bdc07dea53cdd353e6f92f7ae1f9ca356d082618",
+      "src/main/java/com/zch/route/RoutePublicationConfiguration.java": "6f69d62929c03ebc1c82e76c6d9b8f9695b9d86120792badcb4ff04312a3831c",
+      "src/main/java/com/zch/route/RoutePublicationProperties.java": "240e0e4d83247772251964127c67d14fa6ef0f2f67bebe233596cecddcc9cd18",
+      "src/main/java/com/zch/route/RouteRuleDto.java": "8bb4e34c333f817568b0ce7c5b40fb0e5ffe79cada2ab742a65a2113cf1f69b1",
+      "src/main/java/com/zch/route/RouteSnapshot.java": "7cc04111ab5b9fafe1b8a75c2ce75d335ed81ef5acdabe8c39052ab6ef868f12",
+      "src/main/java/com/zch/route/RouteStorageTool.java": "b74b76113183e322deca1c41c558f9dd067fe1e4b062186c805caa425517733b",
+      "src/main/java/com/zch/route/RouteStore.java": "5b1254d513821776c75be740cec13be8df4770ed2f233ff088b0a4b0cedf80b7",
+      "src/main/java/com/zch/route/RouteValidationException.java": "6ac6ec31c62cdfd1a5ad231c11336b1a071b45120ae003e04c6ddff0c1243315",
+      "src/main/java/com/zch/route/RouteValidator.java": "32c0caa4de5968cc0dbbf7e363d40852aa00143e1595cc9cd101c920dcc31cc3",
+      "src/main/java/com/zch/util/ClientIpResolver.java": "c1c08f2cf9e38c48711767ace0f351ed607c48ce735e2931d47bb5e86cae263f",
+      "src/main/resources/application-capacity.yml": "7696008a3f34ce1a1ce65b44e6878e8d1dc6109038df2f0e9356048bd71dd506",
+      "src/main/resources/application.yml": "4e2d09ea4ccc78877cb4b3a02b48a8e0bc9cc97ffffb1cf78cf5eb81493c8480",
+      "src/main/resources/rate-limit.lua": "c3cf623bda65913bca12d3f66315a7026c16a8d215f0fad65dc350e93e65c59e",
+      "src/main/resources/route-publication.lua": "e142eed84f322111036d8bd205efa474e74f9a260dca1581fded0ad53b0cbd8f",
+      "src/main/resources/runtime-config.lua": "182ca7fdc8c9066fb26787b907e36b7e041f9e9c11af86003cd786c7c72699a0",
+      "src/test/java/com/zch/config/GatewayRuntimePropertiesBindingTest.java": "f446672700945977c81429beda1d325671e9c1f28c58fca2d66725d9aad44b23",
+      "src/test/java/com/zch/config/RedisRuntimeConfigSyncReaderIntegrationTest.java": "45dcfd9a283863a35fc5633e4f899e8317cce209fa76cf3880523aef2ad2ee40",
+      "src/test/java/com/zch/config/RuntimeConfigConcurrencyTest.java": "03183905b5ddf898ab7b11cbdab03d4ca1bcd01f046aec1648c8a00c6ebb945e",
+      "src/test/java/com/zch/config/RuntimeConfigOperationsTest.java": "5ad3464238fa555f808afde55a3c6e626ed1ce87eb69dc36d0285507c91f943b",
+      "src/test/java/com/zch/config/RuntimeConfigPersistenceTest.java": "6ce534a213c9e385d86865a7929775f93b3a64d01dbfcd91cc13b215444ad8d8",
+      "src/test/java/com/zch/config/RuntimeConfigRollbackTest.java": "ff71ac4bd07690f8604b77df7517f17f11f007a17f66cf8487d57e8bcf7130da",
+      "src/test/java/com/zch/config/RuntimeConfigSyncTest.java": "bab6db3979f572510b9fd5e32b47df3bd6d74a653560d9e7c278acfcd419ade3",
+      "src/test/java/com/zch/config/StartupReadinessIntegrationTest.java": "83d6ac5d1ed7e966cb4a160cc68fb4c860b7f582243f2d9a4f7908700ddff2c3",
+      "src/test/java/com/zch/filter/AdminAuthFilterTest.java": "ae7818f6b6cceac8f70eca467c567f10446d610b78d374dbd8c57019856003a4",
+      "src/test/java/com/zch/filter/RateLimitFilterTest.java": "f444872d2ae19703f74ca516b2a4a5c8e7ad3df9d949d9cb6e1b1cbbdba96875",
+      "src/test/java/com/zch/filter/ReadinessFilterTest.java": "f13db17dc37bfc88f1e904c51c3c6130362f582d8474892b3cf5f8d6976c1903",
+      "src/test/java/com/zch/monitor/AuditEventPublisherTest.java": "268297b834aeca57de40351e49a99add518ea1febcdb62c9724252e55cc7f8ad",
+      "src/test/java/com/zch/monitor/GatewayMetricsTest.java": "d74df43bf01811f887851c5ad0db6c9fe458095b7fa2653812a6f88218737429",
+      "src/test/java/com/zch/monitor/RedisAuditBatchWriterIntegrationTest.java": "f60d68528fc78b07559ae1bba455bb4fff0576ec6bd34d9c4fce246d81c9b796",
+      "src/test/java/com/zch/monitor/RequestCompletionRecorderTest.java": "101ea70f973141353457eb45818852f16941bb7bfefd89bddc561c0ebf3c31ba",
+      "src/test/java/com/zch/monitor/TrafficMetricsServiceTest.java": "a07b7b8b95b8d423d324f189ac987b30a8c19b027203522bfb42da4cb9a97a4b",
+      "src/test/java/com/zch/proxy/ProxyResilienceTest.java": "9c217a48d82a95bf54021d896907749006d78d0f506207a5b81fa86a53ce7081",
+      "src/test/java/com/zch/proxy/UpstreamTransportErrorsTest.java": "1cbac2f0838ce8b4f54ae542d6cb85dfeb13ed9ca8dfe1106247707b73a6678e",
+      "src/test/java/com/zch/ratelimit/LimiterPropertiesTest.java": "59df308433f3ee0f275d853f733f6382a435cdd7effad37228bae9c1baac705b",
+      "src/test/java/com/zch/ratelimit/LimiterSaturationSamplesTest.java": "6d75c367576a754891350392db078cf4af7515931da2c55e46f1f80c903effd7",
+      "src/test/java/com/zch/ratelimit/RateLimitScriptIntegrationTest.java": "bbeab8e0a8926c049169eef853178ad29fec69849f89b5790d30616cfb934a74",
+      "src/test/java/com/zch/ratelimit/RedisRateLimiterHandoffTest.java": "dc0ade35c83adb83ea6002df347fbf50f02bedd64b50b7e47f3ec15161da5b82",
+      "src/test/java/com/zch/ratelimit/RedisRateLimiterLifecycleTest.java": "4213ae158fbbe56599fb48af57d1cbddc1e1efab8051b09f8142cc6e6eca6c68",
+      "src/test/java/com/zch/route/DynamicRouteServiceTest.java": "9a7195f2d646113aba610cfe8b80aa822f6d1a2722718f803652e67866e40d79",
+      "src/test/java/com/zch/route/GatewayRedisIntegrationTest.java": "22144589dabefdb1c53685e71bdc951847ea24c28a152fff5eabbc49e8cdac73",
+      "src/test/java/com/zch/route/RoutePublicationRedisTest.java": "ac27eec52b97d9c27856e614e3953aac1f2b40ac07170214f9a6ed0e942c95bd",
+      "src/test/java/com/zch/util/ClientIpResolverTest.java": "e62d549a87d1d3164dd2068065ede046d4b7fd0568787b4d12d66963a326a75d",
+      "src/test/resources/compatibility/audit-boot3.json": "6577838df3e4c767a1ec3a495bcca0826751549e9d01dbdc2c94b5decc9f34ee",
+      "src/test/resources/compatibility/audit-v1.json": "463d66e1f17fe3b6438a805933779e39aba9a020a1a6f4bc8b3fb2a563b93a1f",
+      "src/test/resources/compatibility/README.md": "6683d925ee50b04af533d2c34b2a9c1f01a284f7def5e0262b738e9facc5a632",
+      "src/test/resources/compatibility/route-boot3.json": "bbfff2255b486109b08d384a1b2c2f4de575fd3d27aaa20c0480bca73b4c89e1",
+      "src/test/resources/compatibility/runtime-boot3.json": "23285e166dbf256c77d1a8a7a110bafd4dd8031d05f3aba4ba40c851fd2022d2",
+      "src/test/resources/compatibility/runtime-schema1.lua": "4f6020c4e38827963d241f7e63e064b1ddf571d2b5c44fea89cfe87b99120c27",
+      "src/test/resources/compatibility/runtime-schema2.lua": "c48ec29280a3c944359d732a0de4a71df5d7b3b1740e3dcc265b190eb97710a1"
+    }
+  },
+  "environment": {
+    "cpus": 16,
+    "memoryBytes": 16630599680,
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "os": "Docker Desktop",
+    "startedHost": "win32"
+  },
+  "measurementConditions": {
+    "gatewayLogicalCpus": "4-7",
+    "gatewayMemoryBytes": 1073741824,
+    "heapInitialMiB": 256,
+    "heapMaxMiB": 512,
+    "directMemoryMaxMiB": 256,
+    "redisLogicalCpus": "0-1",
+    "redisMemoryMiB": 256,
+    "redisRdbSave": false,
+    "redisAof": false,
+    "redisSlowlogThresholdMicroseconds": 1000,
+    "redisSlowlogMaxEntries": 128,
+    "upstreamLogicalCpus": "2-3",
+    "driverLogicalCpus": "8-11",
+    "images": {
+      "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+      "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+    },
+    "limiterIoWorkers": 8,
+    "limiterQueueCapacity": 128,
+    "decisionTimeoutMs": 500,
+    "handoffResultWorkers": 2,
+    "admissionCapacity": 136,
+    "routeCount": 32,
+    "quota": {
+      "capacity": 10000,
+      "ratePerSecond": 10000,
+      "cost": 1
+    },
+    "auditMonitoringBreakerEnabled": true,
+    "generatorMaxInFlight": 256,
+    "saturationSamplingEnabledBothModes": true,
+    "handoffDefault": false,
+    "eventSamplingDefault": false,
+    "normalDiagnosticsPeriodMs": 2000,
+    "rssPeriodMs": 10000,
+    "note": "CPU sets share the Docker Desktop VM and physical Windows host. Normal sampling is part of the measured conditions. Extra JFR/schedstat observation only in the diagnostic pair."
+  },
+  "preregisteredPlan": {
+    "scope": "One capacity exploration and one targeted paired diagnostic comparison; no resource tuning iterations.",
+    "rates": [
+      1000,
+      2000,
+      3000,
+      3500,
+      4000
+    ],
+    "shortSeconds": 120,
+    "repetitions": 2,
+    "modeOrder": "A ascending, B ascending, B descending, A descending; A inline, B handoff",
+    "warmup": "each mode: preserve 30s cold/1000 and 30s idle-recovery/1000, then 30s 500 +30s 1000 +60s 2000; 15s 500 before each measured short phase",
+    "health": {
+      "zeroLimiterFailOpen": true,
+      "zeroUnexpectedStatusOrTransportError": true,
+      "maxGeneratorMissFraction": 0.01,
+      "http200P95Ms": 50,
+      "http200P99Ms": 100,
+      "scheduledP99Ms": 150,
+      "auditDroppedOrUnknown": 0,
+      "accountingGap": 0,
+      "samplingErrors": 0,
+      "resourceBreach": 0
+    },
+    "selection": "Highest rate passing both short repetitions for a mode. Tie chooses existing inline default. Run exactly one 3600s soak only if a mode qualifies; do not lower the bar after observing results.",
+    "targeted": "one matched 120s pair at 4000 with JFR+event sampling, recorded separately from capacity, no tuning of worker/pool/queue counts",
+    "downshift": "After soak, 120s at 500; verify all work/audit drains and pool idles; preserve soak failures.",
+    "artifact": "Freeze one final jar after diagnostics changes+tests; same hash for every new live measurement. Keep handoff default off."
+  },
+  "results": {
+    "allRecordedRequests": 22985718,
+    "phases": 54,
+    "shortStageCount": 20,
+    "shortRequests": 6478600,
+    "shortRows": [
+      {
+        "name": "r1-A-1000",
+        "label": "A",
+        "rate": 1000,
+        "requests": 120000,
+        "p95ms": 1.206,
+        "p99ms": 1.641,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r1-A-2000",
+        "label": "A",
+        "rate": 2000,
+        "requests": 240000,
+        "p95ms": 1.334,
+        "p99ms": 1.849,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r1-A-3000",
+        "label": "A",
+        "rate": 3000,
+        "requests": 359952,
+        "p95ms": 1.521,
+        "p99ms": 2.303,
+        "generatorMissFraction": 0.00013333333333333334,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r1-A-3500",
+        "label": "A",
+        "rate": 3500,
+        "requests": 419863,
+        "p95ms": 1.677,
+        "p99ms": 2.623,
+        "generatorMissFraction": 0.0003261904761904762,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r1-A-4000",
+        "label": "A",
+        "rate": 4000,
+        "requests": 479890,
+        "p95ms": 1.805,
+        "p99ms": 2.983,
+        "generatorMissFraction": 0.00022916666666666666,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r2-B-1000",
+        "label": "B",
+        "rate": 1000,
+        "requests": 120000,
+        "p95ms": 1.216,
+        "p99ms": 1.665,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r2-B-2000",
+        "label": "B",
+        "rate": 2000,
+        "requests": 240000,
+        "p95ms": 1.345,
+        "p99ms": 1.809,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r2-B-3000",
+        "label": "B",
+        "rate": 3000,
+        "requests": 359952,
+        "p95ms": 1.594,
+        "p99ms": 2.407,
+        "generatorMissFraction": 0.00013333333333333334,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r2-B-3500",
+        "label": "B",
+        "rate": 3500,
+        "requests": 419915,
+        "p95ms": 1.806,
+        "p99ms": 2.923,
+        "generatorMissFraction": 0.0002023809523809524,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r2-B-4000",
+        "label": "B",
+        "rate": 4000,
+        "requests": 479847,
+        "p95ms": 1.937,
+        "p99ms": 3.095,
+        "generatorMissFraction": 0.00031875,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r3-B-4000",
+        "label": "B",
+        "rate": 4000,
+        "requests": 479773,
+        "p95ms": 1.971,
+        "p99ms": 3.187,
+        "generatorMissFraction": 0.0004729166666666667,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r3-B-3500",
+        "label": "B",
+        "rate": 3500,
+        "requests": 419896,
+        "p95ms": 1.706,
+        "p99ms": 2.671,
+        "generatorMissFraction": 0.0002476190476190476,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r3-B-3000",
+        "label": "B",
+        "rate": 3000,
+        "requests": 359912,
+        "p95ms": 1.618,
+        "p99ms": 2.517,
+        "generatorMissFraction": 0.00024444444444444443,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r3-B-2000",
+        "label": "B",
+        "rate": 2000,
+        "requests": 240000,
+        "p95ms": 1.413,
+        "p99ms": 1.939,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r3-B-1000",
+        "label": "B",
+        "rate": 1000,
+        "requests": 120000,
+        "p95ms": 1.234,
+        "p99ms": 1.698,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r4-A-4000",
+        "label": "A",
+        "rate": 4000,
+        "requests": 479839,
+        "p95ms": 1.859,
+        "p99ms": 3.089,
+        "generatorMissFraction": 0.00033541666666666664,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r4-A-3500",
+        "label": "A",
+        "rate": 3500,
+        "requests": 419905,
+        "p95ms": 1.694,
+        "p99ms": 2.607,
+        "generatorMissFraction": 0.00022619047619047618,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r4-A-3000",
+        "label": "A",
+        "rate": 3000,
+        "requests": 359856,
+        "p95ms": 1.726,
+        "p99ms": 3.341,
+        "generatorMissFraction": 0.0004,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r4-A-2000",
+        "label": "A",
+        "rate": 2000,
+        "requests": 240000,
+        "p95ms": 1.358,
+        "p99ms": 1.832,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      },
+      {
+        "name": "r4-A-1000",
+        "label": "A",
+        "rate": 1000,
+        "requests": 120000,
+        "p95ms": 1.193,
+        "p99ms": 1.648,
+        "generatorMissFraction": 0.0,
+        "failOpen": 0,
+        "healthy": true
+      }
+    ],
+    "selected": {
+      "label": "A",
+      "rate": 4000,
+      "stages": [
+        "r1-A-4000",
+        "r4-A-4000"
+      ]
+    },
+    "oneHour": {
+      "name": "one-hour-A-4000",
+      "kind": "soak",
+      "label": "A",
+      "rate": 4000,
+      "seconds": 3600,
+      "healthy": false,
+      "issues": [
+        "fail_open"
+      ],
+      "requests": 14395108,
+      "successfulRps": 3998.6377127388955,
+      "statuses": {
+        "200": 14395108
+      },
+      "transportErrors": 0,
+      "failOpen": 2366,
+      "queueFull": 2366,
+      "rejections": {
+        "admission_full": 1648,
+        "executor_rejected": 718,
+        "delivery_rejected": 0
+      },
+      "proxyReasons": {
+        "none": 14395108
+      },
+      "p95ms": 2.803,
+      "p99ms": 6.999,
+      "scheduledP99ms": 8.279,
+      "generatorMissFraction": 0.0003397222222222222,
+      "upstreamReceived": 14395108,
+      "audit": {
+        "received": 14395108,
+        "persisted": 14395108,
+        "dropped": 0,
+        "uncertain": 0,
+        "pending": 0,
+        "auditGap": 0,
+        "monitorGap": 0
+      },
+      "timingMeans": {
+        "queue": {
+          "count": 14392742,
+          "meanMicroseconds": 184.1913536244171
+        },
+        "connection": {
+          "count": 14392742,
+          "meanMicroseconds": 0.04356849744127978
+        },
+        "redis_wait_and_resume": {
+          "count": 14392742,
+          "meanMicroseconds": 340.92309637697946
+        },
+        "command_observation": {
+          "count": 14392742,
+          "meanMicroseconds": 317.0825235202576
+        },
+        "decode": {
+          "count": 14392742,
+          "meanMicroseconds": 12.662915444951352
+        },
+        "decision": {
+          "count": 14395108,
+          "meanMicroseconds": 554.8925838869706
+        },
+        "handoff_queue": {
+          "count": 0,
+          "meanMicroseconds": null
+        },
+        "delivery": {
+          "count": 14395108,
+          "meanMicroseconds": 91.25015287339282
+        },
+        "cleanup": {
+          "count": 14392742,
+          "meanMicroseconds": 0.03035659202395207
+        },
+        "worker_total": {
+          "count": 14392742,
+          "meanMicroseconds": 463.63078302647267
+        }
+      },
+      "eventEvidence": {
+        "retained": 52,
+        "reasons": {
+          "admission_full": 35,
+          "executor_rejected": 17
+        },
+        "ioTaskObservations": {
+          "redis_wait": 381,
+          "queued": 6605,
+          "complete": 18,
+          "result_dispatch": 3,
+          "decode": 3
+        },
+        "resultTaskObservations": {
+          "none": 7010
+        },
+        "workerStates": {
+          "redis_wait/TIMED_WAITING": 367,
+          "result_dispatch/RUNNABLE": 31,
+          "decode/RUNNABLE": 7,
+          "redis_wait/RUNNABLE": 9,
+          "result_dispatch/WAITING": 2
+        },
+        "replyObservedWhileWaitingCount": 67,
+        "maxObservedReplyToStageAdvanceMs": 4.429312,
+        "maxOldestTaskAgeMs": 112.62666,
+        "collectorTrimmed": 0,
+        "cursorGaps": []
+      },
+      "sampledPeaks": {
+        "commandsInFlight": 8,
+        "queued": 123,
+        "activeDeliveries": 0,
+        "queuedDeliveries": 0,
+        "retainedTasks": 130
+      },
+      "memory": {
+        "rss": {
+          "samples": 349,
+          "peakMiB": 703.4296875,
+          "earlyMedianMiB": 670.1796875,
+          "lateMedianMiB": 701.6171875
+        },
+        "heap": {
+          "samples": 1750,
+          "peakMiB": 231.10235595703125,
+          "earlyMedianMiB": 129.47367477416992,
+          "lateMedianMiB": 156.13729858398438
+        },
+        "direct": {
+          "samples": 1750,
+          "peakMiB": 3.892584800720215,
+          "earlyMedianMiB": 3.861334800720215,
+          "lateMedianMiB": 3.861334800720215
+        }
+      },
+      "drainSeconds": 0.00177860700013116
+    },
+    "recovery": {
+      "name": "downshift-A-500",
+      "kind": "recovery",
+      "label": "A",
+      "rate": 500,
+      "seconds": 120,
+      "healthy": true,
+      "issues": [],
+      "requests": 60000,
+      "successfulRps": 499.9888030257501,
+      "statuses": {
+        "200": 60000
+      },
+      "transportErrors": 0,
+      "failOpen": 0,
+      "queueFull": 0,
+      "rejections": {
+        "admission_full": 0,
+        "executor_rejected": 0,
+        "delivery_rejected": 0
+      },
+      "proxyReasons": {
+        "none": 60000
+      },
+      "p95ms": 2.275,
+      "p99ms": 3.135,
+      "scheduledP99ms": 6.071,
+      "generatorMissFraction": 0.0,
+      "upstreamReceived": 60000,
+      "audit": {
+        "received": 60000,
+        "persisted": 60000,
+        "dropped": 0,
+        "uncertain": 0,
+        "pending": 0,
+        "auditGap": 0,
+        "monitorGap": 0
+      },
+      "timingMeans": {
+        "queue": {
+          "count": 60000,
+          "meanMicroseconds": 55.231803666666664
+        },
+        "connection": {
+          "count": 60000,
+          "meanMicroseconds": 0.048054516666666665
+        },
+        "redis_wait_and_resume": {
+          "count": 60000,
+          "meanMicroseconds": 229.4323454166667
+        },
+        "command_observation": {
+          "count": 60000,
+          "meanMicroseconds": 238.54794571666667
+        },
+        "decode": {
+          "count": 60000,
+          "meanMicroseconds": 17.637851083333334
+        },
+        "decision": {
+          "count": 60000,
+          "meanMicroseconds": 327.9932070333333
+        },
+        "handoff_queue": {
+          "count": 0,
+          "meanMicroseconds": null
+        },
+        "delivery": {
+          "count": 60000,
+          "meanMicroseconds": 137.08565710000002
+        },
+        "cleanup": {
+          "count": 60000,
+          "meanMicroseconds": 0.029920683333333333
+        },
+        "worker_total": {
+          "count": 60000,
+          "meanMicroseconds": 412.01806213333333
+        }
+      },
+      "eventEvidence": {
+        "retained": 0,
+        "reasons": {},
+        "ioTaskObservations": {},
+        "resultTaskObservations": {},
+        "workerStates": {},
+        "replyObservedWhileWaitingCount": 0,
+        "maxObservedReplyToStageAdvanceMs": null,
+        "maxOldestTaskAgeMs": null,
+        "collectorTrimmed": 0,
+        "cursorGaps": []
+      },
+      "sampledPeaks": {
+        "commandsInFlight": 1,
+        "queued": 1,
+        "activeDeliveries": 0,
+        "queuedDeliveries": 0,
+        "retainedTasks": 1
+      },
+      "memory": {
+        "rss": {
+          "samples": 11,
+          "peakMiB": 703.9296875,
+          "earlyMedianMiB": 703.5546875,
+          "lateMedianMiB": 703.7421875
+        },
+        "heap": {
+          "samples": 59,
+          "peakMiB": 230.13758850097656,
+          "earlyMedianMiB": 155.55867385864258,
+          "lateMedianMiB": 153.21960830688477
+        },
+        "direct": {
+          "samples": 59,
+          "peakMiB": 3.861334800720215,
+          "earlyMedianMiB": 3.861334800720215,
+          "lateMedianMiB": 3.861334800720215
+        }
+      },
+      "drainSeconds": 0.0020136329999950247
+    },
+    "coldAndIdle": [
+      {
+        "name": "cold-A-1000",
+        "requests": 29797,
+        "statuses": {
+          "200": 29766,
+          "503": 31
+        },
+        "failOpen": 8,
+        "p99ms": 145.407,
+        "healthy": false
+      },
+      {
+        "name": "idle-restart-A-1000",
+        "requests": 30000,
+        "statuses": {
+          "200": 30000
+        },
+        "failOpen": 0,
+        "p99ms": 1.859,
+        "healthy": true
+      },
+      {
+        "name": "cold-B-1000",
+        "requests": 29856,
+        "statuses": {
+          "200": 29856
+        },
+        "failOpen": 4,
+        "p99ms": 154.751,
+        "healthy": false
+      },
+      {
+        "name": "idle-restart-B-1000",
+        "requests": 30000,
+        "statuses": {
+          "200": 30000
+        },
+        "failOpen": 0,
+        "p99ms": 1.842,
+        "healthy": true
+      }
+    ],
+    "diagnosticPair": [
+      {
+        "name": "targeted-A-4000",
+        "requests": 474705,
+        "failOpen": 0,
+        "p99ms": 39.711,
+        "generatorMissFraction": 0.01103125,
+        "healthy": false
+      },
+      {
+        "name": "targeted-B-4000",
+        "requests": 475333,
+        "failOpen": 0,
+        "p99ms": 26.303,
+        "generatorMissFraction": 0.009722916666666666,
+        "healthy": true
+      }
+    ],
+    "capturedSoakEvents": 52,
+    "eventCursorGaps": [],
+    "eventCaptureErrors": 0
+  },
+  "history503": {
+    "count": 30,
+    "reasonCounts": {
+      "proxy_pool_full": 30
+    },
+    "source": "D:\\Java\\ZenithGateway\\.dev\\limiter-handoff-20261004-eb92530a\\comparison\\summary.json",
+    "loadAfterReadinessSeconds": 97.15300011634827
+  },
+  "validation": {
+    "backend": {
+      "tests": 227,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "backendProductionBuild": "passed",
+    "fixedArrivalDriverTests": 6,
+    "rateLimitLive": {
+      "checks": 22,
+      "recordedRequests": 181,
+      "passed": true,
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "hotPath": {
+        "proxyRequests": 10,
+        "localDiagnosticReads": 20,
+        "extraRuntimeConfigurationQueries": 0,
+        "backgroundReads": 0,
+        "limiterCommands": 10
+      }
+    },
+    "proxyLive": {
+      "checks": 24,
+      "recordedRequests": 102,
+      "passed": true,
+      "startupRejections": [
+        {
+          "name": "invalid total budget",
+          "exitCode": 1,
+          "expected": "Invalid zenith.proxy.resilience policy"
+        },
+        {
+          "name": "Retry filter is prohibited",
+          "exitCode": 1,
+          "expected": "Proxy Retry filters are disabled in this release"
+        }
+      ],
+      "cleanup": {
+        "gatewayExitCode": 0,
+        "upstreamClosed": true,
+        "httpsUpstreamClosed": true,
+        "redisRemoved": true,
+        "privateTlsKeyRemoved": true
+      }
+    },
+    "localEventApi": "Startup assertions passed for anonymous 401, authenticated 200/no-store and negative cursor 400",
+    "independentAccountingRecalculation": "passed for all 54 phases",
+    "charts": "Rendered and visually checked; chart generation asserts no short-run observation is clipped",
+    "scheduler": {
+      "samplesPerMode": {
+        "A": 12,
+        "B": 12
+      },
+      "errors": []
+    }
+  },
+  "notRun": [
+    "frontend tests/build/browser (unchanged)",
+    "full standalone route/config-sync/receipt/rollback acceptance suites",
+    "one-hour soak at lower rates",
+    "one-hour handoff soak",
+    "rates above 4000",
+    "production persistence/TLS/large-body/slow-upstream sizing",
+    "heap-retention or longer-term leak analysis",
+    "developer-instance deployment"
+  ],
+  "cleanup": {
+    "checkedAt": "2026-10-04T15:14:03.020495+00:00",
+    "ownedContainersRemaining": [],
+    "ownedNetworksRemaining": [],
+    "originalContainers": [
+      {
+        "id": "608cd9bfbfe88107f332a5b769cbd81c404320083ab62a2863b756efe08e0dce",
+        "name": "zenithgateway-dev-0cca169bd52a-6379",
+        "before": "created",
+        "after": "created"
+      },
+      {
+        "id": "0bd8e6da994e6cc76037996c1c4455edf26402810bb026299a8eff491d763f4f",
+        "name": "zenith-benchmark-redis-1",
+        "before": "exited",
+        "after": "exited"
+      },
+      {
+        "id": "0d0b1eddce108691db963c81b905466b175d0055f3de68d8bdb845fe56bbcd39",
+        "name": "safebuild-redis",
+        "before": "exited",
+        "after": "exited"
+      },
+      {
+        "id": "b7294eee3606bc45102c1e9e7a01c56f77b53c050d8738f647d9d3a29f63483e",
+        "name": "zhijian",
+        "before": "exited",
+        "after": "exited"
+      },
+      {
+        "id": "8d049f9551c53387ddc618a66dfa5de5041f52dbe7626ac8f9f3f2228dcf3e70",
+        "name": "healthcare-redis",
+        "before": "exited",
+        "after": "exited"
+      },
+      {
+        "id": "da80330b0473baa2a89460f61464d8767d4f6a09de804a709f9c64613f353d38",
+        "name": "zenith-redis",
+        "before": "exited",
+        "after": "exited"
+      }
+    ],
+    "credentialRemoved": true,
+    "backendSourcesChangedSinceFreeze": [],
+    "artifactHashes": {
+      ".dev\\capacity-calibration-20261004-4e10de3f\\gateway-final.jar": "2eb6c17bbc8121dcaef2fb131d143165a08b37e0d44a3ba23ca088809236946d",
+      "backend\\target\\zg-1.0.0.jar": "2eb6c17bbc8121dcaef2fb131d143165a08b37e0d44a3ba23ca088809236946d"
+    },
+    "baselineExistingFilesChanged": [
+      "backend/src/main/java/com/zch/ratelimit/LimiterDiagnosticsController.java",
+      "backend/src/main/java/com/zch/ratelimit/LimiterProperties.java",
+      "backend/src/main/java/com/zch/ratelimit/RedisRateLimiter.java",
+      "backend/src/test/java/com/zch/ratelimit/RedisRateLimiterHandoffTest.java"
+    ],
+    "baselineFilesMissing": [],
+    "baselineFilesChecked": 557,
+    "calibration": {
+      "SGraceful": true,
+      "AGraceful": true,
+      "BGraceful": true,
+      "zg-calibration-a97d786d-driver-54": "already_removed",
+      "zg-calibration-a97d786d-driver-53": "already_removed",
+      "zg-calibration-a97d786d-driver-52": "already_removed",
+      "zg-calibration-a97d786d-driver-51": "already_removed",
+      "zg-calibration-a97d786d-driver-50": "already_removed",
+      "zg-calibration-a97d786d-driver-49": "already_removed",
+      "zg-calibration-a97d786d-driver-48": "already_removed",
+      "zg-calibration-a97d786d-driver-47": "already_removed",
+      "zg-calibration-a97d786d-driver-46": "already_removed",
+      "zg-calibration-a97d786d-driver-45": "already_removed",
+      "zg-calibration-a97d786d-driver-44": "already_removed",
+      "zg-calibration-a97d786d-driver-43": "already_removed",
+      "zg-calibration-a97d786d-driver-42": "already_removed",
+      "zg-calibration-a97d786d-driver-41": "already_removed",
+      "zg-calibration-a97d786d-driver-40": "already_removed",
+      "zg-calibration-a97d786d-driver-39": "already_removed",
+      "zg-calibration-a97d786d-driver-38": "already_removed",
+      "zg-calibration-a97d786d-driver-37": "already_removed",
+      "zg-calibration-a97d786d-driver-36": "already_removed",
+      "zg-calibration-a97d786d-driver-35": "already_removed",
+      "zg-calibration-a97d786d-driver-34": "already_removed",
+      "zg-calibration-a97d786d-driver-33": "already_removed",
+      "zg-calibration-a97d786d-driver-32": "already_removed",
+      "zg-calibration-a97d786d-driver-31": "already_removed",
+      "zg-calibration-a97d786d-driver-30": "already_removed",
+      "zg-calibration-a97d786d-driver-29": "already_removed",
+      "zg-calibration-a97d786d-driver-28": "already_removed",
+      "zg-calibration-a97d786d-driver-27": "already_removed",
+      "zg-calibration-a97d786d-driver-26": "already_removed",
+      "zg-calibration-a97d786d-driver-25": "already_removed",
+      "zg-calibration-a97d786d-driver-24": "already_removed",
+      "zg-calibration-a97d786d-driver-23": "already_removed",
+      "zg-calibration-a97d786d-driver-22": "already_removed",
+      "zg-calibration-a97d786d-driver-21": "already_removed",
+      "zg-calibration-a97d786d-driver-20": "already_removed",
+      "zg-calibration-a97d786d-driver-19": "already_removed",
+      "zg-calibration-a97d786d-driver-18": "already_removed",
+      "zg-calibration-a97d786d-driver-17": "already_removed",
+      "zg-calibration-a97d786d-driver-16": "already_removed",
+      "zg-calibration-a97d786d-driver-15": "already_removed",
+      "zg-calibration-a97d786d-driver-14": "already_removed",
+      "zg-calibration-a97d786d-driver-13": "already_removed",
+      "zg-calibration-a97d786d-driver-12": "already_removed",
+      "zg-calibration-a97d786d-driver-11": "already_removed",
+      "zg-calibration-a97d786d-driver-10": "already_removed",
+      "zg-calibration-a97d786d-driver-9": "already_removed",
+      "zg-calibration-a97d786d-driver-8": "already_removed",
+      "zg-calibration-a97d786d-driver-7": "already_removed",
+      "zg-calibration-a97d786d-driver-6": "already_removed",
+      "zg-calibration-a97d786d-driver-5": "already_removed",
+      "zg-calibration-a97d786d-driver-4": "already_removed",
+      "zg-calibration-a97d786d-gateway-b": "removed",
+      "zg-calibration-a97d786d-driver-3": "already_removed",
+      "zg-calibration-a97d786d-driver-2": "already_removed",
+      "zg-calibration-a97d786d-driver-1": "already_removed",
+      "zg-calibration-a97d786d-gateway-a": "removed",
+      "zg-calibration-a97d786d-gateway-s": "removed",
+      "zg-calibration-a97d786d-proxy": "removed",
+      "zg-calibration-a97d786d-upstream": "removed",
+      "zg-calibration-a97d786d-redis": "removed",
+      "networkRemoved": true,
+      "credentialRemoved": true
+    },
+    "regressionContainersAbsent": [
+      "zenith-limiter-2c3d7b5d",
+      "zenith-proxy-46189f06",
+      "zg-calibration-tests-efa61056d9"
+    ],
+    "experimentProcesses": {
+      "checkedAt": "2026-10-04T15:26:02.0096847Z",
+      "matchingExperimentProcesses": [],
+      "count": 0
+    }
+  },
+  "boundedManualObservation": {
+    "eventReads": 1,
+    "redisSlowlogReads": 1,
+    "afterFirstSoakSaturation": true,
+    "configurationChanges": 0
+  },
+  "sourceAndToolHashes": {
+    "backend/src/main/java/com/zch/ratelimit/LimiterProperties.java": "4924c25858f3284eb85190cef7bf608338e8cde6d847cb41516f86627bdf97e5",
+    "backend/src/main/java/com/zch/ratelimit/RedisRateLimiter.java": "2bdaf8617962cd6cfd442f66e7624b967956a3dedbd0aa85334db844df0da4b8",
+    "backend/src/main/java/com/zch/ratelimit/LimiterDiagnosticsController.java": "29feae464e57bcd9cf174bb2d3805b82d2e03c177fc6a40e3b03a9c4c0576e86",
+    "backend/src/main/java/com/zch/ratelimit/LimiterSaturationSamples.java": "57cf434555f1a73fa71c9cbbcf9b2f49100eeabf101143f70de085cdc5655c46",
+    "backend/src/test/java/com/zch/ratelimit/LimiterSaturationSamplesTest.java": "6d75c367576a754891350392db078cf4af7515931da2c55e46f1f80c903effd7",
+    "backend/src/test/java/com/zch/ratelimit/RedisRateLimiterHandoffTest.java": "dc0ade35c83adb83ea6002df347fbf50f02bedd64b50b7e47f3ec15161da5b82",
+    "benchmarks/capacity-calibration.mjs": "f8625fcdf89c3b79c5932cd383cf15308dd012ad246f1a1e292aec9ce75e64b1",
+    "benchmarks/calibration-scheduler.mjs": "7feaa0ed011a2fbd2118c8bffac480170414624449ac846dda24101a3fc128d4",
+    "benchmarks/summarize-capacity-calibration.py": "b4deba13100e58597fc07451fc1625baeca126cebc9b23c904d7a41f29780a2b",
+    "benchmarks/analyze-calibration-evidence.py": "4178c5032c249355c940a1f0ad2393e0f6d7dec8d37ca212a7f072bd15420949",
+    "benchmarks/summarize-calibration-scheduler.py": "6caa86a41fcbed73ff0fc5a29494259ced7fe4fcde00dc1baee2a0ec57168c36",
+    "benchmarks/plot-capacity-calibration.py": "715b83e12a8074e09dac0898999d5d1ee73681b63ed69cddfec3ca4569c8da9d",
+    "benchmarks/CAPACITY-CALIBRATION.md": "6f5f3515f6694cc3afe129ec45a292201119251e12418feaf745ddea38d08c60",
+    "docs/backend-capacity-calibration.md": "f797d97dc2069f044b3c6560099fef5c18980a111f60d2ed9f22eb0b6f33580f"
+  },
+  "evidence": {
+    "plan.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/plan.json",
+      "sha256": "7aa6dabd6a22cbd8f5ce3fc016b85b38ba7ae99c81fda584c272595e4dd5993f"
+    },
+    "artifact.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/artifact.json",
+      "sha256": "455815f7cfe3049d6904158a690659341db8208d03ed338b6f59048f02e5cf0d"
+    },
+    "baseline.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/baseline.json",
+      "sha256": "bff4d1a8f7e2f9fd69aca4e2514b155eb0b6bf141f7cf2f31d6e3da2209d1003"
+    },
+    "calibration/summary.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/summary.json",
+      "sha256": "9c50a518c3b3e8d7f701ac0f19da2434489f6d42a8a7a928baaf06d3ea7033cd"
+    },
+    "analysis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/analysis.json",
+      "sha256": "d3ea090a47e8d63ce8d1fd434d8d1093d198af53876e46f42bae68aebd596ccb"
+    },
+    "saturation-gc-analysis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/saturation-gc-analysis.json",
+      "sha256": "195cbf674ff882a4d4bdf440d736ede944c08061e1a975c24495cec1466eca32"
+    },
+    "scheduler-evidence.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/scheduler-evidence.json",
+      "sha256": "8e1a26585a5a6ba23e432ce0e598c016153ced999086cea21140c7c2239064e6"
+    },
+    "scheduler-analysis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/scheduler-analysis.json",
+      "sha256": "bb8997b7e6f8939e69ec801d401887cd8e2e5e091b0024675e8fee8c18531131"
+    },
+    "jfr-A-analysis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/jfr-A-analysis.json",
+      "sha256": "a3aa5bea97845977e26b140c605ba27d9174cbd668559923ad68d1b5162f5e89"
+    },
+    "jfr-B-analysis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/jfr-B-analysis.json",
+      "sha256": "d81c4eb09c5b0567b47797796bf618ba085131d379dbf5d8f92d2353b4f5ab62"
+    },
+    "historical-503-analysis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/historical-503-analysis.json",
+      "sha256": "7d33383b3c7ecf3f0e01a01752f6babe295f3571b6db9a4876a11543610d0102"
+    },
+    "soak-first-saturation.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/soak-first-saturation.json",
+      "sha256": "c22b9efb49891ccf72a688e032d9d2ba1acd3df7b96c3f5c51209b926d025755"
+    },
+    "soak-first-saturation-gc-redis.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/soak-first-saturation-gc-redis.json",
+      "sha256": "ac44f947cea00330c6288759ddf3100b42150f0a7b89a7998d7ba1c81aebeb43"
+    },
+    "cleanup-preservation-check.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/cleanup-preservation-check.json",
+      "sha256": "e2a42c81e47fee14320929776bd7e937e5328d2684b946d7ee283e7b4ef3321a"
+    },
+    "backend-test-cleanup.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/backend-test-cleanup.json",
+      "sha256": "ed68527870a3f652171ed9facab336c6678186227e9e71ff553d70e22ba8465e"
+    },
+    "backend-verify.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/backend-verify.log",
+      "sha256": "346322fa534b54c4b9089eb105b73141f2fb4774f999901cb0a437b023e72e44"
+    },
+    "sampler-tests.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/sampler-tests.log",
+      "sha256": "cabf8768ce3b9dd739c784e228b61141903c4cc024f599e27b24aec7e4ed3874"
+    },
+    "sampler-tests-v2.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/sampler-tests-v2.log",
+      "sha256": "f97d0e18aef5c0981b5b60290f6b4b9166d8610ea3e46e7918d49e677633baa9"
+    },
+    "load-driver-tests.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/load-driver-tests.log",
+      "sha256": "c212e9b076236b41371f2a7cd5e3e9c7c1f23e09c54f2e329dc9c718a71d64e8"
+    },
+    "rate-limit-live/report.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/rate-limit-live/report.json",
+      "sha256": "3f46420c7b3036e10dd6108f02856eda5a2d47d354e100be41113021ac7047a8"
+    },
+    "proxy-live/report.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/proxy-live/report.json",
+      "sha256": "b0fb8501d7aaedd26a597ca8896fc5406552de5952dafc3715deb6cff74a767d"
+    },
+    "capacity-short-results.png": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/capacity-short-results.png",
+      "sha256": "c5992175a40f7af7f651ef5e531678f9884b6da72cfe289085c437c6383f19ab"
+    },
+    "capacity-one-hour-resources.png": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/capacity-one-hour-resources.png",
+      "sha256": "1e4cf5076949a90a7b6709c07db12bb96ded72af53ee55df39a6f30c6d24379d"
+    },
+    "calibration/48-targeted-A-4000/capacity.jfr": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/48-targeted-A-4000/capacity.jfr",
+      "sha256": "8af03abfef87beb10b494182d86d6d9bf324d7f73107345070a90f1406022b97"
+    },
+    "calibration/50-targeted-B-4000/capacity.jfr": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/50-targeted-B-4000/capacity.jfr",
+      "sha256": "81c5ceb79639b2f2e8121410c4ed7e0e2215c340e0d5b8112f4806efb1568402"
+    },
+    "calibration.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration.log",
+      "sha256": "7fae0e62742a74282aa5af71c25f0406eb8445df0f72523efafd29e298e7164c"
+    },
+    "scheduler-collector.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/scheduler-collector.log",
+      "sha256": "c6ac7b6edb1a17b608092b7a28976d3a9218f5948ec7aab5457cbe8d0ae12cff"
+    },
+    "calibration/gc-A.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/gc-A.log",
+      "sha256": "efd21eba698daa63e7d88dc1ba94e4909f8864108eeed14bfa99479e91191df7"
+    },
+    "calibration/gc-B.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/gc-B.log",
+      "sha256": "3285ec5056225666bd58d530f7e5597bb242c94079bb7e33eff7d8bcb3471f0d"
+    },
+    "calibration/A-gateway.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/A-gateway.log",
+      "sha256": "7024daac22a9a8649d7be391d76a01ccd508a89ad5715b4c3f8cb22871c8fc7e"
+    },
+    "calibration/B-gateway.log": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/B-gateway.log",
+      "sha256": "9c59026f4fe795d6137504642af2383809c0f39af4528df66210b0a992f4c8ce"
+    },
+    "calibration/memory-after-idle/A-cgroup-memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-cgroup-memory.txt",
+      "sha256": "be569df0786a0074fe0b01f3192c7eb9367e571ab35b87b567054b49f2d333d3"
+    },
+    "calibration/memory-after-idle/A-Compiler-codecache.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-Compiler-codecache.txt",
+      "sha256": "efc0b55aa18883ec548e95a9c70adad3103b03f8c8ff017dd0065fea6b3cba82"
+    },
+    "calibration/memory-after-idle/A-GC-heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-GC-heap_info.txt",
+      "sha256": "661ad9125b48b601baf90bf937887c1e46c65da54dd63a9e0415da6ed0388883"
+    },
+    "calibration/memory-after-idle/A-native-diff.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-native-diff.txt",
+      "sha256": "94ab823aa9bdde463ae635438fd3e253bd757db34064a8b0533bae1d54ffcd70"
+    },
+    "calibration/memory-after-idle/A-smaps-rollup.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-smaps-rollup.txt",
+      "sha256": "c2f7d408497ce2164c1c221cc35a8944258469de60ffcda88d3dceb8058744a6"
+    },
+    "calibration/memory-after-idle/A-smaps.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-smaps.txt",
+      "sha256": "2fb1004cca45adfb5eb7433fc911072f5f95e28e7bd5fe3e5a0de81331d62444"
+    },
+    "calibration/memory-after-idle/A-status.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-status.txt",
+      "sha256": "385fc6343b4d4295cc0973f6badb591d84f983502a193353993b6fc28168f2ee"
+    },
+    "calibration/memory-after-idle/A-System-native_heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-System-native_heap_info.txt",
+      "sha256": "f3659eaa168cb07a72bfc36d9ef53fe6faf5ef796f8c3ea5ed1155876d561d70"
+    },
+    "calibration/memory-after-idle/A-VM-native_memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/A-VM-native_memory.txt",
+      "sha256": "0a65c6989732fa8cb09ac6a04d8fc499494763fe28729779d045ef30021275e2"
+    },
+    "calibration/memory-after-idle/B-cgroup-memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-cgroup-memory.txt",
+      "sha256": "2d4f3ad729f1b92b45861b7a1b83253b7517bc08ad9bae53edc9c46a1a005e74"
+    },
+    "calibration/memory-after-idle/B-Compiler-codecache.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-Compiler-codecache.txt",
+      "sha256": "4727c9369eae0eda1a1c985eb2b2861dd3a4920fac511fc1913c253d5cb83bdd"
+    },
+    "calibration/memory-after-idle/B-GC-heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-GC-heap_info.txt",
+      "sha256": "2055287b7c3ab10ec9ebde9b879ee17e117fe7b90bb6bf68ab1019d7d1b0a052"
+    },
+    "calibration/memory-after-idle/B-native-diff.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-native-diff.txt",
+      "sha256": "daf3478e50be3b96ba20673f85386f0a926aa55385eaf5e5bcc6ceca4febbedb"
+    },
+    "calibration/memory-after-idle/B-smaps-rollup.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-smaps-rollup.txt",
+      "sha256": "bbf11851bf0df6c156ceb5b53008e336df5d9b37f9d354b884da019e44e6a923"
+    },
+    "calibration/memory-after-idle/B-smaps.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-smaps.txt",
+      "sha256": "342e5e5c1418a0470db6d36adb549c7f9e17eb4dd1ca4dc3f1d0dfae45ec7edd"
+    },
+    "calibration/memory-after-idle/B-status.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-status.txt",
+      "sha256": "84ec20e74d5add384b740c24bb49f08259dbf44acfbbbfc806d69f7da95b921d"
+    },
+    "calibration/memory-after-idle/B-System-native_heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-System-native_heap_info.txt",
+      "sha256": "ed5c2cb9a79f4ba0c319f4c02d3cbe5dfa1bd9d1e0873a94c6b8813d328ef66c"
+    },
+    "calibration/memory-after-idle/B-VM-native_memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-idle/B-VM-native_memory.txt",
+      "sha256": "4b7e9009825a74597b12996b01862867b8cce50ace0a2dcd793b234a3df12243"
+    },
+    "calibration/memory-after-soak/A-cgroup-memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-cgroup-memory.txt",
+      "sha256": "e0aa510495d9cd7f66fca0949a0dbeffde27925a3e2bb2b1ded67551543c6822"
+    },
+    "calibration/memory-after-soak/A-Compiler-codecache.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-Compiler-codecache.txt",
+      "sha256": "cffc8913ed020e6d8f8a891d644a8839193839d8f62bd22db62c5e4a2700355e"
+    },
+    "calibration/memory-after-soak/A-GC-heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-GC-heap_info.txt",
+      "sha256": "539b24693d2226dd0cc1cad59c35d5ae37753d4fc54ca345ae411310cfc23e83"
+    },
+    "calibration/memory-after-soak/A-native-diff.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-native-diff.txt",
+      "sha256": "b1dc7405903973008d1c210ad70304b66439dcaadfbdac4c430419f201015a02"
+    },
+    "calibration/memory-after-soak/A-smaps-rollup.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-smaps-rollup.txt",
+      "sha256": "2d63ada8e931373e6b95b9fdc5ddd53d37dbb0aa01a1986ceab51acca220dc77"
+    },
+    "calibration/memory-after-soak/A-smaps.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-smaps.txt",
+      "sha256": "3f7025d96d99ebe48e3ed6552a97fb9aae25f3d2e1f4cda5e223af76a0db90c5"
+    },
+    "calibration/memory-after-soak/A-status.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-status.txt",
+      "sha256": "9a6a7c51ef55e5f8335ea705f42eb71a6a2ced4c77420334014edec815c1e9da"
+    },
+    "calibration/memory-after-soak/A-System-native_heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-System-native_heap_info.txt",
+      "sha256": "d68291c6ab47ad2fbae1b22952c1d2860255feb270ad0b0037b64ddb52a7e8cf"
+    },
+    "calibration/memory-after-soak/A-VM-native_memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/A-VM-native_memory.txt",
+      "sha256": "b11b4b2268174b4dbc9bc4e130a5ee25b538771dd0e8997bd991560efcd7d3f8"
+    },
+    "calibration/memory-after-soak/B-cgroup-memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-cgroup-memory.txt",
+      "sha256": "9c74ffa09bc3a4e0b813ca22c2c9aa930ec15ec2343e3e5ba2b54d4e05a70df7"
+    },
+    "calibration/memory-after-soak/B-Compiler-codecache.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-Compiler-codecache.txt",
+      "sha256": "2ae024df09117aa66f93810f57b133d2e9a7621f4f525314bfda56b480e012b8"
+    },
+    "calibration/memory-after-soak/B-GC-heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-GC-heap_info.txt",
+      "sha256": "cecbe4968674289c54e6903b74e841a3a5f595e63131f06850b578276f98eabc"
+    },
+    "calibration/memory-after-soak/B-native-diff.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-native-diff.txt",
+      "sha256": "cbeec9193062fc569d628688ad24210c51b95529cbd3b39432ce075d18c9142c"
+    },
+    "calibration/memory-after-soak/B-smaps-rollup.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-smaps-rollup.txt",
+      "sha256": "2f9573de6d53d14c9ebf22436e3d59e0aaf21c86f70c1e7a96e3e7251fc906bc"
+    },
+    "calibration/memory-after-soak/B-smaps.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-smaps.txt",
+      "sha256": "8b756a8a77904774be61ebe273257a2b4001fe1fd6b852a080387c8707044e6a"
+    },
+    "calibration/memory-after-soak/B-status.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-status.txt",
+      "sha256": "4ff4a1a4deef06edcecc84decfcf103cf1a9787b36c7d5bcfc68221f30fda4fb"
+    },
+    "calibration/memory-after-soak/B-System-native_heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-System-native_heap_info.txt",
+      "sha256": "538517d69a5dbb3e7f7aa2dacb8d56017fa62f60f3245cfded3d68f5301a7e5e"
+    },
+    "calibration/memory-after-soak/B-VM-native_memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-after-soak/B-VM-native_memory.txt",
+      "sha256": "361dabea68063cb4aa84d78521e917316454c8a6ab765021d903ebf6b457b4b2"
+    },
+    "calibration/memory-before-soak/A-cgroup-memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-cgroup-memory.txt",
+      "sha256": "7c25eeff6d7b48e0d70b37c438cc065014aed99f5a96cf08a1ddca426686f5d1"
+    },
+    "calibration/memory-before-soak/A-Compiler-codecache.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-Compiler-codecache.txt",
+      "sha256": "7ad68a83063bda565cf445e38d9b598ee45c3590ad84813640527aef1c95ccd4"
+    },
+    "calibration/memory-before-soak/A-GC-heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-GC-heap_info.txt",
+      "sha256": "354eb4a3ff56936a39dc82305e82d02706fff3216680d243c47e1ad2db49704f"
+    },
+    "calibration/memory-before-soak/A-smaps-rollup.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-smaps-rollup.txt",
+      "sha256": "f97f4f25bc5b95aad1883572427ec1a7a2de2fa350608826ed25f012b261e15a"
+    },
+    "calibration/memory-before-soak/A-smaps.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-smaps.txt",
+      "sha256": "0103278abdc276452cb3121cc234015de0493e5546bdc88204463038da70fb77"
+    },
+    "calibration/memory-before-soak/A-status.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-status.txt",
+      "sha256": "7a22d572e15a320573d760049e8020f86709b3484843a2d15f6bc13a7985f302"
+    },
+    "calibration/memory-before-soak/A-System-native_heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-System-native_heap_info.txt",
+      "sha256": "fb0cb9683f7442f56b179b6cfef656fe17e893974a43a515b5eee7fbc4835ad9"
+    },
+    "calibration/memory-before-soak/A-VM-native_memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/A-VM-native_memory.txt",
+      "sha256": "525662fdcf1f8ed13231f16f293303920bba5538969de5b16e23d9622bcab06d"
+    },
+    "calibration/memory-before-soak/B-cgroup-memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-cgroup-memory.txt",
+      "sha256": "6baf297ea946524de076045f07de19bf0e1451a1e3dfe6ef91df27f5113e4022"
+    },
+    "calibration/memory-before-soak/B-Compiler-codecache.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-Compiler-codecache.txt",
+      "sha256": "5c61915dbbfc8d5959196c7ca06df01cb8f006e7259e9d11c27554e30c71e5f4"
+    },
+    "calibration/memory-before-soak/B-GC-heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-GC-heap_info.txt",
+      "sha256": "c96f8dd1d856fc64809ce44f5b8e7bd944d75d73dcf9d702e891b736ef0f7e9b"
+    },
+    "calibration/memory-before-soak/B-smaps-rollup.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-smaps-rollup.txt",
+      "sha256": "a088a42205c70d7746288db2f1f922ef3f37491a6a0ff1efa859f65fef03ff37"
+    },
+    "calibration/memory-before-soak/B-smaps.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-smaps.txt",
+      "sha256": "ed9fdac5f725cbd44671050e0a50ac70820c7420ee72e73a7e6ab4ed57f283e8"
+    },
+    "calibration/memory-before-soak/B-status.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-status.txt",
+      "sha256": "7e6f1581e7a5199528bdf58f80824008c25df9a0b209ec5e7044066dd4284cb3"
+    },
+    "calibration/memory-before-soak/B-System-native_heap_info.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-System-native_heap_info.txt",
+      "sha256": "7a492d9ceea4c0b78c0998212e2568ae98856bec3ba0850b403e6b40676ed95c"
+    },
+    "calibration/memory-before-soak/B-VM-native_memory.txt": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/memory-before-soak/B-VM-native_memory.txt",
+      "sha256": "9d94c6f47f9c8372e09f08d9beb34d4ccbc390620ca4bd9938a2b794a1a5375a"
+    },
+    "calibration/tools/capacity-calibration.mjs": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/tools/capacity-calibration.mjs",
+      "sha256": "f8625fcdf89c3b79c5932cd383cf15308dd012ad246f1a1e292aec9ce75e64b1"
+    },
+    "calibration/tools/redis.mjs": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/tools/redis.mjs",
+      "sha256": "d0a9a2958dd9240e120a78d9fd40fe765997f5b2f2c40f66479ed008c4dbe8e9"
+    },
+    "calibration/tools/stability-load.mjs": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/tools/stability-load.mjs",
+      "sha256": "bdcce67bebbb8021662475ed1a68864634beee0c8bb21ada605fe21a903f4d07"
+    },
+    "calibration/tools/stability-worker.mjs": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/calibration/tools/stability-worker.mjs",
+      "sha256": "d18e817e4b8533c16ac836828694865f51e81cc2640159ca1cbe4115d2e37740"
+    },
+    "cleanup-processes.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/cleanup-processes.json",
+      "sha256": "90e718d89c697932d5e4c0b20731e8e466f55b87489320997dfeaab631bca32f"
+    },
+    "delivery-qa.json": {
+      "path": "D:/Java/ZenithGateway/.dev/capacity-calibration-20261004-4e10de3f/delivery-qa.json",
+      "sha256": "6ca964531e188fe8fe84a8612f0a8ba72154917a32b53abd8934a9437acdb170"
+    }
+  },
+  "remainingBoundaries": [
+    "No one-hour reliable capacity certified in this round",
+    "Cold startup still fails with pool admission and limiter saturation",
+    "Late soak failures do not uniquely isolate Redis execution, transport, callbacks, guest/host scheduling and GC",
+    "Diagnostic-pair JFR did not overlap the later soak failures; old handoff 492 rejections remain without their own event evidence",
+    "RSS remains above baseline after idle; absence of a leak is not established",
+    "One short repeated exploration and one soak are not a production SLA or a maximum-capacity claim"
+  ],
+  "executedHarnessHashes": {
+    "capacity-calibration.mjs": "f8625fcdf89c3b79c5932cd383cf15308dd012ad246f1a1e292aec9ce75e64b1",
+    "stability-worker.mjs": "d18e817e4b8533c16ac836828694865f51e81cc2640159ca1cbe4115d2e37740",
+    "stability-load.mjs": "bdcce67bebbb8021662475ed1a68864634beee0c8bb21ada605fe21a903f4d07",
+    "redis.mjs": "d0a9a2958dd9240e120a78d9fd40fe765997f5b2f2c40f66479ed008c4dbe8e9"
+  },
+  "portableCharts": [
+    {
+      "path": "docs/images/capacity-calibration-20261004/capacity-one-hour-resources.png",
+      "sha256": "1e4cf5076949a90a7b6709c07db12bb96ded72af53ee55df39a6f30c6d24379d"
+    },
+    {
+      "path": "docs/images/capacity-calibration-20261004/capacity-short-results.png",
+      "sha256": "c5992175a40f7af7f651ef5e531678f9884b6da72cfe289085c437c6383f19ab"
+    }
+  ],
+  "executionCompletedAt": "2026-10-04T15:11:14.080Z",
+  "deliveryCheckedAt": "2026-10-04T15:27:31.629282+00:00"
+}

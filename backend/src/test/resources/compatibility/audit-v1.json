@@ -1,0 +1,8 @@
+{
+  "timestamp": 1790123456789,
+  "method": "POST",
+  "path": "/legacy/old",
+  "statusCode": 200,
+  "durationMs": 15,
+  "clientIp": "127.0.0.1"
+}

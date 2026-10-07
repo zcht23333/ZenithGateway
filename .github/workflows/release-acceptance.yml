@@ -1,0 +1,43 @@
+name: Release acceptance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      # The vendor archive is pinned independently of setup-java's release index.
+      - name: Download and verify Microsoft JDK 21.0.12.1
+        run: |
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/zenith-jdk.tar.gz" https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-linux-x64.tar.gz
+          echo "4c0c7f5cd0b6bb81109d01f13a1678ee0f73f36c1020080d97c4de3ce3cac207  $RUNNER_TEMP/zenith-jdk.tar.gz" | sha256sum --check
+      - uses: actions/setup-java@v6
+        with:
+          distribution: jdkfile
+          jdk-file: ${{ runner.temp }}/zenith-jdk.tar.gz
+          java-version: '21.0.12.1'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.node-version'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Run unified release acceptance from clean build inputs
+        run: node verification/acceptance.mjs --tier release --out "$RUNNER_TEMP/zenith-release" --images prepare
+      - name: Preserve success or failure evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: zenith-release-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/zenith-release/
+            !${{ runner.temp }}/zenith-release/workspace/
+            !${{ runner.temp }}/zenith-release/checks/**/credentials/**
+            !${{ runner.temp }}/zenith-release/checks/**/*.p12
+            !${{ runner.temp }}/zenith-release/checks/**/gateway*.jar

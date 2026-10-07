@@ -1,0 +1,140 @@
+{
+  "phase": "before",
+  "buildRoot": "D:\\Java\\ZenithGateway\\.dev\\stage-c\\dist-before",
+  "compression": "gzip",
+  "cache": "disabled; fresh browser context for each direct entry",
+  "api": "isolated fixture; actual authentication gate and Bearer exchange; no production API",
+  "entries": [
+    {
+      "name": "login",
+      "directPath": "/",
+      "loginAssets": [
+        {
+          "path": "/assets/index-BSZUDcDA.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 250560,
+          "wireBytes": 250767
+        },
+        {
+          "path": "/assets/index-CHT-NRZ-.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 21232,
+          "wireBytes": 21431
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/index-BSZUDcDA.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 250560,
+          "wireBytes": 250767
+        },
+        {
+          "path": "/assets/index-CHT-NRZ-.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 21232,
+          "wireBytes": 21431
+        }
+      ],
+      "compressedAssetBytes": 271792,
+      "wireAssetBytes": 272198,
+      "additionalAfterAuthentication": []
+    },
+    {
+      "name": "settings",
+      "directPath": "/settings",
+      "loginAssets": [
+        {
+          "path": "/assets/index-BSZUDcDA.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 250560,
+          "wireBytes": 250767
+        },
+        {
+          "path": "/assets/index-CHT-NRZ-.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 21232,
+          "wireBytes": 21431
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/index-BSZUDcDA.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 250560,
+          "wireBytes": 250767
+        },
+        {
+          "path": "/assets/index-CHT-NRZ-.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 21232,
+          "wireBytes": 21431
+        }
+      ],
+      "compressedAssetBytes": 271792,
+      "wireAssetBytes": 272198,
+      "additionalAfterAuthentication": []
+    },
+    {
+      "name": "overview",
+      "directPath": "/",
+      "loginAssets": [
+        {
+          "path": "/assets/index-BSZUDcDA.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 250560,
+          "wireBytes": 250767
+        },
+        {
+          "path": "/assets/index-CHT-NRZ-.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 21232,
+          "wireBytes": 21431
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/index-BSZUDcDA.js",
+          "type": "Script",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 250560,
+          "wireBytes": 250767
+        },
+        {
+          "path": "/assets/index-CHT-NRZ-.css",
+          "type": "Stylesheet",
+          "initiator": "parser",
+          "status": 200,
+          "encodedBodyBytes": 21232,
+          "wireBytes": 21431
+        }
+      ],
+      "compressedAssetBytes": 271792,
+      "wireAssetBytes": 272198,
+      "additionalAfterAuthentication": []
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

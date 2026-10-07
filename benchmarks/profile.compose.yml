@@ -1,0 +1,42 @@
+name: zenith-profile
+services:
+  redis:
+    image: redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
+    cpuset: "0-1"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+  upstream:
+    image: node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6
+    cpuset: "2-3"
+    command: ["node", "/demo/upstream.mjs"]
+    volumes:
+      - ../observability/upstream.mjs:/demo/upstream.mjs:ro
+  gateway:
+    image: mcr.microsoft.com/openjdk/jdk:21-ubuntu@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5
+    cpuset: "4-7"
+    mem_limit: 1g
+    command: ["java", "-Xms256m", "-Xmx512m", "-XX:ActiveProcessorCount=4", "-XX:+Use${PROFILE_GC:-G1}GC", "-jar", "/app/gateway.jar", "--zenith.rate-limit.replenish-rate=10000", "--zenith.rate-limit.burst-capacity=10000", "--zenith.runtime.redis-key=zg:profile:runtime", "--zenith.route.redis-key=zg:profile:routes", "--zenith.audit.redis-key=zg:profile:audit"]
+    environment:
+      REDIS_HOST: redis
+      SPRING_CONFIG_IMPORT: configtree:/run/secrets/
+      ZENITH_OBSERVABILITY_ENABLED: ${PROFILE_METRICS:-true}
+    volumes:
+      - ${PROFILE_JAR:-../backend/target/zg-1.0.0.jar}:/app/gateway.jar:ro
+    secrets:
+      - source: gateway-admin
+        target: zenith.admin.token
+    stop_grace_period: 45s
+  driver:
+    image: node:24.21.0-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6
+    cpuset: "8-11"
+    command: ["node", "/bench/profile-load.mjs"]
+    environment:
+      PROFILE_PHASE: ${PROFILE_PHASE:-measure}
+      PROFILE_SECONDS: ${PROFILE_SECONDS:-60}
+    volumes:
+      - ./:/bench:ro
+    secrets:
+      - source: gateway-admin
+        target: admin-token
+secrets:
+  gateway-admin:
+    file: ../.dev/observability/secrets/admin-token

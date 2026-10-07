@@ -1,0 +1,2054 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-06T07:43:55.591830+00:00",
+  "status": "implementation_verified_pending_independent_acceptance",
+  "scope": "Cold traffic admission and bounded safe exit; no capacity-tier certification",
+  "evidenceRoot": ".dev/traffic-lifecycle-20261006-a798801c",
+  "artifactIndex": {
+    "path": ".dev/traffic-lifecycle-20261006-a798801c/artifact-index.json",
+    "sha256": "3041e0ad77656f54164b5919fd0f87c59987d3ddeaf534784d4174caa3b92db9"
+  },
+  "jar": {
+    "path": ".dev/traffic-lifecycle-20261006-a798801c/final-01/gateway.jar",
+    "sha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+    "allSixFinalRunsUsedIdenticalBytes": true
+  },
+  "plan": {
+    "version": 2,
+    "driverPlatform": "Linux container, 2 CPU / 256 MiB, two active jobs maximum",
+    "targetRate": 1000,
+    "oldInstanceRate": 200,
+    "ramp": [
+      25,
+      100,
+      250,
+      500,
+      1000
+    ],
+    "windowSeconds": 10,
+    "targetWindowSeconds": 20,
+    "repetitions": 3,
+    "comparisonOrder": [
+      "immediate",
+      "gradual",
+      "gradual",
+      "immediate",
+      "immediate",
+      "gradual"
+    ],
+    "maxWindowsPerStep": 3,
+    "p95LimitMs": 100,
+    "p99LimitMs": 250,
+    "maxArrivalGapRatio": 0.01,
+    "auditSettleMs": 15000,
+    "readinessBudgetMs": 60000,
+    "recoveryBudgetMs": 15000,
+    "requestDrainMs": 2000,
+    "cancellationSettleMs": 1000,
+    "auditDrainMs": 1000,
+    "auditCommandMs": 250,
+    "springPhaseMs": 10000,
+    "processExitMs": 45000,
+    "generatorMaxInFlight": 256,
+    "generatorRequestMs": 8000,
+    "sampleEveryMs": 500,
+    "decisionWorkers": 8,
+    "decisionQueue": 64,
+    "resultHandoff": false,
+    "gateway": {
+      "cpus": 2,
+      "memory": "1g",
+      "pids": 512,
+      "heapInitialMiB": 256,
+      "heapMaxMiB": 512,
+      "directMaxMiB": 256
+    },
+    "health": "All 200; zero quota rejects, fault forwards, protective rejects, unknown/cancel; per-instance deltas reconcile; resources in bounds; versions match; no sampling failure; no sustained >75% I/O queue in two samples."
+  },
+  "images": {
+    "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+    "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+    "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+  },
+  "versions": {
+    "route": "7c51d76f-21ff-447f-8a4d-d3af286d9229:2",
+    "runtime": "354949ca-0271-4486-a8b4-fdd2a365de66:1"
+  },
+  "effectiveRuntime": {
+    "rateLimitEnabled": true,
+    "replenishRate": 10000,
+    "burstCapacity": 10000,
+    "requestedTokens": 1,
+    "monitorWindowSeconds": 10,
+    "emitIntervalSeconds": 1,
+    "version": "354949ca-0271-4486-a8b4-fdd2a365de66:1",
+    "source": "local"
+  },
+  "isolation": {
+    "network": "zg-entry-99dda1ac",
+    "redisName": "zg-entry-99dda1ac-redis",
+    "redisPort": 59455,
+    "workerName": "zg-entry-99dda1ac-upstream",
+    "loadName": "zg-entry-99dda1ac-load",
+    "namespace": "zg:entry:99dda1ac",
+    "control": "http://127.0.0.1:59458",
+    "loadControl": "http://127.0.0.1:59460"
+  },
+  "runs": [
+    {
+      "name": "final-01",
+      "passed": true,
+      "checks": 6,
+      "requests": 45,
+      "jarSha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+      "executedEntrySha256": "cfa52c994107449fd4e864518c1cc1f1ff2cadb97fa7a6b63011423c33d6832e",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/final-01/report.json",
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      }
+    },
+    {
+      "name": "final-functional-02",
+      "passed": true,
+      "checks": 4,
+      "requests": 42,
+      "jarSha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+      "executedEntrySha256": "75c685029d12f4d650c272264c2d237679105064e87c280ba6535f4c13f64da4",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/final-functional-02/report.json",
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      }
+    },
+    {
+      "name": "final-signal-03",
+      "passed": true,
+      "checks": 1,
+      "requests": 3,
+      "jarSha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+      "executedEntrySha256": "a7c8c9202885073179009d594cb7b6550ad5173cb9ae4f58674853ef4576c654",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/final-signal-03/report.json",
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumes": [
+          "cf2f2aef195f73fdc531f50ea374fa3b1f904ba9461e3ff52d64afafb00b2329"
+        ],
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      }
+    },
+    {
+      "name": "proxy-regression",
+      "passed": true,
+      "checks": 24,
+      "requests": 102,
+      "jarSha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+      "executedEntrySha256": null,
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/proxy-regression/report.json",
+      "cleanup": {
+        "gatewayExitCode": 0,
+        "upstreamClosed": true,
+        "httpsUpstreamClosed": true,
+        "redisRemoved": true,
+        "privateTlsKeyRemoved": true
+      }
+    },
+    {
+      "name": "policy-regression",
+      "passed": true,
+      "checks": 25,
+      "requests": 70,
+      "jarSha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+      "executedEntrySha256": null,
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/policy-regression/report.json",
+      "cleanup": {
+        "A-defaultExitCode": 0,
+        "B-strictExitCode": 0,
+        "A-local-strictExitCode": 0,
+        "B-redis-strictExitCode": 0,
+        "B-strict-handoffExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      }
+    },
+    {
+      "name": "final-health-04",
+      "passed": true,
+      "checks": 4,
+      "requests": 42,
+      "jarSha256": "c81145b3a5dbdc7e55a5320e94424b0948b236297239c3ee6b6d0f2caa2485a0",
+      "executedEntrySha256": "13a5ad8695ec45af4ac7dde9d0386abaddea6a4ebf0f0f33b3d6d39b630c0861",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/final-health-04/report.json",
+      "cleanup": {
+        "namedGatewayClientsAbsent": true,
+        "ownedContainersAbsent": true,
+        "ownedVolumes": [
+          "88a76c29cbc7b01bec51e19c1cb424f15d84a8ee4e68663a16735f8b93177d17"
+        ],
+        "ownedVolumesAbsent": true,
+        "networkAbsent": true,
+        "credentialsRemoved": true
+      }
+    }
+  ],
+  "stages": [
+    {
+      "name": "functional-warm",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 4.723,
+          "p95": 7.979,
+          "p99": 168.063,
+          "max": 248.447,
+          "mean": 8.484052
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/functional-warm.json"
+    },
+    {
+      "name": "fault-warm",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 4.819,
+          "p95": 7.895,
+          "p99": 105.599,
+          "max": 184.703,
+          "mean": 7.10734
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/fault-warm.json"
+    },
+    {
+      "name": "redis-down",
+      "healthy": false,
+      "rate": 25,
+      "seconds": 3,
+      "declaredFault": true,
+      "client": {
+        "offered": 75,
+        "finished": 75,
+        "statusCounts": {
+          "503": 75
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 75,
+          "p50": 1.725,
+          "p95": 503.295,
+          "p99": 503.807,
+          "max": 510.463,
+          "mean": 62.63232
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 0,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 75,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 0,
+      "auditReceived": 75,
+      "auditConfirmed": 0,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/redis-down.json"
+    },
+    {
+      "name": "recovery-25-1",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 3.767,
+          "p95": 6.155,
+          "p99": 7.567,
+          "max": 16.367,
+          "mean": 4.1400879999999995
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/recovery-25-1.json"
+    },
+    {
+      "name": "recovery-100-1",
+      "healthy": true,
+      "rate": 100,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 1000,
+        "finished": 1000,
+        "statusCounts": {
+          "200": 1000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 1000,
+          "p50": 2.559,
+          "p95": 3.461,
+          "p99": 4.131,
+          "max": 11.423,
+          "mean": 2.641412
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 1000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 1000,
+      "auditReceived": 1000,
+      "auditConfirmed": 1000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/recovery-100-1.json"
+    },
+    {
+      "name": "allow-warm",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 4.819,
+          "p95": 7.527,
+          "p99": 84.415,
+          "max": 164.095,
+          "mean": 6.6110240000000005
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/allow-warm.json"
+    },
+    {
+      "name": "redis-down-allow",
+      "healthy": false,
+      "rate": 25,
+      "seconds": 3,
+      "declaredFault": true,
+      "client": {
+        "offered": 75,
+        "finished": 75,
+        "statusCounts": {
+          "200": 75
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 75,
+          "p50": 3.295,
+          "p95": 504.831,
+          "p99": 505.855,
+          "max": 506.623,
+          "mean": 63.79141333333333
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 0,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 75,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 75,
+      "auditReceived": 75,
+      "auditConfirmed": 0,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/redis-down-allow.json"
+    },
+    {
+      "name": "old-preparation-25-1",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 4.983,
+          "p95": 7.671,
+          "p99": 83.199,
+          "max": 163.327,
+          "mean": 6.827804
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/old-preparation-25-1.json"
+    },
+    {
+      "name": "old-preparation-100-1",
+      "healthy": true,
+      "rate": 100,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 1000,
+        "finished": 1000,
+        "statusCounts": {
+          "200": 1000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 1000,
+          "p50": 2.813,
+          "p95": 3.655,
+          "p99": 4.435,
+          "max": 14.903,
+          "mean": 2.8812919999999997
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 1000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 1000,
+      "auditReceived": 1000,
+      "auditConfirmed": 1000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/old-preparation-100-1.json"
+    },
+    {
+      "name": "old-preparation-200-1",
+      "healthy": true,
+      "rate": 200,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 2000,
+        "finished": 2000,
+        "statusCounts": {
+          "200": 2000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 2000,
+          "p50": 1.809,
+          "p95": 2.545,
+          "p99": 3.179,
+          "max": 8.799,
+          "mean": 1.8648185000000002
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 2000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 2000,
+      "auditReceived": 2000,
+      "auditConfirmed": 2000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/old-preparation-200-1.json"
+    },
+    {
+      "name": "cold-1-immediate",
+      "healthy": false,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 16872,
+        "statusCounts": {
+          "200": 16830,
+          "503": 42
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 3128,
+        "latencyMs": {
+          "count": 16872,
+          "p50": 21.199,
+          "p95": 583.679,
+          "p99": 1020.927,
+          "max": 1957.887,
+          "mean": 124.11562280701754
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 16868,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 4,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 16830,
+      "auditReceived": 16872,
+      "auditConfirmed": 16872,
+      "proxyPoolFull": 42,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-1-immediate.json"
+    },
+    {
+      "name": "cold-2-gradual-25-1",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 4.275,
+          "p95": 7.847,
+          "p99": 141.695,
+          "max": 222.335,
+          "mean": 7.390408000000001
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-2-gradual-25-1.json"
+    },
+    {
+      "name": "cold-2-gradual-100-1",
+      "healthy": true,
+      "rate": 100,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 1000,
+        "finished": 1000,
+        "statusCounts": {
+          "200": 1000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 1000,
+          "p50": 2.805,
+          "p95": 4.191,
+          "p99": 4.999,
+          "max": 7.831,
+          "mean": 2.957266
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 1000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 1000,
+      "auditReceived": 1000,
+      "auditConfirmed": 1000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-2-gradual-100-1.json"
+    },
+    {
+      "name": "cold-2-gradual-250-1",
+      "healthy": true,
+      "rate": 250,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 2500,
+        "finished": 2500,
+        "statusCounts": {
+          "200": 2500
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 2500,
+          "p50": 1.719,
+          "p95": 2.687,
+          "p99": 3.341,
+          "max": 11.023,
+          "mean": 1.8279812
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 2500,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 2500,
+      "auditReceived": 2500,
+      "auditConfirmed": 2500,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-2-gradual-250-1.json"
+    },
+    {
+      "name": "cold-2-gradual-500-1",
+      "healthy": true,
+      "rate": 500,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 5000,
+        "finished": 5000,
+        "statusCounts": {
+          "200": 5000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 5000,
+          "p50": 1.278,
+          "p95": 2.091,
+          "p99": 2.809,
+          "max": 26.559,
+          "mean": 1.4158954000000001
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 5000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 5000,
+      "auditReceived": 5000,
+      "auditConfirmed": 5000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-2-gradual-500-1.json"
+    },
+    {
+      "name": "cold-2-gradual-1000-1",
+      "healthy": true,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 20000,
+        "statusCounts": {
+          "200": 20000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 20000,
+          "p50": 1.135,
+          "p95": 2.219,
+          "p99": 3.461,
+          "max": 19.647,
+          "mean": 1.30500235
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 20000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 20000,
+      "auditReceived": 20000,
+      "auditConfirmed": 20000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-2-gradual-1000-1.json"
+    },
+    {
+      "name": "cold-3-gradual-25-1",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 4.247,
+          "p95": 7.127,
+          "p99": 180.863,
+          "max": 261.375,
+          "mean": 8.346948000000001
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-3-gradual-25-1.json"
+    },
+    {
+      "name": "cold-3-gradual-100-1",
+      "healthy": true,
+      "rate": 100,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 1000,
+        "finished": 1000,
+        "statusCounts": {
+          "200": 1000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 1000,
+          "p50": 2.917,
+          "p95": 3.869,
+          "p99": 4.543,
+          "max": 15.807,
+          "mean": 3.0156709999999998
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 1000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 1000,
+      "auditReceived": 1000,
+      "auditConfirmed": 1000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-3-gradual-100-1.json"
+    },
+    {
+      "name": "cold-3-gradual-250-1",
+      "healthy": true,
+      "rate": 250,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 2500,
+        "finished": 2500,
+        "statusCounts": {
+          "200": 2500
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 2500,
+          "p50": 2.305,
+          "p95": 3.575,
+          "p99": 4.239,
+          "max": 10.167,
+          "mean": 2.4227584
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 2500,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 2500,
+      "auditReceived": 2500,
+      "auditConfirmed": 2500,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-3-gradual-250-1.json"
+    },
+    {
+      "name": "cold-3-gradual-500-1",
+      "healthy": true,
+      "rate": 500,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 5000,
+        "finished": 5000,
+        "statusCounts": {
+          "200": 5000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 5000,
+          "p50": 1.624,
+          "p95": 3.231,
+          "p99": 4.147,
+          "max": 16.447,
+          "mean": 1.8370568
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 5000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 5000,
+      "auditReceived": 5000,
+      "auditConfirmed": 5000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-3-gradual-500-1.json"
+    },
+    {
+      "name": "cold-3-gradual-1000-1",
+      "healthy": true,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 20000,
+        "statusCounts": {
+          "200": 20000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 20000,
+          "p50": 1.018,
+          "p95": 1.717,
+          "p99": 2.535,
+          "max": 12.487,
+          "mean": 1.11766415
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 20000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 20000,
+      "auditReceived": 20000,
+      "auditConfirmed": 20000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-3-gradual-1000-1.json"
+    },
+    {
+      "name": "cold-4-immediate",
+      "healthy": false,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 16872,
+        "statusCounts": {
+          "200": 16854
+        },
+        "transportErrors": 18,
+        "schedulerMisses": 0,
+        "capacityMisses": 3128,
+        "latencyMs": {
+          "count": 16872,
+          "p50": 51.135,
+          "p95": 384.255,
+          "p99": 735.231,
+          "max": 8007.679,
+          "mean": 144.21246100047418
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 16860,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 6,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 6
+      },
+      "upstreamReceived": 16855,
+      "auditReceived": 16872,
+      "auditConfirmed": 16872,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-4-immediate.json"
+    },
+    {
+      "name": "cold-5-immediate",
+      "healthy": false,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 9249,
+        "statusCounts": {
+          "200": 7304,
+          "502": 2,
+          "503": 1939,
+          "504": 4
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 45,
+        "capacityMisses": 10706,
+        "latencyMs": {
+          "count": 9249,
+          "p50": 394.495,
+          "p95": 1489.919,
+          "p99": 2283.519,
+          "max": 3981.311,
+          "mean": 535.9503026273111
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 9245,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 4,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 7308,
+      "auditReceived": 9249,
+      "auditConfirmed": 9249,
+      "proxyPoolFull": 1793,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-5-immediate.json"
+    },
+    {
+      "name": "cold-6-gradual-25-1",
+      "healthy": false,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 5.263,
+          "p95": 13.359,
+          "p99": 264.191,
+          "max": 349.183,
+          "mean": 12.554844
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-6-gradual-25-1.json"
+    },
+    {
+      "name": "cold-6-gradual-25-2",
+      "healthy": true,
+      "rate": 25,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 250,
+        "finished": 250,
+        "statusCounts": {
+          "200": 250
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 250,
+          "p50": 3.667,
+          "p95": 5.983,
+          "p99": 6.711,
+          "max": 7.739,
+          "mean": 3.97524
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 250,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 250,
+      "auditReceived": 250,
+      "auditConfirmed": 250,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-6-gradual-25-2.json"
+    },
+    {
+      "name": "cold-6-gradual-100-1",
+      "healthy": true,
+      "rate": 100,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 1000,
+        "finished": 1000,
+        "statusCounts": {
+          "200": 1000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 1000,
+          "p50": 2.757,
+          "p95": 4.511,
+          "p99": 5.463,
+          "max": 7.435,
+          "mean": 2.98937
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 1000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 1000,
+      "auditReceived": 1000,
+      "auditConfirmed": 1000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-6-gradual-100-1.json"
+    },
+    {
+      "name": "cold-6-gradual-250-1",
+      "healthy": true,
+      "rate": 250,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 2500,
+        "finished": 2500,
+        "statusCounts": {
+          "200": 2500
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 2500,
+          "p50": 2.109,
+          "p95": 3.881,
+          "p99": 4.759,
+          "max": 21.007,
+          "mean": 2.3746156000000003
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 2500,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 2500,
+      "auditReceived": 2500,
+      "auditConfirmed": 2500,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-6-gradual-250-1.json"
+    },
+    {
+      "name": "cold-6-gradual-500-1",
+      "healthy": true,
+      "rate": 500,
+      "seconds": 10,
+      "declaredFault": false,
+      "client": {
+        "offered": 5000,
+        "finished": 5000,
+        "statusCounts": {
+          "200": 5000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 5000,
+          "p50": 1.478,
+          "p95": 2.745,
+          "p99": 4.005,
+          "max": 24.879,
+          "mean": 1.6933204000000002
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 5000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 5000,
+      "auditReceived": 5000,
+      "auditConfirmed": 5000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-6-gradual-500-1.json"
+    },
+    {
+      "name": "cold-6-gradual-1000-1",
+      "healthy": true,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 20000,
+        "statusCounts": {
+          "200": 20000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 20000,
+          "p50": 1.199,
+          "p95": 2.519,
+          "p99": 9.439,
+          "max": 76.351,
+          "mean": 1.5708106
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 20000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 20000,
+      "auditReceived": 20000,
+      "auditConfirmed": 20000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/cold-6-gradual-1000-1.json"
+    },
+    {
+      "name": "replacement-during-old-exit",
+      "healthy": true,
+      "rate": 1000,
+      "seconds": 20,
+      "declaredFault": false,
+      "client": {
+        "offered": 20000,
+        "finished": 20000,
+        "statusCounts": {
+          "200": 20000
+        },
+        "transportErrors": 0,
+        "schedulerMisses": 0,
+        "capacityMisses": 0,
+        "latencyMs": {
+          "count": 20000,
+          "p50": 1.179,
+          "p95": 2.461,
+          "p99": 3.161,
+          "max": 20.351,
+          "mean": 1.3650303
+        }
+      },
+      "decisionDeltas": {
+        "disabled": 0,
+        "allowed": 20000,
+        "limited": 0,
+        "unfulfillable": 0,
+        "redis_fail_open": 0,
+        "local_fail_open": 0,
+        "redis_rejected": 0,
+        "local_rejected": 0,
+        "cancelled": 0
+      },
+      "upstreamReceived": 20000,
+      "auditReceived": 20000,
+      "auditConfirmed": 20000,
+      "proxyPoolFull": 0,
+      "rawEvidence": ".dev/traffic-lifecycle-20261006-a798801c/final-01/replacement-during-old-exit.json"
+    }
+  ],
+  "coldSummary": {
+    "immediatePassed": 0,
+    "immediateRuns": 3,
+    "gradualEventuallyPassed": 3,
+    "gradualRuns": 3,
+    "retainedFailedGradualWindow": "cold-6-gradual-25-1",
+    "windowConclusion": "1000 req/s for 20 s only",
+    "order": [
+      "immediate",
+      "gradual",
+      "gradual",
+      "immediate",
+      "immediate",
+      "gradual"
+    ],
+    "handoverWindow": "replacement-during-old-exit"
+  },
+  "oldInstanceService": {
+    "windows": 67,
+    "offered": 67000,
+    "completed": 66990,
+    "unexpectedHttp": 0,
+    "faultForwards": 0,
+    "protectiveRejects": 0,
+    "auditConfirmed": 66990,
+    "worstWindowP95Ms": 10.799,
+    "worstWindowP99Ms": 19.551,
+    "largestWindowArrivalGapRatio": 0.006
+  },
+  "exit": {
+    "defaultRequestMs": 10000,
+    "defaultSettleMs": 1000,
+    "defaultAuditStopMs": 8500,
+    "defaultCoordinatorMs": 19500,
+    "defaultSpringPhaseMs": 30000,
+    "testBudgets": {
+      "requestDrainMs": 2000,
+      "cancellationSettleMs": 1000,
+      "auditDrainMs": 1000,
+      "auditCommandMs": 250,
+      "springPhaseMs": 10000,
+      "processExitMs": 45000
+    },
+    "finalProcesses": [
+      {
+        "label": "A",
+        "exitCode": 143,
+        "stopElapsedMs": 2773.73199999996,
+        "orderVerified": true
+      },
+      {
+        "label": "DRAIN",
+        "exitCode": 143,
+        "stopElapsedMs": 2758.345300000001,
+        "orderVerified": true
+      },
+      {
+        "label": "FAULT",
+        "exitCode": 143,
+        "stopElapsedMs": 2669.964500000002,
+        "orderVerified": true
+      },
+      {
+        "label": "ALLOW",
+        "exitCode": 143,
+        "stopElapsedMs": 2637.8446000000113,
+        "orderVerified": true
+      },
+      {
+        "label": "SIGNAL",
+        "exitCode": 143,
+        "stopElapsedMs": 4737.266199999998,
+        "orderVerified": true
+      },
+      {
+        "label": "B1",
+        "exitCode": 143,
+        "stopElapsedMs": 2754.8173000000243,
+        "orderVerified": true
+      },
+      {
+        "label": "B2",
+        "exitCode": 143,
+        "stopElapsedMs": 2664.3736999999965,
+        "orderVerified": true
+      },
+      {
+        "label": "B3",
+        "exitCode": 143,
+        "stopElapsedMs": 2693.6994000000414,
+        "orderVerified": true
+      },
+      {
+        "label": "B4",
+        "exitCode": 143,
+        "stopElapsedMs": 2739.6790999999503,
+        "orderVerified": true
+      },
+      {
+        "label": "B5",
+        "exitCode": 143,
+        "stopElapsedMs": 2985.8166999999667,
+        "orderVerified": true
+      },
+      {
+        "label": "B6",
+        "exitCode": 143,
+        "stopElapsedMs": 2750.4736000000266,
+        "orderVerified": true
+      }
+    ],
+    "auditOffline": {
+      "received": 1610,
+      "confirmed": 1575,
+      "unknown": 9,
+      "unsentShutdownDropped": 26,
+      "pending": 0,
+      "actualRedisRowsAfterRecovery": 1584
+    }
+  },
+  "verification": {
+    "backend": {
+      "command": "ZENITH_TEST_REDIS_PORT=<isolated port>; mvn -B -f backend/pom.xml verify",
+      "tests": 244,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "productionBuild": "passed",
+      "log": ".dev/traffic-lifecycle-20261006-a798801c/backend-verify-final.log"
+    },
+    "node": {
+      "command": "node --test verification/traffic-lifecycle-gates.test.mjs benchmarks/stability-load.test.mjs",
+      "tests": 18,
+      "passed": 18,
+      "log": ".dev/traffic-lifecycle-20261006-a798801c/gates-and-load-tests.log"
+    },
+    "proxyLive": {
+      "groups": 24,
+      "requests": 102
+    },
+    "failurePolicyLive": {
+      "groups": 25,
+      "requests": 70
+    },
+    "rawResponseRowsChecked": 159193,
+    "rawEvidenceCheck": ".dev/traffic-lifecycle-20261006-a798801c/raw-evidence-check.json",
+    "offlineHealthProbes": [
+      {
+        "name": "Increase paused for Redis failure; no next higher rate issued",
+        "offlineHealth": {
+          "readiness": 200,
+          "liveness": 200
+        }
+      },
+      {
+        "name": "Offline drain conserves confirmed + unknown + deliberately discarded unsent; HTTP diagnostics stay available",
+        "drainedHealth": {
+          "readiness": 503,
+          "liveness": 200
+        },
+        "anonymousDiagnosticStatus": 401
+      }
+    ]
+  },
+  "toolEvolution": {
+    "allRunOriginalEntrySha256": "cfa52c994107449fd4e864518c1cc1f1ff2cadb97fa7a6b63011423c33d6832e",
+    "finalEntrySha256": "13a5ad8695ec45af4ac7dde9d0386abaddea6a4ebf0f0f33b3d6d39b630c0861",
+    "reassessment": ".dev/traffic-lifecycle-20261006-a798801c/final-01/stage-reassessment.json",
+    "note": "Raw reports unchanged. Later pure gate distinguishes expected injected 503, checks cancellation; no original pass/fail changed. Functional live rerun checks classification; final signal live rerun checks absolute exit deadline, ownership capture and anonymous-volume cleanup. Final health rerun also checks independent readiness/liveness during outage and authentication before/after drain."
+  },
+  "attemptsRetained": [
+    {
+      "run": "functional-01",
+      "outcome": "fixture rejected at startup because read-idle < headers; fixed fixture",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/functional-01/report.json"
+    },
+    {
+      "run": "functional-02",
+      "outcome": "verifier expected exit 0 but SIGTERM normally returned 143; misleading forced flag did not kill an already exited process",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/functional-02/report.json"
+    },
+    {
+      "run": "functional-03",
+      "outcome": "Windows driver arrival deficit halted three recovery attempts; retained and moved fixed-resource driver to Linux, thresholds unchanged",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/functional-03/report.json"
+    },
+    {
+      "run": "functional-04",
+      "outcome": "functional pass on pre-final-monotonic-deadline build; not used as final artifact comparison",
+      "report": ".dev/traffic-lifecycle-20261006-a798801c/functional-04/report.json"
+    }
+  ],
+  "sourceChanges": [
+    {
+      "path": "backend/src/main/java/com/zch/filter/AdminAuthFilter.java",
+      "sha256": "23c38f6bb1f8194c10c72e6246b97eef35582251c5567c3573334e9466e2b0ec"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/filter/ReadinessFilter.java",
+      "sha256": "d688f8519964a61be80fb1c79e3f1a5c5b9d29ff377c0f285799bc5009fd381b"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/monitor/AuditEventPublisher.java",
+      "sha256": "fad7fd960ce415100f015498d04547587a380388965dafbb8b6f82e2cf938658"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/monitor/GatewayMetrics.java",
+      "sha256": "de3fc23fc2a5029565d884e543b14e6216818f42a186e9f1c2a074ef5dd173da"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/monitor/RedisAuditBatchWriter.java",
+      "sha256": "498f2b76642e4d3c58958665e83288afc89d070f2401a6da1dcdb737188de043"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/monitor/RequestCompletionRecorder.java",
+      "sha256": "1c74c5384d2ecb8cf76255f7f8cc823ddac49b6f7ca17d8f137ec18b26bb5dec"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/monitor/RequestObservation.java",
+      "sha256": "c15bd1fe0065b307c8cf1266ae30ffd140230c8302088ba17fd879934df083aa"
+    },
+    {
+      "path": "backend/src/main/resources/application.yml",
+      "sha256": "6ad9d0412d1a778be922979116481096311ec939a8366062b4c30a1bc5829ac2"
+    },
+    {
+      "path": "backend/src/test/java/com/zch/filter/ReadinessFilterTest.java",
+      "sha256": "084d92fb0a23a688b721be91584ae75823fb11afa348e0fbf6359d18f4d095db"
+    },
+    {
+      "path": "backend/src/test/java/com/zch/monitor/AuditEventPublisherTest.java",
+      "sha256": "0504ddb1a6054227fb96138fa513dded836eb103546ee7affae5ef8bb2c15a1a"
+    },
+    {
+      "path": "benchmarks/stability-load.mjs",
+      "sha256": "f995878390650a3817c3ba06c871bb15e02534171ae27028ad028abd6a87eab8"
+    },
+    {
+      "path": "benchmarks/stability-load.test.mjs",
+      "sha256": "6a4b87d36ec491913bb461776d96ed138ec5629511c4c87c5dddb5a03be0ca0d"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/lifecycle/TrafficLifecycle.java",
+      "sha256": "daf474bfc949177476bf2704adbd6d527a5b09d15a7c29d95268bbc1e6c91211"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/lifecycle/TrafficLifecycleController.java",
+      "sha256": "1f00340c079029f245079652e5846933fd9ecdcd8096c8db0050c00314e1aa8f"
+    },
+    {
+      "path": "backend/src/main/java/com/zch/lifecycle/TrafficLifecycleProperties.java",
+      "sha256": "ed91c6ec84cf156862c4e2320c1b6da631453e0485aff77a04b2bf58f20d7305"
+    },
+    {
+      "path": "backend/src/test/java/com/zch/lifecycle/TrafficLifecycleTest.java",
+      "sha256": "dec36ac2ee6a947a334ac2902d512b17f19e199a60937c40bd2fcaca3acd4572"
+    },
+    {
+      "path": "verification/traffic-lifecycle-gates.mjs",
+      "sha256": "2fb5f11006730e20c7950dc78ae6d9a8e12d0a8af882f6709ce91949f1a5e2ca"
+    },
+    {
+      "path": "verification/traffic-lifecycle-gates.test.mjs",
+      "sha256": "d64b0bedd561143ed9b815b38f4823fb95e399fe840d2bf4a8ab46def99863f5"
+    },
+    {
+      "path": "verification/traffic-lifecycle-live.mjs",
+      "sha256": "13a5ad8695ec45af4ac7dde9d0386abaddea6a4ebf0f0f33b3d6d39b630c0861"
+    },
+    {
+      "path": "verification/traffic-lifecycle-load.mjs",
+      "sha256": "3da12bbd5085cd7623bd975bf20226bba47698974eb82823045700b2fb0baacc"
+    },
+    {
+      "path": "verification/traffic-lifecycle-worker.mjs",
+      "sha256": "e700b06c77a205bd86455b626216a6cf535b335ea3f82e24c7ee3f4debd25ce4"
+    },
+    {
+      "path": "docs/backend-traffic-lifecycle.md",
+      "sha256": "e6b3e3f0efb10fb4639a709bb7a046403eaab4c6403f4596cd81f503cc050c85"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a3382b504179556f3042c4612cc067deb50d5077a9b88bfa65cc163f94b97589"
+    }
+  ],
+  "preservation": {
+    "preTurnFileHashes": ".dev/traffic-lifecycle-20261006-a798801c/baseline.json",
+    "beforeArchive": ".dev/traffic-lifecycle-20261006-a798801c/source-before.zip",
+    "afterArchive": ".dev/traffic-lifecycle-20261006-a798801c/source-after.zip",
+    "existingDocsHashesUnchanged": true,
+    "developmentInstancesNotUpgraded": true
+  },
+  "cleanup": {
+    "at": "2026-10-06T07:43:54.729952+00:00",
+    "removed": [
+      {
+        "volume": "12dbbfbdd94ce5d4ca67e334deee9404c2ae70d4f968b20c88ca66854cb5fcd1",
+        "removedWithUnitContainer": true
+      },
+      {
+        "volume": "37499c09b403c0f68b35b25994ed43aa9c203691283cb6db5d0224ad2d054c7a",
+        "proof": {
+          "containerEvents": [
+            "zg-entry-1541b382-redis"
+          ]
+        },
+        "result": "37499c09b403c0f68b35b25994ed43aa9c203691283cb6db5d0224ad2d054c7a"
+      },
+      {
+        "volume": "70d8ccc2feea7aebfacad230160a351efd9a05d09713c4392e12c068f53dcd0d",
+        "proof": {
+          "containerEvents": [
+            "zenith-limiter-13c978d1"
+          ]
+        },
+        "result": "70d8ccc2feea7aebfacad230160a351efd9a05d09713c4392e12c068f53dcd0d"
+      },
+      {
+        "volume": "81236a03c936526917e306f24de88e5fd3c33cfa8eed6417bd7097d2d8a9f1b6",
+        "proof": {
+          "containerEvents": [
+            "zg-entry-23323fa5-redis"
+          ]
+        },
+        "result": "81236a03c936526917e306f24de88e5fd3c33cfa8eed6417bd7097d2d8a9f1b6"
+      },
+      {
+        "volume": "948c3cbdb0fd3ba96ec44892c8bdd4fe1fd53e848cde466b375dddb48c154b21",
+        "proof": {
+          "containerEvents": [
+            "zg-entry-8e01465c-redis"
+          ]
+        },
+        "result": "948c3cbdb0fd3ba96ec44892c8bdd4fe1fd53e848cde466b375dddb48c154b21"
+      },
+      {
+        "volume": "9c51fe89ea74d5e911438b9358a0b8aa3b3712c6596fc738897738d6cbcd1343",
+        "proof": {
+          "note": "Only anonymous /data volume created by first functional Redis; volume absent from initial baseline, created 0.664 s after functional-01 run marker, now unattached. Earliest Docker mount event has rotated out of 256-event daemon history.",
+          "runMarker": "2026-10-06T06:55:40.336Z"
+        },
+        "result": "9c51fe89ea74d5e911438b9358a0b8aa3b3712c6596fc738897738d6cbcd1343"
+      },
+      {
+        "volume": "d0fa289fb9776c8e4fc606ce0ea57d360716a52bc2559f418fb8a782b863d2c6",
+        "proof": {
+          "containerEvents": [
+            "zg-entry-99dda1ac-redis"
+          ]
+        },
+        "result": "d0fa289fb9776c8e4fc606ce0ea57d360716a52bc2559f418fb8a782b863d2c6"
+      },
+      {
+        "volume": "f16327040e61cf466573f1d538722626ae0e95593ff3ab0c6fd7ae14d5687e74",
+        "proof": {
+          "containerEvents": [
+            "zg-entry-da4812ad-redis"
+          ]
+        },
+        "result": "f16327040e61cf466573f1d538722626ae0e95593ff3ab0c6fd7ae14d5687e74"
+      },
+      {
+        "volume": "fc793040780631a1faa25c1ea4e72d20daf70f6a5bc5de7446fbcbb5b9999cb3",
+        "proof": {
+          "containerEvents": [
+            "zenith-proxy-7d791810"
+          ]
+        },
+        "result": "fc793040780631a1faa25c1ea4e72d20daf70f6a5bc5de7446fbcbb5b9999cb3"
+      }
+    ],
+    "resources": {
+      "containers": [
+        "608cd9bfbfe8 zenithgateway-dev-0cca169bd52a-6379 created",
+        "0bd8e6da994e zenith-benchmark-redis-1 exited",
+        "0d0b1eddce10 safebuild-redis exited",
+        "b7294eee3606 zhijian exited",
+        "8d049f9551c5 healthcare-redis exited",
+        "da80330b0473 zenith-redis exited"
+      ],
+      "images": [
+        "zenith-verify local sha256:89675e0be043861f3e28ba6d000dd9ca0bbfe8d57b264e28c3bfd03f82673c86 sha256:89675e0be043861f3e28ba6d000dd9ca0bbfe8d57b264e28c3bfd03f82673c86",
+        "zenith-gateway local sha256:1a2a2611beb5dcdbaed33dd2f939b8b323e538cca6c3b113ccefe7bda468f72b sha256:1a2a2611beb5dcdbaed33dd2f939b8b323e538cca6c3b113ccefe7bda468f72b",
+        "mcr.microsoft.com/openjdk/jdk <none> sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5 sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "node <none> sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6 sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "redis 7.4-alpine sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499 sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "redis 7-alpine sha256:520775a41a63e77e06c73e35d2fd9cc15921a609516818796b4ecbb813078bc7 sha256:520775a41a63e77e06c73e35d2fd9cc15921a609516818796b4ecbb813078bc7",
+        "grafana/grafana <none> sha256:d8276d620291d3aaae3e31dde6d63e6807afee49825f04e8aa7392bbe024216f sha256:d8276d620291d3aaae3e31dde6d63e6807afee49825f04e8aa7392bbe024216f",
+        "prom/prometheus <none> sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7 sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+        "redis latest sha256:009cc37796fbdbe1b631b4cc0582bed167e5e403ed8bcd06f77eb6cb5aeb6f93 sha256:009cc37796fbdbe1b631b4cc0582bed167e5e403ed8bcd06f77eb6cb5aeb6f93",
+        "williamyeh/wrk latest sha256:78adc0d9d51a99e6759e702a08d03eaece81c890ffcc9790ef9e5b199d54f091 sha256:78adc0d9d51a99e6759e702a08d03eaece81c890ffcc9790ef9e5b199d54f091"
+      ],
+      "networks": [
+        "3cfb7d693d01 bridge",
+        "895a47fa4973 host",
+        "221bec3d1fbc none",
+        "009f4a6c9947 zenith-benchmark_default"
+      ],
+      "volumes": [
+        "0ae527f0006eb19d205ef6707d9114fea5b56bbd71a1ad3049a2a0d69a25c334",
+        "0b5e1863f8e5d09555b17c9d3553260b14a5be61cc1b7b03b6e6f9f58ad791ac",
+        "0b8f0d50c72031dd8010e4dd9d445525a1ce18deb3b7fa6f1ec1616518f6adfa",
+        "0b95797a14f2803960361d10630d2f92c51152abb4b92d188e9e07c4f8fc8a9d",
+        "0bf3c352102c5e7f80579816e9f0ecdd9e102085e305efd88317b17b3bd214fc",
+        "1a4cd9c93ee3ff63cf0fc4d52049df6466ac911fe810c531508bba8b858c1c1e",
+        "1cfbc0c301efe1cf52ef20720eae75d36432cf371f2324383c17ebf879b0ec4b",
+        "1d4b31f421d88d693630910c9b7b1ada20e050465ef61c58311eb4e07f7ce899",
+        "2d4841f143adf0d9e55a5bde6705d16fef324f4f7e16dc989b5a3314c89152e0",
+        "3bc7760af3ecd203c0bf8f3d05ec7fd2db31d5b3a64bb2bfcba6222f2dc950b6",
+        "3c4f0654f84cc144a9a0656a8054e43a202149da91619e27afaed7401cca93cd",
+        "3d227ab9e63b2ccc1edb4e2415699348e5c9512116ea967dbad736ce66c178a5",
+        "3e741ce4c89ebeda1269363a37ac40ccd351c710308561abe11cf749b735e80b",
+        "4b07cf9ccca6c542c7f0bfd6ed134034212b555cc9cdb789356e31e799c6c801",
+        "4e1a224de44c4420706ca490fe2ac74922f10868135515ccf9a33de8fcf4a3b8",
+        "4e95c951560cda5648f177b6c7d7a89d733670306c327e97e795c309c95de983",
+        "4fac38654fb3109534302e56214acc8ff9daa2019b4ef35db4b81fbb3dda76d2",
+        "4fec146989a35b2f175825408bb02081269a614dff18b9bc3aaca17d1f77c571",
+        "5c1eebcb71202c89bfc122bb3c43e50a8de22292ef3707da0fc802ed48adca6e",
+        "5d03ea42b0088095e320bedd1f0511f5c983c138ca80ac669d4216af8daf5de4",
+        "6be8e1694bd5714fde5683e4fa71a639caf6e883aa9dcdde9f478cfb4c4b246f",
+        "6d42eb1bfe1987aff3741f3faaf97eb4e048fec5bd4d3ba59acd22aa0f1ce6fb",
+        "6e6230363619bee13880d4a10bf7edd0a7ca5a2826de496adbb3e9b0c6b453f7",
+        "6eac53442cfbdb0d21c55ac9ae4a7a13efff142edc895e67d46512b1cb950c21",
+        "7a60ad10a5fce4def5e88332e6020c2e128b01e279aa0df17e5a12ce47a4b6bf",
+        "7b95da718f6347e2c34fd05d64eefa87d940b26c9f72f73d1482b632465077d9",
+        "7b050050d2fc2896db5bb2828745a4bc3b38db300cedb484a132e41f4a52c419",
+        "7d6a9b40c33d045c0266813d02d6e661aa05e7a59bcbc23418d665123284698b",
+        "07c5a58153b042a389584f6c10e767620ba70a12a1209eacf40ba9fdbd578bb1",
+        "8a7b298406aeebfac448605808e455a059eb0d336f22598dc80a42b48c35e7bb",
+        "8b996b631c9629db6f70936d66745ebe5c2b5411608036a01c5e53502152f3f5",
+        "8b4157b59c56b6b10314049b34beba7d3aa648ab261fb958730ba40ddfc3a535",
+        "8c0bda5e3c468e6fa1d7c488cd0016d41770e168948aeae85af1de61ded59584",
+        "8e4c6fc9436f0a954a2b83670968d426f6187d8329379e58ab754891a12d4fbc",
+        "9a3777c8d6c4fac1d8918f77826d2ac26f781660a1c5c9e8d1e9d7d02ee8a50c",
+        "9e92cd4a871718a48fc1a0e781f4308b1075b4c26ac643a2af2ba0f1d3818780",
+        "16e66be9019ef856a950141c198274cd78e499f3c227d61d65c1377e65e45044",
+        "16fe48ab26496eddeb7030a25382eca11650acf20c2edfd8a4df08c099ecccb6",
+        "21e9e5688609c55d4d040509355123eae341ca5b4705ca7eacf369b21f051991",
+        "25d596e20bb6c803edb5ee641dfb790368dc8cf12f96e41312dff9ea2d4de0eb",
+        "26c00efef07f83de22e030495ad5d17ca03abeb1efdff748206c1257c8267eae",
+        "29cfd0e96e3db56b1b446d9ea8e757baeb3af72556b9b1464c2fa23b115a7d9e",
+        "33ff025a09761ed2f8e2702e60170d8384f69a594a09b4eb54fa75d1dc93b2cf",
+        "37b044540aecfccb37491cc91974d75857124bfdc551b2995e8d605471b0762a",
+        "037ad463d09a6ea484b13f1445eaea651f1c51f24d01f3d267401c657d5335e2",
+        "38a70835f36b052472295c82155781ce8e4e6a58a1393963093c8c43bf2dd2b1",
+        "0043a88b1b2d49a9ea00291f394bf9b649a792dadcdb80e38a6d54280a1d4e3a",
+        "44a873c1642f9ebb72b9e27ec96cb655e0e736ea2342e01577e296226cc8c3c5",
+        "53cbfb4a462eaee9c95c2bd1115f8d48e6961e53d57be0082b1fcfad8003ed05",
+        "58e563afd86654b50f9b5151e18d4d6ce4159aac0cf65d2e4a4e812b9b4a1a27",
+        "59ee1b91fd63233b521aceab5e07d66254254adbad9e68bf11c7e542040381d4",
+        "61d10cc4fda9754538e5daa33e9d50b3924de8b1d94fb94b4fabb6f26abc0833",
+        "64b29e5258ac4f186f48d81948ce9c5ba74d06a7c73c2963e27951558b4978c9",
+        "65d23e25d39cff9b18a3e00cb46982d80f3a3a4070d493a5ac50b068f87fbf71",
+        "65fc94b8f7c5f326eb1963a86677a7d806283eea44e4294ef46c542d652a88f3",
+        "71dcbcefb60d5d688084f9d8b3d03fa7e7c1746d5c8d84e92a67028b76d81834",
+        "71f2b5baa3cd2ff59a7b77223b23c1c74aec2baf0bdb73a77c0e84a48872b0de",
+        "81c6d0ff330fe23367f13221a85ca8d1d9bc072c05b5e0e1422ba9d32f8bf74c",
+        "89df97381e7ccc2b25c89d0639bb690ca5515c533d09f4c3595a80fbcd1c04dc",
+        "91a74a28701b7b3d8b99cc8553845eaeb699717d46d8b7559f21dc9721e0bc45",
+        "91df1a1955f51c27ac8b98a0aed707eef4dfd2b1d0e26f2ea3912559ae7ae883",
+        "93e0a660a650f5d704602e08e2715eb7c10c592422a5f4a288d746c2a0a6f79c",
+        "94d92003245f19f0909eed95147be71fdb2519d4b50950588e4ee8910d95ec19",
+        "99e07b7936e77901c5dba8789a54ee534d758da786b7e9c9a80c2f8ed7805159",
+        "111c346701e88fbeeadbc488bb5d3e836bd0f66ce4344c9511131c6ec9f98c6b",
+        "160e49892cfdd03144119da2320929903d762a716d184b931eb922b7ad181443",
+        "257d533d6744c55d2113288454153fae1b4338f25ecdd25a31915d86e19db818",
+        "404a1fb18c73f1dc48684f6483ac9f80014f4bc651992637597ec0e3e695e45d",
+        "441b19e24f2818da56a8776fb56ede3dfa06ac6129edb684010d52cb9805b1da",
+        "0453a63ccfb5dc0afcd2cc55576d424e833606771c56f7703b01151ee0899eb3",
+        "0499e951d95df4605eddf26e5b8345cf70b3a777ed3ae7cb32f8fa15a6e53b9c",
+        "570bbe63e0beff166dcc2dc40a6c0a0689ff8ef1aabc7e39ccbd49d220db3a28",
+        "669d3f8a5add69ae661adce0364a5d9ef659ffaf4de7a076c2426cec1411f1b2",
+        "705cd39dc62fc85dae1a95cfd195bb89a09b9d1e6f262569773e395201f289e4",
+        "936d3b5c6418e00babc084daffca4e957883ce2e91fa274d43d2f4fd885af7ec",
+        "943d19ce2a1423fe5d65829a663aec2810ea48bf3649e68af1ec155064e157ce",
+        "982fc7e509054bd7f6d7053a67af0e6aa45844a85c508b9f19d25f6abffee101",
+        "3143ccea3d5c34b670e02307b5c4a4a2b995b15333d7492b960e253795d68f68",
+        "3865a82026eedfb2974a02152af8648af26d9b116ee544badae393fc8fd1adfe",
+        "03975ae6210af8e8bb623e539624941dfb53f0e8c9fd8c9a8dbd18bb4fac35b3",
+        "4667a47dd336802ebe9ce1bff760388abe21ed681d13d3863b61279083889db0",
+        "5096f24e60c9d06198e6da30c0431ec9902a7c6ca149462ab7bd76095606fca3",
+        "7080ddf543a5d6b34a095357faecad8ec240dc9acf243c1f663c357b773a8973",
+        "7887fd496dc08676d3d3fbf9448e1df406794fee3c0ecbf9ae90db8a46376a6b",
+        "9205c2377752af012dbfea8e62de80e48050af46906ab34a7e8bd81edf0dd56a",
+        "9862f11f2d447a34b6c79d924d4d5daadb31c6a127f9bfab2b7e30178d6af873",
+        "17467dab021122de00fe9f78c860989925c6a42d6decde69f950da961a9c3dc1",
+        "26820f822f85699f9bf0045df32195d567f6b2f690a2e00091531284b610c52d",
+        "53781ccb3fd230909c22d1895eda7e41d64b5daef824bbba2b3c8e79d5e91816",
+        "56024d0eeb5ac8852edbc062548cd756294c2d57a724d415717c68f1533d9518",
+        "79535ff7a78d407b8893ff1c0e7efdcbd093e348eef4e606c3007eb929cc716d",
+        "99876c3a87a406529d234d1c066385b098650b8b62a28f85ca83e89d70944b9b",
+        "429105e900fa32648e02a6ba8fba4b7e6fb08e7d4d14a4c01835d2f16f0fbe1e",
+        "714057f0c0d28dbb5c5cc2be594078c3c56bc908e86ce72b94687f798b7b67d8",
+        "873773b02110a724ae633daa207f81bfe24200ebd2365d99ee05608ab0f04a8b",
+        "961408e49455979f21e094420cde7609bb0a0c3c4ed35bc701be9df0c4cdcdb0",
+        "3204920e792d7893b960ffb15cbe715dbb174774ac870ec9da8c45d896c3ab15",
+        "6737196cbcf58213522c2186b1752d158e2ddc46a33c57b7b4300815cd3f14f6",
+        "21182334c884e0db1feb9b91e0acfbdbfe4a4671cf6d187b03581f22a588aa1f",
+        "73922498db42b8a4faf96ec9db5492647b11ad96cc93437faa81a63888b6ab16",
+        "99278585f969bb266902da2adb9c53e8dbea696c3c8bb335fe9dc5b90f0c757f",
+        "303672875a8f08fe19acaa1b33d20945ff2e0ae0a2218c073185ab110fbf1182",
+        "2656458095fe9e2de9450cc171703f07514a996fd96340f7bb4f436a60c69534",
+        "6070977391f5f2f50b84f1f1b6943e703571352f68291f59e5cd9ba13523ee21",
+        "a3db05297861874c30b4231ae213f358ca16808192613d2e22ff56ced8fceb33",
+        "a5ad56d16898179ef3456fe9e7013f27772c810ebaa76e15566075bbf25e90c4",
+        "a53ed88eca0936c4e5a86bf1425197a2a12f38477dfeec7f49d7f934882d874d",
+        "a89c01ff065b3f056c40581eeee1c9700ad59b1b95d53bfde89d534c2aa3c602",
+        "a891c3bfd268c89491c6db19c957bd3b30e948df73f34f4e5c7d2b495947b5e9",
+        "a1186a2acfdaf0145140d753acedd0bb64f1710de9b277b15642250bca8c98b7",
+        "a228552b184a24339165c537af69daba43afa4f1fc4faaecb10262c8e78edf97",
+        "ac662b7f4a57151842c903a00c8a25d2df18057caa1b5b2916079cc386171008",
+        "ae11d0a2965ffb22b9e46b7ca3ae5686a266749a74243583d034c8eb86c2079f",
+        "b6a8808e42b69a9a1bc8def204758966d67ed7347d2bf669475568a314e348ac",
+        "b9d831032d41c54664a3ac3f937b223b283ef9dee17a72b3554ec20dc743035f",
+        "b13b8567350a02f974aba6f50c83a69de0d2946041e4064daf7db50b78290373",
+        "b18c243a6293e1ab445f361eb5dd5e4da91011302335d8933b3ff9b4a74ac766",
+        "b9303d505f553b7880c05e88cbfbb813f76c91ab35ef8a74465bd9c3785bc667",
+        "b44475ea46caf3a912af61911af28d6f7a3c41a6301c76b5fc5fa909dfd61351",
+        "b394357a51deaa186fe781cfb3d297746203bf66bde5fb3da69c752047f5e081",
+        "ba7cffa66b8b100a9198b89c6c3d42c5d2f4019c34099fd72250ef51fe807f47",
+        "bc062f98766995a8d56cba5922bf67353d5bfb58afe0ac96701389d178bfb307",
+        "bcc042089b1c8d26791b251bdb3b0ec1935045ab1a02f3c129da7447e6fdc543",
+        "bd47a7704c3ef0a45454b6b02058f8e58154760a46d56663dab5fc93213090bc",
+        "bda500ec732bbd551be111f8d5d7ed1e1a7b2c3e9771be37f2cf7df2c211a227",
+        "c0d79da3af59bded5df96b6e11103d16588136ccbdb6d2a0f6fe77649905a904",
+        "c963fa5505336b87e8e13dfccd03c89098f2dd54881b527c3627c638d1c96d53",
+        "c51881ddf39b7b6fa1c387888dc102993533c5cb84f332c1b79507f2fd3fc0db",
+        "cbbac6953d77bf100090182f1b570479e126bc2ddbd6a2bb21829a00b9c398a3",
+        "cd76be111834537eed7eaff8e6e086b7f4df2005673241744e86f2fe8ef8b486",
+        "cd2255f257b0a9127947743a70086349682fdc996c308672478f5e992294c0dd",
+        "cd70556f61584b230d184209286128a6ca32066df4b4d5ebadfe1c9eaa070222",
+        "d4e4be783fe41cfb4d4f2bfc062892012e0b06001272472f56151ffc5f732f86",
+        "d8dff7a70345c4d3f0f9e5b6a8f0358f48b11cadfdb770b7f31f2ca04e00369c",
+        "d889aa3c97082fea43fca4aae34baa1220c79f0cac65e12fb8cec6ab3f26a47c",
+        "d04132e094e73b2fa1d6648c041df97233e62349c2d7de945953db602f1cb2df",
+        "d49597e25deea8a4a1d787e851e432dd83290139ae4c229923fd8bcc48ec978a",
+        "d801510a77278e51f6483566de6f831b5d18cd98e7794e38731fcdd425c89698",
+        "daee8ae6766ca5ee30dc2c25d3491e5274e7dce6f3b8059dc699632d1d044384",
+        "dc4f7c3266c0ad938f24ae6b2d3ae1a664676126ab1b3a2d5fbcb0b46b6d8a07",
+        "dc6e200b546edad292fa98b62f772efe283cfeca77d64073554e4cd2282b51ed",
+        "dcecb379f8e87ed95dd587c7c6fd06225ebf00c9d0a16e7abf83b2977c9c33a2",
+        "e0b85c99b0b358d19e24a93f0fcbe9610d5c25cedf55d7e2683faabd8e949677",
+        "e8a300a527554ee2fb271bc2eada2630e742856d75669dd24d53bf6b0d4b611e",
+        "e8c2fc3072528d80a24df04b951ff6091fdcc22c080e28e725a2f042d8e9434c",
+        "e9df5885740fe9b619a40366358343e0614492f780cffb712003ee50b2ce3bb2",
+        "e1590e3dec3055b98f250386496871b84327e366c6b6662456dc85f6f93a5db9",
+        "e05775a72bba1decbf89a3f1936784256c8a16a03c1c74c2dc56a9801b1baa54",
+        "e6987a284faab4b66f526a67feafa991dfc6be63f1368be0f4545618ddf1930c",
+        "e763906ded4fa366506aabdbf0e07ce27c88118b99a66837fa4931863643a2eb",
+        "ea244938a559c6b5ace98e9219822605dc674fb2c685aed22b07965122b9db35",
+        "eb3672206ab93ccf260f0ec46821b707bbc1e8503128cb0f2567a829ddb70dd7",
+        "ebf702912446e6027e27eb389bc1da753e46f522a36b37fc096ed2019cd0a023",
+        "ee32d57bb0cb1810f97182b473ed3de081cec714348295400fff35b9f973a19f",
+        "f9badc4434f9ed928a6fc989c68323db8bd4ce6dc73fa71849bfff24ed5f0032",
+        "f9e502b17703a499663529ef37269c3fb19a5bf6308dcf981601e98ade7d8a27",
+        "f699d720f398b1b2ae0a8fc6de16642de899ea0c503617f32cb754c18e184136",
+        "f49278bf047c8c97cf404a8e4d5c866d1c7a2a403b8d48a3ed7e03f7a55815f3",
+        "fa0c09e13aa19e81c57c2b6b9fea927bce9152d91e02e4c68caec2a7eb731439",
+        "fb5bbd116c2ec7c8b71e7420f0d50a46d90acf99d432692843b9452bcf03fcd7",
+        "fbc030eb9efa25274194b8de8bff403923d4f50ad9e64871b140695241fb1a31",
+        "ff66ecfe7fc8a733d8ed256a07034344ff0d926bff38f17caafb343acd1ca0cf",
+        "ffc9bec9863805747b85f3974e9af3b0b046e26fb53e750febd682649b24d00f",
+        "zenith-observability_grafana-data",
+        "zenith-observability_linux-npm",
+        "zenith-observability_prometheus-data",
+        "zenith-observability_redis-data",
+        "zenithgateway-dev-0cca169bd52a-6379-data"
+      ]
+    },
+    "checks": {
+      "containersUnchanged": true,
+      "imagesUnchanged": true,
+      "volumesUnchanged": true,
+      "networkNamesUnchanged": true
+    },
+    "bridgeChange": {
+      "before": [
+        "47ebbbd9d765 bridge"
+      ],
+      "after": [
+        "3cfb7d693d01 bridge"
+      ],
+      "attribution": "Unresolved; recorded, not changed back."
+    },
+    "finalHealthRunCleanup": {
+      "namedGatewayClientsAbsent": true,
+      "ownedContainersAbsent": true,
+      "ownedVolumes": [
+        "88a76c29cbc7b01bec51e19c1cb424f15d84a8ee4e68663a16735f8b93177d17"
+      ],
+      "ownedVolumesAbsent": true,
+      "networkAbsent": true,
+      "credentialsRemoved": true
+    },
+    "nativeProcessesRemaining": 0,
+    "nativeProcessCheck": ".dev/traffic-lifecycle-20261006-a798801c/native-processes-final.json"
+  },
+  "notExecuted": [
+    "Frontend tests/build and browsers: unchanged UI",
+    "All config operations/rollback/route publication standalone live matrices: unchanged protocols; related Java tests did execute",
+    "Prometheus/Grafana live scenarios: unchanged consumers",
+    "One-hour capacity, RSS attribution, histogram changes: out of scope",
+    "HTTP/2, WebSocket, real deployment LB/ingress, infinite management SSE consuming full Netty phase",
+    "JVM SIGSTOP/hard-kill loss experiment: documented boundary only"
+  ],
+  "remainingBoundaries": [
+    "Readiness is restoration, not a traffic-capacity or globally synchronized guarantee",
+    "Traffic weights belong to verification generator / deployment controller, not gateway",
+    "The default Docker bridge identity changed before the new isolated runs; cause unassigned; official comparison runs used stable independent networks",
+    "No automatic proxy retry or cancellation of upstream business side effects",
+    "Unknown audit outcome is not confirmed persistence and not proved loss",
+    "Resource/latency thresholds are scoped to recorded resource limits, shared Docker host, workload and short windows",
+    "4000 req/s one hour failed; no healthy one-hour capacity tier certified"
+  ]
+}
