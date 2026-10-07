@@ -8,6 +8,7 @@ import {mkdir,readFile,writeFile,copyFile,unlink,rmdir,readdir} from 'node:fs/pr
 import {resolve,join} from 'node:path'
 import {pathToFileURL} from 'node:url'
 import {randomUUID} from 'node:crypto'
+import os from 'node:os'
 import {setTimeout as delay} from 'node:timers/promises'
 import {redisCommand} from '../benchmarks/redis.mjs'
 import {fileHash} from './acceptance-core.mjs'
@@ -25,6 +26,7 @@ const prefix='zg-roll-'+id,network=prefix,ns='zg:rolling:'+id,token=randomUUID()
 const jar=join(out,'gateway.jar'),secrets=join(out,'credentials'),secret=join(secrets,'zenith.admin.token')
 await copyFile(sourceJar,jar)
 const report={startedAt:new Date().toISOString(),plan,images,jarSha256:await fileHash(jar),entrySha256:await fileHash(new URL(import.meta.url)),
+ host:{platform:os.platform(),release:os.release(),arch:os.arch(),cpus:os.cpus().length,cpuModel:os.cpus()[0]?.model,memoryBytes:os.totalmem()},
  checks:[],windows:[],processes:[],requests:[],timeline:[],control:[],cleanup:{},passed:false}
 const owned=[],volumes=new Set(),instances=[],agents=new Set();let createdNetwork=false,redisPort,worker,driver,entry,adminPort,A,B,versions,weights={a:100,b:0},browser,context,page,demoServer
 const docker=async(args,timeout=30000)=>(await exec('docker',scopedDockerArgs(args),{encoding:'utf8',windowsHide:true,timeout,maxBuffer:8*1024*1024})).stdout.trim()
@@ -37,7 +39,9 @@ async function run(name,args){await docker(['run','-d','--pull=never','--name',n
 async function port(name,p){return Number((await docker(['port',name,p+'/tcp'])).split(':').at(-1))}
 async function command(text){
  assert(!text.includes('\n'));let value=''
+ try{
  await new Promise((resolve,reject)=>{const socket=net.connect({host:'127.0.0.1',port:adminPort},()=>socket.end(text+'\n'));socket.setTimeout(3000,()=>socket.destroy(new Error('HAProxy runtime deadline')));socket.on('data',b=>{value+=b;if(value.length>2*1024*1024)socket.destroy(new Error('HAProxy output bound'))});socket.once('error',reject);socket.once('end',resolve)})
+ }catch(e){report.control.push({at:new Date().toISOString(),command:text,error:e.message});throw e}
  report.control.push({at:new Date().toISOString(),command:text,response:value});return value
 }
 function stats(csv){const lines=csv.trim().split('\n'),keys=lines.shift().replace(/^#\s*/,'').split(',');return lines.filter(Boolean).map(l=>Object.fromEntries(l.split(',').map((v,n)=>[keys[n],v])))}
@@ -135,7 +139,8 @@ try{
  const runtime=await api(A.base,'/settings/runtime/adopted');versions={runtime:runtime.version,route:published.version}
  const cfg=`global\n  log stdout format raw local0\n  maxconn 512\n  stats socket ipv4@0.0.0.0:9999 level admin\n  nbthread 1\ndefaults\n  mode http\n  log global\n  option httplog\n  retries 0\n  retry-on none\n  no option redispatch\n  timeout connect 1s\n  timeout client 30s\n  timeout server 30s\n  timeout http-keep-alive 120s\n  timeout check 500ms\nfrontend public\n  bind :8080\n  default_backend gateway\nbackend gateway\n  balance roundrobin\n  http-reuse safe\n  option httpchk\n  http-check send meth GET uri /actuator/health/readiness\n  http-check expect status 200\n  http-send-name-header X-Verification-Instance\n  http-response set-header X-Verification-Instance %[srv_name]\n  server a ${A.ip}:8080 check inter 200ms rise 1 fall 1 weight 100\n  server b 127.0.0.1:1 check inter 200ms rise 1 fall 1 weight 0 disabled\n`
  await writeFile(join(out,'haproxy.cfg'),cfg)
- const lb=prefix+'-lb';await run(lb,['--network-alias','balancer','--cpus=1','--memory=256m','--pids-limit=128','-p','127.0.0.1::8080','-p','127.0.0.1::9999','-v',join(out,'haproxy.cfg').replaceAll('\\','/')+':/usr/local/etc/haproxy/haproxy.cfg:ro',images.haproxy]);entry='http://127.0.0.1:'+await port(lb,8080);adminPort=await port(lb,9999);await readyServer(A,'a')
+ const lb=prefix+'-lb';await run(lb,['--network-alias','balancer','--cpus=1','--memory=256m','--pids-limit=128','-p','127.0.0.1::8080','-p','127.0.0.1::9999','-v',join(out,'haproxy.cfg').replaceAll('\\','/')+':/usr/local/etc/haproxy/haproxy.cfg:ro',images.haproxy]);entry='http://127.0.0.1:'+await port(lb,8080);adminPort=await port(lb,9999)
+ await until('HAProxy runtime listener ready',async()=>/Name: HAProxy/.test(await command('show info')),10000);await readyServer(A,'a')
  await writeFile(join(out,'haproxy-version.txt'),await docker(['exec',lb,'haproxy','-vv']))
  const load=prefix+'-load';await run(load,['--cpus=1','--memory=256m','--pids-limit=128','-p','127.0.0.1::8091','-v',root.replaceAll('\\','/')+':/workspace:ro','-v',out.replaceAll('\\','/')+':/evidence','-v',secrets.replaceAll('\\','/')+':/secrets:ro',images.node,'node','/workspace/verification/rolling-replacement-load.mjs']);driver='http://127.0.0.1:'+await port(load,8091);await until('driver ready',()=>api(driver,'/status'))
  report.isolation={network,namespace:ns,entry,adminPort,redisPort,driver,worker};await event('A 服务，B 保持零权重',{versions})
