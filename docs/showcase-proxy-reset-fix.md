@@ -12,6 +12,8 @@
 
 新增测试走实际 WebHttpHandlerBuilder、代理保护、审计和完成记录器。Linux reset、Broken pipe 与 Windows reset 三种 cause 验证错误只记录一次、正文不追加错误 JSON；另一个反例保留原始下游断连的框架处理。旧实现 4 例中 2 例失败；修复后 48 项相关测试和 263 项后端全量通过。
 
+真实 Linux 同条件对照也成立：旧包在第 4 组部分响应重置场景超过 10 秒验证截止；修复包完成全部 24 组 / 102 请求及 2 项启动拒绝检查，退出码 0，具名 Redis 客户端和本轮容器均已释放。源码修复提交为 `3a9f0c0183dab846a5c40557b37e184afdaff230`。
+
 ## 真实 Linux 补验条件
 
 复用 `verification/proxy-resilience-live.mjs`，可选择由调用方拥有的专属 Redis，并始终使用新的 UUID 键空间。外部 Redis 模式由外层入口负责删除 Redis，子报告不宣称自己已删除。相同镜像、资源、脚本和启动参数对照旧包与修复包。

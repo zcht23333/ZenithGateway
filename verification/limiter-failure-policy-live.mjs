@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process'
 import {createHash,randomUUID} from 'node:crypto'
 import {resolve,join} from 'node:path'
 import {environment,until} from './rate-limit-harness.mjs'
+import {fullyIdle,faultRequestsRetired} from './limiter-policy-gates.mjs'
 
 const out=resolve(process.env.RATE_LIMIT_POLICY_OUTPUT||'.dev/limiter-failure-policy/live-'+randomUUID().slice(0,8))
 await mkdir(out,{recursive:true})
@@ -32,10 +33,18 @@ const audit=async(i,path)=>until('one audit '+path,async()=>{const rows=(await a
 const arrivals=row=>e.arrivals.filter(x=>x.path===row.path.replace(/^\/probe/,''))
 const idle=i=>until(i.label+' bounded resources released',async()=>{
  const d=await diag(i)
- assert(d.commandsInFlight<=d.workers&&d.queued<=d.queueCapacity&&d.connectionSlots<=d.workers)
- assert(d.scheduledTasks<=d.admissionCapacity+1&&d.queuedDeliveries<=d.deliveryQueueCapacity&&d.activeDeliveries<=d.resultWorkers)
- return d.commandsInFlight===0&&d.queued===0&&d.activeWorkers===0&&d.closing===0&&d.queuedDeliveries===0&&d.activeDeliveries===0&&d.retainedTasks===0&&d.availableDecisionPermits===d.admissionCapacity?d:false
+ return fullyIdle(d)?d:false
 })
+const retiredDuringFault=(i,p,keyIp)=>{
+ const trace=[];e.report.evidence[i.label+'-retirement-'+keyIp]=trace
+ return until(i.label+' business commands physically retired during recovery probes',async()=>{
+  const d=await diag(i),frames=p.events.filter(x=>x.limiter&&x.keys.includes(bucket(keyIp)))
+  const released=faultRequestsRetired(d,frames)
+  trace.push({at:new Date().toISOString(),released,commandsInFlight:d.commandsInFlight,activeWorkers:d.activeWorkers,queued:d.queued,closing:d.closing,retainedTasks:d.retainedTasks,availableDecisionPermits:d.availableDecisionPermits,transportState:d.transportState,businessCommands:frames.length,physicallyClosed:frames.filter(f=>f.discardedOnClose).length})
+  if(trace.length>64)trace.shift()
+  return released?{diagnostic:d,businessCommands:frames,meaning:'Business commands closed; one bounded recovery probe may remain. Full idle is required again after fault release.'}:false
+ })
+}
 const healthy=i=>until(i.label+' recovered',async()=>{const d=await diag(i);return d.transportState==='healthy'?d:false})
 const gate=(i,action)=>e.api(i,'/settings/verification/limiter-gate',{method:'POST',body:JSON.stringify({action})})
 const entered=i=>until(i.label+' synchronous consumer held',async()=>{const g=await e.api(i,'/settings/verification/limiter-gate');assert.equal(g.timedOut,false);return g.entered?g:false})
@@ -70,7 +79,7 @@ try{
    for(const row of extras){const proof=await verify(i,row,{event:'local_unavailable',execution:'not_sent',source:'admission_full'});assert.equal(row.status,before.localFailurePolicy==='reject'?503:200);rows.push(proof)}
    const pending=await Promise.all([one,two]);for(const row of pending)rows.push(await verify(i,row))
    const shortCircuit=await e.hit(i,keyIp);rows.push(await verify(i,shortCircuit,{event:'redis_unconfirmed',execution:'not_sent'}));assert.equal(shortCircuit.status,before.redisFailurePolicy==='reject'?503:200)
-   const released=await idle(i);assert.equal(await e.redis(['EXISTS',bucket(keyIp)]),0)
+   const released=await retiredDuringFault(i,p,keyIp);assert.equal(await e.redis(['EXISTS',bucket(keyIp)]),0)
    const restoredAt=p.release();const restored=await healthy(i);await idle(i)
    assert.equal(await e.redis(['EXISTS',bucket(keyIp)]),0)
    e.report.evidence[i.label+'-admission']={before,boundary,released,restoredAt,recoveryMs:Date.parse(restored.lastRecoveryAt)-Date.parse(restoredAt),rows,commands:p.events.filter(x=>x.limiter&&x.keys.includes(bucket(keyIp)))}
@@ -80,10 +89,10 @@ try{
    const job=e.hit(i,keyIp,{method:'POST'});await until('committed reply captured',()=>p.held.some(x=>x.limiter&&x.keys.includes(bucket(keyIp))&&x.reply))
    const committed=JSON.parse(await e.redis(['GET',bucket(keyIp)]));assert.equal(committed.tokensMilli,99000)
    const row=await job,proof=await verify(i,row,{event:'redis_unconfirmed',execution:'unknown'});assert.equal(row.status,before.redisFailurePolicy==='reject'?503:200)
-   await idle(i);const releaseAt=p.release(),restored=await healthy(i);await idle(i)
+   const released=await retiredDuringFault(i,p,keyIp);const releaseAt=p.release(),restored=await healthy(i);await idle(i)
    const frames=p.events.filter(x=>x.limiter&&x.keys.includes(bucket(keyIp)));assert.equal(frames.length,1)
    assert.equal(JSON.parse(await e.redis(['GET',bucket(keyIp)])).tokensMilli,99000)
-   e.report.evidence[i.label+'-lost-reply']={proof,committed,frames,releaseAt,recoveryMs:Date.parse(restored.lastRecoveryAt)-Date.parse(releaseAt)}
+   e.report.evidence[i.label+'-lost-reply']={proof,committed,frames,released,releaseAt,recoveryMs:Date.parse(restored.lastRecoveryAt)-Date.parse(releaseAt)}
   })
  }
  for(const i of [O,S]){

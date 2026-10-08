@@ -49,6 +49,13 @@ flowchart LR
 
 Windows PowerShell，从仓库根目录运行（先设置 JAVA_HOME 并将 Node/npm 加入 PATH）：
 
+展示候选暂未合并 main。首次获取请指定候选分支，冻结提交及实际 CI 见[发布记录](docs/showcase-release.md)：
+
+```powershell
+git clone --branch zch/showcase-candidate-20261008 --single-branch https://github.com/zcht23333/ZenithGateway.git
+cd ZenithGateway
+```
+
 ```powershell
 .\dev.ps1 -CheckOnly
 .\dev.ps1

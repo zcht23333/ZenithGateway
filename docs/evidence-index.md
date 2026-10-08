@@ -63,3 +63,5 @@ node verification/showcase-evidence.mjs --manifest docs/evidence/showcase-candid
 - [本轮候选记录](showcase-release.md)：实际提交、CI、产物哈希、执行/未执行范围以及可重复构建命令。
 
 Actions 产物保留期有限（Verify 14 天，Release 30 天）；仓库内历史证据不依赖它继续在线。哈希用于确认材料一致，不等于第三方签名或证明所有环境都满足相同性能。
+
+仓库通过 `.gitattributes` 禁止 Git 对 `docs/evidence/` 做文本换行转换。否则 Windows 的 `core.autocrlf=true` 会改变 JSON 字节，导致正确的原始摘要无法通过哈希验证；这个克隆差异已经实际复现。校验不做“忽略换行”等容错，仍要求归档字节精确一致。
