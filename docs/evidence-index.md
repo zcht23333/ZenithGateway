@@ -50,7 +50,7 @@ node benchmarks/rss-report.mjs .dev/evidence-unpacked/native-diagnostic .dev/nat
 
 ## CI 与公开记录
 
-本轮发布的成功和失败记录见[候选证据清单](evidence/showcase-candidate-20261008/manifest.json)：包括 C1 的 Windows / Linux 汇总、原始故障报告、旧新包 Linux RST 对照、263 项后端构建输出、启动失败和启动脚本 smoke，以及 CI ZIP 的官方摘要校验。汇总标注 derived，压缩原始成员保留双 SHA256；读取时必须保留 `passed=false` 和 `notExecuted`，不能把补验通过改写为首轮通过。
+本轮发布的成功和失败记录见[候选证据清单](evidence/showcase-candidate-20261008/manifest.json)：包括 C1、C3 的失败，C4 两层 CI 的通过记录与 10 个真实入口报告、旧新包 Linux RST 对照、263 项后端构建输出、启动失败和启动脚本 smoke，以及 CI ZIP 的官方摘要校验。精确对应关系见[机器可读发布记录](showcase-release-validation.json)。汇总标注 derived，压缩原始成员保留双 SHA256；读取时必须保留 `passed=false` 和 `notExecuted`，不能把补验通过改写为首轮通过。
 
 ```powershell
 node verification/showcase-evidence.mjs --manifest docs/evidence/showcase-candidate-20261008/manifest.json

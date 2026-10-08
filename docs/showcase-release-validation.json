@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T04:03:52.697Z",
+  "scope": "Final showcase functional source baseline; documentation/evidence closeout commits are separate identities",
+  "sourceCommit": "c613940559c829e5aa466d04b9343c0241d5e3ae",
+  "publicBranch": "zch/showcase-candidate-20261008",
+  "backendFixCommit": "3a9f0c0183dab846a5c40557b37e184afdaff230",
+  "passed": true,
+  "developmentInstancesUpgraded": false,
+  "mainMerged": false,
+  "ci": [
+    {
+      "name": "Verify",
+      "id": 37724149697,
+      "url": "https://github.com/zcht23333/ZenithGateway/actions/runs/37724149697",
+      "conclusion": "success",
+      "sourceCommit": "c613940559c829e5aa466d04b9343c0241d5e3ae",
+      "jarSha256": "59205bff217fda345772357ddd151975c7d52ff23188f49a6a98c77822d66810",
+      "buildInputsSha256": "c9259dc432cc794122179117f2b8c4f5a229aaa25b6ef1ccffadbeee36145c20",
+      "sourceArchiveSha256": "bdfda3b30242f1ac66fa30c5c803d487ccd9a4845780825cd1b2062e04441fe3",
+      "buildInputFiles": 349,
+      "inputsUnchangedAfterChecks": true,
+      "artifactId": "11526832883",
+      "archiveSha256": "1005800d077d0691ad60caa2b1fff5b4214c0e0ac527a4021de7f6eaa42f4d3c",
+      "archiveBytes": 61847017,
+      "expandedEntries": 96,
+      "reportSha256": "d37ea942a7effbf6d6dc52bb5f095ebb0f09c1e3694c10e74f8eefc5f24b5a7f"
+    },
+    {
+      "name": "Release acceptance",
+      "id": 37724149659,
+      "url": "https://github.com/zcht23333/ZenithGateway/actions/runs/37724149659",
+      "conclusion": "success",
+      "sourceCommit": "c613940559c829e5aa466d04b9343c0241d5e3ae",
+      "jarSha256": "59205bff217fda345772357ddd151975c7d52ff23188f49a6a98c77822d66810",
+      "buildInputsSha256": "c9259dc432cc794122179117f2b8c4f5a229aaa25b6ef1ccffadbeee36145c20",
+      "sourceArchiveSha256": "4ed6913f0303eb506cf4ad2a0c2422aa1314f88c029cd48376b234fa7fa6ff9f",
+      "buildInputFiles": 349,
+      "inputsUnchangedAfterChecks": true,
+      "artifactId": "11527193252",
+      "archiveSha256": "b941c29da527a79c7043560e5f5b61a690d1730247c2553bb3d2baa52ed1f229",
+      "archiveBytes": 62649490,
+      "expandedEntries": 253,
+      "reportSha256": "f2d246433838d109d4d73802e11aedf54e1193efc3e91323d146ff07a2e0eeff"
+    }
+  ],
+  "jarSha256": "59205bff217fda345772357ddd151975c7d52ff23188f49a6a98c77822d66810",
+  "verification": {
+    "backend": {
+      "tests": 263,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "frontend": {
+      "tests": 107,
+      "pass": 107,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "tools": {
+      "tests": 114,
+      "pass": 114,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "monitoring": {
+      "dashboardSha256": "282466c433665925a180d97a5499cd3899e4c9b8a607e808073987ac05b70c2f",
+      "dashboardPanels": 27,
+      "dashboardQueries": 41,
+      "dashboardCases": 8,
+      "dashboardAssertions": 97,
+      "ruleCases": 27,
+      "ruleAssertions": 86,
+      "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+      "passed": true
+    },
+    "productionBuild": true,
+    "live": [
+      {
+        "name": "config-sync",
+        "checks": 10,
+        "elapsedMs": 75772.725899,
+        "cleanup": {
+          "BExitCode": 0,
+          "B-restartedExitCode": 0,
+          "AExitCode": 0,
+          "proxyClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "config-operations",
+        "checks": 11,
+        "elapsedMs": 33028.180774999986,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "A-restartedExitCode": 0,
+          "proxyClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": [
+          "browser: HTTP reply loss, auth recovery and conflict UI"
+        ]
+      },
+      {
+        "name": "config-rollback",
+        "checks": 9,
+        "elapsedMs": 34030.745278999995,
+        "cleanup": {
+          "BExitCode": 0,
+          "browserClosed": true,
+          "AExitCode": 0,
+          "B-restartedExitCode": 0,
+          "proxyClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": [
+          "browser: rollback selection/conflict, HTTP reply loss, auth recovery and discard lifecycle"
+        ]
+      },
+      {
+        "name": "route-publication",
+        "checks": 19,
+        "elapsedMs": 82888.86891799996,
+        "cleanup": {
+          "A-1ExitCode": 0,
+          "B-2ExitCode": 0,
+          "B-missing-3ExitCode": 1,
+          "B-recovered-4ExitCode": 0,
+          "B-no-rewrite-5ExitCode": 0,
+          "M-migrated-6ExitCode": 0,
+          "AProxyClosed": true,
+          "BProxyClosed": true,
+          "upstreamsClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "proxy-resilience",
+        "checks": 24,
+        "elapsedMs": 58223.328454,
+        "cleanup": {
+          "gatewayExitCode": 0,
+          "upstreamClosed": true,
+          "httpsUpstreamClosed": true,
+          "redisRemoved": true,
+          "privateTlsKeyRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "rate-limit",
+        "checks": 22,
+        "elapsedMs": 29564.713286999962,
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "B-untrustedExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "rate-limit-malformed",
+        "checks": 17,
+        "elapsedMs": 8813.209386000002,
+        "cleanup": {
+          "AExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "limiter-policy",
+        "checks": 25,
+        "elapsedMs": 67972.29333299998,
+        "cleanup": {
+          "A-defaultExitCode": 0,
+          "B-strictExitCode": 0,
+          "A-local-strictExitCode": 0,
+          "B-redis-strictExitCode": 0,
+          "B-strict-handoffExitCode": 0,
+          "proxyAClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "lifecycle-functional",
+        "checks": 4,
+        "elapsedMs": 96356.37757299998,
+        "cleanup": {
+          "namedGatewayClientsAbsent": true,
+          "ownedContainersAbsent": true,
+          "ownedVolumes": [
+            "8fad0baeb43df791fc407ea2dc291f84a2cfc33860e120de7b7ab32bc64d6667"
+          ],
+          "ownedVolumesAbsent": true,
+          "networkAbsent": true,
+          "credentialsRemoved": true
+        },
+        "notExecuted": []
+      },
+      {
+        "name": "lifecycle-signal",
+        "checks": 1,
+        "elapsedMs": 19720.46221899998,
+        "cleanup": {
+          "namedGatewayClientsAbsent": true,
+          "ownedContainersAbsent": true,
+          "ownedVolumes": [
+            "b88b3d9eed41d7c86b494c69825795517b13f3229bc349c670f37a568dba6096"
+          ],
+          "ownedVolumesAbsent": true,
+          "networkAbsent": true,
+          "credentialsRemoved": true
+        },
+        "notExecuted": []
+      }
+    ],
+    "liveCheckTotal": 142,
+    "proxyRequests": 102
+  },
+  "independentLocal": {
+    "backendTests": 263,
+    "proxy": {
+      "groups": 24,
+      "requests": 102,
+      "startupRejections": 2,
+      "jarSha256": "0e91dc5a48840bb3736230a30aab61774adfe9c8f4932472f52c1cae3dc2e192",
+      "oldFailsSameFixture": true,
+      "routeTimeoutMs": 4000
+    },
+    "limiterPolicy": {
+      "checks": 25,
+      "jarSha256": "82ac7d4255222f97304f616f2edbbde8c480fca2dd8da7eae4e3555600908e91"
+    },
+    "lifecycle": {
+      "functionalGroups": 4,
+      "signalGroups": 1,
+      "routeTimeoutMs": 4000,
+      "readinessBudgetMs": 120000,
+      "exitCodes": [
+        143
+      ],
+      "warmupDegradationRetained": true
+    },
+    "startupSmoke": {
+      "passed": true,
+      "sourceCommit": "5ddedb1f2f773859d379319dafa04eb072080db1",
+      "jarSha256": "82ac7d4255222f97304f616f2edbbde8c480fca2dd8da7eae4e3555600908e91",
+      "elapsedMs": 41824.5398,
+      "exitCode": 0,
+      "portsClosed": {
+        "backend": true,
+        "frontend": true
+      },
+      "cleanup": {
+        "ownedContainerAbsent": true
+      }
+    },
+    "windowsGitCheckout": {
+      "coreAutocrlf": true,
+      "sourceCommit": "c613940559c829e5aa466d04b9343c0241d5e3ae",
+      "bothEvidenceManifestsPassed": true,
+      "originalCloneFailed": true
+    }
+  },
+  "identity": {
+    "c3ToC4": {
+      "baseline": {
+        "sha256": "82ac7d4255222f97304f616f2edbbde8c480fca2dd8da7eae4e3555600908e91",
+        "entries": 343
+      },
+      "candidate": {
+        "sha256": "59205bff217fda345772357ddd151975c7d52ff23188f49a6a98c77822d66810",
+        "entries": 343
+      },
+      "byteIdentical": false,
+      "allUncompressedEntriesIdentical": true,
+      "runtimeEntriesIdentical": true,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "metadataOnlyChangeCount": 343,
+      "rawEvidence": "evidence/showcase-candidate-20261008/c3-to-c4-jar-comparison.json.gz",
+      "rawSha256": "f7735e4d6f527e6a0b9d7766f92599215bfae320e77a3d96891932c3a4229464"
+    },
+    "capacityJarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+    "capacityTransferred": false,
+    "newCapacityRun": false
+  },
+  "publicPerformanceStatement": "单实例、4 个逻辑 CPU、1 GiB、小 HTTP 响应条件下，1000 req/s 一小时容量窗口通过；长期内存稳定性仍未证明，4000 req/s 一小时未通过。",
+  "failuresRetained": [
+    {
+      "name": "Missing cached Redis digest tag",
+      "code": "preparation-failure",
+      "subsequentBusinessTestsRun": false
+    },
+    {
+      "name": "Linux committed upstream reset swallowed by web adapter",
+      "sourceCommit": "82e0f8164f4c77160769893babc3a41555e611b0",
+      "ciRun": 37716588262,
+      "fixed": true
+    },
+    {
+      "name": "All-zero wait includes intentionally blocked recovery probes",
+      "sourceCommit": "5ddedb1f2f773859d379319dafa04eb072080db1",
+      "ciRun": 37722123645,
+      "fixtureFixed": true
+    },
+    {
+      "name": "Windows automatic EOL conversion changes evidence bytes",
+      "fixed": true
+    },
+    {
+      "name": "Local initial Redis budget and 60-second readiness failures",
+      "productDefaultsChanged": false
+    },
+    {
+      "name": "Sandbox process-cleanup EBUSY",
+      "sameTestsOutsideSandboxPassed": 24
+    }
+  ],
+  "cleanup": {
+    "recordedAt": "2026-10-08T03:50:30.206Z",
+    "containers": {
+      "beforeCount": 6,
+      "afterCount": 6,
+      "added": [],
+      "removed": []
+    },
+    "volumes": {
+      "beforeCount": 168,
+      "afterCount": 168,
+      "added": [],
+      "removed": []
+    },
+    "networks": {
+      "beforeCount": 4,
+      "afterCount": 4,
+      "added": [
+        "03ca97d9a1ea3a63c5b2ddced08d30ae3a11764d10f23c30f216f08794b05086 bridge"
+      ],
+      "removed": [
+        "a344c9551f7ebe60ec8af19a6a72e7e0e94476cc3dc715c571c4a43f48540632 bridge"
+      ]
+    },
+    "ownedJavaPids": [],
+    "images": "Pinned shared image cache retained; no global prune",
+    "developmentInstancesUpgraded": false,
+    "passed": true
+  },
+  "notExecuted": [
+    "external load balancer rolling replacement",
+    "one-hour capacity validation",
+    "RSS attribution",
+    "standalone browser matrices",
+    "browser: HTTP reply loss, auth recovery and conflict UI",
+    "browser: rollback selection/conflict, HTTP reply loss, auth recovery and discard lifecycle",
+    "New one-hour capacity or RSS experiment",
+    "Full real browser interaction matrices",
+    "Real Grafana fault chain",
+    "HAProxy rolling replacement rerun",
+    "macOS startup validation"
+  ],
+  "evidence": {
+    "candidateManifest": "evidence/showcase-candidate-20261008/manifest.json",
+    "historicalManifest": "evidence/showcase-20261008/manifest.json",
+    "summaryPrefix": "evidence/showcase-candidate-20261008/ci-c4-release-extracted/",
+    "artifactRetentionDays": {
+      "verify": 14,
+      "release": 30
+    },
+    "evidenceIsNotThirdPartyAttestation": true
+  },
+  "boundaries": [
+    "Public capacity remains bound to the historic 3f73c65c JAR, not this candidate.",
+    "The local Docker startup budget differs from product defaults and proves functional behavior, not cold-entry capacity.",
+    "Default bridge identity changed again; cause unresolved and recorded separately.",
+    "No permanent cross-platform byte-reproducible JAR or unlimited CI artifact retention claim."
+  ]
+}

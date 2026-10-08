@@ -1,0 +1,136 @@
+{
+  "derived": true,
+  "sourceCommit": "c613940559c829e5aa466d04b9343c0241d5e3ae",
+  "dirty": false,
+  "buildInputsSha256": "c9259dc432cc794122179117f2b8c4f5a229aaa25b6ef1ccffadbeee36145c20",
+  "inputsUnchangedAfterChecks": true,
+  "startedAt": "2026-10-08T03:44:47.572Z",
+  "completedAt": "2026-10-08T03:46:14.569Z",
+  "passed": true,
+  "jarSha256": "59205bff217fda345772357ddd151975c7d52ff23188f49a6a98c77822d66810",
+  "steps": [
+    {
+      "name": "toolchain-java",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Microsoft-14941483 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Microsoft-14941483 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+      }
+    },
+    {
+      "name": "toolchain-maven",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "version": "Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)\nMaven home: /home/runner/.m2/wrapper/dists/apache-maven-3.9.16/56ba1f9f\nJava version: 21.0.12.1, vendor: Microsoft, runtime: /opt/hostedtoolcache/Java_jdkfile_jdk/21.0.12-1/x64\nDefault locale: en, platform encoding: UTF-8\nOS name: \"linux\", version: \"6.17.0-1022-azure\", arch: \"amd64\", family: \"unix\""
+      }
+    },
+    {
+      "name": "image-0",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "image-1",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "source-archive",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "backend",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "tests": 263,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "frontend-install",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "frontend-test",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "tests": 107,
+        "pass": 107,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "name": "frontend-build",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "tool-tests",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "tests": 114,
+        "pass": 114,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "name": "monitoring",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "dashboardSha256": "282466c433665925a180d97a5499cd3899e4c9b8a607e808073987ac05b70c2f",
+        "dashboardPanels": 27,
+        "dashboardQueries": 41,
+        "dashboardCases": 8,
+        "dashboardAssertions": 97,
+        "ruleCases": 27,
+        "ruleAssertions": 86,
+        "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+        "passed": true
+      }
+    }
+  ],
+  "cleanup": {
+    "passed": true,
+    "forced": false,
+    "errors": [],
+    "credentials": {
+      "passed": true,
+      "removed": []
+    },
+    "hostAuditPassed": true
+  },
+  "notExecuted": [
+    "external load balancer rolling replacement",
+    "one-hour capacity validation",
+    "RSS attribution",
+    "standalone browser matrices"
+  ],
+  "capacityClaimTransferred": false,
+  "sourceReportSha256": "d37ea942a7effbf6d6dc52bb5f095ebb0f09c1e3694c10e74f8eefc5f24b5a7f"
+}

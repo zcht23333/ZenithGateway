@@ -1,46 +1,80 @@
 # 求职展示候选版本
 
-本轮将已验收实现、验证入口、文档与可离线复核的关键证据整理为完整候选。公开分支为 `zch/showcase-candidate-20261008`，不合并 main，不升级开发实例。当前原工作区仍保留个人 IDE、未提交改动和历史证据；候选在独立干净副本中提交、构建和验证。
+功能验收基线已固定为 **`c613940559c829e5aa466d04b9343c0241d5e3ae`**，同一提交的 [Verify](https://github.com/zcht23333/ZenithGateway/actions/runs/37724149697) 与 [Release acceptance](https://github.com/zcht23333/ZenithGateway/actions/runs/37724149659) 均通过。从干净源码导出全新构建目录，使用同一 JAR 完成发布矩阵，源码输入在测试前后未变。
 
-## 范围
+公开分支：`zch/showcase-candidate-20261008`。本页和归档材料由后续资料收尾提交保存；该提交也触发两层 CI，其状态可从分支的提交检查查看。原工作区保留，未合并 main、未部署或升级开发实例。
 
-- RSS 文档中的“旧代 39→57 MiB”修正为“年轻代 GC 后堆占用 39→57 MiB”，没有重跑实验或更改原始数据。
-- README 提供架构、启动、控制台预览与三个案例入口；详细接口说明移入[开发指南](development-guide.md)。
-- [三个案例](backend-case-studies.md)覆盖并发与操作确认、限流故障决策、容量与 RSS；取消/排空与 LB 替换保留为补充材料。
-- [证据索引](evidence-index.md)随仓库携带约 3.1 MB 无损压缩原始数据与派生摘要；CI 验证哈希及阅读入口，默认不执行容量长测。
-- 最初候选沿用已验收业务源码；Linux 发布 CI 实际发现部分响应后的上游 RST 被框架吞掉，已完成[局部修复与旧新对照](showcase-proxy-reset-fix.md)。限流算法、故障策略、配置协议和交接默认值不变。
+[机器可读记录](showcase-release-validation.json) · [三个案例](backend-case-studies.md) · [可离线复验的证据](evidence-index.md) · [控制台演示](product-showcase.md)
 
-## 候选冻结与验证
+## 版本与产物
 
-候选以已公开的 `8a654cbcf1c31d9754bfdd2db7f699613ceedfbb` 为基线，纳入后续已验收的容量门禁、命令计数修复、RSS 工具及本轮文档。源码只从明示的项目目录与文件清单复制；排除 `.dev`、work、IDE 本地改动、凭据、node_modules、target、dist。原来的 main 工作区不切换、不重置。
+| 项目 | 实际身份 |
+| --- | --- |
+| 后端上游断连修复 | `3a9f0c0183dab846a5c40557b37e184afdaff230` |
+| 完整功能验收提交 | `c613940559c829e5aa466d04b9343c0241d5e3ae` |
+| Verify / Release 使用的同一 JAR | `59205bff217fda345772357ddd151975c7d52ff23188f49a6a98c77822d66810` |
+| 实际构建输入 SHA256 | `c9259dc432cc794122179117f2b8c4f5a229aaa25b6ef1ccffadbeee36145c20` |
+| 工具链 | Microsoft JDK 21.0.12.1、Node 24.21.0、Maven Wrapper 3.9.16 |
 
-构建使用 Microsoft JDK 21.0.12.1、Node 24.21.0、Maven Wrapper 3.9.16，容器镜像固定摘要。统一验收从干净提交导出全新输入，后端 clean verify、前端 npm ci 和生产构建，再用**同一个新 JAR**串行执行发布矩阵。source-manifest、源码归档、测试报告、JAR/前端哈希和退出清理共同保存。
+两份 CI ZIP 均已下载，核对 GitHub 官方 SHA256 并逐成员解压校验；实际归档身份在机器记录。仓库内的压缩原始报告及源码清单不依赖本机 D: 路径，Actions 二进制产物保留期仍有限。构建使用干净输入，可复用依赖下载缓存，不复用编译产物；不宣称离线封闭构建或所有操作系统产生相同 ZIP 字节。
 
-首个候选为 `82e0f8164f4c77160769893babc3a41555e611b0`。其 [Verify](https://github.com/zcht23333/ZenithGateway/actions/runs/37716588225) 通过，[Release](https://github.com/zcht23333/ZenithGateway/actions/runs/37716588262) 在 Linux 真实代理 RST 场景失败，未达到冻结条件。两份原始 CI ZIP 均已下载并核对 GitHub SHA256，失败未被重试成功覆盖。
+本地修复包 `0e91dc5a…`、C3 CI 包 `82ac7d42…` 与此功能基线包的解压后 343 个条目字节一致，整个 JAR 哈希分别记录。它们均与历史容量包不同；构建身份比较没有迁移性能结论。
 
-本地干净 C1 的后端 259、前端 107、工具 110、监控 183 项及生产构建通过；八组发布入口通过，生命周期入口因路由初始读取预算耗尽失败。独立 Windows 启动脚本 smoke 通过。随后局部修复的后端全量为 263 项，Linux 真实故障 24 组 / 102 请求及 2 项启动拒绝检查通过；同条件旧包复现失败。修复包的本地生命周期补验又遇到 2 CPU 容器启动超过 60 秒，保留该失败，不将它改为通过。
+## 实际执行
 
-修复及证据提交 `5ddedb1f2f773859d379319dafa04eb072080db1` 的 Verify 通过，Release 中代理矩阵通过，但 limiter-policy 夹具在阻断故障期间等待“包含恢复探测在内的全零状态”超时。已保留完整归档并补齐[工具判断与 Windows 克隆证据字节修正](showcase-validation-fixes.md)，不会把此次失败重写为通过。
+| 验证 | 结果 |
+| --- | --- |
+| 后端全量 / 真实 Redis 集成 / 生产 JAR | 263 项通过，失败/错误/跳过均为 0 |
+| 前端测试 / npm ci / 生产构建 | 107 项通过 |
+| 工具测试 | 114 项通过；包含探测与业务命令退休、进程树退出、证据边界 |
+| Prometheus 规则与 Grafana 查询夹具 | 86 + 97 = 183 项断言；不是重跑真实 Grafana 故障链路 |
+| 发布矩阵 | 10 个真实入口、142 项检查；代理 24 组 / 102 请求 |
+| Windows 启动入口 | 干净 C3 副本、已校验 CI 包：后端 readiness、前端代理和有界退出 smoke 通过 |
+| Windows 自动换行克隆 | `core.autocrlf=true` 的干净克隆，两份证据清单校验通过 |
 
-修复包本地进一步通过 4 组生命周期功能、1 组 SIGTERM；明确使用 4,000 ms 路由读取和 120,000 ms 接流前观察预算，产品与冷启动对照默认不变。实际退出均为 SIGTERM 的 143，无 OOM，资源清理完成；其中预热退化仍按原门禁记录。已下载 CI 包的 Windows 启动器 smoke 也通过。
+| 真实入口 | 检查数 |
+| --- | ---: |
+| config-sync | 10 |
+| config-operations | 11 |
+| config-rollback | 9 |
+| route-publication | 19 |
+| proxy-resilience | 24 |
+| rate-limit | 22 |
+| rate-limit-malformed | 17 |
+| limiter-policy | 25 |
+| lifecycle-functional | 4 |
+| lifecycle-signal | 1 |
 
-最终候选尚需在同一干净提交完成 Verify 与 Release；下面的性能结论不依赖本次流程是否通过。机器记录与失败原始报告统一归档，最终 CI 完成后再更新本节。
+本地还独立执行：263 项后端、48 项代理相关测试、Linux 旧/新包同条件故障对照、25 组限流策略、4 组生命周期功能和 1 组 SIGTERM。Linux 旧包 RST 失败与新包通过均保留。工具夹具测试、真实请求数与监控断言不相加冒称“总测试数”。
 
-## 如何重新构建并核对身份
+## 失败与修正没有被覆盖
+
+- C1 `82e0f816…`：Verify 通过，Release 在 Linux 的已提交响应 TCP RST 场景失败。框架把上游原生异常当成下游取消吞掉；局部修复保留上游客户端异常身份及原始 cause，终态恢复为 error。[原因与复现](showcase-proxy-reset-fix.md)。
+- C3 `5ddedb1f…`：代理矩阵通过，限流策略夹具等待包含恢复探测的全零状态超时。现在故障期间先证明业务命令物理关闭、名额归还且探测有界，恢复后仍要求全部归零。[判断边界与回归](showcase-validation-fixes.md)。
+- Windows 常见 Git 换行转换使证据 JSON 哈希失败；仅对证据目录关闭转换，原字节校验不放宽。
+- 本地缓存模式缺少固定 Redis 镜像标签、750/2,000 ms 初始读取失败，以及 2 CPU 容器超过 60 秒就绪窗口，均保留。补验使用声明的初始化预算，不将失败改写为成功，不修改产品默认值。
+
+发布层的 lifecycle functional/signal 明确设置 4,000 ms 路由读取预算，CI 就绪观察仍为 60 秒。本地补验另外使用 120 秒接流前观察预算；代理和退出时限、额度策略、线程/队列及交接默认值不变。较宽初始化预算不证明冷启动性能改善，预热退化仍在报告中。
+
+## 复验与阅读入口
+
+首次获取按照 README 指定候选分支；精确复验功能基线可 checkout 上表完整提交，然后确保工作区干净：
 
 ```powershell
-# 先 checkout 本页记录的候选提交，确保 git status --porcelain 为空
 node verification/acceptance.mjs --tier release --out .dev/release-reproduce --images prepare
 node verification/showcase-evidence.mjs
+node verification/showcase-evidence.mjs --manifest docs/evidence/showcase-candidate-20261008/manifest.json
 node verification/showcase-links.mjs
 ```
 
-不要给正式候选加 `--allow-dirty`。源码清单、JAR SHA256、各真实入口的 jarSha256、前端文件清单和清理结果必须一致。工作区测试可以另做 dirty 快照，但不能替代干净提交记录。构建可复用下载缓存，不复用编译产物。
+每次使用全新输出目录，不给正式候选加 `--allow-dirty`。主入口、限流故障与配置操作工具都保留失败报告和实际退出码。三页 UI 的早期录屏明确标记历史/演示来源，不冒充本轮真实后端证据。
 
-## 性能与发布是两个验收维度
+未重跑完整浏览器交互矩阵、真实 Grafana 故障链路、HAProxy 替换、冷启动负载对照、容量一小时、RSS 干预或 macOS 启动。对应原验收记录保留；本轮前端未改业务流程，生产构建和单元测试已实际执行。
+
+## 性能与资源边界
 
 **单实例、4 个逻辑 CPU、1 GiB、小 HTTP 响应条件下，1000 req/s 一小时容量窗口通过；长期内存稳定性仍未证明，4000 req/s 一小时未通过。**
 
-这句话绑定 `3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838` 的历史实验。新候选重新构建后要比较整个 JAR，并可进一步比较 ZIP 内条目；即使解压后代码和资源相同、仅归档时间戳不同，也分别记录哈希，不将小时结果改名为新包实测。原始证据见[索引](evidence-index.md)。
+这句话只绑定 `3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838` 的历史实验。RSS 文案已修正为“年轻代 GC 后堆占用 39→57 MiB”，没有重跑实验。新候选功能回归通过不代表重新完成一小时；trim 后下降也不能证明自然内存稳定。
 
-本轮不做新的小时压测、RSS 延长试验、默认参数调优或开发实例迁移。达到可启动、可复验、结论可追溯后停在展示候选验收，下一步进入面试准备。
+本轮隔离 JVM、Redis、上游、网络和私钥已清理；原有 **6 个容器、168 个卷**完整保留。默认 bridge 标识再次变化，仍未归因，原始前后快照保留；未对它做删除或重建。共享固定镜像缓存保留，没有全局 prune。停在展示候选验收，进一步功能和容量优化另行决定。
