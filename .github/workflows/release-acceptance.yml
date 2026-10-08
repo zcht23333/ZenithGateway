@@ -1,6 +1,8 @@
 name: Release acceptance
 on:
   workflow_dispatch:
+  push:
+    branches: ['zch/showcase-candidate-20261008']
 permissions:
   contents: read
 jobs:
@@ -28,6 +30,10 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - name: Run unified release acceptance from clean build inputs
         run: node verification/acceptance.mjs --tier release --out "$RUNNER_TEMP/zenith-release" --images prepare
+      - name: Verify portable evidence and public reading links
+        run: |
+          node verification/showcase-evidence.mjs
+          node verification/showcase-links.mjs
       - name: Preserve success or failure evidence
         if: always()
         uses: actions/upload-artifact@v7

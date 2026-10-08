@@ -1,0 +1,4017 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-07T10:58:13.476Z",
+  "generatedAt": "2026-10-07T11:11:25.559Z",
+  "publication": {
+    "commit": "8a654cbcf1c31d9754bfdd2db7f699613ceedfbb",
+    "sourceSha256": "b1ff9128e43c91fb816f3a07ac5d0d1d41858b398d0f99c35fff7203819466b7",
+    "branch": "zch/rolling-replacement-20261007",
+    "runs": [
+      {
+        "id": 37600340773,
+        "name": "Verify",
+        "head_sha": "8a654cbcf1c31d9754bfdd2db7f699613ceedfbb",
+        "conclusion": "success",
+        "html_url": "https://github.com/zcht23333/ZenithGateway/actions/runs/37600340773"
+      },
+      {
+        "id": 37600340903,
+        "name": "Rolling replacement",
+        "head_sha": "8a654cbcf1c31d9754bfdd2db7f699613ceedfbb",
+        "conclusion": "success",
+        "html_url": "https://github.com/zcht23333/ZenithGateway/actions/runs/37600340903"
+      }
+    ],
+    "artifactAgreement": true,
+    "jarSha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1",
+    "artifacts": [
+      {
+        "id": 11472502227,
+        "name": "zenith-rolling-live-37600340903-1",
+        "digest": "sha256:cbfd8c6fe1bfeb73db55e2baced8a758fabd27fd7c5d3fc54b4d52d7995b9a07"
+      },
+      {
+        "id": 11472412586,
+        "name": "zenith-rolling-37600340903-1",
+        "digest": "sha256:c0a4704480bf8509c6e59f79c86775512fbd8fc008a3087a952b59b3008d795c"
+      },
+      {
+        "id": 11472820804,
+        "name": "zenith-commit-37600340773-1",
+        "digest": "sha256:3950f1a2801692ae9b7fc5c6dd290d1c0d6bc412d98295741fd4a01ffc47f40c"
+      }
+    ],
+    "sourceInputsVerified": 325,
+    "frontendFilesVerified": 12,
+    "archiveFilesVerified": {
+      "rolling": 149,
+      "verify": 92
+    }
+  },
+  "capacity": {
+    "scope": "One single-instance HTTP run, fixed-arrival 1000 req/s, 4 logical CPUs / 1 GiB, 32 routes, small responses, standalone Redis without persistence",
+    "fixedWindowGatesPassed": true,
+    "maximumCapacityClaimed": false,
+    "memoryPlateauUnderLoadProven": false,
+    "physicalCommandPeakProvenFromDiagnosticCounter": false,
+    "jar": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-baseline-20261007-3e81767a\\final-release\\rolling-build\\artifacts\\gateway.jar",
+      "sha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1"
+    },
+    "plan": {
+      "rate": 1000,
+      "shortSeconds": 120,
+      "shortRepetitions": 2,
+      "longSeconds": 3600,
+      "warmup": [
+        {
+          "name": "warm-100",
+          "rate": 100,
+          "seconds": 30
+        },
+        {
+          "name": "warm-500",
+          "rate": 500,
+          "seconds": 30
+        },
+        {
+          "name": "warm-1000",
+          "rate": 1000,
+          "seconds": 60
+        }
+      ],
+      "confirmationSeconds": 30,
+      "downshiftRate": 100,
+      "downshiftSeconds": 120,
+      "idleSeconds": 600,
+      "sampleMs": 2000,
+      "rssSampleMs": 10000,
+      "generatorConnections": 256,
+      "generatorTimeoutMs": 8000,
+      "maxMissFraction": 0.01,
+      "p95Ms": 50,
+      "p99Ms": 100,
+      "scheduledP99Ms": 150,
+      "workers": 8,
+      "queueCapacity": 128,
+      "decisionTimeoutMs": 500,
+      "handoff": false,
+      "localFailurePolicy": "allow",
+      "redisFailurePolicy": "allow",
+      "note": "Single gateway, capacity profile, small HTTP responses, standalone Redis without persistence; no TLS or production SLA claim.",
+      "images": {
+        "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+      },
+      "routeCount": 32,
+      "applicationProfile": "capacity",
+      "saturationSamplingEnabled": true,
+      "cpuSets": {
+        "redis": "0-1",
+        "upstream": "2-3",
+        "gateway": "4-7",
+        "driver": "8-11"
+      },
+      "heap": "256m/512m",
+      "directMemoryLimit": "256m",
+      "nativeMemoryTracking": "summary",
+      "gatewayMemoryLimit": "1g",
+      "redisPersistence": false
+    },
+    "environment": {
+      "cpus": 16,
+      "memoryBytes": 16630603776,
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "os": "Docker Desktop",
+      "startedHost": "win32"
+    },
+    "host": {
+      "model": "13th Gen Intel(R) Core(TM) i5-13500H",
+      "logical": 16,
+      "totalMemory": 34082521088,
+      "release": "10.0.26200",
+      "platform": "win32"
+    },
+    "containerLimits": [
+      {
+        "name": "zg-conservative-36221e5b-redis",
+        "id": "6bc2ff80a7ab407805994d627075b796584f429e3176da40c41cec94326c05eb",
+        "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+        "cpuset": "0-1",
+        "nanoCpus": 0,
+        "memory": 268435456,
+        "pids": 128,
+        "ports": {
+          "6379/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "65040"
+            }
+          ]
+        },
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "eb094b666ac9ee2e87b78b7b9e4aa0f3c4fa81f21f7ead1ce92f90e235560587",
+            "destination": "/data"
+          }
+        ]
+      },
+      {
+        "name": "zg-conservative-36221e5b-upstream",
+        "id": "ef6b28ac13634949c3b09bc0538f940748a94280413ab056418ebb72985c7984",
+        "image": "sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+        "cpuset": "2-3",
+        "nanoCpus": 0,
+        "memory": 268435456,
+        "pids": 128,
+        "ports": {
+          "8090/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "65045"
+            }
+          ]
+        },
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/run/admin-token"
+          },
+          {
+            "type": "bind",
+            "destination": "/workspace/benchmarks"
+          }
+        ]
+      },
+      {
+        "name": "zg-conservative-36221e5b-gateway-a",
+        "id": "b9089b63db9f2227a6e4c5eac701e35ae29711d02a029bc3be530b96f7bc72d3",
+        "image": "sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5",
+        "cpuset": "4-7",
+        "nanoCpus": 0,
+        "memory": 1073741824,
+        "pids": 512,
+        "ports": {
+          "8080/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "65048"
+            }
+          ]
+        },
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/diagnosis"
+          },
+          {
+            "type": "bind",
+            "destination": "/app/gateway.jar"
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets"
+          }
+        ]
+      }
+    ],
+    "harnessIdentity": {
+      "conservative-capacity.mjs": "bd40f7d214156d898ccff35f08a6a9b2201ee5329c643c3d92291088bfc82216",
+      "conservative-capacity-gates.mjs": "9701c83e850bf88c6774240e1281a0cb534deb421b7b1c94d6bcf4d8ad2436c4",
+      "stability-worker.mjs": "d18e817e4b8533c16ac836828694865f51e81cc2640159ca1cbe4115d2e37740",
+      "stability-load.mjs": "f995878390650a3817c3ba06c871bb15e02534171ae27028ad028abd6a87eab8",
+      "redis.mjs": "d0a9a2958dd9240e120a78d9fd40fe765997f5b2f2c40f66479ed008c4dbe8e9"
+    },
+    "initialRuntime": {
+      "rateLimitEnabled": true,
+      "replenishRate": 10000,
+      "burstCapacity": 10000,
+      "requestedTokens": 1,
+      "monitorWindowSeconds": 10,
+      "emitIntervalSeconds": 1,
+      "version": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+      "source": "redis",
+      "confirmation": "read",
+      "adopted": {
+        "rateLimitEnabled": true,
+        "replenishRate": 10000,
+        "burstCapacity": 10000,
+        "requestedTokens": 1,
+        "monitorWindowSeconds": 10,
+        "emitIntervalSeconds": 1,
+        "version": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1"
+      }
+    },
+    "initialRoutes": {
+      "source": "redis",
+      "snapshot": {
+        "schemaVersion": 1,
+        "version": "55b8802e-8a4e-4292-9b27-51b800b8f801:33",
+        "routes": [
+          {
+            "id": "capacity-000",
+            "path": "/bench/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-0",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-001",
+            "path": "/r001/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-1",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-002",
+            "path": "/r002/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-2",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-003",
+            "path": "/r003/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-3",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-004",
+            "path": "/r004/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-4",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-005",
+            "path": "/r005/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-5",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-006",
+            "path": "/r006/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-6",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-007",
+            "path": "/r007/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-7",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-008",
+            "path": "/r008/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-8",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-009",
+            "path": "/r009/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-9",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-010",
+            "path": "/r010/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-10",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-011",
+            "path": "/r011/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-11",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-012",
+            "path": "/r012/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-12",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-013",
+            "path": "/r013/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-13",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-014",
+            "path": "/r014/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-14",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-015",
+            "path": "/r015/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-15",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-016",
+            "path": "/r016/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-16",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-017",
+            "path": "/r017/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-17",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-018",
+            "path": "/r018/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-18",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-019",
+            "path": "/r019/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-19",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-020",
+            "path": "/r020/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-20",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-021",
+            "path": "/r021/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-21",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-022",
+            "path": "/r022/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-22",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-023",
+            "path": "/r023/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-23",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-024",
+            "path": "/r024/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-24",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-025",
+            "path": "/r025/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-25",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-026",
+            "path": "/r026/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-26",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-027",
+            "path": "/r027/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-27",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-028",
+            "path": "/r028/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-28",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-029",
+            "path": "/r029/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-29",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-030",
+            "path": "/r030/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-30",
+            "fallbackPath": "/fallback/default"
+          },
+          {
+            "id": "capacity-031",
+            "path": "/r031/**",
+            "uri": "http://upstream:8080",
+            "rewriteEnabled": false,
+            "rewriteRegex": null,
+            "rewriteReplacement": null,
+            "circuitBreakerEnabled": true,
+            "circuitBreakerName": "capacity-31",
+            "fallbackPath": "/fallback/default"
+          }
+        ]
+      },
+      "version": "55b8802e-8a4e-4292-9b27-51b800b8f801:33",
+      "routes": [
+        {
+          "id": "capacity-000",
+          "path": "/bench/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-0",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-001",
+          "path": "/r001/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-1",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-002",
+          "path": "/r002/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-2",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-003",
+          "path": "/r003/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-3",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-004",
+          "path": "/r004/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-4",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-005",
+          "path": "/r005/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-5",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-006",
+          "path": "/r006/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-6",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-007",
+          "path": "/r007/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-7",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-008",
+          "path": "/r008/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-8",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-009",
+          "path": "/r009/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-9",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-010",
+          "path": "/r010/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-10",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-011",
+          "path": "/r011/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-11",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-012",
+          "path": "/r012/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-12",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-013",
+          "path": "/r013/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-13",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-014",
+          "path": "/r014/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-14",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-015",
+          "path": "/r015/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-15",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-016",
+          "path": "/r016/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-16",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-017",
+          "path": "/r017/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-17",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-018",
+          "path": "/r018/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-18",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-019",
+          "path": "/r019/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-19",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-020",
+          "path": "/r020/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-20",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-021",
+          "path": "/r021/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-21",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-022",
+          "path": "/r022/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-22",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-023",
+          "path": "/r023/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-23",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-024",
+          "path": "/r024/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-24",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-025",
+          "path": "/r025/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-25",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-026",
+          "path": "/r026/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-26",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-027",
+          "path": "/r027/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-27",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-028",
+          "path": "/r028/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-28",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-029",
+          "path": "/r029/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-29",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-030",
+          "path": "/r030/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-30",
+          "fallbackPath": "/fallback/default"
+        },
+        {
+          "id": "capacity-031",
+          "path": "/r031/**",
+          "uri": "http://upstream:8080",
+          "rewriteEnabled": false,
+          "rewriteRegex": null,
+          "rewriteReplacement": null,
+          "circuitBreakerEnabled": true,
+          "circuitBreakerName": "capacity-31",
+          "fallbackPath": "/fallback/default"
+        }
+      ],
+      "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+      "adoptedVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33",
+      "adoption": "adopted"
+    },
+    "stages": [
+      {
+        "name": "warmup",
+        "kind": "warmup",
+        "startedAt": "2026-10-07T09:39:09.943Z",
+        "completedAt": "2026-10-07T09:41:11.746Z",
+        "seconds": 120,
+        "memory": {
+          "samples": 12,
+          "observedMinutes": 1.9529833309352398,
+          "stats": {
+            "rssMiB": {
+              "first": 466.51171875,
+              "last": 539.46484375,
+              "min": 466.51171875,
+              "max": 539.46484375,
+              "first5minMedian": 531.71484375,
+              "last5minMedian": 531.71484375
+            },
+            "cgroupMiB": {
+              "first": 509.63671875,
+              "last": 583.27734375,
+              "min": 509.63671875,
+              "max": 583.27734375,
+              "first5minMedian": 575.00390625,
+              "last5minMedian": 575.00390625
+            },
+            "heapMiB": {
+              "first": 121.87411499023438,
+              "last": 64.72413635253906,
+              "min": 57.89099884033203,
+              "max": 159.05813598632812,
+              "first5minMedian": 75.5971908569336,
+              "last5minMedian": 75.5971908569336
+            },
+            "directMiB": {
+              "first": 4.650398254394531,
+              "last": 4.666023254394531,
+              "min": 4.650398254394531,
+              "max": 4.666023254394531,
+              "first5minMedian": 4.658210754394531,
+              "last5minMedian": 4.658210754394531
+            },
+            "nonHeapMiB": {
+              "first": 110.6604995727539,
+              "last": 117.6827392578125,
+              "min": 110.6604995727539,
+              "max": 124.7717514038086,
+              "first5minMedian": 120.19979858398438,
+              "last5minMedian": 120.19979858398438
+            },
+            "threads": {
+              "first": 48,
+              "last": 50,
+              "min": 48,
+              "max": 51,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 31.791806627715207,
+          "last20minRssSlopeMiBPerMinute": 31.791806627715207,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": [],
+        "assessment": {
+          "healthy": true,
+          "issues": [],
+          "generatorMissFraction": 0.003217948717948718,
+          "deltas": [
+            {
+              "label": "A",
+              "requests": 77749,
+              "completed": 77749,
+              "cancelled": 0,
+              "audit": {
+                "received": 77749,
+                "persisted": 77749,
+                "dropped": 0,
+                "uncertain": 0
+              },
+              "events": {
+                "allowed": 77749,
+                "disabled": 0,
+                "limited": 0,
+                "unfulfillable": 0,
+                "local_unavailable": 0,
+                "redis_unconfirmed": 0,
+                "cancelled": 0
+              },
+              "actions": {
+                "forward": 77749,
+                "reject": 0,
+                "cancel": 0
+              },
+              "executions": {
+                "not_sent": 0,
+                "not_written": 0,
+                "confirmed": 77749,
+                "unknown": 0
+              },
+              "outcomes": {
+                "redis_fail_open": 0,
+                "local_fail_open": 0,
+                "redis_rejected": 0,
+                "local_rejected": 0
+              }
+            }
+          ],
+          "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+        },
+        "arrivals": {
+          "offered": 78000,
+          "issued": 77749,
+          "finished": 77749,
+          "misses": 251,
+          "schedulerMisses": 251,
+          "capacityMisses": 0,
+          "successfulRps": 647.8902603643323,
+          "peakInFlight": 76,
+          "statuses": {
+            "200": 77749
+          },
+          "transportErrors": 0
+        },
+        "latency": {
+          "http200": {
+            "count": 77749,
+            "p50": 2.989,
+            "p95": 19.039,
+            "p99": 45.919,
+            "max": 174.335,
+            "mean": 5.177076464005967
+          },
+          "scheduled": {
+            "count": 77749,
+            "p50": 4.867,
+            "p95": 22.079,
+            "p99": 48.639,
+            "max": 177.535,
+            "mean": 7.500208105570489
+          }
+        },
+        "audit": [
+          {
+            "label": "A",
+            "requests": 77749,
+            "received": 77749,
+            "persisted": 77749,
+            "dropped": 0,
+            "uncertain": 0,
+            "retries": 0,
+            "pending": 0,
+            "monitorCompleted": 77749,
+            "reconciliationGap": 0,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "proxyReasons": {
+              "circuit_open": 0,
+              "client_cancelled": 0,
+              "gateway_limited": 0,
+              "limiter_local_unavailable": 0,
+              "limiter_redis_unconfirmed": 0,
+              "none": 77749,
+              "proxy_internal_error": 0,
+              "proxy_pool_full": 0,
+              "proxy_pool_timeout": 0,
+              "proxy_total_timeout": 0,
+              "shutdown_deadline": 0,
+              "upstream_5xx": 0,
+              "upstream_connect_error": 0,
+              "upstream_connect_timeout": 0,
+              "upstream_disconnect": 0,
+              "upstream_headers_timeout": 0,
+              "upstream_read_idle": 0,
+              "upstream_tls_error": 0,
+              "upstream_tls_timeout": 0
+            },
+            "limiterOutcomes": {
+              "disabled": 0,
+              "allowed": 77749,
+              "limited": 0,
+              "unfulfillable": 0,
+              "redis_fail_open": 0,
+              "local_fail_open": 0,
+              "redis_rejected": 0,
+              "local_rejected": 0,
+              "cancelled": 0
+            },
+            "limiterReasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 77749,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "limiterRejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            }
+          }
+        ],
+        "upstream": 77749,
+        "versions": {
+          "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 77749
+        },
+        "firstFailures": [],
+        "peaks": {
+          "commands": 6,
+          "queued": 21,
+          "retained": 26,
+          "pendingAudit": 26,
+          "pendingProxy": 0,
+          "connections": 43,
+          "threads": 51
+        },
+        "countedPeaks": {
+          "scope": "Since JVM start, not reset per stage",
+          "before": {
+            "queue": 0,
+            "commands": 1
+          },
+          "after": {
+            "queue": 60,
+            "commands": 9
+          }
+        }
+      },
+      {
+        "name": "short-1",
+        "kind": "short",
+        "startedAt": "2026-10-07T09:41:14.500Z",
+        "completedAt": "2026-10-07T09:43:16.094Z",
+        "seconds": 120,
+        "memory": {
+          "samples": 12,
+          "observedMinutes": 1.9167999997735023,
+          "stats": {
+            "rssMiB": {
+              "first": 539.46484375,
+              "last": 544.58984375,
+              "min": 539.46484375,
+              "max": 544.58984375,
+              "first5minMedian": 541.46484375,
+              "last5minMedian": 541.46484375
+            },
+            "cgroupMiB": {
+              "first": 583.203125,
+              "last": 588.06640625,
+              "min": 583.203125,
+              "max": 588.06640625,
+              "first5minMedian": 585.66015625,
+              "last5minMedian": 585.66015625
+            },
+            "heapMiB": {
+              "first": 182.9213104248047,
+              "last": 144.78919219970703,
+              "min": 42.40985107421875,
+              "max": 188.4644012451172,
+              "first5minMedian": 179.2687530517578,
+              "last5minMedian": 179.2687530517578
+            },
+            "directMiB": {
+              "first": 4.666023254394531,
+              "last": 4.673835754394531,
+              "min": 4.666023254394531,
+              "max": 4.673835754394531,
+              "first5minMedian": 4.673835754394531,
+              "last5minMedian": 4.673835754394531
+            },
+            "nonHeapMiB": {
+              "first": 118.17475128173828,
+              "last": 120.22566986083984,
+              "min": 118.17475128173828,
+              "max": 120.22566986083984,
+              "first5minMedian": 119.52764892578125,
+              "last5minMedian": 119.52764892578125
+            },
+            "threads": {
+              "first": 50,
+              "last": 50,
+              "min": 50,
+              "max": 50,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 2.7996240510049732,
+          "last20minRssSlopeMiBPerMinute": 2.7996240510049732,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": [],
+        "assessment": {
+          "healthy": true,
+          "issues": [],
+          "generatorMissFraction": 0.00005,
+          "deltas": [
+            {
+              "label": "A",
+              "requests": 119994,
+              "completed": 119994,
+              "cancelled": 0,
+              "audit": {
+                "received": 119994,
+                "persisted": 119994,
+                "dropped": 0,
+                "uncertain": 0
+              },
+              "events": {
+                "allowed": 119994,
+                "disabled": 0,
+                "limited": 0,
+                "unfulfillable": 0,
+                "local_unavailable": 0,
+                "redis_unconfirmed": 0,
+                "cancelled": 0
+              },
+              "actions": {
+                "forward": 119994,
+                "reject": 0,
+                "cancel": 0
+              },
+              "executions": {
+                "not_sent": 0,
+                "not_written": 0,
+                "confirmed": 119994,
+                "unknown": 0
+              },
+              "outcomes": {
+                "redis_fail_open": 0,
+                "local_fail_open": 0,
+                "redis_rejected": 0,
+                "local_rejected": 0
+              }
+            }
+          ],
+          "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+        },
+        "arrivals": {
+          "offered": 120000,
+          "issued": 119994,
+          "finished": 119994,
+          "misses": 6,
+          "schedulerMisses": 6,
+          "capacityMisses": 0,
+          "successfulRps": 999.9092760033122,
+          "peakInFlight": 35,
+          "statuses": {
+            "200": 119994
+          },
+          "transportErrors": 0
+        },
+        "latency": {
+          "http200": {
+            "count": 119994,
+            "p50": 1.943,
+            "p95": 4.383,
+            "p99": 6.791,
+            "max": 39.039,
+            "mean": 2.324397119855993
+          },
+          "scheduled": {
+            "count": 119994,
+            "p50": 3.627,
+            "p95": 6.343,
+            "p99": 8.855,
+            "max": 44.287,
+            "mean": 3.9890197093187996
+          }
+        },
+        "audit": [
+          {
+            "label": "A",
+            "requests": 119994,
+            "received": 119994,
+            "persisted": 119994,
+            "dropped": 0,
+            "uncertain": 0,
+            "retries": 0,
+            "pending": 0,
+            "monitorCompleted": 119994,
+            "reconciliationGap": 0,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "proxyReasons": {
+              "circuit_open": 0,
+              "client_cancelled": 0,
+              "gateway_limited": 0,
+              "limiter_local_unavailable": 0,
+              "limiter_redis_unconfirmed": 0,
+              "none": 119994,
+              "proxy_internal_error": 0,
+              "proxy_pool_full": 0,
+              "proxy_pool_timeout": 0,
+              "proxy_total_timeout": 0,
+              "shutdown_deadline": 0,
+              "upstream_5xx": 0,
+              "upstream_connect_error": 0,
+              "upstream_connect_timeout": 0,
+              "upstream_disconnect": 0,
+              "upstream_headers_timeout": 0,
+              "upstream_read_idle": 0,
+              "upstream_tls_error": 0,
+              "upstream_tls_timeout": 0
+            },
+            "limiterOutcomes": {
+              "disabled": 0,
+              "allowed": 119994,
+              "limited": 0,
+              "unfulfillable": 0,
+              "redis_fail_open": 0,
+              "local_fail_open": 0,
+              "redis_rejected": 0,
+              "local_rejected": 0,
+              "cancelled": 0
+            },
+            "limiterReasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 119994,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "limiterRejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            }
+          }
+        ],
+        "upstream": 119994,
+        "versions": {
+          "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 119994
+        },
+        "firstFailures": [],
+        "peaks": {
+          "commands": 3,
+          "queued": 2,
+          "retained": 5,
+          "pendingAudit": 25,
+          "pendingProxy": 0,
+          "connections": 43,
+          "threads": 50
+        },
+        "countedPeaks": {
+          "scope": "Since JVM start, not reset per stage",
+          "before": {
+            "queue": 60,
+            "commands": 9
+          },
+          "after": {
+            "queue": 60,
+            "commands": 9
+          }
+        }
+      },
+      {
+        "name": "short-2",
+        "kind": "short",
+        "startedAt": "2026-10-07T09:43:16.617Z",
+        "completedAt": "2026-10-07T09:45:17.536Z",
+        "seconds": 120,
+        "memory": {
+          "samples": 12,
+          "observedMinutes": 1.9059666655957699,
+          "stats": {
+            "rssMiB": {
+              "first": 545.71484375,
+              "last": 549.58984375,
+              "min": 545.71484375,
+              "max": 549.58984375,
+              "first5minMedian": 549.46484375,
+              "last5minMedian": 549.46484375
+            },
+            "cgroupMiB": {
+              "first": 589.2421875,
+              "last": 593.61328125,
+              "min": 589.2421875,
+              "max": 593.61328125,
+              "first5minMedian": 592.79296875,
+              "last5minMedian": 592.79296875
+            },
+            "heapMiB": {
+              "first": 151.45404815673828,
+              "last": 50.339141845703125,
+              "min": 50.339141845703125,
+              "max": 151.45404815673828,
+              "first5minMedian": 106.11419677734375,
+              "last5minMedian": 106.11419677734375
+            },
+            "directMiB": {
+              "first": 4.673835754394531,
+              "last": 4.673835754394531,
+              "min": 4.673835754394531,
+              "max": 4.673835754394531,
+              "first5minMedian": 4.673835754394531,
+              "last5minMedian": 4.673835754394531
+            },
+            "nonHeapMiB": {
+              "first": 120.5844955444336,
+              "last": 121.67424011230469,
+              "min": 120.5844955444336,
+              "max": 121.67424011230469,
+              "first5minMedian": 121.25762176513672,
+              "last5minMedian": 121.25762176513672
+            },
+            "threads": {
+              "first": 50,
+              "last": 50,
+              "min": 50,
+              "max": 50,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 1.983039649058391,
+          "last20minRssSlopeMiBPerMinute": 1.983039649058391,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": [],
+        "assessment": {
+          "healthy": true,
+          "issues": [],
+          "generatorMissFraction": 0.000008333333333333334,
+          "deltas": [
+            {
+              "label": "A",
+              "requests": 119999,
+              "completed": 119999,
+              "cancelled": 0,
+              "audit": {
+                "received": 119999,
+                "persisted": 119999,
+                "dropped": 0,
+                "uncertain": 0
+              },
+              "events": {
+                "allowed": 119999,
+                "disabled": 0,
+                "limited": 0,
+                "unfulfillable": 0,
+                "local_unavailable": 0,
+                "redis_unconfirmed": 0,
+                "cancelled": 0
+              },
+              "actions": {
+                "forward": 119999,
+                "reject": 0,
+                "cancel": 0
+              },
+              "executions": {
+                "not_sent": 0,
+                "not_written": 0,
+                "confirmed": 119999,
+                "unknown": 0
+              },
+              "outcomes": {
+                "redis_fail_open": 0,
+                "local_fail_open": 0,
+                "redis_rejected": 0,
+                "local_rejected": 0
+              }
+            }
+          ],
+          "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+        },
+        "arrivals": {
+          "offered": 120000,
+          "issued": 119999,
+          "finished": 119999,
+          "misses": 1,
+          "schedulerMisses": 1,
+          "capacityMisses": 0,
+          "successfulRps": 999.9663256533707,
+          "peakInFlight": 26,
+          "statuses": {
+            "200": 119999
+          },
+          "transportErrors": 0
+        },
+        "latency": {
+          "http200": {
+            "count": 119999,
+            "p50": 1.386,
+            "p95": 3.039,
+            "p99": 4.215,
+            "max": 31.967,
+            "mean": 1.6137976566471386
+          },
+          "scheduled": {
+            "count": 119999,
+            "p50": 3.073,
+            "p95": 4.875,
+            "p99": 6.131,
+            "max": 34.815,
+            "mean": 3.289225326877724
+          }
+        },
+        "audit": [
+          {
+            "label": "A",
+            "requests": 119999,
+            "received": 119999,
+            "persisted": 119999,
+            "dropped": 0,
+            "uncertain": 0,
+            "retries": 0,
+            "pending": 0,
+            "monitorCompleted": 119999,
+            "reconciliationGap": 0,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "proxyReasons": {
+              "circuit_open": 0,
+              "client_cancelled": 0,
+              "gateway_limited": 0,
+              "limiter_local_unavailable": 0,
+              "limiter_redis_unconfirmed": 0,
+              "none": 119999,
+              "proxy_internal_error": 0,
+              "proxy_pool_full": 0,
+              "proxy_pool_timeout": 0,
+              "proxy_total_timeout": 0,
+              "shutdown_deadline": 0,
+              "upstream_5xx": 0,
+              "upstream_connect_error": 0,
+              "upstream_connect_timeout": 0,
+              "upstream_disconnect": 0,
+              "upstream_headers_timeout": 0,
+              "upstream_read_idle": 0,
+              "upstream_tls_error": 0,
+              "upstream_tls_timeout": 0
+            },
+            "limiterOutcomes": {
+              "disabled": 0,
+              "allowed": 119999,
+              "limited": 0,
+              "unfulfillable": 0,
+              "redis_fail_open": 0,
+              "local_fail_open": 0,
+              "redis_rejected": 0,
+              "local_rejected": 0,
+              "cancelled": 0
+            },
+            "limiterReasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 119999,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "limiterRejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            }
+          }
+        ],
+        "upstream": 119999,
+        "versions": {
+          "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 119999
+        },
+        "firstFailures": [],
+        "peaks": {
+          "commands": 3,
+          "queued": 3,
+          "retained": 4,
+          "pendingAudit": 21,
+          "pendingProxy": 0,
+          "connections": 43,
+          "threads": 50
+        },
+        "countedPeaks": {
+          "scope": "Since JVM start, not reset per stage",
+          "before": {
+            "queue": 60,
+            "commands": 9
+          },
+          "after": {
+            "queue": 60,
+            "commands": 9
+          }
+        }
+      },
+      {
+        "name": "pre-soak-confirmation",
+        "kind": "confirmation",
+        "startedAt": "2026-10-07T09:45:20.715Z",
+        "completedAt": "2026-10-07T09:45:52.096Z",
+        "seconds": 30,
+        "memory": {
+          "samples": 3,
+          "observedMinutes": 0.3468500003218651,
+          "stats": {
+            "rssMiB": {
+              "first": 549.58984375,
+              "last": 549.83984375,
+              "min": 549.58984375,
+              "max": 549.83984375,
+              "first5minMedian": 549.71484375,
+              "last5minMedian": 549.71484375
+            },
+            "cgroupMiB": {
+              "first": 593.22265625,
+              "last": 592.890625,
+              "min": 592.890625,
+              "max": 593.3203125,
+              "first5minMedian": 593.22265625,
+              "last5minMedian": 593.22265625
+            },
+            "heapMiB": {
+              "first": 102.25169372558594,
+              "last": 88.64239501953125,
+              "min": 88.64239501953125,
+              "max": 102.25169372558594,
+              "first5minMedian": 97.44103240966797,
+              "last5minMedian": 97.44103240966797
+            },
+            "directMiB": {
+              "first": 4.673835754394531,
+              "last": 4.673835754394531,
+              "min": 4.673835754394531,
+              "max": 4.673835754394531,
+              "first5minMedian": 4.673835754394531,
+              "last5minMedian": 4.673835754394531
+            },
+            "nonHeapMiB": {
+              "first": 121.78999328613281,
+              "last": 122.0899887084961,
+              "min": 121.78999328613281,
+              "max": 122.0899887084961,
+              "first5minMedian": 122.02409362792969,
+              "last5minMedian": 122.02409362792969
+            },
+            "threads": {
+              "first": 50,
+              "last": 50,
+              "min": 50,
+              "max": 50,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 0.7207723741745665,
+          "last20minRssSlopeMiBPerMinute": 0.7207723741745665,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": [],
+        "assessment": {
+          "healthy": true,
+          "issues": [],
+          "generatorMissFraction": 0.000033333333333333335,
+          "deltas": [
+            {
+              "label": "A",
+              "requests": 29999,
+              "completed": 29999,
+              "cancelled": 0,
+              "audit": {
+                "received": 29999,
+                "persisted": 29999,
+                "dropped": 0,
+                "uncertain": 0
+              },
+              "events": {
+                "allowed": 29999,
+                "disabled": 0,
+                "limited": 0,
+                "unfulfillable": 0,
+                "local_unavailable": 0,
+                "redis_unconfirmed": 0,
+                "cancelled": 0
+              },
+              "actions": {
+                "forward": 29999,
+                "reject": 0,
+                "cancel": 0
+              },
+              "executions": {
+                "not_sent": 0,
+                "not_written": 0,
+                "confirmed": 29999,
+                "unknown": 0
+              },
+              "outcomes": {
+                "redis_fail_open": 0,
+                "local_fail_open": 0,
+                "redis_rejected": 0,
+                "local_rejected": 0
+              }
+            }
+          ],
+          "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+        },
+        "arrivals": {
+          "offered": 30000,
+          "issued": 29999,
+          "finished": 29999,
+          "misses": 1,
+          "schedulerMisses": 1,
+          "capacityMisses": 0,
+          "successfulRps": 999.8013384508856,
+          "peakInFlight": 33,
+          "statuses": {
+            "200": 29999
+          },
+          "transportErrors": 0
+        },
+        "latency": {
+          "http200": {
+            "count": 29999,
+            "p50": 1.649,
+            "p95": 3.743,
+            "p99": 4.927,
+            "max": 37.951,
+            "mean": 2.0225166505550183
+          },
+          "scheduled": {
+            "count": 29999,
+            "p50": 3.421,
+            "p95": 5.743,
+            "p99": 7.131,
+            "max": 43.199,
+            "mean": 3.7279009633654456
+          }
+        },
+        "audit": [
+          {
+            "label": "A",
+            "requests": 29999,
+            "received": 29999,
+            "persisted": 29999,
+            "dropped": 0,
+            "uncertain": 0,
+            "retries": 0,
+            "pending": 0,
+            "monitorCompleted": 29999,
+            "reconciliationGap": 0,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "proxyReasons": {
+              "circuit_open": 0,
+              "client_cancelled": 0,
+              "gateway_limited": 0,
+              "limiter_local_unavailable": 0,
+              "limiter_redis_unconfirmed": 0,
+              "none": 29999,
+              "proxy_internal_error": 0,
+              "proxy_pool_full": 0,
+              "proxy_pool_timeout": 0,
+              "proxy_total_timeout": 0,
+              "shutdown_deadline": 0,
+              "upstream_5xx": 0,
+              "upstream_connect_error": 0,
+              "upstream_connect_timeout": 0,
+              "upstream_disconnect": 0,
+              "upstream_headers_timeout": 0,
+              "upstream_read_idle": 0,
+              "upstream_tls_error": 0,
+              "upstream_tls_timeout": 0
+            },
+            "limiterOutcomes": {
+              "disabled": 0,
+              "allowed": 29999,
+              "limited": 0,
+              "unfulfillable": 0,
+              "redis_fail_open": 0,
+              "local_fail_open": 0,
+              "redis_rejected": 0,
+              "local_rejected": 0,
+              "cancelled": 0
+            },
+            "limiterReasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 29999,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "limiterRejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            }
+          }
+        ],
+        "upstream": 29999,
+        "versions": {
+          "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 29999
+        },
+        "firstFailures": [],
+        "peaks": {
+          "commands": 2,
+          "queued": 1,
+          "retained": 3,
+          "pendingAudit": 23,
+          "pendingProxy": 0,
+          "connections": 12,
+          "threads": 50
+        },
+        "countedPeaks": {
+          "scope": "Since JVM start, not reset per stage",
+          "before": {
+            "queue": 60,
+            "commands": 9
+          },
+          "after": {
+            "queue": 60,
+            "commands": 9
+          }
+        }
+      },
+      {
+        "name": "one-hour-1000",
+        "kind": "soak",
+        "startedAt": "2026-10-07T09:45:52.631Z",
+        "completedAt": "2026-10-07T10:45:53.595Z",
+        "seconds": 3600,
+        "memory": {
+          "samples": 347,
+          "observedMinutes": 59.94076666608453,
+          "stats": {
+            "rssMiB": {
+              "first": 549.96484375,
+              "last": 577.08984375,
+              "min": 549.96484375,
+              "max": 577.08984375,
+              "first5minMedian": 551.33984375,
+              "last5minMedian": 575.46484375
+            },
+            "cgroupMiB": {
+              "first": 593.67578125,
+              "last": 620.5,
+              "min": 593.4140625,
+              "max": 620.5,
+              "first5minMedian": 594.96875,
+              "last5minMedian": 619.21875
+            },
+            "heapMiB": {
+              "first": 159.5809555053711,
+              "last": 111.51460266113281,
+              "min": 45.02808380126953,
+              "max": 203.3480682373047,
+              "first5minMedian": 130.85208129882812,
+              "last5minMedian": 144.5790557861328
+            },
+            "directMiB": {
+              "first": 4.673835754394531,
+              "last": 4.673835754394531,
+              "min": 4.673835754394531,
+              "max": 4.673835754394531,
+              "first5minMedian": 4.673835754394531,
+              "last5minMedian": 4.673835754394531
+            },
+            "nonHeapMiB": {
+              "first": 122.22073364257812,
+              "last": 128.2836151123047,
+              "min": 122.22073364257812,
+              "max": 128.2836151123047,
+              "first5minMedian": 123.18183898925781,
+              "last5minMedian": 128.2154998779297
+            },
+            "threads": {
+              "first": 50,
+              "last": 50,
+              "min": 50,
+              "max": 50,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 0.415189907332633,
+          "last20minRssSlopeMiBPerMinute": 0.39689414937920603,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": [],
+        "assessment": {
+          "healthy": true,
+          "issues": [],
+          "generatorMissFraction": 0.0000675,
+          "deltas": [
+            {
+              "label": "A",
+              "requests": 3599757,
+              "completed": 3599757,
+              "cancelled": 0,
+              "audit": {
+                "received": 3599757,
+                "persisted": 3599757,
+                "dropped": 0,
+                "uncertain": 0
+              },
+              "events": {
+                "allowed": 3599757,
+                "disabled": 0,
+                "limited": 0,
+                "unfulfillable": 0,
+                "local_unavailable": 0,
+                "redis_unconfirmed": 0,
+                "cancelled": 0
+              },
+              "actions": {
+                "forward": 3599757,
+                "reject": 0,
+                "cancel": 0
+              },
+              "executions": {
+                "not_sent": 0,
+                "not_written": 0,
+                "confirmed": 3599757,
+                "unknown": 0
+              },
+              "outcomes": {
+                "redis_fail_open": 0,
+                "local_fail_open": 0,
+                "redis_rejected": 0,
+                "local_rejected": 0
+              }
+            }
+          ],
+          "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+        },
+        "arrivals": {
+          "offered": 3600000,
+          "issued": 3599757,
+          "finished": 3599757,
+          "misses": 243,
+          "schedulerMisses": 243,
+          "capacityMisses": 0,
+          "successfulRps": 999.9316805312674,
+          "peakInFlight": 81,
+          "statuses": {
+            "200": 3599757
+          },
+          "transportErrors": 0
+        },
+        "latency": {
+          "http200": {
+            "count": 3599757,
+            "p50": 1.478,
+            "p95": 3.579,
+            "p99": 5.039,
+            "max": 118.463,
+            "mean": 1.8545542240767918
+          },
+          "scheduled": {
+            "count": 3599757,
+            "p50": 3.257,
+            "p95": 5.547,
+            "p99": 7.163,
+            "max": 121.279,
+            "mean": 3.568407564732842
+          }
+        },
+        "audit": [
+          {
+            "label": "A",
+            "requests": 3599757,
+            "received": 3599757,
+            "persisted": 3599757,
+            "dropped": 0,
+            "uncertain": 0,
+            "retries": 0,
+            "pending": 0,
+            "monitorCompleted": 3599757,
+            "reconciliationGap": 0,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "proxyReasons": {
+              "circuit_open": 0,
+              "client_cancelled": 0,
+              "gateway_limited": 0,
+              "limiter_local_unavailable": 0,
+              "limiter_redis_unconfirmed": 0,
+              "none": 3599757,
+              "proxy_internal_error": 0,
+              "proxy_pool_full": 0,
+              "proxy_pool_timeout": 0,
+              "proxy_total_timeout": 0,
+              "shutdown_deadline": 0,
+              "upstream_5xx": 0,
+              "upstream_connect_error": 0,
+              "upstream_connect_timeout": 0,
+              "upstream_disconnect": 0,
+              "upstream_headers_timeout": 0,
+              "upstream_read_idle": 0,
+              "upstream_tls_error": 0,
+              "upstream_tls_timeout": 0
+            },
+            "limiterOutcomes": {
+              "disabled": 0,
+              "allowed": 3599757,
+              "limited": 0,
+              "unfulfillable": 0,
+              "redis_fail_open": 0,
+              "local_fail_open": 0,
+              "redis_rejected": 0,
+              "local_rejected": 0,
+              "cancelled": 0
+            },
+            "limiterReasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 3599757,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "limiterRejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            }
+          }
+        ],
+        "upstream": 3599757,
+        "versions": {
+          "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 3599757
+        },
+        "firstFailures": [],
+        "peaks": {
+          "commands": 6,
+          "queued": 3,
+          "retained": 11,
+          "pendingAudit": 27,
+          "pendingProxy": 1,
+          "connections": 60,
+          "threads": 50
+        },
+        "countedPeaks": {
+          "scope": "Since JVM start, not reset per stage",
+          "before": {
+            "queue": 60,
+            "commands": 9
+          },
+          "after": {
+            "queue": 60,
+            "commands": 9
+          }
+        }
+      },
+      {
+        "name": "downshift-100",
+        "kind": "recovery",
+        "startedAt": "2026-10-07T10:45:57.342Z",
+        "completedAt": "2026-10-07T10:47:59.653Z",
+        "seconds": 120,
+        "memory": {
+          "samples": 12,
+          "observedMinutes": 1.8962499983608723,
+          "stats": {
+            "rssMiB": {
+              "first": 577.46484375,
+              "last": 577.71484375,
+              "min": 577.46484375,
+              "max": 577.71484375,
+              "first5minMedian": 577.71484375,
+              "last5minMedian": 577.71484375
+            },
+            "cgroupMiB": {
+              "first": 620.94140625,
+              "last": 621.2890625,
+              "min": 620.94140625,
+              "max": 621.8828125,
+              "first5minMedian": 621.125,
+              "last5minMedian": 621.125
+            },
+            "heapMiB": {
+              "first": 107.8262939453125,
+              "last": 162.84415435791016,
+              "min": 57.5205078125,
+              "max": 198.5205078125,
+              "first5minMedian": 107.8262939453125,
+              "last5minMedian": 107.8262939453125
+            },
+            "directMiB": {
+              "first": 4.673835754394531,
+              "last": 4.673835754394531,
+              "min": 4.673835754394531,
+              "max": 4.673835754394531,
+              "first5minMedian": 4.673835754394531,
+              "last5minMedian": 4.673835754394531
+            },
+            "nonHeapMiB": {
+              "first": 128.30206298828125,
+              "last": 128.30206298828125,
+              "min": 128.30206298828125,
+              "max": 128.30206298828125,
+              "first5minMedian": 128.30206298828125,
+              "last5minMedian": 128.30206298828125
+            },
+            "threads": {
+              "first": 50,
+              "last": 50,
+              "min": 50,
+              "max": 50,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 0.10907534408856108,
+          "last20minRssSlopeMiBPerMinute": 0.10907534408856108,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": [],
+        "assessment": {
+          "healthy": true,
+          "issues": [],
+          "generatorMissFraction": 0,
+          "deltas": [
+            {
+              "label": "A",
+              "requests": 12000,
+              "completed": 12000,
+              "cancelled": 0,
+              "audit": {
+                "received": 12000,
+                "persisted": 12000,
+                "dropped": 0,
+                "uncertain": 0
+              },
+              "events": {
+                "allowed": 12000,
+                "disabled": 0,
+                "limited": 0,
+                "unfulfillable": 0,
+                "local_unavailable": 0,
+                "redis_unconfirmed": 0,
+                "cancelled": 0
+              },
+              "actions": {
+                "forward": 12000,
+                "reject": 0,
+                "cancel": 0
+              },
+              "executions": {
+                "not_sent": 0,
+                "not_written": 0,
+                "confirmed": 12000,
+                "unknown": 0
+              },
+              "outcomes": {
+                "redis_fail_open": 0,
+                "local_fail_open": 0,
+                "redis_rejected": 0,
+                "local_rejected": 0
+              }
+            }
+          ],
+          "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+        },
+        "arrivals": {
+          "offered": 12000,
+          "issued": 12000,
+          "finished": 12000,
+          "misses": 0,
+          "schedulerMisses": 0,
+          "capacityMisses": 0,
+          "successfulRps": 99.99757322222727,
+          "peakInFlight": 3,
+          "statuses": {
+            "200": 12000
+          },
+          "transportErrors": 0
+        },
+        "latency": {
+          "http200": {
+            "count": 12000,
+            "p50": 2.131,
+            "p95": 4.135,
+            "p99": 4.571,
+            "max": 21.279,
+            "mean": 2.3397805833333334
+          },
+          "scheduled": {
+            "count": 12000,
+            "p50": 12.743,
+            "p95": 14.799,
+            "p99": 15.439,
+            "max": 32.271,
+            "mean": 12.924797
+          }
+        },
+        "audit": [
+          {
+            "label": "A",
+            "requests": 12000,
+            "received": 12000,
+            "persisted": 12000,
+            "dropped": 0,
+            "uncertain": 0,
+            "retries": 0,
+            "pending": 0,
+            "monitorCompleted": 12000,
+            "reconciliationGap": 0,
+            "monitorGap": 0,
+            "auditGap": 0,
+            "proxyReasons": {
+              "circuit_open": 0,
+              "client_cancelled": 0,
+              "gateway_limited": 0,
+              "limiter_local_unavailable": 0,
+              "limiter_redis_unconfirmed": 0,
+              "none": 12000,
+              "proxy_internal_error": 0,
+              "proxy_pool_full": 0,
+              "proxy_pool_timeout": 0,
+              "proxy_total_timeout": 0,
+              "shutdown_deadline": 0,
+              "upstream_5xx": 0,
+              "upstream_connect_error": 0,
+              "upstream_connect_timeout": 0,
+              "upstream_disconnect": 0,
+              "upstream_headers_timeout": 0,
+              "upstream_read_idle": 0,
+              "upstream_tls_error": 0,
+              "upstream_tls_timeout": 0
+            },
+            "limiterOutcomes": {
+              "disabled": 0,
+              "allowed": 12000,
+              "limited": 0,
+              "unfulfillable": 0,
+              "redis_fail_open": 0,
+              "local_fail_open": 0,
+              "redis_rejected": 0,
+              "local_rejected": 0,
+              "cancelled": 0
+            },
+            "limiterReasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 12000,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "limiterRejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            }
+          }
+        ],
+        "upstream": 12000,
+        "versions": {
+          "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 12000
+        },
+        "firstFailures": [],
+        "peaks": {
+          "commands": 1,
+          "queued": 1,
+          "retained": 1,
+          "pendingAudit": 3,
+          "pendingProxy": 0,
+          "connections": 7,
+          "threads": 50
+        },
+        "countedPeaks": {
+          "scope": "Since JVM start, not reset per stage",
+          "before": {
+            "queue": 60,
+            "commands": 9
+          },
+          "after": {
+            "queue": 60,
+            "commands": 9
+          }
+        }
+      },
+      {
+        "name": "idle-600",
+        "kind": "idle",
+        "startedAt": "2026-10-07T10:48:02.905Z",
+        "completedAt": "2026-10-07T10:58:02.905Z",
+        "seconds": 600,
+        "memory": {
+          "samples": 114,
+          "observedMinutes": 9.953133333474398,
+          "stats": {
+            "rssMiB": {
+              "first": 577.71484375,
+              "last": 577.83984375,
+              "min": 577.71484375,
+              "max": 577.83984375,
+              "first5minMedian": 577.83984375,
+              "last5minMedian": 577.83984375
+            },
+            "cgroupMiB": {
+              "first": 621.22265625,
+              "last": 584.00390625,
+              "min": 584.00390625,
+              "max": 622.13671875,
+              "first5minMedian": 621.3203125,
+              "last5minMedian": 621.06640625
+            },
+            "heapMiB": {
+              "first": 120.59468841552734,
+              "last": 164.69812774658203,
+              "min": 57.42195129394531,
+              "max": 206.5401382446289,
+              "first5minMedian": 137.65767669677734,
+              "last5minMedian": 129.6370391845703
+            },
+            "directMiB": {
+              "first": 4.673835754394531,
+              "last": 4.673835754394531,
+              "min": 4.673835754394531,
+              "max": 4.673835754394531,
+              "first5minMedian": 4.673835754394531,
+              "last5minMedian": 4.673835754394531
+            },
+            "nonHeapMiB": {
+              "first": 128.30206298828125,
+              "last": 128.56436920166016,
+              "min": 128.30206298828125,
+              "max": 128.56436920166016,
+              "first5minMedian": 128.44720458984375,
+              "last5minMedian": 128.54886627197266
+            },
+            "threads": {
+              "first": 50,
+              "last": 50,
+              "min": 50,
+              "max": 50,
+              "first5minMedian": 50,
+              "last5minMedian": 50
+            }
+          },
+          "rssSlopeMiBPerMinute": 0.000648650547328601,
+          "last20minRssSlopeMiBPerMinute": 0.000648650547328601,
+          "note": "Regression describes this observed window, not a leak diagnosis. Short windows have overlapping first/last five-minute samples."
+        },
+        "samplingErrors": []
+      }
+    ],
+    "memoryCheckpoints": [
+      {
+        "label": "startup",
+        "startedAt": "2026-10-07T09:39:06.531Z",
+        "rssMiB": 463.86328125,
+        "anonymousMiB": 437.7890625,
+        "nativeTotal": {
+          "reservedMiB": 2074.8369140625,
+          "committedMiB": 468.6142578125
+        },
+        "groups": {
+          "Java Heap": {
+            "reservedMiB": 512,
+            "committedMiB": 256
+          },
+          "Class": {
+            "reservedMiB": 1025.4990234375,
+            "committedMiB": 11.4990234375
+          },
+          "Thread": {
+            "reservedMiB": 55.169921875,
+            "committedMiB": 5.001953125
+          },
+          "Code": {
+            "reservedMiB": 244.3759765625,
+            "committedMiB": 29.2666015625
+          },
+          "GC": {
+            "reservedMiB": 51.484375,
+            "committedMiB": 46.4921875
+          },
+          "GCCardSet": {
+            "reservedMiB": 0.1015625,
+            "committedMiB": 0.1015625
+          },
+          "Compiler": {
+            "reservedMiB": 0.3203125,
+            "committedMiB": 0.3203125
+          },
+          "Internal": {
+            "reservedMiB": 1.5263671875,
+            "committedMiB": 1.5263671875
+          },
+          "Other": {
+            "reservedMiB": 4.220703125,
+            "committedMiB": 4.220703125
+          },
+          "Symbol": {
+            "reservedMiB": 27.341796875,
+            "committedMiB": 27.341796875
+          },
+          "Native Memory Tracking": {
+            "reservedMiB": 4.564453125,
+            "committedMiB": 4.564453125
+          },
+          "Arena Chunk": {
+            "reservedMiB": 3.59375,
+            "committedMiB": 3.59375
+          },
+          "Logging": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Arguments": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Module": {
+            "reservedMiB": 0.1123046875,
+            "committedMiB": 0.1123046875
+          },
+          "Safepoint": {
+            "reservedMiB": 0.0078125,
+            "committedMiB": 0.0078125
+          },
+          "Synchronization": {
+            "reservedMiB": 0.142578125,
+            "committedMiB": 0.142578125
+          },
+          "Serviceability": {
+            "reservedMiB": 0.017578125,
+            "committedMiB": 0.017578125
+          },
+          "Metaspace": {
+            "reservedMiB": 128.345703125,
+            "committedMiB": 65.783203125
+          },
+          "String Deduplication": {
+            "reservedMiB": 0.0009765625,
+            "committedMiB": 0.0009765625
+          },
+          "Object Monitors": {
+            "reservedMiB": 0.0126953125,
+            "committedMiB": 0.0126953125
+          },
+          "Unknown": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          }
+        }
+      },
+      {
+        "label": "after-warmup",
+        "startedAt": "2026-10-07T09:41:11.763Z",
+        "rssMiB": 539.953125,
+        "anonymousMiB": 513.87890625,
+        "nativeTotal": {
+          "reservedMiB": 2088.57421875,
+          "committedMiB": 493.09765625
+        },
+        "groups": {
+          "Java Heap": {
+            "reservedMiB": 512,
+            "committedMiB": 256
+          },
+          "Class": {
+            "reservedMiB": 1025.5986328125,
+            "committedMiB": 11.6611328125
+          },
+          "Thread": {
+            "reservedMiB": 64.2001953125,
+            "committedMiB": 6.1572265625
+          },
+          "Code": {
+            "reservedMiB": 244.9560546875,
+            "committedMiB": 45.3427734375
+          },
+          "GC": {
+            "reservedMiB": 51.908203125,
+            "committedMiB": 46.916015625
+          },
+          "GCCardSet": {
+            "reservedMiB": 0.1025390625,
+            "committedMiB": 0.1025390625
+          },
+          "Compiler": {
+            "reservedMiB": 0.5400390625,
+            "committedMiB": 0.5400390625
+          },
+          "Internal": {
+            "reservedMiB": 1.6357421875,
+            "committedMiB": 1.6357421875
+          },
+          "Other": {
+            "reservedMiB": 4.677734375,
+            "committedMiB": 4.677734375
+          },
+          "Symbol": {
+            "reservedMiB": 27.4091796875,
+            "committedMiB": 27.4091796875
+          },
+          "Native Memory Tracking": {
+            "reservedMiB": 5.20703125,
+            "committedMiB": 5.20703125
+          },
+          "Arena Chunk": {
+            "reservedMiB": 0.81640625,
+            "committedMiB": 0.81640625
+          },
+          "Logging": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Arguments": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Module": {
+            "reservedMiB": 0.1123046875,
+            "committedMiB": 0.1123046875
+          },
+          "Safepoint": {
+            "reservedMiB": 0.0078125,
+            "committedMiB": 0.0078125
+          },
+          "Synchronization": {
+            "reservedMiB": 0.3759765625,
+            "committedMiB": 0.3759765625
+          },
+          "Serviceability": {
+            "reservedMiB": 0.0166015625,
+            "committedMiB": 0.0166015625
+          },
+          "Metaspace": {
+            "reservedMiB": 128.361328125,
+            "committedMiB": 68.861328125
+          },
+          "String Deduplication": {
+            "reservedMiB": 0.0009765625,
+            "committedMiB": 0.0009765625
+          },
+          "Object Monitors": {
+            "reservedMiB": 4.646484375,
+            "committedMiB": 4.646484375
+          },
+          "Unknown": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          }
+        }
+      },
+      {
+        "label": "before-soak",
+        "startedAt": "2026-10-07T09:45:17.570Z",
+        "rssMiB": 550.140625,
+        "anonymousMiB": 524.06640625,
+        "nativeTotal": {
+          "reservedMiB": 2084.712890625,
+          "committedMiB": 490.751953125
+        },
+        "groups": {
+          "Java Heap": {
+            "reservedMiB": 512,
+            "committedMiB": 256
+          },
+          "Class": {
+            "reservedMiB": 1025.6513671875,
+            "committedMiB": 11.7763671875
+          },
+          "Thread": {
+            "reservedMiB": 64.2001953125,
+            "committedMiB": 6.1650390625
+          },
+          "Code": {
+            "reservedMiB": 245.30859375,
+            "committedMiB": 46.640625
+          },
+          "GC": {
+            "reservedMiB": 51.9306640625,
+            "committedMiB": 46.9384765625
+          },
+          "GCCardSet": {
+            "reservedMiB": 0.1025390625,
+            "committedMiB": 0.1025390625
+          },
+          "Compiler": {
+            "reservedMiB": 0.5537109375,
+            "committedMiB": 0.5537109375
+          },
+          "Internal": {
+            "reservedMiB": 1.650390625,
+            "committedMiB": 1.650390625
+          },
+          "Other": {
+            "reservedMiB": 4.6875,
+            "committedMiB": 4.6875
+          },
+          "Symbol": {
+            "reservedMiB": 27.4189453125,
+            "committedMiB": 27.4189453125
+          },
+          "Native Memory Tracking": {
+            "reservedMiB": 5.021484375,
+            "committedMiB": 5.021484375
+          },
+          "Arena Chunk": {
+            "reservedMiB": 0.1298828125,
+            "committedMiB": 0.1298828125
+          },
+          "Logging": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Arguments": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Module": {
+            "reservedMiB": 0.1123046875,
+            "committedMiB": 0.1123046875
+          },
+          "Safepoint": {
+            "reservedMiB": 0.0078125,
+            "committedMiB": 0.0078125
+          },
+          "Synchronization": {
+            "reservedMiB": 0.22265625,
+            "committedMiB": 0.22265625
+          },
+          "Serviceability": {
+            "reservedMiB": 0.017578125,
+            "committedMiB": 0.017578125
+          },
+          "Metaspace": {
+            "reservedMiB": 128.3759765625,
+            "committedMiB": 69.3759765625
+          },
+          "String Deduplication": {
+            "reservedMiB": 0.0009765625,
+            "committedMiB": 0.0009765625
+          },
+          "Object Monitors": {
+            "reservedMiB": 1.3193359375,
+            "committedMiB": 1.3193359375
+          },
+          "Unknown": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          }
+        }
+      },
+      {
+        "label": "after-soak",
+        "startedAt": "2026-10-07T10:45:53.773Z",
+        "rssMiB": 577.9609375,
+        "anonymousMiB": 551.88671875,
+        "nativeTotal": {
+          "reservedMiB": 2094.7060546875,
+          "committedMiB": 504.2021484375
+        },
+        "groups": {
+          "Java Heap": {
+            "reservedMiB": 512,
+            "committedMiB": 256
+          },
+          "Class": {
+            "reservedMiB": 1025.703125,
+            "committedMiB": 11.828125
+          },
+          "Thread": {
+            "reservedMiB": 64.2001953125,
+            "committedMiB": 6.1650390625
+          },
+          "Code": {
+            "reservedMiB": 245.962890625,
+            "committedMiB": 50.001953125
+          },
+          "GC": {
+            "reservedMiB": 51.9873046875,
+            "committedMiB": 46.9951171875
+          },
+          "GCCardSet": {
+            "reservedMiB": 0.1025390625,
+            "committedMiB": 0.1025390625
+          },
+          "Compiler": {
+            "reservedMiB": 0.6533203125,
+            "committedMiB": 0.6533203125
+          },
+          "Internal": {
+            "reservedMiB": 1.669921875,
+            "committedMiB": 1.669921875
+          },
+          "Other": {
+            "reservedMiB": 4.6875,
+            "committedMiB": 4.6875
+          },
+          "Symbol": {
+            "reservedMiB": 27.4267578125,
+            "committedMiB": 27.4267578125
+          },
+          "Native Memory Tracking": {
+            "reservedMiB": 5.7724609375,
+            "committedMiB": 5.7724609375
+          },
+          "Arena Chunk": {
+            "reservedMiB": 0.1611328125,
+            "committedMiB": 0.1611328125
+          },
+          "Logging": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Arguments": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Module": {
+            "reservedMiB": 0.1123046875,
+            "committedMiB": 0.1123046875
+          },
+          "Safepoint": {
+            "reservedMiB": 0.0078125,
+            "committedMiB": 0.0078125
+          },
+          "Synchronization": {
+            "reservedMiB": 0.599609375,
+            "committedMiB": 0.599609375
+          },
+          "Serviceability": {
+            "reservedMiB": 0.017578125,
+            "committedMiB": 0.017578125
+          },
+          "Metaspace": {
+            "reservedMiB": 128.39453125,
+            "committedMiB": 70.14453125
+          },
+          "String Deduplication": {
+            "reservedMiB": 0.0009765625,
+            "committedMiB": 0.0009765625
+          },
+          "Object Monitors": {
+            "reservedMiB": 9.2451171875,
+            "committedMiB": 9.2451171875
+          },
+          "Unknown": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          }
+        }
+      },
+      {
+        "label": "after-downshift",
+        "startedAt": "2026-10-07T10:47:59.921Z",
+        "rssMiB": 578.26953125,
+        "anonymousMiB": 552.1953125,
+        "nativeTotal": {
+          "reservedMiB": 2085.3564453125,
+          "committedMiB": 494.8525390625
+        },
+        "groups": {
+          "Java Heap": {
+            "reservedMiB": 512,
+            "committedMiB": 256
+          },
+          "Class": {
+            "reservedMiB": 1025.703125,
+            "committedMiB": 11.828125
+          },
+          "Thread": {
+            "reservedMiB": 64.2001953125,
+            "committedMiB": 6.1650390625
+          },
+          "Code": {
+            "reservedMiB": 245.9638671875,
+            "committedMiB": 50.0029296875
+          },
+          "GC": {
+            "reservedMiB": 51.9873046875,
+            "committedMiB": 46.9951171875
+          },
+          "GCCardSet": {
+            "reservedMiB": 0.1025390625,
+            "committedMiB": 0.1025390625
+          },
+          "Compiler": {
+            "reservedMiB": 0.654296875,
+            "committedMiB": 0.654296875
+          },
+          "Internal": {
+            "reservedMiB": 1.669921875,
+            "committedMiB": 1.669921875
+          },
+          "Other": {
+            "reservedMiB": 4.6875,
+            "committedMiB": 4.6875
+          },
+          "Symbol": {
+            "reservedMiB": 27.4267578125,
+            "committedMiB": 27.4267578125
+          },
+          "Native Memory Tracking": {
+            "reservedMiB": 5.1298828125,
+            "committedMiB": 5.1298828125
+          },
+          "Arena Chunk": {
+            "reservedMiB": 0.0654296875,
+            "committedMiB": 0.0654296875
+          },
+          "Logging": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Arguments": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Module": {
+            "reservedMiB": 0.1123046875,
+            "committedMiB": 0.1123046875
+          },
+          "Safepoint": {
+            "reservedMiB": 0.0078125,
+            "committedMiB": 0.0078125
+          },
+          "Synchronization": {
+            "reservedMiB": 0.208984375,
+            "committedMiB": 0.208984375
+          },
+          "Serviceability": {
+            "reservedMiB": 0.017578125,
+            "committedMiB": 0.017578125
+          },
+          "Metaspace": {
+            "reservedMiB": 128.39453125,
+            "committedMiB": 70.14453125
+          },
+          "String Deduplication": {
+            "reservedMiB": 0.0009765625,
+            "committedMiB": 0.0009765625
+          },
+          "Object Monitors": {
+            "reservedMiB": 1.0234375,
+            "committedMiB": 1.0234375
+          },
+          "Unknown": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          }
+        }
+      },
+      {
+        "label": "after-idle",
+        "startedAt": "2026-10-07T10:58:03.482Z",
+        "rssMiB": 578.48046875,
+        "anonymousMiB": 552.40625,
+        "nativeTotal": {
+          "reservedMiB": 2084.2529296875,
+          "committedMiB": 493.8388671875
+        },
+        "groups": {
+          "Java Heap": {
+            "reservedMiB": 512,
+            "committedMiB": 256
+          },
+          "Class": {
+            "reservedMiB": 1025.7041015625,
+            "committedMiB": 11.8291015625
+          },
+          "Thread": {
+            "reservedMiB": 64.2001953125,
+            "committedMiB": 6.1884765625
+          },
+          "Code": {
+            "reservedMiB": 245.9873046875,
+            "committedMiB": 50.0927734375
+          },
+          "GC": {
+            "reservedMiB": 51.9892578125,
+            "committedMiB": 46.9970703125
+          },
+          "GCCardSet": {
+            "reservedMiB": 0.1025390625,
+            "committedMiB": 0.1025390625
+          },
+          "Compiler": {
+            "reservedMiB": 0.6669921875,
+            "committedMiB": 0.6669921875
+          },
+          "Internal": {
+            "reservedMiB": 1.6708984375,
+            "committedMiB": 1.6708984375
+          },
+          "Other": {
+            "reservedMiB": 4.6875,
+            "committedMiB": 4.6875
+          },
+          "Symbol": {
+            "reservedMiB": 27.4267578125,
+            "committedMiB": 27.4267578125
+          },
+          "Native Memory Tracking": {
+            "reservedMiB": 5.0546875,
+            "committedMiB": 5.0546875
+          },
+          "Arena Chunk": {
+            "reservedMiB": 0.0654296875,
+            "committedMiB": 0.0654296875
+          },
+          "Logging": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Arguments": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Module": {
+            "reservedMiB": 0.1123046875,
+            "committedMiB": 0.1123046875
+          },
+          "Safepoint": {
+            "reservedMiB": 0.0078125,
+            "committedMiB": 0.0078125
+          },
+          "Synchronization": {
+            "reservedMiB": 0.1611328125,
+            "committedMiB": 0.1611328125
+          },
+          "Serviceability": {
+            "reservedMiB": 0.017578125,
+            "committedMiB": 0.017578125
+          },
+          "Metaspace": {
+            "reservedMiB": 128.39453125,
+            "committedMiB": 70.14453125
+          },
+          "String Deduplication": {
+            "reservedMiB": 0.0009765625,
+            "committedMiB": 0.0009765625
+          },
+          "Object Monitors": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          },
+          "Unknown": {
+            "reservedMiB": 0,
+            "committedMiB": 0
+          }
+        }
+      }
+    ],
+    "finalSnapshots": [
+      {
+        "label": "A",
+        "at": "2026-10-07T10:58:06.437Z",
+        "audit": {
+          "enabled": true,
+          "accepting": true,
+          "received": 3959499,
+          "persisted": 3959499,
+          "dropped": 0,
+          "droppedByReason": {
+            "queue_full": 0,
+            "serialization": 0,
+            "shutdown": 0,
+            "byte_limit": 0,
+            "oversized": 0
+          },
+          "uncertain": 0,
+          "queueDepth": 0,
+          "inFlight": 0,
+          "pending": 0,
+          "reservedBytes": 0,
+          "oldestAgeMs": 0,
+          "retries": 0,
+          "lastBatchSize": 1,
+          "lastBatchDurationMs": 0,
+          "lastSuccessAgeMs": 609141,
+          "capacity": 20000,
+          "maxReservedBytes": 16777216
+        },
+        "limiter": {
+          "diagnosticSchemaVersion": 3,
+          "source": "local",
+          "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+          "localFailurePolicy": "allow",
+          "redisFailurePolicy": "allow",
+          "namespace": "zg:conservative:36221e5b:limiter",
+          "transportState": "healthy",
+          "workers": 8,
+          "queueCapacity": 128,
+          "decisionTimeoutMs": 500,
+          "probeIntervalMs": 1000,
+          "admissionCapacity": 136,
+          "availableDecisionPermits": 136,
+          "scheduledTasks": 1,
+          "queued": 0,
+          "peakQueued": 60,
+          "activeWorkers": 0,
+          "commandsInFlight": 0,
+          "peakCommandsInFlight": 9,
+          "commandCountMeaning": "Client dispatches without an observed result or a confirmed physical close, including probes; excludes decoding and downstream work. Not a Redis-server running-command count.",
+          "resultHandoffEnabled": false,
+          "resultWorkers": 0,
+          "deliveryQueueCapacity": 0,
+          "queuedDeliveries": 0,
+          "activeDeliveries": 0,
+          "peakQueuedDeliveries": 0,
+          "activeInlineDeliveries": 0,
+          "retainedTasks": 0,
+          "observations": {
+            "events": {
+              "disabled": 0,
+              "allowed": 3959499,
+              "limited": 0,
+              "unfulfillable": 0,
+              "local_unavailable": 0,
+              "redis_unconfirmed": 0,
+              "cancelled": 0
+            },
+            "actions": {
+              "forward": 3959499,
+              "reject": 0,
+              "cancel": 0
+            },
+            "executions": {
+              "not_sent": 0,
+              "not_written": 0,
+              "confirmed": 3959499,
+              "unknown": 0
+            },
+            "reasons": {
+              "disabled": 0,
+              "stopped": 0,
+              "version_missing": 0,
+              "recovery_wait": 0,
+              "queue_full": 0,
+              "queue_timeout": 0,
+              "client_cancelled": 0,
+              "decision_timeout": 0,
+              "redis_error": 0,
+              "quota_available": 3959499,
+              "quota_exhausted": 0,
+              "cost_exceeds_capacity": 0,
+              "invalid_request": 0,
+              "policy_invalid": 0,
+              "bucket_invalid": 0,
+              "policy_missing": 0,
+              "epoch_mismatch": 0,
+              "policy_conflict": 0,
+              "policy_behind_bucket": 0,
+              "other": 0
+            },
+            "rejections": {
+              "admission_full": 0,
+              "executor_rejected": 0,
+              "delivery_rejected": 0
+            },
+            "timings": {
+              "queue": {
+                "maxNanos": 55787335,
+                "count": 3959499,
+                "buckets": [
+                  1307047,
+                  1635233,
+                  873557,
+                  120761,
+                  11164,
+                  4711,
+                  3980,
+                  1698,
+                  1021,
+                  309,
+                  18,
+                  0,
+                  0
+                ],
+                "totalNanos": 391294227579,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "connection": {
+                "maxNanos": 5442862,
+                "count": 3959499,
+                "buckets": [
+                  3959316,
+                  109,
+                  62,
+                  2,
+                  1,
+                  0,
+                  7,
+                  2,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "totalNanos": 655182097,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "redis_wait_and_resume": {
+                "maxNanos": 52921828,
+                "count": 3959499,
+                "buckets": [
+                  336,
+                  75,
+                  977879,
+                  2000989,
+                  887423,
+                  78122,
+                  10055,
+                  3059,
+                  1327,
+                  231,
+                  3,
+                  0,
+                  0
+                ],
+                "totalNanos": 1655530734484,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "command_observation": {
+                "maxNanos": 51671143,
+                "count": 3959499,
+                "buckets": [
+                  0,
+                  0,
+                  815657,
+                  2194270,
+                  870991,
+                  65781,
+                  8756,
+                  2768,
+                  1094,
+                  179,
+                  3,
+                  0,
+                  0
+                ],
+                "totalNanos": 1644180922475,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "decode": {
+                "maxNanos": 30407214,
+                "count": 3959499,
+                "buckets": [
+                  3820970,
+                  115483,
+                  20903,
+                  1414,
+                  394,
+                  141,
+                  142,
+                  39,
+                  11,
+                  2,
+                  0,
+                  0,
+                  0
+                ],
+                "totalNanos": 86528594379,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "decision": {
+                "maxNanos": 68322903,
+                "count": 3959499,
+                "buckets": [
+                  0,
+                  0,
+                  9501,
+                  2291940,
+                  1373291,
+                  256943,
+                  18508,
+                  5501,
+                  2836,
+                  918,
+                  61,
+                  0,
+                  0
+                ],
+                "totalNanos": 2288678000856,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "handoff_queue": {
+                "maxNanos": 0,
+                "count": 0,
+                "buckets": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "totalNanos": 0,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "delivery": {
+                "maxNanos": 243715233,
+                "count": 3959499,
+                "buckets": [
+                  331,
+                  67526,
+                  3388948,
+                  470037,
+                  28237,
+                  2380,
+                  1610,
+                  328,
+                  76,
+                  24,
+                  1,
+                  1,
+                  0
+                ],
+                "totalNanos": 706661117481,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "cleanup": {
+                "maxNanos": 557372,
+                "count": 3959499,
+                "buckets": [
+                  3959456,
+                  23,
+                  15,
+                  4,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "totalNanos": 184846494,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              },
+              "worker_total": {
+                "maxNanos": 261878692,
+                "count": 3959499,
+                "buckets": [
+                  0,
+                  0,
+                  1,
+                  1733048,
+                  1739685,
+                  459291,
+                  21060,
+                  4366,
+                  1708,
+                  331,
+                  8,
+                  1,
+                  0
+                ],
+                "totalNanos": 2616235819860,
+                "upperBoundsNanos": [
+                  50000,
+                  100000,
+                  250000,
+                  500000,
+                  1000000,
+                  2000000,
+                  5000000,
+                  10000000,
+                  20000000,
+                  50000000,
+                  100000000,
+                  500000000,
+                  9223372036854776000
+                ]
+              }
+            },
+            "postDecisionCancellations": 0,
+            "commandResultsObserved": 3959499,
+            "commandsAbandonedAfterClose": 0,
+            "note": "Cumulative, non-atomic local observations. Durations include scheduling and GC; command observation is not Redis server execution time. Post-decision cancellation does not undo the quota decision."
+          },
+          "saturationEvents": {
+            "enabled": true,
+            "capacity": 128,
+            "minimumIntervalMs": 100,
+            "offered": 0,
+            "suppressed": 0,
+            "captureErrors": 0,
+            "lastSequence": 0,
+            "note": "Rejection-triggered, rate-limited, non-atomic local observations. At most 256 retained tasks inspected and 8 oldest detailed. No IP or request ID. Thread state and GC counters do not prove scheduler causality."
+          },
+          "connectionSlots": 8,
+          "connecting": 0,
+          "openConnections": 8,
+          "closing": 0,
+          "quarantined": 0,
+          "lettuceQueueCapacityPerConnection": 8,
+          "autoReconnect": false,
+          "offlineBuffering": false,
+          "decisionsStarted": 3959499,
+          "decisionsCompleted": 3959499,
+          "outcomes": {
+            "disabled": 0,
+            "allowed": 3959499,
+            "limited": 0,
+            "unfulfillable": 0,
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0,
+            "cancelled": 0
+          },
+          "probes": 0,
+          "recoveries": 0,
+          "lastFailureReason": null,
+          "lastFailureAt": null,
+          "lastRecoveryAt": null,
+          "lastConfirmedAt": "2026-10-07T10:47:57.318393597Z",
+          "lastDecision": {
+            "outcome": "allowed",
+            "reason": "quota_available",
+            "execution": "confirmed",
+            "retryAfterSeconds": null,
+            "version": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "tokensMilli": 9999000,
+            "serverTimeMs": 1791370077317,
+            "billedTimeMs": 1791370077317,
+            "expiresAtMs": 1791380078317,
+            "capacity": 10000,
+            "rate": 10000,
+            "cost": 1,
+            "staleRequest": false,
+            "rejectionSource": null,
+            "action": "forward",
+            "event": "allowed"
+          },
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 10000,
+            "burstCapacity": 10000,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1"
+          }
+        },
+        "proxy": {
+          "source": "local",
+          "observedAt": "2026-10-07T10:58:06.423897931Z",
+          "policy": {
+            "connectTimeoutMs": 1000,
+            "tlsHandshakeTimeoutMs": 1000,
+            "headersTimeoutMs": 2000,
+            "readIdleTimeoutMs": 3000,
+            "totalTimeoutMs": 5000,
+            "maxConnectionsPerOrigin": 100,
+            "maxPendingAcquiresPerOrigin": 100,
+            "acquireTimeoutMs": 500,
+            "slidingWindowSize": 20,
+            "minimumCalls": 10,
+            "failureRateThreshold": 50,
+            "openWaitMs": 10000,
+            "halfOpenCalls": 2,
+            "automaticRetry": false,
+            "followRedirects": false,
+            "failureStatuses": "500..599; response preserved"
+          },
+          "activeProxyRequests": 0,
+          "pool": {
+            "active.connections": 0,
+            "idle.connections": 0,
+            "pending.connections": 0,
+            "total.connections": 0
+          },
+          "breakerStates": {
+            "CLOSED": 32
+          }
+        },
+        "route": {
+          "source": "local",
+          "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+          "status": "ok",
+          "adoptedVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33",
+          "routeCount": 32,
+          "lastAdoptedAt": "2026-10-07T09:39:05.968894919Z",
+          "lastObservedVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33",
+          "lastObservedAt": "2026-10-07T10:58:05.423213405Z",
+          "confirmationAgeMs": 1001,
+          "stale": false,
+          "matchesLastObservation": true,
+          "reasonCode": null,
+          "reason": null,
+          "lastCheckAt": "2026-10-07T10:58:05.423249965Z",
+          "lastCheckOutcome": "ok",
+          "checking": true,
+          "checks": 4737,
+          "failures": 0,
+          "intervalMs": 1000,
+          "timeoutMs": 750,
+          "staleAfterMs": 5000,
+          "managementQueueSize": 0,
+          "managementQueueCapacity": 16,
+          "managementActive": 0,
+          "resources": {
+            "management": {
+              "commandsInFlight": 0,
+              "connectionOpen": true,
+              "closed": false,
+              "retiring": false,
+              "connectionAttempts": 1,
+              "peakCommandsInFlight": 1
+            },
+            "maximumApplicationCommands": 2,
+            "maximumPhysicalConnections": 2,
+            "sync": {
+              "commandsInFlight": 0,
+              "connectionOpen": true,
+              "closed": false,
+              "retiring": false,
+              "connectionAttempts": 1,
+              "peakCommandsInFlight": 1
+            }
+          }
+        },
+        "runtime": {
+          "source": "local",
+          "confirmationScope": "background-read",
+          "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+          "status": "ok",
+          "running": true,
+          "checking": false,
+          "reasonCode": null,
+          "reason": null,
+          "stale": false,
+          "adoptedVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+          "adopted": {
+            "rateLimitEnabled": true,
+            "replenishRate": 10000,
+            "burstCapacity": 10000,
+            "requestedTokens": 1,
+            "monitorWindowSeconds": 10,
+            "emitIntervalSeconds": 1,
+            "version": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1"
+          },
+          "lastAdoptedAt": "2026-10-07T09:39:03.692496863Z",
+          "lastConfirmedVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+          "lastConfirmedAt": "2026-10-07T10:58:06.158760033Z",
+          "confirmationAgeMs": 266,
+          "matchesLastConfirmation": true,
+          "lastCheckOutcome": "ok",
+          "lastCheckStartedAt": "2026-10-07T10:58:06.157110957Z",
+          "lastCheckCompletedAt": "2026-10-07T10:58:06.158779537Z",
+          "lastSuccessfulCheckAt": "2026-10-07T10:58:06.158779537Z",
+          "checksStarted": 2370,
+          "checksCompleted": 2370,
+          "failures": 0,
+          "consecutiveFailures": 0,
+          "intervalMs": 2000,
+          "timeoutMs": 1000,
+          "staleAfterMs": 10000
+        },
+        "life": {
+          "source": "local",
+          "draining": false,
+          "phase": "ready",
+          "activeBusinessRequests": 0,
+          "admitted": 3959499,
+          "completed": 3959499,
+          "rejectedBeforeAdmission": 0,
+          "clientCancelled": 0,
+          "deadlineTerminated": 0,
+          "drainElapsedMs": null,
+          "drainStartedAt": null,
+          "requestsFinishedAt": null,
+          "auditFinishedAt": null,
+          "requestDrainTimeoutMs": 10000,
+          "cancellationSettleTimeoutMs": 1000,
+          "auditStopBudgetMs": 8500,
+          "coordinatorBudgetMs": 19500,
+          "audit": {
+            "enabled": true,
+            "accepting": true,
+            "received": 3959499,
+            "persisted": 3959499,
+            "dropped": 0,
+            "droppedByReason": {
+              "queue_full": 0,
+              "serialization": 0,
+              "shutdown": 0,
+              "byte_limit": 0,
+              "oversized": 0
+            },
+            "uncertain": 0,
+            "queueDepth": 0,
+            "inFlight": 0,
+            "pending": 0,
+            "reservedBytes": 0,
+            "oldestAgeMs": 0,
+            "retries": 0,
+            "lastBatchSize": 1,
+            "lastBatchDurationMs": 0,
+            "lastSuccessAgeMs": 609143,
+            "capacity": 20000,
+            "maxReservedBytes": 16777216
+          },
+          "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+          "adoptedRuntimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+          "adoptedRouteVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+        },
+        "jvm": {
+          "heapBytes": 187378568,
+          "heapCommitted": 268435456,
+          "directBytes": 4900872,
+          "nonHeapBytes": 134809512,
+          "threads": 50,
+          "cpuFraction": 0.002372948388372553,
+          "openFiles": 99,
+          "gcPauseSeconds": 4.81,
+          "gcCount": 2280,
+          "proxyOutcomes": {
+            "circuit_open": 0,
+            "client_cancelled": 0,
+            "gateway_limited": 0,
+            "limiter_local_unavailable": 0,
+            "limiter_redis_unconfirmed": 0,
+            "none": 3959499,
+            "proxy_internal_error": 0,
+            "proxy_pool_full": 0,
+            "proxy_pool_timeout": 0,
+            "proxy_total_timeout": 0,
+            "shutdown_deadline": 0,
+            "upstream_5xx": 0,
+            "upstream_connect_error": 0,
+            "upstream_connect_timeout": 0,
+            "upstream_disconnect": 0,
+            "upstream_headers_timeout": 0,
+            "upstream_read_idle": 0,
+            "upstream_tls_error": 0,
+            "upstream_tls_timeout": 0
+          }
+        },
+        "monitor": {
+          "avgLatencyMs": 0,
+          "cancelled": 0,
+          "completedTotal": 3959499,
+          "enabled": true,
+          "errors": 0,
+          "latencyOverflow": 0,
+          "p95LatencyMs": 0,
+          "qps": 0,
+          "requestCount": 0,
+          "status2xx": 0,
+          "status3xx": 0,
+          "status4xx": 0,
+          "status5xx": 0,
+          "timestamp": 1791370686445,
+          "unknownStatus": 0,
+          "windowSeconds": 10
+        }
+      }
+    ]
+  },
+  "findings": {
+    "counterObservation": {
+      "liveWarmupPeak": 9,
+      "liveWorkers": 8,
+      "soakSamplePeak": 6,
+      "soakLifetimePeakBefore": 9,
+      "soakLifetimePeakAfter": 9,
+      "controlledFixture": {
+        "passed": true,
+        "fixture": "frozen-JAR callback ordering, no Redis traffic",
+        "workers": 1,
+        "actualWaitingFlags": 1,
+        "reportedInFlight": 2,
+        "reportedPeak": 2,
+        "settledInFlight": 0
+      },
+      "scope": "Frozen JAR callback fixture, no Redis; demonstrates possible overcount but does not identify the precise historical scheduling event. Product implementation unchanged."
+    },
+    "rss": {
+      "increaseDuringHourMiB": 27.125,
+      "last20MinutesSlopeMiBPerMinute": 0.39689414937920603,
+      "idleFirstMiB": 577.71484375,
+      "idleLastMiB": 577.83984375,
+      "diagnosis": "No loaded RSS plateau proven; monitors reclaimed in NMT without equivalent RSS decrease; not a leak diagnosis."
+    },
+    "defaultBridge": {
+      "changed": true,
+      "before": {
+        "CreatedAt": "2026-10-07 09:17:52.897496372 +0000 UTC",
+        "Driver": "bridge",
+        "ID": "f43230b491b488135ceaae68edaee794837e0a53527561468401415eab31553b",
+        "IPv4": "true",
+        "IPv6": "false",
+        "Internal": "false",
+        "Labels": "",
+        "Name": "bridge",
+        "Scope": "local"
+      },
+      "after": {
+        "CreatedAt": "2026-10-07 09:38:42.656400799 +0000 UTC",
+        "Driver": "bridge",
+        "ID": "53c8672d26fbd2c9589ce8bfc90a090c9d650d884a519f82ea2aca8e9061daeb",
+        "IPv4": "true",
+        "IPv6": "false",
+        "Internal": "false",
+        "Labels": "",
+        "Name": "bridge",
+        "Scope": "local"
+      },
+      "attribution": "unresolved; original containers and volumes preserved"
+    }
+  },
+  "validation": {
+    "remoteBackendTests": 252,
+    "remoteFrontendTests": 107,
+    "remoteToolTests": 61,
+    "remoteMonitoringAssertions": 183,
+    "remoteRollingChecks": 6,
+    "remoteBuildsPassed": true,
+    "localToolTests": {
+      "tests": 71,
+      "passed": 71,
+      "failed": 0,
+      "skipped": 0
+    },
+    "additionalCounterFixture": 1,
+    "notExecuted": [
+      "a second one-hour repetition",
+      "4000 req/s retest",
+      "full prior release live matrix locally",
+      "cloud LB capacity",
+      "production Redis persistence/failover load",
+      "multi-day memory test"
+    ],
+    "old4000HourPassed": false
+  },
+  "cleanup": {
+    "AGraceful": true,
+    "namedGatewayClientsAbsent": true,
+    "zg-conservative-36221e5b-driver-6": "already_removed",
+    "zg-conservative-36221e5b-driver-5": "already_removed",
+    "zg-conservative-36221e5b-driver-4": "already_removed",
+    "zg-conservative-36221e5b-driver-3": "already_removed",
+    "zg-conservative-36221e5b-driver-2": "already_removed",
+    "zg-conservative-36221e5b-driver-1": "already_removed",
+    "zg-conservative-36221e5b-gateway-a": "removed",
+    "zg-conservative-36221e5b-upstream": "removed",
+    "zg-conservative-36221e5b-redis": "removed",
+    "networkRemoved": true,
+    "credentialRemoved": true,
+    "independentInventoryPassed": true,
+    "gatewayExitCode": 0,
+    "existingContainersPreserved": 6,
+    "existingVolumesPreserved": 168,
+    "defaultBridgeChangeRecorded": true,
+    "developmentInstancesUpgraded": false,
+    "dockerDesktopState": "was running; left running"
+  },
+  "deliveredFiles": [
+    {
+      "path": "benchmarks/conservative-capacity.mjs",
+      "sha256": "bd40f7d214156d898ccff35f08a6a9b2201ee5329c643c3d92291088bfc82216"
+    },
+    {
+      "path": "benchmarks/conservative-capacity-gates.mjs",
+      "sha256": "9701c83e850bf88c6774240e1281a0cb534deb421b7b1c94d6bcf4d8ad2436c4"
+    },
+    {
+      "path": "benchmarks/conservative-capacity-gates.test.mjs",
+      "sha256": "b06ef306ab515b70b52fd95908f339cb56dff56252e0d2b4597202051a19f9e2"
+    },
+    {
+      "path": "benchmarks/conservative-capacity-report.mjs",
+      "sha256": "b5fb541e4b78ab4a6647f03c9b48da52b32ee44adf01874bb2a2857dcae7c9b5"
+    },
+    {
+      "path": "benchmarks/CONSERVATIVE-CAPACITY.md",
+      "sha256": "4894591de98ae4a03b63a39a42cb8db646d5104a2a4e56f0898c587685907269"
+    },
+    {
+      "path": "verification/acceptance-plan.mjs",
+      "sha256": "3f13115023427f041284f3323e7105d1207070ecafe7bb05dbec7c6ac372d5f9"
+    },
+    {
+      "path": "verification/rolling-replacement-summary.mjs",
+      "sha256": "2814215c0a331413aa9da9d4b6644cb3bc0b7bafe0752f33487cc9d81fa0f7b9"
+    },
+    {
+      "path": "verification/rolling-replacement.test.mjs",
+      "sha256": "af3197d73b731af3c23f59f68a1bf901dfa60336b6fb3aa91501635a1bba4d1b"
+    },
+    {
+      "path": "docs/release-closeout-2026-10-07.md",
+      "sha256": "a04c07521c7444648393e80de55c02abbb7d786b2c506a44c73a832afbd98095"
+    },
+    {
+      "path": "docs/backend-conservative-capacity.md",
+      "sha256": "ebb9518fe6a7a1fb8940f378e7453f8c587952fe16a5340e1ae895f7e714cc88"
+    },
+    {
+      "path": "docs/backend-conservative-capacity-memory.png",
+      "sha256": "f10fa37a6315b0f87cc1a59a04c9e61f73ddee1159433fcee7014dda5ddc6338"
+    },
+    {
+      "path": "docs/backend-rolling-replacement.md",
+      "sha256": "6bc7c657ac06956bcf701f22d597b5bab94d4845cd7499be502115a0b464c00f"
+    },
+    {
+      "path": "docs/product-showcase.md",
+      "sha256": "4297ee0919b02c35c7b63e64e2c5acc335666c3bdb12549203c95d14d89128b1"
+    },
+    {
+      "path": "README.md",
+      "sha256": "7881de51c906cdd7375de75fa95b0b0e476c6f166b3cc25cee22140533dc318d"
+    }
+  ],
+  "evidence": {
+    "root": "D:/Java/ZenithGateway/.dev/capacity-baseline-20261007-3e81767a",
+    "experiment": "experiment-01/summary.json",
+    "analysis": "experiment-01/analysis.json",
+    "load": "experiment-01/05-one-hour-1000/load-result.json",
+    "gateTests": "tool-tests-final.log",
+    "rawCI": "final-ci.json",
+    "rollingArchive": "final-release.zip",
+    "verifyArchive": "final-verify.zip",
+    "compactArchive": "final-live.zip",
+    "archiveValidation": "archive-verification.json",
+    "ciAgreement": "ci-artifact-agreement.json",
+    "cleanup": "cleanup-verification.json",
+    "containerExitEvents": "container-exit-events.jsonl",
+    "counterFixture": "counter-fixture/CommandCounterRace.java",
+    "counterFixtureResult": "counter-fixture/result.log",
+    "memorySeries": "experiment-01/memory-series.json",
+    "manifest": {
+      "path": "evidence-manifest.json",
+      "files": 757,
+      "sha256": "00e526a4ea278cd61956bd6831180e8542305ad9f40092463a2e4e66dbb10509"
+    }
+  }
+}

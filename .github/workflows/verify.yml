@@ -29,6 +29,10 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - name: Run unified commit acceptance from clean build inputs
         run: node verification/acceptance.mjs --tier commit --out "$RUNNER_TEMP/zenith-commit" --images prepare
+      - name: Verify portable evidence and public reading links
+        run: |
+          node verification/showcase-evidence.mjs
+          node verification/showcase-links.mjs
       - name: Preserve success or failure evidence
         if: always()
         uses: actions/upload-artifact@v7

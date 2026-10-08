@@ -1,0 +1,3094 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T01:35:05.237Z",
+  "title": "Portable historical evidence; raw gzip members retain original bytes",
+  "testedJarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+  "files": [
+    {
+      "file": "capacity-fixed/summary.json.gz",
+      "extractAs": "capacity-fixed/summary.json",
+      "bytes": 1872878,
+      "sha256": "759721fcc9f6caff0a90eb2c85e4bc388308999ec3ccd16e58c347b559ef2ddd",
+      "uncompressedBytes": 61181902,
+      "uncompressedSha256": "4a7e25b409e55d728003355aacc138c8e61c3b1cafb8f7f63ab81a7c5741e165",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/gc-A.log.gz",
+      "extractAs": "capacity-fixed/gc-A.log",
+      "bytes": 133189,
+      "sha256": "d85c736985ccdb212d1c8d8d4f344c24556c8f39cd1660ec780313ce8cfd42fb",
+      "uncompressedBytes": 957948,
+      "uncompressedSha256": "1a4a3687416d16e4f499c4445ff1223c7fd1330f41ec3f347d085bba520e94b3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/plan.json.gz",
+      "extractAs": "capacity-fixed/plan.json",
+      "bytes": 554,
+      "sha256": "7be50f81d3fe99e590decf467a976cbb08ebf233409d24da4f05f2e2833a6339",
+      "uncompressedBytes": 1239,
+      "uncompressedSha256": "8acf970272a7c28d3f3d818a6da02d52bd5a530d5b6a989780b8fdf622c577ec",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "c11aee7ba4f30ffac5d7d22b19dabe64af1f010958b0f9a518c853b901d5bf8e",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "0f2d2c62b78981a6ddef5746c7139d1adb12dac7f68a12d2f04511ca3480205a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-cgroup-memory.txt",
+      "bytes": 398,
+      "sha256": "1c1e4ba808caf4dc80337adf05ea1485e8f23167747bc8ccb2b8dff94880b222",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "49d89bd2beed24449509745d171a45b77bca72221ba2c19637a73791d6ccc998",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-Compiler-codecache.txt",
+      "bytes": 314,
+      "sha256": "e845c04cdd019df7ac8299c6faf7e9e1bac2556f66a9930cb41d5ec1346cf8f5",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "51329a58203938ef2134999ee45bb69e0069103ecbac0e9cce02cda7f27c876b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-GC-heap_info.txt",
+      "bytes": 204,
+      "sha256": "762d6d5af6b029664d5e73514fb2f4ba868f3be328a25318ab1535e232a11c36",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "d636c7e21490069b17f1f654b8e1dd8d4999faa2440fa87b9eb6e05d12fa3d8a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-native-diff.txt",
+      "bytes": 1012,
+      "sha256": "128d25f67fc920db841c650e943c38a87712d561aff2e4c1b76007b7064bd1d1",
+      "uncompressedBytes": 4038,
+      "uncompressedSha256": "15cb92e49fb04078481d3544bf2c8d21c7d2e4a81a42f1e0c735f10e6b015a64",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-smaps-rollup.txt",
+      "bytes": 277,
+      "sha256": "8878db3f7dbdb41c8e4591f32fea2f17cd931b9ab3076debed358bd5f8ced9af",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "f678b5f095aad7a2cd4f054f59a8ae49ed910cbcb1136313a9d702d3d3699d3e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-smaps.txt",
+      "bytes": 10287,
+      "sha256": "e6e9f3f0ecca828464efaa2ebfe304d9178d58d462e036e0402b4970571d7261",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "0c543a1cbeaf237677e5c663b0a7550e5a2f68d46902732af7cdcfaf440fc6aa",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-status.txt",
+      "bytes": 549,
+      "sha256": "c55f56e55b83249c2d6915ff4443f41e0a87b6364ce2d83e6af7ca2162fa9479",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "df6e8d7d5d0d621b8baa27f1d854e1525aa5761055aed3cdfa571e64ae9842f2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/A-VM-native_memory.txt",
+      "bytes": 1123,
+      "sha256": "857571e78593cb689654a8de922fb47726d230e19b19c5dc4d52dbdef914b3c9",
+      "uncompressedBytes": 4665,
+      "uncompressedSha256": "fd372f76ad1d3b1984bbeb2496070e2914811276f7dbf36c9228f8758f495b26",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-downshift/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-after-downshift/timing.json",
+      "bytes": 680,
+      "sha256": "759bbba276b3a52346744b540ea2765b3cb78d785a5b7ab9debc2392eec199ab",
+      "uncompressedBytes": 3215,
+      "uncompressedSha256": "0d8bc6007f5bf2c9512a5f5225376a983eba20e8ddb7c57bcea01c1dac2aee5e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "189e1991feafef8a3f09733d449ee37dbbac56ab5239bec42a932482ccf2f14d",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "a68e8ef70d94cc6a0dcea300794d465b45e7c2348e5609bd1d5d94f5255a4fd1",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-cgroup-memory.txt",
+      "bytes": 397,
+      "sha256": "7e3fade186516e8d15c781a4fe7575930e60698c9af949f195841a3ab6af2bba",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "e2b4be3729e67511feb517061d6b8bad36a83beb0a36969a4d01f3327c4df307",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "aa63458556594c9e88e83a1b84eb3c1e0c431e7060e40706b6de2054465f4c56",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "2891bfcfb6b32347658ac467131576d097b85d39e5c59e67d421fc59e7213139",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "c5ef6d292b4bd9e84e21160adfb422e9e5f1dcd69c4628af6c07d49a4da3de78",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "6225f3e5d4dd4bff9bb4d380dd3f1743c93bcaa94e1f5f02c072c72d3a3b896c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-native-diff.txt",
+      "bytes": 1011,
+      "sha256": "4b8772b56e49c2dd35869c6d883f019fa271a6ee28b0b15697286dd0a20bff0c",
+      "uncompressedBytes": 4027,
+      "uncompressedSha256": "85e37916cf8da4c72ac7f00a09ea129ea1824d1729b752e6085295fb9d9f6bba",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-smaps-rollup.txt",
+      "bytes": 275,
+      "sha256": "92c3fcaad28a01736cb3355787c427be9fb1aa8d442455b512ffd19b89100655",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "79d853ea4b14b9c4fab2b5ed3d83c73b6b92bbd2edc623d985755d6b45c5051c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-smaps.txt",
+      "bytes": 10315,
+      "sha256": "f5385ff5e8c788457f09736c88b7da7310e16ab7b21ee665676235023b174cb5",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "8565484261521a9820759aebcb64351debf37032d1a644368f2fe5ebc44250be",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-status.txt",
+      "bytes": 550,
+      "sha256": "cc387287e54f2e82d5283e2f9cba28733cfbfe5a8e20fd72e34fc0593d8f13ad",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "d7966ca277254d6254f4f42b45747159990d07a32ea4a82ef4b348887a379cb6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/A-VM-native_memory.txt",
+      "bytes": 1115,
+      "sha256": "20813bf9ee9e3926cc1e8f596bc359c20c1f74efc387ec90337c1c4fa04729c1",
+      "uncompressedBytes": 4659,
+      "uncompressedSha256": "17f34fbbe1352ca28b75137be623ab7d34e167575cd535cd01259ee5e616c2d7",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-idle/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-after-idle/timing.json",
+      "bytes": 677,
+      "sha256": "6f0c252ca40851c181dca10d5ee864d86a8367a2dcd36e334ac59c173cb323ec",
+      "uncompressedBytes": 3205,
+      "uncompressedSha256": "2de47bdad828c65b903bc7802a014ba01f91ac32fae9f08c1e953e9d87bc0c8d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "8dd2e48c4f307a7d371f5daea20edbe55da467d7fbfd06e6f349746047147934",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "78b1b3f52777ac8c959ae0e70446c5cefc7ea23bbf865dd0a38e0144b19e9396",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-cgroup-memory.txt",
+      "bytes": 396,
+      "sha256": "72e7546f5a26f960e4e2f2b3ff84667ef09f051a6eb90135ac66281c07fec155",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "a2bbe2c601aa0d0f725799e3ca51af84c4108936582bb22da1a33930a3b5c2bc",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-Compiler-codecache.txt",
+      "bytes": 312,
+      "sha256": "bea6cbddb0728f1c463b916f91423eaebe3995bdad7c2bd9a9205941af0ac709",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "e1e4dcafbe8c19eee2e10fc80feebde942f1069caa62be99a61aaaa38874a20d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-GC-heap_info.txt",
+      "bytes": 204,
+      "sha256": "29a2997064abe0dc99da6a29c97efae34d02ad4081a97fa5b2d1aca2b48ede6c",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "35bd42531df6a029647aefbfd61ab0e3e5c0de1c922f5ddc135f844645598ba9",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-native-diff.txt",
+      "bytes": 1015,
+      "sha256": "76810b606fe197b43453eb7980e04cd6c2c9b16283c70ad5ee6a342fae670890",
+      "uncompressedBytes": 4054,
+      "uncompressedSha256": "27db141b335e9968b76b83d4cee5c7df4064fd1f5d2c62b1cd9b0f7013466c96",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "a12211c0e8394a70e2b62908692cbe5bb87896544e1a04a19a365b9536a9dd9a",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "f5c4091ff4a8ac3a79e21bcca4e52f3b4020bbd95a972f8a3884cdb0ea180757",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-smaps.txt",
+      "bytes": 10293,
+      "sha256": "6562d923655d10ba481e9f2692c0e9fdf54b106ced7b25b2b5b4dae2558bfab9",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "eb71dfe1f879f79fb9f32f652484a2bd2d1d505af0227cdd97c56af3ee150c34",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-status.txt",
+      "bytes": 548,
+      "sha256": "4d089b8e91004841f545f7faf030575777dfe664eaf67fe6e853f82dfb0164c2",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "0b54101349c59dbfe9e3bb3e945647a0174718066b0d2633a532df46682c2f74",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/A-VM-native_memory.txt",
+      "bytes": 1123,
+      "sha256": "20715d8e7399a392c2b83e2682f631d16a0ce66a3e73015255a64ffad4237904",
+      "uncompressedBytes": 4666,
+      "uncompressedSha256": "ba8321b427d8cc3b283d563ff91f490e9c686bf50b84fce093efe87874c0364f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-soak/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-after-soak/timing.json",
+      "bytes": 677,
+      "sha256": "0f36303bffa31a648a34c326cd96e59e571878afb28b4281bb5761b3bbd66a07",
+      "uncompressedBytes": 3206,
+      "uncompressedSha256": "f333397a97448551f3baf9b213643adc9e9acba1624ac10a530ad1909a7a6f30",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "6c8cf3acbcf8b5454d882cc462301f63b64543b173f41388ce47f10107b84291",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "651a10103540d195415760895118b768b69aee43a14950d572411869a02e5b66",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-cgroup-memory.txt",
+      "bytes": 399,
+      "sha256": "628b063d3e793994b957f35af396d74db8a784826e2858c07ed957151a7d3482",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "e509a10ab66ca15d3c9356c7c7b04a2dbdc1e779b2977fac6a0737f94998a9a8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-Compiler-codecache.txt",
+      "bytes": 319,
+      "sha256": "fbe5fc767a3bd1282521422ac295ec1726989fa6c28244577812315c10817dea",
+      "uncompressedBytes": 655,
+      "uncompressedSha256": "e15894f7e7d5b550884057666990d32e36749a8a05c25e322b87ea5fe33b3be2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-GC-heap_info.txt",
+      "bytes": 204,
+      "sha256": "97098976b9fc1085872592fb558befce190de5ef9c1a5b3f5772f7a525dee708",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "39cfaf71f96573efd7f2dede5cbdc4ad21c41a79d9f4bf1c3e838abb61a76b79",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-native-baseline.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-native-baseline.txt",
+      "bytes": 37,
+      "sha256": "f205302470a756cf13f86caedeadcba9ea2a38b9393a97cb52cfbf1cbc69c338",
+      "uncompressedBytes": 17,
+      "uncompressedSha256": "7c9b74e0262dbfa05ff082d9d0b3ab453a13aa528da35b3f30b973ca5cbfb42b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-smaps-rollup.txt",
+      "bytes": 277,
+      "sha256": "c028dcd26c3fde130025f826360216b3bd01c6b7555d8c839f88a6302c771271",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "ad12d4f38d4965c60509a23a1c9ee7a5222c7d0e782185a79f8a3bb8a29b8208",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-smaps.txt",
+      "bytes": 10103,
+      "sha256": "5bd91bf035fa3f44162a9d151ed97e17b57f5a9c1579eeb52039869a0ae2ab1c",
+      "uncompressedBytes": 314241,
+      "uncompressedSha256": "61bd386b87fc6efaea1c0db4d67017294679608b1dbed8526e7ffe685bd0136a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-status.txt",
+      "bytes": 545,
+      "sha256": "4ccc3545244ab0b380a1ef95b109d84f532a51667f10cd85f0aae249c3dbe7cd",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "a3504215c244ce8f823ed4075ef15f902162667118d27c35de84a9a78f5080bb",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/A-VM-native_memory.txt",
+      "bytes": 1131,
+      "sha256": "c714b03870e62182bbdffe7302582b775bd2c974e707e551a9ee8ee24aeed105",
+      "uncompressedBytes": 4677,
+      "uncompressedSha256": "f97abd5bb37d229bccb129a54e2b7b298edf8423fcaf5ef1732f914b0a126e52",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-after-warmup/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-after-warmup/timing.json",
+      "bytes": 663,
+      "sha256": "4455c071123001f7738baff2bcbeae8049f7a4c0424a5834da40406aaed8b908",
+      "uncompressedBytes": 3187,
+      "uncompressedSha256": "a7190a5cdc176d150e2845d99c538c060e90c65a0d3636908160ca3b5eb82d5b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "158f3c6deea66092e0e2b1f4ed55fdebdeabca2b9a8e14a77024e72029f6f8f9",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "d32d047083d976856ed5251b3517ed930c9412dba26ad77b59f76bc531676a2c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-cgroup-memory.txt",
+      "bytes": 398,
+      "sha256": "5853c555f831e5f2f57b783bd027a2bba2b716b6de1bfb4fa620c59ec1f0d0b1",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "1c53dddc5d9887955f5c7432c9c6a875e285ed192396c9cba32b7ad38e79dabc",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-Compiler-codecache.txt",
+      "bytes": 319,
+      "sha256": "4e1f27c69405fa70b0d90c0bf307922da67c0f8558c2f688a5fb9125e03275cd",
+      "uncompressedBytes": 655,
+      "uncompressedSha256": "8f9de53060768630bbdf0612323d1dd3c94d9ed42994959fd682c12b767911b3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "fb0fde9a4f9e9f900c24503c2db68d2c66692b1d772174dde681b8cdd4717cc2",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "df3ada8013d2d01ce9fe4589535375f689bef83309edc61f58ca684fc0b023b8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-native-baseline.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-native-baseline.txt",
+      "bytes": 37,
+      "sha256": "f205302470a756cf13f86caedeadcba9ea2a38b9393a97cb52cfbf1cbc69c338",
+      "uncompressedBytes": 17,
+      "uncompressedSha256": "7c9b74e0262dbfa05ff082d9d0b3ab453a13aa528da35b3f30b973ca5cbfb42b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-smaps-rollup.txt",
+      "bytes": 274,
+      "sha256": "c28b4a13d93f1aacef1a643ec09e3d0d4cc5f68a7ea6d31f4b2861636297b320",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "85f09fc562baffef30ed04f5a8b2efdc90924bc67832de0cfe8958673556ddd3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-smaps.txt",
+      "bytes": 10239,
+      "sha256": "6b7fc881fa8ea15f1d35fe7ca8c215717eba683fc843614944477f0d31903065",
+      "uncompressedBytes": 315677,
+      "uncompressedSha256": "58d4cb4ecec05f158eda6b73c0bd5874dd2e992e489f561349429c7a422ec071",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-status.txt",
+      "bytes": 546,
+      "sha256": "df4f1174be2bdf48d8664377307a97ddcd3eeb3ba4a700ae122db8cf04cdf928",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "0a33381034eb988972c83673a313ccf7e0203a7c193e75ae6f8c61938d0c9dda",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/A-VM-native_memory.txt",
+      "bytes": 1141,
+      "sha256": "4ca91910722d507cf48ca2a8552d47194d264dbadd46d25ac822d50ece6a0dd0",
+      "uncompressedBytes": 4688,
+      "uncompressedSha256": "0a8c28c8573bd6e4861f114beba5636c776a4ec8ccdad09b489b59f07de077a4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-before-soak/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-before-soak/timing.json",
+      "bytes": 671,
+      "sha256": "6ccb742ac4f7ecf87a0c836a7258956550b2af1c29c23c94ce37ea2597418e24",
+      "uncompressedBytes": 3189,
+      "uncompressedSha256": "5b2141c0117b4c884366d5fe593b49a4d676f3c450154625b8c9701e9ab33254",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "461cabc464fd0575f9b10e078c0402226f3548ae578f96d97dab14fa9de254b5",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "c0aefb0894bf8eb8df472ebe589afdfc111ad3ef74688450e8ff3706ccbf876b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-cgroup-memory.txt",
+      "bytes": 396,
+      "sha256": "faeb88c920646e931715df6bf6394befaa58ba0ecbf6f917c4fa39e81fc02708",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "4956df21f49e8609c15bb19f86c5bf0aa4704180f1fe4fc5bb82b5d9bb67f683",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-Compiler-codecache.txt",
+      "bytes": 313,
+      "sha256": "e59696a18330240daa584a674e1b2f007f45a785b1239205501f50278eca4a00",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "1bc25b0b2c05798e3da1f27bd42d8cd2e4cb2cdf173d57feb0e7b4e6a1a8d99a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-GC-heap_info.txt",
+      "bytes": 204,
+      "sha256": "abb07bf35ddd5bbdbd6a3cab57b71ab108616927ef96e9c012b0faea090a0009",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "c20eb14dfacc97858be1cf50bf2ebaa4c0a88451fc6afdd12991d687413ede66",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-native-diff.txt",
+      "bytes": 1012,
+      "sha256": "9e959a1c98ffb8d4612b34afa6f6b5e99ec45eb96b6b34c210b07e569cce112a",
+      "uncompressedBytes": 4030,
+      "uncompressedSha256": "fd5e9bf333697c63597347b769f1bb4d35f5003e57fe83e02c15f3f1ed25fec2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-smaps-rollup.txt",
+      "bytes": 277,
+      "sha256": "3d49a6bfab1725cf3a5c612d14e3727c7e04faa67db8cf93287373139c130347",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "0780b455497debc5ee42bcdfbbac20cba7b64a1f2da0dd38fa95c929c76d1d75",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-smaps.txt",
+      "bytes": 10309,
+      "sha256": "13517ada3b6b4628a5cc6df86d66172013e94f52574037b44772a91a395e406b",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "7b6d6ab83592455f3cb344037705f62134a3523dcc606ad9d6c30397cff898b2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-status.txt",
+      "bytes": 550,
+      "sha256": "a2c2373a7b084a4b903f3ee8245416f4798aa0ba75feee0a55029d7634d486e0",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "d8e1163c14e94af5bf8e4b6bd20670046a7eb341b7b12a2b48c1a2f465b085f8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/A-VM-native_memory.txt",
+      "bytes": 1109,
+      "sha256": "a7dc345649e31ecd3ff79cfaf1dacc3b048e6611498b697fd4a182d86d1e7fe9",
+      "uncompressedBytes": 4653,
+      "uncompressedSha256": "915f82529a192d965730aa3b3f1b7b7a991145b7e8efe86a3f9b2db901f1ca12",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-idle-600-01/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-idle-600-01/timing.json",
+      "bytes": 673,
+      "sha256": "fc2e3cb448bad5c56ad853394ec924eccc534057805d87778e155fe6c285b6d9",
+      "uncompressedBytes": 3206,
+      "uncompressedSha256": "181cebe4823599cfdb980bd9d3c1e402bd93fecaf4acef6c8981260985f3bed8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "b8be031b5214d0b4c95db0c1f9b87b913d9f1f5946adf931aed328d376de8e78",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "708192cd39c1a4180f6cee7f62e8549d61ba21460f1b8982ae59a3626041b9e1",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-cgroup-memory.txt",
+      "bytes": 396,
+      "sha256": "037f92ea371f0877a43035b3cc86cae03e7d4e3c7226b36f80fd003f50ee8e3c",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "a636dace9630f5a24e4b1e3114d6bf52e5aea7904c9a87919e9715bfb3627520",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-Compiler-codecache.txt",
+      "bytes": 318,
+      "sha256": "4ee39942fa4a4cb0f08616c819f7b65228a2f07c72d83dfae2b8e1db74d017a7",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "5488c21ad4a0109effafae037b72fac856bc23579bf33fc2dc062f1cc6a76947",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "1390a9aac4a1886336f967432d75ef28831392f19af1f0d6dff757f0e7c3edf9",
+      "uncompressedBytes": 284,
+      "uncompressedSha256": "e0056b303b2ef28e5b9ecc149da88173dc138398c66100c99a945ad12a29dcc3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-native-diff.txt",
+      "bytes": 989,
+      "sha256": "80db9d04f7da827948d49ad238b2b295044809ff08f777e58f6fd0d52457cba0",
+      "uncompressedBytes": 3996,
+      "uncompressedSha256": "df9af08d0777195b9bdcddb0e1390fc6c346d10307ed6b3be8675cff7b66b237",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "ad4500b5a4cdb8d63f070a035b1b6372ae6c47db8ff7cf9f061f2031f9005301",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "b08051e872367613ca64185e656d6b52f7993c859211351db41f22b517afc52d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-smaps.txt",
+      "bytes": 10231,
+      "sha256": "62e26cf110eb9b529189e8e60037853100e01cb4cb035b0fc41db03b843e35f0",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "856df2513805852fcc415551b3b3fa43b473dd0ebfcd3c418be3a4ad03d976ee",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-status.txt",
+      "bytes": 544,
+      "sha256": "36074bc6965ab50d4d0508a7d854b629c5d296b0a0093c8f888ec59b2c34c6e2",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "2690ed852dda32d7124ed2927a503eaa674793e2f299842b1df3f0daee26ae5f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/A-VM-native_memory.txt",
+      "bytes": 1137,
+      "sha256": "9bed287bf81f61fd62d32f687671df67dfb45e19f20172fa5524c999614eb063",
+      "uncompressedBytes": 4686,
+      "uncompressedSha256": "558ca563e05dd53d896be1d3ac47cfe8f65c704720eedde9f2f98d541c0e6466",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-01/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-01/timing.json",
+      "bytes": 679,
+      "sha256": "3b7a31b07e56e50e9050270ca42cd4a15e446479fe89c1a21c56399993ccfd12",
+      "uncompressedBytes": 3213,
+      "uncompressedSha256": "bd3c6aee8bb85beea69a13129ee249089efa8fb8a1b14b0444604d47136b4ffa",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "08db078b94d5cdc1fa725826c72664051ec2cf04e19ec2e1e688844ae3c185af",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "2367b1b1c2ae6b6684e23308a57ceb5b51bd3130f9c7438e9b84122bde744ac6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-cgroup-memory.txt",
+      "bytes": 397,
+      "sha256": "e2e504052f053b83c887a5342b1555b399bbca4b6d3820562b79cbee6e5ddf66",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "d0d452a7e3ee6af143bb7688ab4a3a7d6a2b8db621f2af6a97553c13396d26c3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-Compiler-codecache.txt",
+      "bytes": 319,
+      "sha256": "d4bb2feb48acf7dc68ab0a06040c92ef54a20c7323eb05b1cc39e342b9929393",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "a8b3615af5c963a492748784d4d654220f9720b73157d2a45d37b10eb39517a8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-GC-heap_info.txt",
+      "bytes": 204,
+      "sha256": "24eef7dbaa68af2b90c8aa1b3c11662f31ff31d2b45bef8bfcf7834c459a79eb",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "9ede511102e544182bc807427e71d171b02816b623305037196c633f4667ddd1",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-native-diff.txt",
+      "bytes": 1004,
+      "sha256": "5578ec9c5a8fa5a71039ff116538d404c7b2c8c90989651dd17cfe5bd9c640cb",
+      "uncompressedBytes": 4023,
+      "uncompressedSha256": "35a3641be354f125ac0d5f26942c3e2cdaf5dcd159a2a481b49e7bece1eb58cd",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "c0a200d68d0b67c44333001934d455a630c2d4ae1acba66bf8e6a4539b777183",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "eb4d5123e191b8d4139826ced0cd8d307836bcad78bf56fb6a15cd2ec7c87615",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-smaps.txt",
+      "bytes": 10246,
+      "sha256": "12f3aff327b8142500064556a4bb485cdd7cdacdc3189b4597fb49391cc1cb89",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "51b7d46c39dd6863db5e47ba2a523d8e15dcaf5a2352cdb27ca363f6a3238a50",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-status.txt",
+      "bytes": 544,
+      "sha256": "f6041e24503c3d8ad40a381cf457491b01f85372906fb329b0d3ba838cc473d8",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "db4472dde99a80b264ccbcd316ee99defffaee4279d3ea780bb0f344b54e96d1",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/A-VM-native_memory.txt",
+      "bytes": 1121,
+      "sha256": "c1a029480c4e7271e714e79c665ca48caa157fc064f26466015480495be13734",
+      "uncompressedBytes": 4666,
+      "uncompressedSha256": "d276d1dd54dfd696db9aa907ef7bf454a8e1a8f03d9c84d27fedbb7db4857f40",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-02/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-02/timing.json",
+      "bytes": 675,
+      "sha256": "91cfb83e75c8754fdef5533a2c6fa468c0339544f07d10a10a2339da83ab3ad7",
+      "uncompressedBytes": 3219,
+      "uncompressedSha256": "624c2f15075ae88730c8d6db023b7e597c950756a217d8de20904dc5503a952b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "a2e2f791d64603fda3be0547e4b4696c6db7ae600c00520fc6d302c0a7067f0f",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "08016ed1f86d617d7694e8c3cc843688b5a9d42d64713cef2910d56621d6b556",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-cgroup-memory.txt",
+      "bytes": 400,
+      "sha256": "3c5ea73cc453cf41ebb12ef676478558ffd6994e5deebe2685bd6032b61c2137",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "9562b4fd05121ebac67e703ac5a3ba822234256bbafd0cafab1620e346fa6473",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "3ec4b2feaa9c261b0731be0161c12da54c61e39a278ad8f048e66107963706ca",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "d600047a75f4bf10143176702500347a8a78a415b892efdc956a2653fdf1b264",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "7e1040f993eca6ac22c3412c8f2e515dc1f9626a331b49416279ba3ee9f2e4e1",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "6de49b3ddc25cc589d8724a6b73ca2218824bd130823dd8746f3b04ba478afc8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-native-diff.txt",
+      "bytes": 991,
+      "sha256": "4557568d126db67817c6b05b8b10072a7529e4d348f4755ba43db702dab79942",
+      "uncompressedBytes": 4027,
+      "uncompressedSha256": "c02b598b9d52750c42080aaa82358545aaa40f54781c5c0b6e7be8254b509555",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-smaps-rollup.txt",
+      "bytes": 275,
+      "sha256": "88c29835a28a6f7ed61eedebe76eb838506f687b7acca927def29d7be939d1d1",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "d688a3dc37ed6cf30b4a1e4f3120a9e2a41fc8c07a157ceadaae01d87dad59c6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-smaps.txt",
+      "bytes": 10265,
+      "sha256": "63f59ca1f0c98258302b66033146ea5b3a1d79471eab1df589c594aeef1cd648",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "38dfe47ad39fdf60d901f4017b54feed2c207b0fd9ee1f635fd91c3b8c530c19",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-status.txt",
+      "bytes": 543,
+      "sha256": "a8701fafc3cd709c41f7866deaec770c07228c94781d829e05114fd2c7eda76d",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "ce09aa2c89ce966e63274c099500486ddfd157041d1f8a672e05ae8cc47986f3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/A-VM-native_memory.txt",
+      "bytes": 1131,
+      "sha256": "0e28f1d2e31e270914b72e67bbd3013e19c24a0c949078bd3c9455d1ef88d5c2",
+      "uncompressedBytes": 4675,
+      "uncompressedSha256": "4010e74bcc8a65e25fe3544dcf57ae3dc9943237d08061400874c0662aeac9d1",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-03/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-03/timing.json",
+      "bytes": 673,
+      "sha256": "6269976c291d7e01e77c81b1c6b366a12aeb11a83b0cfe8f51cfd85a286932f0",
+      "uncompressedBytes": 3213,
+      "uncompressedSha256": "0f181b45c9d21f1ed9cc081a6285d782433d7de5dc46986dca8e738918f2eb89",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "e97649b6edca21fbb4e6597cd956605ae6b6f2170d65b89748760a513875c445",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "22f2450c6faf115f9d5eb8129d0e8448cf646664d014b1e2b3fc777c4ac67c07",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-cgroup-memory.txt",
+      "bytes": 400,
+      "sha256": "36eea3179f44f18ca001a1936e8aa0bf4ac510088545fa2633d855cd7d6f8db4",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "38a1a38e760c3406843de62f7792ac6cebf539cb8586ffe2c707e564e7cbcabd",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-Compiler-codecache.txt",
+      "bytes": 314,
+      "sha256": "dfb17c1aff6794d0e1c08dc6dceafaef8a9e918c3796ac85739360cf73ccf54e",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "0ac28eba3cda02148f6a53952606d136f721eb0d868996758b97b89a3bd2cfcb",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "3499b91ab98effa2483c7fa6f525a282f1c41fc6409b67ce3a0f5d1a64a606d9",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "d1762a8e0bb1d9f6a20fccbfd5ff2a48fff7c3a7f20dead0631967f745e9b5ac",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-native-diff.txt",
+      "bytes": 997,
+      "sha256": "aaa891afa5d3356bbaeffd30f04fded5695be885a6d8e43513213cbc5cfd288b",
+      "uncompressedBytes": 4022,
+      "uncompressedSha256": "02b9cba2de40114e806fc8197a8155e262b54e333b89cde39b7aeecc1aeb84d2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "c471d03d2136aee4acce1ffaa9d50f4ee32929129da9fb413b8888bc9b5590ed",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "5e2298e7d0a18b0e9428a715907c6b1e9358c0555873e7771da48bcbe9bfae0b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-smaps.txt",
+      "bytes": 10262,
+      "sha256": "e0b8f01f5d04f93416f2d178932a63519193fdeaabacffa50d8af292ffbf0775",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "c3117ed952ce956469592448ba06d2a50af1db1002415811a7911e97e49c7649",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-status.txt",
+      "bytes": 542,
+      "sha256": "608124ab65374e867ef0dd0785cdc1b665e275016d1252d5d9d1054fcca2b9d6",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "c36441415c66751ef8ca218238f9636948f6dc6940a0556f5197227d8c2e67f3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/A-VM-native_memory.txt",
+      "bytes": 1127,
+      "sha256": "26577ec034610405ee8f81c14738424c3142b3fb533046c7d575aac0410e7117",
+      "uncompressedBytes": 4671,
+      "uncompressedSha256": "bcf50301c1e224280b05aa9164d9505514a7ef14169b30e4fc46e49892bbd9f9",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-04/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-04/timing.json",
+      "bytes": 676,
+      "sha256": "0dc2ab399e7efd2599548306ed07061c7a57b5a564964dfe9495f51b9eb38acf",
+      "uncompressedBytes": 3217,
+      "uncompressedSha256": "cff9f2281f27bbe21a8b670537a3aae6ae3cf47585cfaad3dda644e140d7e5fc",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "621e04a348aaf3c6dc106e7f9bcbcf7f52472c46cc008990ba1c30bfe32f72ca",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "c53897c091cebafdf58b350b052f9bcdbeb7e27eaed1d689ee707a496de7a766",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-cgroup-memory.txt",
+      "bytes": 400,
+      "sha256": "b181ac39ba7e4cd043867e098688a554ee14dd74e3649384d032c75102f05217",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "8c01b44fd0ca6d2d2b918df802c1669fa002cfcd3fbff74875dece98786fce37",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-Compiler-codecache.txt",
+      "bytes": 314,
+      "sha256": "b1e600d777d7b519f5edc6370b5759e44e7570e7e38f42a58eb3cf6c4fa75d2b",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "84d7a24690274b9ef417806711955d6567b3a04b12e4a863aa8ebf546ac37f04",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "b98dc619dce76702fdb69a168001c3da7bc35e3f48730e411c3fca51d2ca8a16",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "f0a913359f020d1b7499af20dfe6ca50363f94a52e33d611955a29c0e9632a93",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-native-diff.txt",
+      "bytes": 995,
+      "sha256": "e16bbd562a213c546cd780624e4239192bbe3b0509f31b3784b3f87c3341003f",
+      "uncompressedBytes": 4014,
+      "uncompressedSha256": "9ae40b09e7dd34445cb5d75ba73b91035ab23d078f5ef42dd1a30f81f011b971",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "3a43732bc67aa867eac23c0f0613d456c36434dbb5af7508628215d6965d35e2",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "440072aaffba664d34655e96cb45a3e6be098b2d05b040e5d3e1d31ee0d6fc12",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-smaps.txt",
+      "bytes": 10257,
+      "sha256": "b699b39d5051ebaa2bfab64991bfc204fdaa1ea2824f8c3b7d2342d3a54b8c15",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "f6826119e9fff0611d70f7a33460de8314e48c68d1b1b7f459c2a396540c0a72",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-status.txt",
+      "bytes": 544,
+      "sha256": "17b4f25a769fdf74d1513fb52c4c9fce3c8978d84e5e744279e91e6767eb9efe",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "8656deb9088db13fc371769a3d63bc6d1b8993868935398b52ccb040bc0b6297",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/A-VM-native_memory.txt",
+      "bytes": 1116,
+      "sha256": "806f719ef3e4cd8454192050055ffddcb3fa9e68fce6b26d07484612517caf84",
+      "uncompressedBytes": 4661,
+      "uncompressedSha256": "d83e64e3f5a9f0da45ded4ffcb383adf490319b4e8dca482988a79ac9cc420d0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-05/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-05/timing.json",
+      "bytes": 676,
+      "sha256": "f109444b3aab04346f94b937cd911ab731cfd8359d8140f139f2198eaa1ab311",
+      "uncompressedBytes": 3218,
+      "uncompressedSha256": "4383ab28ba58561ec23beecc2eab64fe3199a4c308bf465739537f699836858b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "b48556951afab4553a678f9201ca45e960339dc4cd0a24d5bf30ca0ed591b7a7",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "ccc5853640f3be15dc24563807d35e920cbe4a6972e92f4f1cabe6304cf7953c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-cgroup-memory.txt",
+      "bytes": 399,
+      "sha256": "5d984e2eb45870ef147cf6993dd66a8ea9af4daecc37432f349bc6cd3868feed",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "7e29ce3b1383879a62e03f71d229761f92aec94e6c8603b274547e9e538ebbb4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-Compiler-codecache.txt",
+      "bytes": 317,
+      "sha256": "2c61de003137924d48e3fd6831cbe2cc0e2ca6715512d4fe73fe110aed8937f4",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "2249f78a4d09b5229295bb78d0fd2a5a90da1f03cd313a71b7d7e4aee5b0462e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "1141e26c51d918ad792c39f5a57bec1d83bc6c432e0c3d99af5cc15013f0fee5",
+      "uncompressedBytes": 284,
+      "uncompressedSha256": "529f30b5ce3fc9fc9d16ff2a18a69e883b9159bb6b53aa7263066ef17402680a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-native-diff.txt",
+      "bytes": 1010,
+      "sha256": "d24b38b30a57b4330a749f5433511984131c1887eeac2688075ce38268ef2bcc",
+      "uncompressedBytes": 4033,
+      "uncompressedSha256": "364063a76dac77d2d69ad6eba6da71a67b37443d5f0e14863d66f90aa15db09e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "026d886771b70e6c3122011fcd1349bf57c61cc3e2f2497aad469e5e682fc68e",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "b1c543c473739caff12d8b1b386a55c2f0c127331a34379e9034773c7344a494",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-smaps.txt",
+      "bytes": 10276,
+      "sha256": "6f0c75b0a8df07c5a4deb59b0f8069ea95811dfc32a2e449df486be98ff8751d",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "7bd68173c129cd208e05e64ea79623a62545ac4d14ca18966b94e2bd72ea7f36",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-status.txt",
+      "bytes": 543,
+      "sha256": "36dca0e6f53fdd97640bf7be52a48851821b8f6f419f441af0efb98d2aff5f39",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "648a0f0b1d349009b5d6778c504711925225c905462f8c161387982d943f9fe5",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/A-VM-native_memory.txt",
+      "bytes": 1132,
+      "sha256": "274d8385d523c9ac3cfdd7429190b3f88acbc74bd9d5e225bb0185e0b1247e03",
+      "uncompressedBytes": 4672,
+      "uncompressedSha256": "9c8758bae066fa75915aab4f3b4f6a22e60331389616a2163db8f8eaf66581ec",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-06/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-06/timing.json",
+      "bytes": 677,
+      "sha256": "77e750305f94b6db179214a69bfb8b9755b73a626df0dc3b968143fa10a921dd",
+      "uncompressedBytes": 3216,
+      "uncompressedSha256": "f0cbee3d7358a2a64651bb85d30f37e766f2c755ebea2c3d6f4387ff294c4a52",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "2a8927f4caf6a4d87aa99c1b23dc13df4c06fac8069c8c57c716eb503ec603c8",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "053bb69d58099ef38059aea5ed56211bb1a03e385f271192773c710a6c8bb8c9",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-cgroup-memory.txt",
+      "bytes": 400,
+      "sha256": "b1f2f952991ea331fa840be491b2a12ab2f522c0bf03be0b2522f594d27ffdcf",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "45755fd5797f5dc6aa1932573fdb288216138c8ecad1d109755acac7e7abe33b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "8cc6bd762e916d71927c9fac6ec0baaab2952a13c0b7a05df869283547da93f2",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "dea781c6567a20e1af9e7dcbb62d600b5268747d2e14d97e02300849dda691d6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "55bdea772f0f1f2f5250f2f48f3f6bf4b6289e1bf39ec0922043f33690c219bc",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "d672a19b68b66af7b3a2f59eebe85902ff1874dc326c6fbdfa08c377bcdd6640",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-native-diff.txt",
+      "bytes": 1007,
+      "sha256": "8dd1fbb0401bf6588dd60b3d01ee27bfb4f11aac195b8f020bfe19e3c548fd93",
+      "uncompressedBytes": 4029,
+      "uncompressedSha256": "d465cacf43390c5310b873f6ab1398280565628e6dcecd7a35daca3da2502fb0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-smaps-rollup.txt",
+      "bytes": 277,
+      "sha256": "75e464c9e33103929ebcb9ac70dcecf216a22217fb958fc5fb723ca1d855d25c",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "3b21d778bb7ee1a1b81cf5d924a932ad53cbdd58bf6ca567bc8bbf4d5756d48d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-smaps.txt",
+      "bytes": 10301,
+      "sha256": "1135738950691f3bf23ca922f11261bcd8268c02dff4a98c1b28bfc0cfbe3ce0",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "96b63950383837c240f035723a106f54116130118554d0ec74842a2641d6cf39",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-status.txt",
+      "bytes": 544,
+      "sha256": "306ca50b46ffc1f36e4729949c8cc92293a681c721ec16ba5f0244819beb625f",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "6dac272e326fdbef0135259cf72b023eaa984088db105d8e95eab41c89a5c6f4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/A-VM-native_memory.txt",
+      "bytes": 1126,
+      "sha256": "50ac4ac3e94c50ebd97ce71333a5d19790a2ca4a0473f9e1f82affc7c56590a2",
+      "uncompressedBytes": 4669,
+      "uncompressedSha256": "5c4c5e8aeba272902cc1adbe640d85a0e23d82bd4632f39518a334bbbb03d0ac",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-07/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-07/timing.json",
+      "bytes": 677,
+      "sha256": "969aab3d34cec6f63f8e3263c4e06db97fe2d25f85a47f19b529613bae2888e8",
+      "uncompressedBytes": 3217,
+      "uncompressedSha256": "b9acf05211520f1f2bec67ffb51a3d98a1b9670bd0620c9aff06ff5e8d00fd8a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "817add02b0e1e21984bedd7c078031308686b9f652e3c0445f9197f1be846cfa",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "8457d017053e59b6e3d219900dfc62c097888b5c827e28c0d4593b2484097ff7",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-cgroup-memory.txt",
+      "bytes": 397,
+      "sha256": "c09819d0152abb869d7f455606fcaf2c1b944a8fbd744d579fd79b28fa786868",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "e03e7554a5560ef8fa4c039ed72fa36e7ee558ec8511ed7f248f7b238ca77c03",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "561a1c7253621ed5a32b53ceb41dcff336acdca5daca733754cbc46c8e6b34af",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "a0e63589e7af3a1f05b07158e0ab3ed7f876dd9f0bbd69452d9b975dc3043cb5",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "cbbed18dfbfa6ab2acfb957c66d08c7143aa75e5c3ef9a1f80d10a1d9b2ad713",
+      "uncompressedBytes": 284,
+      "uncompressedSha256": "3eefbe0ce9b41e7cfcad52ff9f8bd53c300c4226af95b4fff066c5ec276cf522",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-native-diff.txt",
+      "bytes": 1000,
+      "sha256": "c40261f2eb217b87ce3b034a23fd6d061b3945bb7342a3f96ba2215e38354451",
+      "uncompressedBytes": 4038,
+      "uncompressedSha256": "dc20583a8f323cc36f45233f45628519269029d130640c87565a0edc006def8f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-smaps-rollup.txt",
+      "bytes": 275,
+      "sha256": "b4e03927b094e93600a820e66ecb992edc022615214eec141e034851a58b2301",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "f163e285839eb000525754403af8296dd83c04e90b25c9d6ab6aa260f10f36e2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-smaps.txt",
+      "bytes": 10302,
+      "sha256": "c7693d5d186ddfc37c35dcae277ad85887d6c8b7ead4f5ff181b065d719dfbb6",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "f81d3ede8253b822d084ac9d83c4d39a37d5ccd34fe2eb1ccd11693b5ec93534",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-status.txt",
+      "bytes": 543,
+      "sha256": "b56156f4e0e969a4aa272fc7d46754a38d536531fe6ed18afb1362ac0ce8592b",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "76e371ff0b9bf18a1ce37ceb9688bb3c86dac1b953e18e9def3551322dd808b9",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/A-VM-native_memory.txt",
+      "bytes": 1125,
+      "sha256": "416753c5341948c9d639979238d6f2e9744fb39ad0a7a7e1ed400c92d2a24c4d",
+      "uncompressedBytes": 4675,
+      "uncompressedSha256": "9f5c43c6e04ba0a0ddaffd92f61a3124dc1c8c9213ec7a43c099f100a19572e3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-08/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-08/timing.json",
+      "bytes": 680,
+      "sha256": "4a013105933c203dc931ab5a32cea74560ef2ee2a51af32b19cc2ca93530fdcb",
+      "uncompressedBytes": 3214,
+      "uncompressedSha256": "7860471321824923363b5561f96748f452b94481538d8ba5058d66347b96a9a5",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "6fedd3d4ea2b6f0e5d93cc65d18767a3793ec4d14f3fd5da08cc4164eb1646ec",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "962561179a169b8aa542e193050bdb47c98bac8bf0f034ecffec989405b6310f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-cgroup-memory.txt",
+      "bytes": 402,
+      "sha256": "6cbcc382c6acb4a672daf35c28f226bfb2e2afd2a29d3600bf40e11bde9b96b2",
+      "uncompressedBytes": 859,
+      "uncompressedSha256": "1a15bfaf86b3e9ee1a5e66ebd2099b96501101877cc2d830cbf44bdd85f891f4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-Compiler-codecache.txt",
+      "bytes": 314,
+      "sha256": "7e88731adf53f0c09f6e082ecd892e15a4f03c53b08dffdac5eb53c75a960995",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "e98c93a38e8939699bd7502a369765eec1b9720cfaaed8c39ddb59603fa45bfe",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-GC-heap_info.txt",
+      "bytes": 203,
+      "sha256": "6daddfb9f7e507f49ff67bdf9637838ece495be0a09d059c4171863e2ab1fe81",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "9fbea3c99b726e364ee459b8da19bf577da85ed375443606c64bdf31f93dfd1d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-native-diff.txt",
+      "bytes": 1010,
+      "sha256": "ac024f9f172203e8a1df1f653792550ef6681af55a2c0cb937d156a6ea7e3a94",
+      "uncompressedBytes": 4046,
+      "uncompressedSha256": "3e37b59ee2c99532c9e5a6b3322b0743255bb460e581af6d966157506fb2b8ba",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-smaps-rollup.txt",
+      "bytes": 275,
+      "sha256": "7ce17b0c1b4fcb39c400a9b30963002545d7eb638cd104f479c6627250e8b868",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "6c604b82938218c5b871bae55743010e0de2d59707e37d4f6f9f88b01d0f1e2d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-smaps.txt",
+      "bytes": 10323,
+      "sha256": "64723772d470f196945658e074f7efe61a2cf93368597bd8509f6ab1b4b65371",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "f61eb866bbdbe0a8dc2b898eece5fe51b2b769bf11d20849a1d00f71e28fa841",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-status.txt",
+      "bytes": 544,
+      "sha256": "77746dd52fdb7a3c9c8dba1e90b03d88384a030788601f8f214ed0b5b95b335a",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "496265b1a32b176245e7b8a73f11007e50771f513a612ed9c685d4fa93fabb2e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/A-VM-native_memory.txt",
+      "bytes": 1127,
+      "sha256": "04028a8c98338bb274e7485c574a207ca4d2a1fbf3d66bb89fcf66cfc0e635ce",
+      "uncompressedBytes": 4670,
+      "uncompressedSha256": "1f38a243bd8437c2e535fb942bdd0968641165eb18e9fbd66be08d9f2c96b0c4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-09/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-09/timing.json",
+      "bytes": 680,
+      "sha256": "dbd4df274d122d31ce0fefef2c00d10a78cab38aa9f9f86c364e6d5463020302",
+      "uncompressedBytes": 3215,
+      "uncompressedSha256": "7b750a737d6b0a51398885fe300caf9772f2902d0d6bfe6878636b54fbd2c643",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "7e4e4dc857a2cadb717a90f6ae7e2dda7ab9141aa89478953b7c53fcae9f937c",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "cf56cbfae9ce0f7d993c2dd7d900c6e8b9754501b978401b8dae4c4edebc7f8a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-cgroup-memory.txt",
+      "bytes": 398,
+      "sha256": "ca2bab15a7db82000c68e0ede8d6f838a90e2d70a61c2efeaf9aba834d71cd5b",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "c53b79ba9edcb3cf51cd473197de75a11ceebfc61966624d8f90435dc1717cf6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "95b78feefd2b317759f36634b958940a562d59e53597b274cd496cb910f712a6",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "ac9579edb22e6fe56fcf420db0b9075fc30bf5b94606bc10ef2ef1daa9c29727",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-GC-heap_info.txt",
+      "bytes": 203,
+      "sha256": "9acfcde9f9e826ccb1e8972d8f42a31bfc6cf131ec823cf33f7e0d8b2671dca6",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "eba0d917fe025e968e22c71be87b0440ce9bfa63156b7ff5186e9fe83703837b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-native-diff.txt",
+      "bytes": 1010,
+      "sha256": "f167823f2cd8420cabac9c81a3273245bf58b09e1e8ed9f5078c75dc08dc165a",
+      "uncompressedBytes": 4034,
+      "uncompressedSha256": "636fea67ac3bdb2222da6c1bb4b2b7512dc6e098dfd6bfb3449ac5c24463554d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-smaps-rollup.txt",
+      "bytes": 278,
+      "sha256": "0c3d81cd40713367f5e0ba6b3d305fff76648ea0446bbf9a4fc2baba3156621f",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "13608c24e030cff136422d973f20ef7b3468bdea759829f35ebb61e52c3ab6f7",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-smaps.txt",
+      "bytes": 10302,
+      "sha256": "9ac60db053979d62e4d635c38f3bff5bd6f4faca0bdc3f6c181cc7f89b122a38",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "933d872c58e327bb70254cd5395b4326a898beb6c381c83eceb8c0262e94db56",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-status.txt",
+      "bytes": 541,
+      "sha256": "1d72869973942e702579486ee4368b4a9219aad493a0cb4824a35d88c9da1934",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "5124a75ff68de3773a1f7f30972bb61435f297e2e1e1e4ab36bb28d40cd01c27",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/A-VM-native_memory.txt",
+      "bytes": 1124,
+      "sha256": "d964068dd6e45ef21d4a33e0e06fba5c461c135c387402ff906a3e2de141b82f",
+      "uncompressedBytes": 4672,
+      "uncompressedSha256": "20fd6be3ca3dd174d96737250d9cdf22b567d6da008d1b819f5c8adda65c7d9c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-10/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-10/timing.json",
+      "bytes": 682,
+      "sha256": "86b749c348d4494eee17b10b5583a05b0a1e5d8361eb57ac8cada79c225cce5c",
+      "uncompressedBytes": 3218,
+      "uncompressedSha256": "b5824b1ba4ff177913be8189b1b8a6c7078d3f2f2e4827241792eca716011643",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "4444a8b69c7027e9cbe08023c4bd4b1f783c38ba1b3fb0bfe437e0d70cad3bf6",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "f8c4b4aaa848ade6c1fd151fa995639aad4b9ac897069432a6ec3275aa5cc511",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-cgroup-memory.txt",
+      "bytes": 401,
+      "sha256": "a2cbdd71e58fcd161010e62ec109c455f5529ed31a841d09d4eb25b4aa1a388b",
+      "uncompressedBytes": 859,
+      "uncompressedSha256": "70f20bbff6f1535150c316698a143835afa31699abfd82143ba5d58f73902cc6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "5223738120ad8e768786b4f707656e5779e4ffd1f8a30b40c2220984ab0f8df0",
+      "uncompressedBytes": 656,
+      "uncompressedSha256": "468621edc5c93c481439b7d2ab348cd27f6a3d395992befbe8433f1042026601",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-GC-heap_info.txt",
+      "bytes": 203,
+      "sha256": "05a56c832d22352f9cabf4690ac33e167a17dbfe8a177dc2b3e4970dfa41b35b",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "49c512b0331bd0378082a28d1e7da6d4e813f26b421f6273e19bf0b161e25cc0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-native-diff.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-native-diff.txt",
+      "bytes": 1003,
+      "sha256": "f65e90f41e3b9f672cb8fbe68fcb4ddaddee10b14b99098c9d674b03b87d5b30",
+      "uncompressedBytes": 4030,
+      "uncompressedSha256": "c73a81297c34675ad5c5f3846c39449680e4fb7500d40921c888f9a793e03097",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "cc12f200305d82383afb0fcc39fa86cf87cf4c6cf40e828fe7b5db6584f00a9c",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "febb4b0037154809c5e0623d0db107d57bbebbac964cbef21eb46b7fd6361dc3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-smaps.txt",
+      "bytes": 10318,
+      "sha256": "7e202caf73b7f2f59ba0e9b20cd38fa8c4dcaaf1b5693dc9f89cecccf14f3ead",
+      "uncompressedBytes": 316398,
+      "uncompressedSha256": "5c5ed12cdd20d5ce341ec188c7d0b3932b4d1c980f1a46b18a0f8c71e8aee1bc",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-status.txt",
+      "bytes": 545,
+      "sha256": "9dd90ab728d5525784b6f8fbeeb013312dc336dc88f5976482fa8a520e286a7c",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "9d48c22f4b563018cab4e3f3c2d9201fb5498499bbbfa3e02d61ed84d975a405",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/A-VM-native_memory.txt",
+      "bytes": 1124,
+      "sha256": "3280e1ad0b2ee35f019a5f67fab1f4630f2b01b37573a85ce8e8dfacab9587a8",
+      "uncompressedBytes": 4666,
+      "uncompressedSha256": "4ed9b6292736546e432f6e263844306a03813e60dafe4bb6d3adc18360a0674c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-one-hour-1000-11/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-one-hour-1000-11/timing.json",
+      "bytes": 681,
+      "sha256": "2848d857397f6df5539c3c26d7a953e9f5064537aacedf709b93bb0863e625fd",
+      "uncompressedBytes": 3216,
+      "uncompressedSha256": "58a5c77ce0c93a00e7495c8a9c6381865fc3db3c63dcf0216d3784cd3a83257f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-cgroup-current.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "a8c71a99e27fdd3c5e881ce528bb4ae39390ada651eb3c4d80fbb4fe16ef8e0a",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "188ed0607d336e173f384b7c8bbd9954829ce9b76166f0c5ca3c47a5940c22d3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-cgroup-events.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-cgroup-memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-cgroup-memory.txt",
+      "bytes": 398,
+      "sha256": "2cdfff5340839b6377feb1854b1a96d49d804321c48cb7fddeeeaa2f32e1ea71",
+      "uncompressedBytes": 856,
+      "uncompressedSha256": "4bb44c66ef70f6dfa64966b4caca8cf46410cc68da4c89a84955c1e75a99e3fd",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-Compiler-codecache.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-Compiler-codecache.txt",
+      "bytes": 313,
+      "sha256": "7f9e5662121a4608807d1a9f62d2384e965bdd1f0040322e2fdf1127618aa12a",
+      "uncompressedBytes": 655,
+      "uncompressedSha256": "e9c563afd6e077baebceaf54ca542c4bec2f1f3c1750cd3e8a3a2b5ab13a7dc3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-GC-heap_info.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-GC-heap_info.txt",
+      "bytes": 204,
+      "sha256": "7c3153d5f50c4c769705666cc7033e504e3b0515bee76e506c397edc4b2f45aa",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "5897600433a28e48b1018afb202951215b343b11767df960b33dbf3e0de990b0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-native-baseline.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-native-baseline.txt",
+      "bytes": 37,
+      "sha256": "f205302470a756cf13f86caedeadcba9ea2a38b9393a97cb52cfbf1cbc69c338",
+      "uncompressedBytes": 17,
+      "uncompressedSha256": "7c9b74e0262dbfa05ff082d9d0b3ab453a13aa528da35b3f30b973ca5cbfb42b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-smaps-rollup.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-smaps-rollup.txt",
+      "bytes": 274,
+      "sha256": "28a0a39ae248cd119881701ac451af07db3dedf99d9fd6a925691b0880866cb9",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "7026c42f6edc658496cc5008bdc06448cf485f79b327550650b8c5e9a33ccee6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-smaps.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-smaps.txt",
+      "bytes": 9111,
+      "sha256": "15cf91be67550bba1bb410c68e0e92e1f419acb5e5c34f269c88b2a55d0c1935",
+      "uncompressedBytes": 283364,
+      "uncompressedSha256": "f01f7508c9913d099900904e0c24dd164c58af0f90504aad0ac1068a5abcf463",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-status.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-status.txt",
+      "bytes": 544,
+      "sha256": "eb9faa3c4ecce7129fbcbf5a1b0e5e00cf4e247b8c833bf2d156368cddf06061",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "e40170833407f4761dbdd76875672a2f2fa6598522c64a49247974487af20d50",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/A-VM-native_memory.txt.gz",
+      "extractAs": "capacity-fixed/memory-startup/A-VM-native_memory.txt",
+      "bytes": 1115,
+      "sha256": "f6bbd7d567c47d9ef1ceced58f70330be6e75c830d9ecba6ea0842bd8d9f26db",
+      "uncompressedBytes": 4656,
+      "uncompressedSha256": "75d440b20f27c06a18260dc4c16915170b5fd7fba0bf65f7ef561eabd0b72f8c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "capacity-fixed/memory-startup/timing.json.gz",
+      "extractAs": "capacity-fixed/memory-startup/timing.json",
+      "bytes": 660,
+      "sha256": "707a8b6d9cf943297fa27c3d3eeda5fdb14577bd422038250c36c836dc50a0df",
+      "uncompressedBytes": 3180,
+      "uncompressedSha256": "c892bcdebb06a3906c7acb8e8f71a0b3ee30a7a79547164876c3251587c47387",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/summary.json.gz",
+      "extractAs": "native-diagnostic/summary.json",
+      "bytes": 601140,
+      "sha256": "35b595d7fc2a7d66acf1b4dde18e7945c67e49f1742e05da302dba8c8dffa4c7",
+      "uncompressedBytes": 17383744,
+      "uncompressedSha256": "dbcda5090385e056ab393ab3889dc142d0c1b5e376589fa9a3143a41bb85fb2a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/gc-A.log.gz",
+      "extractAs": "native-diagnostic/gc-A.log",
+      "bytes": 41773,
+      "sha256": "cc6095b81a900b1fac6e0e57580b756b58fee873c441d70e4324437c421922f8",
+      "uncompressedBytes": 285950,
+      "uncompressedSha256": "33b622b4f985cc5b89edf36ab215674e5b413020408ed52e6570b2fe82dc2b03",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/plan.json.gz",
+      "extractAs": "native-diagnostic/plan.json",
+      "bytes": 564,
+      "sha256": "6d5ff85b094f5bce225c9e5cfc557f9574e58b54a2352ec3466560889cc058ad",
+      "uncompressedBytes": 1274,
+      "uncompressedSha256": "62f74d24d561a5974c3a2e04e8eb33298f79d0b0af31abaf2bd41314da09e270",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "2c8beb747caa3db8d03f4c65e6ca1555e1b86ac1747c01bd819482dc820bece6",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "50d7fd35e169f1c6ae79518a5272750223e2783a2affc3549e4a1665eb2854df",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-cgroup-memory.txt",
+      "bytes": 397,
+      "sha256": "9b72d82d609b0deb49388f948463509ab39a392b67c1125d27e7e1b18bde293e",
+      "uncompressedBytes": 856,
+      "uncompressedSha256": "30ccc7a80ab47a007a4473b49e88832d15c3c794c5f61bfccdfab6bab60b16a6",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-Compiler-codecache.txt",
+      "bytes": 314,
+      "sha256": "b3b30c175433f9e608f24cf3a77d9f3f1739ef74e332cc75f4fa6922bc893c31",
+      "uncompressedBytes": 658,
+      "uncompressedSha256": "d8cb7b400b50649e0534cce26d0e4952199278784ee48ffd4941b74a3b41726c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "fca220e592176006289ba4d11423e93fb7051292c7f1dfd7b32b319bba87aacf",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "0864873ecf2af6c0ceb073ecb367d7a0bdedbbc2dd14c1212d9f6fe9a94a9a04",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-native-diff.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-native-diff.txt",
+      "bytes": 1007,
+      "sha256": "5b73d6849b2b401cefcff6ef81bc1a346ced29e3d12b7b5da72f55ff37f47e59",
+      "uncompressedBytes": 4022,
+      "uncompressedSha256": "56b66d9a1df4ec8f953ee45862ccd3dc0198fc421459fb43385b1e6cf767e53b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-smaps-rollup.txt",
+      "bytes": 277,
+      "sha256": "1c1e15280d6d5160d4334745ad24466ff0663b2a8c5a9fc4a38c7e94332c9532",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "9b1ed11636bda578764139e19a0be07d05c4f59cf6024e3afd78a83c3cf2fd3f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-smaps.txt",
+      "bytes": 10130,
+      "sha256": "184f0b92e9d5d09eb7faf0d53f7d205e591cd788b2134dc881fe87a43b7a0f5c",
+      "uncompressedBytes": 314230,
+      "uncompressedSha256": "599cdaa81d0dab690bb596dc824d5798b13fa6fa4ee96f1042ffb6946fba4e8f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-status.txt",
+      "bytes": 544,
+      "sha256": "25dece60adb0f178afc947272547dffcdce864295e7ef81a410da7fbfe12ea66",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "44adc7c8bd68196d52e088f84847e55feae279330c3384ab41877cdb799ab8e3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/A-VM-native_memory.txt",
+      "bytes": 1128,
+      "sha256": "de66c75a4625a2ec935f0e7eee2df35d01d463e44564030a2f0f01349f2d0333",
+      "uncompressedBytes": 4665,
+      "uncompressedSha256": "4559eaa33053f853a7dcca1a291f4934d808fb0bb50786869fe62dcba5ca63b5",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-downshift/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-after-downshift/timing.json",
+      "bytes": 676,
+      "sha256": "4987783b61208dad10963ecb8e34470dad1db4f01a0f02853f1c99deb7cab588",
+      "uncompressedBytes": 3215,
+      "uncompressedSha256": "425f99d0ae0bf6e292d6784d559a3c02f3ac3ec6b776bd79b6453365b626b970",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "8961b8f8c7982b6f37fba17c91322153628158cba5eda20ca9a5ffbf93f8a714",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "41eb6fac18c8022470e02dee449474c1dc7222656d19fe3e33b6de12cca0ada8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-cgroup-memory.txt",
+      "bytes": 398,
+      "sha256": "b4db079125d71d184fa58a5ee391be6934fc07436aa152714815b2a41bb05c25",
+      "uncompressedBytes": 856,
+      "uncompressedSha256": "c3012eebebb0e8b5503cf92e09a7bd11f13074bf0206b3e63647dbd054446047",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-Compiler-codecache.txt",
+      "bytes": 317,
+      "sha256": "23ef51bf9fe3818eeba758ce20265fff4514c999f4f8b6b5ca634ee3d8237328",
+      "uncompressedBytes": 657,
+      "uncompressedSha256": "8ff920d5df59935efb2558f09f358692508bbf868e2ad08bde85ed424c60fd5e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-GC-heap_info.txt",
+      "bytes": 203,
+      "sha256": "4ad820fc222d086f31e2a0de1eb1bd7cc51224d0be08bcd6cd1d113bbccf6b0b",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "81c359b542beb6b821a19458c2cfb68e7e6f99198f2244a78ba54ebbb8d910bd",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-native-diff.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-native-diff.txt",
+      "bytes": 1005,
+      "sha256": "f5754efedf27591bb5977d8a1983868f159e6ede79785018d4137d7986d9ff55",
+      "uncompressedBytes": 4019,
+      "uncompressedSha256": "aee7afd7dda4184677b8b8a78d303ad6a7bb5df2ec3bcc1dba3731bb8248e779",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "01f00dd9ffce1fe6206300083e8e280d9a91d56715bd57536149e6606e6c3b50",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "56096145d24ce73bb367b32b2890d9b1652f90db3edc5aaf4433729bfe523749",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-smaps.txt",
+      "bytes": 10115,
+      "sha256": "7d3c07a6f7a507dc1ddfa855a2d6ce38e9b14180eff952b9863082a916e08b59",
+      "uncompressedBytes": 314230,
+      "uncompressedSha256": "2106a02d509237957e6b6a499b48135f0627e23f49c5b612f2548620e71e9f1c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-status.txt",
+      "bytes": 544,
+      "sha256": "2542c734870ff21672cb2c723ea4f646cde7c1f45aa545f1c7d80350a4678147",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "0caa8dc4b3267fcafbe4a5236734bb580098ed8b5fd59c7216da984eb96e0742",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/A-VM-native_memory.txt",
+      "bytes": 1111,
+      "sha256": "9bc7a8e0553ff6013da2dcd2baccdabeea472eb933bdc38941afd4a8a50ef91b",
+      "uncompressedBytes": 4653,
+      "uncompressedSha256": "5c7c35386d2af8fce45262e77b8d62ad9597aa485c98baef4bdebdee4a7a80ae",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-idle/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-after-idle/timing.json",
+      "bytes": 672,
+      "sha256": "a1eb5c4e65841f0e200d37c19242e810d04fe5be34aa15d28801941004703d35",
+      "uncompressedBytes": 3204,
+      "uncompressedSha256": "4c6f4335adc982ea260d32332e227c52f5369fe6277469ab54479e7a3a80cf55",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "c3234a70d9e29d19bf256aafa82cb740686eed2c69ad619e84fcc76fa78f4716",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "aa80e0c7e40aa9ef2c8b14a0d572ad01063e95050e5445e1c0d8c13e5e579e10",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-cgroup-memory.txt",
+      "bytes": 399,
+      "sha256": "73bfea208ea99a4e3058e5591b6a8cd7622eb44be5b29573eada3e14c4d88b9b",
+      "uncompressedBytes": 856,
+      "uncompressedSha256": "d9096397b1e3f75684bd9c8789c86009a3bf26edf0f9caaafb6d90609f6fd0b0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-Compiler-codecache.txt",
+      "bytes": 317,
+      "sha256": "23ef51bf9fe3818eeba758ce20265fff4514c999f4f8b6b5ca634ee3d8237328",
+      "uncompressedBytes": 657,
+      "uncompressedSha256": "8ff920d5df59935efb2558f09f358692508bbf868e2ad08bde85ed424c60fd5e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-GC-heap_info.txt",
+      "bytes": 203,
+      "sha256": "68e04f1a6182b7562c1a3d1f091dd0a7d25f97528f5077ba03eec4816334063f",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "9ae0e674c4bf43c4777b5b32fda63ab9831d2db731bcf8e33b9c51defc5feb59",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-native-diff.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-native-diff.txt",
+      "bytes": 1005,
+      "sha256": "f5754efedf27591bb5977d8a1983868f159e6ede79785018d4137d7986d9ff55",
+      "uncompressedBytes": 4019,
+      "uncompressedSha256": "aee7afd7dda4184677b8b8a78d303ad6a7bb5df2ec3bcc1dba3731bb8248e779",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "8cd2e798b0426815f5f7375c58e9df8c616c61a651b181637ed3620f87161f7b",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "01d9f2532c5caf74c58bed5baa2f91b25f522c717338eeb729ad51d6037da53b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-smaps.txt",
+      "bytes": 10066,
+      "sha256": "e932a7253b19af57c45a9c6eb46e726a6694a49a57d752f7fca36b35fd462954",
+      "uncompressedBytes": 314230,
+      "uncompressedSha256": "4d31666142b7ff961f109f7d5af9d37a792ebec4dc2fdb0d9cac4c84b234a6ff",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-status.txt",
+      "bytes": 553,
+      "sha256": "fd6c47450d5293e30627a1d3e0eed0a48e3fa77e913fb1b6ae8c582055e612ef",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "db4c47003af85785a7086f4cd19737d6c40f75e6d995e46d63bed4b2850a1fdd",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/A-VM-native_memory.txt",
+      "bytes": 1116,
+      "sha256": "fcd65f3bc29d97b0cd7c935893058f251587ec189d24e4592d27fe099d9e135a",
+      "uncompressedBytes": 4656,
+      "uncompressedSha256": "2c585de216fd09e5ca602f1cef526aa799cfcf0cacb46a42b5e927b5dd3fe882",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-native-trim/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-after-native-trim/timing.json",
+      "bytes": 673,
+      "sha256": "8091540036ef65d8f71e4855b3f89dc1aa8052151d941201db9f9de3a7a67339",
+      "uncompressedBytes": 3221,
+      "uncompressedSha256": "85f80738aae09b45a809e24f5be31b88c6209a30216991e1b3a28448cfb45295",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "a84ef123342da631b28b03eb2b3fc1aff08f9b3a77236238f25b9a2cc48f8adb",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "cded87c6b6f1d93d4e506ac775371d8148404aed7ff0e85a5e7ea224af3bdf49",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-cgroup-memory.txt",
+      "bytes": 399,
+      "sha256": "b7a227e9872cfe2b44aba24f65b0e6f3a7b4736f75cbbe717f16f97daadfd621",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "45dd8a21057f60bd1cb069f45b5aee79351024cf89489fd34c1a82c02273c097",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-Compiler-codecache.txt",
+      "bytes": 313,
+      "sha256": "b330826cc96f18895d5508ece48ae76838ffed5cc1f4740decbc3048c01e0b69",
+      "uncompressedBytes": 658,
+      "uncompressedSha256": "7b810be3da2bdfc581d950f74e40e316f5cdd77b34efa6362aad53e46ed39cdf",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "b7e2e83ff9cc0ad39cb41aff873d1a2218e5555f8110c49fca44698ac6860007",
+      "uncompressedBytes": 281,
+      "uncompressedSha256": "8fc537cc5bfc39fac1afd8428eaea4e93e4b40dc4a48d100028ac234c66d7157",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-native-diff.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-native-diff.txt",
+      "bytes": 999,
+      "sha256": "199e3ae0ad28ba57cfe64bb59f9b00eecff1aeefbf98292037bdf52c18d0f7fc",
+      "uncompressedBytes": 4016,
+      "uncompressedSha256": "06c7e34a269a49258e362f778da2225db6b54aef9c12f53528e883d84cbe82b0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "c48413e2f9a7355a6225e9f5248a58a3908776fbfe5074882e933c2b53b26ba8",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "dd81adc553a25bbc4aa8552d3a352eb8fd1b7b67349d27eb4783a1384b7ca639",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-smaps.txt",
+      "bytes": 10105,
+      "sha256": "4d8d39747907425446f75352a2c897f4ee025597d1b09e0ce8da835ce0106b45",
+      "uncompressedBytes": 314230,
+      "uncompressedSha256": "18e4b429b75d94bcd068e43ca058953c3e46b181c24fe794631b0e1cfb559393",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-status.txt",
+      "bytes": 542,
+      "sha256": "82f1c65fafb51df35b9e7b2c7cbcf9f0d917624bb35ce520393e31ee45f2b0a1",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "dc18b16a2be54ef655912bde187e55e7d3945ebc8e0fa4ad78702ebd8f91385d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/A-VM-native_memory.txt",
+      "bytes": 1132,
+      "sha256": "f59c9b9e11f6b1c2db36f6d9ecd7da1a7bf26c295b44c7d50a149b987b090b50",
+      "uncompressedBytes": 4684,
+      "uncompressedSha256": "82041cacc663ed840661d906da495ac8428445046c014c039d039f6947cf4c11",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-soak/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-after-soak/timing.json",
+      "bytes": 666,
+      "sha256": "ee50563c440a90307642454ca7097eb3404b055d7644252dae9f19304e47bcd3",
+      "uncompressedBytes": 3202,
+      "uncompressedSha256": "741c164c2cf890ee46c2ecc6eb24e8098054e39efb951a275ec1d1eae600656a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "0bc8f45574efaf9c5c98c0e07e1378e8f8a0fca64eb5c090686898ba83a661a4",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "7e0d2cb2ba24042ea84ee0ab681dc7229df8ebca5f841ce9c74277c9f6ca67e2",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-cgroup-memory.txt",
+      "bytes": 399,
+      "sha256": "ce08d1d5eaa0faf455965ed3876953400a4c537ec33b114fdc05cf4b959d151b",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "540e2c838a5534b7aa5a6f5b30caa56f7a583936448650138df4fc819b57740c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-Compiler-codecache.txt",
+      "bytes": 315,
+      "sha256": "c249ada8f9257ad1086abf5032eaec92260658cd400d4b26d6fdd36d9cf171a2",
+      "uncompressedBytes": 657,
+      "uncompressedSha256": "5d2031f06a45e0788599eba23f2270a1f1dae549b9ad3e7d17024bb70cbc2cdf",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "1ee7cb1a0dfcdb6a29d4ef9cf1f3d5f469029bbebf3143399e35d8c6f96d74fb",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "b1acebfd7fc69fbd4578cc9446f5c4aa58878149ecf87518b86490c4daf0c75e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-native-diff.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-native-diff.txt",
+      "bytes": 1009,
+      "sha256": "4405e10c9e2d4761f26337d2798b9ff569c34df9ad688bd012578201c7c96e40",
+      "uncompressedBytes": 4025,
+      "uncompressedSha256": "ea59edf4c6adf81a07b48e6b1a4f677da768fbeb62991d7bfc4956c2cb1923ff",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-smaps-rollup.txt",
+      "bytes": 274,
+      "sha256": "0fdb5f1fef5b06a54f636d77b1e061d8afedaf446eeb9614c4fbf6adf7a83981",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "da566aea1761da2032f0a436b819929c6026c1254d0f9aa3d76a464be30982c3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-smaps.txt",
+      "bytes": 10064,
+      "sha256": "49fb47ae3de0f11472d7bd0150ea5973a3715707b942a63b7bc1eeac30519277",
+      "uncompressedBytes": 314230,
+      "uncompressedSha256": "7b0d0b31e9b391c911ac9e4d7d8a2323746a76fc6cc413b4da4f3ed164e86829",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-status.txt",
+      "bytes": 552,
+      "sha256": "5c2d5c33666825c85e4c7046b16fbb46a6962ab49111c066fbb7eb1070fa6ded",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "68f8565a653fffd7c83ed88ab2da99b0c9d1b226beb1107595d8d3fb93ac2d78",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/A-VM-native_memory.txt",
+      "bytes": 1110,
+      "sha256": "a98bb6fd13b3a4efabcd0300c4bff82a66a1471ee982480d5b58c47371a2cc63",
+      "uncompressedBytes": 4653,
+      "uncompressedSha256": "682e9d42bc52f52ead05a81970363630e1663f13b855133393a10f6b149c665b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-trim-observation/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-after-trim-observation/timing.json",
+      "bytes": 676,
+      "sha256": "9511696c5bd6431c52af21c6bfb771d9146072fdbd38c8624f76866d2cf2801a",
+      "uncompressedBytes": 3229,
+      "uncompressedSha256": "c61c476be060bcea36c4a9d2ca84ea97d1a5d063fb4f1484944d94b719285041",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "5dcfa8e08bfd008675fc1245352f9defa4ca24976683ac68a8e6fa792bb85b6b",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "ba181918721de695b3e591d5cba59e673f46723de6384369d3d9ab8cfd155a6d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-cgroup-memory.txt",
+      "bytes": 401,
+      "sha256": "16eaea6fe82af6033e57dcc392cc3fff5849a05f30872c829f816157970f0e50",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "a375adb3481f3b2ba133b4e70a39d539e84015260348ddb71bb939149cc9ccb0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-Compiler-codecache.txt",
+      "bytes": 317,
+      "sha256": "094994d4667b1602cd8e096033a4e70f7ae30ed7cbc5ea509276e0df2f1ccd92",
+      "uncompressedBytes": 658,
+      "uncompressedSha256": "52b5831a0353d26cd695e5b3ad1494e156f695f314edd120f70efe9cf4a59ad4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-GC-heap_info.txt",
+      "bytes": 203,
+      "sha256": "9dd75a37cccef551358f4b209b7a66acd6d48b9079e792461cf2f9e3ef276107",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "02abfb91de6c9425953ac5b6874e07140b55d3632c1ed3a0464ad0fae23494d5",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-native-baseline.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-native-baseline.txt",
+      "bytes": 37,
+      "sha256": "f205302470a756cf13f86caedeadcba9ea2a38b9393a97cb52cfbf1cbc69c338",
+      "uncompressedBytes": 17,
+      "uncompressedSha256": "7c9b74e0262dbfa05ff082d9d0b3ab453a13aa528da35b3f30b973ca5cbfb42b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-smaps-rollup.txt",
+      "bytes": 274,
+      "sha256": "4f1d7c96b564effaf094b8628eaa1cb9b32a2b463204198a9b00f059d321b4f9",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "dbd10e08050f7fa11b92d55a6b663497a1dafef31617e2ddc088d5b81f34f108",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-smaps.txt",
+      "bytes": 9918,
+      "sha256": "dfe79c4300f7930fff11145e696b035be656f051ebb3272480ddd2b893c2bce2",
+      "uncompressedBytes": 312073,
+      "uncompressedSha256": "abeadaf548a359734d8ded53d9ee911aa20d3939830e8f7d88306366b4db289b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-status.txt",
+      "bytes": 546,
+      "sha256": "617133ec5f412a807534fa1f2227e0ec8b82a49405213d289d982b506bd9b846",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "862456fbad627bfb689bda8cb96f6241648865ef829c31e51166c08664fb15e3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/A-VM-native_memory.txt",
+      "bytes": 1136,
+      "sha256": "1a2c53499f616722fc7aa2d403bb5bb4483ba82c2920632daab39932ff894902",
+      "uncompressedBytes": 4672,
+      "uncompressedSha256": "9a944e459441b5bf06d45cee824ff9cc22c47b54ff61865191bc5a155f488f7a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-after-warmup/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-after-warmup/timing.json",
+      "bytes": 670,
+      "sha256": "9d50a7ba0794a839a26fffe1d5c7ce43a0f448cd06600384aaa489aa00e7d2e3",
+      "uncompressedBytes": 3190,
+      "uncompressedSha256": "51c17ae5f77386554fee2ef1dddd42130ad821f58826f906733b460a8a6712b8",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "dad37e701fdec4476fd7f54fbb70a5abe85e9efbcf3dade625d9aed91d91b415",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "e6630e97bbaed4a3669f0ef6ad8d6d68411c73307cfa2a6b2835076dd34b76a7",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-cgroup-memory.txt",
+      "bytes": 397,
+      "sha256": "80f43366f0c6b61263132c5c359d7d3190c70bd5c150cbfd987fb0d2dd997181",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "c0cb08fc858d566ac6a079177df2c2f0e9f950ec11b9148d00cfce2a10078b0b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-Compiler-codecache.txt",
+      "bytes": 314,
+      "sha256": "54605d2458d7c129955a268c8d436259bc3ae307ba60223ec587cfb3d24db753",
+      "uncompressedBytes": 658,
+      "uncompressedSha256": "878184168c69e024471b1cbf58e8d8c1eaf53e00971d7a6c5f7e97dd77eac57c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-GC-heap_info.txt",
+      "bytes": 201,
+      "sha256": "9ba7d93e53623ff5f54615c98fcfaa1ff8a4e4d4be16621815ea37da82f8a19f",
+      "uncompressedBytes": 284,
+      "uncompressedSha256": "35729b4808e4eddbb5eaae4bf90f1ee8677a272df1a00a6fb3a5186118113ff5",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-native-baseline.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-native-baseline.txt",
+      "bytes": 37,
+      "sha256": "f205302470a756cf13f86caedeadcba9ea2a38b9393a97cb52cfbf1cbc69c338",
+      "uncompressedBytes": 17,
+      "uncompressedSha256": "7c9b74e0262dbfa05ff082d9d0b3ab453a13aa528da35b3f30b973ca5cbfb42b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "29d1327451faf4223d9cb4b7576c7f157a7121dc40fa30894580f09735cf927a",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "7069fbd0f745d1532391599044f1d77291369b423e6237fba234c30008afe8de",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-smaps.txt",
+      "bytes": 10092,
+      "sha256": "f8aae8bb075fa258f88b849482c622fd6051836f1861380e8bf3333a8818febf",
+      "uncompressedBytes": 313509,
+      "uncompressedSha256": "2d2e9fc4cccc8116884cf41388553543b122a61b425b5a5b2232d85f6f90262b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-status.txt",
+      "bytes": 547,
+      "sha256": "684a83fec5eaff878cdd98932f274528706807a74794040355e9eaf28780cdf2",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "42dc54d334ed4d9fcbb909a0b31438da0da7ee1011914d28be37042ca603c887",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/A-VM-native_memory.txt",
+      "bytes": 1125,
+      "sha256": "6800544e8ac4c4e47176ac44a31f59ebd46c97c09234a2463f3a19b6d42333ae",
+      "uncompressedBytes": 4671,
+      "uncompressedSha256": "20e6253a58aefc87f66b81bc75efafca92053ca0ad4a0de138bf9c6da6286d0b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-before-soak/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-before-soak/timing.json",
+      "bytes": 666,
+      "sha256": "204d6e87d91fc4dfb4f2e35734ef4bd6c3cda10f15041d9afad1d55d12778ead",
+      "uncompressedBytes": 3183,
+      "uncompressedSha256": "84ba62e78183c540e534d9f08baeb7e59a464244dd65a3ffedb4a1572f3e74d0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "d9855e89fac9d5e494e546bffaaf7f5ecdee539a56aed74888a3ac8aeaeddcfb",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "647c446cb5ab0b8b41d5c70b29737ffa79a83978da7f4cfceddf8adc94084fb4",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-cgroup-memory.txt",
+      "bytes": 401,
+      "sha256": "4919a8c0df4b62493a15e750bc37c3f3b98bb4a4355cf55f6cc72c370a951d44",
+      "uncompressedBytes": 858,
+      "uncompressedSha256": "f2fc1460a933b1afdd30a816dbfe48f3f8639fb29bb9d69495774f14b012ac3a",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-Compiler-codecache.txt",
+      "bytes": 312,
+      "sha256": "b80a34c4759d41c948cab43b14c817d101873cfdf3a0da8be6861dd46a4df373",
+      "uncompressedBytes": 658,
+      "uncompressedSha256": "84c427a8e68e1cb92add0190a17cb84b870c6e20d058baf43e3802bcab816565",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-GC-heap_info.txt",
+      "bytes": 202,
+      "sha256": "9c5807eea731219491170af86f1e6f809bd62910994254ba39e8637ea34673a9",
+      "uncompressedBytes": 283,
+      "uncompressedSha256": "c35688edb964bc828f3c0de79465c4ca5481d8f0993a93c6862d88c2b25f9a38",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-native-diff.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-native-diff.txt",
+      "bytes": 990,
+      "sha256": "375823eaf0ff6b171d9f15701b24b768ab1e545ce52a24f49249a094fb6bc6f0",
+      "uncompressedBytes": 3994,
+      "uncompressedSha256": "c0edeed2a1f18ab5055a01953cac825113bbe63ec4c40a56a91e8744b833cfbc",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "e30de15f543e35b0180cd5c2ebb516d0988c108d4820b50c5f8dd57ed49ad894",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "911c97da23594a7f1f253e3b0ba390a417c744f74d154cf48e193752fa42090c",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-smaps.txt",
+      "bytes": 10109,
+      "sha256": "0e67374a86021331740743023c158d788507b6aba43fd24395ff5a54d92c442e",
+      "uncompressedBytes": 314230,
+      "uncompressedSha256": "40373034536a30d7ca7b09491c444a74ea0983adbb1a20392590c7da531ca96e",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-status.txt",
+      "bytes": 546,
+      "sha256": "135a6b2f0f1fa741102544988eb29fbeec6e8870709c7f331509759f6d7e251c",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "efcdf446e4b65ec17906e7f7e20c584fe80018f41fdd1932bd4521dbee45a354",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/A-VM-native_memory.txt",
+      "bytes": 1133,
+      "sha256": "d65e3f5ddb19515e06ea4616cc035ba325cf7bf883c93d74d9748a53c18b5a01",
+      "uncompressedBytes": 4675,
+      "uncompressedSha256": "29690bd9e09840fb955fe6bbb1c8082fc4e50b8aa7a928b118552fcd905b3f28",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-native-conditioning-1000-01/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-native-conditioning-1000-01/timing.json",
+      "bytes": 681,
+      "sha256": "1e44326be6351507d7eaef27f8abf48911400094df7f21559a8dcdac39adbc8e",
+      "uncompressedBytes": 3238,
+      "uncompressedSha256": "d382241880a6f88f4a5715ffab42fb857bc80691db66d97a54a1ddd51033ff28",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-cgroup-current.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-cgroup-current.txt",
+      "bytes": 29,
+      "sha256": "8a52bc91f725b3efea6b8d90f66759f2930573df45d25950d25a50bb6e396ba1",
+      "uncompressedBytes": 9,
+      "uncompressedSha256": "bf827655a43f579a56607c4433608ac8174b44948368733ebfc446ae852ab754",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-cgroup-events.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-cgroup-events.txt",
+      "bytes": 57,
+      "sha256": "d9db7cc0aef32c2a123db4cf8f12048cddc81082f690646380173845434cd902",
+      "uncompressedBytes": 52,
+      "uncompressedSha256": "502e723d4436a2d86d376987b7df901d197c17f64675cfbf4769e1dfe27ae5f0",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-cgroup-memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-cgroup-memory.txt",
+      "bytes": 396,
+      "sha256": "eafbbdf07623daec7e0be6b1c5426349f46b19e5356ce63320e35f0d81b34403",
+      "uncompressedBytes": 857,
+      "uncompressedSha256": "4ae82a99c41b8b43e1590d760e03b89084238eddeb4e94064e6199c6ba4ffec9",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-Compiler-codecache.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-Compiler-codecache.txt",
+      "bytes": 311,
+      "sha256": "2cfff92a336b8bfd27fda875479a7e076165a0905d538e60a22c184656d9effb",
+      "uncompressedBytes": 655,
+      "uncompressedSha256": "29f2c02ed151f0c4433948d0a9e5fa81bf09e5b0df0e49223031e7726f796970",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-GC-heap_info.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-GC-heap_info.txt",
+      "bytes": 206,
+      "sha256": "b5c2fc06af1399775f4548d476a85936b012b0517cbb1a1bd6c23ee86bf7f4e6",
+      "uncompressedBytes": 286,
+      "uncompressedSha256": "fc0e1a3952a6376e277f4206f80b0feaae57a48d6bb54d4b692bdb289412456f",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-native-baseline.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-native-baseline.txt",
+      "bytes": 37,
+      "sha256": "f205302470a756cf13f86caedeadcba9ea2a38b9393a97cb52cfbf1cbc69c338",
+      "uncompressedBytes": 17,
+      "uncompressedSha256": "7c9b74e0262dbfa05ff082d9d0b3ab453a13aa528da35b3f30b973ca5cbfb42b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-smaps-rollup.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-smaps-rollup.txt",
+      "bytes": 276,
+      "sha256": "3914d77e7295e3560525b16a4835d4929dd380fb8c006d062bce978f9a97c791",
+      "uncompressedBytes": 697,
+      "uncompressedSha256": "e1348edc75d298134514d7af828a94ccbebdf6897a247a0d813d1bbd2989a12d",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-smaps.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-smaps.txt",
+      "bytes": 8960,
+      "sha256": "200458208eb6fa1f818fe6df90068ad3e55d0fe7431bdf163f245a0ca60d686e",
+      "uncompressedBytes": 281196,
+      "uncompressedSha256": "13593e4853c6759742a7aeae0dc3648e7ed86dec7add408a23ae5dfe7e39bfc7",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-status.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-status.txt",
+      "bytes": 553,
+      "sha256": "68d3f99d038ad58b90972917ed3c8db693e246e9234fd632d135ba3cbc4fcf82",
+      "uncompressedBytes": 1402,
+      "uncompressedSha256": "8cb1c382045730c52228910511dead9b408cbd304f1c13fe60b136ca4d0ddfdf",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/A-VM-native_memory.txt.gz",
+      "extractAs": "native-diagnostic/memory-startup/A-VM-native_memory.txt",
+      "bytes": 1100,
+      "sha256": "0d0fac60a1845d27575a0262f385c6cbf70e69584ee13f7748b55bea4a30b2d9",
+      "uncompressedBytes": 4624,
+      "uncompressedSha256": "eb0ca41f67b61d879c03f6bca7ed927b4ad077fa728d234405c5e7bad09af694",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/memory-startup/timing.json.gz",
+      "extractAs": "native-diagnostic/memory-startup/timing.json",
+      "bytes": 659,
+      "sha256": "c5db8b4f2e88670e30022fae3d98e8fb2ed77f1230d1308bcf2b8d54a56a21ac",
+      "uncompressedBytes": 3180,
+      "uncompressedSha256": "2d1e23dc53f57d742e28eac053abb96dbc48d871d786465687774cdd60965aa3",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/before-trim-native-heap-info.txt.gz",
+      "extractAs": "native-diagnostic/before-trim-native-heap-info.txt",
+      "bytes": 7287,
+      "sha256": "b9041e50065519e4aa8870914c16dae15fd5723f1994331ea5f9aab449dcf541",
+      "uncompressedBytes": 60496,
+      "uncompressedSha256": "dcc74bb20dcb35227c6eda518886354e8739a0ab15c269b3f5ac8cdf53ec47d9",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "native-diagnostic/after-trim-native-heap-info.txt.gz",
+      "extractAs": "native-diagnostic/after-trim-native-heap-info.txt",
+      "bytes": 6933,
+      "sha256": "20eaffed369c54debe7c819f471f1b568a5933e610192fcd78d3919009d66f84",
+      "uncompressedBytes": 58153,
+      "uncompressedSha256": "7d21fc6b64854d7604beb960fd8519c9e762efed5c3e43edfe8dd90b87e28f2b",
+      "format": "gzip",
+      "transformation": "none; byte-identical after decompression"
+    },
+    {
+      "file": "counter-race.json",
+      "bytes": 1245,
+      "sha256": "efdfaec6902d0ed92f7ba708fcfc1bb25ee04a98ba0ab881f95f14a0a7238b36",
+      "format": "json",
+      "transformation": "explicit field projection; see kind and source hash"
+    },
+    {
+      "file": "native-comparison.json",
+      "bytes": 5072,
+      "sha256": "3d6f4f16b8f19e285e527ec7d28b25c7753543dea0da0e58837038e3c4f82d18",
+      "format": "json",
+      "transformation": "explicit field projection; see kind and source hash"
+    },
+    {
+      "file": "capacity-summary.json",
+      "bytes": 30407,
+      "sha256": "f924efc0b8eb512da192d45d898f72d75ca4279e2abd9395feda1422321465c9",
+      "format": "json",
+      "transformation": "explicit field projection; see kind and source hash"
+    }
+  ],
+  "totalCompressedBytes": 3093423,
+  "provenance": {
+    "capacityArchive": "rss-investigation-20261007-f368c696/experiment-01",
+    "nativeArchive": "rss-investigation-20261007-f368c696/experiment-02",
+    "rawRootSummaryUnmodified": true
+  },
+  "privacy": "Independent synthetic traffic; no credentials, private keys or personal request data. Original machine paths in raw metadata are provenance only, never required for replay.",
+  "excluded": [
+    "JAR binaries",
+    "gateway application logs",
+    "credentials",
+    "development Redis data",
+    "machine-specific Maven dependency paths"
+  ],
+  "reproduction": "node verification/showcase-evidence.mjs --extract <NEW-directory>; node benchmarks/rss-report.mjs <NEW-directory>/capacity-fixed <NEW-analysis-directory>"
+}

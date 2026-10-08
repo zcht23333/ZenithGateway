@@ -1,0 +1,1235 @@
+{
+  "kind": "historical capacity and memory observation, not a candidate-build result",
+  "jarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+  "sourceSummarySha256": "4a7e25b409e55d728003355aacc138c8e61c3b1cafb8f7f63ab81a7c5741e165",
+  "config": {
+    "rate": 1000,
+    "shortSeconds": 120,
+    "shortRepetitions": 2,
+    "longSeconds": 3600,
+    "warmup": [
+      {
+        "name": "warm-100",
+        "rate": 100,
+        "seconds": 30
+      },
+      {
+        "name": "warm-500",
+        "rate": 500,
+        "seconds": 30
+      },
+      {
+        "name": "warm-1000",
+        "rate": 1000,
+        "seconds": 60
+      }
+    ],
+    "confirmationSeconds": 30,
+    "downshiftRate": 100,
+    "downshiftSeconds": 120,
+    "idleSeconds": 600,
+    "sampleMs": 2000,
+    "rssSampleMs": 10000,
+    "generatorConnections": 256,
+    "generatorTimeoutMs": 8000,
+    "maxMissFraction": 0.01,
+    "p95Ms": 50,
+    "p99Ms": 100,
+    "scheduledP99Ms": 150,
+    "workers": 8,
+    "queueCapacity": 128,
+    "decisionTimeoutMs": 500,
+    "handoff": false,
+    "localFailurePolicy": "allow",
+    "redisFailurePolicy": "allow",
+    "note": "RSS investigation: same full capacity plan; read-only checkpoints every five minutes during the soak and idle. No forced GC, trim or restart.",
+    "memoryCheckpointMs": 300000,
+    "diagnosticCommandTimeoutMs": 8000,
+    "diagnosticCheckpointBudgetMs": 20000,
+    "maximumCheckpoints": 24,
+    "riskCgroupBytes": 943718400,
+    "plateauTailMinutes": 20,
+    "plateauMinimumMinutes": 19,
+    "plateauSlopeMiBPerMinute": 0.1,
+    "plateauMedianGrowthMiB": 2,
+    "images": {
+      "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+      "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+    },
+    "routeCount": 32,
+    "applicationProfile": "capacity",
+    "saturationSamplingEnabled": true,
+    "cpuSets": {
+      "redis": "0-1",
+      "upstream": "2-3",
+      "gateway": "4-7",
+      "driver": "8-11"
+    },
+    "heap": "256m/512m",
+    "directMemoryLimit": "256m",
+    "nativeMemoryTracking": "summary",
+    "gatewayMemoryLimit": "1g",
+    "redisPersistence": false
+  },
+  "longValidated": {
+    "rate": 1000,
+    "seconds": 3600,
+    "stage": "one-hour-1000"
+  },
+  "stages": [
+    {
+      "name": "warmup",
+      "kind": "warmup",
+      "from": "2026-10-07T13:40:24.522Z",
+      "to": "2026-10-07T13:42:25.916Z",
+      "seconds": 120,
+      "arrivals": {
+        "offered": 78000,
+        "issued": 78000,
+        "finished": 78000,
+        "misses": 0,
+        "successfulRps": 649.9769495803639,
+        "statuses": {
+          "200": 78000
+        },
+        "transportErrors": 0,
+        "peakInFlight": 39
+      },
+      "latency": {
+        "count": 78000,
+        "p50": 1.927,
+        "p95": 4.089,
+        "p99": 6.247,
+        "max": 43.839,
+        "mean": 2.256025858974359
+      },
+      "scheduledLatency": {
+        "count": 78000,
+        "p50": 3.917,
+        "p95": 7.835,
+        "p99": 14.495,
+        "max": 45.791,
+        "mean": 4.476834243589744
+      },
+      "healthy": true,
+      "issues": [],
+      "deltas": [
+        {
+          "label": "A",
+          "requests": 78000,
+          "completed": 78000,
+          "cancelled": 0,
+          "audit": {
+            "received": 78000,
+            "persisted": 78000,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "events": {
+            "allowed": 78000,
+            "disabled": 0,
+            "limited": 0,
+            "unfulfillable": 0,
+            "local_unavailable": 0,
+            "redis_unconfirmed": 0,
+            "cancelled": 0
+          },
+          "actions": {
+            "forward": 78000,
+            "reject": 0,
+            "cancel": 0
+          },
+          "executions": {
+            "not_sent": 0,
+            "not_written": 0,
+            "confirmed": 78000,
+            "unknown": 0
+          },
+          "outcomes": {
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0
+          }
+        }
+      ],
+      "memory": {
+        "samples": 12,
+        "firstMiB": 497.703125,
+        "lastMiB": 578.234375,
+        "deltaMiB": 80.53125,
+        "tailMinutes": 1.9134166687726974,
+        "tailSlopeMiBPerMinute": 41.72722232035688,
+        "tailMedianGrowthMiB": 0,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 70,
+        "kinds": {
+          "Pause Young (Mixed) (G1 Evacuation Pause)": 12,
+          "Pause Young (Normal) (G1 Evacuation Pause)": 14,
+          "Pause Young (Concurrent Start) (G1 Evacuation Pause)": 11,
+          "Pause Remark": 11,
+          "Pause Cleanup": 11,
+          "Pause Young (Prepare Mixed) (G1 Evacuation Pause)": 11
+        },
+        "afterMiB": {
+          "first": 39,
+          "last": 37,
+          "min": 37,
+          "max": 39,
+          "median": 37
+        },
+        "pauseMs": {
+          "first": 11.258,
+          "last": 2.04,
+          "min": 0.083,
+          "max": 15.93,
+          "median": 3.367
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 0,
+          "last": 1,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 2,
+          "last": 8,
+          "min": 2,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 3,
+          "median": 0
+        },
+        "retained": {
+          "first": 0,
+          "last": 1,
+          "min": 0,
+          "max": 3,
+          "median": 1
+        },
+        "activeWorkers": {
+          "first": 0,
+          "last": 1,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "connections": {
+          "first": 2,
+          "last": 18,
+          "min": 2,
+          "max": 18,
+          "median": 10
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 1,
+          "last": 9,
+          "min": 0,
+          "max": 20,
+          "median": 4
+        }
+      }
+    },
+    {
+      "name": "short-1",
+      "kind": "short",
+      "from": "2026-10-07T13:42:29.391Z",
+      "to": "2026-10-07T13:44:30.870Z",
+      "seconds": 120,
+      "arrivals": {
+        "offered": 120000,
+        "issued": 119977,
+        "finished": 119977,
+        "misses": 23,
+        "successfulRps": 999.775859646962,
+        "statuses": {
+          "200": 119977
+        },
+        "transportErrors": 0,
+        "peakInFlight": 72
+      },
+      "latency": {
+        "count": 119977,
+        "p50": 1.63,
+        "p95": 3.897,
+        "p99": 6.239,
+        "max": 106.751,
+        "mean": 2.1491409020062178
+      },
+      "scheduledLatency": {
+        "count": 119977,
+        "p50": 3.423,
+        "p95": 5.919,
+        "p99": 8.391,
+        "max": 110.271,
+        "mean": 3.8796835893546264
+      },
+      "healthy": true,
+      "issues": [],
+      "deltas": [
+        {
+          "label": "A",
+          "requests": 119977,
+          "completed": 119977,
+          "cancelled": 0,
+          "audit": {
+            "received": 119977,
+            "persisted": 119977,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "events": {
+            "allowed": 119977,
+            "disabled": 0,
+            "limited": 0,
+            "unfulfillable": 0,
+            "local_unavailable": 0,
+            "redis_unconfirmed": 0,
+            "cancelled": 0
+          },
+          "actions": {
+            "forward": 119977,
+            "reject": 0,
+            "cancel": 0
+          },
+          "executions": {
+            "not_sent": 0,
+            "not_written": 0,
+            "confirmed": 119977,
+            "unknown": 0
+          },
+          "outcomes": {
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0
+          }
+        }
+      ],
+      "memory": {
+        "samples": 12,
+        "firstMiB": 578.359375,
+        "lastMiB": 581.734375,
+        "deltaMiB": 3.375,
+        "tailMinutes": 1.9150166660547256,
+        "tailSlopeMiBPerMinute": 1.6780164199857464,
+        "tailMedianGrowthMiB": 0,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 69,
+        "kinds": {
+          "Pause Young (Normal) (G1 Evacuation Pause)": 69
+        },
+        "afterMiB": {
+          "first": 37,
+          "last": 38,
+          "min": 37,
+          "max": 38,
+          "median": 38
+        },
+        "pauseMs": {
+          "first": 2.44,
+          "last": 1.562,
+          "min": 1.212,
+          "max": 5.437,
+          "median": 2.031
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 1,
+          "last": 1,
+          "min": 0,
+          "max": 8,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 8,
+          "last": 8,
+          "min": 8,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 1,
+          "last": 0,
+          "min": 0,
+          "max": 13,
+          "median": 0
+        },
+        "retained": {
+          "first": 2,
+          "last": 2,
+          "min": 0,
+          "max": 21,
+          "median": 1
+        },
+        "activeWorkers": {
+          "first": 1,
+          "last": 2,
+          "min": 0,
+          "max": 8,
+          "median": 1
+        },
+        "connections": {
+          "first": 18,
+          "last": 51,
+          "min": 18,
+          "max": 51,
+          "median": 51
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 1,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 16,
+          "last": 1,
+          "min": 0,
+          "max": 61,
+          "median": 12
+        }
+      }
+    },
+    {
+      "name": "short-2",
+      "kind": "short",
+      "from": "2026-10-07T13:44:31.397Z",
+      "to": "2026-10-07T13:46:32.812Z",
+      "seconds": 120,
+      "arrivals": {
+        "offered": 120000,
+        "issued": 119989,
+        "finished": 119989,
+        "misses": 11,
+        "successfulRps": 999.8867311221354,
+        "statuses": {
+          "200": 119989
+        },
+        "transportErrors": 0,
+        "peakInFlight": 42
+      },
+      "latency": {
+        "count": 119989,
+        "p50": 1.902,
+        "p95": 4.423,
+        "p99": 6.819,
+        "max": 51.999,
+        "mean": 2.350613197876472
+      },
+      "scheduledLatency": {
+        "count": 119989,
+        "p50": 3.701,
+        "p95": 6.387,
+        "p99": 8.935,
+        "max": 53.855,
+        "mean": 4.094502421055263
+      },
+      "healthy": true,
+      "issues": [],
+      "deltas": [
+        {
+          "label": "A",
+          "requests": 119989,
+          "completed": 119989,
+          "cancelled": 0,
+          "audit": {
+            "received": 119989,
+            "persisted": 119989,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "events": {
+            "allowed": 119989,
+            "disabled": 0,
+            "limited": 0,
+            "unfulfillable": 0,
+            "local_unavailable": 0,
+            "redis_unconfirmed": 0,
+            "cancelled": 0
+          },
+          "actions": {
+            "forward": 119989,
+            "reject": 0,
+            "cancel": 0
+          },
+          "executions": {
+            "not_sent": 0,
+            "not_written": 0,
+            "confirmed": 119989,
+            "unknown": 0
+          },
+          "outcomes": {
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0
+          }
+        }
+      ],
+      "memory": {
+        "samples": 12,
+        "firstMiB": 581.984375,
+        "lastMiB": 584.859375,
+        "deltaMiB": 2.875,
+        "tailMinutes": 1.9145999997854233,
+        "tailSlopeMiBPerMinute": 0.9577550527398374,
+        "tailMedianGrowthMiB": 0,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 69,
+        "kinds": {
+          "Pause Young (Normal) (G1 Evacuation Pause)": 69
+        },
+        "afterMiB": {
+          "first": 38,
+          "last": 39,
+          "min": 38,
+          "max": 39,
+          "median": 38
+        },
+        "pauseMs": {
+          "first": 2.349,
+          "last": 1.689,
+          "min": 1.323,
+          "max": 6.199,
+          "median": 2.104
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 8,
+          "last": 8,
+          "min": 8,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "retained": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 3,
+          "median": 1
+        },
+        "activeWorkers": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 3,
+          "median": 0.5
+        },
+        "connections": {
+          "first": 51,
+          "last": 33,
+          "min": 33,
+          "max": 51,
+          "median": 49
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 20,
+          "last": 10,
+          "min": 0,
+          "max": 23,
+          "median": 10.5
+        }
+      }
+    },
+    {
+      "name": "pre-soak-confirmation",
+      "kind": "confirmation",
+      "from": "2026-10-07T13:46:36.057Z",
+      "to": "2026-10-07T13:47:07.512Z",
+      "seconds": 30,
+      "arrivals": {
+        "offered": 30000,
+        "issued": 29999,
+        "finished": 29999,
+        "misses": 1,
+        "successfulRps": 999.8453480650585,
+        "statuses": {
+          "200": 29999
+        },
+        "transportErrors": 0,
+        "peakInFlight": 36
+      },
+      "latency": {
+        "count": 29999,
+        "p50": 1.78,
+        "p95": 4.251,
+        "p99": 7.451,
+        "max": 43.039,
+        "mean": 2.238786492883096
+      },
+      "scheduledLatency": {
+        "count": 29999,
+        "p50": 3.529,
+        "p95": 6.279,
+        "p99": 9.751,
+        "max": 44.959,
+        "mean": 3.948893896463215
+      },
+      "healthy": true,
+      "issues": [],
+      "deltas": [
+        {
+          "label": "A",
+          "requests": 29999,
+          "completed": 29999,
+          "cancelled": 0,
+          "audit": {
+            "received": 29999,
+            "persisted": 29999,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "events": {
+            "allowed": 29999,
+            "disabled": 0,
+            "limited": 0,
+            "unfulfillable": 0,
+            "local_unavailable": 0,
+            "redis_unconfirmed": 0,
+            "cancelled": 0
+          },
+          "actions": {
+            "forward": 29999,
+            "reject": 0,
+            "cancel": 0
+          },
+          "executions": {
+            "not_sent": 0,
+            "not_written": 0,
+            "confirmed": 29999,
+            "unknown": 0
+          },
+          "outcomes": {
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0
+          }
+        }
+      ],
+      "memory": {
+        "samples": 3,
+        "firstMiB": 584.984375,
+        "lastMiB": 584.984375,
+        "deltaMiB": 0,
+        "tailMinutes": 0.34850000217556953,
+        "tailSlopeMiBPerMinute": 0,
+        "tailMedianGrowthMiB": 0,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 17,
+        "kinds": {
+          "Pause Young (Normal) (G1 Evacuation Pause)": 17
+        },
+        "afterMiB": {
+          "first": 39,
+          "last": 39,
+          "min": 39,
+          "max": 39,
+          "median": 39
+        },
+        "pauseMs": {
+          "first": 2.141,
+          "last": 2.048,
+          "min": 1.458,
+          "max": 4.483,
+          "median": 2.077
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 1,
+          "last": 0,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 8,
+          "last": 8,
+          "min": 8,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "retained": {
+          "first": 2,
+          "last": 0,
+          "min": 0,
+          "max": 2,
+          "median": 1
+        },
+        "activeWorkers": {
+          "first": 2,
+          "last": 0,
+          "min": 0,
+          "max": 3,
+          "median": 0
+        },
+        "connections": {
+          "first": 33,
+          "last": 33,
+          "min": 33,
+          "max": 33,
+          "median": 33
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 19,
+          "last": 16,
+          "min": 3,
+          "max": 19,
+          "median": 15
+        }
+      }
+    },
+    {
+      "name": "one-hour-1000",
+      "kind": "soak",
+      "from": "2026-10-07T13:47:08.053Z",
+      "to": "2026-10-07T14:47:08.777Z",
+      "seconds": 3600,
+      "arrivals": {
+        "offered": 3600000,
+        "issued": 3599568,
+        "finished": 3599568,
+        "misses": 432,
+        "successfulRps": 999.8788892556505,
+        "statuses": {
+          "200": 3599568
+        },
+        "transportErrors": 0,
+        "peakInFlight": 250
+      },
+      "latency": {
+        "count": 3599568,
+        "p50": 1.62,
+        "p95": 3.869,
+        "p99": 5.555,
+        "max": 472.063,
+        "mean": 2.041963625635076
+      },
+      "scheduledLatency": {
+        "count": 3599568,
+        "p50": 3.411,
+        "p95": 5.863,
+        "p99": 7.639,
+        "max": 474.623,
+        "mean": 3.7652858123530377
+      },
+      "healthy": true,
+      "issues": [],
+      "deltas": [
+        {
+          "label": "A",
+          "requests": 3599568,
+          "completed": 3599568,
+          "cancelled": 0,
+          "audit": {
+            "received": 3599568,
+            "persisted": 3599568,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "events": {
+            "allowed": 3599568,
+            "disabled": 0,
+            "limited": 0,
+            "unfulfillable": 0,
+            "local_unavailable": 0,
+            "redis_unconfirmed": 0,
+            "cancelled": 0
+          },
+          "actions": {
+            "forward": 3599568,
+            "reject": 0,
+            "cancel": 0
+          },
+          "executions": {
+            "not_sent": 0,
+            "not_written": 0,
+            "confirmed": 3599568,
+            "unknown": 0
+          },
+          "outcomes": {
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0
+          }
+        }
+      ],
+      "memory": {
+        "samples": 344,
+        "firstMiB": 584.984375,
+        "lastMiB": 617.73046875,
+        "deltaMiB": 32.74609375,
+        "tailMinutes": 19.874516665935516,
+        "tailSlopeMiBPerMinute": 0.253176670286358,
+        "tailMedianGrowthMiB": 3.37890625,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 2063,
+        "kinds": {
+          "Pause Young (Normal) (G1 Evacuation Pause)": 2063
+        },
+        "afterMiB": {
+          "first": 39,
+          "last": 57,
+          "min": 39,
+          "max": 57,
+          "median": 48
+        },
+        "pauseMs": {
+          "first": 2.266,
+          "last": 1.721,
+          "min": 1.125,
+          "max": 6.644,
+          "median": 1.9
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 6,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 8,
+          "last": 8,
+          "min": 8,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 0,
+          "last": 1,
+          "min": 0,
+          "max": 4,
+          "median": 0
+        },
+        "retained": {
+          "first": 0,
+          "last": 1,
+          "min": 0,
+          "max": 6,
+          "median": 1
+        },
+        "activeWorkers": {
+          "first": 1,
+          "last": 0,
+          "min": 0,
+          "max": 6,
+          "median": 1
+        },
+        "connections": {
+          "first": 33,
+          "last": 25,
+          "min": 3,
+          "max": 100,
+          "median": 12
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 17,
+          "last": 9,
+          "min": 0,
+          "max": 24,
+          "median": 11
+        }
+      }
+    },
+    {
+      "name": "downshift-100",
+      "kind": "recovery",
+      "from": "2026-10-07T14:47:12.982Z",
+      "to": "2026-10-07T14:49:15.321Z",
+      "seconds": 120,
+      "arrivals": {
+        "offered": 12000,
+        "issued": 12000,
+        "finished": 12000,
+        "misses": 0,
+        "successfulRps": 99.9956624014891,
+        "statuses": {
+          "200": 12000
+        },
+        "transportErrors": 0,
+        "peakInFlight": 2
+      },
+      "latency": {
+        "count": 12000,
+        "p50": 2.161,
+        "p95": 4.187,
+        "p99": 5.367,
+        "max": 16.255,
+        "mean": 2.3958904166666666
+      },
+      "scheduledLatency": {
+        "count": 12000,
+        "p50": 12.799,
+        "p95": 14.855,
+        "p99": 16.103,
+        "max": 26.895,
+        "mean": 12.989525
+      },
+      "healthy": true,
+      "issues": [],
+      "deltas": [
+        {
+          "label": "A",
+          "requests": 12000,
+          "completed": 12000,
+          "cancelled": 0,
+          "audit": {
+            "received": 12000,
+            "persisted": 12000,
+            "dropped": 0,
+            "uncertain": 0
+          },
+          "events": {
+            "allowed": 12000,
+            "disabled": 0,
+            "limited": 0,
+            "unfulfillable": 0,
+            "local_unavailable": 0,
+            "redis_unconfirmed": 0,
+            "cancelled": 0
+          },
+          "actions": {
+            "forward": 12000,
+            "reject": 0,
+            "cancel": 0
+          },
+          "executions": {
+            "not_sent": 0,
+            "not_written": 0,
+            "confirmed": 12000,
+            "unknown": 0
+          },
+          "outcomes": {
+            "redis_fail_open": 0,
+            "local_fail_open": 0,
+            "redis_rejected": 0,
+            "local_rejected": 0
+          }
+        }
+      ],
+      "memory": {
+        "samples": 12,
+        "firstMiB": 617.73046875,
+        "lastMiB": 617.98046875,
+        "deltaMiB": 0.25,
+        "tailMinutes": 1.8979000002145767,
+        "tailSlopeMiBPerMinute": 0.15701916288257387,
+        "tailMedianGrowthMiB": 0,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 11,
+        "kinds": {
+          "Pause Young (Normal) (G1 Evacuation Pause)": 11
+        },
+        "afterMiB": {
+          "first": 57,
+          "last": 57,
+          "min": 56,
+          "max": 57,
+          "median": 56
+        },
+        "pauseMs": {
+          "first": 3.466,
+          "last": 2.3,
+          "min": 1.406,
+          "max": 3.466,
+          "median": 2.139
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 1,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 8,
+          "last": 8,
+          "min": 8,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 1,
+          "median": 0
+        },
+        "retained": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 1,
+          "median": 0
+        },
+        "activeWorkers": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 1,
+          "median": 0
+        },
+        "connections": {
+          "first": 25,
+          "last": 2,
+          "min": 2,
+          "max": 25,
+          "median": 25
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 2,
+          "last": 0,
+          "min": 0,
+          "max": 3,
+          "median": 1
+        }
+      }
+    },
+    {
+      "name": "idle-600",
+      "kind": "idle",
+      "from": "2026-10-07T14:49:18.582Z",
+      "to": "2026-10-07T14:59:18.592Z",
+      "seconds": 600,
+      "healthy": null,
+      "issues": [],
+      "memory": {
+        "samples": 113,
+        "firstMiB": 617.98046875,
+        "lastMiB": 618.10546875,
+        "deltaMiB": 0.125,
+        "tailMinutes": 9.967966664582491,
+        "tailSlopeMiBPerMinute": 0.011619613569529195,
+        "tailMedianGrowthMiB": 0,
+        "plateauScreenPassed": false,
+        "note": "Predeclared descriptive screen, not a proof of leak absence or long-term stability. Negative slopes also pass."
+      },
+      "gc": {
+        "events": 10,
+        "kinds": {
+          "Pause Young (Normal) (G1 Evacuation Pause)": 10
+        },
+        "afterMiB": {
+          "first": 57,
+          "last": 57,
+          "min": 56,
+          "max": 57,
+          "median": 57
+        },
+        "pauseMs": {
+          "first": 1.634,
+          "last": 1.633,
+          "min": 1.41,
+          "max": 3.07,
+          "median": 1.6335
+        }
+      },
+      "resources": {
+        "commands": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "commandPeak": {
+          "first": 8,
+          "last": 8,
+          "min": 8,
+          "max": 8,
+          "median": 8
+        },
+        "queued": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "retained": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "activeWorkers": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "connections": {
+          "first": 2,
+          "last": 0,
+          "min": 0,
+          "max": 2,
+          "median": 0
+        },
+        "pendingConnections": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        },
+        "auditPending": {
+          "first": 0,
+          "last": 0,
+          "min": 0,
+          "max": 0,
+          "median": 0
+        }
+      }
+    }
+  ],
+  "nativeHypothesisSupported": true,
+  "memoryStabilityProven": false,
+  "earlier4000HourPassed": false,
+  "cleanup": {
+    "AShutdown": {
+      "container": "zg-conservative-01e4b51a-gateway-a",
+      "startedAt": "2026-10-07T14:59:22.384Z",
+      "acknowledged": true,
+      "wait": {
+        "timeoutMs": 45000,
+        "exitCode": 0,
+        "stdout": "0"
+      },
+      "inspection": {
+        "timeoutMs": 5000,
+        "state": {
+          "Status": "exited",
+          "Running": false,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-07T13:40:01.557286072Z",
+          "FinishedAt": "2026-10-07T14:59:25.052634824Z"
+        },
+        "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T13:40:01.557286072Z\",\"FinishedAt\":\"2026-10-07T14:59:25.052634824Z\"}"
+      },
+      "graceful": true,
+      "issues": [],
+      "completedAt": "2026-10-07T14:59:25.639Z"
+    },
+    "AGraceful": true,
+    "namedGatewayClientsAbsent": true,
+    "zg-conservative-01e4b51a-driver-6": "already_removed",
+    "zg-conservative-01e4b51a-driver-5": "already_removed",
+    "zg-conservative-01e4b51a-driver-4": "already_removed",
+    "zg-conservative-01e4b51a-driver-3": "already_removed",
+    "zg-conservative-01e4b51a-driver-2": "already_removed",
+    "zg-conservative-01e4b51a-driver-1": "already_removed",
+    "zg-conservative-01e4b51a-gateway-a": "removed",
+    "zg-conservative-01e4b51a-upstream": "removed",
+    "zg-conservative-01e4b51a-redis": "removed",
+    "networkRemoved": true,
+    "credentialRemoved": true
+  },
+  "limitations": [
+    "Resource/accounting samples are not every instantaneous peak.",
+    "One-hour result applies to the identified JAR only.",
+    "Native trim is a separate intervention, not natural stability.",
+    "Default bridge changed across experiment environments; cause unresolved."
+  ]
+}

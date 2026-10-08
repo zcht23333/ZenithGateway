@@ -1,0 +1,1190 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T13:03:12.504Z",
+  "status": "ready_for_acceptance",
+  "passed": true,
+  "scope": "Command retirement counting race, deterministic artifact verification, related backend/live regression and two short load windows per package. RSS analysis deferred.",
+  "source": {
+    "workingTreeHead": "8dded422930d93a0810e4641e51e6f327fad62d6",
+    "preexistingUncommittedChangesPreserved": true,
+    "newCommitOrPush": false,
+    "backendInputManifest": {
+      "path": ".dev/limiter-command-counter-20261007-79dc12b4/backend-source.json",
+      "sha256": "61a41628b0473bb797ef72693917ae01c310ed8bcf36bd019d976d057367d102"
+    },
+    "backendSourceHash": "cab9dc25c0d421cc834f28b5b2a9f939a2704a70086e0289fec148323f6d00f0",
+    "changedFiles": [
+      {
+        "path": "backend/src/main/java/com/zch/ratelimit/RedisRateLimiter.java",
+        "sha256": "410aee0845c5247356ebdf8f4cff13eae2bbd1c4b1d356a2ef462b229bd65c9d"
+      },
+      {
+        "path": "backend/src/test/java/com/zch/ratelimit/RedisRateLimiterCommandTest.java",
+        "sha256": "8d2ae926df4b7b09a32bb2ceccf449b12ce17eb606a04f55e44e1a4a2718fce5"
+      },
+      {
+        "path": "benchmarks/conservative-capacity.mjs",
+        "sha256": "c52c30f859a2aa15b123cebef0a99417ce94a839c8b83033104eaea64e9b2b4f"
+      },
+      {
+        "path": "benchmarks/CONSERVATIVE-CAPACITY.md",
+        "sha256": "96e4211f5f07b24ce9c5d0297faa1865f68794079353a0a375dd7aa364f5c141"
+      },
+      {
+        "path": "verification/limiter-command-counter-race.mjs",
+        "sha256": "94ba5a4df5084df705e86e9d324810624da46e7a0bccc31d2204bb888dacbaa1"
+      },
+      {
+        "path": "docs/backend-limiter-command-counter.md",
+        "sha256": "9cda5b9212d814e69e1f062a304ca3c1d04cfaf697c835521ef1f12539cccb55"
+      }
+    ]
+  },
+  "artifacts": {
+    "oldJarSha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1",
+    "newJarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+    "newJar": {
+      "path": ".dev/limiter-command-counter-20261007-79dc12b4/artifacts/gateway.jar",
+      "sha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838"
+    },
+    "comparison": {
+      "path": ".dev/limiter-command-counter-20261007-79dc12b4/artifact-comparison.json",
+      "sha256": "8b68aa21d61c989ec8d6623456603ad5118d4cd8e582227f2bab317894fa1f40"
+    },
+    "bytecodeReview": [
+      {
+        "type": "RedisRateLimiter",
+        "bytecodeWithoutDebugLineTablesEqual": true
+      },
+      {
+        "type": "RedisRateLimiter$Slot",
+        "bytecodeWithoutDebugLineTablesEqual": true
+      }
+    ],
+    "originalHourAppliesToOldJarOnly": true
+  },
+  "tests": {
+    "backend": {
+      "tests": 259,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "build": "success",
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/backend-verify.log",
+        "sha256": "1dfa6b57032679549f919ff4a71fe2affb3b9dce002f50cfa29dc904759449b6"
+      }
+    },
+    "focused": {
+      "tests": 18,
+      "passed": 18
+    },
+    "newTests": 7,
+    "oldFailure": {
+      "tests": 7,
+      "failures": 1,
+      "expected": true,
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/before-tests.log",
+        "sha256": "86a815ee2d5e691f7a4043a79228a66f18c633fe4d845b8d1d9acef4f23698f2"
+      }
+    },
+    "toolTests": {
+      "tests": 92,
+      "passed": 92,
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/tool-tests.log",
+        "sha256": "9415e66fba63773bcd8bbfb7eb1a65ba1dd4672714e3d11e5362b353f19108fa"
+      }
+    }
+  },
+  "race": {
+    "scope": "Deterministic local callback scheduling; no Redis traffic",
+    "runs": [
+      {
+        "label": "old",
+        "jar": "D:\\Java\\ZenithGateway\\.dev\\capacity-baseline-20261007-3e81767a\\final-release\\rolling-build\\artifacts\\gateway.jar",
+        "jarSha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1",
+        "productionClassSha256": "4d9bf087ea89e9cbad54311e4104830465c63f6b6675341b47dea8d8513f72ea",
+        "exitCode": 1,
+        "observation": {
+          "actualWaitingFlags": 1,
+          "settledInFlight": 0,
+          "reportedPeak": 2,
+          "workers": 1,
+          "reportedInFlight": 2,
+          "settlements": 2
+        }
+      },
+      {
+        "label": "new",
+        "jar": "D:\\Java\\ZenithGateway\\.dev\\limiter-command-counter-20261007-79dc12b4\\workspace\\backend\\target\\zg-1.0.0.jar",
+        "jarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+        "productionClassSha256": "e9e9486f492deb34a6b146eb32b63eed69881370911390655a8bc1376e8306c2",
+        "exitCode": 0,
+        "observation": {
+          "settlements": 2,
+          "actualWaitingFlags": 1,
+          "settledInFlight": 0,
+          "reportedPeak": 1,
+          "workers": 1,
+          "reportedInFlight": 1
+        }
+      }
+    ],
+    "evidence": {
+      "path": ".dev/limiter-command-counter-20261007-79dc12b4/artifact-race/report.json",
+      "sha256": "35e0f18e2d12bc2233d4c7ab9df99c8365f2bf8d8a038433f5402b423e23df05"
+    }
+  },
+  "liveRegressions": [
+    {
+      "folder": "rate-limit-false-02",
+      "passed": true,
+      "checks": 22,
+      "requests": 181,
+      "jarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+      "counters": [
+        {
+          "instance": "A",
+          "current": 0,
+          "peak": 2,
+          "workers": 2,
+          "observed": 34,
+          "closed": 7
+        },
+        {
+          "instance": "B",
+          "current": 0,
+          "peak": 2,
+          "workers": 2,
+          "observed": 45,
+          "closed": 0
+        },
+        {
+          "instance": "B-untrusted",
+          "current": 0,
+          "peak": 1,
+          "workers": 2,
+          "observed": 3,
+          "closed": 0
+        }
+      ],
+      "extraRuntimeQueries": 0,
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/rate-limit-false-02/report.json",
+        "sha256": "b01b1656cf6a9c5758e3c9a94ed0e7e77f8c00b26c1eb03f07c16848178352aa"
+      }
+    },
+    {
+      "folder": "rate-limit-true-02",
+      "passed": true,
+      "checks": 22,
+      "requests": 181,
+      "jarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+      "counters": [
+        {
+          "instance": "A",
+          "current": 0,
+          "peak": 2,
+          "workers": 2,
+          "observed": 34,
+          "closed": 7
+        },
+        {
+          "instance": "B",
+          "current": 0,
+          "peak": 2,
+          "workers": 2,
+          "observed": 45,
+          "closed": 0
+        },
+        {
+          "instance": "B-untrusted",
+          "current": 0,
+          "peak": 1,
+          "workers": 2,
+          "observed": 3,
+          "closed": 0
+        }
+      ],
+      "extraRuntimeQueries": 0,
+      "cleanup": {
+        "AExitCode": 0,
+        "BExitCode": 0,
+        "B-untrustedExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/rate-limit-true-02/report.json",
+        "sha256": "cb8c5739d1c3c1b0f0adac5ae2526a92ef672ac4787f98fc6aea5bd09ed10a75"
+      }
+    },
+    {
+      "folder": "failure-policy",
+      "passed": true,
+      "checks": 25,
+      "requests": 70,
+      "jarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+      "counters": [
+        {
+          "instance": "A-default",
+          "current": 0,
+          "peak": 1,
+          "workers": 1,
+          "observed": 12,
+          "closed": 4
+        },
+        {
+          "instance": "B-strict",
+          "current": 0,
+          "peak": 1,
+          "workers": 1,
+          "observed": 17,
+          "closed": 3
+        },
+        {
+          "instance": "A-local-strict",
+          "current": 0,
+          "peak": 1,
+          "workers": 1,
+          "observed": 3,
+          "closed": 3
+        },
+        {
+          "instance": "B-redis-strict",
+          "current": 0,
+          "peak": 1,
+          "workers": 1,
+          "observed": 3,
+          "closed": 3
+        },
+        {
+          "instance": "B-strict-handoff",
+          "current": 0,
+          "peak": 1,
+          "workers": 1,
+          "observed": 3,
+          "closed": 0
+        }
+      ],
+      "extraRuntimeQueries": 0,
+      "cleanup": {
+        "A-defaultExitCode": 0,
+        "B-strictExitCode": 0,
+        "A-local-strictExitCode": 0,
+        "B-redis-strictExitCode": 0,
+        "B-strict-handoffExitCode": 0,
+        "proxyAClosed": true,
+        "proxyBClosed": true,
+        "upstreamClosed": true,
+        "redisRemoved": true
+      },
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/failure-policy/report.json",
+        "sha256": "a3f44ce0f941b9891dc8176c3f7cb07e6aefa82ac1379ba65fdfbffe73bfa7ba"
+      }
+    }
+  ],
+  "shortLoads": [
+    {
+      "label": "old",
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-baseline-20261007-3e81767a\\final-release\\rolling-build\\artifacts\\gateway.jar",
+        "sha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1"
+      },
+      "config": {
+        "rate": 1000,
+        "shortSeconds": 60,
+        "shortRepetitions": 2,
+        "longSeconds": 0,
+        "warmup": [
+          {
+            "name": "warm-100",
+            "rate": 100,
+            "seconds": 10
+          },
+          {
+            "name": "warm-500",
+            "rate": 500,
+            "seconds": 10
+          },
+          {
+            "name": "warm-1000",
+            "rate": 1000,
+            "seconds": 40
+          }
+        ],
+        "confirmationSeconds": 0,
+        "downshiftRate": 100,
+        "downshiftSeconds": 15,
+        "idleSeconds": 0,
+        "sampleMs": 2000,
+        "rssSampleMs": 10000,
+        "generatorConnections": 256,
+        "generatorTimeoutMs": 8000,
+        "maxMissFraction": 0.01,
+        "p95Ms": 50,
+        "p99Ms": 100,
+        "scheduledP99Ms": 150,
+        "workers": 8,
+        "queueCapacity": 128,
+        "decisionTimeoutMs": 500,
+        "handoff": false,
+        "localFailurePolicy": "allow",
+        "redisFailurePolicy": "allow",
+        "note": "Command counter short regression only; two 60s windows at 1000/s. No long-load or RSS stability validation.",
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "routeCount": 32,
+        "applicationProfile": "capacity",
+        "saturationSamplingEnabled": true,
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gateway": "4-7",
+          "driver": "8-11"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "redisPersistence": false
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630607872,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "stages": [
+        {
+          "name": "warmup",
+          "rate": 1000,
+          "durationSeconds": 60,
+          "offered": 46000,
+          "finished": 46000,
+          "misses": 0,
+          "rps": 766.6297501093595,
+          "p95Ms": 4.383,
+          "p99Ms": 8.583,
+          "scheduledP99Ms": 15.479,
+          "snapshots": 29,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 46000,
+                "completed": 46000,
+                "cancelled": 0,
+                "audit": {
+                  "received": 46000,
+                  "persisted": 46000,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 46000,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 46000,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 46000,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "short-1",
+          "rate": 1000,
+          "durationSeconds": 60,
+          "offered": 60000,
+          "finished": 59992,
+          "misses": 8,
+          "rps": 999.7938765235172,
+          "p95Ms": 3.087,
+          "p99Ms": 4.455,
+          "scheduledP99Ms": 6.535,
+          "snapshots": 29,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.00013333333333333334,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 59992,
+                "completed": 59992,
+                "cancelled": 0,
+                "audit": {
+                  "received": 59992,
+                  "persisted": 59992,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 59992,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 59992,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 59992,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "short-2",
+          "rate": 1000,
+          "durationSeconds": 60,
+          "offered": 60000,
+          "finished": 59992,
+          "misses": 8,
+          "rps": 999.8086918098538,
+          "p95Ms": 3.517,
+          "p99Ms": 5.167,
+          "scheduledP99Ms": 7.203,
+          "snapshots": 29,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.00013333333333333334,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 59992,
+                "completed": 59992,
+                "cancelled": 0,
+                "audit": {
+                  "received": 59992,
+                  "persisted": 59992,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 59992,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 59992,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 59992,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "downshift-100",
+          "rate": 100,
+          "durationSeconds": 15,
+          "offered": 1500,
+          "finished": 1500,
+          "misses": 0,
+          "rps": 99.96296523415361,
+          "p95Ms": 3.225,
+          "p99Ms": 3.917,
+          "scheduledP99Ms": 14.847,
+          "snapshots": 8,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 1500,
+                "completed": 1500,
+                "cancelled": 0,
+                "audit": {
+                  "received": 1500,
+                  "persisted": 1500,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 1500,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 1500,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 1500,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        }
+      ],
+      "final": [
+        {
+          "label": "A",
+          "current": 0,
+          "peak": 8,
+          "workers": 8,
+          "observed": 167485,
+          "abandoned": 0,
+          "completed": 167485,
+          "availablePermits": 136,
+          "retained": 0,
+          "activeWorkers": 0,
+          "queued": 0,
+          "auditReceived": 167485,
+          "auditPersisted": 167485,
+          "auditPending": 0,
+          "proxyConnections": 0
+        }
+      ],
+      "longValidated": null,
+      "cleanup": {
+        "AShutdown": {
+          "container": "zg-conservative-a6b4e64c-gateway-a",
+          "startedAt": "2026-10-07T12:41:27.658Z",
+          "acknowledged": true,
+          "wait": {
+            "timeoutMs": 45000,
+            "exitCode": 0,
+            "stdout": "0"
+          },
+          "inspection": {
+            "timeoutMs": 5000,
+            "state": {
+              "Status": "exited",
+              "Running": false,
+              "Paused": false,
+              "Restarting": false,
+              "OOMKilled": false,
+              "Dead": false,
+              "Pid": 0,
+              "ExitCode": 0,
+              "Error": "",
+              "StartedAt": "2026-10-07T12:37:40.7340544Z",
+              "FinishedAt": "2026-10-07T12:41:30.321920019Z"
+            },
+            "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T12:37:40.7340544Z\",\"FinishedAt\":\"2026-10-07T12:41:30.321920019Z\"}"
+          },
+          "graceful": true,
+          "issues": [],
+          "completedAt": "2026-10-07T12:41:30.854Z"
+        },
+        "AGraceful": true,
+        "namedGatewayClientsAbsent": true,
+        "zg-conservative-a6b4e64c-driver-4": "already_removed",
+        "zg-conservative-a6b4e64c-driver-3": "already_removed",
+        "zg-conservative-a6b4e64c-driver-2": "already_removed",
+        "zg-conservative-a6b4e64c-driver-1": "already_removed",
+        "zg-conservative-a6b4e64c-gateway-a": "removed",
+        "zg-conservative-a6b4e64c-upstream": "removed",
+        "zg-conservative-a6b4e64c-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      },
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/short-old/summary.json",
+        "sha256": "3c923d8c718ccea8611c2c0d1b01bfd14cc90412e950e25fc42f65908492a899"
+      }
+    },
+    {
+      "label": "new",
+      "jar": {
+        "path": "D:\\Java\\ZenithGateway\\.dev\\limiter-command-counter-20261007-79dc12b4\\artifacts\\gateway.jar",
+        "sha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838"
+      },
+      "config": {
+        "rate": 1000,
+        "shortSeconds": 60,
+        "shortRepetitions": 2,
+        "longSeconds": 0,
+        "warmup": [
+          {
+            "name": "warm-100",
+            "rate": 100,
+            "seconds": 10
+          },
+          {
+            "name": "warm-500",
+            "rate": 500,
+            "seconds": 10
+          },
+          {
+            "name": "warm-1000",
+            "rate": 1000,
+            "seconds": 40
+          }
+        ],
+        "confirmationSeconds": 0,
+        "downshiftRate": 100,
+        "downshiftSeconds": 15,
+        "idleSeconds": 0,
+        "sampleMs": 2000,
+        "rssSampleMs": 10000,
+        "generatorConnections": 256,
+        "generatorTimeoutMs": 8000,
+        "maxMissFraction": 0.01,
+        "p95Ms": 50,
+        "p99Ms": 100,
+        "scheduledP99Ms": 150,
+        "workers": 8,
+        "queueCapacity": 128,
+        "decisionTimeoutMs": 500,
+        "handoff": false,
+        "localFailurePolicy": "allow",
+        "redisFailurePolicy": "allow",
+        "note": "Command counter short regression only; two 60s windows at 1000/s. No long-load or RSS stability validation.",
+        "images": {
+          "redis": "redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+          "node": "node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6",
+          "java": "mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5"
+        },
+        "routeCount": 32,
+        "applicationProfile": "capacity",
+        "saturationSamplingEnabled": true,
+        "cpuSets": {
+          "redis": "0-1",
+          "upstream": "2-3",
+          "gateway": "4-7",
+          "driver": "8-11"
+        },
+        "heap": "256m/512m",
+        "directMemoryLimit": "256m",
+        "nativeMemoryTracking": "summary",
+        "gatewayMemoryLimit": "1g",
+        "redisPersistence": false
+      },
+      "environment": {
+        "cpus": 16,
+        "memoryBytes": 16630607872,
+        "kernel": "6.6.87.2-microsoft-standard-WSL2",
+        "os": "Docker Desktop",
+        "startedHost": "win32"
+      },
+      "stages": [
+        {
+          "name": "warmup",
+          "rate": 1000,
+          "durationSeconds": 60,
+          "offered": 46000,
+          "finished": 46000,
+          "misses": 0,
+          "rps": 766.6274514748583,
+          "p95Ms": 4.267,
+          "p99Ms": 8.919,
+          "scheduledP99Ms": 15.151,
+          "snapshots": 29,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 46000,
+                "completed": 46000,
+                "cancelled": 0,
+                "audit": {
+                  "received": 46000,
+                  "persisted": 46000,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 46000,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 46000,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 46000,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "short-1",
+          "rate": 1000,
+          "durationSeconds": 60,
+          "offered": 60000,
+          "finished": 59999,
+          "misses": 1,
+          "rps": 999.923015593883,
+          "p95Ms": 3.383,
+          "p99Ms": 5.027,
+          "scheduledP99Ms": 7.055,
+          "snapshots": 29,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.000016666666666666667,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 59999,
+                "completed": 59999,
+                "cancelled": 0,
+                "audit": {
+                  "received": 59999,
+                  "persisted": 59999,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 59999,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 59999,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 59999,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "short-2",
+          "rate": 1000,
+          "durationSeconds": 60,
+          "offered": 60000,
+          "finished": 59999,
+          "misses": 1,
+          "rps": 999.9092524399371,
+          "p95Ms": 3.223,
+          "p99Ms": 4.503,
+          "scheduledP99Ms": 6.351,
+          "snapshots": 29,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.000016666666666666667,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 59999,
+                "completed": 59999,
+                "cancelled": 0,
+                "audit": {
+                  "received": 59999,
+                  "persisted": 59999,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 59999,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 59999,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 59999,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "downshift-100",
+          "rate": 100,
+          "durationSeconds": 15,
+          "offered": 1500,
+          "finished": 1500,
+          "misses": 0,
+          "rps": 99.96809353014405,
+          "p95Ms": 3.223,
+          "p99Ms": 3.903,
+          "scheduledP99Ms": 14.599,
+          "snapshots": 8,
+          "cumulativePeak": 8,
+          "endCurrent": 0,
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 1500,
+                "completed": 1500,
+                "cancelled": 0,
+                "audit": {
+                  "received": 1500,
+                  "persisted": 1500,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 1500,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 1500,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 1500,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        }
+      ],
+      "final": [
+        {
+          "label": "A",
+          "current": 0,
+          "peak": 8,
+          "workers": 8,
+          "observed": 167499,
+          "abandoned": 0,
+          "completed": 167499,
+          "availablePermits": 136,
+          "retained": 0,
+          "activeWorkers": 0,
+          "queued": 0,
+          "auditReceived": 167499,
+          "auditPersisted": 167499,
+          "auditPending": 0,
+          "proxyConnections": 0
+        }
+      ],
+      "longValidated": null,
+      "cleanup": {
+        "AShutdown": {
+          "container": "zg-conservative-c029e99c-gateway-a",
+          "startedAt": "2026-10-07T12:45:24.868Z",
+          "acknowledged": true,
+          "wait": {
+            "timeoutMs": 45000,
+            "exitCode": 0,
+            "stdout": "0"
+          },
+          "inspection": {
+            "timeoutMs": 5000,
+            "state": {
+              "Status": "exited",
+              "Running": false,
+              "Paused": false,
+              "Restarting": false,
+              "OOMKilled": false,
+              "Dead": false,
+              "Pid": 0,
+              "ExitCode": 0,
+              "Error": "",
+              "StartedAt": "2026-10-07T12:41:37.649912838Z",
+              "FinishedAt": "2026-10-07T12:45:27.50869302Z"
+            },
+            "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T12:41:37.649912838Z\",\"FinishedAt\":\"2026-10-07T12:45:27.50869302Z\"}"
+          },
+          "graceful": true,
+          "issues": [],
+          "completedAt": "2026-10-07T12:45:28.057Z"
+        },
+        "AGraceful": true,
+        "namedGatewayClientsAbsent": true,
+        "zg-conservative-c029e99c-driver-4": "already_removed",
+        "zg-conservative-c029e99c-driver-3": "already_removed",
+        "zg-conservative-c029e99c-driver-2": "already_removed",
+        "zg-conservative-c029e99c-driver-1": "already_removed",
+        "zg-conservative-c029e99c-gateway-a": "removed",
+        "zg-conservative-c029e99c-upstream": "removed",
+        "zg-conservative-c029e99c-redis": "removed",
+        "networkRemoved": true,
+        "credentialRemoved": true
+      },
+      "evidence": {
+        "path": ".dev/limiter-command-counter-20261007-79dc12b4/short-new/summary.json",
+        "sha256": "6eb401e34a86b266cf8304df9361bc8b06103a45f40619822dadb676b3a3b117"
+      }
+    }
+  ],
+  "declaredPlan": {
+    "declaredAt": "2026-10-07T12:36:51.705Z",
+    "mode": "command-counter-short",
+    "order": [
+      "old",
+      "new"
+    ],
+    "rate": 1000,
+    "warmup": [
+      {
+        "rate": 100,
+        "seconds": 10
+      },
+      {
+        "rate": 500,
+        "seconds": 10
+      },
+      {
+        "rate": 1000,
+        "seconds": 40
+      }
+    ],
+    "formalWindows": 2,
+    "formalSeconds": 60,
+    "downshift": {
+      "rate": 100,
+      "seconds": 15
+    },
+    "oldJar": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1",
+    "newJar": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+    "thresholds": {
+      "p95Ms": 50,
+      "p99Ms": 100,
+      "scheduledP99Ms": 150,
+      "maxMissFraction": 0.01
+    },
+    "resources": "Gateway cpuset4-7/1GiB, Xms256m Xmx512m direct256m G1 ActiveProcessorCount4; Redis0-1/256MiB, upstream2-3/256MiB, generator8-11/512MiB; 32 routes, 8 limiter workers/128 queue,500ms,handoff=false,both policies=allow,quota10000/s capacity10000 cost1",
+    "gates": [
+      "predeclared capacity gate",
+      "new package cumulative command peak <= 8",
+      "final current/queue/workers/retained tasks = 0",
+      "graceful exit code 0",
+      "audits reconcile"
+    ],
+    "limitations": "Short tool regression only; no maximum/one-hour capacity, RSS attribution or statistically controlled performance improvement claim. Preserve every window including warm-up and failures."
+  },
+  "failedAttempt": {
+    "scope": "Invalid resource marker rejected before starting Redis/JVM; controlled upstream closed. Retried with a valid marker in fresh output directories.",
+    "evidence": {
+      "path": ".dev/limiter-command-counter-20261007-79dc12b4/rate-limit-false/report.json",
+      "sha256": "65e7c9e166f326eb730b000d6c5d478688670cad2642e80335e4558d5be7a874"
+    }
+  },
+  "cleanup": {
+    "existingContainersPreserved": true,
+    "containerCount": 6,
+    "existingVolumesPreserved": true,
+    "volumeCount": 168,
+    "ownedContainersRemaining": [],
+    "ownedNetworksRemaining": [],
+    "ownedJavaRemaining": [],
+    "bridgeBefore": {
+      "id": "fa7d9214165e81e0d9d259ac450997d83f5295cc24b0438c7898999180f1c8a6",
+      "created": "2026-10-07T12:29:03.601451793Z"
+    },
+    "bridgeAfter": {
+      "id": "fa7d9214165e81e0d9d259ac450997d83f5295cc24b0438c7898999180f1c8a6",
+      "created": "2026-10-07T12:29:03.601451793Z"
+    },
+    "bridgeChanged": false,
+    "bridgeAttribution": "unchanged in this comparison",
+    "developmentInstancesUpgraded": false,
+    "passed": true
+  },
+  "preservedEvidence": [
+    {
+      "directory": ".dev/capacity-baseline-20261007-3e81767a",
+      "files": 757,
+      "unchanged": true,
+      "manifestSha256": "00e526a4ea278cd61956bd6831180e8542305ad9f40092463a2e4e66dbb10509"
+    },
+    {
+      "directory": ".dev/capacity-p2-20261007-6b392e8f",
+      "files": 25,
+      "unchanged": true,
+      "manifestSha256": "d04139c506e943b3fa61d4001377754a9b8fca4de8aae6d9e7a6d6facbf7118a"
+    }
+  ],
+  "limitations": [
+    "Current/peak counters are client observations, not server execution counts or proof of quota outcome",
+    "Whole diagnostics and other telemetry are not an atomic snapshot; per-command retirement is serialized before the losing observer may return",
+    "Short load was sequential old/new, two formal windows each, on a shared host; no statistically significant performance improvement or maximum capacity claim",
+    "The original hour remains tied to the old JAR; the new package has no one-hour or RSS stability claim"
+  ],
+  "notExecuted": [
+    "frontend/browser/build (unchanged)",
+    "remote CI",
+    "standalone proxy fault matrix",
+    "standalone configuration operations/rollback matrix",
+    "one-hour load",
+    "RSS attribution"
+  ],
+  "evidenceRoot": ".dev/limiter-command-counter-20261007-79dc12b4"
+}

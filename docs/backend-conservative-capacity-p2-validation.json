@@ -1,0 +1,752 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T11:52:00.971Z",
+  "status": "ready_for_acceptance",
+  "passed": true,
+  "scope": "Two conservative capacity acceptance-tool P2 fixes; no business code or load-policy changes",
+  "source": {
+    "workingTreeHead": "8dded422930d93a0810e4641e51e6f327fad62d6",
+    "workingTreeWasAlreadyDirty": true,
+    "codeCommittedOrPushedThisRound": false,
+    "node": "v24.21.0",
+    "files": [
+      {
+        "path": "benchmarks/conservative-capacity.mjs",
+        "bytes": 32327,
+        "sha256": "6b52d8f9533e7359d6effdf578756c611ef010550405efd95d299c1f51211090"
+      },
+      {
+        "path": "benchmarks/conservative-capacity-gates.mjs",
+        "bytes": 8413,
+        "sha256": "748f22ceef3817a54e8c10f85564e0bd8e1e18adaac3739936e8fb32bfa5a609"
+      },
+      {
+        "path": "benchmarks/conservative-capacity-gates.test.mjs",
+        "bytes": 9183,
+        "sha256": "de03994cadc7f9d2e051313d2f38525f6d760b6c09b5a534ca7caf752f15a81e"
+      },
+      {
+        "path": "benchmarks/conservative-capacity-shutdown.mjs",
+        "bytes": 2382,
+        "sha256": "babcf62e72609a3e83c91d671db71174ac902fdadc61f2f6499829840d2293da"
+      },
+      {
+        "path": "benchmarks/conservative-capacity-shutdown.test.mjs",
+        "bytes": 5155,
+        "sha256": "b9ee95db434ef569fe976510a4e81be0b8375021a6e27da19f7fe383345c8609"
+      },
+      {
+        "path": "benchmarks/CONSERVATIVE-CAPACITY.md",
+        "bytes": 7057,
+        "sha256": "9923ee83789f48c032866b9fb7e344dc7e18537b46552108e19f92f5449b6c0e"
+      },
+      {
+        "path": "verification/acceptance-plan.mjs",
+        "bytes": 3608,
+        "sha256": "7c17550a5aa12aa4dcff79e9bb9d9dccf21a705cd09e39ba2f0048c8ce2fefa3"
+      },
+      {
+        "path": "verification/conservative-capacity-p2-live.mjs",
+        "bytes": 9063,
+        "sha256": "d51a0f06a75ef1722b8c0c9a97cc63ab139a3fde9d7f4913460644c0baf67f06"
+      },
+      {
+        "path": "docs/backend-conservative-capacity.md",
+        "bytes": 11345,
+        "sha256": "8a5131aa8c9292d952c8ce45ca4475fb03235bc46940dbdf5fc852ee8aea39f4"
+      },
+      {
+        "path": "docs/backend-conservative-capacity-p2.md",
+        "bytes": 6934,
+        "sha256": "76f2da1dbf8c6cc3e4a0897ad6d4deeee9072e14ba9de8975701dec4aa5d3463"
+      }
+    ]
+  },
+  "review": {
+    "path": ".dev/review-conservative-capacity-20261007-243180d1/review.json",
+    "bytes": 6981,
+    "sha256": "fd53d04fecb426336be497413f8c105fb76fb999de09afe042d7e11a38226f59"
+  },
+  "historicalRecord": {
+    "validation": {
+      "path": "docs/backend-conservative-capacity-validation.json",
+      "bytes": 127254,
+      "sha256": "7b2b1f1b7cc6971ecaa1dd1437633c7da33690ada4ccef856572c91aea805487"
+    },
+    "summary": {
+      "path": ".dev/capacity-baseline-20261007-3e81767a/experiment-01/summary.json",
+      "bytes": 52935490,
+      "sha256": "93c62a2e454a4bd375737e050ff4b9b78667e5b17c6902c17c471fc758da9ee5"
+    },
+    "jar": {
+      "path": "D:\\Java\\ZenithGateway\\.dev\\capacity-baseline-20261007-3e81767a\\final-release\\rolling-build\\artifacts\\gateway.jar",
+      "sha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1"
+    },
+    "originalEvidenceFiles": 757,
+    "allOriginalHashesUnchanged": true,
+    "originalManifestSha256": "00e526a4ea278cd61956bd6831180e8542305ad9f40092463a2e4e66dbb10509",
+    "archives": [
+      {
+        "path": "final-live.zip",
+        "unchanged": true,
+        "sha256": "cbfd8c6fe1bfeb73db55e2baced8a758fabd27fd7c5d3fc54b4d52d7995b9a07",
+        "size": 3039803
+      },
+      {
+        "path": "final-release.zip",
+        "unchanged": true,
+        "sha256": "c0a4704480bf8509c6e59f79c86775512fbd8fc008a3087a952b59b3008d795c",
+        "size": 64823759
+      },
+      {
+        "path": "final-verify.zip",
+        "unchanged": true,
+        "sha256": "3950f1a2801692ae9b7fc5c6dd290d1c0d6bc412d98295741fd4a01ffc47f40c",
+        "size": 61779803
+      }
+    ],
+    "gatewayExit": {
+      "scope": "Archived original Docker die event, not a new shutdown test",
+      "evidence": {
+        "path": ".dev/capacity-baseline-20261007-3e81767a/container-exit-events.jsonl",
+        "bytes": 2856,
+        "sha256": "ffa46e503aec04acd0603ad49f698e1f34e3d89a84911da4bfe720872db96d49"
+      },
+      "containerId": "b9089b63db9f2227a6e4c5eac701e35ae29711d02a029bc3be530b96f7bc72d3",
+      "name": "zg-conservative-36221e5b-gateway-a",
+      "exitCode": 0,
+      "inspectUnavailableBecauseContainerAlreadyRemoved": true
+    }
+  },
+  "validation": {
+    "toolTests": {
+      "count": 92,
+      "passed": 92,
+      "failed": 0,
+      "capacityGates": 21,
+      "capacityShutdown": 10,
+      "otherTools": 61,
+      "evidence": {
+        "path": ".dev/capacity-p2-20261007-6b392e8f/tool-tests.log",
+        "bytes": 21128,
+        "sha256": "a843ac2c53101f223433a5b5593bab6c89cf0684311103fc0b5862812285e79b"
+      }
+    },
+    "syntax": {
+      "count": 7,
+      "passed": 7,
+      "evidence": {
+        "path": ".dev/capacity-p2-20261007-6b392e8f/syntax.json",
+        "bytes": 609,
+        "sha256": "22a01bc9dbd1b59047a665c11c826d0e62782dd7c3bf05934077a0475094f208"
+      }
+    },
+    "rawReplay": {
+      "newTrafficGenerated": false,
+      "thresholds": {
+        "maxMissFraction": 0.01,
+        "p95Ms": 50,
+        "p99Ms": 100,
+        "scheduledP99Ms": 150
+      },
+      "stages": [
+        {
+          "name": "warmup",
+          "finished": 77749,
+          "samples": 57,
+          "responseVersions": {
+            "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 77749
+          },
+          "expected": {
+            "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+            "runtimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "routeVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+          },
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.003217948717948718,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 77749,
+                "completed": 77749,
+                "cancelled": 0,
+                "audit": {
+                  "received": 77749,
+                  "persisted": 77749,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 77749,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 77749,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 77749,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "short-1",
+          "finished": 119994,
+          "samples": 58,
+          "responseVersions": {
+            "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 119994
+          },
+          "expected": {
+            "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+            "runtimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "routeVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+          },
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.00005,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 119994,
+                "completed": 119994,
+                "cancelled": 0,
+                "audit": {
+                  "received": 119994,
+                  "persisted": 119994,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 119994,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 119994,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 119994,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "short-2",
+          "finished": 119999,
+          "samples": 58,
+          "responseVersions": {
+            "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 119999
+          },
+          "expected": {
+            "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+            "runtimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "routeVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+          },
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.000008333333333333334,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 119999,
+                "completed": 119999,
+                "cancelled": 0,
+                "audit": {
+                  "received": 119999,
+                  "persisted": 119999,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 119999,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 119999,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 119999,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "pre-soak-confirmation",
+          "finished": 29999,
+          "samples": 15,
+          "responseVersions": {
+            "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 29999
+          },
+          "expected": {
+            "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+            "runtimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "routeVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+          },
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.000033333333333333335,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 29999,
+                "completed": 29999,
+                "cancelled": 0,
+                "audit": {
+                  "received": 29999,
+                  "persisted": 29999,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 29999,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 29999,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 29999,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "one-hour-1000",
+          "finished": 3599757,
+          "samples": 1732,
+          "responseVersions": {
+            "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 3599757
+          },
+          "expected": {
+            "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+            "runtimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "routeVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+          },
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0.0000675,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 3599757,
+                "completed": 3599757,
+                "cancelled": 0,
+                "audit": {
+                  "received": 3599757,
+                  "persisted": 3599757,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 3599757,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 3599757,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 3599757,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        },
+        {
+          "name": "downshift-100",
+          "finished": 12000,
+          "samples": 59,
+          "responseVersions": {
+            "55b8802e-8a4e-4292-9b27-51b800b8f801:33": 12000
+          },
+          "expected": {
+            "instanceId": "7418b95c-9749-4a01-9363-9a0ebe50c2e1",
+            "runtimeVersion": "0348e72f-2be2-41b5-bb44-386ac0eb9e72:1",
+            "routeVersion": "55b8802e-8a4e-4292-9b27-51b800b8f801:33"
+          },
+          "assessment": {
+            "healthy": true,
+            "issues": [],
+            "configurationFailures": [],
+            "generatorMissFraction": 0,
+            "deltas": [
+              {
+                "label": "A",
+                "requests": 12000,
+                "completed": 12000,
+                "cancelled": 0,
+                "audit": {
+                  "received": 12000,
+                  "persisted": 12000,
+                  "dropped": 0,
+                  "uncertain": 0
+                },
+                "events": {
+                  "allowed": 12000,
+                  "disabled": 0,
+                  "limited": 0,
+                  "unfulfillable": 0,
+                  "local_unavailable": 0,
+                  "redis_unconfirmed": 0,
+                  "cancelled": 0
+                },
+                "actions": {
+                  "forward": 12000,
+                  "reject": 0,
+                  "cancel": 0
+                },
+                "executions": {
+                  "not_sent": 0,
+                  "not_written": 0,
+                  "confirmed": 12000,
+                  "unknown": 0
+                },
+                "outcomes": {
+                  "redis_fail_open": 0,
+                  "local_fail_open": 0,
+                  "redis_rejected": 0,
+                  "local_rejected": 0
+                }
+              }
+            ],
+            "note": "Execution unknown is an independent dimension, never added to request totals; only confirmed allowed/forward decisions qualify as healthy."
+          }
+        }
+      ]
+    },
+    "alteredCopies": {
+      "scope": "In-memory altered archived stages, not real faults or extra capacity runs",
+      "cases": [
+        {
+          "name": "missing_response_coverage",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "response_version_coverage"
+          ]
+        },
+        {
+          "name": "incomplete_response_coverage",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "response_version_coverage"
+          ]
+        },
+        {
+          "name": "mixed_response_versions",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "response_route_version"
+          ]
+        },
+        {
+          "name": "intermediate_runtime_version",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "configuration_changed_or_stale"
+          ]
+        },
+        {
+          "name": "intermediate_route_failure",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "configuration_changed_or_stale"
+          ]
+        },
+        {
+          "name": "intermediate_runtime_stale",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "configuration_changed_or_stale"
+          ]
+        },
+        {
+          "name": "intermediate_instance_change",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "instance_changed"
+          ]
+        },
+        {
+          "name": "failure_recovered_between_samples",
+          "oldHealthy": true,
+          "newHealthy": false,
+          "issues": [
+            "sync_failure_or_counter_reset"
+          ]
+        }
+      ]
+    },
+    "realContainerExits": {
+      "managementAcknowledgement": "fixture",
+      "runnerCleanupBranch": "actual code extracted from current conservative-capacity.mjs",
+      "containers": [
+        {
+          "containerId": "6b0f9c0740469614c4b820cbc003960b439b677e030b2f9473775cfb5921dc0e",
+          "name": "zg-capacity-p2-d4240cc5-exit-0",
+          "expectedExit": 0,
+          "report": {
+            "passed": true,
+            "cleanup": {
+              "AShutdown": {
+                "container": "zg-capacity-p2-d4240cc5-exit-0",
+                "startedAt": "2026-10-07T11:44:46.173Z",
+                "acknowledged": true,
+                "wait": {
+                  "timeoutMs": 45000,
+                  "exitCode": 0,
+                  "stdout": "0"
+                },
+                "inspection": {
+                  "timeoutMs": 5000,
+                  "state": {
+                    "Status": "exited",
+                    "Running": false,
+                    "Paused": false,
+                    "Restarting": false,
+                    "OOMKilled": false,
+                    "Dead": false,
+                    "Pid": 0,
+                    "ExitCode": 0,
+                    "Error": "",
+                    "StartedAt": "2026-10-07T11:44:45.872035028Z",
+                    "FinishedAt": "2026-10-07T11:44:46.210599184Z"
+                  },
+                  "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-10-07T11:44:45.872035028Z\",\"FinishedAt\":\"2026-10-07T11:44:46.210599184Z\"}"
+                },
+                "graceful": true,
+                "issues": [],
+                "completedAt": "2026-10-07T11:44:46.570Z"
+              },
+              "AGraceful": true
+            }
+          },
+          "process": {
+            "exitCode": 0
+          },
+          "passed": true
+        },
+        {
+          "containerId": "fe89c747d817e3bc081a36ea78ebf37f599f54750942c3b64190096a446b6c5e",
+          "name": "zg-capacity-p2-d4240cc5-exit-23",
+          "expectedExit": 23,
+          "report": {
+            "passed": false,
+            "cleanup": {
+              "AShutdown": {
+                "container": "zg-capacity-p2-d4240cc5-exit-23",
+                "startedAt": "2026-10-07T11:44:47.165Z",
+                "acknowledged": true,
+                "wait": {
+                  "timeoutMs": 45000,
+                  "exitCode": 23,
+                  "stdout": "23"
+                },
+                "inspection": {
+                  "timeoutMs": 5000,
+                  "state": {
+                    "Status": "exited",
+                    "Running": false,
+                    "Paused": false,
+                    "Restarting": false,
+                    "OOMKilled": false,
+                    "Dead": false,
+                    "Pid": 0,
+                    "ExitCode": 23,
+                    "Error": "",
+                    "StartedAt": "2026-10-07T11:44:46.921421015Z",
+                    "FinishedAt": "2026-10-07T11:44:47.103502593Z"
+                  },
+                  "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":23,\"Error\":\"\",\"StartedAt\":\"2026-10-07T11:44:46.921421015Z\",\"FinishedAt\":\"2026-10-07T11:44:47.103502593Z\"}"
+                },
+                "graceful": false,
+                "issues": [
+                  "nonzero_exit",
+                  "container_exit_not_normal"
+                ],
+                "completedAt": "2026-10-07T11:44:47.539Z"
+              },
+              "AGraceful": false,
+              "AShutdownError": "nonzero_exit, container_exit_not_normal"
+            }
+          },
+          "process": {
+            "exitCode": 1
+          },
+          "passed": true
+        }
+      ]
+    },
+    "liveReport": {
+      "path": ".dev/capacity-p2-20261007-6b392e8f/live-recheck/validation.json",
+      "bytes": 76251,
+      "sha256": "c61d4d29d22fdccd431131899be6f0cc53d3ceab80e0183abe68833e70d7e10c"
+    },
+    "integrityReport": {
+      "path": ".dev/capacity-p2-20261007-6b392e8f/original-evidence-integrity.json",
+      "bytes": 171391,
+      "sha256": "5ec8bd92cb19bf54f4faa7cb0b059de386c517d37df343974c56257f0388a7c6"
+    }
+  },
+  "cleanup": {
+    "containers": [
+      {
+        "name": "zg-capacity-p2-d4240cc5-exit-23",
+        "removed": true
+      },
+      {
+        "name": "zg-capacity-p2-d4240cc5-exit-0",
+        "removed": true
+      }
+    ],
+    "ownedContainersAbsent": true,
+    "existingContainersUnchanged": true,
+    "volumesUnchanged": true,
+    "networksCreated": 0,
+    "volumesCreated": 0,
+    "portsPublished": 0,
+    "developmentInstancesStartedOrUpgraded": false,
+    "dockerDesktopLeftRunning": true
+  },
+  "environmentObservation": {
+    "firstDockerInspection": {
+      "source": "Docker network inspect bridge output before the scoped validation",
+      "id": "d3845f8f5babf41dbded6c527cf85753d61f18a11436a7a88d66252af2b36c14",
+      "created": "2026-10-07T11:37:18.772987851Z"
+    },
+    "fixtureBefore": {
+      "id": "9bc6821d63c6563d90d2c6c6b38bb522c8d1fc6e63319c0f564a8d762e7e5777",
+      "created": "2026-10-07T11:44:44.082428519Z"
+    },
+    "fixtureAfter": {
+      "id": "9bc6821d63c6563d90d2c6c6b38bb522c8d1fc6e63319c0f564a8d762e7e5777",
+      "created": "2026-10-07T11:44:44.082428519Z"
+    },
+    "changedBetweenInitialInspectionAndFixture": true,
+    "changedDuringFixture": false,
+    "attribution": "unresolved",
+    "fixtureNetwork": "none",
+    "existingContainersUnchanged": true,
+    "volumesUnchanged": true
+  },
+  "notExecuted": [
+    "one-hour capacity load",
+    "new gateway or Redis fault matrix",
+    "backend or frontend tests/builds",
+    "remote CI",
+    "real OOM",
+    "RSS stability experiment"
+  ],
+  "boundaries": [
+    "Original one-hour 1000 req/s sample remains accepted under its recorded resources and workload, not a maximum/production capacity claim",
+    "Runtime configuration identity and sync status are sampled; response headers prove route versions only",
+    "Historical non-linear commandsInFlight retirement window and inter-sample resource peaks remain outside this fix",
+    "RSS stability remains unproven; historical 4000 req/s one-hour failure is unchanged",
+    "Bridge identity changed between initial inspection and fixture inventory, unattributed; unchanged during the actual two-container fixture"
+  ],
+  "evidenceDirectory": ".dev/capacity-p2-20261007-6b392e8f"
+}

@@ -133,7 +133,7 @@ finally {
   '| Step | Result | Executed | Evidence |','| --- | --- | --- | --- |',...report.steps.map(s=>{const r=s.result||{},count=r.tests? r.tests+' tests':r.checks?r.checks+' checks':r.ruleAssertions?r.ruleAssertions+r.dashboardAssertions+' assertions':'—';return '| '+s.name+' | '+s.status+' | '+count+' | '+(s.log?'['+s.name+']('+s.log+')':'not run')+' |'}),'',
   'Cleanup: '+(report.cleanup.passed?'confirmed':'NOT confirmed'),'',
   'Not executed: '+report.notExecuted.join('; '),
-  'No one-hour capacity tier is certified; previous 4000 req/s one-hour run remains failed.','',
+  'This acceptance run does not execute a capacity hour. The published 1000 req/s hour belongs only to its identified historical JAR and resources; long-term memory stability remains unproven, and the 4000 req/s hour remains failed.','',
   report.error?'Failure: '+report.error:'',''].join('\n')
  await writeFile(join(out,'summary.md'),summary)
  process.removeListener('SIGINT',signal);process.removeListener('SIGTERM',signal)

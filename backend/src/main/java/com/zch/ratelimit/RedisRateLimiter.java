@@ -227,11 +227,17 @@ public final class RedisRateLimiter implements RateLimitDecider,DisposableBean {
         <T> RedisFuture<T> observe(RedisFuture<T> future){
             future.whenComplete((v,error)->observed());return future;
         }
+        private synchronized boolean retire(){
+            // The losing observer must not return to its worker before the decrement.
+            // Only this command contends here: no diagnostics, callbacks or I/O under the lock.
+            if(!waiting.get())return false;
+            inFlight.decrementAndGet();waiting.set(false);return true;
+        }
         void observed(){
-            if(waiting.compareAndSet(true,false)){if(task!=null&&saturation.enabled())task.replyObservedAt=System.nanoTime();inFlight.decrementAndGet();telemetry.commandResultsObserved.increment();telemetry.duration("command_observation",System.nanoTime()-sent);}
+            if(retire()){if(task!=null&&saturation.enabled())task.replyObservedAt=System.nanoTime();telemetry.commandResultsObserved.increment();telemetry.duration("command_observation",System.nanoTime()-sent);}
         }
         void closed(){
-            if(waiting.compareAndSet(true,false)){inFlight.decrementAndGet();telemetry.commandsAbandonedAfterClose.increment();}
+            if(retire())telemetry.commandsAbandonedAfterClose.increment();
         }
     }
     private static final class Slot {

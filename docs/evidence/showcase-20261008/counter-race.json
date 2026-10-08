@@ -1,0 +1,37 @@
+{
+  "kind": "derived excerpt; original private workstation paths omitted",
+  "originalSha256": "35e0f18e2d12bc2233d4c7ab9df99c8365f2bf8d8a038433f5402b423e23df05",
+  "scope": "Deterministic local callback scheduling; no Redis traffic",
+  "passed": true,
+  "fixtureSourceSha256": "8d2ae926df4b7b09a32bb2ceccf449b12ce17eb606a04f55e44e1a4a2718fce5",
+  "runs": [
+    {
+      "label": "old",
+      "jarSha256": "aed33ee043618930ffa3a0a45eccab75b95737d6a760e50f66f671f365a24dd1",
+      "productionClassSha256": "4d9bf087ea89e9cbad54311e4104830465c63f6b6675341b47dea8d8513f72ea",
+      "exitCode": 1,
+      "observation": {
+        "actualWaitingFlags": 1,
+        "settledInFlight": 0,
+        "reportedPeak": 2,
+        "workers": 1,
+        "reportedInFlight": 2,
+        "settlements": 2
+      }
+    },
+    {
+      "label": "new",
+      "jarSha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838",
+      "productionClassSha256": "e9e9486f492deb34a6b146eb32b63eed69881370911390655a8bc1376e8306c2",
+      "exitCode": 0,
+      "observation": {
+        "settlements": 2,
+        "actualWaitingFlags": 1,
+        "settledInFlight": 0,
+        "reportedPeak": 1,
+        "workers": 1,
+        "reportedInFlight": 1
+      }
+    }
+  ]
+}

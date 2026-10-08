@@ -1,0 +1,216 @@
+{
+  "at": "2026-10-07T15:29:50.666Z",
+  "jar": {
+    "sha256": "3f73c65c7c29933549878c570a6b5a8b7bd8bafad2e5333603eee1de089da838"
+  },
+  "mode": "rss-native-retention",
+  "comparison": {
+    "from": "2026-10-07T15:27:20.846Z",
+    "to": "2026-10-07T15:27:28.133Z",
+    "intervalSeconds": 7.287
+  },
+  "intervention": {
+    "kind": "explicit-native-trim",
+    "capacityEvidence": false,
+    "startedAt": "2026-10-07T15:27:24.512Z",
+    "command": [
+      "jcmd",
+      "1",
+      "System.trim_native_heap"
+    ],
+    "status": "command-confirmed",
+    "response": "1:\nTrim native heap: RSS+Swap: 566M->463M (-103M)",
+    "elapsedMs": 359.13480000011623,
+    "completedAt": "2026-10-07T15:27:24.938Z"
+  },
+  "beforeRssMiB": 567.33203125,
+  "afterRssMiB": 463.5859375,
+  "observedLaterRssMiB": 469.31640625,
+  "deltaRssMiB": -103.74609375,
+  "deltaTotalNmtMiB": 0.0625,
+  "groups": {
+    "javaHeap": {
+      "beforeMiB": 209.97265625,
+      "afterMiB": 209.97265625,
+      "deltaMiB": 0
+    },
+    "fileMapping": {
+      "beforeMiB": 37.66796875,
+      "afterMiB": 37.66796875,
+      "deltaMiB": 0
+    },
+    "nativeBrk": {
+      "beforeMiB": 0.0859375,
+      "afterMiB": 0.0859375,
+      "deltaMiB": 0
+    },
+    "otherAnonymous": {
+      "beforeMiB": 276.85546875,
+      "afterMiB": 173.109375,
+      "deltaMiB": -103.74609375
+    },
+    "codeHeap": {
+      "beforeMiB": 42.71484375,
+      "afterMiB": 42.71484375,
+      "deltaMiB": 0
+    },
+    "stack": {
+      "beforeMiB": 0.03125,
+      "afterMiB": 0.03125,
+      "deltaMiB": 0
+    },
+    "otherNamed": {
+      "beforeMiB": 0.00390625,
+      "afterMiB": 0.00390625,
+      "deltaMiB": 0
+    }
+  },
+  "nmt": {
+    "Java Heap": {
+      "beforeMiB": 256,
+      "afterMiB": 256,
+      "deltaMiB": 0
+    },
+    "Class": {
+      "beforeMiB": 11.7978515625,
+      "afterMiB": 11.7978515625,
+      "deltaMiB": 0
+    },
+    "Thread": {
+      "beforeMiB": 6.1728515625,
+      "afterMiB": 6.1728515625,
+      "deltaMiB": 0
+    },
+    "Code": {
+      "beforeMiB": 47.8828125,
+      "afterMiB": 47.8828125,
+      "deltaMiB": 0
+    },
+    "GC": {
+      "beforeMiB": 46.908203125,
+      "afterMiB": 46.908203125,
+      "deltaMiB": 0
+    },
+    "GCCardSet": {
+      "beforeMiB": 0.0986328125,
+      "afterMiB": 0.0986328125,
+      "deltaMiB": 0
+    },
+    "Compiler": {
+      "beforeMiB": 0.623046875,
+      "afterMiB": 0.623046875,
+      "deltaMiB": 0
+    },
+    "Internal": {
+      "beforeMiB": 1.666015625,
+      "afterMiB": 1.666015625,
+      "deltaMiB": 0
+    },
+    "Other": {
+      "beforeMiB": 4.8125,
+      "afterMiB": 4.8125,
+      "deltaMiB": 0
+    },
+    "Symbol": {
+      "beforeMiB": 27.42578125,
+      "afterMiB": 27.42578125,
+      "deltaMiB": 0
+    },
+    "Native Memory Tracking": {
+      "beforeMiB": 4.9716796875,
+      "afterMiB": 4.9716796875,
+      "deltaMiB": 0
+    },
+    "Arena Chunk": {
+      "beforeMiB": 0.0029296875,
+      "afterMiB": 0.0654296875,
+      "deltaMiB": 0.0625
+    },
+    "Logging": {
+      "beforeMiB": 0,
+      "afterMiB": 0,
+      "deltaMiB": 0
+    },
+    "Arguments": {
+      "beforeMiB": 0,
+      "afterMiB": 0,
+      "deltaMiB": 0
+    },
+    "Module": {
+      "beforeMiB": 0.1123046875,
+      "afterMiB": 0.1123046875,
+      "deltaMiB": 0
+    },
+    "Safepoint": {
+      "beforeMiB": 0.0078125,
+      "afterMiB": 0.0078125,
+      "deltaMiB": 0
+    },
+    "Synchronization": {
+      "beforeMiB": 0.1611328125,
+      "afterMiB": 0.1611328125,
+      "deltaMiB": 0
+    },
+    "Serviceability": {
+      "beforeMiB": 0.017578125,
+      "afterMiB": 0.017578125,
+      "deltaMiB": 0
+    },
+    "Metaspace": {
+      "beforeMiB": 70.017578125,
+      "afterMiB": 70.017578125,
+      "deltaMiB": 0
+    },
+    "String Deduplication": {
+      "beforeMiB": 0.0009765625,
+      "afterMiB": 0.0009765625,
+      "deltaMiB": 0
+    },
+    "Object Monitors": {
+      "beforeMiB": 0,
+      "afterMiB": 0,
+      "deltaMiB": 0
+    },
+    "Unknown": {
+      "beforeMiB": 0,
+      "afterMiB": 0,
+      "deltaMiB": 0
+    }
+  },
+  "status": {
+    "after-idle": {
+      "VmRSS": 580384,
+      "VmSwap": 0,
+      "Threads": 65
+    },
+    "after-native-trim": {
+      "VmRSS": 474276,
+      "VmSwap": 0,
+      "Threads": 65
+    },
+    "after-trim-observation": {
+      "VmRSS": 480036,
+      "VmSwap": 0,
+      "Threads": 65
+    }
+  },
+  "overlappingGc": [],
+  "overlappingGcActivity": [],
+  "criteria": {
+    "otherAnonymousDroppedAtLeast8MiB": true,
+    "javaHeapChangeAtMost1MiB": true,
+    "codeHeapChangeAtMost1MiB": true,
+    "nmtCommitmentChangeAtMost2MiB": true,
+    "noOverlappingGc": true
+  },
+  "hypothesisSupported": true,
+  "naturalStabilityProven": false,
+  "oneHourClaim": false,
+  "limits": [
+    "Within-process trim demonstrates reclaimable allocator pages only; no exact allocation-owner identification.",
+    "Sequential checkpoints are not atomic.",
+    "Native allocator free bytes and NMT committed are not RSS and must not be added.",
+    "Different conditioning duration and JVM history prohibit an inter-run causal comparison."
+  ],
+  "kind": "derived comparison; source JAR path omitted"
+}
