@@ -15,13 +15,17 @@ const exec=promisify(execFile),root=resolve('.'),id=randomUUID().slice(0,8)
 const arg=(n,d)=>process.argv.includes(n)?process.argv[process.argv.indexOf(n)+1]:d
 const out=resolve(arg('--out','.dev/traffic-lifecycle-live-'+id)),mode=arg('--mode','all'),sourceJar=resolve(arg('--jar','backend/target/zg-1.0.0.jar'))
 assert(['functional','cold','signal','all'].includes(mode))
+const routeSetupTimeoutMs=Number(arg('--route-timeout-ms','750'))
+assert(Number.isSafeInteger(routeSetupTimeoutMs)&&routeSetupTimeoutMs>=100&&routeSetupTimeoutMs<=4000,'Invalid route setup timeout')
+const readinessBudgetMs=Number(arg('--readiness-budget-ms','60000'))
+assert(Number.isSafeInteger(readinessBudgetMs)&&readinessBudgetMs>=1000&&readinessBudgetMs<=120000,'Invalid readiness observation budget')
 await mkdir(out,{recursive:true});await writeFile(join(out,'run-marker'),new Date().toISOString(),{flag:'wx'})
 const jar=join(out,'gateway.jar');await copyFile(sourceJar,jar)
 const hash=b=>createHash('sha256').update(b).digest('hex')
 const images={redis:'redis@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499',node:'node@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6',java:'mcr.microsoft.com/openjdk/jdk@sha256:69e7c7cc0b5365e40718d70759f77b7c4b16e86ddaacfdf499d1c4807ba592d5'}
 const plan={version:2,driverPlatform:"Linux container, 2 CPU / 256 MiB, two active jobs maximum",targetRate:1000,oldInstanceRate:200,ramp:[25,100,250,500,1000],windowSeconds:10,targetWindowSeconds:20,
- repetitions:3,comparisonOrder:['immediate','gradual','gradual','immediate','immediate','gradual'],maxWindowsPerStep:3,
- p95LimitMs:100,p99LimitMs:250,maxArrivalGapRatio:0.01,auditSettleMs:15000,readinessBudgetMs:60000,recoveryBudgetMs:15000,
+ repetitions:3,comparisonOrder:['immediate','gradual','gradual','immediate','immediate','gradual'],maxWindowsPerStep:3,routeSetupTimeoutMs,
+ p95LimitMs:100,p99LimitMs:250,maxArrivalGapRatio:0.01,auditSettleMs:15000,readinessBudgetMs,recoveryBudgetMs:15000,
  requestDrainMs:2000,cancellationSettleMs:1000,auditDrainMs:1000,auditCommandMs:250,springPhaseMs:10000,processExitMs:45000,
  generatorMaxInFlight:256,generatorRequestMs:8000,sampleEveryMs:500,decisionWorkers:8,decisionQueue:64,resultHandoff:false,
  gateway:{cpus:2,memory:'1g',pids:512,heapInitialMiB:256,heapMaxMiB:512,directMaxMiB:256},
@@ -43,6 +47,7 @@ async function startup(label,{strict=false,auditProxy=false,longProxy=false}={})
  const args=['-XX:+UseG1GC','-XX:ActiveProcessorCount=2','-Xms256m','-Xmx512m','-XX:MaxDirectMemorySize=256m','-jar','/app/gateway.jar',
  '--server.port=8080','--spring.data.redis.host=redis','--spring.data.redis.port=6379','--spring.data.redis.password=',
  '--zenith.runtime.redis-key='+ns+':runtime','--zenith.route.redis-key='+ns+':routes','--zenith.audit.redis-key='+auditKey,'--zenith.limiter.namespace='+ns+':limiter',
+ '--zenith.route.publication.timeout-ms='+plan.routeSetupTimeoutMs,
  '--zenith.rate-limit.replenish-rate=10000','--zenith.rate-limit.burst-capacity=10000','--zenith.rate-limit.requested-tokens=1',
  '--zenith.limiter.workers=8','--zenith.limiter.queue-capacity=64','--zenith.limiter.result-handoff-enabled=false',
  '--zenith.lifecycle.request-drain-timeout-ms=2000','--zenith.lifecycle.cancellation-settle-timeout-ms=1000',

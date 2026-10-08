@@ -103,7 +103,7 @@ try {
  }})
  if(tier==='release')for(const check of releaseChecks) {
   await assertJar(jar,jarSha256);await assertJar(join(out,'artifacts/gateway.jar'),jarSha256)
-  const dir=join(out,'checks',check.id),args=['verification/'+check.entry,...(check.backendOnly?['--backend-only']:[]),...(check.mode?['--mode',check.mode,'--jar',jar,'--out',dir]:[])]
+  const dir=join(out,'checks',check.id),args=['verification/'+check.entry,...(check.backendOnly?['--backend-only']:[]),...(check.mode?['--mode',check.mode,'--jar',jar,'--out',dir,'--route-timeout-ms',String(check.routeSetupTimeoutMs)]:[])]
   const extraEnv={...(check.output?{[check.output]:dir}:{}),RATE_LIMIT_HANDOFF:'false',PROXY_RESILIENCE_LIMITER_HANDOFF:'false'}
   await step(check.id,process.execPath,args,{extraEnv,timeoutMs:check.timeoutMs,validate:async()=>{
    const result=validateLiveReport(JSON.parse(await readFile(join(dir,'report.json'),'utf8')),check,jarSha256)

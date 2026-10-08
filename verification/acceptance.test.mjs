@@ -29,6 +29,7 @@ test('release matrix is unique, serial, bounded and explicitly excludes capacity
  assert.equal(new Set(releaseChecks.map(x=>x.id)).size,releaseChecks.length)
  for(const c of releaseChecks){assert(c.timeoutMs>0&&c.timeoutMs<=420000);assert(c.cleanup.length>0);assert.notEqual(c.mode,'cold')}
  assert(releaseChecks.some(x=>x.id==='config-rollback'&&x.backendOnly));assert(releaseChecks.some(x=>x.id==='lifecycle-signal'))
+ for(const c of releaseChecks.filter(x=>x.mode))assert.equal(c.routeSetupTimeoutMs,4000,'functional lifecycle fixtures declare their initialization budget; cold comparisons remain separate')
 })
 test('ownership labels only creation, preserves standalone calls, and rejects malformed scope',()=>{
  const env={ZENITH_ACCEPTANCE_SCOPE:'zg-12345678-1234-1234-1234-123456789abc'}

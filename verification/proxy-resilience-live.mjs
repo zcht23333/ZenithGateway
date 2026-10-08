@@ -17,6 +17,10 @@ const out=resolve(process.env.PROXY_RESILIENCE_OUTPUT||'.dev/proxy-resilience/li
 const jar=process.env.PROXY_RESILIENCE_JAR||'backend/target/zg-1.0.0.jar'
 const limiterHandoff=process.env.PROXY_RESILIENCE_LIMITER_HANDOFF==='true'
 assert([undefined,'true','false'].includes(process.env.PROXY_RESILIENCE_LIMITER_HANDOFF),'Invalid PROXY_RESILIENCE_LIMITER_HANDOFF')
+const externalRedisPort=process.env.PROXY_RESILIENCE_REDIS_PORT===undefined?null:Number(process.env.PROXY_RESILIENCE_REDIS_PORT)
+assert(externalRedisPort===null||(Number.isSafeInteger(externalRedisPort)&&externalRedisPort>0&&externalRedisPort<=65535),'Invalid isolated external Redis port')
+const routeTimeoutMs=process.env.PROXY_RESILIENCE_ROUTE_TIMEOUT_MS===undefined?null:Number(process.env.PROXY_RESILIENCE_ROUTE_TIMEOUT_MS)
+assert(routeTimeoutMs===null||(Number.isSafeInteger(routeTimeoutMs)&&routeTimeoutMs>=100&&routeTimeoutMs<=4000),'Invalid route setup timeout')
 const report={startedAt:new Date().toISOString(),isolated:true,jarSha256:createHash('sha256').update(await readFile(jar)).digest('hex'),checks:[],requests:[],cleanup:{},passed:false}
 const image='redis:7.4.11-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499'
 const docker=args=>execFileSync('docker',scopedDockerArgs(args),{encoding:'utf8',windowsHide:true,timeout:30000}).trim()
@@ -102,10 +106,12 @@ async function open(route,name='cb-'+route){
 async function eligible(name){await until('OPEN wait elapsed '+name,async()=>{const b=await breaker(name);return b.state==='OPEN'&&b.probeEligibleInMs===0})}
 async function active(job){return until('controlled upstream arrival '+job.key,()=>arrivals.find(a=>a.key===job.key))}
 try{
- docker(['run','--rm','-d','--pull=never','--name',name,'-p','127.0.0.1::6379',image,'--save','','--appendonly','no']);created=true
- redisPort=Number(docker(['port',name,'6379/tcp']).split(':').at(-1));const port=await freePort();base='http://127.0.0.1:'+port;report.origin=base;report.isolation={redisContainer:name,redisPort,redisPrefix:prefix,upstreamPort:upstream.address().port,httpsUpstreamPort:secureUpstream.address().port,tlsBlackholePort:blackhole.address().port}
+ if(externalRedisPort===null){docker(['run','--rm','-d','--pull=never','--name',name,'-p','127.0.0.1::6379',image,'--save','','--appendonly','no']);created=true;redisPort=Number(docker(['port',name,'6379/tcp']).split(':').at(-1))}
+ else redisPort=externalRedisPort // Caller owns a dedicated Redis; test keys still use a fresh UUID namespace.
+ const port=await freePort();base='http://127.0.0.1:'+port;report.origin=base;report.isolation={redisContainer:created?name:null,externalRedisOwnedByCaller:!created,redisPort,redisPrefix:prefix,upstreamPort:upstream.address().port,httpsUpstreamPort:secureUpstream.address().port,tlsBlackholePort:blackhole.address().port}
  const args=['-Xms128m','-Xmx384m','-XX:ActiveProcessorCount=4','-jar',jar,'--server.address=127.0.0.1','--server.port='+port,'--spring.data.redis.host=127.0.0.1','--spring.data.redis.port='+redisPort,
  '--zenith.runtime.redis-key='+prefix+':runtime','--zenith.route.redis-key='+prefix+':routes','--zenith.audit.redis-key='+prefix+':audit','--zenith.rate-limit.enabled='+limiterHandoff,'--zenith.monitor.window-seconds=120',
+ ...(routeTimeoutMs===null?[]:['--zenith.route.publication.timeout-ms='+routeTimeoutMs]),
  ...(limiterHandoff?['--zenith.rate-limit.replenish-rate=10000','--zenith.rate-limit.burst-capacity=10000','--zenith.limiter.namespace='+prefix+':limiter','--zenith.limiter.result-handoff-enabled=true']:[]),
  '--spring.cloud.gateway.server.webflux.httpclient.ssl.trusted-x509-certificates[0]='+certificate,
  '--zenith.proxy.resilience.connect-timeout-ms=150','--zenith.proxy.resilience.headers-timeout-ms=500','--zenith.proxy.resilience.read-idle-timeout-ms=700','--zenith.proxy.resilience.total-timeout-ms=1600',
@@ -115,6 +121,7 @@ try{
  log=createWriteStream(join(out,'gateway.log'));child=spawn(join(process.env.JAVA_HOME,'bin',process.platform==='win32'?'java.exe':'java'),args,{windowsHide:true,env:{...process.env,ZENITH_ADMIN_TOKEN:token,REDIS_PASSWORD:''}});child.stdout.pipe(log,{end:false});child.stderr.pipe(log,{end:false})
  await until('gateway ready',async()=>{assert.equal(child.exitCode,null,'gateway exited');try{return (await fetch(base+'/actuator/health/readiness')).ok}catch{return false}},60000)
  report.policy=(await diagnostic()).policy
+ report.routeSetupTimeoutMs=routeTimeoutMs??750
  report.initialLimiter=await api('/settings/rate-limit/diagnostics')
  if(limiterHandoff){assert.equal(report.initialLimiter.resultHandoffEnabled,true);assert.equal(report.initialLimiter.adopted.rateLimitEnabled,true)}
  for(const r of ['healthy','fault','isolated','probes','inflight','cancel','business','rst-before','rst-body','rst-opening'])await route(r)
@@ -279,6 +286,7 @@ try{
 }catch(error){report.error=error.stack;process.exitCode=1;console.error(error)}finally{
  if(child&&child.exitCode===null){await api('/actuator/shutdown',{method:'POST',body:'{}'}).catch(()=>{});await until('gateway shutdown',()=>child.exitCode!==null,15000).catch(()=>child.kill());report.cleanup.gatewayExitCode=child.exitCode}
  for(const c of connections)c.destroy();upstream.closeAllConnections();await new Promise(r=>upstream.close(r));await new Promise(r=>blackhole.close(r));await new Promise(r=>secureUpstream.close(r));report.cleanup.upstreamClosed=true;report.cleanup.httpsUpstreamClosed=true
- if(created){docker(['rm','-fv',name]);report.cleanup.redisRemoved=true}await rm(pfx,{force:true});report.cleanup.privateTlsKeyRemoved=true;log?.end();report.completedAt=new Date().toISOString()
+ if(created){docker(['rm','-fv',name]);report.cleanup.redisRemoved=true}else report.cleanup.externalRedisCleanupRequired=true
+ await rm(pfx,{force:true});report.cleanup.privateTlsKeyRemoved=true;log?.end();report.completedAt=new Date().toISOString()
  await writeFile(join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await writeFile(join(out,'upstream.json'),JSON.stringify(arrivals.map(({finish,reset,...r})=>r),null,2)+'\n');console.log('Proxy resilience report: '+join(out,'report.json'))
 }

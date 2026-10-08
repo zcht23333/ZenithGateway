@@ -1,0 +1,327 @@
+{
+  "derived": true,
+  "sourceCommit": "82e0f8164f4c77160769893babc3a41555e611b0",
+  "dirty": false,
+  "buildInputsSha256": "eda9336ecbb63ff2f7e56c8f835cb30a194ac8aa8c5c0686d68660cb8f124b98",
+  "startedAt": "2026-10-08T02:10:56.198Z",
+  "completedAt": "2026-10-08T02:17:01.660Z",
+  "passed": false,
+  "error": "Error: Command failed: proxy-resilience exit=1 timeout=false\n    at step (file:///home/runner/work/ZenithGateway/ZenithGateway/verification/acceptance.mjs:43:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///home/runner/work/ZenithGateway/ZenithGateway/verification/acceptance.mjs:108:3",
+  "jarSha256": "ec6ac0b13e86a06d53ee10c5a124a29bae310705761febb46898918531878e77",
+  "steps": [
+    {
+      "name": "toolchain-java",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "version": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Microsoft-14941483 (build 21.0.12.1+1-LTS)\nOpenJDK 64-Bit Server VM Microsoft-14941483 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+      }
+    },
+    {
+      "name": "toolchain-maven",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "version": "Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)\nMaven home: /home/runner/.m2/wrapper/dists/apache-maven-3.9.16/56ba1f9f\nJava version: 21.0.12.1, vendor: Microsoft, runtime: /opt/hostedtoolcache/Java_jdkfile_jdk/21.0.12-1/x64\nDefault locale: en, platform encoding: UTF-8\nOS name: \"linux\", version: \"6.17.0-1022-azure\", arch: \"amd64\", family: \"unix\""
+      }
+    },
+    {
+      "name": "image-0",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "image-1",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "image-2",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "image-3",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "source-archive",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "backend",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "tests": 259,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "frontend-install",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "frontend-test",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "tests": 107,
+        "pass": 107,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "name": "frontend-build",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "name": "tool-tests",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "tests": 110,
+        "pass": 110,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "name": "monitoring",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "dashboardSha256": "282466c433665925a180d97a5499cd3899e4c9b8a607e808073987ac05b70c2f",
+        "dashboardPanels": 27,
+        "dashboardQueries": 41,
+        "dashboardCases": 8,
+        "dashboardAssertions": 97,
+        "ruleCases": 27,
+        "ruleAssertions": 86,
+        "image": "prom/prometheus:v3.13.3@sha256:6976aa8a60fec930796ce5772b8d12da7a318a5daa8d40d69c5c7819a05eeed7",
+        "passed": true
+      }
+    },
+    {
+      "name": "config-sync",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "checks": 10,
+        "jarSha256": "ec6ac0b13e86a06d53ee10c5a124a29bae310705761febb46898918531878e77",
+        "cleanup": {
+          "BExitCode": 0,
+          "B-restartedExitCode": 0,
+          "AExitCode": 0,
+          "proxyClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": [],
+        "ownership": {
+          "before": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "after": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "forced": false,
+          "errors": [],
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "config-operations",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "checks": 11,
+        "jarSha256": "ec6ac0b13e86a06d53ee10c5a124a29bae310705761febb46898918531878e77",
+        "cleanup": {
+          "AExitCode": 0,
+          "BExitCode": 0,
+          "A-restartedExitCode": 0,
+          "proxyClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": [
+          "browser: HTTP reply loss, auth recovery and conflict UI"
+        ],
+        "ownership": {
+          "before": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "after": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "forced": false,
+          "errors": [],
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "config-rollback",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "checks": 9,
+        "jarSha256": "ec6ac0b13e86a06d53ee10c5a124a29bae310705761febb46898918531878e77",
+        "cleanup": {
+          "BExitCode": 0,
+          "browserClosed": true,
+          "AExitCode": 0,
+          "B-restartedExitCode": 0,
+          "proxyClosed": true,
+          "proxyBClosed": true,
+          "upstreamClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": [
+          "browser: rollback selection/conflict, HTTP reply loss, auth recovery and discard lifecycle"
+        ],
+        "ownership": {
+          "before": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "after": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "forced": false,
+          "errors": [],
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "route-publication",
+      "status": "passed",
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "checks": 19,
+        "jarSha256": "ec6ac0b13e86a06d53ee10c5a124a29bae310705761febb46898918531878e77",
+        "cleanup": {
+          "A-1ExitCode": 0,
+          "B-2ExitCode": 0,
+          "B-missing-3ExitCode": 1,
+          "B-recovered-4ExitCode": 0,
+          "B-no-rewrite-5ExitCode": 0,
+          "M-migrated-6ExitCode": 0,
+          "AProxyClosed": true,
+          "BProxyClosed": true,
+          "upstreamsClosed": true,
+          "redisRemoved": true
+        },
+        "notExecuted": [],
+        "ownership": {
+          "before": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "after": {
+            "containers": [],
+            "networks": [],
+            "volumes": [],
+            "java": []
+          },
+          "forced": false,
+          "errors": [],
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "proxy-resilience",
+      "status": "failed",
+      "exitCode": 1,
+      "timedOut": false
+    },
+    {
+      "name": "rate-limit",
+      "status": "not_run"
+    },
+    {
+      "name": "rate-limit-malformed",
+      "status": "not_run"
+    },
+    {
+      "name": "limiter-policy",
+      "status": "not_run"
+    },
+    {
+      "name": "lifecycle-functional",
+      "status": "not_run"
+    },
+    {
+      "name": "lifecycle-signal",
+      "status": "not_run"
+    }
+  ],
+  "cleanup": {
+    "passed": true,
+    "forced": false,
+    "errors": [],
+    "credentials": {
+      "passed": true,
+      "removed": []
+    },
+    "hostAuditPassed": true
+  },
+  "notExecuted": [
+    "external load balancer rolling replacement",
+    "one-hour capacity validation",
+    "RSS attribution",
+    "standalone browser matrices"
+  ],
+  "capacityClaimTransferred": false,
+  "sourceReportSha256": "29577f85b2d3cf4559d266c0208584d3cec5b5b348af5b50d894da19ae76141d"
+}

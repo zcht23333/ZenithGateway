@@ -33,6 +33,7 @@ jobs:
       - name: Verify portable evidence and public reading links
         run: |
           node verification/showcase-evidence.mjs
+          node verification/showcase-evidence.mjs --manifest docs/evidence/showcase-candidate-20261008/manifest.json
           node verification/showcase-links.mjs
       - name: Preserve success or failure evidence
         if: always()

@@ -16,7 +16,7 @@ export const releaseChecks = [
  check('rate-limit-malformed', 'rate-limit-malformed-live.mjs', 'RATE_LIMIT_OUTPUT', ['redisRemoved','proxyAClosed','proxyBClosed','upstreamClosed']),
  check('limiter-policy', 'limiter-failure-policy-live.mjs', 'RATE_LIMIT_POLICY_OUTPUT', ['redisRemoved','proxyAClosed','proxyBClosed','upstreamClosed'], {timeoutMs:420000}),
  ...['functional','signal'].map(mode => check('lifecycle-'+mode, 'traffic-lifecycle-live.mjs', null,
-  ['namedGatewayClientsAbsent','ownedContainersAbsent','ownedVolumesAbsent','networkAbsent','credentialsRemoved'], {mode, timeoutMs:420000}))
+  ['namedGatewayClientsAbsent','ownedContainersAbsent','ownedVolumesAbsent','networkAbsent','credentialsRemoved'], {mode, routeSetupTimeoutMs:4000, timeoutMs:420000}))
 ]
 export const toolTests = ['benchmarks/capacity-load.test.mjs','benchmarks/stability-load.test.mjs',
  'benchmarks/conservative-capacity-gates.test.mjs',

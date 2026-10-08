@@ -50,6 +50,13 @@ node benchmarks/rss-report.mjs .dev/evidence-unpacked/native-diagnostic .dev/nat
 
 ## CI 与公开记录
 
+本轮发布的成功和失败记录见[候选证据清单](evidence/showcase-candidate-20261008/manifest.json)：包括 C1 的 Windows / Linux 汇总、原始故障报告、旧新包 Linux RST 对照、263 项后端构建输出、启动失败和启动脚本 smoke，以及 CI ZIP 的官方摘要校验。汇总标注 derived，压缩原始成员保留双 SHA256；读取时必须保留 `passed=false` 和 `notExecuted`，不能把补验通过改写为首轮通过。
+
+```powershell
+node verification/showcase-evidence.mjs --manifest docs/evidence/showcase-candidate-20261008/manifest.json
+node verification/showcase-evidence.mjs --manifest docs/evidence/showcase-candidate-20261008/manifest.json --extract .dev/candidate-evidence-unpacked
+```
+
 - [Verify 工作流](https://github.com/zcht23333/ZenithGateway/actions/workflows/verify.yml)：每次提交的测试、构建及本页证据完整性检查。
 - [Release acceptance 工作流](https://github.com/zcht23333/ZenithGateway/actions/workflows/release-acceptance.yml)：候选分支的完整发布矩阵；保留失败和清理报告。
 - [已有滚动替换收尾](release-closeout-2026-10-07.md)：历史提交、两份工作流和下载产物的对应，不当作本轮回归。

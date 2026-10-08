@@ -9,7 +9,7 @@
 | 层级 | 执行内容 | 触发 |
 |---|---|---|
 | commit | 真实 Redis 后端全量测试与构建；前端锁文件安装、测试、生产构建；负载发生器/接流量判定/验收工具测试；Prometheus 规则与实际 Grafana 查询夹具 | 每次 push / pull_request |
-| release | 完整 commit 层，再串行运行下列十个真实入口 | 手动 workflow_dispatch 或本地命令 |
+| release | 完整 commit 层，再串行运行下列十个真实入口 | 手动 workflow_dispatch、本地命令，或展示候选分支 push |
 
 发布层：配置同步、配置提交回执、配置安全回滚、路由发布、代理故障、限流可靠性、非法限流数据补验、四种限流故障策略、生命周期功能检查、直接 SIGTERM。计划与各项最大执行时间见 `verification/acceptance-plan.mjs`。单项上限 5 或 7 分钟；构建上限 10 分钟，依赖安装上限 5 分钟。不会并行制造额外 CPU 竞争去误伤三秒传播目标。
 
