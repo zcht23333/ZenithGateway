@@ -1,5 +1,7 @@
 # 求职展示候选版本
 
+本页记录候选阶段的历史交付。后续候选与面试材料进入 main 的范围及当前 CI 入口见[主线升级说明](main-upgrade-20261008.md)；以下“未合并 main”等描述保留当时状态。
+
 功能验收基线已固定为 **`c613940559c829e5aa466d04b9343c0241d5e3ae`**，同一提交的 [Verify](https://github.com/zcht23333/ZenithGateway/actions/runs/37724149697) 与 [Release acceptance](https://github.com/zcht23333/ZenithGateway/actions/runs/37724149659) 均通过。从干净源码导出全新构建目录，使用同一 JAR 完成发布矩阵，源码输入在测试前后未变。
 
 公开分支：`zch/showcase-candidate-20261008`。本页和归档材料由后续资料收尾提交保存；该提交也触发两层 CI，其状态可从分支的提交检查查看。原工作区保留，未合并 main、未部署或升级开发实例。
@@ -58,7 +60,7 @@
 
 ## 复验与阅读入口
 
-首次获取按照 README 指定候选分支；精确复验功能基线可 checkout 上表完整提交，然后确保工作区干净：
+精确复验本页历史功能基线时，获取 `zch/showcase-candidate-20261008` 分支，再 checkout 上表完整提交并确保工作区干净。首次使用当前版本按 README 获取 main：
 
 ```powershell
 node verification/acceptance.mjs --tier release --out .dev/release-reproduce --images prepare

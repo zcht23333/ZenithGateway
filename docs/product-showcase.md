@@ -2,6 +2,8 @@
 
 ZenithGateway 是面向 Java 后端与平台工程师的 API 网关项目：用一套控制台观察全局流量、理解路由配置、调整运行参数，并核对服务端实际确认的结果。后端基于 Java 21 / Spring Cloud Gateway，前端使用 Vue 3、TypeScript 和 ECharts。
 
+面试使用：[项目介绍与简历段落](interview-guide.md) · [十分钟操作脚本](interview-demo.md) · [技术追问与回答](interview-questions.md)。只读证据速查：`node verification/interview-evidence.mjs`，输出明确区分功能归档、展示候选与历史容量包。
+
 这份展示的重点是把系统能力解释清楚。概览以实际时间、QPS 和 P95 趋势组织画面；路由页将入口、限流、重写、熔断与目标按真实执行关系展开；配置页区分当前值、草稿和服务端确认。深石墨画布用于判断，黄绿色用于操作焦点，浅色区域用于逐项阅读。
 
 [早期控制台演示：80.04 秒](media/stage-c-product-demo.webm) · [阶段 C 证据与取舍](stage-c-final.md)

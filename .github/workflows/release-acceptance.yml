@@ -2,7 +2,7 @@ name: Release acceptance
 on:
   workflow_dispatch:
   push:
-    branches: ['zch/showcase-candidate-20261008']
+    branches: ['main', 'zch/showcase-candidate-20261008']
 permissions:
   contents: read
 jobs:

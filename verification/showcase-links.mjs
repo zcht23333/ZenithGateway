@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import {readFile,stat} from 'node:fs/promises'
 import {resolve,dirname} from 'node:path'
 import {fileURLToPath} from 'node:url'
-const root=fileURLToPath(new URL('..',import.meta.url)),files=['README.md','docs/backend-case-studies.md','docs/evidence-index.md','docs/product-showcase.md','docs/showcase-release.md','docs/showcase-proxy-reset-fix.md','docs/showcase-validation-fixes.md']
+const root=fileURLToPath(new URL('..',import.meta.url)),files=['README.md','docs/backend-case-studies.md','docs/evidence-index.md','docs/product-showcase.md','docs/showcase-release.md','docs/showcase-proxy-reset-fix.md','docs/showcase-validation-fixes.md','docs/interview-guide.md','docs/interview-demo.md','docs/interview-questions.md','docs/main-upgrade-20261008.md']
 let checked=0
 for(const file of files){
  const content=await readFile(resolve(root,file),'utf8')

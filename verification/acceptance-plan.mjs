@@ -24,6 +24,7 @@ export const toolTests = ['benchmarks/capacity-load.test.mjs','benchmarks/stabil
  'benchmarks/rss-observation.test.mjs',
  'benchmarks/rss-native-diagnostic.test.mjs',
  'verification/showcase-evidence.test.mjs',
+ 'verification/interview-evidence.test.mjs',
  'verification/limiter-policy-gates.test.mjs',
  'verification/traffic-lifecycle-gates.test.mjs','verification/acceptance.test.mjs','verification/rolling-replacement.test.mjs']
 export function requiredImages(tier) {

@@ -2,7 +2,9 @@
 
 面向 Java 后端与平台工程岗位展示的响应式 API 网关。重点是让配置并发、Redis 故障、请求取消和运行结果有清楚的语义，并用独立实验复验。
 
-[启动与接口](docs/development-guide.md) · [三个工程案例](docs/backend-case-studies.md) · [控制台与演示](docs/product-showcase.md) · [版本与证据索引](docs/evidence-index.md) · [候选发布记录](docs/showcase-release.md)
+[启动与接口](docs/development-guide.md) · [三个工程案例](docs/backend-case-studies.md) · [控制台与演示](docs/product-showcase.md) · [面试介绍与演练](docs/interview-guide.md) · [版本与证据索引](docs/evidence-index.md) · [本次主线升级](docs/main-upgrade-20261008.md)
+
+本次主线升级把最初的网关 demo 完善为包含版本化配置、可靠性验证和管理控制台的工程项目。已验收候选的完整历史、三个后端案例与 407 份可校验证据一并进入 main；面试材料提供项目介绍、十分钟演示脚本与 20 个技术追问。
 
 ## 先看什么
 
@@ -49,10 +51,10 @@ flowchart LR
 
 Windows PowerShell，从仓库根目录运行（先设置 JAVA_HOME 并将 Node/npm 加入 PATH）：
 
-展示候选暂未合并 main。首次获取请指定候选分支，冻结提交及实际 CI 见[发布记录](docs/showcase-release.md)：
+首次获取使用 main；本次升级范围及 CI 入口见[主线升级说明](docs/main-upgrade-20261008.md)，历史候选的冻结提交与产物见[候选发布记录](docs/showcase-release.md)：
 
 ```powershell
-git clone --branch zch/showcase-candidate-20261008 --single-branch https://github.com/zcht23333/ZenithGateway.git
+git clone --branch main --single-branch https://github.com/zcht23333/ZenithGateway.git
 cd ZenithGateway
 ```
 
@@ -81,7 +83,7 @@ node verification/acceptance.mjs --tier commit --out .dev/acceptance/commit-demo
 node verification/acceptance.mjs --tier release --out .dev/acceptance/release-demo --images prepare
 ```
 
-commit 层运行后端真实 Redis 测试、前端测试和构建、工具测试、监控规则；release 层再运行十个独立故障入口。每轮只用一个构建包并核对哈希，报告包括失败、not_run 和清理。新 CI 与产物的对应关系见[候选记录](docs/showcase-release.md)，完整工具约束见[统一验收](docs/release-acceptance.md)。
+commit 层运行后端真实 Redis 测试、前端测试和构建、工具测试、监控规则；release 层再运行十个独立故障入口。每轮只用一个构建包并核对哈希，报告包括失败、not_run 和清理。main 推送触发 Verify 与 Release acceptance，以具体提交的两项结果及归档确认发布，入口见[主线升级说明](docs/main-upgrade-20261008.md)；完整工具约束见[统一验收](docs/release-acceptance.md)。
 
 ## 性能结论
 
@@ -98,4 +100,4 @@ commit 层运行后端真实 Redis 测试、前端测试和构建、工具测试
 - [代理容错](docs/backend-proxy-resilience.md) / [接流量与安全退出](docs/backend-traffic-lifecycle.md) / [真实滚动替换](docs/backend-rolling-replacement.md)
 - [计数竞态修复](docs/backend-limiter-command-counter.md) / [RSS 归因](docs/backend-rss-investigation.md) / [可重复容量入口](benchmarks/CONSERVATIVE-CAPACITY.md)
 
-本项目展示的是能定位、验证并说明边界的工程实现，未宣称生产多区域配置中心、最大容量、永久幂等或无损退出。候选发布不自动升级现有开发实例。
+本项目展示的是能定位、验证并说明边界的工程实现，未宣称生产多区域配置中心、最大容量、永久幂等或无损退出。推送 main 不自动升级现有开发实例。
