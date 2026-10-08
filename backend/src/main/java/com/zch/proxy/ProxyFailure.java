@@ -9,13 +9,18 @@ import java.net.UnknownHostException;
 import java.util.concurrent.TimeoutException;
 import javax.net.ssl.SSLException;
 import reactor.netty.http.client.PrematureCloseException;
+import org.springframework.web.reactive.function.client.WebClientException;
 
 /** Bounded reason vocabulary; never expose exception text or upstream credentials. */
 public record ProxyFailure(String reason, int status, boolean breakerFailure) {
     public static final class TotalTimeout extends RuntimeException {}
     public static final class ClientCancelled extends RuntimeException {}
     /** Created only by the outbound HTTP channel handler, never by downstream I/O. */
-    static final class UpstreamDisconnect extends RuntimeException {
+    // Identify an onward HTTP-client failure to Spring's disconnected-client classifier.
+    // Otherwise a Linux root-cause message can be mistaken for a downstream disconnect:
+    // HttpWebHandlerAdapter swallows it after commit instead of closing the partial response.
+    // Keep the original cause for diagnostics; do not globally suppress client cancellation.
+    static final class UpstreamDisconnect extends WebClientException {
         UpstreamDisconnect(Throwable cause) { super("Upstream transport disconnected", cause); }
     }
     public static ProxyFailure classify(Throwable error) {
