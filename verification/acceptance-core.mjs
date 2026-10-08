@@ -20,7 +20,10 @@ export async function treeFiles(root, prefix='') {
 }
 export async function snapshot(root,target) {
  const selected=[]
- for (const base of ['backend','frontend','verification','benchmarks','observability','.mvn','.github']) {
+ // The offline interview checks require these packaged fixtures in the frozen workspace.
+ // Keep other documentation and local experiment directories outside the build inputs.
+ const evidenceFixtures=['docs/evidence/showcase-20261008','docs/evidence/showcase-candidate-20261008']
+ for (const base of ['backend','frontend','verification','benchmarks','observability','.mvn','.github',...evidenceFixtures]) {
   for (const path of await treeFiles(join(root,base))) selected.push(base+'/'+path)
  }
  for (const path of ['mvnw','mvnw.cmd','.node-version','README.md','.gitignore','.gitattributes']) selected.push(path)
@@ -32,7 +35,7 @@ export async function snapshot(root,target) {
   rows.push({path,bytes:bytes.length,sha256:sha(bytes)})
  }
  return {sha256:sha(JSON.stringify(rows)),files:rows,cleanBuildInputs:true,
-  excluded:['.git','.dev','node_modules','target','dist','local .env files','historical evidence, images and recordings']}
+  excluded:['.git','.dev','node_modules','target','dist','local .env files','documentation outside the packaged verification evidence fixtures']}
 }
 export async function inventory(root) {
  const files=[]

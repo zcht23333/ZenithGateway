@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os'
 import {join} from 'node:path'
 import {spawn} from 'node:child_process'
 import {fileURLToPath} from 'node:url'
-import {treeFiles,fileHash,runCommand,assertJar,reportPassed,within,parseNodeTests} from './acceptance-core.mjs'
+import {treeFiles,snapshot,fileHash,runCommand,assertJar,reportPassed,within,parseNodeTests} from './acceptance-core.mjs'
 import {requiredImages,releaseChecks,validateLiveReport} from './acceptance-plan.mjs'
 import {cleanupCredentials,auditHostResources} from './acceptance-cleanup.mjs'
 import {scopedDockerArgs} from './acceptance-scope.mjs'
@@ -13,6 +13,25 @@ async function temp(fn){const dir=await mkdtemp(join(tmpdir(),'zenith-acceptance
 test('snapshot inputs omit installed/generated files and secrets but retain actual image assets',()=>temp(async dir=>{
  for(const p of ['src/assets/images/icon.svg','src/app.js','node_modules/lib.js','target/app.jar','dist/app.js','.env','.env.local','.env.example']){const f=join(dir,p);await mkdir(join(f,'..'),{recursive:true});await writeFile(f,'input')}
  assert.deepEqual(await treeFiles(dir),['.env.example','src/app.js','src/assets/images/icon.svg'])
+}))
+
+test('clean acceptance snapshots retain archived inputs needed by interview evidence tests',()=>temp(async dir=>{
+ const source=fileURLToPath(new URL('..',import.meta.url)),inputs=await snapshot(source,dir)
+ const log=join(dir,'interview-evidence-cli.log')
+ const result=await runCommand(process.execPath,['verification/interview-evidence.mjs','--json'],{cwd:dir,log,timeoutMs:15000})
+ const output=await readFile(log,'utf8')
+ assert(result.passed,output)
+ const briefing=JSON.parse(output)
+ assert.equal(briefing.verifiedFiles,407)
+ assert.equal(briefing.newRequestsSent,0)
+ for(const group of ['showcase-20261008','showcase-candidate-20261008']){
+  const path='docs/evidence/'+group+'/manifest.json',manifest=JSON.parse(await readFile(join(dir,path),'utf8'))
+  for(const member of [path,...manifest.files.map(f=>'docs/evidence/'+group+'/'+f.file)]){
+   const input=inputs.files.find(f=>f.path===member)
+   assert(input,'Missing frozen verification input: '+member)
+   assert.equal(await fileHash(join(dir,member)),input.sha256)
+  }
+ }
 }))
 test('snapshot rejects a symlink instead of reading outside the selected source tree',()=>temp(async dir=>{
  await mkdir(join(dir,'real'));await writeFile(join(dir,'real','input'),'data');await symlink(join(dir,'real'),join(dir,'linked'),'junction')

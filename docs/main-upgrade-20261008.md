@@ -21,7 +21,9 @@
 
 main 每次推送触发 [Verify](https://github.com/zcht23333/ZenithGateway/actions/workflows/verify.yml?query=branch%3Amain) 与 [Release acceptance](https://github.com/zcht23333/ZenithGateway/actions/workflows/release-acceptance.yml?query=branch%3Amain)。两项均需核对实际提交、运行结果及归档 `report.json`；本页不将某个历史 CI 结果替代后来提交的结果。完整复验命令见[统一验收](release-acceptance.md)。
 
-已验收候选的 [Verify](https://github.com/zcht23333/ZenithGateway/actions/runs/37725791039) 与 [Release acceptance](https://github.com/zcht23333/ZenithGateway/actions/runs/37725791026) 对应 `f1c6a19`，当时通过 263 项后端、107 项前端、114 项工具测试、183 项监控断言，以及 10 个真实入口／142 项检查。新增证据速查的 4 项测试已纳入工具层，主线工具测试共 118 项。主线构建使用自己的 JAR 哈希；历史功能归档和容量包保留原身份。
+已验收候选的 [Verify](https://github.com/zcht23333/ZenithGateway/actions/runs/37725791039) 与 [Release acceptance](https://github.com/zcht23333/ZenithGateway/actions/runs/37725791026) 对应 `f1c6a19`，当时通过 263 项后端、107 项前端、114 项工具测试、183 项监控断言，以及 10 个真实入口／142 项检查。新增证据速查的 4 项测试和干净副本运行速查的 1 项回归已纳入工具层，主线工具测试共 119 项。主线构建使用自己的 JAR 哈希；历史功能归档和容量包保留原身份。
+
+首次主线提交 `51d9962` 的两项 CI 在工具层发现：干净源码副本缺少速查所需的历史证据，已有工作区测试无法覆盖这个差异。[失败 Verify](https://github.com/zcht23333/ZenithGateway/actions/runs/37768674490) 和 [失败 Release acceptance](https://github.com/zcht23333/ZenithGateway/actions/runs/37768674532) 保留；补修将两个已发布证据目录纳入源码清单与哈希核对，仍排除本机实验和未声明文档。新增回归在实际导出的副本中运行速查，修复前因缺失 manifest 失败。
 
 ```powershell
 # 只读历史证据，不启动服务或发送请求
